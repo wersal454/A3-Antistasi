@@ -83,7 +83,7 @@ A3A_SR_LoadSalvage = {
     if (_return isEqualType 0) exitWith {
         private _cargoName = getText (configFile >> "CfgVehicles" >> typeOf _object >> "displayName");
         private _vehicleName = getText (configFile >> "CfgVehicles" >> typeOf _vehicle >> "displayName");
-        [localize "STR_A3A_Logistics_header", format [localize "STR_A3A_Logistics_tryLoad_not_enough_space", _vehicleName, _cargoName]] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner];
+        [localize "STR_A3A_logi_title", format [localize "STR_A3A_logi_salvagerope_nospace", _vehicleName, _cargoName]] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner];
     };
     _return spawn A3A_Logistics_fnc_load;
 };
