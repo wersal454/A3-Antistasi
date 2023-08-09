@@ -78,202 +78,182 @@ private _fnc_getAvailableMagazines = {
 };
 
 // Work with temporary array so that we're not transferring partials
-private _rebelGear = createHashMapFromArray [
-    ["Rifles", []],
-    ["SMGs", []],
-    ["Shotguns", []],
-    ["MachineGuns", []],
-    ["SniperRifles", []],
-    ["GrenadeLaunchers", []],
-    
-    ["RocketLaunchers", []],
-    ["MissileLaunchersAT", []],
-    ["MissileLaunchersAA", []],
+private _rebelGear = createHashMap;
 
-    ["Handguns", []],
-
-    ["Magazines", createHashMap],
-
-    ["ArmoredVests", ["", [1.5, 0.5] select (minWeaps < 0)]],
-    ["CivilianVests", []],
-    ["ArmoredHeadgear", ["", [1.5, 0.5] select (minWeaps < 0)]],
-    ["BackpacksCargo", []],
-
-    ["NVGs", ["", 0.5]],
-    ["Radios", []],
-    ["MineDetectors", []],
-    ["Toolkits", []],
-    ["Medikits", []],
-
-    ["SmokeGrenades", []],
-    ["Grenades", []],
-    ["ExplosiveCharges", []],
-
-    ["OpticsClose", []],
-    ["OpticsMid", []],
-    ["OpticsLong", []],
-    ["OpticsAll", []],
-    ["LightAttachments", []],
-    ["LaserAttachments", []],
-    ["MuzzleAttachments", []],
-    ["Bipods", []]
-];
-
-private _opticsMidCount = 0;
+// Primary weapon filtering
+private _rifle = [];
+private _smg = [];
+private _shotgun = [];
+private _sniper = [];
+private _mg = [];
+private _gl = [];
 {
+    _x params ["_class", "_amount"];
+    private _categories = _class call A3A_fnc_equipmentClassToCategories;
+
+    call {
+        if ("GrenadeLaunchers" in _categories) exitWith { [_gl, _class, _amount] call _fnc_addItem };       // call before rifles
+        if ("Rifles" in _categories) exitWith { [_rifle, _class, _amount/2] call _fnc_addItem };
+        if ("SniperRifles" in _categories) exitWith { [_sniper, _class, _amount] call _fnc_addItem };
+        if ("MachineGuns" in _categories) exitWith { [_mg, _class, _amount] call _fnc_addItem };
+        if ("SMGs" in _categories) exitWith { [_smg, _class, _amount] call _fnc_addItem };
+        if ("Shotguns" in _categories) exitWith { [_shotgun, _class, _amount] call _fnc_addItem };
+    };
+} forEach (jna_dataList select IDC_RSCDISPLAYARSENAL_TAB_PRIMARYWEAPON);
+
+if (count A3A_specialGrenadeLaunchers > 0) then {
+    // muzzle + base grenade launchers, broken down in the arsenal
+    private _rifleHM = createHashMapFromArray (jna_dataList select IDC_RSCDISPLAYARSENAL_TAB_PRIMARYWEAPON);
+    private _muzzleHM = createHashMapFromArray (jna_dataList select IDC_RSCDISPLAYARSENAL_TAB_ITEMMUZZLE);
     {
-        _x params ["_class", "_amount"];
-        private _categories = _class call A3A_fnc_equipmentClassToCategories;
-        private _mainCategory = _categories select 0;
+        private _weapCount = _rifleHM getOrDefault [_y#0, 0];
+        if (_weapCount >= 0 and _weapCount < 2*ITEM_MIN) then { continue };        // slightly hacky but whatever
+        [_gl, _x, _muzzleHM getOrDefault [_y#1, 0]] call _fnc_addItem;
+    } forEach A3A_specialGrenadeLaunchers;
+};
 
-        switch (_mainCategory) do {
-            // Primary Weapons
-            case "Rifles";
-            case "SniperRifles";
-            case "GrenadeLaunchers";
-            case "MachineGuns";
-            case "SMGs";
-            case "Shotguns";
-            case "PrimaryWeaponsCatchAll" : {
-                if !([_class, _categories] call _fnc_getAvailableMagazines) exitWith {}; // * Don't add weapon to hashmap if we don't have mags for it
-                _arrayWeight = [_class, _categories] call A3A_fnc_itemArrayWeight;
-                _array = _rebelGear getOrDefault [[_mainCategory, "GrenadeLaunchers"] select ("GrenadeLaunchers" in _categories), [], true];
-                [_array, _class, _amount, _arrayWeight] call _fnc_addItem;
-            };
-            
-            // Secondary Weapons
-            case "RocketLaunchers": {
-                if !([_class, _categories] call _fnc_getAvailableMagazines) exitWith {}; // * Don't add weapon to hashmap if we don't have mags for it
-                _arrayWeight = [_class, _categories] call A3A_fnc_itemArrayWeight;
-                _array = _rebelGear getOrDefault ["RocketLaunchers", [], true]; 
-                [_array, _class, _amount, _arrayWeight] call _fnc_addItem;
-            };
-            case "MissileLaunchers": {
-                if !([_class, _categories] call _fnc_getAvailableMagazines) exitWith {}; // * Don't add weapon to hashmap if we don't have mags for it
-                switch true do {
-                    case ("AA" in _categories): {
-                        _array = _rebelGear getOrDefault ["MissileLaunchersAA", [], true];
-                        [_array, _class, _amount] call _fnc_addGuidedLauncher;
-                    };
-                    case ("AT" in _categories): {
-                        _array = _rebelGear getOrDefault ["MissileLaunchersAT", [], true];
-                        [_array, _class, _amount] call _fnc_addGuidedLauncher;
-                    };
-                };
-            };
+_rebelGear set ["Rifles", _rifle];
+_rebelGear set ["SMGs", _smg];
+_rebelGear set ["Shotguns", _shotgun];
+_rebelGear set ["MachineGuns", _mg];
+_rebelGear set ["SniperRifles", _sniper];
+_rebelGear set ["GrenadeLaunchers", _gl];
 
-            // Handguns
-            case "Handguns": {
-                if !([_class, _categories] call _fnc_getAvailableMagazines) exitWith {}; // * Don't add weapon to hashmap if we don't have mags for it
-                _arrayWeight = [_class, _categories] call A3A_fnc_itemArrayWeight;
-                _array = _rebelGear getOrDefault ["Handguns", [], true];
-                [_array, _class, _amount, _arrayWeight] call _fnc_addItem;
-            };
+// Secondary weapon filtering
+private _rlaunchers = [];
+private _mlaunchersAT = [];
+private _mlaunchersAA = [];
+{
+    _x params ["_class", "_amount"];
+    private _categories = _class call A3A_fnc_equipmentClassToCategories;
+/*    if !("Disposable" in _categories) then {
+        private _magcount = _class call _fnc_magCount;
+        _amount = _amount min (_magcount/2);
+    };*/
 
-            // Gear
-            case "Vests": {
-                _array = _rebelGear getOrDefault [["CivilianVests", "ArmoredVests"] select ("ArmoredVests" in _categories), ["", [1.5,0.5] select (minWeaps < 0)], true];
-                [_array, _class, _amount] call _fnc_addItem;
-            };
-            case "Headgear": {
-                //_array = _rebelGear getOrDefault [["CosmeticHeadgear", "ArmoredHeadgear"] select ("ArmoredHeadgear" in _categories), ["", [1.5,0.5] select (minWeaps < 0)], true];    // not used, rebels have template-defined basic headgear
-                _array = _rebelGear getOrDefault ["ArmoredHeadgear", [], true];
-                if ("ArmoredHeadgear" in _categories) then { [_array, _class, _amount] call _fnc_addItem };
-            };
-            case "Backpacks": {
-                _array = _rebelGear getOrDefault ["BackpacksCargo", [], true];
-                if ("BackpacksCargo" in _categories) then { [_array, _class, _amount] call _fnc_addItem };
-            };
+    if ("RocketLaunchers" in _categories) then { [_rlaunchers, _class, _amount] call _fnc_addItem; continue };
+    if ("MissileLaunchers" in _categories) then {
+        if ("AA" in _categories) exitWith { [_mlaunchersAA, _class, _amount] call _fnc_addItemNoUnlocks };
+        if ("AT" in _categories) exitWith { [_mlaunchersAT, _class, _amount] call _fnc_addItemNoUnlocks };
+    };
+} forEach (jna_datalist select IDC_RSCDISPLAYARSENAL_TAB_SECONDARYWEAPON);
 
-            // Weapon Attachments
-            case "Optics": {
-                switch true do {
-                    case ("OpticsMid" in _categories): {                      // most common first
-                        _array = _rebelGear getOrDefault ["OpticsMid", [], true];
-                        [_array, _class, _amount] call _fnc_addItem;
-                        _opticsMidCount = [_opticsMidCount + _amount, 1e6] select (_amount < 0);
-                    };
-                    case ("OpticsClose" in _categories): {
-                        _array = _rebelGear getOrDefault ["OpticsClose", [], true];
-                        [_array, _class, _amount] call _fnc_addItem;
-                    };
-                    case ("OpticsLong" in _categories): {
-                        _array = _rebelGear getOrDefault ["OpticsLong", [], true];
-                        [_array, _class, _amount] call _fnc_addItem;
-                    };
-                };
-            };
-            case "PointerAttachments": {
-                switch true do {
-                    case ("LightAttachments" in _categories): {
-                        _array = _rebelGear getOrDefault ["LightAttachments", [], true];
-                        [_array, _class, _amount] call _fnc_addItem;
-                    };
-                    case ("LaserAttachments" in _categories): {
-                        _array = _rebelGear getOrDefault ["LaserAttachments", [], true];
-                        [_array, _class, _amount] call _fnc_addItem;
-                    };
-                };
-            };
-            case "MuzzleAttachments": {
-                _array = _rebelGear getOrDefault ["MuzzleAttachments", [], true];
-                [_array, _class, _amount] call _fnc_addItem;
-            };
-            case "Bipods": {
-                _array = _rebelGear getOrDefault ["Bipods", [], true];
-                [_array, _class, _amount] call _fnc_addItem;
-            };
+_rebelGear set ["RocketLaunchers", _rlaunchers];
+_rebelGear set ["MissileLaunchersAT", _mlaunchersAT];
+_rebelGear set ["MissileLaunchersAA", _mlaunchersAA];
 
-            // Items
-            case "NVGs": {
-                _array = _rebelGear getOrDefault ["NVGs", ["", 0.5], true];
-                if !("NVGThermal" in _categories) then { [_array, _class, _amount] call _fnc_addItem };
-            };
-            case "Radios";
-            case "MineDetectors";
-            case "Toolkits";
-            case "Medikits";
-            case "CargoMiscCatchAll": {
-                _array = _rebelGear getOrDefault [_mainCategory, [], true];
-                [_array, _class, _amount] call _fnc_addItem;
-            };
+// Vest filtering
+private _avests = ["", [1.5,0.5] select (minWeaps < 0)];     // blank entry to phase in armour use gradually
+private _uvests = [];
+{
+    _x params ["_class", "_amount"];
+    private _categories = _class call A3A_fnc_equipmentClassToCategories;
+    private _array = [_uvests, _avests] select ("ArmoredVests" in _categories);
+    [_array, _class, _amount] call _fnc_addItem;
+} forEach (jna_datalist select IDC_RSCDISPLAYARSENAL_TAB_VEST);
 
-            default {
-                // Grenades / Explosives
-                switch true do {
-                    case ("SmokeGrenades" in _categories): {
-                        _array = _rebelGear getOrDefault ["SmokeGrenades", [], true];
-                        [_array, _class, _amount] call _fnc_addItem
-                    };
-                    case ("Grenades" in _categories): {
-                        _array = _rebelGear getOrDefault ["Grenades", [], true];
-                        [_array, _class, _amount] call _fnc_addItem
-                    };
-                    case ("ExplosiveCharges" in _categories): {
-                        _array = _rebelGear getOrDefault ["ExplosiveCharges", [], true];
-                        [_array, _class, _amount] call _fnc_addExplosiveCharge;
-                    };
-                };
-            };
+_rebelGear set ["ArmoredVests", _avests];
+_rebelGear set ["CivilianVests", _uvests];
+
+// Helmet filtering
+private _aheadgear = ["", [1.5,0.5] select (minWeaps < 0)];     // blank entry to phase in armour use gradually
+private _uheadgear = [];
+{
+    _x params ["_class", "_amount"];
+    private _categories = _class call A3A_fnc_equipmentClassToCategories;
+    private _array = [_uheadgear, _aheadgear] select ("ArmoredHeadgear" in _categories);
+    [_array, _class, _amount] call _fnc_addItem;
+} forEach (jna_datalist select IDC_RSCDISPLAYARSENAL_TAB_HEADGEAR);
+
+_rebelGear set ["ArmoredHeadgear", _aheadgear];
+//_rebelGear set ["CosmeticHeadgear", _uheadgear];           // not used, rebels have template-defined basic headgear
+
+// Backpack filtering
+private _backpacks = [];
+{
+    _x params ["_class", "_amount"];
+    private _categories = _class call A3A_fnc_equipmentClassToCategories;
+    if ("BackpacksCargo" in _categories) then { [_backpacks, _class, _amount] call _fnc_addItem };
+} forEach (jna_datalist select IDC_RSCDISPLAYARSENAL_TAB_BACKPACK);
+
+_rebelGear set ["BackpacksCargo", _backpacks];
+
+// NVG filtering
+private _nvgs = ["", 0.5];          // blank entry for phase-in
+{
+    _x params ["_class", "_amount"];
+    private _categories = _class call A3A_fnc_equipmentClassToCategories;
+    if !("NVGThermal" in _categories) then { [_nvgs, _class, _amount] call _fnc_addItem };
+} forEach (jna_datalist select IDC_RSCDISPLAYARSENAL_TAB_NVGS);
+
+_rebelGear set ["NVGs", _nvgs];
+
+// Unfiltered stuff (just radios atm? could add GPS)
+private _radios = [];
+{ [_radios, _x#0, _x#1] call _fnc_addItem } forEach (jna_dataList select IDC_RSCDISPLAYARSENAL_TAB_RADIO);
+_rebelGear set ["Radios", _radios];
+
+// Misc items. Don't really need weighting but whatever
+private _minedetectors = [];
+private _toolkits = [];
+private _medikits = [];
+{
+    _x params ["_class", "_amount"];
+    private _categories = _class call A3A_fnc_equipmentClassToCategories;
+    call {
+        if ("MineDetectors" in _categories) exitWith { [_minedetectors, _class, _amount] call _fnc_addItem };
+        if ("Toolkits" in _categories) exitWith { [_toolkits, _class, _amount] call _fnc_addItem };
+        if ("Medikits" in _categories) exitWith { [_medikits, _class, _amount] call _fnc_addItem };
+    };
+} forEach (jna_dataList select IDC_RSCDISPLAYARSENAL_TAB_CARGOMISC);
+
+_rebelGear set ["MineDetectors", _minedetectors];
+_rebelGear set ["Toolkits", _toolkits];
+_rebelGear set ["Medikits", _medikits];
+
+// Hand grenades
+private _smokes = [];
+private _nades = [];
+{
+    _x params ["_class", "_amount"];
+    private _categories = _class call A3A_fnc_equipmentClassToCategories;
+    call {
+        if ("SmokeGrenades" in _categories) exitWith { [_smokes, _class, _amount] call _fnc_addItem };
+        if ("Grenades" in _categories) exitWith { [_nades, _class, _amount] call _fnc_addItem };
+    };
+} forEach (jna_datalist select IDC_RSCDISPLAYARSENAL_TAB_CARGOTHROW);
+
+_rebelGear set ["SmokeGrenades", _smokes];
+_rebelGear set ["Grenades", _nades];
+
+// Explosives. Could add mines but don't want them atm.
+private _charges = [];
+{
+    _x params ["_class", "_amount"];
+    private _categories = _class call A3A_fnc_equipmentClassToCategories;
+    if ("ExplosiveCharges" in _categories) then { [_charges, _class, _amount] call _fnc_addItemNoUnlocks };
+} forEach (jna_datalist select IDC_RSCDISPLAYARSENAL_TAB_CARGOPUT);
+
+_rebelGear set ["ExplosiveCharges", _charges];
+
+// Optic filtering. No weighting because of weapon compatibilty complexity
+private _opticClose = [];
+private _opticMid = [];
+private _opticLong = [];
+private _midCount = 0;
+{
+    _x params ["_class", "_amount"];
+    if (_amount > 0 and {minWeaps > 0 or _amount < ITEM_MIN}) then { continue };
+    private _categories = _class call A3A_fnc_equipmentClassToCategories;
+    call {
+        if ("OpticsMid" in _categories) exitWith {                      // most common first
+            _opticMid pushBack _class;
+            _midCount = [_midCount + _amount, 1e6] select (_amount < 0);
         };
-    } forEach (jna_datalist select _x); 
-} forEach [
-    IDC_RSCDISPLAYARSENAL_TAB_PRIMARYWEAPON,
-    IDC_RSCDISPLAYARSENAL_TAB_SECONDARYWEAPON,
-    IDC_RSCDISPLAYARSENAL_TAB_HANDGUN,
-    IDC_RSCDISPLAYARSENAL_TAB_VEST,
-    IDC_RSCDISPLAYARSENAL_TAB_HEADGEAR,
-    IDC_RSCDISPLAYARSENAL_TAB_BACKPACK,
-    IDC_RSCDISPLAYARSENAL_TAB_NVGS,
-    IDC_RSCDISPLAYARSENAL_TAB_RADIO,
-    IDC_RSCDISPLAYARSENAL_TAB_CARGOMISC,
-    IDC_RSCDISPLAYARSENAL_TAB_CARGOTHROW,
-    IDC_RSCDISPLAYARSENAL_TAB_CARGOPUT,
-    IDC_RSCDISPLAYARSENAL_TAB_ITEMOPTIC,
-    IDC_RSCDISPLAYARSENAL_TAB_ITEMACC,
-    IDC_RSCDISPLAYARSENAL_TAB_ITEMMUZZLE,
-    IDC_RSCDISPLAYARSENAL_TAB_ITEMBIPOD
-];
+        if ("OpticsClose" in _categories) exitWith { _opticClose pushBack _class };
+        if ("OpticsLong" in _categories) exitWith { _opticLong pushBack _class };
+    };
+} forEach (jna_dataList select IDC_RSCDISPLAYARSENAL_TAB_ITEMOPTIC);
 
 // Mix in some short-range optics if mid-range count is low
 private _opticMid = _rebelGear get "OpticsMid";
