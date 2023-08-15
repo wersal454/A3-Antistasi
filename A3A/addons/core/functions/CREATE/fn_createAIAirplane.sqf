@@ -66,6 +66,8 @@ if (_radarType != "" && _samType != "") then {
 					} forEach [120, 240, 0];
 				};
 			};
+			_aaVehicle setVehicleRadar 1;
+			_aaVehicle setVehicleReportRemoteTargets true;
 		};
 	} forEach [_radarType, _samType];
 };

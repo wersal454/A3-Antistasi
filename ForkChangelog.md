@@ -5,6 +5,13 @@
 - (Aegis) AUKUS, NATO, CSAT, AAF factions (Aegis factions are beta/experimental so they could be used only via their dev branch versions of Aegis, Atlas and Opposing Force mods)
 - (Aegis) CHDKZ and Ion PMC Rival factions (Aegis factions are beta/experimental so they could be used only via their dev branch versions of Aegis, Atlas and Opposing Force mods) -->
 
+## 2.3
+### Changes
+- Minor Rivals roving mortar spawn fixes
+- SAM sites will now actually use it's stationary radar and will share targets with site's air defenses, so it will actually control airspace around site
+- Vanilla NATO factions will use Sentinel UAVs
+- Fixed Invaders/Occupants non-usage of light helicopters
+
 ## 2.2.4
 ### Changes
 - 3.3.3 Community Version integration
