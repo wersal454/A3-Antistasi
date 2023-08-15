@@ -72,7 +72,7 @@ server setVariable [format ["%1_targets", _supportName], [[[_originPosition, _pr
 
 Info_1("%1 will be used as center of the event.", str _originPosition);
 
-private _spawnPosition = [_originPosition, 1200, 2000, 4, 0, 1] call BIS_fnc_findSafePos;
+private _spawnPosition = [_originPosition, 1200, 2000, 8, 0, 1] call BIS_fnc_findSafePos;
 private _sites = (outposts + airportsX + resourcesX + factories + seaports + milbases) select {sidesX getVariable [_x, sideUnknown] != Rivals};
 
 //if too close to some outposts - reroll if possible
@@ -80,9 +80,9 @@ if (count _sites > 0 && {_sites findIf {private _markerPos = getMarkerPos _x; _m
     private _iterations = 0;
     private _radius = 1200;
     while {_iterations < 50} do {
-        _spawnPosition = [_originPosition, 1200, _radius, 4, 0, 1] call BIS_fnc_findSafePos;
+        _spawnPosition = [_originPosition, 1200, _radius, 8, 0, 1] call BIS_fnc_findSafePos;
 
-        private _isClose = _sites findIf { private _markerPos = getMarkerPos _x; _markerPos distance2D _spawnPosition < 800 } != -1;
+        private _isClose = _sites findIf { private _markerPos = getMarkerPos _x; _markerPos distance2D _spawnPosition < 1200 } != -1;
 
         if(!_isClose) exitWith {};
         _radius = _radius + 50;
