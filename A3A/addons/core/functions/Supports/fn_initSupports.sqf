@@ -39,6 +39,7 @@ private _initData = [
     ["HOWITZER",        "AREA", 0.5, 0.9, 125,  65,  "", "staticHowitzers"],
     ["ASF",           "TARGET", 1.0, 0.4,   0, 100,  "", "vehiclesPlanesAA"],            // balanced against SAMs (if available), 66/33 weighting
     ["CAS",           "TARGET", 1.0, 0.4,   0, 100,  "", "vehiclesPlanesCAS"],
+    ["UAV",           "TARGET", 1.0, 0.4,   0, 80,  "", "uavsAttack"],
     ["QRFLAND",       "TROOPS", 1.0, 1.4,   0,   0,  "", ""],
     ["QRFAIR",        "TROOPS", 0.5, 0.1,   0,   0,  "", ""],
     ["QRFVEHAIRDROP", "TROOPS", 0.4, 0.2,   0,   0,  "", "vehiclesPlanesTransport"],
