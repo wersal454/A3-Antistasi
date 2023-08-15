@@ -110,7 +110,7 @@ if (_hasApex) then {
 };
 
 if (_hasTanks) then {
-    _lightTanks append ["B_AFV_Wheeled_01_up_cannon_F","B_AFV_Wheeled_01_up_cannon_F"];
+    _lightTanks append ["B_AFV_Wheeled_01_cannon_F","B_AFV_Wheeled_01_up_cannon_F"];
 };
 
 //If Western Sahara DLC
