@@ -8,9 +8,10 @@
 ## 2.3
 ### Changes
 - Minor Rivals roving mortar spawn fixes
-- SAM sites will now actually use it's stationary radar and will share targets with site's air defenses, so it will actually control airspace around site
 - Vanilla NATO factions will use Sentinel UAVs
 - Fixed Invaders/Occupants non-usage of light helicopters
+- Fixed broken Vehicle Airdrop QRFs on vanilla NATO factions
+- Fixed non-working radars on SAM sites, radar will be actually enabled and data link will be used to share targets with near air defense assets
 
 ## 2.2.4
 ### Changes
