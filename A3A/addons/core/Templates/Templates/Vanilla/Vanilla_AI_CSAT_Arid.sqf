@@ -128,6 +128,8 @@ if (_hasWs) then {
 ["vehiclesMilitiaAPCs", _militiaAPCs] call _fnc_saveToTemplate;
 ["vehiclesTanks", _tanks] call _fnc_saveToTemplate;
 ["vehiclesAPCs", _apcs] call _fnc_saveToTemplate;
+["vehiclesHelisLight", _lightHelicopters] call _fnc_saveToTemplate;
+["vehiclesHelisLightAttack", _lightAttackHelicopters] call _fnc_saveToTemplate;
 
 #include "Vanilla_Vehicle_Attributes.sqf"
 
