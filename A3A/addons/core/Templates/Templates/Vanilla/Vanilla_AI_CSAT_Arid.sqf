@@ -66,7 +66,7 @@ if (_hasHelicopters) then {
 
 ["vehiclesHelisLight", _lightHelicopters] call _fnc_saveToTemplate;
 ["vehiclesHelisTransport", _transportHelicopters] call _fnc_saveToTemplate;
-private _lightAttackHelicopters = ["O_Heli_Attack_02_dynamicLoadout_F"];
+private _lightAttackHelicopters = ["O_Heli_Light_02_dynamicLoadout_F"];
 ["vehiclesHelisAttack", ["O_Heli_Attack_02_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 
 ["vehiclesArtillery", ["O_MBT_02_arty_F"]] call _fnc_saveToTemplate;
@@ -149,7 +149,8 @@ if (_hasWs) then {
 ["variants", [
     ["B_ION_Heli_Light_02_unarmed_lxWS", ["Opfor",1]],
     ["B_ION_Heli_Light_02_dynamicLoadout_lxWS", ["Opfor",1]],
-    ["O_Heli_Light_02_unarmed_F", ["Opfor",0.3]]
+    ["O_Heli_Light_02_unarmed_F", ["Opfor",0.3]],
+    ["O_Heli_Light_02_dynamicLoadout_F", ["Opfor",0.3]]
 ]] call _fnc_saveToTemplate;
 /////////////////////
 ///  Identities   ///
