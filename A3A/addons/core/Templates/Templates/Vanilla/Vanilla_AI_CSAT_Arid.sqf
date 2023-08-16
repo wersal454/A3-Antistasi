@@ -55,20 +55,18 @@ private _tanks = ["O_MBT_02_cannon_F"];
 
 ["vehiclesPlanesCAS", ["O_Plane_CAS_02_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 ["vehiclesPlanesAA", ["O_Plane_Fighter_02_F"]] call _fnc_saveToTemplate;
-["vehiclesPlanesTransport", []] call _fnc_saveToTemplate;
-
+["vehiclesPlanesTransport", ["O_T_VTOL_02_infantry_hex_F"]] call _fnc_saveToTemplate;
 
 private _lightHelicopters = ["O_Heli_Light_02_unarmed_F"];
 private _transportHelicopters = ["O_Heli_Light_02_unarmed_F"];
 
 if (_hasHelicopters) then {
-    _lightHelicopters pushBack "O_Heli_Transport_04_bench_F";
     _transportHelicopters append ["O_Heli_Transport_04_covered_F", "O_Heli_Transport_04_bench_F"]; 
 };
 
 ["vehiclesHelisLight", _lightHelicopters] call _fnc_saveToTemplate;
 ["vehiclesHelisTransport", _transportHelicopters] call _fnc_saveToTemplate;
-["vehiclesHelisLightAttack", ["O_Heli_Light_02_dynamicLoadout_F"]] call _fnc_saveToTemplate;
+private _lightAttackHelicopters = ["O_Heli_Attack_02_dynamicLoadout_F"];
 ["vehiclesHelisAttack", ["O_Heli_Attack_02_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 
 ["vehiclesArtillery", ["O_MBT_02_arty_F"]] call _fnc_saveToTemplate;
@@ -121,6 +119,8 @@ if (_hasWs) then {
     _lightAPCs = ["O_APC_Wheeled_02_hmg_lxWS"];
     _militiaAPCs = ["O_APC_Wheeled_02_hmg_lxWS"];
     _apcs pushBack "O_APC_Tracked_02_30mm_lxWS";
+    _lightHelicopters pushBack "B_ION_Heli_Light_02_unarmed_lxWS";
+    _lightAttackHelicopters pushBack "B_ION_Heli_Light_02_dynamicLoadout_lxWS";
 };
 
 ["vehiclesLightAPCs", _lightAPCs] call _fnc_saveToTemplate;
@@ -146,6 +146,11 @@ if (_hasWs) then {
     ["O_APC_Tracked_02_AA_F", ["showTracks",0.3,"showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3]]
 ]] call _fnc_saveToTemplate;
 
+["variants", [
+    ["B_ION_Heli_Light_02_unarmed_lxWS", ["Opfor",1]],
+    ["B_ION_Heli_Light_02_dynamicLoadout_lxWS", ["Opfor",1]],
+    ["O_Heli_Light_02_unarmed_F", ["Opfor",0.3]]
+]] call _fnc_saveToTemplate;
 /////////////////////
 ///  Identities   ///
 /////////////////////
