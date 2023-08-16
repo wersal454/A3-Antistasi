@@ -301,7 +301,7 @@ if (!_busy) then {
                     + (_faction get "vehiclesPlanesCAS")
                     + (_faction get "vehiclesPlanesAA")
                     + (_faction get "vehiclesPlanesTransport");
-				_typeVehX = selectRandom (_faction get "vehiclesPlanesTransport");
+				_typeVehX = selectRandom _airVehTypes;
 				if (!isNil "_typeVehX") then {
 					_veh = createVehicle [_typeVehX, _pos, [],50, "NONE"];
 					_veh setDir (_ang);
