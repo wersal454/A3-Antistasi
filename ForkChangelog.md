@@ -16,6 +16,7 @@
 - Fixed Invaders/Occupants non-usage of light helicopters
 - Fixed broken Vehicle Airdrop QRFs on vanilla NATO factions
 - Fixed non-working radars on SAM sites, radar will be actually enabled and data link will be used to share targets with near air defense assets
+- Reenabled spotting UAV support 
 - (Western Sahara) Vanilla and Aegis Rebel templates will use armored pickup vehicles
 
 ## 2.2.4
