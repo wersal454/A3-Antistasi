@@ -25,7 +25,7 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 ["surrenderCrate", "Box_NATO_Wps_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
 ["equipmentBox", "Box_NATO_Equip_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
 
-["vehiclesBasic", ["B_Quadbike_01_F", "B_Truck_01_Mover_F"]] call _fnc_saveToTemplate;
+["vehiclesBasic", ["B_Quadbike_01_F"]] call _fnc_saveToTemplate;
 private _unarmedVehicles = ["B_MRAP_01_F"];
 private _armedVehicles = ["B_MRAP_01_gmg_F", "B_MRAP_01_hmg_F"];
 ["vehiclesTrucks", ["B_Truck_01_covered_F", "B_Truck_01_transport_F"]] call _fnc_saveToTemplate;
