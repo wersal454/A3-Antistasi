@@ -35,8 +35,8 @@ private _armedVehicles = ["B_MRAP_01_gmg_F", "B_MRAP_01_hmg_F"];
 ["vehiclesFuelTrucks", ["B_Truck_01_fuel_F"]] call _fnc_saveToTemplate;
 ["vehiclesMedical", ["B_Truck_01_medical_F"]] call _fnc_saveToTemplate;
 private _lightAPCs = ["B_APC_Wheeled_01_cannon_F"];
-private _APCs = ["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F"];           // CRV has no cargo: "B_APC_Tracked_01_CRV_F"
-["vehiclesIFVs", []] call _fnc_saveToTemplate;
+private _APCs = ["B_APC_Wheeled_01_cannon_F"];           // CRV has no cargo: "B_APC_Tracked_01_CRV_F"
+["vehiclesIFVs", ["B_APC_Tracked_01_rcws_F"]] call _fnc_saveToTemplate;
 
 private _airborneVehicles = ["B_APC_Wheeled_01_cannon_F"];
 private _lightTanks = ["B_MBT_01_cannon_F"];
