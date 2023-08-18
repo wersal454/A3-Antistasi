@@ -25,7 +25,7 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 ["surrenderCrate", "Box_NATO_Wps_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
 ["equipmentBox", "Box_NATO_Equip_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
 
-["vehiclesBasic", ["B_Quadbike_01_F"]] call _fnc_saveToTemplate;
+["vehiclesBasic", ["B_Quadbike_01_F", "B_Truck_01_Mover_F"]] call _fnc_saveToTemplate;
 private _unarmedVehicles = ["B_MRAP_01_F"];
 private _armedVehicles = ["B_MRAP_01_gmg_F", "B_MRAP_01_hmg_F"];
 ["vehiclesTrucks", ["B_Truck_01_covered_F", "B_Truck_01_transport_F"]] call _fnc_saveToTemplate;
@@ -39,7 +39,7 @@ private _APCs = ["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F"];       
 ["vehiclesIFVs", []] call _fnc_saveToTemplate;
 
 private _airborneVehicles = ["B_APC_Wheeled_01_cannon_F"];
-private _lightTanks = ["B_AFV_Wheeled_01_cannon_F"];
+private _lightTanks = ["B_MBT_01_cannon_F"];
 ["vehiclesTanks", ["B_MBT_01_TUSK_F", "B_MBT_01_cannon_F"]] call _fnc_saveToTemplate;
 ["vehiclesAA", ["B_APC_Tracked_01_AA_F"]] call _fnc_saveToTemplate;
 
@@ -60,12 +60,19 @@ if (_hasHelicopters) then {
 ["vehiclesHelisLightAttack", ["B_Heli_Light_01_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 ["vehiclesHelisAttack", ["B_Heli_Attack_01_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 
-["vehiclesArtillery", ["B_MBT_01_arty_F","B_MBT_01_mlrs_F"]] call _fnc_saveToTemplate; //this line determines artillery vehicles -- Example: ["vehiclesArtillery", ["B_MBT_01_arty_F"]] -- Array, can contain multiple assets
+private _artillery = if (_hasWs) then {["APC_Wheeled_01_mortar_base_lxWS" ,"B_MBT_01_arty_F", "B_MBT_01_mlrs_F"]} else {["B_MBT_01_arty_F","B_MBT_01_mlrs_F"]};
+["vehiclesArtillery", _artillery] call _fnc_saveToTemplate;
 
-["magazines", createHashMapFromArray [
+private _artmagazines = createHashMapFromArray [
     ["B_MBT_01_arty_F",["32Rnd_155mm_Mo_shells"]],
     ["B_MBT_01_mlrs_F",["12Rnd_230mm_rockets"]]
-]] call _fnc_saveToTemplate;
+];
+
+if (_hasWs) then {
+    _artmagazines pushBack ["APC_Wheeled_01_mortar_base_lxWS",["64Rnd_60mm_Mo_LG_lxWS"]];
+};
+
+["magazines", _artmagazines] call _fnc_saveToTemplate;
 
 ["uavsAttack", ["B_UAV_02_dynamicLoadout_F", "B_UAV_05_F"]] call _fnc_saveToTemplate;
 private _uavsPortable = if (_hasWs) then {["B_UAV_02_lxWS", "B_UAV_01_F"]} else {["B_UAV_01_F"]};
@@ -110,7 +117,7 @@ if (_hasApex) then {
 };
 
 if (_hasTanks) then {
-    _lightTanks append ["B_AFV_Wheeled_01_cannon_F","B_AFV_Wheeled_01_up_cannon_F"];
+    _lightTanks = ["B_AFV_Wheeled_01_cannon_F","B_AFV_Wheeled_01_up_cannon_F"];
 };
 
 //If Western Sahara DLC
