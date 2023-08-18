@@ -69,7 +69,7 @@ private _artmagazines = createHashMapFromArray [
 ];
 
 if (_hasWs) then {
-    _artmagazines pushBack ["APC_Wheeled_01_mortar_base_lxWS",["64Rnd_60mm_Mo_LG_lxWS"]];
+    _artmagazines set ["APC_Wheeled_01_mortar_base_lxWS",["64Rnd_60mm_Mo_LG_lxWS"]];
 };
 
 ["magazines", _artmagazines] call _fnc_saveToTemplate;
