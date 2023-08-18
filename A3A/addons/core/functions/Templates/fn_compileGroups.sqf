@@ -143,6 +143,20 @@ if (_prefix in ["occ", "inv"]) exitWith {
         _faction get "groupTierAT"
     ]];
 
+    _faction set ["groupsTierAirborne", [
+        _fireteams,
+        [
+            [unit(militia, "SquadLeader"), unit(militia, "Rifleman"), unit(militia, "MachineGunner"), unit(militia, "LAT"), unit(militia, "LAT")],
+            [unit(military, "SquadLeader"), unit(military, "Rifleman"), unit(military, "MachineGunner"), unit(military, "LAT"), unit(military, "LAT")],
+            [unit(elite, "SquadLeader"), unit(elite, "Rifleman"), unit(elite, "MachineGunner"), unit(elite, "LAT"), unit(elite, "LAT")]
+        ],
+        [
+            [unit(militia, "SquadLeader"), unit(militia, "Marksman"), unit(militia, "Rifleman"), unit(militia, "Grenadier"), unit(militia, "LAT")],
+            [unit(military, "SquadLeader"), unit(military, "Marksman"), unit(military, "Rifleman"), unit(military, "Grenadier"), unit(military, "LAT")],
+            [unit(elite, "SquadLeader"), unit(elite, "Marksman"), unit(elite, "Rifleman"), unit(elite, "Grenadier"), unit(elite, "LAT")]
+        ]
+    ]];
+
     //old randomised behaviour maintained because... reasons
     private _squads = [];
     for "_i" from 1 to 5 do {

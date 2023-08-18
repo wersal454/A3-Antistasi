@@ -5,6 +5,19 @@
 - (Aegis) AUKUS, NATO, CSAT, AAF factions (Aegis factions are beta/experimental so they could be used only via their dev branch versions of Aegis, Atlas and Opposing Force mods)
 - (Aegis) CHDKZ and Ion PMC Rival factions (Aegis factions are beta/experimental so they could be used only via their dev branch versions of Aegis, Atlas and Opposing Force mods) -->
 
+## 2.3
+### Changes
+- AI will use militia APCs in support actions and attacks too, not only roadblocks
+- Minor Rivals roving mortar spawn fixes
+- Vanilla NATO factions will use Sentinel UAVs
+- Separate airborne groups for QRF vehicle airdrop
+- SAM sites could be persistently destroyed so they will no longer spawn for some time until replenish occurs
+- Slightly reduced probability of QRF vehicle airdrops and infantry paradrops on air QRFs
+- Fixed Invaders/Occupants non-usage of light helicopters
+- Fixed broken Vehicle Airdrop QRFs on vanilla NATO factions
+- Fixed non-working radars on SAM sites, radar will be actually enabled and data link will be used to share targets with near air defense assets
+- (Western Sahara) Vanilla and Aegis Rebel templates will use armored pickup vehicles
+
 ## 2.2.4
 ### Changes
 - 3.3.3 Community Version integration

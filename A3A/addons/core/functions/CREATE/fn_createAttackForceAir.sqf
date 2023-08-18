@@ -40,12 +40,12 @@ private _lightHelis = _faction get "vehiclesHelisLight";
 private _lhFactor = 0 max (1 - (tierWar+_tierMod) / 10);            // phase out light helis at higher war tiers
 
 private _transportPool = [];
-{ _transportPool append [_x, 1 / count _transportPlanes] } forEach _transportPlanes;
 if (_transportPlanes isNotEqualTo [] && {(_faction get "vehiclesAirborne") isNotEqualTo []}) then {
-    _transportPool append ["VEHAIRDROP", 1 / count _transportPlanes];
+    _transportPool append ["VEHAIRDROP", 0.75 / count _transportPlanes];
 };
 { _transportPool append [_x, 2 / count _transportHelis] } forEach _transportHelis;
 { _transportPool append [_x, 2 * _lhFactor / count _lightHelis] } forEach _lightHelis;
+{ _transportPool append [_x, 0.75 / count _transportPlanes] } forEach _transportPlanes;
 
 private _supportPool = [_side, tierWar+_tierMod] call A3A_fnc_getVehiclesAirSupport;
 

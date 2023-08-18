@@ -61,12 +61,6 @@ if (!isNil "_weaponsItemsCargo") then {
 	};
 };
 
-// if (A3A_hasCup) then {
-// 	_weaponsX = _weaponsX select {
-// 		(!(["_loaded", _x] call BIS_fnc_inString) && {!(["_used", _x] call BIS_fnc_inString)})
-// 	};
-// };
-
 _weaponsFinal = [];
 _weaponsFinalCount = [];
 {

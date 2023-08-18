@@ -38,7 +38,7 @@ private _lightAPCs = ["B_APC_Wheeled_01_cannon_F"];
 private _APCs = ["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F"];           // CRV has no cargo: "B_APC_Tracked_01_CRV_F"
 ["vehiclesIFVs", []] call _fnc_saveToTemplate;
 
-private _airborneVehicles = ["B_APC_Wheeled_01_cannon_v2_F"];
+private _airborneVehicles = ["B_APC_Wheeled_01_cannon_F"];
 private _lightTanks = ["B_AFV_Wheeled_01_cannon_F"];
 ["vehiclesTanks", ["B_MBT_01_TUSK_F", "B_MBT_01_cannon_F"]] call _fnc_saveToTemplate;
 ["vehiclesAA", ["B_APC_Tracked_01_AA_F"]] call _fnc_saveToTemplate;
@@ -48,7 +48,7 @@ private _lightTanks = ["B_AFV_Wheeled_01_cannon_F"];
 
 ["vehiclesPlanesCAS", ["B_Plane_CAS_01_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 ["vehiclesPlanesAA", ["B_Plane_Fighter_01_F"]] call _fnc_saveToTemplate;
-["vehiclesPlanesTransport", ["B_VTOL_01_infantry_F"]] call _fnc_saveToTemplate;
+["vehiclesPlanesTransport", ["B_T_VTOL_01_infantry_F"]] call _fnc_saveToTemplate;
 
 private _transportHelicopters = ["B_Heli_Transport_01_F"];
 
@@ -110,7 +110,7 @@ if (_hasApex) then {
 };
 
 if (_hasTanks) then {
-    _lightTanks append ["B_AFV_Wheeled_01_up_cannon_F","B_AFV_Wheeled_01_up_cannon_F"];
+    _lightTanks append ["B_AFV_Wheeled_01_cannon_F","B_AFV_Wheeled_01_up_cannon_F"];
 };
 
 //If Western Sahara DLC
