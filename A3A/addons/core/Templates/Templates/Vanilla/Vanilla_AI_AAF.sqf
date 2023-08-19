@@ -55,7 +55,7 @@ private _aa = ["I_LT_01_AA_F"];
 
 ["vehiclesArtillery", ["I_Truck_02_MRL_F"]] call _fnc_saveToTemplate;
 ["magazines", createHashMapFromArray [
-["I_Truck_02_MRL_F", ["12Rnd_230mm_rockets"]]
+["I_Truck_02_MRL_F", ["12Rnd_230mm_rockets", "12Rnd_230mm_rockets_cluster"]]
 ]] call _fnc_saveToTemplate;
 
 ["uavsAttack", ["I_UAV_02_dynamicLoadout_F"]] call _fnc_saveToTemplate;
