@@ -64,8 +64,8 @@ private _artillery = if (_hasWs) then {["APC_Wheeled_01_mortar_base_lxWS" ,"B_MB
 ["vehiclesArtillery", _artillery] call _fnc_saveToTemplate;
 
 private _artmagazines = createHashMapFromArray [
-    ["B_MBT_01_arty_F",["32Rnd_155mm_Mo_shells"]],
-    ["B_MBT_01_mlrs_F",["12Rnd_230mm_rockets"]]
+    ["O_MBT_02_arty_F",["32Rnd_155mm_Mo_shells_O", "6Rnd_155mm_Mo_mine", "2Rnd_155mm_Mo_Cluster"],
+    ["B_MBT_01_mlrs_F",["12Rnd_230mm_rockets", "12Rnd_230mm_rockets_cluster"]]
 ];
 
 if (_hasWs) then {
