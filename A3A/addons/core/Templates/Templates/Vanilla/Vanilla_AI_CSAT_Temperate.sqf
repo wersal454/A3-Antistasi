@@ -61,13 +61,12 @@ private _lightHelicopters = ["O_Heli_Light_02_unarmed_F"];
 private _transportHelicopters = ["O_Heli_Light_02_unarmed_F"];
 
 if (_hasHelicopters) then {
-    _lightHelicopters pushBack "O_Heli_Transport_04_bench_F";
-    _transportHelicopters append ["O_Heli_Transport_04_covered_F", "O_Heli_Transport_04_bench_F"]; 
+    _transportHelicopters = ["O_Heli_Transport_04_covered_F", "O_Heli_Transport_04_bench_F"]; 
 };
 
 ["vehiclesHelisLight", _lightHelicopters] call _fnc_saveToTemplate;
 ["vehiclesHelisTransport", _transportHelicopters] call _fnc_saveToTemplate;
-["vehiclesHelisLightAttack", ["O_Heli_Light_02_dynamicLoadout_F"]] call _fnc_saveToTemplate;
+private _lightAttackHelicopters = ["O_Heli_Light_02_dynamicLoadout_F"];
 ["vehiclesHelisAttack", ["O_Heli_Attack_02_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 
 ["vehiclesArtillery", ["O_T_MBT_02_arty_ghex_F"]] call _fnc_saveToTemplate;
@@ -121,6 +120,8 @@ if (_hasWs) then {
     _lightAPCs = ["O_T_APC_Wheeled_02_hmg_lxWS", "O_T_APC_Wheeled_02_unarmed_lxWS"];
     _militiaAPCs = ["O_T_APC_Wheeled_02_hmg_lxWS", "O_T_APC_Wheeled_02_unarmed_lxWS"];
     _apcs pushBack "O_T_APC_Tracked_02_30mm_lxWS";
+    _lightHelicopters pushBack "B_ION_Heli_Light_02_unarmed_lxWS";
+    _lightAttackHelicopters pushBack "B_ION_Heli_Light_02_dynamicLoadout_lxWS";
 };
 
 ["vehiclesLightAPCs", _lightAPCs] call _fnc_saveToTemplate;
@@ -128,6 +129,8 @@ if (_hasWs) then {
 ["vehiclesMilitiaAPCs", _militiaAPCs] call _fnc_saveToTemplate;
 ["vehiclesTanks", _tanks] call _fnc_saveToTemplate;
 ["vehiclesAPCs", _apcs] call _fnc_saveToTemplate;
+["vehiclesHelisLight", _lightHelicopters] call _fnc_saveToTemplate;
+["vehiclesHelisAttack", _lightAttackHelicopters]call _fnc_saveToTemplate;
 
 #include "Vanilla_Vehicle_Attributes.sqf"
 
@@ -149,8 +152,11 @@ if (_hasWs) then {
 ["variants", [
     ["O_Plane_Fighter_02_F", ["CamoGreyHex",1]],
     ["O_Heli_Transport_04_bench_F", ["Black",1]],
-    ["O_Heli_Light_02_dynamicLoadout_F", ["Black",1]],
-    ["O_Heli_Transport_04_covered_F", ["Black",1]]
+    ["O_Heli_Transport_04_covered_F", ["Black",1]],
+    ["O_Heli_Light_02_unarmed_F", ["Green Hex",1 ,"Black", 1 , "Black Custom", 1]]
+    ["O_Heli_Light_02_dynamicLoadout_F", ["Green Hex",1 ,"Black", 1 , "Black Custom", 1]],
+    ["B_ION_Heli_Light_02_unarmed_lxWS", ["Green Hex",1 ,"Black", 1 , "Black Custom", 1]],
+    ["B_ION_Heli_Light_02_dynamicLoadout_lxWS", ["Green Hex",1 ,"Black", 1 , "Black Custom", 1]],
 ]] call _fnc_saveToTemplate;
 
 /////////////////////
