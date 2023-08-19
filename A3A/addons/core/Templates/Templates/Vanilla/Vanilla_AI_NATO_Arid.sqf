@@ -39,7 +39,7 @@ private _APCs = ["B_APC_Wheeled_01_cannon_F"];           // CRV has no cargo: "B
 ["vehiclesIFVs", ["B_APC_Tracked_01_rcws_F"]] call _fnc_saveToTemplate;
 
 private _airborneVehicles = ["B_APC_Wheeled_01_cannon_F"];
-private _lightTanks = ["B_MBT_01_cannon_F"];
+private _lightTanks = ["B_AFV_Wheeled_01_cannon_F"];
 ["vehiclesTanks", ["B_MBT_01_TUSK_F", "B_MBT_01_cannon_F"]] call _fnc_saveToTemplate;
 ["vehiclesAA", ["B_APC_Tracked_01_AA_F"]] call _fnc_saveToTemplate;
 
