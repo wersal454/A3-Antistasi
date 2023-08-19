@@ -9,7 +9,6 @@
 ### Changes
 - AI will use militia APCs in support actions and attacks too, not only roadblocks
 - Minor Rivals roving mortar spawn fixes
-- Vanilla NATO factions will use Sentinel UAVs
 - Separate airborne groups for QRF vehicle airdrop
 - SAM sites could be persistently destroyed so they will no longer spawn for some time until replenish occurs
 - Slightly reduced probability of QRF vehicle airdrops and infantry paradrops on air QRFs

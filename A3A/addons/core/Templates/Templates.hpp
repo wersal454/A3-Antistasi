@@ -342,7 +342,7 @@ class Templates
         flagTexture = "\rhsgref\addons\rhsgref_main\data\Flags\flag_cdf_co.paa";
         name = "RHS CDF";
         file = "RHS_AI_CDF";
-        maps[] = {"cup_chernarus_A3"};
+        maps[] = {"cup_chernarus_A3", "brf_sumava"};
         climate[] = {"temperate"};
         description = $STR_A3AP_setupFactionsTab_cdf;
     };
@@ -534,7 +534,7 @@ class Templates
         file = "3CBF_AI_CDF";
         description = $STR_A3AP_setupFactionsTab_cdf;
         climate[] = {"temperate"};
-        maps[] = {"cup_chernarus_A3"};
+        maps[] = {"cup_chernarus_A3", "brf_sumava"};
     };
 
     class 3CBF_HIDF : 3CBF_Base

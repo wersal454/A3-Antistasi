@@ -384,6 +384,18 @@
                 <Russian>Пересечение границы еще никогда не было таким простым.</Russian>
                 <Korean>국경을 넘는 것이 그렇게 쉬운 적은 없었습니다.</Korean>
             </Key>
+            <Key ID="STR_antistasi_mission_info_sumava_mapname_text">
+                <Original>Antistasi Plus - Šumava</Original>
+                <Russian>Antistasi Plus - Čумава</Russian>
+            </Key>
+            <Key ID="STR_antistasi_mission_info_sumava_mapname_short_text">
+                <Original>Antistasi Plus - Šumava</Original>
+                <Russian>Antistasi Plus - Čумава</Russian>
+            </Key>
+            <Key ID="STR_antistasi_mission_info_sumava_blurb_text">
+                <Original>The entire country is counting on us and they don't even know it.</Original>
+                <Russian>На нас рассчитывает вся страна и они даже не знают об этом.</Russian>
+            </Key>
         </Container>
     </Package>
 </Project>
