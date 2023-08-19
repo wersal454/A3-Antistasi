@@ -143,7 +143,7 @@ if (_hasWs) then {
     ["B_MBT_01_TUSK_F", ["showCamonetTurret", 0.3, "showCamonetHull", 0.3]],
     ["B_AFV_Wheeled_01_up_cannon_F", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3]],
     ["B_AFV_Wheeled_01_cannon_F", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3]],
-    ["B_APC_Wheeled_01_cannon_v2_F", ["showBags",0,"showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
+    ["B_APC_Wheeled_01_cannon_F", ["showBags",0,"showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
     ["B_APC_Tracked_01_rcws_F", ["showCamonetHull",0.3]],
     ["B_APC_Tracked_01_CRV_F", ["showCamonetHull",0.3]],
     ["APC_Wheeled_01_command_base_lxWS", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
