@@ -63,7 +63,7 @@ if (_hasHelicopters) then {
 ["vehiclesArtillery", ["B_T_MBT_01_arty_F","B_T_MBT_01_mlrs_F"]] call _fnc_saveToTemplate; //this line determines artillery vehicles -- Example: ["vehiclesArtillery", ["B_MBT_01_arty_F"]] -- Array, can contain multiple assets
 
 ["magazines", createHashMapFromArray [
-    ["B_T_MBT_01_arty_F",["32Rnd_155mm_Mo_shells", "6Rnd_155mm_Mo_mine", "2Rnd_155mm_Mo_Cluster""]],
+    ["B_T_MBT_01_arty_F",["32Rnd_155mm_Mo_shells", "6Rnd_155mm_Mo_mine", "2Rnd_155mm_Mo_Cluster"]],
     ["B_T_MBT_01_mlrs_F",["12Rnd_230mm_rockets", "12Rnd_230mm_rockets_cluster"]]
 ]] call _fnc_saveToTemplate;
 
