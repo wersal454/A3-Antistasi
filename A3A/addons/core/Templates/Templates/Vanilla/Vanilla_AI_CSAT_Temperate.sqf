@@ -153,10 +153,10 @@ if (_hasWs) then {
     ["O_Plane_Fighter_02_F", ["CamoGreyHex",1]],
     ["O_Heli_Transport_04_bench_F", ["Black",1]],
     ["O_Heli_Transport_04_covered_F", ["Black",1]],
-    ["O_Heli_Light_02_unarmed_F", ["Green Hex",1 ,"Black", 1 , "Black Custom", 1]]
-    ["O_Heli_Light_02_dynamicLoadout_F", ["Green Hex",1 ,"Black", 1 , "Black Custom", 1]],
-    ["B_ION_Heli_Light_02_unarmed_lxWS", ["Green Hex",1 ,"Black", 1 , "Black Custom", 1]],
-    ["B_ION_Heli_Light_02_dynamicLoadout_lxWS", ["Green Hex",1 ,"Black", 1 , "Black Custom", 1]],
+    ["O_Heli_Light_02_unarmed_F", ["GreenHex",0.6, "Black", 0.2 , "Blackcustom", 0.2]],
+    ["O_Heli_Light_02_dynamicLoadout_F", ["GreenHex",0.6, "Black", 0.2 , "Blackcustom", 0.2]],
+    ["B_ION_Heli_Light_02_unarmed_lxWS", ["GreenHex",0.6, "Black", 0.2 , "Blackcustom", 0.2]],
+    ["B_ION_Heli_Light_02_dynamicLoadout_lxWS", ["GreenHex",0.6, "Black", 0.2 , "Blackcustom", 0.2]],
 ]] call _fnc_saveToTemplate;
 
 /////////////////////
