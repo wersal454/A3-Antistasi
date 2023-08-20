@@ -72,7 +72,7 @@ if (_hasHelicopters) then {
 
 ["vehiclesArtillery", ["O_T_MBT_02_arty_ghex_F"]] call _fnc_saveToTemplate;
 ["magazines", createHashMapFromArray [
-["O_T_MBT_02_arty_ghex_F",["32Rnd_155mm_Mo_shells_O", "6Rnd_155mm_Mo_mine_O", "2Rnd_155mm_Mo_Cluster_O"]]
+["O_T_MBT_02_arty_ghex_F",["32Rnd_155mm_Mo_shells_O", "2Rnd_155mm_Mo_Cluster_O"]]
 ]] call _fnc_saveToTemplate;
 
 ["uavsAttack", ["O_T_UAV_04_CAS_F"]] call _fnc_saveToTemplate;

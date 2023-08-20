@@ -60,17 +60,13 @@ if (_hasHelicopters) then {
 ["vehiclesHelisLightAttack", ["B_Heli_Light_01_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 ["vehiclesHelisAttack", ["B_Heli_Attack_01_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 
-private _artillery = if (_hasWs) then {["APC_Wheeled_01_mortar_base_lxWS" ,"B_MBT_01_arty_F", "B_MBT_01_mlrs_F"]} else {["B_MBT_01_arty_F","B_MBT_01_mlrs_F"]};
-["vehiclesArtillery", _artillery] call _fnc_saveToTemplate;
+["vehiclesArtillery", ["B_MBT_01_arty_F","B_MBT_01_mlrs_F"]] call _fnc_saveToTemplate;
 
-private _artmagazines = createHashMapFromArray [
-    ["O_MBT_02_arty_F",["32Rnd_155mm_Mo_shells", "6Rnd_155mm_Mo_mine", "2Rnd_155mm_Mo_Cluster"],
+["magazines", createHashMapFromArray [
+    ["B_MBT_01_arty_F",["32Rnd_155mm_Mo_shells", "2Rnd_155mm_Mo_Cluster"]],
     ["B_MBT_01_mlrs_F",["12Rnd_230mm_rockets", "12Rnd_230mm_rockets_cluster"]]
-];
+]] call _fnc_saveToTemplate;
 
-if (_hasWs) then {
-    _artmagazines set ["APC_Wheeled_01_mortar_base_lxWS",["64Rnd_60mm_Mo_LG_lxWS"]];
-};
 
 ["magazines", _artmagazines] call _fnc_saveToTemplate;
 
