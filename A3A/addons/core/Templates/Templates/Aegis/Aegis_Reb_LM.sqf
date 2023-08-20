@@ -7,29 +7,29 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 //   Rebel Information   //
 ///////////////////////////
 
-["name", "LL"] call _fnc_saveToTemplate;
+["name", "LM"] call _fnc_saveToTemplate;
 
 ["flag", "Flag_EnochLooters_F"] call _fnc_saveToTemplate;
-["flagTexture", "\A3\Data_F\Flags\Flag_green_CO.paa"] call _fnc_saveToTemplate;
+["flagTexture", "\A3_Aegis\Data_F_Aegis\Flags\flag_Looters_CO.paa"] call _fnc_saveToTemplate;
 ["flagMarkerType", "flag_EnochLooters"] call _fnc_saveToTemplate;
 
-["vehiclesBasic", ["I_G_Quadbike_01_F"]] call _fnc_saveToTemplate;
-["vehiclesLightUnarmed", ["I_G_Offroad_01_F"]] call _fnc_saveToTemplate;
-["vehiclesLightArmed", ["I_G_Offroad_01_armed_F"]] call _fnc_saveToTemplate;
-["vehiclesTruck", ["I_G_Van_01_transport_F"]] call _fnc_saveToTemplate;
-["vehiclesAT", ["I_G_Offroad_01_AT_F"]] call _fnc_saveToTemplate;
-private _vehicleAA = [];
+["vehiclesBasic", ["Opf_B_P_Quadbike_01_F"]] call _fnc_saveToTemplate;
+private _vehiclesLightUnarmed = ["Opf_B_P_Offroad_01_F"];
+private _vehiclesLightArmed = ["Opf_B_P_Offroad_01_armed_F"];
+private _vehiclesAt = ["Opf_B_P_Offroad_01_AT_F"];
+["vehiclesTruck", ["Opf_B_P_Truck_02_transport_F"]] call _fnc_saveToTemplate;;
+private _vehiclesAA = [];
 
 ["vehiclesBoat", ["I_C_Boat_Transport_02_F"]] call _fnc_saveToTemplate;
-
 ["vehiclesPlane", ["I_C_Plane_Civil_01_F"]] call _fnc_saveToTemplate;
 
-["vehiclesCivCar", ["C_Offroad_01_F"]] call _fnc_saveToTemplate;
-["vehiclesCivTruck", ["C_Truck_02_transport_F"]] call _fnc_saveToTemplate;
+private _vehiclesCivCar = ["C_Offroad_01_F", "C_Hatchback_01_F", "C_Hatchback_01_sport_F", "C_SUV_01_F"];
+["vehiclesCivTruck", ["C_Truck_02_transport_F", "C_Van_02_transport_F", "C_Van_02_vehicle_F"]] call _fnc_saveToTemplate;
 ["vehiclesCivHeli", ["C_Heli_Light_01_civil_F"]] call _fnc_saveToTemplate;
-["vehiclesCivBoat", ["C_Rubberboat"]] call _fnc_saveToTemplate;
+["vehiclesCivBoat", ["C_Boat_Civil_01_F", "C_Rubberboat"]] call _fnc_saveToTemplate;
 
-["staticMGs", ["I_G_HMG_02_high_F"]] call _fnc_saveToTemplate;
+
+["staticMGs", ["I_G_HMG_02_high_F", "I_G_HMG_02_F"]] call _fnc_saveToTemplate;
 ["staticAT", ["I_static_AT_F"]] call _fnc_saveToTemplate;
 private _staticAA = ["I_static_AA_F"];
 ["staticMortars", ["I_G_Mortar_01_F"]] call _fnc_saveToTemplate;
@@ -42,11 +42,24 @@ private _staticAA = ["I_static_AA_F"];
 ["breachingExplosivesAPC", [["DemoCharge_Remote_Mag", 1]]] call _fnc_saveToTemplate;
 ["breachingExplosivesTank", [["SatchelCharge_Remote_Mag", 1], ["DemoCharge_Remote_Mag", 2]]] call _fnc_saveToTemplate;
 
-if (_hasWs) then {
-  _vehicleAA = ["I_Tura_Truck_02_aa_lxWS"];
-  _staticAA = ["I_Tura_ZU23_lxWS"];
+if (_hasApex) then {
+    _vehiclesCivCar pushBack "C_Offroad_02_unarmed_F";
+    _vehiclesLightUnarmed pushBack "I_C_Offroad_02_unarmed_F";
+    _vehiclesLightArmed pushBack "I_C_Offroad_02_LMG_F";
+    _vehiclesAt pushBack "I_C_Offroad_02_AT_F";
 };
-["vehiclesAA", _vehicleAA] call _fnc_saveToTemplate;
+if (_hasWs) then {
+    _vehiclesLightUnarmed pushBack "I_G_Offroad_01_armor_base_lxWS";
+    _vehiclesLightArmed pushBack "I_G_Offroad_01_armor_AT_lxWS";
+    _vehiclesAt pushBack "I_C_Offroad_02_AT_F";
+    _vehiclesAA pushBack "Opf_B_P_Truck_02_AA_F";
+    _staticAA = ["I_Tura_ZU23_lxWS"];
+};
+["vehiclesCivCar", _vehiclesCivCar] call _fnc_saveToTemplate;
+["vehiclesLightUnarmed", _vehiclesLightUnarmed] call _fnc_saveToTemplate;
+["vehiclesLightArmed", _vehiclesLightArmed] call _fnc_saveToTemplate;
+["vehiclesAT", _vehiclesAt] call _fnc_saveToTemplate;
+["vehiclesAA", _vehiclesAA] call _fnc_saveToTemplate;
 ["staticAA", _staticAA] call _fnc_saveToTemplate;
 
 //////////////////////////////////////
@@ -57,29 +70,16 @@ if (_hasWs) then {
 private _shopWs = if (_hasWs) then {
     [
         ["I_UAV_02_lxWS", 3500, "UAV", {tierWar > 2}], 
-        ["I_G_UAV_02_IED_lxWS", 4500, "UAV", {tierWar > 3}],
-        ["I_G_Offroad_01_armor_base_lxWS", 4500, "UNARMEDCAR", {true}],
-        ["I_G_Offroad_01_armor_armed_lxWS", 4500, "ARMEDCAR", {true}],
-        ["I_G_Offroad_01_armor_AT_lxWS", 4500, "ARMEDCAR", {true}]
+        ["I_G_UAV_02_IED_lxWS", 4500, "UAV", {tierWar > 3}]
     ]
 } else {
     []
 };
 
-private _shopApex = if (_hasApex) then {
-    [
-        ["I_C_Offroad_02_unarmed_F", 200, "UNARMEDCAR", {true}], 
-        ["I_C_Offroad_02_LMG_F", 800, "ARMEDCAR", {true}],
-        ["I_C_Offroad_02_AT_F", 1450, "ARMEDCAR", {true}]
-    ]
-} else {
-    []
-};
-
-private _vehiclesBlackMarket = _shopWs + _shopApex + [
+private _vehiclesBlackMarket = _shopWs + [
     ["I_UAV_01_F", 2000, "UAV", {true}],
     ["I_LT_01_AA_F", 7500, "AA", {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (milbases + airportsX) > 0}],
-    ["I_G_APC_Wheeled_03_cannon_F", 15000, "APC", {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count seaports > 0}],
+    ["Opf_B_P_APC_Wheeled_03_cannon_F", 15000, "APC", {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count seaports > 0}],
     ["I_Heli_Light_01_dynamicLoadout_F", 25000, "HELI", {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count airportsX > 0}]
 ];
 ["blackMarketStock", _vehiclesBlackMarket] call _fnc_saveToTemplate;
@@ -89,6 +89,7 @@ private _vehiclesBlackMarket = _shopWs + _shopApex + [
     ["I_Heli_Light_01_dynamicLoadout_F", ["Black",1]]
 ]] call _fnc_saveToTemplate;
 
+#include "Aegis_Reb_Vehicle_Attributes.sqf"
 
 ///////////////////////////
 //  Rebel Starting Gear  //
@@ -106,7 +107,7 @@ private _initialRebelEquipment = [
     "MiniGrenade","SmokeShell",
     ["IEDUrbanSmall_Remote_Mag", 10], ["IEDLandSmall_Remote_Mag", 10], ["IEDUrbanBig_Remote_Mag", 3], ["IEDLandBig_Remote_Mag", 3],
     "B_FieldPack_oli","B_FieldPack_blk","B_FieldPack_khk",
-    "V_BandollierB_blk","V_BandollierB_cbr","V_BandollierB_rgr","V_BandollierB_khk","V_BandollierB_oli",
+    "V_BandollierB_blk","V_BandollierB_cbr","V_BandollierB_rgr","V_BandollierB_khk","V_BandollierB_oli","V_Rangemaster_belt",
     "Binocular", "acc_flashlight","acc_flashlight_smg_01","acc_flashlight_pistol"
 ];
 
@@ -170,7 +171,13 @@ private _rebUniforms = [
     "U_BG_Guerilla2_1",
     "U_IG_Guerilla2_2",
     "U_IG_Guerilla2_3",
-    "U_I_G_resistanceLeader_F"
+    "U_I_G_resistanceLeader_F",
+    "Opf_U_B_P_Uniform_Advisor_F",
+    "Opf_U_B_P_FieldJacket_01_F",
+    "Opf_U_B_P_FieldJacket_02_F",
+    "Opf_U_B_P_FieldJacket_03_F",
+    "Opf_U_B_P_Uniform_01_F",
+    "Opf_U_B_P_Uniform_01_Shortsleeve_F"
 ];
 
 private _dlcUniforms = [];

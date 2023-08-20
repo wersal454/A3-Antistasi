@@ -216,6 +216,17 @@ class Templates
         description = $STR_A3AP_setupFactionsTab_aaf;
     };
 
+    class Aegis_LDF : Aegis_Base
+    {
+        side = "Occ";
+        flagTexture = "a3\data_f_enoch\flags\flag_enoch_co.paa";
+        name = "Aegis LDF";
+        file = "Aegis_AI_LDF";
+        maps[] = {"enoch", "brf_sumava", "cup_chernarus_A3"};
+        climate[] = {"temperate"};
+        description = $STR_A3AP_setupFactionsTab_ldf;
+    };
+
     class Aegis_CSAT_Arid : Aegis_Base
     {
         side = "Inv";
@@ -268,14 +279,14 @@ class Templates
         description = $STR_A3AP_setupFactionsTab_sdk;
     };
 
-    class Aegis_LL : Aegis_Base
+    class Aegis_LM : Aegis_Base
     {
         side = "Reb";
         flagTexture = "\A3_Aegis\Data_F_Aegis\Flags\flag_Looters_CO.paa";
-        name = "Aegis LL";
-        file = "Aegis_Reb_LL";
+        name = "Aegis LM";
+        file = "Aegis_Reb_LM";
         climate[] = {"temperate"};
-        description = $STR_A3AP_setupFactionsTab_ll;
+        description = $STR_A3AP_setupFactionsTab_lm;
     };
 
     class Aegis_Borsheviks : Aegis_Base
