@@ -2,9 +2,7 @@ private _hasWs = "ws" in A3A_enabledDLC;
 private _hasMarksman = "mark" in A3A_enabledDLC;
 private _hasLawsOfWar = "orange" in A3A_enabledDLC;
 private _hasTanks = "tank" in A3A_enabledDLC;
-private _hasHelicopters = "heli" in A3A_enabledDLC;
 private _hasContact = "enoch" in A3A_enabledDLC;
-private _hasApex = "expansion" in A3A_enabledDLC;
 
 //////////////////////////
 //   Side Information   //
@@ -118,7 +116,7 @@ if (_hasWs) then {
 ]] call _fnc_saveToTemplate;
 
 ["variants", [
-    ["I_LT_01_AA_F", ["Olive",0.1]]
+    ["I_LT_01_AA_F", ["Indep_Olive", 0]]
 ]] call _fnc_saveToTemplate;
 
 /////////////////////
