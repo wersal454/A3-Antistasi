@@ -60,19 +60,12 @@ if (_hasHelicopters) then {
 ["vehiclesHelisLightAttack", ["B_Heli_Light_01_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 ["vehiclesHelisAttack", ["B_Heli_Attack_01_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 
-private _artillery = if (_hasWs) then {["B_T_APC_Wheeled_01_mortar_lxWS" ,"B_T_MBT_01_arty_F", "B_T_MBT_01_mlrs_F"]} else {["B_T_MBT_01_arty_F","B_T_MBT_01_mlrs_F"]};
-["vehiclesArtillery", _artillery] call _fnc_saveToTemplate;
+["vehiclesArtillery", ["B_MBT_01_arty_F","B_MBT_01_mlrs_F"]] call _fnc_saveToTemplate; //this line determines artillery vehicles -- Example: ["vehiclesArtillery", ["B_MBT_01_arty_F"]] -- Array, can contain multiple assets
 
-private _artmagazines = createHashMapFromArray [
-    ["B_T_MBT_01_arty_F",["32Rnd_155mm_Mo_shells", "6Rnd_155mm_Mo_mine", "2Rnd_155mm_Mo_Cluster"]],
+["magazines", createHashMapFromArray [
+    ["B_T_MBT_01_arty_F",["32Rnd_155mm_Mo_shells", "6Rnd_155mm_Mo_mine", "2Rnd_155mm_Mo_Cluster"],
     ["B_T_MBT_01_mlrs_F",["12Rnd_230mm_rockets", "12Rnd_230mm_rockets_cluster"]]
-];
-
-if (_hasWs) then {
-    _artmagazines set ["B_T_APC_Wheeled_01_mortar_lxWS",["64Rnd_60mm_Mo_LG_lxWS"]];
-};
-
-["magazines", _artmagazines] call _fnc_saveToTemplate;
+]; call _fnc_saveToTemplate;
 
 ["uavsAttack", ["B_T_UAV_03_dynamicLoadout_F", "B_UAV_05_F", "B_UAV_02_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 private _uavsPortable = if (_hasWs) then {["B_UAV_02_lxWS", "B_UAV_01_F"]} else {["B_UAV_01_F"]};
@@ -147,7 +140,6 @@ if (_hasWs) then {
     ["B_T_APC_Wheeled_01_command_lxWS", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
     ["B_T_APC_Wheeled_01_atgm_lxWS", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
     ["B_T_APC_Wheeled_01_cannon_F", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
-    ["B_T_APC_Wheeled_01_mortar_lxWS", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
     ["B_T_APC_Tracked_01_AA_F", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3]]
 ]] call _fnc_saveToTemplate;
 
