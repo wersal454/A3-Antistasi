@@ -108,7 +108,8 @@ private _initialRebelEquipment = [
     ["IEDUrbanSmall_Remote_Mag", 10], ["IEDLandSmall_Remote_Mag", 10], ["IEDUrbanBig_Remote_Mag", 3], ["IEDLandBig_Remote_Mag", 3],
     "B_FieldPack_oli","B_FieldPack_blk","B_FieldPack_khk",
     "V_BandollierB_blk","V_BandollierB_cbr","V_BandollierB_rgr","V_BandollierB_khk","V_BandollierB_oli","V_Rangemaster_belt",
-    "Binocular", "acc_flashlight","acc_flashlight_smg_01","acc_flashlight_pistol"
+    "Binocular", "acc_flashlight","acc_flashlight_smg_01","acc_flashlight_pistol",
+    "Aegis_V_Ammo_Bandolier_F"
 ];
 
 
