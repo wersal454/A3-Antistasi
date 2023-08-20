@@ -55,26 +55,25 @@ private _tanks = ["O_MBT_02_cannon_F"];
 
 ["vehiclesPlanesCAS", ["O_Plane_CAS_02_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 ["vehiclesPlanesAA", ["O_Plane_Fighter_02_F"]] call _fnc_saveToTemplate;
-["vehiclesPlanesTransport", ["O_Plane_Transport_01_infantry_F"]] call _fnc_saveToTemplate;
+["vehiclesPlanesTransport", ["O_Plane_Transport_01_infantry_F", "O_T_VTOL_02_infantry_hex_F"]] call _fnc_saveToTemplate;
 
 
 private _lightHelicopters = ["O_Heli_Light_02_unarmed_F"];
 private _transportHelicopters = ["O_Heli_Light_02_unarmed_F"];
 
 if (_hasHelicopters) then {
-    _lightHelicopters pushBack "O_Heli_Transport_04_bench_F";
     _transportHelicopters append ["O_Heli_Transport_04_covered_F", "O_Heli_Transport_04_bench_F"]; 
 };
 
 ["vehiclesHelisLight", _lightHelicopters] call _fnc_saveToTemplate;
 ["vehiclesHelisTransport", _transportHelicopters] call _fnc_saveToTemplate;
-["vehiclesHelisLightAttack", ["O_Heli_Light_02_dynamicLoadout_F"]] call _fnc_saveToTemplate;
+private _lightAttackHelicopters = ["O_Heli_Light_02_dynamicLoadout_F"];
 ["vehiclesHelisAttack", ["O_Heli_Attack_02_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 
 ["vehiclesArtillery", ["O_MBT_02_arty_F", "O_Truck_02_MRL_F"]] call _fnc_saveToTemplate;
 ["magazines", createHashMapFromArray [
-["O_Truck_02_MRL_F", ["12Rnd_230mm_rockets"]],
-["O_MBT_02_arty_F",["32Rnd_155mm_Mo_shells_O"]]
+["O_Truck_02_MRL_F", ["12Rnd_230mm_rockets", "12Rnd_230mm_rockets_cluster"]],
+["O_MBT_02_arty_F",["32Rnd_155mm_Mo_shells_O", "2Rnd_155mm_Mo_Cluster_O"]]
 ]] call _fnc_saveToTemplate;
 
 ["uavsAttack", ["O_UAV_02_dynamicLoadout_F"]] call _fnc_saveToTemplate;
@@ -123,6 +122,8 @@ if (_hasWs) then {
     _lightAPCs = ["O_APC_Wheeled_02_hmg_lxWS"];
     _militiaAPCs = ["O_APC_Wheeled_02_hmg_lxWS"];
     _apcs pushBack "O_APC_Tracked_02_30mm_lxWS";
+    _lightHelicopters pushBack "B_ION_Heli_Light_02_unarmed_lxWS";
+    _lightAttackHelicopters pushBack "B_ION_Heli_Light_02_dynamicLoadout_lxWS";
 };
 
 ["vehiclesLightAPCs", _lightAPCs] call _fnc_saveToTemplate;
@@ -130,6 +131,8 @@ if (_hasWs) then {
 ["vehiclesMilitiaAPCs", _militiaAPCs] call _fnc_saveToTemplate;
 ["vehiclesTanks", _tanks] call _fnc_saveToTemplate;
 ["vehiclesAPCs", _apcs] call _fnc_saveToTemplate;
+["vehiclesHelisLight", _lightHelicopters] call _fnc_saveToTemplate;
+["vehiclesHelisLightAttack", _lightAttackHelicopters] call _fnc_saveToTemplate;
 
 #include "Aegis_Vehicle_Attributes.sqf"
 
@@ -148,6 +151,12 @@ if (_hasWs) then {
     ["O_APC_Tracked_02_AA_F", ["showTracks",0.3,"showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3]]
 ]] call _fnc_saveToTemplate;
 
+["variants", [
+    ["B_ION_Heli_Light_02_unarmed_lxWS", ["Opfor",1]],
+    ["B_ION_Heli_Light_02_dynamicLoadout_lxWS", ["Opfor",1]],
+    ["O_Heli_Light_02_unarmed_F", ["Opfor",0.3]],
+    ["O_Heli_Light_02_dynamicLoadout_F", ["Opfor",0.3]]
+]] call _fnc_saveToTemplate;
 /////////////////////
 ///  Identities   ///
 /////////////////////
@@ -155,7 +164,8 @@ if (_hasWs) then {
 ["voices", ["Male01PER","Male02PER","Male03PER"]] call _fnc_saveToTemplate;
 
 private _faces = [
-    "PersianHead_A3_01","PersianHead_A3_02","PersianHead_A3_03"
+    "PersianHead_A3_01","PersianHead_A3_02","PersianHead_A3_03",
+    "PersianHead_A3_06","PersianHead_A3_07", "PersianHead_A3_05"
 ];
 if (_hasWs) then {
     _faces append [
@@ -168,15 +178,14 @@ if (_hasWs) then {
         "lxWS_African_Head_04",
         "lxWS_Said_Head",
         "lxWS_African_Head_Old_Bard",
-        "lxWS_African_Head_03",
-        "PersianHead_A3_06",
-        "PersianHead_A3_07",
-        "PersianHead_A3_05"
+        "lxWS_African_Head_03"
     ];
 };
 ["faces", _faces] call _fnc_saveToTemplate;
 
-["insignia", ["CSAT_Patch", "CSAT_ScimitarRegiment", "GryffinRegiment", ""] call _fnc_saveToTemplate;
+["insignia", ["CSAT_ScimitarRegiment", "GryffinRegiment", ""]] call _fnc_saveToTemplate;
+["milInsignia", ["CSAT_Patch", "", ""]] call _fnc_saveToTemplate;
+["sfInsignia", ["CSAT_ScorpionRegiment", "", ""]] call _fnc_saveToTemplate;
 
 //////////////////////////
 //       Loadouts       //
@@ -362,10 +371,10 @@ if (_hasWs) then {
 _sfLoadoutData set ["machineGuns", _mgs];
 
 private _marksmanRifles = [
-    ["srifle_DMR_01_F", "muzzle_snds_B", "acc_pointer_IR", "optic_DMS", [], [], "bipod_02_F_hex"],
-    ["srifle_DMR_01_F", "muzzle_snds_B", "acc_pointer_IR", "optic_NVS", [], [], "bipod_02_F_hex"],
-    ["srifle_DMR_01_F", "muzzle_snds_B", "acc_pointer_IR", "optic_Arco", [], [], "bipod_02_F_hex"],
-    ["srifle_DMR_01_F", "muzzle_snds_B", "acc_pointer_IR", "optic_SOS", [], [], "bipod_02_F_hex"]
+    ["srifle_DMR_01_F", "muzzle_snds_B", "", "optic_DMS", [], [], "bipod_02_F_hex"],
+    ["srifle_DMR_01_F", "muzzle_snds_B", "", "optic_NVS", [], [], "bipod_02_F_hex"],
+    ["srifle_DMR_01_F", "muzzle_snds_B", "", "optic_Arco", [], [], "bipod_02_F_hex"],
+    ["srifle_DMR_01_F", "muzzle_snds_B", "", "optic_SOS", [], [], "bipod_02_F_hex"]
 ];
 
 if (_hasMarksman) then {
@@ -900,7 +909,7 @@ private _atTemplate = {
     ["carbines"] call _fnc_setPrimary;
     ["primary", 5] call _fnc_addMagazines;
 
-    [["ATLaunchers", "missileATLaunchers"] call _fnc_fallback] call _fnc_setLauncher;
+    [selectRandom["ATLaunchers", "missileATLaunchers"]] call _fnc_setLauncher;
     //TODO - Add a check if it's disposable.
     ["launcher", 3] call _fnc_addMagazines;
 

@@ -60,9 +60,9 @@ if (_hasApex) then {
     ,"C_Truck_02_fuel_F", 0.1]] call _fnc_saveToTemplate;
 
 ["vehiclesCivHeli", [
-"C_Heli_Transport_02_civil_F", 
+"C_Heli_Light_02_civil_F", 
 "C_Heli_Light_01_civil_F", 
-"C_Heli_Light_02_civil_F"
+"C_Heli_Transport_02_civil_F"
 ]] call _fnc_saveToTemplate;
 
 //////////////////////////

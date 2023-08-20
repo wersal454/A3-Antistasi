@@ -232,6 +232,10 @@
                 <Chinesesimp>利沃尼亚掠夺者 (LL)。\n东欧武装分子。</Chinesesimp>
                 <Korean>리보니아 약탈자(LL).\n동유럽계 무장세력입니다.</Korean>
             </Key>
+            <Key ID="STR_A3AP_setupFactionsTab_lm">
+                <Original>Livonian Militia (LM).\nEastern European militants.</Original>
+                <Russian>Ополчение Ливонии.\nВосточноевропейское ополчение.</Russian>
+            </Key>
             <Key ID="STR_A3AP_setupFactionsTab_borsheviks">
                 <Original>Borsheviks.\nDon't even ask what is it.</Original>
                 <Russian>Борщевики.\nДаже не спрашивайте что это.</Russian>

@@ -6,6 +6,13 @@
 - (Aegis) CHDKZ and Ion PMC Rival factions (Aegis factions are beta/experimental so they could be used only via their dev branch versions of Aegis, Atlas and Opposing Force mods) -->
 
 ## 2.3
+### Additions
+- Official Aegis support
+- Šumava terrain support
+- (Aegis) AUKUS, NATO, CSAT, AAF, LDF, AFRF factions
+- (Aegis) CHDKZ and Ion PMC Rival factions
+- 
+
 ### Changes
 - AI will use militia APCs in support actions and attacks too, not only roadblocks
 - Minor Rivals roving mortar spawn fixes
@@ -15,7 +22,10 @@
 - Fixed Invaders/Occupants non-usage of light helicopters
 - Fixed broken Vehicle Airdrop QRFs on vanilla NATO factions
 - Fixed non-working radars on SAM sites, radar will be actually enabled and data link will be used to share targets with near air defense assets
+- Enemy will use divebomb CAS support against rebels along with traditional CAS attacks
+- (Vanilla) Enemy artillery support will utilize more shell types
 - (Western Sahara) Vanilla and Aegis Rebel templates will use armored pickup vehicles
+- (SOGPF) Changed identites of rebel Vietnam Militia and Viet Cong factions to Vietnamese
 
 ## 2.2.4
 ### Changes
