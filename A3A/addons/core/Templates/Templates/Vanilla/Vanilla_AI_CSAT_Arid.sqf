@@ -61,7 +61,7 @@ private _lightHelicopters = ["O_Heli_Light_02_unarmed_F"];
 private _transportHelicopters = ["O_Heli_Light_02_unarmed_F"];
 
 if (_hasHelicopters) then {
-    _transportHelicopters append ["O_Heli_Transport_04_covered_F", "O_Heli_Transport_04_bench_F"]; 
+    _transportHelicopters = ["O_Heli_Transport_04_covered_F", "O_Heli_Transport_04_bench_F"]; 
 };
 
 ["vehiclesHelisLight", _lightHelicopters] call _fnc_saveToTemplate;
@@ -149,10 +149,10 @@ if (_hasWs) then {
 ]] call _fnc_saveToTemplate;
 
 ["variants", [
-    ["B_ION_Heli_Light_02_unarmed_lxWS", ["Opfor",1]],
-    ["B_ION_Heli_Light_02_dynamicLoadout_lxWS", ["Opfor",1]],
-    ["O_Heli_Light_02_unarmed_F", ["Opfor",0.3]],
-    ["O_Heli_Light_02_dynamicLoadout_F", ["Opfor",0.3]]
+    ["B_ION_Heli_Light_02_unarmed_lxWS", ["Opfor",0.6, "Black", 0.2 , "Blackcustom", 0.2]],
+    ["B_ION_Heli_Light_02_dynamicLoadout_lxWS", ["Opfor",0.6, "Black", 0.2 , "Blackcustom", 0.2]],
+    ["O_Heli_Light_02_unarmed_F", ["Opfor",0.6, "Black", 0.2 , "Blackcustom", 0.2]],
+    ["O_Heli_Light_02_dynamicLoadout_F", ["Opfor",0.6, "Black", 0.2 , "Blackcustom", 0.2]]
 ]] call _fnc_saveToTemplate;
 /////////////////////
 ///  Identities   ///
