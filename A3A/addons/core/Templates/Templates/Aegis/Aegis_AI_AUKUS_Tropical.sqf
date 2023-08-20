@@ -54,7 +54,7 @@ private _airborneVehicles = ["B_T_APC_Wheeled_01_cannon_v2_F"];
 ["vehiclesHelisLightAttack", ["B_A_Heli_light_03_dynamicLoadout_tna_F"]] call _fnc_saveToTemplate;
 ["vehiclesHelisAttack", ["B_A_Heli_Attack_01_dynamicLoadout_tna_F", "Atlas_B_A_Heli_Attack_03_F"]] call _fnc_saveToTemplate;
 
-["vehiclesArtillery", ["B_T_MBT_01_arty_F","B_T_MBT_01_mlrs_F"]] call _fnc_saveToTemplate; //this line determines artillery vehicles -- Example: ["vehiclesArtillery", ["B_MBT_01_arty_F"]] -- Array, can contain multiple assets
+["vehiclesArtillery", ["B_T_MBT_01_arty_F","B_T_MBT_01_mlrs_F"]] call _fnc_saveToTemplate; 
 
 ["magazines", createHashMapFromArray [
     ["B_T_MBT_01_arty_F",["32Rnd_155mm_Mo_shells"]],
