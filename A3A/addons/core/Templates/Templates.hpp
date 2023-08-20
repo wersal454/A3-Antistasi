@@ -195,15 +195,25 @@ class Templates
         climate[] = {"tropical"};
     };
 
-    // class Aegis_AFRF_Arid : Aegis_Base
-    // {
-    //     side = "Inv";
-    //     flagTexture = "\A3_Aegis\Data_F_Aegis\Flags\flag_RUS_CO.paa";
-    //     name = "Aegis AFRF";
-    //     file = "Aegis_AI_AFRF_Arid";
-    //     climate[] = {"arid"};
-    //     description = $STR_A3AP_setupFactionsTab_aegis_afrf;
-    // };
+    class Aegis_AFRF_Arid : Aegis_Base
+    {
+        side = "Inv";
+        flagTexture = "\A3_Aegis\Data_F_Aegis\Flags\flag_RUS_CO.paa";
+        name = "Aegis AFRF Arid";
+        file = "Aegis_AI_AFRF_Arid";
+        climate[] = {"arid"};
+        description = $STR_A3AP_setupFactionsTab_aegis_afrf;
+    };
+
+    class Aegis_AFRF_Temperate : Aegis_Base
+    {
+        side = "Inv";
+        flagTexture = "\A3_Aegis\Data_F_Aegis\Flags\flag_RUS_CO.paa";
+        name = "Aegis AFRF Temperate";
+        file = "Aegis_AI_AFRF_Arid";
+        climate[] = {"temperate"};
+        description = $STR_A3AP_setupFactionsTab_aegis_afrf;
+    };
 
     class Aegis_AAF : Aegis_Base
     {
@@ -216,16 +226,16 @@ class Templates
         description = $STR_A3AP_setupFactionsTab_aaf;
     };
 
-    class Aegis_LDF : Aegis_Base
-    {
-        side = "Occ";
-        flagTexture = "a3\data_f_enoch\flags\flag_enoch_co.paa";
-        name = "Aegis LDF";
-        file = "Aegis_AI_LDF";
-        maps[] = {"enoch", "brf_sumava", "cup_chernarus_A3"};
-        climate[] = {"temperate"};
-        description = $STR_A3AP_setupFactionsTab_ldf;
-    };
+    // class Aegis_LDF : Aegis_Base
+    // {
+    //     side = "Occ";
+    //     flagTexture = "a3\data_f_enoch\flags\flag_enoch_co.paa";
+    //     name = "Aegis LDF";
+    //     file = "Aegis_AI_LDF";
+    //     maps[] = {"enoch", "brf_sumava", "cup_chernarus_A3"};
+    //     climate[] = {"temperate"};
+    //     description = $STR_A3AP_setupFactionsTab_ldf;
+    // };
 
     class Aegis_CSAT_Arid : Aegis_Base
     {

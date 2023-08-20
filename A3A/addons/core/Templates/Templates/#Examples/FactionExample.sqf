@@ -41,10 +41,10 @@
 
 ["vehiclesTransportBoats", []] call _fnc_saveToTemplate;	// boat that can carry passengers and cargoboxes
 ["vehiclesGunBoats", []] call _fnc_saveToTemplate;              // armed boat, with passengers(?)
-//["vehiclesAmphibious", []] call _fnc_saveToTemplate;          // armed or unarmed wheled or tracked based vehicle with light armor(?) and passengers(?)
 
 ["vehiclesPlanesCAS", []] call _fnc_saveToTemplate;             // Will be used with CAS script, must be defined in setPlaneLoadout. Needs fixed gun and either rockets or missiles
-["vehiclesPlanesAA", []] call _fnc_saveToTemplate;              //Will be used with ASF script, must be defined in setPlaneLoadout.
+["vehiclesPlanesAA", []] call _fnc_saveToTemplate;              // Will be used with ASF script, must be defined in setPlaneLoadout.
+
 //Needs fixed gun and either rockets or missiles
 ["vehiclesPlanesTransport", []] call _fnc_saveToTemplate;	//Plane that can carry passengers and cargo(?), infantry variant if availbe 
 //no need for vehicle variant currently
