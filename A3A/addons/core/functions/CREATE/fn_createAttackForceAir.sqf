@@ -72,6 +72,7 @@ for "_i" from 1 to _vehCount do {
             _resourcesSpent = _resourcesSpent + _vehCost + _crewCost;
             sleep 5;
         };
+        case (_vehType == "CASDIVE");
         case (_vehType == "CAS"): {
             // no reveal because it's a sub-support, delay because it's faster than the helis
             [_vehType, _side, _resPool, 500, false, _targPos, 0, 60] remoteExec ["A3A_fnc_createSupport", 2];

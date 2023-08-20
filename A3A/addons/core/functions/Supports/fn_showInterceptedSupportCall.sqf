@@ -100,6 +100,11 @@ else
             _text = format [localize "STR_notifiers_SUP_execute_CAS", _sideName];
             _markerText = localize "STR_notifiers_SUP_execute_CAS_marker";
         };
+        case ("CASDIVE"):
+        {
+            _text = format [localize "STR_notifiers_SUP_execute_CAS", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_CAS_marker";
+        };
         case ("GUNSHIP"):
         {
             _text = format [localize "STR_notifiers_SUP_execute_gunship", _sideName];

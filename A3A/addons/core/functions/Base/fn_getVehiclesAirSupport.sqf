@@ -31,7 +31,10 @@ if (_faction get "vehiclesHelisLightAttack" isEqualTo []) then { _AHWeight = _AH
 if (_faction get "vehiclesHelisAttack" isEqualTo []) then { _casWeight = _casWeight + _AHWeight };
 if (_faction get "vehiclesPlanesCAS" isEqualTo []) then { _AHWeight = _AHWeight + _casWeight };
 
-if (_faction get "vehiclesPlanesCAS" isNotEqualTo []) then { _vehWeights append ["CAS", _casWeight] };
+if (_faction get "vehiclesPlanesCAS" isNotEqualTo []) then {
+    _vehWeights append ["CAS", _casWeight];
+    _vehWeights append ["CASDIVE", _casWeight];
+};
 [_faction get "vehiclesHelisAttack", _AHWeight] call _fnc_addArrayToWeights;
 [_faction get "vehiclesHelisLightAttack", _lightAHWeight] call _fnc_addArrayToWeights;
 
