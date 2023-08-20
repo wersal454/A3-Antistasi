@@ -89,7 +89,7 @@ private _vehiclesBlackMarket = _shopWs + [
     ["I_Heli_Light_01_dynamicLoadout_F", ["Black",1]]
 ]] call _fnc_saveToTemplate;
 
-#include "Vanilla_Reb_Vehicle_Attributes.sqf"
+#include "Aegis_Reb_Vehicle_Attributes.sqf"
 
 ///////////////////////////
 //  Rebel Starting Gear  //
