@@ -149,10 +149,10 @@ if (_hasWs) then {
 ]] call _fnc_saveToTemplate;
 
 ["variants", [
-    ["B_ION_Heli_Light_02_unarmed_lxWS", ["Opfor",1, "Black", 1 , "Black Custom", 1]],
-    ["B_ION_Heli_Light_02_dynamicLoadout_lxWS", ["Opfor",1 , "Black", 1 , "Black Custom", 1]],
-    ["O_Heli_Light_02_unarmed_F", ["Opfor",0.3, "Black", 1 , "Black Custom", 1]],
-    ["O_Heli_Light_02_dynamicLoadout_F", ["Opfor",0.3 , "Black", 1 , "Black Custom", 1]]
+    ["B_ION_Heli_Light_02_unarmed_lxWS", ["Opfor",0.6, "Black", 0.2 , "Blackcustom", 0.2]],
+    ["B_ION_Heli_Light_02_dynamicLoadout_lxWS", ["Opfor",0.6, "Black", 0.2 , "Blackcustom", 0.2]],
+    ["O_Heli_Light_02_unarmed_F", ["Opfor",0.6, "Black", 0.2 , "Blackcustom", 0.2]],
+    ["O_Heli_Light_02_dynamicLoadout_F", ["Opfor",0.6, "Black", 0.2 , "Blackcustom", 0.2]]
 ]] call _fnc_saveToTemplate;
 /////////////////////
 ///  Identities   ///
