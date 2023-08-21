@@ -14,7 +14,7 @@
 //////////////////////////
 //       Vehicles       //
 //////////////////////////
-["ammobox", "Box_FIA_Support_F"] call _fnc_saveToTemplate; 	//Don't touch or you die a sad and lonely death!
+["ammobox", "Box_FIA_Support_F"] call _fnc_saveToTemplate; 	
 ["surrenderCrate", "Box_East_Wps_F"] call _fnc_saveToTemplate;
 
 ["vehiclesRivalsLightArmed", ["vn_o_wheeled_btr40_mg_02_pl", "vn_o_wheeled_btr40_mg_01_pl", "vn_o_wheeled_btr40_mg_03_pl", "vn_o_wheeled_z157_mg_01_pl", "vn_o_wheeled_z157_mg_02_pl"]] call _fnc_saveToTemplate;

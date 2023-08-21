@@ -13,9 +13,9 @@
 //       Vehicles       //
 //////////////////////////
 
-["ammobox", "B_supplyCrate_F"] call _fnc_saveToTemplate;     //Don't touch or you die a sad and lonely death!
-["surrenderCrate", "Box_NATO_Wps_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
-["equipmentBox", "Box_NATO_Equip_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
+["ammobox", "B_supplyCrate_F"] call _fnc_saveToTemplate;     
+["surrenderCrate", "Box_NATO_Wps_F"] call _fnc_saveToTemplate; 
+["equipmentBox", "Box_NATO_Equip_F"] call _fnc_saveToTemplate; 
 
 ["vehiclesBasic", ["UK3CB_B_M1030_USMC_DES"]] call _fnc_saveToTemplate;
 ["vehiclesLightUnarmed", ["rhsusf_m1165_usmc_d", "rhsusf_m1151_usmc_d", "rhsusf_m1025_d_s", "rhsusf_m1043_d_s", "rhsusf_CGRCAT1A2_usmc_d", "rhsusf_m1240a1_usmc_d"]] call _fnc_saveToTemplate;

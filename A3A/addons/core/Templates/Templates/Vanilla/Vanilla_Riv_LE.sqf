@@ -20,7 +20,7 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 //////////////////////////
 //       Vehicles       //
 //////////////////////////
-["ammobox", "Box_FIA_Support_F"] call _fnc_saveToTemplate; 	//Don't touch or you die a sad and lonely death!
+["ammobox", "Box_FIA_Support_F"] call _fnc_saveToTemplate; 	
 ["surrenderCrate", "Box_Syndicate_Wps_F"] call _fnc_saveToTemplate;
 
 ["vehiclesRivalsLightArmed", ["I_C_Offroad_02_AT_F", "I_C_Offroad_02_LMG_F"]] call _fnc_saveToTemplate;

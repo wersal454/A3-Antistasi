@@ -21,9 +21,9 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 //       Vehicles       //
 //////////////////////////
 
-["ammobox", "B_supplyCrate_F"] call _fnc_saveToTemplate;     //Don't touch or you die a sad and lonely death!
-["surrenderCrate", "Box_NATO_Wps_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
-["equipmentBox", "Box_NATO_Equip_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
+["ammobox", "B_supplyCrate_F"] call _fnc_saveToTemplate;     
+["surrenderCrate", "Box_NATO_Wps_F"] call _fnc_saveToTemplate; 
+["equipmentBox", "Box_NATO_Equip_F"] call _fnc_saveToTemplate; 
 
 ["vehiclesBasic", ["B_Quadbike_01_F"]] call _fnc_saveToTemplate;
 ["vehiclesLightUnarmed", ["B_MRAP_01_F"]] call _fnc_saveToTemplate;
@@ -464,8 +464,9 @@ _eliteLoadoutData set ["Hvests", ["Aegis_V_PlateCarrier2_alt_mtp", "V_PlateCarri
 _eliteLoadoutData set ["glVests", ["Aegis_V_PlateCarrier2_alt_mtp", "V_PlateCarrierGL_mtp"]];
 _eliteLoadoutData set ["backpacks", ["B_AssaultPack_mcamo", "B_AssaultPackSpec_mcamo", "B_Kitbag_mcamo", "B_Carryall_mcamo"]];
 _eliteLoadoutData set ["atBackpacks", ["B_Kitbag_mcamo", "B_Carryall_mcamo"]];
-_eliteLoadoutData set ["helmets", ["H_HelmetSpecB", "H_HelmetSpecB_snakeskin", "Aegis_H_Helmet_FASTMT_Cover_mtp_F"]];
+_eliteLoadoutData set ["helmets", ["H_HelmetSpecB", "H_HelmetSpecB_snakeskin"]];
 _eliteLoadoutData set ["binoculars", ["Laserdesignator"]];
+_eliteLoadoutData set ["NVGs", ["Aegis_NVG_IVAS_01_tan_F", "NVGoggles", "NVGoggles", "NVGoggles"]];
 
 _eliteLoadoutData set ["slRifles", [
 ["arifle_MX_GL_F", "", "acc_pointer_IR", "optic_MRCO", ["30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag_Tracer"], ["UGL_FlareWhite_F", "UGL_FlareWhite_F", "1Rnd_SmokeRed_Grenade_shell", "1Rnd_SmokeGreen_Grenade_shell", "1Rnd_SmokeBlue_Grenade_shell"], ""],

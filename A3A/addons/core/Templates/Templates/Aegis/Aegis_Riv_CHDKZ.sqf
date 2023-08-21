@@ -47,7 +47,7 @@ private _hasMarksman = "mark" in A3A_enabledDLC;
 //////////////////////////
 //       Vehicles       //
 //////////////////////////
-["ammobox", "Box_FIA_Support_F"] call _fnc_saveToTemplate; 	//Don't touch or you die a sad and lonely death!
+["ammobox", "Box_FIA_Support_F"] call _fnc_saveToTemplate; 	
 ["surrenderCrate", "Box_RUS_Wps_F"] call _fnc_saveToTemplate;
 
 private _unarmedCars = ["Opf_O_S_Offroad_01_F"];

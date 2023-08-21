@@ -14,7 +14,7 @@
 //////////////////////////
 //       Vehicles       //
 //////////////////////////
-["ammobox", "Box_FIA_Support_F"] call _fnc_saveToTemplate; 	//Don't touch or you die a sad and lonely death!
+["ammobox", "Box_FIA_Support_F"] call _fnc_saveToTemplate; 	
 ["surrenderCrate", "Box_East_Wps_F"] call _fnc_saveToTemplate;
 
 ["vehiclesRivalsLightArmed", ["UK3CB_TKM_O_Hilux_GMG", "UK3CB_TKM_O_Hilux_Dshkm", "UK3CB_TKM_O_Hilux_M2", "UK3CB_TKM_O_Hilux_Pkm", "UK3CB_TKM_O_Hilux_Spg9", "UK3CB_TKM_O_BRDM2", "UK3CB_TKM_O_BRDM2_ATGM", "UK3CB_TKM_O_Pickup_DSHKM", "UK3CB_TKM_O_Pickup_M2", "UK3CB_TKM_O_V3S_Zu23", "UK3CB_TKM_O_Ural_Zu23"]] call _fnc_saveToTemplate;
