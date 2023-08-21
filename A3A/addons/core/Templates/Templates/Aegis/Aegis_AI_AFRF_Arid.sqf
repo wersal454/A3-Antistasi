@@ -21,9 +21,9 @@ private _hasLawsOfWar = "orange" in A3A_enabledDLC;
 //       Vehicles       //
 //////////////////////////
 
-["ammobox", "O_R_supplyCrate_F"] call _fnc_saveToTemplate;     //Don't touch or you die a sad and lonely death!
-["surrenderCrate", "Box_RUS_Wps_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
-["equipmentBox", "Box_RUS_Equip_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
+["ammobox", "O_R_supplyCrate_F"] call _fnc_saveToTemplate;     
+["surrenderCrate", "Box_RUS_Wps_F"] call _fnc_saveToTemplate; 
+["equipmentBox", "Box_RUS_Equip_F"] call _fnc_saveToTemplate; 
 
 ["vehiclesBasic", ["O_R_Quadbike_01_F"]] call _fnc_saveToTemplate;
 
@@ -98,13 +98,13 @@ private _policeVehs = if (_hasContact) then {
 ["vehiclesPolice", _policeVehs] call _fnc_saveToTemplate;
 
 ["staticMGs", ["O_HMG_01_high_F", "O_HMG_01_high_F", "O_HMG_01_high_F", "O_GMG_01_high_F"]] call _fnc_saveToTemplate;
-["staticAT", ["O_static_AT_F"]] call _fnc_saveToTemplate;
-["staticAA", ["O_static_AA_F"]] call _fnc_saveToTemplate;
-["staticMortars", ["O_Mortar_01_F"]] call _fnc_saveToTemplate;
+["staticAT", ["O_R_Static_AT_ard_F"]] call _fnc_saveToTemplate;
+["staticAA", ["O_R_Static_AA_ard_F"]] call _fnc_saveToTemplate;
+["staticMortars", ["O_R_Mortar_01_ard_F"]] call _fnc_saveToTemplate;
 ["staticHowitzers", []] call _fnc_saveToTemplate;
 
-["vehicleRadar", "O_Radar_System_02_F"] call _fnc_saveToTemplate;
-["vehicleSam", "O_SAM_System_04_F"] call _fnc_saveToTemplate;
+["vehicleRadar", "O_R_Radar_System_02_ard_F"] call _fnc_saveToTemplate;
+["vehicleSam", "O_R_SAM_System_04_ard_F"] call _fnc_saveToTemplate;
 
 ["mortarMagazineHE", "8Rnd_82mm_Mo_shells"] call _fnc_saveToTemplate;
 ["mortarMagazineSmoke", "8Rnd_82mm_Mo_Smoke_white"] call _fnc_saveToTemplate;
@@ -208,7 +208,7 @@ _loadoutData set ["watches", ["ItemWatch"]];
 _loadoutData set ["compasses", ["ItemCompass"]];
 _loadoutData set ["radios", ["ItemRadio"]];
 _loadoutData set ["gpses", ["ItemGPS"]];
-_loadoutData set ["NVGs", ["NVGoggles_OPFOR"]];
+_loadoutData set ["NVGs", ["O_NVGoggles_grn_F"]];
 _loadoutData set ["binoculars", ["Binocular"]];
 _loadoutData set ["rangefinders", ["Rangefinder"]];
 
@@ -333,7 +333,7 @@ private _marksmanRifles = [
 if (_hasMarksman) then {
     _marksmanRifles append [
         ["srifle_DMR_04_F", "", "acc_pointer_IR", "optic_NVS", [], [], "bipod_01_F_blk"],
-        ["srifle_DMR_04_F", "", "acc_pointer_IR", "optic_DMS", [], [], "bipod_01_F_blk"]
+        ["srifle_DMR_04_F", "", "acc_pointer_IR", "optic_DMS_weathered_Kir_F", [], [], "bipod_01_F_blk"]
     ];
 };
 
@@ -424,7 +424,7 @@ _eliteLoadoutData set ["sidearms", ["hgun_Rook40_F"]];
 private _militaryLoadoutData = _loadoutData call _fnc_copyLoadoutData; 
 _militaryLoadoutData set ["uniforms", ["Atlas_U_O_Afghanka_01_ruarid_F", "Atlas_U_O_Afghanka_02_ruarid_F"]];
 _militaryLoadoutData set ["slUniforms", ["Aegis_U_O_LightCombatFatigues_ruarid_F"]];
-_militaryLoadoutData set ["vests", ["Aegis_V_OCarrierLuchnik_Lite_arid_F", "Aegis_V_OCarrierLuchnik_Lite_khk_F", "Aegis_V_OCarrierLuchnik_CQB_arid_F", "Aegis_V_OCarrierLuchnik_CQB_khk_F"]];
+_militaryLoadoutData set ["vests", ["Aegis_V_OCarrierLuchnik_Lite_arid_F", "Aegis_V_OCarrierLuchnik_Lite_khk_F", "Aegis_V_OCarrierLuchnik_CQB_arid_F", "Aegis_V_OCarrierLuchnik_CQB_khk_F", "V_SmershVest_01_khaki_F", "V_SmershVest_01_radio_khaki_F"]];
 _militaryLoadoutData set ["glVests", ["Aegis_V_OCarrierLuchnik_GL_arid_F", "Aegis_V_OCarrierLuchnik_GL_khk_F",  "Aegis_V_OCarrierLuchnik_CQB_arid_F", "Aegis_V_OCarrierLuchnik_CQB_khk_F"]];
 _militaryLoadoutData set ["backpacks", ["B_FieldPack_cbr", "B_Carryall_cbr"]];
 _militaryLoadoutData set ["atBackpacks", ["B_Carryall_cbr"]];
@@ -548,9 +548,8 @@ _militiaLoadoutData set ["grenadeLaunchers", [
     ["Aegis_arifle_AKM74_sand_GL_F", "", "acc_flashlight", "", ["30Rnd_545x39_Mag_Sand_Green_F", "30Rnd_545x39_Mag_Sand_Green_F", "30Rnd_545x39_Mag_Tracer_Sand_Green_F"], ["1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "UGL_FlareWhite_F", "1Rnd_Smoke_Grenade_shell"], ""]
 ]];
 _militiaLoadoutData set ["marksmanRifles", [
-    ["Opf_arifle_SKS_F", "", "", "", ["30Rnd_762x39_Mag_Green_F", "30Rnd_762x39_Mag_Green_F", "30Rnd_762x39_Mag_Tracer_Green_F"], [], ""],
-    ["Opf_arifle_SKS_F", "", "", "", ["30Rnd_762x39_Mag_Green_F", "30Rnd_762x39_Mag_Green_F", "30Rnd_762x39_Mag_Tracer_Green_F"], [], ""],
-    ["srifle_DMR_01_black_F", "", "", "optic_Arco_blk_F", [], [], ""]
+    ["Opf_arifle_SKS_oak_F", "", "acc_flashlight_pistol", "optic_Arco_blk_F", ["30Rnd_762x39_Mag_Green_F", "30Rnd_762x39_Mag_Green_F", "30Rnd_762x39_Mag_Tracer_Green_F"], [], ""],
+    ["Opf_arifle_SKS_F", "", "acc_flashlight_pistol", "optic_Arco_blk_F", ["30Rnd_762x39_Mag_Green_F", "30Rnd_762x39_Mag_Green_F", "30Rnd_762x39_Mag_Tracer_Green_F"], [], ""]
 ]];
 _militiaLoadoutData set ["machineGuns", [
     ["arifle_RPK_F", "", "acc_flashlight_pistol", "", ["75Rnd_762x39_Mag_Green_F", "75Rnd_762x39_Mag_Green_F", "75Rnd_762x39_Mag_Tracer_Green_F"], [], ""]
