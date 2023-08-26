@@ -226,17 +226,6 @@ class Templates
         description = $STR_A3AP_setupFactionsTab_aaf;
     };
 
-    // class Aegis_LDF : Aegis_Base
-    // {
-    //     side = "Occ";
-    //     flagTexture = "a3\data_f_enoch\flags\flag_enoch_co.paa";
-    //     name = "Aegis LDF";
-    //     file = "Aegis_AI_LDF";
-    //     maps[] = {"enoch", "brf_sumava", "cup_chernarus_A3"};
-    //     climate[] = {"temperate"};
-    //     description = $STR_A3AP_setupFactionsTab_ldf;
-    // };
-
     class Aegis_CSAT_Arid : Aegis_Base
     {
         side = "Inv";
