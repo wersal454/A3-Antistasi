@@ -25,6 +25,7 @@
 - Enemy will use divebomb CAS support against rebels along with traditional CAS attacks
 - Minor loot crate timing changes
 - (Vanilla) Enemy artillery support will utilize more shell types
+- (Vanilla) Additional civilian helicopters
 - (Vanilla, Aegis) AAF will use Wiesel AA and Scout vehicles as their replamcents for SAM and Radar vehicle types
 - (Western Sahara) Vanilla and Aegis Rebel templates will use armored pickup vehicles
 - (SOGPF) Changed identites of rebel Vietnam Militia and Viet Cong factions to Vietnamese

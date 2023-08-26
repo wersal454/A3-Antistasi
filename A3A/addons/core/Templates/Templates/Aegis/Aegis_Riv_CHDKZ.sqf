@@ -75,13 +75,9 @@ if (_hasWs) then {
 ["mortarAmmo", ["Sh_82mm_AMOS"]] call _fnc_saveToTemplate;
 
 ["variants", [
-    ["Opf_O_S_Offroad_01_armed_F", ["Brown", 1]],
-    ["Opf_O_S_Offroad_01_AT_F", ["Brown", 1]],
-    ["Opf_O_S_Offroad_01_F", ["Brown", 1]],
 	["I_Tura_Offroad_armor_armed_lxWS", ["Black", 1]],
     ["I_Tura_Offroad_armor_AT_lxWS", ["Black", 1]],
-    ["I_Tura_Offroad_armor_lxWS", ["Black", 1]],
-	["Opf_O_S_APC_Tracked_02_30mm_lxWS", ["Grey", 1]]
+    ["I_Tura_Offroad_armor_lxWS", ["Black", 1]]
 ]] call _fnc_saveToTemplate;
 
 ["animations", [
