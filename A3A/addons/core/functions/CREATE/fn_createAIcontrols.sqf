@@ -179,7 +179,17 @@ if (_isControl) then {
 		};
 		{[_x, "", false] call A3A_fnc_NATOinit} forEach units _groupX;
 	} else {
-		_leave = true;
+		private _aggro = [aggressionOccupants, aggressionInvaders] select (_sideX == Invaders);
+		if ((random 100) > ((tierWar * 3) + (_aggro / 5))) then {
+			_leave = true;
+		} else {	
+			private _sniperPair = [_faction get "groupTierPatrolSniper"] call SCRT_fnc_unit_getTiered;
+			private _groupX = [_positionX,_sideX, _sniperPair] call A3A_fnc_spawnGroup;
+
+			[_groupX, "Patrol_Area", 25, 150, 300, false, [], false] call A3A_fnc_patrolLoop;
+			_groups pushBack _groupX;
+			{[_x, "", false] call A3A_fnc_NATOinit} forEach units _groupX;
+		};
 	};
 };
 if (_leave) exitWith {};

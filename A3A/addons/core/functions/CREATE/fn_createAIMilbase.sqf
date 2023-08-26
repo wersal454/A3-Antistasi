@@ -33,7 +33,7 @@ private _faction = Faction(_sideX);
 private _radarType = _faction getOrDefault ["vehicleRadar", ""];
 private _samType = _faction getOrDefault ["vehicleSam", ""];
 
-if (_radarType != "" && _samType != "") then {
+if (_radarType != "" && _samType != "" && garrison getVariable [_markerX + "_samDestroyedCD", 0] == 0) then {
 	private _spawnParameter = [_markerX, "Sam"] call A3A_fnc_findSpawnPosition;
 	if !(_spawnParameter isEqualType []) exitWith {};
 	_spawnsUsed pushBack _spawnParameter#2;
@@ -41,8 +41,6 @@ if (_radarType != "" && _samType != "") then {
 	{
 		private _aaVehicle = nil;
 		isNil {
-			// _aaVehicle = createVehicle [_x, (_spawnParameter select 0), [], 0, "CAN_COLLIDE"];
-			// _aaVehicle setDir (_spawnParameter select 1);
 			_aaVehicle = [_x, _spawnParameter select 0, 25, 10, true] call A3A_fnc_safeVehicleSpawn;
 			_aaVehicle setDir (_spawnParameter select 1);
 		};
@@ -64,7 +62,20 @@ if (_radarType != "" && _samType != "") then {
 					} forEach [120, 240, 0];
 				};
 			};
+			_aaVehicle setVehicleRadar 1;
+			_aaVehicle setVehicleReportRemoteTargets true;
 		};
+		
+		_aaVehicle setVariable ["A3A_samMarker", _markerX];
+		_aaVehicle addEventHandler ["Killed", { 
+			private _marker = _this#0 getVariable ["A3A_samMarker", ""];
+			if (_marker isNotEqualTo "") then {
+				private _varName = _marker + "_samDestroyedCD";
+				private _previousValue = garrison getVariable [_varName, 0];
+				garrison setVariable [_varName, (_previousValue + 900), true];
+			};
+		}];
+
 	} forEach [_radarType, _samType];
 };
 

@@ -471,7 +471,7 @@
                 <Original>Note that rebel vehicle stock expands as war evolves.</Original>
                 <Russian>Список доступной для покупки техники будет расширяться по мере развития войны.</Russian>
                 <Chinesesimp>请注意，随着战争的发展，反抗军的载具数量会增加。</Chinesesimp>
-                <Korean>전쟁이 진행될 때마다 대한민국 저항동맹의 차량 재고가 증가한다는 점을 참고하십시오.</Korean>
+                <Korean>전쟁이 진행될 때마다 저항군의 차량 재고가 증가한다는 것을 알아두세요.</Korean>
             </Key>
             <Key ID="STR_antistasi_dialogs_black_market_tip">
                 <Original>Black market vehicle stock depends on current War Level and various achieved milestones.</Original>
@@ -630,6 +630,7 @@
             <Key ID="STR_antistasi_dialogs_vehicle_tab_mil">
                 <Original>Military</Original>
                 <Russian>Военная техника</Russian>
+                <Korean>군용</Korean>
             </Key>
             <Key ID="STR_antistasi_dialogs_vehicle_tab_static">
                 <Original>Statics</Original>
@@ -1645,7 +1646,7 @@
             <Key ID="STR_antistasi_dialogs_main_fast_travel_vehicle">
                 <Original>You will bring your vehicle along as well as any cargo and passengers along with you.</Original>
                 <French>Vous apporterez votre véhicule ainsi que toute cargaison et passagers avec vous.</French>
-                <Korean>차량은 물론 화물과 승객도 함께 가져와야 합니다.</Korean>
+                <Korean>차량은 물론 화물과 승객도 함께 가지고 갈 것입니다다.</Korean>
                 <Russian>Вы возьмете с собой свою технику, так же как и груз и пассажиров с вами.</Russian>
                 <Chinesesimp>您将带上您的载具以及任何货物和乘客。</Chinesesimp>
                 <Czech>Vezměte si vozidlo, a i jakýkoli náklad a cestující s vámi.</Czech>
@@ -1713,7 +1714,7 @@
             <Key ID="STR_antistasi_dialogs_mission_request_logistics">
                 <Original>Logistics</Original>
                 <French>Logistique</French>
-                <Korean>병참</Korean>
+                <Korean>물자 확보보</Korean>
                 <Russian>Логистика</Russian>
                 <Chinesesimp>后勤</Chinesesimp>
                 <Czech>Logistika</Czech>
@@ -1825,7 +1826,7 @@
             <Key ID="STR_antistasi_dialogs_hq_aggression">
                 <Original>Aggression:</Original>
                 <French>Agression:</French>
-                <Korean>어그로:</Korean>
+                <Korean>공격성:</Korean>
                 <Russian>Агрессия:</Russian>
                 <Chinesesimp>警戒值：</Chinesesimp>
                 <Czech>Agrese:</Czech>
@@ -1836,7 +1837,7 @@
             <Key ID="STR_antistasi_dialogs_hq_occupants_aggression">
                 <Original>Occupants aggression</Original>
                 <French>Agressivité des occupants</French>
-                <Korean>점령군 어그로</Korean>
+                <Korean>점령군 공격성</Korean>
                 <Russian>Агрессия оккупантов</Russian>
                 <Chinesesimp>占领方的进攻性</Chinesesimp>
                 <Czech>Agrese cestujících</Czech>
@@ -1847,7 +1848,7 @@
             <Key ID="STR_antistasi_dialogs_hq_invader_aggression">
                 <Original>Invader aggression</Original>
                 <French>Agression de l'envahisseur</French>
-                <Korean>침략군 어그로</Korean>
+                <Korean>침략군 공격성</Korean>
                 <Russian>Агрессия захватчика</Russian>
                 <Chinesesimp>侵略方的进攻性</Chinesesimp>
                 <Czech>Agrese útočníka</Czech>
@@ -2781,7 +2782,7 @@
             <Key ID="STR_antistasi_recruit_squad_hint_at_disabled_rhsgref">
                 <Original>AT Trucks are disabled in RHS - GREF</Original>
                 <French>Les camions AT sont désactivés dans RHS - GREF</French>
-                <Korean>RHSGREF에서 대전차 트럭이 비활성화됨</Korean>
+                <Korean>RHS - GREF에서 대전차 트럭이 비활성화됨</Korean>
                 <Russian>ПТ машины отключены в RHS - GREF</Russian>
                 <Chinesesimp>RHS - GREF 中的AT卡车已被禁用</Chinesesimp>
                 <Czech>AT náklaďáky jsou deaktivovány v RHS - GREF</Czech>
@@ -2803,7 +2804,7 @@
             <Key ID="STR_antistasi_recruit_squad_hint_insufficient_money">
                 <Original>You do not have enough money for this request (%1 € required)</Original>
                 <French>Vous n'avez pas assez d'argent pour cette demande (%1 € requis)</French>
-                <Korean>이 요청을 수행할 자금이 부족합니다 (%1€ 필요)</Korean>
+                <Korean>이 요청을 수행할 자금이 부족합니다 (%1 € 필요)</Korean>
                 <Russian>У вас недостаточно денег для этого (%1 € необходимо)</Russian>
                 <Chinesesimp>您没有足够的金钱来处理此请求（需要 %1 ）</Chinesesimp>
                 <Czech>Na tuto žádost nemáte dostatek peněz (vyžadováno%1 €)</Czech>
@@ -3051,7 +3052,7 @@
                 <Czech>Přejmenovat hru</Czech>
                 <French>Renommer la partie</French>
                 <Italian>Rinomina Partita</Italian>
-                <Korean>게임 이름 재설정</Korean>
+                <Korean>게임 이름 변경</Korean>
                 <Russian>Переименовать</Russian>
                 <Polish>Zmień Nazwę Rozgrywki</Polish>
                 <Portuguese>Renomear jogo</Portuguese>
