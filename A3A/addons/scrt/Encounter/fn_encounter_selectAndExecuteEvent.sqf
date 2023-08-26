@@ -19,8 +19,8 @@ params [["_excludeId", -1]];
 Info("Event condition has been procced, selecting event...");
 
 private _events = [
-	[CIV_HELI, POLICE, VEH_MOVE, VEH_PATROL, VEH_POSTAMBUSH],
-	([CIV_HELI, POLICE, VEH_MOVE, VEH_PATROL, VEH_POSTAMBUSH] select { _x != _excludeId })
+	[CIV_HELI, CIV_PLANE, POLICE, VEH_MOVE, VEH_PATROL, VEH_POSTAMBUSH],
+	([CIV_HELI, CIV_PLANE, POLICE, VEH_MOVE, VEH_PATROL, VEH_POSTAMBUSH] select { _x != _excludeId })
 ] select (_excludeId isNotEqualTo 0);
 
 private _weight = 1 / (count _events); 
