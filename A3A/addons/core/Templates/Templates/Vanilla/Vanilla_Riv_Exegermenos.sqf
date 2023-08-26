@@ -38,7 +38,7 @@ private _hasMarksman = "mark" in A3A_enabledDLC;
 //////////////////////////
 //       Vehicles       //
 //////////////////////////
-["ammobox", "Box_FIA_Support_F"] call _fnc_saveToTemplate; 	//Don't touch or you die a sad and lonely death!
+["ammobox", "Box_FIA_Support_F"] call _fnc_saveToTemplate; 	
 ["surrenderCrate", "Box_Syndicate_Wps_F"] call _fnc_saveToTemplate;
 
 private _lightArmedVehicles = [];
@@ -68,7 +68,7 @@ if (_hasLawsOfWar) then {
 ["vehiclesRivalsCars", _lightUnarmedVehicles] call _fnc_saveToTemplate;
 ["vehiclesRivalsAPCs", []] call _fnc_saveToTemplate;
 ["vehiclesRivalsTanks", []] call _fnc_saveToTemplate;
-["vehiclesRivalsHelis", []] call _fnc_saveToTemplate;			
+["vehiclesRivalsHelis", ["I_C_Heli_Light_01_civil_F"]] call _fnc_saveToTemplate;			
 ["vehiclesRivalsUavs", ["O_UAV_01_F"]] call _fnc_saveToTemplate;			
 
 ["staticLowWeapons", ["O_G_HMG_02_F"]] call _fnc_saveToTemplate;

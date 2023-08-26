@@ -19,13 +19,19 @@ Example:
 [_vehicle] call SCRT_fnc_misc_tryInitVehicle;
 */
 
+#include "..\defines.inc"
+FIX_LINE_NUMBERS()
+
 params [
-	["_vehicle", objNull, [objNull, ""]]
+	["_vehicle", objNull, [objNull, ""]],
+    ["_side", sideUnknown, [sideUnknown]],
+    ["_isRivals", false, [false]]
 ];
 
+private _faction = if (_isRivals) then {A3A_faction_riv} else {Faction(_side)};
 
-private _anims = (A3A_faction_all get "animations") getOrDefault [(typeOf _vehicle), []];
-private _variants = (A3A_faction_all get "variants") getOrDefault [(typeOf _vehicle), false];
+private _anims = (_faction get "animations") getOrDefault [(typeOf _vehicle), []];
+private _variants = (_faction get "variants") getOrDefault [(typeOf _vehicle), false];
 
 if (_anims isEqualTo [] && _variants isEqualTo false) exitWith {};
 

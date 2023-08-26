@@ -232,11 +232,9 @@
                 <Chinesesimp>利沃尼亚掠夺者 (LL)。\n东欧武装分子。</Chinesesimp>
                 <Korean>리보니아 약탈자(LL).\n동유럽계 무장세력입니다.</Korean>
             </Key>
-            <Key ID="STR_A3AP_setupFactionsTab_borsheviks">
-                <Original>Borsheviks.\nDon't even ask what is it.</Original>
-                <Russian>Борщевики.\nДаже не спрашивайте что это.</Russian>
-                <Chinesesimp>布尔什维克。\不要问它是什么。</Chinesesimp>
-                <Korean>볼셰비키.\n뭔지 절대 묻지 마시오.</Korean>
+            <Key ID="STR_A3AP_setupFactionsTab_lm">
+                <Original>Livonian Militia (LM).\nEastern European militants.</Original>
+                <Russian>Ополчение Ливонии.\nВосточноевропейское ополчение.</Russian>
             </Key>
             <Key ID="STR_A3AP_setupFactionsTab_ws_tura">
                 <Original>Tura.\nOne of the many militarized tribes of the Sefrawi Desert, almost like famous Turanic Raiders.</Original>
@@ -6898,7 +6896,7 @@
                 <Korean>근처에 수집할 것이 없습니다.</Korean>
             </Key>
             <Key ID="STR_antistasi_actions_looter_cooldown_text">
-                <Original>The looting ability has been used in the last 15 seconds! Please wait for a bit.</Original>
+                <Original>The looting ability has been used recently! Please wait for a bit.</Original>
                 <Russian>Сборщик лута уже был использован недавно. Пожалуйста, подождите 15 секунд.</Russian>
                 <Chinesesimp>战利品收集最近已经用过了。 请等待15秒。</Chinesesimp>
                 <Korean>지난 15초 이내에 수집 능력이 사용되었습니다! 조금만 기다려 주십시오.</Korean>
@@ -7294,7 +7292,7 @@
                 <Korean>%1은 방어 예비 병력이 하나도 없습니다!</Korean>
             </Key>
             <Key ID="STR_intel_key_pack">
-                <Original>You found a package of %1 decryption keys!&lt;br/&gt;They allow your faction to decrypt support calls.</Original>
+                <Original>You found a package of %1 decryption keys!&lt;br/&gt;This will allow your faction to decrypt support calls.</Original>
                 <Russian>Вы нашли упаковку с %1 ключами расшифровки!&lt;br/&gt;Это позволит вашей фракции расшифровывать вражеские вызовы поддержки.</Russian>
                 <Chinesesimp>您找到了 %1 个解密密钥包！&lt;br/&gt;这将允许你的派系破译敌人的支援通信。</Chinesesimp>
                 <Korean>%1의 암호 해독 키 패키지를 찾았습니다!&lt;br/&gt;그것들은 당신의 팩션이 지원 요청을 해독할 수 있게 해줍니다.</Korean>
@@ -8770,6 +8768,10 @@
                 <Russian>&lt;t color='#800000'&gt;Удар с БПЛА&lt;/t&gt; неизбежен, в укрытие!</Russian>
                 <Chinesesimp>无人机来袭，躲起来！</Chinesesimp>
                 <Korean>무인기 공격이 임박했습니다! 엄폐하십시오!</Korean>
+            </Key>
+            <Key ID="STR_rivals_activity_heli_raid_description">
+                <Original>&lt;t color='#800000'&gt;%1 helicopter&lt;/t&gt; is near us!</Original>
+                <Russian>&lt;t color='#800000'&gt;Вертолёт %1&lt;/t&gt; рядом с нами!</Russian>
             </Key>
         </Container>
     </Package>

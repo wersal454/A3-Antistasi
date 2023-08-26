@@ -14,7 +14,7 @@
 //////////////////////////
 //       Vehicles       //
 //////////////////////////
-["ammobox", "Box_FIA_Support_F"] call _fnc_saveToTemplate; 	//Don't touch or you die a sad and lonely death!
+["ammobox", "Box_FIA_Support_F"] call _fnc_saveToTemplate; 	
 ["surrenderCrate", "Box_East_Wps_F"] call _fnc_saveToTemplate;
 
 ["vehiclesRivalsLightArmed", ["UK3CB_TKM_O_Hilux_GMG", "UK3CB_TKM_O_Hilux_Dshkm", "UK3CB_TKM_O_Hilux_M2", "UK3CB_TKM_O_Hilux_Pkm", "UK3CB_TKM_O_Hilux_Spg9", "UK3CB_TKM_O_BRDM2", "UK3CB_TKM_O_BRDM2_ATGM", "UK3CB_TKM_O_Pickup_DSHKM", "UK3CB_TKM_O_Pickup_M2", "UK3CB_TKM_O_V3S_Zu23", "UK3CB_TKM_O_Ural_Zu23"]] call _fnc_saveToTemplate;
@@ -22,7 +22,7 @@
 ["vehiclesRivalsCars", ["UK3CB_TKM_O_BRDM2_UM", "UK3CB_TKM_O_Hilux_Open", "UK3CB_TKM_O_Pickup"]] call _fnc_saveToTemplate;
 ["vehiclesRivalsAPCs", ["UK3CB_TKM_O_BMP1", "UK3CB_TKM_O_BTR40_MG", "UK3CB_TKM_O_BTR60", "UK3CB_TKM_O_MTLB_PKT", "UK3CB_TKM_O_MTLB_ZU23"]] call _fnc_saveToTemplate;
 ["vehiclesRivalsTanks", ["UK3CB_TKM_O_T34", "UK3CB_TKM_O_T55"]] call _fnc_saveToTemplate;
-["vehiclesRivalsHelis", ["UK3CB_ADA_O_Mi8AMT"]] call _fnc_saveToTemplate;			
+["vehiclesRivalsHelis", ["UK3CB_ADA_O_Mi8AMTSh"]] call _fnc_saveToTemplate;			
 ["vehiclesRivalsUavs", ["O_UAV_01_F"]] call _fnc_saveToTemplate;			
 
 ["staticLowWeapons", ["rhsgref_ins_DSHKM_Mini_TriPod", "rhsgref_ins_AGS30_TriPod"]] call _fnc_saveToTemplate;

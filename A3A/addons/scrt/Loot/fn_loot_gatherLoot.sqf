@@ -19,7 +19,7 @@ if (_overridePosition isEqualTo [] && {[getPosATL player, _radius] call A3A_fnc_
 	};
 };
 
-if ((_time - (_vehicle getVariable ["lastLooted", -15])) < 15) exitWith {
+if ((_time - (_vehicle getVariable ["lastLooted", -10])) < 10) exitWith {
 	if (hasInterface) then {
         {
             [localize "STR_antistasi_actions_looter_cooldown_text"] remoteExecCall ["systemChat", _x];

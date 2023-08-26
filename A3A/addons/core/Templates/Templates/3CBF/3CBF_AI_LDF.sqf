@@ -12,9 +12,9 @@
 //////////////////////////
 //       Vehicles       //
 //////////////////////////
-["ammobox", "B_supplyCrate_F"] call _fnc_saveToTemplate;     //Don't touch or you die a sad and lonely death!
-["surrenderCrate", "Box_EAF_Wps_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
-["equipmentBox", "Box_EAF_Equip_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
+["ammobox", "B_supplyCrate_F"] call _fnc_saveToTemplate;     
+["surrenderCrate", "Box_EAF_Wps_F"] call _fnc_saveToTemplate; 
+["equipmentBox", "Box_EAF_Equip_F"] call _fnc_saveToTemplate; 
 
 ["vehiclesBasic", ["UK3CB_LDF_B_Quadbike", "UK3CB_LDF_B_M1030"]] call _fnc_saveToTemplate;
 ["vehiclesLightUnarmed", ["UK3CB_LDF_B_Tigr", "UK3CB_LDF_B_M1151", "UK3CB_LDF_B_BRDM2_UM"]] call _fnc_saveToTemplate;
@@ -159,6 +159,9 @@ _loadoutData set ["traitorHats", ["H_Beret_blk"]];
 _loadoutData set ["officerUniforms", ["U_I_E_Uniform_01_officer_F"]];
 _loadoutData set ["officerVests", ["UK3CB_LDF_B_V_TacVest_GEO", "V_BandollierB_oli"]];
 _loadoutData set ["officerHats", ["H_Beret_EAF_01_F", "H_MilCap_eaf"]];
+
+_loadoutData set ["cloakUniforms", ["UK3CB_LDF_B_U_CombatUniform_Ghillie_WDL"]];
+_loadoutData set ["cloakVests", ["UK3CB_LDF_B_V_Vest_KKZ10_GEO", "UK3CB_LDF_B_V_MK_Vest_KKZ10_GEO"]];
 
 _loadoutData set ["uniforms", ["UK3CB_LDF_B_U_CombatUniform_GEO", "U_I_E_Uniform_01_shortsleeve_F", "U_I_E_Uniform_01_tanktop_F", "U_I_L_Uniform_01_deserter_F"]];
 _loadoutData set ["slUniforms", ["UK3CB_LDF_B_U_CombatUniform_GEO", "U_I_E_Uniform_01_sweater_F"]];
@@ -1119,6 +1122,57 @@ private _officerTemplate = {
     ["radios"] call _fnc_addRadio;
 };
 
+private _patrolSniperTemplate = {
+    ["sniHats"] call _fnc_setHelmet;
+    [selectRandomWeighted [[], 2, "glasses", 0.75, "goggles", 0.5]] call _fnc_setFacewear;
+    [["cloakVests","vests"] call _fnc_fallback] call _fnc_setVest;
+    [["cloakUniforms","uniforms"] call _fnc_fallback] call _fnc_setUniform;
+
+    [["sniperRifles", "marksmanRifles"] call _fnc_fallback] call _fnc_setPrimary;
+    ["primary", 6] call _fnc_addMagazines;
+
+    ["sidearms"] call _fnc_setHandgun;
+    ["handgun", 2] call _fnc_addMagazines;
+
+    ["items_medical_standard"] call _fnc_addItemSet;
+    ["items_sniper_extras"] call _fnc_addItemSet;
+    ["items_miscEssentials"] call _fnc_addItemSet;
+    ["antiInfantryGrenades", 1] call _fnc_addItem;
+    ["smokeGrenades", 2] call _fnc_addItem;
+
+    ["maps"] call _fnc_addMap;
+    ["watches"] call _fnc_addWatch;
+    ["compasses"] call _fnc_addCompass;
+    ["radios"] call _fnc_addRadio;
+    ["NVGs"] call _fnc_addNVGs;
+};
+
+private _patrolSpotterTemplate = {
+    ["sniHats"] call _fnc_setHelmet;
+    [selectRandomWeighted [[], 2, "glasses", 0.75, "goggles", 0.5]] call _fnc_setFacewear;
+    [["cloakVests","vests"] call _fnc_fallback] call _fnc_setVest;
+    [["cloakUniforms","uniforms"] call _fnc_fallback] call _fnc_setUniform;
+
+    [selectRandom ["rifles", "carbines", "marksmanRifles"]] call _fnc_setPrimary;
+    ["primary", 6] call _fnc_addMagazines;
+
+    ["sidearms"] call _fnc_setHandgun;
+    ["handgun", 2] call _fnc_addMagazines;
+
+    ["items_medical_standard"] call _fnc_addItemSet;
+    ["items_sniper_extras"] call _fnc_addItemSet;
+    ["items_miscEssentials"] call _fnc_addItemSet;
+    ["antiInfantryGrenades", 1] call _fnc_addItem;
+    ["smokeGrenades", 2] call _fnc_addItem;
+
+    ["maps"] call _fnc_addMap;
+    ["watches"] call _fnc_addWatch;
+    ["compasses"] call _fnc_addCompass;
+    ["radios"] call _fnc_addRadio;
+    ["rangefinders"] call _fnc_addBinoculars;
+    ["NVGs"] call _fnc_addNVGs;
+};
+
 
 ////////////////////////////////////////////////////////////////////////////////////////
 //  You shouldn't touch below this line unless you really really know what you're doing.
@@ -1173,7 +1227,9 @@ private _unitTypes = [
 	["AA", _aaTemplate, [], [_prefix]],
 	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
 	["Marksman", _marksmanTemplate, [], [_prefix]],
-	["Sniper", _sniperTemplate, [], [_prefix]]
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    ["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    ["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]] 
 ];
 
 [_prefix, _unitTypes, _militaryLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
@@ -1206,7 +1262,9 @@ private _unitTypes = [
 	["AA", _aaTemplate, [], [_prefix]],
 	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
 	["Marksman", _marksmanTemplate, [], [_prefix]],
-	["Sniper", _sniperTemplate, [], [_prefix]]
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    ["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    ["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]] 
 ];
 
 [_prefix, _unitTypes, _militiaLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
@@ -1228,7 +1286,9 @@ private _unitTypes = [
 	["AA", _aaTemplate, [], [_prefix]],
 	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
 	["Marksman", _marksmanTemplate, [], [_prefix]],
-	["Sniper", _sniperTemplate, [], [_prefix]]
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    ["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    ["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]] 
 ];
 
 [_prefix, _unitTypes, _eliteLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
