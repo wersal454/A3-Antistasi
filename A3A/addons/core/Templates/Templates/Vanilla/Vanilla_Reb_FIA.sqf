@@ -48,15 +48,17 @@ if (_hasApex) then {
     _vehiclesLightArmed pushBack "I_C_Offroad_02_LMG_F";
     _vehiclesAt pushBack "I_C_Offroad_02_AT_F";
 };
+if (_hasWs) then {
+    _vehiclesLightUnarmed pushBack "I_G_Offroad_01_armor_base_lxWS";
+    _vehiclesLightArmed pushBack "I_G_Offroad_01_armor_armed_lxWS";
+    _vehiclesAt pushBack "I_G_Offroad_01_armor_AT_lxWS";
+    _vehicleAA pushBack "I_Tura_Truck_02_aa_lxWS";
+    _staticAA = ["I_Tura_ZU23_lxWS"];
+};
 ["vehiclesCivCar", _vehiclesCivCar] call _fnc_saveToTemplate;
 ["vehiclesLightUnarmed", _vehiclesLightUnarmed] call _fnc_saveToTemplate;
 ["vehiclesLightArmed", _vehiclesLightArmed] call _fnc_saveToTemplate;
 ["vehiclesAT", _vehiclesAt] call _fnc_saveToTemplate;
-
-if (_hasWs) then {
-  _vehicleAA append ["I_Tura_Truck_02_aa_lxWS"];
-  _staticAA = ["I_Tura_ZU23_lxWS"];
-};
 ["vehiclesAA", _vehicleAA] call _fnc_saveToTemplate;
 ["staticAA", _staticAA] call _fnc_saveToTemplate;
 
@@ -68,10 +70,7 @@ if (_hasWs) then {
 private _shopWs = if (_hasWs) then {
     [
         ["I_UAV_02_lxWS", 3500, "UAV", {tierWar > 2}], 
-        ["I_G_UAV_02_IED_lxWS", 4500, "UAV", {tierWar > 3}],
-        ["I_G_Offroad_01_armor_base_lxWS", 4500, "UNARMEDCAR", {true}],
-        ["I_G_Offroad_01_armor_armed_lxWS", 4500, "ARMEDCAR", {true}],
-        ["I_G_Offroad_01_armor_AT_lxWS", 4500, "ARMEDCAR", {true}]
+        ["I_G_UAV_02_IED_lxWS", 4500, "UAV", {tierWar > 3}]
     ]
 } else {
     []

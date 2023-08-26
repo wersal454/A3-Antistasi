@@ -41,7 +41,7 @@ if (!_hasMedkit && {count _medicFAKs == 0 && count _curedFAKs == 0}) exitWith
     if (_inPlayerGroup) then {_medic groupChat localize "STR_chats_action_revive_no_fak_me"};
     false
 };
-private _timer = if (_isMedic) then { A3A_reviveTime / 2 } else { time + A3A_reviveTime };
+private _timer = if (_isMedic) then { time + (A3A_reviveTime / 2) } else { time + A3A_reviveTime };
 
 _medic setVariable ["helping", true];
 _medic playMoveNow selectRandom medicAnims;

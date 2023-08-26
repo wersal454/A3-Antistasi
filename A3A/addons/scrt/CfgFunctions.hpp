@@ -271,6 +271,7 @@ class CfgFunctions {
 			class rivals_encounter_carDemo {};
 			class rivals_encounter_uavFlyby {};
 			class rivals_encounter_rovingMortar {};
+			class rivals_encounter_heliRaid {};
 
 			class rivals_addProgressToRivalsLocationReveal {};
 			class rivals_revealLocation {};
