@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="A3-Antistasi">
-    <Package name="A3-Antistasi Mission">
+    <Package name="A3-Antistasi jeroen_arsenal">
         <Container name="JNA">
             <Key ID="STR_A3A_JNA_title">
                 <Original>Jeroen (Not) Limited Arsenal</Original>
