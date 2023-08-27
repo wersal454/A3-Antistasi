@@ -212,6 +212,7 @@ class CfgFunctions {
 			class encounter_gameEventLoop {};
 			class encounter_selectAndExecuteEvent {};
 			class encounter_civHeli {};
+			class encounter_civPlane {};
 			class encounter_police {};
 			class encounter_vehicleMove {};
 			class encounter_vehiclePatrol {};
