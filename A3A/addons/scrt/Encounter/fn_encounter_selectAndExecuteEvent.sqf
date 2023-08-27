@@ -32,7 +32,7 @@ switch (_eventType) do {
 		[[], "SCRT_fnc_encounter_civHeli"] call A3A_fnc_scheduler;
 	};
 	case (CIV_PLANE): {
-		[[], "SCRT_fnc_encounter_civPLANE"] call A3A_fnc_scheduler;
+		[[], "SCRT_fnc_encounter_civPlane"] call A3A_fnc_scheduler;
 	};
 	case (POLICE): {
 		[[], "SCRT_fnc_encounter_police"] call A3A_fnc_scheduler;

@@ -1,8 +1,12 @@
 # Changelog
 
+## 2.3.1
+### Additions
+- New civilian plane flyby random event
+
 ## 2.3
 ### Additions
-- Official Aegis support
+- Aegis support
 - Šumava terrain support
 - New enemy group type - reconnaissance patrol, usually it has snipper and spotter in ghillie suits if possible, they may spawn in forests and other wilderness areas. If faction has no ghillie or other suit types, ordinary snipers and spotters will be used
 - New Rivals random event - Helicopter Raid, they will try to drop some munition on your heads and then they will loiter in the area to finish survivors if there are any (some rivals faction have only drop part because of lacking required assets in their specific modsets) 
