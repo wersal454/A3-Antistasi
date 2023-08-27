@@ -3,6 +3,7 @@
 ## 2.3.1
 ### Additions
 - New civilian plane flyby random event
+- (Vanilla, Aegis) Weasel AA, AT, Autocannon, Radar variants will be present in Vehicle Black Market
 
 ## 2.3
 ### Additions
