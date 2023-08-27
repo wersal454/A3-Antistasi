@@ -151,6 +151,8 @@ private _extraMessage = format [localize "STR_veh_callback_constructions_text", 
 private _fnc_placed = {
 	params ["_vehicle", "_cost"];
 
+    if (_vehicle isEqualTo objNull) exitWith {};
+
     private _earlyEscape = false;
     switch (construction_type) do { //return inverted here so true = cant place
         case "LIGHT_BUNKER";

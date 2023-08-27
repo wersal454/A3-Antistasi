@@ -990,6 +990,12 @@
                 <Chinesesimp>轻型和重型防御工事只能建在友好地区的公路旁。</Chinesesimp>
                 <Korean>경량과 중량 요새화 진지는 우호적인 지역의 오프로드에서만 건설 가능합니다.</Korean>
             </Key>
+            <Key ID="STR_veh_callback_constructions_rb">
+                <Original>Roadblocks can only be built on roads.</Original>
+                <Russian>Блокпосты могут быть построены только на дорогах.</Russian>
+                <Chinesesimp>轻型和重型防御工事只能建在友好地区的公路旁。</Chinesesimp>
+                <Korean>경량과 중량 요새화 진지는 우호적인 지역의 오프로드에서만 건설 가능합니다.</Korean>
+            </Key>
             <Key ID="STR_veh_callback_placement_text">
                 <Original>&lt;t size='0.6'&gt;Select %1 position.&lt;br/&gt;Price: %2%3&lt;/t&gt;</Original>
                 <Russian>&lt;t size='0.6'&gt;Выберите позицию для %1.&lt;br/&gt;Цена: %2%3&lt;/t&gt;</Russian>
