@@ -216,7 +216,7 @@
     </Container>
     <Container name="A3A_GCTracker">
       <Key ID="STR_A3A_GCTracker_tracker_notification">
-        <Original>Last Garbage Clean was %1 ago. Keep track of it.</Original>
+        <Original>Last Garbage Clean was %1 ago. Keep track of it. Forced GC in %2.</Original>
       </Key>
       <Key ID="STR_A3A_GCTracker_tracker_ran_gc">
         <Original>Garbage Cleaner Tracker run a garbage clean because the time passed the threshold. Keep track of GC times.</Original>
