@@ -5974,10 +5974,10 @@
       <Key ID="STR_A3A_fn_base_flagaction_truckX">
         <Original>Transfer Ammobox to Truck</Original>
       </Key>
-      <Key ID="STR_A3A_fn_base_flagaction_heal_">
+      <Key ID="STR_A3A_fn_base_flagaction_heal_revive">
         <Original>Revive %1</Original>
       </Key>
-      <Key ID="STR_A3A_fn_base_flagaction_heal_">
+      <Key ID="STR_A3A_fn_base_flagaction_heal_carry">
         <Original>Carry %1</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_flagaction_refugee">
