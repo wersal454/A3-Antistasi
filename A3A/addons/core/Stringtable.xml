@@ -5877,7 +5877,7 @@
         <Original>Closest Ammobox is empty.</Original>
       </Key>
       <Key ID="STR_A3A_fn_ammo_transfer_loading">
-        <Original>Truck loading. <br/><br/>Time remaining: %1 secs.</Original>
+        <Original>Truck loading. &lt;br/&gt;&lt;br/&gt;Time remaining: %1 secs.</Original>
       </Key>
       <Key ID="STR_A3A_fn_ammo_transfer_cancelled">
         <Original>Transfer cancelled due to movement of Truck or Player.</Original>
@@ -5888,7 +5888,7 @@
         <Original>Undercover</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_airspacecontrol_warning">
-        <Original>Unidentified helicopter<br/><br/>You are closing in on the airspace of %1.<br/><br/> Change your course or we will take defensive actions!</Original>
+        <Original>Unidentified helicopter&lt;br/&gt;&lt;br/&gt;You are closing in on the airspace of %1.&lt;br/&gt;&lt;br/&gt; Change your course or we will take defensive actions!</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_canmovehq_title">
         <Original>Move HQ</Original>
@@ -5912,10 +5912,10 @@
         <Original>Petros currently picked up.</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_caclaggro_occ_red">
-        <Original>%1 aggression level reduced to %2.<br/></Original>
+        <Original>%1 aggression level reduced to %2.&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_caclaggro_occ_inc">
-        <Original>%1 aggression level increased to %2.<br/></Original>
+        <Original>%1 aggression level increased to %2.&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_caclaggro_inv_red">
         <Original>%1%2 aggression level reduced to %3.</Original>
@@ -5927,7 +5927,7 @@
         <Original>Aggression level changed</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_commsmp_error">
-        <Original>Download error:<br/>%1</Original>
+        <Original>Download error:&lt;br/&gt;%1</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_commsmp_remaining">
         <Original>Time Remaining: %1 secs</Original>
@@ -5936,7 +5936,7 @@
         <Original>Countdown</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_commsmp_warlvlchange">
-        <Original>War Level Changed<br/><br/>Current Level: %1</Original>
+        <Original>War Level Changed&lt;br/&gt;&lt;br/&gt;Current Level: %1</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_createoutpfia_create">
         <Original>Create Outpost</Original>
@@ -6035,10 +6035,10 @@
         <Original>Garbage Cleaner</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_gc_wait">
-        <Original>Please wait for GC to finish.<br/>Last GC was %1 ago.</Original>
+        <Original>Please wait for GC to finish.&lt;br/&gt;Last GC was %1 ago.</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_gc_deleted">
-        <Original>Garbage Deleted.<br/>Last GC was %1 ago.</Original>
+        <Original>Garbage Deleted.&lt;br/&gt;Last GC was %1 ago.</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_movehq_garrison">
         <Original>Garrison</Original>
@@ -6047,7 +6047,7 @@
         <Original>HQ Garrison will stay here and distract the enemy.</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_movehq_removed">
-        <Original>Garrison removed<br/><br/>Recovered Money: %1 €<br/>Recovered HR: %2</Original>
+        <Original>Garrison removed&lt;br/&gt;&lt;br/&gt;Recovered Money: %1 €&lt;br/&gt;Recovered HR: %2</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_mrkwin_title">
         <Original>Capture</Original>
@@ -6095,7 +6095,7 @@
         <Original>You need a Radio Man in your group to be able to give orders to other squads.</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_outpdiag_click_position">
-        <Original>Click on the position you wish to build the Watchpost or Roadblock. <br/><br/> Remember: to build Roadblocks you must click exactly on a road map section.</Original>
+        <Original>Click on the position you wish to build the Watchpost or Roadblock. &lt;br/&gt;&lt;br/&gt; Remember: to build Roadblocks you must click exactly on a road map section.</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_outpdiag_click_delete">
         <Original>Click on the Watchpost or Roadblock to delete.</Original>
@@ -6110,7 +6110,7 @@
         <Original>No post nearby.</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_outpdiag_no_resources">
-        <Original>You lack of resources to build this Watchpost or Roadblock. <br/><br/> %1 HR and %2 € needed.</Original>
+        <Original>You lack of resources to build this Watchpost or Roadblock. &lt;br/&gt;&lt;br/&gt; %1 HR and %2 € needed.</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_placeselec_petros_dead">
         <Original>Petros is Dead</Original>
@@ -6122,7 +6122,7 @@
         <Original>HQ Position</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_placeselec_no_enemy_zone">
-        <Original>Place selected is very close to enemy zones.<br/><br/> Please select another position.</Original>
+        <Original>Place selected is very close to enemy zones.&lt;br/&gt;&lt;br/&gt; Please select another position.</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_placeselec_no_water">
         <Original>Selected position cannot be in water.</Original>
@@ -6380,7 +6380,7 @@
         <Original>Not enough resources to recruit a mine deploying team (%1 € and %2 HR needed).</Original>
       </Key>
       <Key ID="STR_A3A_fn_dialogs_minediag_available">
-        <Original>An Explosive Specialist is available on your High Command bar.<br/><br/>Send him anywhere on the map to deactivate mines. He will load his truck with mines he found.<br/><br/>Upon returning back to HQ he will unload mines stored in his vehicle.</Original>
+        <Original>An Explosive Specialist is available on your High Command bar.&lt;br/&gt;&lt;br/&gt;Send him anywhere on the map to deactivate mines. He will load his truck with mines he found.&lt;br/&gt;&lt;br/&gt;Upon returning back to HQ he will unload mines stored in his vehicle.</Original>
       </Key>
       <Key ID="STR_A3A_fn_dialogs_minediag_timer">
         <Original>You need at least 5 mines of this type to build a Minefield.</Original>
@@ -6475,7 +6475,7 @@
         <Original>You are not in the member's list, but as you are Server Admin, you have been added. Welcome!</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_initclient_member_guest">
-        <Original>Welcome Guest<br/><br/>You have joined this server as guest.</Original>
+        <Original>Welcome Guest&lt;br/&gt;&lt;br/&gt;You have joined this server as guest.</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_initclient_mods_tfar">
         <Original>Players will use TFAR radios. Unconscious players' radios will be muted.</Original>
@@ -6576,7 +6576,7 @@
         <Original>Intel documents taken.</Original>
       </Key>
       <Key ID="STR_A3A_fn_intel_laptop_die">
-        <Original>The screen says:<br/><br/>Prepare to die!</Original>
+        <Original>The screen says:&lt;br/&gt;&lt;br/&gt;Prepare to die!</Original>
       </Key>
       <Key ID="STR_A3A_fn_intel_laptop_reset">
         <Original>No one in range of the intel, reseting download!</Original>
@@ -6654,25 +6654,25 @@
         <Original>%1 is completely out of defence reserves.</Original>
       </Key>
       <Key ID="STR_A3A_fn_intel_select_decry_1">
-        <Original>We found a %1 decryption key!<br/>It allows us to fully decrypt the next support call.</Original>
+        <Original>We found a %1 decryption key!&lt;br/&gt;It allows us to fully decrypt the next support call.</Original>
       </Key>
       <Key ID="STR_A3A_fn_intel_select_conv_1">
-        <Original>We found the tracking data for a %1 convoy.<br/>Convoy position marked on map!</Original>
+        <Original>We found the tracking data for a %1 convoy.&lt;br/&gt;Convoy position marked on map!</Original>
       </Key>
       <Key ID="STR_A3A_fn_intel_select_conv_2">
         <Original>There are currently no %1 convoys driving around!</Original>
       </Key>
       <Key ID="STR_A3A_fn_intel_select_decry_2">
-        <Original>You found a package of %1 decryption keys!<br/>They allow your faction to decrypt support calls.</Original>
+        <Original>You found a package of %1 decryption keys!&lt;br/&gt;They allow your faction to decrypt support calls.</Original>
       </Key>
       <Key ID="STR_A3A_fn_intel_select_conv_3">
-        <Original>We found the %1 convoy GPS decryption key!<br/>%2 convoys are marked on the map.</Original>
+        <Original>We found the %1 convoy GPS decryption key!&lt;br/&gt;%2 convoys are marked on the map.</Original>
       </Key>
       <Key ID="STR_A3A_fn_intel_select_trait_1">
         <Original>You found incriminating data on the traitor, we don't think he will cause any more trouble.</Original>
       </Key>
       <Key ID="STR_A3A_fn_intel_select_weap_1">
-        <Original>You found the supply data for the<br/> %1<br/> You have unlocked this weapon!</Original>
+        <Original>You found the supply data for the&lt;br/&gt; %1&lt;br/&gt; You have unlocked this weapon!</Original>
       </Key>
       <Key ID="STR_A3A_fn_intel_select_mon_1">
         <Original>You found some confidential data, you sold it for %1 on the black market!</Original>
