@@ -6208,7 +6208,7 @@
       <Key ID="STR_A3A_fn_base_breachveh_no_wrongexpl">
         <Original>You don't have the right explosives, check the briefing notes to see what you need!</Original>
       </Key>
-      <Key ID="STR_A3A_fn_base_breachveh_cancel">
+      <Key ID="STR_A3A_fn_base_breachveh_cancelled">
         <Original>Breaching cancelled.</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_breachveh_timer">
