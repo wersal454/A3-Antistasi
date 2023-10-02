@@ -1127,7 +1127,7 @@
     </Container>
     <Container name="A3A_fn_mission">
       <Key ID="STR_A3A_fn_mission_as_off_text">
-        <Original>A %4 officer is inspecting %1. Go there and kill him before %2:%3."</Original>
+        <Original>A %4 officer is inspecting %1. Go there and kill him before %2:%3.</Original>
       </Key>
       <Key ID="STR_A3A_fn_mission_as_off_titel">
         <Original>Kill the Officer</Original>
