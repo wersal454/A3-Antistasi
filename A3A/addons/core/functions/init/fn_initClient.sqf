@@ -86,6 +86,7 @@ if (!isServer) then {
 
 // Headless clients register with server and bail out at this point
 if (!isServer and !hasInterface) exitWith {
+    player setPosATL (markerPos respawnTeamPlayer vectorAdd [-100, -100, 0]);
     [clientOwner] remoteExecCall ["A3A_fnc_addHC",2];
 };
 
