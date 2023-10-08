@@ -57,7 +57,7 @@ switch (_source) do {
 		call _releaseFromSentence;
         Info_1("RELEASE | %1", _playerStats);
 		if (isPlayer _detainee) then {
-			[localize "STR_A3A_fn_punish_FF_Pun", localize "STR_A3A_fn_punish_punRel_enough"] remoteExecCall ["A3A_fnc_customHint", _detainee, false];
+			[localize "STR_A3A_fn_punish_ff_pun", localize "STR_A3A_fn_punish_punrel_enough"] remoteExecCall ["A3A_fnc_customHint", _detainee, false];
 		};
 		true;
 	};
@@ -66,7 +66,7 @@ switch (_source) do {
 		call _releaseFromSentence;
         Info_1("FORGIVE | %1", _playerStats);
 		if (isPlayer _detainee) then {
-			[localize "STR_A3A_fn_punish_FF_Pun", localize "STR_A3A_fn_punish_punRel_admin"] remoteExecCall ["A3A_fnc_customHint", _detainee, false];
+			[localize "STR_A3A_fn_punish_ff_pun", localize "STR_A3A_fn_punish_punrel_admin"] remoteExecCall ["A3A_fnc_customHint", _detainee, false];
 		};
 		true;
 	};

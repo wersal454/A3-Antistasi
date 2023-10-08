@@ -4,6 +4,7 @@ FIX_LINE_NUMBERS()
 private ["_victim","_killer"];
 
 private _unit = _this select 0;
+private _titleStr = ;
 
 [_unit] call A3A_fnc_initRevive;
 _unit setVariable ["spawner",true,true];

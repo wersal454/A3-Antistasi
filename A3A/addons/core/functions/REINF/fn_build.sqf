@@ -1,3 +1,5 @@
+private _titleStr = ;
+
 if (!(isNil "placingVehicle") && {placingVehicle}) exitWith {["Build Info", "You can't build while placing something."] call A3A_fnc_customHint;};
 if (player != player getVariable ["owner",objNull]) exitWith {["Build Info", "You cannot construct anything while controlling AI."] call A3A_fnc_customHint;};
 

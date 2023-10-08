@@ -1,6 +1,7 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 //if (!isServer) exitWith{};
+private _titleStr = ;
 
 if (player != leader group player) exitWith {["Dismiss Group", "You cannot dismiss anyone if you are not the squad leader."] call A3A_fnc_customHint;};
 

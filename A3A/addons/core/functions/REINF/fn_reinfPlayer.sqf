@@ -1,3 +1,5 @@
+private _titleStr = ;
+
 if !([player] call A3A_fnc_isMember) exitWith {["AI Recruitment", "Only Server Members can recruit AI units."] call A3A_fnc_customHint;};
 
 if (recruitCooldown > time) exitWith {["AI Recruitment", format ["You need to wait %1 seconds to be able to recruit units again.",round (recruitCooldown - time)]] call A3A_fnc_customHint;};

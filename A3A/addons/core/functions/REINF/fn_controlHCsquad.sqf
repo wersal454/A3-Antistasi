@@ -1,3 +1,5 @@
+private _titleStr = ;
+
 if (player != theBoss) exitWith {["Control Squad", "Only Commander has the ability to control HC units."] call A3A_fnc_customHint;};
 if (captive player) exitWith {["Control Squad", "You cannot control squads while undercover."] call A3A_fnc_customHint;};
 if (!isNil "A3A_FFPun_Jailed" && {(getPlayerUID player) in A3A_FFPun_Jailed}) exitWith {["Control Squad", "Nope. Not happening."] call A3A_fnc_customHint;};

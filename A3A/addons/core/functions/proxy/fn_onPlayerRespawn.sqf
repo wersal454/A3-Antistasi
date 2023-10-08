@@ -33,7 +33,7 @@ if (side group player == teamPlayer) then
 	{
 	_owner = _oldUnit getVariable ["owner",_oldUnit];
 
-	if (_owner != _oldUnit) exitWith {[localize "STR_A3A_fn_proxy_remAI_titel", localize "STR_A3A_fn_proxy_remAI_text"] call A3A_fnc_customHint; selectPlayer _owner; disableUserInput false; deleteVehicle _newUnit};
+	if (_owner != _oldUnit) exitWith {[localize "STR_A3A_fn_proxy_remai_titel", localize "STR_A3A_fn_proxy_remai_text"] call A3A_fnc_customHint; selectPlayer _owner; disableUserInput false; deleteVehicle _newUnit};
 
 	_nul = [0,-1,getPos _oldUnit] remoteExec ["A3A_fnc_citySupportChange",2];
 
@@ -219,7 +219,7 @@ if (side group player == teamPlayer) then
 				};
 				_markersX = markersX select {sidesX getVariable [_x,sideUnknown] == teamPlayer};
 				_pos = position _veh;
-				if (_markersX findIf {_pos inArea _x} != -1) then {[localize "STR_A3A_fn_proxy_StatDepl_titel", localize "STR_A3A_fn_proxy_StatDepl_text"] call A3A_fnc_customHint;};
+				if (_markersX findIf {_pos inArea _x} != -1) then {[localize "STR_A3A_fn_proxy_statdepl_titel", localize "STR_A3A_fn_proxy_statdepl_text"] call A3A_fnc_customHint;};
 			};
 		}];
 	player addEventHandler ["WeaponDisassembled",

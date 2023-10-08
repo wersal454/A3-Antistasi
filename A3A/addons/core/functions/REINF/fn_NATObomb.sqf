@@ -1,5 +1,7 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
+private _titleStr = ;
+
 if (bombRuns < 1) exitWith {["Air Support", "You lack of enough Air Support to make this request."] call A3A_fnc_customHint;};
 //if (!allowPlayerRecruit) exitWith {hint "Server is very loaded. <br/>Wait one minute or change FPS settings in order to fulfill this request"};
 if (!([player] call A3A_fnc_hasRadio)) exitWith {if !(A3A_hasIFA) then {["Air Support", "You need a radio in your inventory to be able to give orders to other squads."] call A3A_fnc_customHint;} else {["Air Support", "You need a Radio Man in your group to be able to give orders to other squads"] call A3A_fnc_customHint;}};

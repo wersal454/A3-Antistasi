@@ -1,6 +1,7 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 private ["_units","_unit"];
+private _titleStr = ;
 
 _units = _this select 0;
 

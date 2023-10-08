@@ -4,6 +4,7 @@ FIX_LINE_NUMBERS()
 params ["_unitType"];
 
 private _hr = server getVariable "hr";
+private _titleStr = ;
 
 if (_hr < 1) exitWith {
 	[localize "STR_A3A_garrison_header", localize "STR_A3A_garrison_error_no_hr"] call A3A_fnc_customHint;

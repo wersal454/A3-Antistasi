@@ -23,6 +23,8 @@ License: MIT License
 */
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
+private _titleStr = ;
+
 params [
     ["_unitTypes", [], [[]]]
     , ["_idFormat", "", [""]]

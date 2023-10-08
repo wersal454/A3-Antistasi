@@ -1,4 +1,5 @@
 private ["_veh","_esStatic","_groupX","_maxCargo"];
+private _titleStr = ;
 
 if (count hcSelected player != 1) exitWith {["Add Squad Vehicle", "You must select one group on the HC bar."] call A3A_fnc_customHint;};
 

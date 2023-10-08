@@ -1,6 +1,8 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 private ["_typeX","_positionTel","_nearX","_garrison","_costs","_hr","_size"];
+private _titleStr = ;
+
 _typeX = _this select 0;
 
 if (_typeX == "add") then {["Garrison", "Select a zone to add garrisoned troops."] call A3A_fnc_customHint;} else {["Garrison", "Select a zone to remove it's Garrison."] call A3A_fnc_customHint;};

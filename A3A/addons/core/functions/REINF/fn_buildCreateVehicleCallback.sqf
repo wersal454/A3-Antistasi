@@ -4,6 +4,7 @@ private _positionX = ASLtoATL _posASL;
 
 private _isPlayer = if (player == build_engineerSelected) then {true} else {false};
 private _timeOut = time + 30;
+private _titleStr = ;
 
 if (!_isPlayer) then
 {

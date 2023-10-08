@@ -2,6 +2,7 @@
 FIX_LINE_NUMBERS()
 //if (!isServer) exitWith{};
 private ["_groups","_hr","_resourcesFIA","_wp","_groupX","_veh","_leave"];
+private _titleStr = ;
 
 _groups = _this select 0;
 _hr = 0;

@@ -1,5 +1,6 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
+private _titleStr = ;
 
 if (player != theBoss) exitWith {["Skill Add", "Only our Commander has access to this function."] call A3A_fnc_customHint;};
 
