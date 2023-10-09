@@ -7149,5 +7149,262 @@
         <Chinesesimp>与指挥部班组车辆管理相关的选项</Chinesesimp>
       </Key>
     </Container>
+    <Container name="A3A_fn_OrgPlayers">
+      <Key ID="STR_A3A_fn_orgp_donmon_titel">
+        <Original>Donate Money</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_donmon_no_less">
+        <Original>You have less than 100 € to donate.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_donmon_donated_faction">
+        <Original>You have donated 100 € to the cause. This will raise your status among our forces.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_donmon_no_looking">
+        <Original>You must be looking to a player in order to give him money.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_donmon_donated_player">
+        <Original>You have donated 100 € to %1.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_memadd_titel">
+        <Original>Membership</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_memadd_no_admin">
+        <Original>Only Server Admins or hosters can add a new member.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_memadd_no_disabled">
+        <Original>Server Member feature is disabled.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_memadd_no_initialised">
+        <Original>Membership feature not yet initialised. Please try again later.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_memadd_no_pointing">
+        <Original>You are not pointing to anyone.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_memadd_no_already">
+        <Original>The player is already a member of this server.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_memadd_no_not">
+        <Original>The player is not a member of this server.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_memadd_added_other">
+        <Original>"%1 has been added to the Server Members List.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_memadd_added_you">
+        <Original>You have been added to the Server Members list.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_memadd_removed_other">
+        <Original>%1 has been removed from the Server Members List.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_memadd_removed_you">
+        <Original>You have been removed from the Server Members list.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_memlist_titel">
+        <Original>Membership</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_memlist_no_disabled">
+        <Original>Server Member feature is disabled.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_memlist_members">
+        <Original>In Game Members<br/><br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_memlist_members_count">
+        <Original>%1<br/>No. members:<br/>%2</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_plaleash_comrade">
+        <Original>Comrade, we're losing contact!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_plaleash_retreat">
+        <Original>Retreat <t color='#f0d498'>%1 m %2</t>, within <t color='#f0d498'>%3 s</t>.<br/>Stay within %4 km of HQ or a member. Failure to comply will re-insert you at HQ.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_tbsteal_titel">
+        <Original>Money Grab</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_tbsteal_grab_no">
+        <Original>%1 has not enough resources to grab.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_tbsteal_grab_yes">
+        <Original>You grabbed 100 € from the %1 Money Pool.<br/><br/>This will affect your prestige and status among %1 forces.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_tvtogeli_titel">
+        <Original>Commander</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_tvtogeli_resign_choosing">
+        <Original>You resign from being commander, choosing %1 as your successor.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_tvtogeli_resign_chosen">
+        <Original>You resign from being commander. Your chosen successor (%1) was not eligible.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_tvtogeli_resign_others">
+        <Original>You resign from being Commander. Others will take the command if there is someone suitable.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_tvtogeli_eligible_no">
+        <Original>You decided not to be eligible for commander.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_tvtogeli_eligible_yes">
+        <Original>You are now eligible to be commander of our forces.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_unittraits_titel">
+        <Original>Unit Traits</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_unittraits_commander">
+        <Original>Commander role.<br/><br/>The commander is a lightweight unit with increased camouflage, medical and engineering capabilities.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_unittraits_medic">
+        <Original>Medic role.<br/><br/>Medics do not have any bonus or penalties, but have the ability to use certain medical items for full health restoration.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_unittraits_teamllead">
+        <Original>Teamleader role.<br/><br/>Teamleader are more lightweight units with increased camouflage capabilities.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_unittraits_rifle">
+        <Original>Rifleman role.<br/><br/>Riflemen do not have any bonus or penalties but can hack drones.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_unittraits_grenadier">
+        <Original>Grenadier role.<br/><br/>Grenadiers have a slight bonus on carry capacity, but are easy to spot.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_unittraits_autorifle">
+        <Original>Autorifleman role.<br/><br/>Autoriflemen have a slight bonus on carry capacity, but make too much noise when they move.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_unittraits_engi">
+        <Original>Engineer role.<br/><br/>Engineers do not have any bonus or penalties, but have the ability to use Repair Kits for vehicle repair.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_unittraits_you">
+        <Original>You have selected %1.</Original>
+      </Key>
+    </Container>
+    <Container name="A3A_fn_proxy">
+      <Key ID="STR_A3A_fn_proxy_remai_titel">
+        <Original>Remote AI</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_proxy_remai_text">
+        <Original>Died while remote controlling AI.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_proxy_statdepl_titel">
+        <Original>Static Deployed</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_proxy_statdepl_text">
+        <Original>Static weapon has been deployed for use in a nearby zone, and will be used by garrison militia if you leave it here the next time the zone spawns.</Original>
+      </Key>
+    </Container>
+    <Container name="A3A_fn_Punishment">
+      <Key ID="STR_A3A_fn_punish_oob_titel">
+        <Original>Out of bounds</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_punish_oob_text">
+        <Original>Return to the AO before your blown up, you have %1 seconds.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_punish_ff_noti">
+        <Original>FF Notification</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_punish_puneval_hurt">
+        <Original>%1 hurt you!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_punish_puneval_warning">
+        <Original>FF Warning</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_punish_puneval_injured">
+        <Original>Injured comrade:</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_punish_ff_pun">
+        <Original>FF Punishment</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_punish_punrel_enough">
+        <Original>Enough then.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_punish_punrel_admin">
+        <Original>An admin looks with pity upon your soul.<br/>You have been forgiven.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_punish_punsencl_text">
+        <Original>Please do not teamkill. Stare at the turtles for %1 more seconds.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_punish_punsensv_text">
+        <Original>has been found guilty of FF (3+ Strikes).<br/><br/>If you believe this is a mistake, you can forgive him with the corresponding scroll-menu action.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_punish_pun_conun">
+        <Original>Control Unit</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_punish_pun_returned">
+        <Original>Returned to original Unit due to FF.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_punish_pun_hurt">
+        <Original>hurt you!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_punish_pun_fire">
+        <Original>Watch your fire!</Original>
+      </Key>
+    </Container>
+    <Container name="A3A_fn_REINF">
+      <Key ID="STR_A3A_fn_reinf_bombrun_title">
+        <Original>Airstrike</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_bombrun_no_looking">
+        <Original>You are not looking at a vehicle.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_bombrun_no_destr">
+        <Original>You can't convert destroyed Air vehicle to Airstrikes.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_bombrun_no_nearby">
+        <Original>You can't convert Airstrikes while enemies are near you.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_bombrun_no_area">
+        <Original>You and the Air vehicle need to be in the Area of an %1 Airport or HQ in order to convert it to Airstrikes.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_bombrun_no_empty">
+        <Original>In order to convert, Vehicle must be empty.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_bombrun_no_owner">
+        <Original>You are not the owner of this vehicle. Therefore, you can't convert it.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_bombrun_no_airveh">
+        <Original>Only Air Vehicles can be used to increase Airstrike points.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_bombrun_no_drone">
+        <Original>Backpack drones can't be used to increase Airstrike points.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_bombrun_increased">
+        <Original>Air Support increased in %1 points.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addsqdhc_title">
+        <Original>Recruit Squad</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_commander">
+        <Original>Only the Commander has access to this function.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_movehq">
+        <Original>You cannot recruit a new squad while you are moving your HQ.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_radio">
+        <Original>You need a radio in your inventory to be able to give orders to other squads.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_enemy">
+        <Original>You cannot recruit squads with enemies near your HQ.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_many">
+        <Original>You have too many high command squads active. Disband or garrison some to recruit more.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_notsupp">
+        <Original>The group or vehicle type you requested is not supported in your modset.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_modset">
+        <Original>Your current modset doesn't support packing/unpacking static weapons.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_hr">
+        <Original>You do not have enough HR for this request (%1 required).</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_money">
+        <Original>You do not have enough money for this request (%1 € required).</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_distance">
+        <Original>You cant place HC vehicles further than 50m from HQ</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_money2">
+        <Original>No money left to buy a transport vehicle (%1 € required), creating barefoot squad.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addsqdhc_buyveh">
+        <Original>Buy a vehicle for this squad for %1 €.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_radio2">
+        <Original>You need a Radio Man in your group to be able to give orders to other squads</Original>
+      </Key>
+    </Container>
   </Package>
 </Project>
