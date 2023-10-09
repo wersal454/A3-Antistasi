@@ -60,7 +60,7 @@
         <Original>We are low on this item, only members may use it</Original>
       </Key>
       <Key ID="STR_A3A_JNA_rhs_error">
-        <Original>ERROR - Please report RPT to Antistasi Dev's.</Original>
+        <Original>ERROR - Please report RPT to Antistasi Devs.</Original>
       </Key>
       <Key ID="STR_A3A_JNA_scope_incompatible">
         <Original>\n(Not compatible with currently equipped weapons)</Original>
@@ -116,7 +116,7 @@
         <Original>-- Undo last save --</Original>
       </Key>
       <Key ID="STR_A3A_JND_title">
-        <Original>Ultra Wide Extended Debug Console With Extra Save Buttens!</Original>
+        <Original>Ultra Wide Extended Debug Console With Extra Save Buttons!</Original>
       </Key>
     </Container>
   </Package>
