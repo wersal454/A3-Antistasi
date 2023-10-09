@@ -100,7 +100,7 @@ private _playerStats = ["Total-time: ",str _timeTotal," (incl. +",str _timeAdded
 private _instigatorLog = [["WARNING","GUILTY"] select (_offenceTotal >= 1)," | ",_name," [",_UID,"] ",_victimStats,", ",_playerStats] joinString "";
 Info(_instigatorLog);
 
-[localize "STR_A3A_fn_punish_puneval_warning", [localize "STR_A3A_fn_punish_pun_fire",_injuredComrade,_customMessage] joinString "<br/>"] remoteExecCall ["A3A_fnc_customHint", _originalBody, false];
+[localize "STR_A3A_fn_punish_punEval_warning", [localize "STR_A3A_fn_punish_pun_fire",_injuredComrade,_customMessage] joinString "<br/>"] remoteExecCall ["A3A_fnc_customHint", _originalBody, false];
 
 if (_offenceTotal < 1) exitWith {"WARNING";};
 

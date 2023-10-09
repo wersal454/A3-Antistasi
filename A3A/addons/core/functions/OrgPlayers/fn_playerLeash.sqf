@@ -71,7 +71,7 @@ while {!([player] call A3A_fnc_isMember) || _debugMode} do {
         private _compassDirections = ["N","NE","E","SE","S","SW","W","NW"];
         private _retreatDirection = _compassDirections # ((player getDir _nearestLeashCentre) / 360 * count _compassDirections);
 
-        [localize "STR_A3A_fn_orgp_plaleash_comrade", format [localize "STR_A3A_fn_orgp_plaleash_retreat", ceil _retreatDistance, _retreatDirection, _countDown, ceil (memberDistance/1e3)]] call A3A_fnc_customHint;
+        [localize "STR_A3A_fn_orgp_plaLeash_comrade", format [localize "STR_A3A_fn_orgp_plaLeash_retreat", ceil _retreatDistance, _retreatDirection, _countDown, ceil (memberDistance/1e3)]] call A3A_fnc_customHint;
         uiSleep 1;
         if (_countDown <= 0) then {
             // Get nearest location name for logging.

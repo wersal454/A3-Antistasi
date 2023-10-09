@@ -1,8 +1,8 @@
-private _titleStr = localize "STR_A3A_fn_orgp_memlist_titel";
+private _titleStr = localize "STR_A3A_fn_orgp_memList_titel";
 
-if !(membershipEnabled) exitWith {[_titleStr, localize "STR_A3A_fn_orgp_memlist_no_disabled"] call A3A_fnc_customHint;};
+if !(membershipEnabled) exitWith {[_titleStr, localize "STR_A3A_fn_orgp_memList_no_disabled"] call A3A_fnc_customHint;};
 private ["_countX"];
-_textX = localize "STR_A3A_fn_orgp_memlist_members";
+_textX = localize "STR_A3A_fn_orgp_memList_members";
 _countN = 0;
 
 {
@@ -14,6 +14,6 @@ if (!isNull _playerX) then
 	};
 } forEach (call A3A_fnc_playableUnits);
 
-_textX = format [localize "STR_A3A_fn_orgp_memlist_members_count",_textX,_countN];
+_textX = format [localize "STR_A3A_fn_orgp_memList_members_count",_textX,_countN];
 
 [_titleStr, _textX] call A3A_fnc_customHint;
