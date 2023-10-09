@@ -7679,5 +7679,179 @@
         <Original>Vehicle Info</Original>
       </Key>
     </Container>
+    <Container name="A3A_fn_Revive">
+      <Key ID="STR_A3A_fn_revive_actRev_title">
+        <Original>Revive</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_revive_actRev_no_dead">
+        <Original>%1 is already dead.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_revive_actRev_no_able">
+        <Original>You are not able to revive anyone.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_revive_actRev_no_carry1">
+        <Original>%1 is being carried or transported and you cannot heal him.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_revive_actRev_no_carry2">
+        <Original>%1 is being carried or transported and I cannot heal him.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_revive_actRev_no_up">
+        <Original>%1 no longer needs your help.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_revive_actRev_no_meds">
+        <Original>You or %1 need a First Aid Kit or Medikit to be able to revive.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_revive_actRev_addaction_cancel">
+        <Original>Cancel Revive</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_revive_actRev_rev_cancel">
+        <Original>Revive cancelled.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_revive_actRev_lost">
+        <Original>We lost %1.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_revive_carry_title">
+        <Original>Carry/Drag</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_revive_carry_dead">
+        <Original>%1 is dead.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_revive_carry_nohelp">
+        <Original>%1 no longer needs your help.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_revive_carry_no_carry">
+        <Original>%1 is being carried or transported and you cannot carry him.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_revive_carry_addaction_release">
+        <Original>Release %1</Original>
+      </Key>
+    </Container>
+    <Container name="A3A_fn_Save">
+      <Key ID="STR_A3A_fn_save_saveLoop_title1">
+        <Original>Save Game</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_save_saveLoop_progress">
+        <Original>Server data save is still in progress...</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_save_saveLoop_title2">
+        <Original>Persistent Save</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_save_saveLoop_saving">
+        <Original>Starting persistent save..</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_save_saveLoop_text_asset">
+        <Original>Assets:<br/><t color='#f0d498'>HR:</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_save_saveLoop_text_money">
+        <Original>"<br/>Money:"</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_save_saveLoop_text_options">
+        <Original>€</t></t><br/><br/>Further infomation is provided in <t color='#f0d498'>Map Screen > Game Options > Persistent Save-game</t>.</Original>
+      </Key>
+    </Container>
+    <Container name="A3A_fn_Undercover">
+      <Key ID="STR_A3A_fn_undercover_title">
+        <Original>Undercover</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_no_ai">
+        <Original>You cannot go Undercover while you are controlling AI!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_already">
+        <Original>You are Undercover already.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_no_nociv">
+        <Original>You are not in a civilian vehicle.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_no_reported1">
+        <Original>This vehicle has been reported to the enemy. Change or renew your vehicle in the Garage to go Undercover.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_no_towrope">
+        <Original>This vehicle cannot go undercover while it has tow ropes attached.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_no_reported2">
+        <Original>You have been reported in the last 30 minutes therefore you cannot go Undercover.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_no_while">
+        <Original>You cannot go Undercover while:<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_weapon">
+        <Original>%1<br/>A weapon is visible.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_vest">
+        <Original>%1<br/>Wearing a vest.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_helmet">
+        <Original>%1<br/>Wearing a helmet.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_ngv">
+        <Original>%1<br/>Wearing NVGs.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_uniform">
+        <Original>%1<br/>Wearing a suspicious uniform.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_naked">
+        <Original>%1<br/>Being naked. Thats what you think is unsuspicious?</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_rope">
+        <Original>%1<br/>Holding tow ropes.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_no_close">
+        <Original>You cannot go Undercover near Airports, Outposts, Seaports or Roadblocks.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_canGoUn_no_spotted">
+        <Original>You cannot go Undercover while enemies are spotting you.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_reported">
+        <Original>You have been reported or spotted by the enemy!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_entered_veh1">
+        <Original>You entered a non civilian vehicle!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_entered_veh2">
+        <Original>You entered a reported vehicle!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_no_towrope1">
+        <Original>You cannot be undercover while tow ropes are attached to your vehicle!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_no_towrope2">
+        <Original>You cannot be undercover and use tow ropes!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_no_explo">
+        <Original>Explosives have been spotted on your vehicle!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_no_distance">
+        <Original>You went too far away from any roads and have been spotted!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_no_reason_1">
+        <Original>You cannot stay Undercover while:<br/><br/>A weapon is visible<br/>Wearing a vest<br/>Wearing a helmet<br/>Wearing NVGs<br/>Wearing a mil uniform!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_no_reason_2">
+        <Original>You cannot stay Undercover while showing:<br/><br/>A weapon is visible<br/>Wearing a vest<br/>Wearing a helmet<br/>Wearing NVGs<br/>Wearing a mil uniform<br/><br/>The enemy added you to their Wanted List!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_no_reason_3">
+        <Original>You cannot stay Undercover while healing a compromised resistance member!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_no_reason_4">
+        <Original>You cannot stay Undercover while healing a compromised resistance member<br/><br/>The enemy added you to their Wanted List!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_leftveh">
+        <Original>You left your vehicle and you are still on the Wanted List!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_trespass">
+        <Original>You have trespassed on an enemy airbase!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_detect_outp">
+        <Original>An enemy outpost or seaport has detected you!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_detect_roadb">
+        <Original>An enemy roadblock has detected you!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_detect_airspace">
+        <Original>You have violated the airspace of %1!</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_undercover_goUn_Error">
+        <Original>Unknown error occured in undercover execution routine!</Original>
+      </Key>
+    </Container>
   </Package>
 </Project>
