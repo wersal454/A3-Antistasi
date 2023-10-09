@@ -7853,5 +7853,16 @@
         <Original>Unknown error occured in undercover execution routine!</Original>
       </Key>
     </Container>
+    <Container name="A3A_keybinds">
+      <Key ID="STR_A3A_keybinds_keyAcc_earplugs_title">
+        <Original>Ear Plugs</Original>
+      </Key>
+      <Key ID="STR_A3A_keybinds_keyAcc_earplugs_out">
+        <Original>You've taken out your ear plugs.</Original>
+      </Key>
+      <Key ID="STR_A3A_keybinds_keyAcc_earplugs_in">
+        <Original>You've inserted your ear plugs.</Original>
+      </Key>
+    </Container>
   </Package>
 </Project>
