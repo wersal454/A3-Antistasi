@@ -47,7 +47,7 @@ _object addAction [
 ];
 
 _object addAction [
-    localize "STR_A3A_fn_ltc_init_addact_ltv"
+    localize "STR_A3A_fn_ltc_init_addact_ltv",
     {
         [_this#3, clientOwner] remoteExecCall ["A3A_fnc_canTransfer", 2];
     },
