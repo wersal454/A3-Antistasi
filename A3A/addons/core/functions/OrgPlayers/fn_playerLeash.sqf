@@ -32,7 +32,6 @@ FIX_LINE_NUMBERS()
 A3A_playerLeash_refresh = false;
 private _countDown = INITIAL_COUNT_TIME;
 private _debugMode = !isNil "A3A_DEV_playerLeash_debug";
-private _titleStr = localize "";
 
 // -1 is used to represent unlimited distance.
 if (memberDistance <= 0 || !membershipEnabled) exitWith {};

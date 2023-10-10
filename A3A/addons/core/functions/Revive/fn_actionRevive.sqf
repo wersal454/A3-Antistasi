@@ -59,7 +59,7 @@ if (!_player) then
 }
 else
 {
-    _actionX = _medic addAction [localize "STR_A3A_fn_revive_actRev_addaction_cancel", {(_this select 1) setVariable ["cancelRevive",true]},nil,6,true,true,"",""];
+    _actionX = _medic addAction [localize "STR_A3A_fn_revive_actRev_addact_cancel", {(_this select 1) setVariable ["cancelRevive",true]},nil,6,true,true,"",""];
     _cured setVariable ["helped",_medic,true];
 };
 

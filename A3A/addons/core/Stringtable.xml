@@ -90,6 +90,12 @@
       <Key ID="STR_A3A_fn_ai_staticautot_title">
         <Original>Static Auto Target</Original>
       </Key>
+      <Key ID="STR_A3A_fn_ai_help_title">
+        <Original>Medical</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_ai_help_onway">
+       <Original>%1 is on the way to help you.</Original>
+      </Key>
     </Container>
     <Container name="A3A_fn_ammo">
       <Key ID="STR_A3A_fn_ammo_cargo">
@@ -127,6 +133,9 @@
         <Czech>V Utajení</Czech>
         <Turkish>Gizlilik</Turkish>
         <Chinesesimp>伪装</Chinesesimp>
+      </Key>
+      <Key ID="STR_A3A_fn_base_airspacecontrol_undercover_text">
+       <Original>Unidentified helicopter<br/><br/>You are closing in on the airspace of %1.<br/><br/> Change your course or we will take defensive actions!</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_airspacecontrol_warning">
         <Original>Unidentified helicopter&lt;br/&gt;&lt;br/&gt;You are closing in on the airspace of %1.&lt;br/&gt;&lt;br/&gt; Change your course or we will take defensive actions!</Original>
@@ -572,6 +581,12 @@
         <Czech>Odemknout vozidlo</Czech>
         <Chinesesimp>解锁载具</Chinesesimp>
       </Key>
+      <Key ID="STR_A3A_fn_base_addActBrea_addact_breach">
+        <Original>Breach Vehicle</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_base_mrkwin_addact_abortCapture">
+        <Original>Abort Outpost Capture</Original>
+      </Key>
     </Container>
     <Container name="A3A_fn_convoy">
       <Key ID="STR_A3A_fn_convoy_convdebug_admin">
@@ -936,6 +951,105 @@
       </Key>
       <Key ID="STR_A3A_fn_init_initclient_warning">
         <Original>Warning</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_title">
+        <Original>City Information</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_overview_1">
+        <Original>%7<br/><br/>Total pop: %1<br/>%6 Support: %2<br/>%5 Support: %3 <br/><br/>Murdered Pop: %4<br/><br/>Click on the zone</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_click">
+        <Original>Click on the zone</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_hq">
+        <Original>%2 HQ%1</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_overview_2">
+        <Original>%1<br/><br/>Pop %2<br/>%6 Support: %3 %5<br/>%7 Support: %4 %5</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_influ">
+        <Original>%1<br/>Influence: %2</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_destr">
+        <Original>%1<br/>DESTROYED</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_airp_1">
+        <Original>%1 Airport</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_status_idle">
+        <Original>%1<br/>Status: Idle</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_status_busy">
+        <Original>%1<br/>Status: Busy</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_garr_good">
+        <Original>%1<br/>Garrison: Good</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_garr_weak">
+        <Original>%1<br/>Garrison: Weakened</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_garr_deci">
+        <Original>%1<br/>Garrison: Decimated</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_airp_2">
+        <Original>%2 Airport%1</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_reso_1">
+        <Original>%1 Resources</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_reso_2">
+        <Original>%2 Resources%1</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_fact_1">
+        <Original>%1 Factory</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_fact_2">
+        <Original>%2 Factory%1</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_goutp_1">
+        <Original>%2 Grand Outpost%1</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_seap_1">
+        <Original>%1 Seaport</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_seap_2">
+        <Original>%2 Seaport%1</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_road_2">
+        <Original>%2 Roadblock%1</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_watch_1">
+        <Original>%1 Watchpost</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_cityinfo_goutp_2">
+        <Original>%1 Grand Outpost</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_initclient_addact_gameOpt">
+        <Original>Game Options</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_initclient_gameOpt_title">
+        <Original>Game Options</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_initclient_gameOpt_version">
+        <Original>Version:</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_initclient_gameOpt_resoBal">
+        <Original><br/><br/>Enemy resource balance:</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_initclient_gameOpt_unlockNo">
+        <Original><br/>Unlock Weapon Number:</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_initclient_gameOpt_limFT">
+        <Original><br/>Limited Fast Travel:</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_initclient_gameOpt_spawnDist">
+        <Original><br/>Spawn Distance:</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_initclient_gameOpt_civLim">
+        <Original><br/>Civilian Limit:</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_init_initclient_gameOpt_timeGC">
+        <Original><br/>Time since GC:</Original>
       </Key>
     </Container>
     <Container name="A3A_fn_intel">
@@ -1534,6 +1648,12 @@
         <Portuguese>Rastreador de Limpeza de Lixo</Portuguese>
         <Turkish>Çöp Temizleyici İzleyicisi</Turkish>
         <Chinesesimp>垃圾清洁器跟踪器</Chinesesimp>
+      </Key>
+      <Key ID="STR_A3A_GCTracker_warning_title">
+        <Original>Final Warning</Original>
+      </Key>
+      <Key ID="STR_A3A_GCTracker_warning_text">
+        <Original>Automatic Garbage Clean incoming in %1</Original>
       </Key>
     </Container>
     <Container name="A3A_selfRevive">
@@ -7363,46 +7483,46 @@
       <Key ID="STR_A3A_fn_reinf_bombrun_increased">
         <Original>Air Support increased in %1 points.</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_addsqdhc_title">
+      <Key ID="STR_A3A_fn_reinf_addSqdHC_title">
         <Original>Recruit Squad</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_commander">
+      <Key ID="STR_A3A_fn_reinf_addSqdHC_no_commander">
         <Original>Only the Commander has access to this function.</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_movehq">
+      <Key ID="STR_A3A_fn_reinf_addSqdHC_no_movehq">
         <Original>You cannot recruit a new squad while you are moving your HQ.</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_radio">
+      <Key ID="STR_A3A_fn_reinf_addSqdHC_no_radio">
         <Original>You need a radio in your inventory to be able to give orders to other squads.</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_enemy">
+      <Key ID="STR_A3A_fn_reinf_addSqdHC_no_enemy">
         <Original>You cannot recruit squads with enemies near your HQ.</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_many">
+      <Key ID="STR_A3A_fn_reinf_addSqdHC_no_many">
         <Original>You have too many high command squads active. Disband or garrison some to recruit more.</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_notsupp">
+      <Key ID="STR_A3A_fn_reinf_addSqdHC_no_notsupp">
         <Original>The group or vehicle type you requested is not supported in your modset.</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_modset">
+      <Key ID="STR_A3A_fn_reinf_addSqdHC_no_modset">
         <Original>Your current modset doesn't support packing/unpacking static weapons.</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_hr">
+      <Key ID="STR_A3A_fn_reinf_addSqdHC_no_hr">
         <Original>You do not have enough HR for this request (%1 required).</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_money">
+      <Key ID="STR_A3A_fn_reinf_addSqdHC_no_money">
         <Original>You do not have enough money for this request (%1 € required).</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_distance">
+      <Key ID="STR_A3A_fn_reinf_addSqdHC_no_distance">
         <Original>You cant place HC vehicles further than 50m from HQ</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_money2">
+      <Key ID="STR_A3A_fn_reinf_addSqdHC_no_money2">
         <Original>No money left to buy a transport vehicle (%1 € required), creating barefoot squad.</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_addsqdhc_buyveh">
+      <Key ID="STR_A3A_fn_reinf_addSqdHC_buyveh">
         <Original>Buy a vehicle for this squad for %1 €.</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_addsqdhc_no_radio2">
+      <Key ID="STR_A3A_fn_reinf_addSqdHC_no_radio2">
         <Original>You need a Radio Man in your group to be able to give orders to other squads</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdVeh_title">
@@ -7678,6 +7798,81 @@
       <Key ID="STR_A3A_fn_reinf_vehStats_title">
         <Original>Vehicle Info</Original>
       </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_select">
+        <Original>You must select one group on the HC bar.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_dismount">
+        <Original>%2%1 dismounting<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_board">
+        <Original>%2%1 boarding<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_status">
+        <Original>%1 Status<br/><br/>Alive members: %2<br/>Able to combat: %3<br/>Current task: %4<br/>Combat Mode:%5<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_medic_yes">
+        <Original>%1Operative Medic<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_medic_no">
+        <Original>%1No operative Medic<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_AT_yes">
+        <Original>%1With AT capabilities<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_AA_yes">
+        <Original>%1With AA capabilities<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_mortar_">
+        <Original>%1Mortar is deployed<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_mortar_">
+        <Original>%1Mortar not deployed<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_static_">
+        <Original>%1Static is deployed<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_static_">
+        <Original>%1Static not deployed<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_currVeh">
+        <Original>%1Current vehicle:<br/>%2<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_destr">
+        <Original>%1DESTROYED</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_disab">
+        <Original>%1DISABLED<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_weaDisab">
+        <Original>%1WEAPON DISABLED<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_munitioned">
+        <Original>%1Munitioned<br/></Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_vehStats_boarded">
+        <Original>%1Boarded:%2/%3</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addFIAVeh_title">
+        <Original>Add Vehicle</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addFIAVeh_no_placing">
+        <Original>Unable to buy vehicle, you are already placing something.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addFIAVeh_no_control">
+        <Original>You cannot buy vehicles while you are controlling AI.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addFIAVeh_no_enemy">
+        <Original>You cannot buy vehicles with enemies nearby.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addFIAVeh_no_supp">
+        <Original>The vehicle you requested is not supported in your current modset.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addFIAVeh_no_money">
+        <Original>You do not have enough money for this vehicle: %1 € required.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_addFIAVeh_no_flag">
+        <Original>You need to be close to the flag to be able to purchase a vehicle.</Original>
+      </Key>
     </Container>
     <Container name="A3A_fn_Revive">
       <Key ID="STR_A3A_fn_revive_actRev_title">
@@ -7701,7 +7896,7 @@
       <Key ID="STR_A3A_fn_revive_actRev_no_meds">
         <Original>You or %1 need a First Aid Kit or Medikit to be able to revive.</Original>
       </Key>
-      <Key ID="STR_A3A_fn_revive_actRev_addaction_cancel">
+      <Key ID="STR_A3A_fn_revive_actRev_addact_cancel">
         <Original>Cancel Revive</Original>
       </Key>
       <Key ID="STR_A3A_fn_revive_actRev_rev_cancel">
@@ -7722,7 +7917,7 @@
       <Key ID="STR_A3A_fn_revive_carry_no_carry">
         <Original>%1 is being carried or transported and you cannot carry him.</Original>
       </Key>
-      <Key ID="STR_A3A_fn_revive_carry_addaction_release">
+      <Key ID="STR_A3A_fn_revive_carry_addact_release">
         <Original>Release %1</Original>
       </Key>
     </Container>
@@ -7862,6 +8057,117 @@
       </Key>
       <Key ID="STR_A3A_keybinds_keyAcc_earplugs_in">
         <Original>You've inserted your ear plugs.</Original>
+      </Key>
+      <Key ID="STR_A3A_keybinds_CfgUserAct_battleMenu_DN">
+        <Original>Battle menu</Original>
+      </Key>
+      <Key ID="STR_A3A_keybinds_CfgUserAct_battleMenu_tip">
+        <Original>Opens the Antistasis battle menu.</Original>
+      </Key>
+      <Key ID="STR_A3A_keybinds_CfgUserAct_artyMenu_DN">
+        <Original>Artillery menu</Original>
+      </Key>
+      <Key ID="STR_A3A_keybinds_CfgUserAct_artyMenu_tip">
+        <Original>Opens the Antistasis artillery support menu (commander only).</Original>
+      </Key>
+      <Key ID="STR_A3A_keybinds_CfgUserAct_infoBar_DN">
+        <Original>Toggle info bar</Original>
+      </Key>
+      <Key ID="STR_A3A_keybinds_CfgUserAct_infoBar_tip">
+        <Original>Toggles the visibility of Antistasis information bar at the top of the screen.</Original>
+      </Key>
+      <Key ID="STR_A3A_keybinds_CfgUserAct_earPlugs_DN">
+        <Original>Toggle ear plugs</Original>
+      </Key>
+      <Key ID="STR_A3A_keybinds_CfgUserAct_earPlugs_tip">
+        <Original>Toggles the ear plugs (no effect when using ace).</Original>
+      </Key>
+      <Key ID="STR_A3A_keybinds_CfgUserAct_cusHintDiss_DN">
+        <Original>Dismiss Previous Hint</Original>
+      </Key>
+      <Key ID="STR_A3A_keybinds_CfgUserAct_cusHintDiss_tip">
+        <Original>Clears the last hint notification.</Original>
+      </Key>
+    </Container>
+    <Container name="A3A_Scripts">
+      <Key ID="STR_A3A_scripts_advTowInit_title">
+        <Original>Advanced Towing</Original>
+      </Key>
+      <Key ID="STR_A3A_scripts_advTowInit_addact_deploy">
+        <Original>Deploy Tow Ropes</Original>
+      </Key>
+      <Key ID="STR_A3A_scripts_advTowInit_addact_putAway">
+        <Original>Put Away Tow Ropes</Original>
+      </Key>
+      <Key ID="STR_A3A_scripts_advTowInit_addact_attach">
+        <Original>Attach To Tow Ropes</Original>
+      </Key>
+      <Key ID="STR_A3A_scripts_advTowInit_addact_drop">
+        <Original>Drop Tow Ropes</Original>
+      </Key>
+      <Key ID="STR_A3A_scripts_advTowInit_addact_pick">
+        <Original>Pick Up Tow Ropes</Original>
+      </Key>
+      <Key ID="STR_A3A_scripts_advTowInit_attach_no_locked">
+        <Original>Cannot attach tow ropes to locked vehicle</Original>
+      </Key>
+      <Key ID="STR_A3A_scripts_advTowInit_attach_no_safez">
+        <Original>Cannot attach tow ropes in safe zone</Original>
+      </Key>
+      <Key ID="STR_A3A_scripts_advTowInit_take_no_locked">
+        <Original>Cannot take tow ropes from locked vehicle</Original>
+      </Key>
+      <Key ID="STR_A3A_scripts_advTowInit_take_no_safez">
+        <Original>Cannot take tow ropes in safe zone</Original>
+      </Key>
+      <Key ID="STR_A3A_scripts_advTowInit_put_no_locked">
+        <Original>Cannot put away tow ropes in locked vehicle</Original>
+      </Key>
+      <Key ID="STR_A3A_scripts_advTowInit_put_no_safez">
+        <Original>Cannot put away tow ropes in safe zone</Original>
+      </Key>
+      <Key ID="STR_A3A_scripts_advTowInit_pick_no_locked">
+        <Original>Cannot pick up tow ropes from locked vehicle</Original>
+      </Key>
+      <Key ID="STR_A3A_scripts_advTowInit_pick_no_safez">
+        <Original>Cannot pick up tow ropes in safe zone</Original>
+      </Key>
+      <Key ID="STR_A3A_scripts_advTowInit_success">
+        <Original>Success</Original>
+      </Key>
+      <Key ID="STR_A3A_scripts_advTowInit_fail">
+        <Original>Whoops</Original>
+      </Key>
+    </Container>
+    <Container name="A3A_fn_SalvageRope">
+      <Key ID="STR_A3A_fn_salvRope_addact_deploy">
+        <Original>Deploy Winch</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_salvRope_addact_stow">
+        <Original>Stow Winch</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_salvRope_addact_attach">
+        <Original>Attach Rope</Original>
+      </Key>
+    </Container>
+    <Container name="A3A_fn_UtilityItems">
+      <Key ID="STR_A3A_fn_UtilItem_dropOb_addact_drop">
+        <Original>Drop object</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_UtilItem_initMovOb_addact_carry">
+        <Original>Carry object</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_UtilItem_initMovOb_addact_rotate">
+        <Original>Rotate object</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_UtilItem_initObjRem_addact_pack">
+        <Original>Pack object</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_UtilItem_initObjRem_addact_unpack">
+        <Original>Unpack object</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_UtilItem_initObjRem_addact_open">
+        <Original>Open Doors</Original>
       </Key>
     </Container>
   </Package>

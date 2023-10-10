@@ -1,23 +1,23 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
-private _titleStr = localize "STR_A3A_fn_reinf_addsqdhc_title";
+private _titleStr = localize "STR_A3A_fn_reinf_addSqdHC_title";
 
 params ["_typeGroup", ["_withBackpck", ""]];
 
-if (player != theBoss) exitWith {[_titleStr, localize "STR_A3A_fn_reinf_addsqdhc_no_commander"] call A3A_fnc_customHint;};
-if (markerAlpha respawnTeamPlayer == 0) exitWith {[_titleStr, localize "STR_A3A_fn_reinf_addsqdhc_no_movehq"] call A3A_fnc_customHint;};
-if (!([player] call A3A_fnc_hasRadio)) exitWith {if !(A3A_hasIFA) then {[_titleStr, localize "STR_A3A_fn_reinf_addsqdhc_no_radio"] call A3A_fnc_customHint;} else {[_titleStr, localize "STR_A3A_fn_reinf_addsqdhc_no_radio2"] call A3A_fnc_customHint;}};
-if ([getPosATL petros] call A3A_fnc_enemyNearCheck) exitWith {[_titleStr, localize "STR_A3A_fn_reinf_addsqdhc_no_enemy"] call A3A_fnc_customHint;};
+if (player != theBoss) exitWith {[_titleStr, localize "STR_A3A_fn_reinf_addSqdHC_no_commander"] call A3A_fnc_customHint;};
+if (markerAlpha respawnTeamPlayer == 0) exitWith {[_titleStr, localize "STR_A3A_fn_reinf_addSqdHC_no_movehq"] call A3A_fnc_customHint;};
+if (!([player] call A3A_fnc_hasRadio)) exitWith {if !(A3A_hasIFA) then {[_titleStr, localize "STR_A3A_fn_reinf_addSqdHC_no_radio"] call A3A_fnc_customHint;} else {[_titleStr, localize "STR_A3A_fn_reinf_addSqdHC_no_radio2"] call A3A_fnc_customHint;}};
+if ([getPosATL petros] call A3A_fnc_enemyNearCheck) exitWith {[_titleStr, localize "STR_A3A_fn_reinf_addSqdHC_no_enemy"] call A3A_fnc_customHint;};
 
 private _maxGroups = [6,10] select (player call A3A_fnc_isMember);
 if (count hcAllGroups player >= _maxGroups) exitWith {
-    [_titleStr, localize "STR_A3A_fn_reinf_addsqdhc_no_many"] call A3A_fnc_customHint;
+    [_titleStr, localize "STR_A3A_fn_reinf_addSqdHC_no_many"] call A3A_fnc_customHint;
 };
 
 private _exit = false;
 if (_typeGroup isEqualType "") then {
-	if (_typeGroup == "") then {_exit = true; [_titleStr, localize "STR_A3A_fn_reinf_addsqdhc_no_notsupp"] call A3A_fnc_customHint;};
-	if (A3A_hasIFA and ((_typeGroup in FactionGet(reb,"staticMortars")) or (_typeGroup in FactionGet(reb,"staticMGs"))) and !debug) then {_exit = true; [_titleStr, localize "STR_A3A_fn_reinf_addsqdhc_no_notsupp"] call A3A_fnc_customHint;};
+	if (_typeGroup == "") then {_exit = true; [_titleStr, localize "STR_A3A_fn_reinf_addSqdHC_no_notsupp"] call A3A_fnc_customHint;};
+	if (A3A_hasIFA and ((_typeGroup in FactionGet(reb,"staticMortars")) or (_typeGroup in FactionGet(reb,"staticMGs"))) and !debug) then {_exit = true; [_titleStr, localize "STR_A3A_fn_reinf_addSqdHC_no_notsupp"] call A3A_fnc_customHint;};
 };
 if (_exit) exitWith {};
 
@@ -49,11 +49,11 @@ if (_typeGroup isEqualType []) then {
 	if ((_typeGroup in FactionGet(reb,"staticMortars")) or (_typeGroup in FactionGet(reb,"staticMGs"))) exitWith { _isInfantry = true };
 };
 
-if ((_withBackpck != "") and A3A_hasIFA) exitWith {[_titleStr, localize "STR_A3A_fn_reinf_addsqdhc_no_modset"] call A3A_fnc_customHint;};
+if ((_withBackpck != "") and A3A_hasIFA) exitWith {[_titleStr, localize "STR_A3A_fn_reinf_addSqdHC_no_modset"] call A3A_fnc_customHint;};
 
-if (_hr < _costHR) then {_exit = true; [_titleStr, format [localize "STR_A3A_fn_reinf_addsqdhc_no_hr",_costHR]] call A3A_fnc_customHint;};
+if (_hr < _costHR) then {_exit = true; [_titleStr, format [localize "STR_A3A_fn_reinf_addSqdHC_no_hr",_costHR]] call A3A_fnc_customHint;};
 
-if (_resourcesFIA < _costs) then {_exit = true; [_titleStr, format [localize "STR_A3A_fn_reinf_addsqdhc_no_money",_costs]] call A3A_fnc_customHint;};
+if (_resourcesFIA < _costs) then {_exit = true; [_titleStr, format [localize "STR_A3A_fn_reinf_addSqdHC_no_money",_costs]] call A3A_fnc_customHint;};
 
 if (_exit) exitWith {};
 
@@ -94,7 +94,7 @@ private _special = if (_isInfantry) then {
 
 private _fnc_placeCheck = {
     params ["_vehicle"];
-    [getMarkerPos respawnTeamPlayer distance _vehicle > 50, localize "STR_A3A_fn_reinf_addsqdhc_no_distance"];
+    [getMarkerPos respawnTeamPlayer distance _vehicle > 50, localize "STR_A3A_fn_reinf_addSqdHC_no_distance"];
 };
 private _fnc_placed = {
     params ["_vehicle", "_formatX", "_idFormat", "_special"];
@@ -124,7 +124,7 @@ if (!_isInfantry) exitWith { [_vehType, _fnc_placed, _fnc_placeCheck, [_formatX,
 
 private _vehCost = [_vehType] call A3A_fnc_vehiclePrice;
 if (_isInfantry and (_costs + _vehCost) > server getVariable "resourcesFIA") exitWith {
-    [_titleStr, format [localize "STR_A3A_fn_reinf_addsqdhc_no_money2",_vehCost]] call A3A_fnc_customHint;
+    [_titleStr, format [localize "STR_A3A_fn_reinf_addSqdHC_no_money2",_vehCost]] call A3A_fnc_customHint;
     [_formatX, _idFormat, _special, objNull] spawn A3A_fnc_spawnHCGroup;
 };
 
@@ -139,7 +139,7 @@ private _display = findDisplay 100;
 
 if (str (_display) != "no display") then {
 	private _ChildControl = _display displayCtrl 104;
-	_ChildControl  ctrlSetTooltip format [localize "STR_A3A_fn_reinf_addsqdhc_buyveh", _vehCost];
+	_ChildControl  ctrlSetTooltip format [localize "STR_A3A_fn_reinf_addSqdHC_buyveh", _vehCost];
 	_ChildControl = _display displayCtrl 105;
 	_ChildControl  ctrlSetTooltip "Barefoot Infantry";
 };

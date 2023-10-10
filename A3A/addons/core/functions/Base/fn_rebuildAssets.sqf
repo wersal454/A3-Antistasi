@@ -58,7 +58,7 @@ if (isNull _antennaDead) then
 	{
 	_nameX = [_siteX] call A3A_fnc_localizar;
 
-	[_titleStr, format ["%1 Rebuilt"]] call A3A_fnc_customHint; //localize "STR_A3A_fn_base_rebasset_done_1" but what's the %1? 
+	[_titleStr, format ["%1 Rebuilt"]] call A3A_fnc_customHint; //TODO: localize "STR_A3A_fn_base_rebasset_done_1" but what's the %1? 
 
 	[0,10,_positionTel] remoteExec ["A3A_fnc_citySupportChange",2];
     [Occupants, 10, 30] remoteExec ["A3A_fnc_addAggression",2];
