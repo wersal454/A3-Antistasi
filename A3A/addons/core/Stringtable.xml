@@ -371,7 +371,7 @@
         <Chinesesimp>伪装</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_base_airspacecontrol_undercover_text">
-       <Original>Unidentified helicopter<br/><br/>You are closing in on the airspace of %1.<br/><br/> Change your course or we will take defensive actions!</Original>
+       <Original>Unidentified helicopter&lt;br/&gt;&lt;br/&gt;You are closing in on the airspace of %1.&lt;br/&gt;&lt;br/&gt; Change your course or we will take defensive actions!</Original>
       </Key>
       <Key ID="STR_A3A_fn_base_airspacecontrol_warning">
         <Original>Unidentified helicopter&lt;br/&gt;&lt;br/&gt;You are closing in on the airspace of %1.&lt;br/&gt;&lt;br/&gt; Change your course or we will take defensive actions!</Original>
@@ -2551,7 +2551,7 @@
         <Original>City Information</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_overview_1">
-        <Original>%7<br/><br/>Total pop: %1<br/>%6 Support: %2<br/>%5 Support: %3 <br/><br/>Murdered Pop: %4<br/><br/>Click on the zone</Original>
+        <Original>%7&lt;br/&gt;&lt;br/&gt;Total pop: %1&lt;br/&gt;%6 Support: %2&lt;br/&gt;%5 Support: %3&lt;br/&gt;&lt;br/&gt;Murdered Pop: %4&lt;br/&gt;&lt;br/&gt;Click on the zone</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_click">
         <Original>Click on the zone</Original>
@@ -2560,31 +2560,31 @@
         <Original>%2 HQ%1</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_overview_2">
-        <Original>%1<br/><br/>Pop %2<br/>%6 Support: %3 %5<br/>%7 Support: %4 %5</Original>
+        <Original>%1&lt;br/&gt;&lt;br/&gt;Pop %2&lt;br/&gt;%6 Support: %3 %5&lt;br/&gt;%7 Support: %4 %5</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_influ">
-        <Original>%1<br/>Influence: %2</Original>
+        <Original>%1&lt;br/&gt;Influence: %2</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_destr">
-        <Original>%1<br/>DESTROYED</Original>
+        <Original>%1&lt;br/&gt;DESTROYED</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_airp_1">
         <Original>%1 Airport</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_status_idle">
-        <Original>%1<br/>Status: Idle</Original>
+        <Original>%1&lt;br/&gt;Status: Idle</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_status_busy">
-        <Original>%1<br/>Status: Busy</Original>
+        <Original>%1&lt;br/&gt;Status: Busy</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_garr_good">
-        <Original>%1<br/>Garrison: Good</Original>
+        <Original>%1&lt;br/&gt;Garrison: Good</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_garr_weak">
-        <Original>%1<br/>Garrison: Weakened</Original>
+        <Original>%1&lt;br/&gt;Garrison: Weakened</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_garr_deci">
-        <Original>%1<br/>Garrison: Decimated</Original>
+        <Original>%1&lt;br/&gt;Garrison: Decimated</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_airp_2">
         <Original>%2 Airport%1</Original>
@@ -2602,7 +2602,7 @@
         <Original>%2 Factory%1</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_goutp_1">
-        <Original>%2 Grand Outpost%1</Original>
+        <Original>%2 Outpost%1</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_seap_1">
         <Original>%1 Seaport</Original>
@@ -2617,7 +2617,7 @@
         <Original>%1 Watchpost</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_goutp_2">
-        <Original>%1 Grand Outpost</Original>
+        <Original>%1 Outpost</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_initclient_addact_gameOpt">
         <Original>Game Options</Original>
@@ -9443,16 +9443,16 @@
         <Original>Server Member feature is disabled.</Original>
       </Key>
       <Key ID="STR_A3A_fn_orgp_memList_members">
-        <Original>In Game Members<br/><br/></Original>
+        <Original>In Game Members&lt;br/&gt;&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_orgp_memList_members_count">
-        <Original>%1<br/>No. members:<br/>%2</Original>
+        <Original>%1&lt;br/&gt;No. members:&lt;br/&gt;%2</Original>
       </Key>
       <Key ID="STR_A3A_fn_orgp_plaLeash_comrade">
         <Original>Comrade, we're losing contact!</Original>
       </Key>
       <Key ID="STR_A3A_fn_orgp_plaLeash_retreat">
-        <Original>Retreat <t color='#f0d498'>%1 m %2</t>, within <t color='#f0d498'>%3 s</t>.<br/>Stay within %4 km of HQ or a member. Failure to comply will re-insert you at HQ.</Original>
+        <Original>Retreat &lt;t color='#f0d498'&gt;%1 m %2&lt;/t&gt;, within &lt;t color='#f0d498'&gt;%3 s&lt;/t&gt;.&lt;br/&gt;Stay within %4 km of HQ or a member. Failure to comply will re-insert you at HQ.</Original>
       </Key>
       <Key ID="STR_A3A_fn_orgp_tBSteal_titel">
         <Original>Money Grab</Original>
@@ -9461,7 +9461,7 @@
         <Original>%1 has not enough resources to grab.</Original>
       </Key>
       <Key ID="STR_A3A_fn_orgp_tBSteal_grab_yes">
-        <Original>You grabbed 100 € from the %1 Money Pool.<br/><br/>This will affect your prestige and status among %1 forces.</Original>
+        <Original>You grabbed 100 € from the %1 Money Pool.&lt;br/&gt;&lt;br/&gt;This will affect your prestige and status among %1 forces.</Original>
       </Key>
       <Key ID="STR_A3A_fn_orgp_tBTogEli_titel">
         <Original>Commander</Original>
@@ -9570,13 +9570,13 @@
         <Original>Enough then.</Original>
       </Key>
       <Key ID="STR_A3A_fn_punish_punRel_admin">
-        <Original>An admin looks with pity upon your soul.<br/>You have been forgiven.</Original>
+        <Original>An admin looks with pity upon your soul.&lt;br/&gt;You have been forgiven.</Original>
       </Key>
       <Key ID="STR_A3A_fn_punish_punSenCl_text">
         <Original>Please do not teamkill. Stare at the turtles for %1 more seconds.</Original>
       </Key>
       <Key ID="STR_A3A_fn_punish_punSenSv_text">
-        <Original>has been found guilty of FF (3+ Strikes).<br/><br/>If you believe this is a mistake, you can forgive him with the corresponding scroll-menu action.</Original>
+        <Original>has been found guilty of FF (3+ Strikes).&lt;br/&gt;&lt;br/&gt;If you believe this is a mistake, you can forgive him with the corresponding scroll-menu action.</Original>
       </Key>
       <Key ID="STR_A3A_fn_punish_pun_conun">
         <Original>Control Unit</Original>
@@ -9701,13 +9701,13 @@
         <Original>You cannot construct anything while controlling AI.</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_no_uncon">
-        <Original>You are an engineer, but not in a state to build: you may be unconscious or undercover.<br/></Original>
+        <Original>You are an engineer, but not in a state to build: you may be unconscious or undercover.&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_no_engi">
-        <Original>You are not an engineer.<br/></Original>
+        <Original>You are not an engineer.&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_humanEngi">
-        <Original>There is a human engineer in your squad. Ask them to build.<br/></Original>
+        <Original>There is a human engineer in your squad. Ask them to build.&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_no_sl">
         <Original>Only squad leaders can order AI to build.</Original>
@@ -9842,7 +9842,7 @@
         <Original>You do not have enough money to afford additional training. %1 € needed.</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_FIASkAdd_upgraded">
-        <Original>%2 Skill Level has been Upgraded.<br/>Current level is %1.</Original>
+        <Original>%2 Skill Level has been Upgraded.&lt;br/&gt;Current level is %1.</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_garrDia_title">
         <Original>Garrison</Original>
@@ -9869,7 +9869,7 @@
         <Original>The place has no garrisoned troops to remove.</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_garrDia_removed">
-        <Original>Garrison removed<br/><br/>Recovered Money: %1 €<br/>Recovered HR: %2</Original>
+        <Original>Garrison removed&lt;br/&gt;&lt;br/&gt;Recovered Money: %1 €&lt;br/&gt;Recovered HR: %2</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_NatoBomb_title">
         <Original>Air Support</Original>
@@ -9923,13 +9923,13 @@
         <Original>You don't have enough weapons to equip this type of unit.</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_reinfPlayer_recruited">
-        <Original>Soldier Recruited.<br/><br/>Remember: if you use the group menu to switch groups you will lose control of your recruited AI.</Original>
+        <Original>Soldier Recruited.&lt;br/&gt;&lt;br/&gt;Remember: if you use the group menu to switch groups you will lose control of your recruited AI.</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_spawnHCGro_title">
         <Original>Recruit Squad</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_spawnHCGro_atCommand">
-        <Original>Group %1 at your command.<br/><br/>Groups are managed from the High Command bar (Default: CTRL+SPACE)<br/><br/>If the group gets stuck, use the AI Control feature to make them start moving. Mounted Static teams tend to get stuck (solving this is WiP)<br/><br/>To assign a vehicle for this group, look at some vehicle, and use Vehicle Squad Mngmt option in Y menu.</Original>
+        <Original>Group %1 at your command.&lt;br/&gt;&lt;br/&gt;Groups are managed from the High Command bar (Default: CTRL+SPACE)&lt;br/&gt;&lt;br/&gt;If the group gets stuck, use the AI Control feature to make them start moving. Mounted Static teams tend to get stuck (solving this is WiP)&lt;br/&gt;&lt;br/&gt;To assign a vehicle for this group, look at some vehicle, and use Vehicle Squad Mngmt option in Y menu.</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_spawnHCGro_purchased">
         <Original>Vehicle Purchased</Original>
@@ -9941,52 +9941,52 @@
         <Original>You must select one group on the HC bar.</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_dismount">
-        <Original>%2%1 dismounting<br/></Original>
+        <Original>%2%1 dismounting&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_board">
-        <Original>%2%1 boarding<br/></Original>
+        <Original>%2%1 boarding&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_status">
-        <Original>%1 Status<br/><br/>Alive members: %2<br/>Able to combat: %3<br/>Current task: %4<br/>Combat Mode:%5<br/></Original>
+        <Original>%1 Status&lt;br/&gt;&lt;br/&gt;Alive members: %2&lt;br/&gt;Able to combat: %3&lt;br/&gt;Current task: %4&lt;br/&gt;Combat Mode:%5&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_medic_yes">
-        <Original>%1Operative Medic<br/></Original>
+        <Original>%1Operative Medic&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_medic_no">
-        <Original>%1No operative Medic<br/></Original>
+        <Original>%1No operative Medic&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_AT_yes">
-        <Original>%1With AT capabilities<br/></Original>
+        <Original>%1With AT capabilities&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_AA_yes">
-        <Original>%1With AA capabilities<br/></Original>
+        <Original>%1With AA capabilities&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_mortar_">
-        <Original>%1Mortar is deployed<br/></Original>
+        <Original>%1Mortar is deployed&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_mortar_">
-        <Original>%1Mortar not deployed<br/></Original>
+        <Original>%1Mortar not deployed&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_static_">
-        <Original>%1Static is deployed<br/></Original>
+        <Original>%1Static is deployed&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_static_">
-        <Original>%1Static not deployed<br/></Original>
+        <Original>%1Static not deployed&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_currVeh">
-        <Original>%1Current vehicle:<br/>%2<br/></Original>
+        <Original>%1Current vehicle:&lt;br/&gt;%2&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_destr">
         <Original>%1DESTROYED</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_disab">
-        <Original>%1DISABLED<br/></Original>
+        <Original>%1DISABLED&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_weaDisab">
-        <Original>%1WEAPON DISABLED<br/></Original>
+        <Original>%1WEAPON DISABLED&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_munitioned">
-        <Original>%1Munitioned<br/></Original>
+        <Original>%1Munitioned&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_boarded">
         <Original>%1Boarded:%2/%3</Original>
@@ -10074,13 +10074,13 @@
         <Original>Starting persistent save..</Original>
       </Key>
       <Key ID="STR_A3A_fn_save_saveLoop_text_asset">
-        <Original>Assets:<br/><t color='#f0d498'>HR:</Original>
+        <Original>Assets:&lt;br/&gt;&lt;t color='#f0d498'&gt;HR:</Original>
       </Key>
       <Key ID="STR_A3A_fn_save_saveLoop_text_money">
-        <Original>"<br/>Money:"</Original>
+        <Original>&lt;br/&gt;Money:</Original>
       </Key>
       <Key ID="STR_A3A_fn_save_saveLoop_text_options">
-        <Original>€</t></t><br/><br/>Further infomation is provided in <t color='#f0d498'>Map Screen > Game Options > Persistent Save-game</t>.</Original>
+        <Original>€&lt;/t&gt;&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;Further infomation is provided in &lt;t color='#f0d498'&gt;Map Screen > Game Options > Persistent Save-game&lt;/t&gt;.</Original>
       </Key>
     </Container>
     <Container name="A3A_fn_Undercover">
@@ -10106,28 +10106,28 @@
         <Original>You have been reported in the last 30 minutes therefore you cannot go Undercover.</Original>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_while">
-        <Original>You cannot go Undercover while:<br/></Original>
+        <Original>You cannot go Undercover while:&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_weapon">
-        <Original>%1<br/>A weapon is visible.</Original>
+        <Original>%1&lt;br/&gt;A weapon is visible.</Original>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_vest">
-        <Original>%1<br/>Wearing a vest.</Original>
+        <Original>%1&lt;br/&gt;Wearing a vest.</Original>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_helmet">
-        <Original>%1<br/>Wearing a helmet.</Original>
+        <Original>%1&lt;br/&gt;Wearing a helmet.</Original>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_ngv">
-        <Original>%1<br/>Wearing NVGs.</Original>
+        <Original>%1&lt;br/&gt;Wearing NVGs.</Original>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_uniform">
-        <Original>%1<br/>Wearing a suspicious uniform.</Original>
+        <Original>%1&lt;br/&gt;Wearing a suspicious uniform.</Original>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_naked">
-        <Original>%1<br/>Being naked. Thats what you think is unsuspicious?</Original>
+        <Original>%1&lt;br/&gt;Being naked. Thats what you think is unsuspicious?</Original>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_rope">
-        <Original>%1<br/>Holding tow ropes.</Original>
+        <Original>%1&lt;br/&gt;Holding tow ropes.</Original>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_close">
         <Original>You cannot go Undercover near Airports, Outposts, Seaports or Roadblocks.</Original>
@@ -10157,16 +10157,16 @@
         <Original>You went too far away from any roads and have been spotted!</Original>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_no_reason_1">
-        <Original>You cannot stay Undercover while:<br/><br/>A weapon is visible<br/>Wearing a vest<br/>Wearing a helmet<br/>Wearing NVGs<br/>Wearing a mil uniform!</Original>
+        <Original>You cannot stay Undercover while:&lt;br/&gt;&lt;br/&gt;A weapon is visible&lt;br/&gt;Wearing a vest&lt;br/&gt;Wearing a helmet&lt;br/&gt;Wearing NVGs&lt;br/&gt;Wearing a mil uniform!</Original>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_no_reason_2">
-        <Original>You cannot stay Undercover while showing:<br/><br/>A weapon is visible<br/>Wearing a vest<br/>Wearing a helmet<br/>Wearing NVGs<br/>Wearing a mil uniform<br/><br/>The enemy added you to their Wanted List!</Original>
+        <Original>You cannot stay Undercover while showing:&lt;br/&gt;&lt;br/&gt;A weapon is visible&lt;br/&gt;Wearing a vest&lt;br/&gt;Wearing a helmet&lt;br/&gt;Wearing NVGs&lt;br/&gt;Wearing a mil uniform&lt;br/&gt;&lt;br/&gt;The enemy added you to their Wanted List!</Original>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_no_reason_3">
         <Original>You cannot stay Undercover while healing a compromised resistance member!</Original>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_no_reason_4">
-        <Original>You cannot stay Undercover while healing a compromised resistance member<br/><br/>The enemy added you to their Wanted List!</Original>
+        <Original>You cannot stay Undercover while healing a compromised resistance member&lt;br/&gt;&lt;br/&gt;The enemy added you to their Wanted List!</Original>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_leftveh">
         <Original>You left your vehicle and you are still on the Wanted List!</Original>
