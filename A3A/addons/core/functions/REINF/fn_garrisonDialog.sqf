@@ -1,7 +1,7 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 private ["_typeX","_positionTel","_nearX","_garrison","_costs","_hr","_size"];
-private _titleStr = localize "STR_A3A_fn_reinf_garrDia_";
+private _titleStr = localize "STR_A3A_fn_reinf_garrDia_title";
 
 _typeX = _this select 0;
 

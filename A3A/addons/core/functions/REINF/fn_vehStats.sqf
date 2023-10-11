@@ -77,13 +77,13 @@ if ({_x call A3A_fnc_typeOfSoldier == "ATMan"} count _unitsX > 0) then {_textX =
 if ({_x call A3A_fnc_typeOfSoldier == "AAMan"} count _unitsX > 0) then {_textX = format [localize "STR_A3A_fn_reinf_vehStats_AA_yes",_textX]};
 if (!(isNull(_groupX getVariable ["mortarsX",objNull])) or ({_x call A3A_fnc_typeOfSoldier == "StaticMortar"} count _unitsX > 0)) then
 	{
-	if ({vehicle _x isKindOf "StaticWeapon"} count _unitsX > 0) then {_textX = format [localize "STR_A3A_fn_reinf_vehStats_mortar_",_textX]} else {_textX = format [localize "STR_A3A_fn_reinf_vehStats_mortar_",_textX]};
+	if ({vehicle _x isKindOf "StaticWeapon"} count _unitsX > 0) then {_textX = format [localize "STR_A3A_fn_reinf_vehStats_mortar_yes",_textX]} else {_textX = format [localize "STR_A3A_fn_reinf_vehStats_mortar_no",_textX]};
 	}
 else
 	{
 	if ({_x call A3A_fnc_typeOfSoldier == "StaticGunner"} count _unitsX > 0) then
 		{
-		if ({vehicle _x isKindOf "StaticWeapon"} count _unitsX > 0) then {_textX = format [localize "STR_A3A_fn_reinf_vehStats_static_",_textX]} else {_textX = format [localize "STR_A3A_fn_reinf_vehStats_static_",_textX]};
+		if ({vehicle _x isKindOf "StaticWeapon"} count _unitsX > 0) then {_textX = format [localize "STR_A3A_fn_reinf_vehStats_static_yes",_textX]} else {_textX = format [localize "STR_A3A_fn_reinf_vehStats_static_no",_textX]};
 		};
 	};
 

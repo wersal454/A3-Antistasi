@@ -9961,16 +9961,16 @@
       <Key ID="STR_A3A_fn_reinf_vehStats_AA_yes">
         <Original>%1With AA capabilities&lt;br/&gt;</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_vehStats_mortar_">
+      <Key ID="STR_A3A_fn_reinf_vehStats_mortar_yes">
         <Original>%1Mortar is deployed&lt;br/&gt;</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_vehStats_mortar_">
+      <Key ID="STR_A3A_fn_reinf_vehStats_mortar_no">
         <Original>%1Mortar not deployed&lt;br/&gt;</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_vehStats_static_">
+      <Key ID="STR_A3A_fn_reinf_vehStats_static_yes">
         <Original>%1Static is deployed&lt;br/&gt;</Original>
       </Key>
-      <Key ID="STR_A3A_fn_reinf_vehStats_static_">
+      <Key ID="STR_A3A_fn_reinf_vehStats_static_no">
         <Original>%1Static not deployed&lt;br/&gt;</Original>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_currVeh">
