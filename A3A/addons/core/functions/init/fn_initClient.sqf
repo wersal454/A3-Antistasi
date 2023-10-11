@@ -389,12 +389,12 @@ mapX allowDamage false;
 mapX addAction [localize "STR_A3A_fn_init_initclient_addact_gameOpt", {
     [
         localize "STR_A3A_fn_init_initclient_gameOpt_title",
-        localize "STR_A3A_fn_init_initclient_gameOpt_version"+" "+ QUOTE(VERSION_FULL) +
-        localize "STR_A3A_fn_init_initclient_gameOpt_resoBal"+" "+ (A3A_enemyBalanceMul / 10 toFixed 1) + "x" +
-        localize "STR_A3A_fn_init_initclient_gameOpt_unlockNo"+" "+ str minWeaps +
-        localize "STR_A3A_fn_init_initclient_gameOpt_limFT"+" "+ (["No","Yes"] select limitedFT) +
-        localize "STR_A3A_fn_init_initclient_gameOpt_spawnDist"+" "+ str distanceSPWN + "m" +
-        localize "STR_A3A_fn_init_initclient_gameOpt_civLim"+" "+ str globalCivilianMax +
+        localize "STR_A3A_fn_init_initclient_gameOpt_version"+" "+ QUOTE(VERSION_FULL) +"<br/><br/>"+
+        localize "STR_A3A_fn_init_initclient_gameOpt_resoBal"+" "+ (A3A_enemyBalanceMul / 10 toFixed 1) + "x" +"<br/>"+
+        localize "STR_A3A_fn_init_initclient_gameOpt_unlockNo"+" "+ str minWeaps +"<br/>"+
+        localize "STR_A3A_fn_init_initclient_gameOpt_limFT"+" "+ (["No","Yes"] select limitedFT) +"<br/>"+
+        localize "STR_A3A_fn_init_initclient_gameOpt_spawnDist"+" "+ str distanceSPWN + "m" +"<br/>"+
+        localize "STR_A3A_fn_init_initclient_gameOpt_civLim"+" "+ str globalCivilianMax +"<br/>"+
         localize "STR_A3A_fn_init_initclient_gameOpt_timeGC"+" "+ ([[serverTime-A3A_lastGarbageCleanTime] call A3A_fnc_secondsToTimeSpan,1,0,false,2,false,true] call A3A_fnc_timeSpan_format)
     ] call A3A_fnc_customHint;
 #ifdef UseDoomGUI

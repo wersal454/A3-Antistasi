@@ -2629,22 +2629,22 @@
         <Original>Version:</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_initclient_gameOpt_resoBal">
-        <Original><br/><br/>Enemy resource balance:</Original>
+        <Original>Enemy resource balance:</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_initclient_gameOpt_unlockNo">
-        <Original><br/>Unlock Weapon Number:</Original>
+        <Original>Unlock Weapon Number:</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_initclient_gameOpt_limFT">
-        <Original><br/>Limited Fast Travel:</Original>
+        <Original>Limited Fast Travel:</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_initclient_gameOpt_spawnDist">
-        <Original><br/>Spawn Distance:</Original>
+        <Original>Spawn Distance:</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_initclient_gameOpt_civLim">
-        <Original><br/>Civilian Limit:</Original>
+        <Original>Civilian Limit:</Original>
       </Key>
       <Key ID="STR_A3A_fn_init_initclient_gameOpt_timeGC">
-        <Original><br/>Time since GC:</Original>
+        <Original>Time since GC:</Original>
       </Key>
     </Container>
     <Container name="A3A_fn_intel">
