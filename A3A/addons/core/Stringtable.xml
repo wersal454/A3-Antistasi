@@ -215,9 +215,11 @@
       </Key>
       <Key ID="STR_A3A_fn_ai_help_onway">
         <Original>%1 is on the way to help you.</Original>
+        <French>%1 est en route pour vous aider.</French>
       </Key>
       <Key ID="STR_A3A_fn_ai_help_title">
         <Original>Medical</Original>
+        <French>Medical</French>
       </Key>
       <Key ID="STR_A3A_fn_ai_staticautot_autotarget_off">
         <Original>Mounted Static Squad %1 set to Auto Target Mode OFF.</Original>
@@ -379,6 +381,7 @@
     <Container name="A3A_fn_base">
       <Key ID="STR_A3A_fn_base_addActBrea_addact_breach">
         <Original>Breach Vehicle</Original>
+        <French>Forcer Véhicule</French>
       </Key>
       <Key ID="STR_A3A_fn_base_airspacecontrol_undercover">
         <Original>Undercover</Original>
@@ -396,6 +399,7 @@
       </Key>
       <Key ID="STR_A3A_fn_base_airspacecontrol_undercover_text">
         <Original>Unidentified helicopter&lt;br/&gt;&lt;br/&gt;You are closing in on the airspace of %1.&lt;br/&gt;&lt;br/&gt; Change your course or we will take defensive actions!</Original>
+        <French>Hélicoptère non-identifié&lt;br/&gt;&lt;br/&gt;Vous approchez de l'espace aérien de %1.&lt;br/&gt;&lt;br/&gt; Modifiez votre trajectoire ou nous allons prendre des mesures défensives!</French>
       </Key>
       <Key ID="STR_A3A_fn_base_airspacecontrol_warning">
         <Original>Unidentified helicopter&lt;br/&gt;&lt;br/&gt;You are closing in on the airspace of %1.&lt;br/&gt;&lt;br/&gt; Change your course or we will take defensive actions!</Original>
@@ -2590,39 +2594,51 @@
     <Container name="A3A_fn_init">
       <Key ID="STR_A3A_fn_init_cityinfo_airp_1">
         <Original>%1 Airport</Original>
+        <French>%1 Aéroport</French>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_airp_2">
         <Original>%2 Airport%1</Original>
+        <French>%2 Aéroport%1</French>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_click">
         <Original>Click on the zone</Original>
+        <French>Cliquez sur la zone</French>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_destr">
         <Original>%1&lt;br/&gt;DESTROYED</Original>
+        <French>%1&lt;br/&gt;DETRUIT</French>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_fact_1">
         <Original>%1 Factory</Original>
+        <French>%1 Usine</French>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_fact_2">
         <Original>%2 Factory%1</Original>
+        <French>%2 Usine%1</French>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_garr_deci">
         <Original>%1&lt;br/&gt;Garrison: Decimated</Original>
+        <French>%1&lt;br/&gt;Garnison: Décimé</French>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_garr_good">
         <Original>%1&lt;br/&gt;Garrison: Good</Original>
+        <French>%1&lt;br/&gt;Garnison: Bonne</French>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_garr_weak">
         <Original>%1&lt;br/&gt;Garrison: Weakened</Original>
+        <French>%1&lt;br/&gt;Garnison: Affaibli</French>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_goutp_1">
         <Original>%2 Outpost%1</Original>
+        <French>%2 Avant-poste%1</French>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_goutp_2">
         <Original>%1 Outpost</Original>
+        <French>%1 Avant-poste</French>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_hq">
         <Original>%2 HQ%1</Original>
+        <French>%2 QG%1</French>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_influ">
         <Original>%1&lt;br/&gt;Influence: %2</Original>
@@ -3938,69 +3954,87 @@
       </Key>
       <Key ID="STR_A3A_fn_orgp_tBSteal_grab_no">
         <Original>%1 has not enough resources to grab.</Original>
+        <French>%1 n'a pas assez de ressources à récupérer.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_tBSteal_grab_yes">
         <Original>You grabbed 100 € from the %1 Money Pool.&lt;br/&gt;&lt;br/&gt;This will affect your prestige and status among %1 forces.</Original>
+        <French>Vous aves pris 100 € de la réserve d'argent de %1. &lt;br/&gt;&lt;br/&gt; Cela va affecter votre prestige et votre statut au sein des forces de %1.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_tBSteal_titel">
         <Original>Money Grab</Original>
+        <French>Récupération d'argent</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_tBTogEli_eligible_no">
         <Original>You decided not to be eligible for commander.</Original>
+        <French>Vous avez décider de ne pas être éligible pour le commandement.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_tBTogEli_eligible_yes">
         <Original>You are now eligible to be commander of our forces.</Original>
+        <French>Vous êtes désormais éligible pour être le commandant de nos forces.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_tBTogEli_resign_choosing">
         <Original>You resign from being commander, choosing %1 as your successor.</Original>
+        <French>Vous vous êtes retirés du commandement, choissisez %1 pour être votre successeur.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_tBTogEli_resign_chosen">
         <Original>You resign from being commander. Your chosen successor (%1) was not eligible.</Original>
+        <French>Vous vous êtes retirés du commandement. Votre successeur (%1) n'est pas éligible.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_tBTogEli_resign_others">
         <Original>You resign from being Commander. Others will take the command if there is someone suitable.</Original>
-      </Key>
-      <Key ID="STR_A3A_fn_orgp_unitTraits_title">
-        <Original>Unit Traits</Original>
+        <French>Vous vous êtes retirés du Commandement. D'autres assumeront la position si quelqu'un est convenable.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_tBTogEli_titel">
         <Original>Commander</Original>
+        <French>Commandant</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_autorifle1">
         <Original>Autorifleman role.</Original>
+        <French>Rôle de Mitrailleur.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_autorifle2">
         <Original>Autoriflemen have a slight bonus on carry capacity, but make too much noise when they move.</Original>
+        <French>Les Mitrailleut on petit bonus de capacité, mais ils font beaucoup de bruit quand ils se déplacent.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_commander1">
         <Original>Commander role.</Original>
+        <French>Rôle de Commandant.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_commander2">
         <Original>The commander is a lightweight unit with increased camouflage, medical and engineering capabilities.</Original>
+        <French>Le commandant est une unité légère avec des capacités de camouflage, médical et d'ingéniérie augmentée.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_engi1">
         <Original>Engineer role.</Original>
+        <French>Rôle d'ingénieur.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_engi2">
         <Original>Engineers do not have any bonus or penalties, but have the ability to use Repair Kits for vehicle repair.</Original>
+        <French>Les Ingénieurs n'ont pas de bonus ou de malus, mais ils ont l'abilité d'utiliser des kits de répération pour réparer les véhicules.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_grenadier1">
         <Original>Grenadier role.</Original>
+        <French>Rôle de Grenadier.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_grenadier2">
         <Original>Grenadiers have a slight bonus on carry capacity, but are easy to spot.</Original>
+        <French>Les Grenadiers ont un petit bonus de capacité, mais ils ont sont facile à réperer.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_medic1">
         <Original>Medic role.</Original>
+        <French>Rôle de Médecin.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_medic2">
         <Original>Medics do not have any bonus or penalties, but have the ability to use certain medical items for full health restoration.</Original>
+        <French>Les Médecins n'ont pas de bonus ou de malus, mais ils ont l'abilité d'utiliser certains objets médical afin de soigner complètement.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_rifle1">
         <Original>Rifleman role.</Original>
+        <French>Rôle de Fusilier.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_rifle2">
         <Original>Riflemen do not have any bonus or penalties but can hack drones.</Original>
+        <French>Les Fusiliers n'ont pas de bonus ou de malus mais ils peuvent hacker des drones.</French>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_teamlead1">
         <Original>Teamleader role.</Original>
@@ -4010,9 +4044,14 @@
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_titel">
         <Original>Unit Traits</Original>
+        <French>Attributs d'Unité</French>
+      </Key>
+      <Key ID="STR_A3A_fn_orgp_unitTraits_title">
+        <Original>Unit Traits</Original>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_you">
         <Original>You have selected %1.</Original>
+        <French>Vous avez sélectionner %1.</French>
       </Key>
     </Container>
     <Container name="A3A_fn_proxy">
@@ -4032,389 +4071,517 @@
     <Container name="A3A_fn_Punishment">
       <Key ID="STR_A3A_fn_punish_ff_noti">
         <Original>FF Notification</Original>
+        <French>Notification de tir ami.</French>
       </Key>
       <Key ID="STR_A3A_fn_punish_ff_pun">
         <Original>FF Punishment</Original>
+        <French>Punition pour tir ami</French>
       </Key>
       <Key ID="STR_A3A_fn_punish_oob_text">
         <Original>Return to the AO before your blown up, you have %1 seconds.</Original>
+        <French>Retournez dans la zone d'opération avant d'être explosé, vous avez %1 secondes.</French>
       </Key>
       <Key ID="STR_A3A_fn_punish_oob_titel">
         <Original>Out of bounds</Original>
+        <French>Hors limite</French>
       </Key>
       <Key ID="STR_A3A_fn_punish_pun_conun">
         <Original>Control Unit</Original>
+        <French>Contrôle de l'unité</French>
       </Key>
       <Key ID="STR_A3A_fn_punish_pun_fire">
         <Original>Watch your fire!</Original>
+        <French>Regardez ou vous tirez!</French>
       </Key>
       <Key ID="STR_A3A_fn_punish_pun_hurt">
         <Original>hurt you!</Original>
+        <French>vous a bléssé!</French>
       </Key>
       <Key ID="STR_A3A_fn_punish_pun_returned">
         <Original>Returned to original Unit due to FF.</Original>
+        <French>Retour à l'unité d'origine à cause de tir ami.</French>
       </Key>
       <Key ID="STR_A3A_fn_punish_punEval_hurt">
         <Original>%1 hurt you!</Original>
+        <French>%1 vous a blessé</French>
       </Key>
       <Key ID="STR_A3A_fn_punish_punEval_injured">
         <Original>Injured comrade:</Original>
+        <French>Camarade blessé:</French>
       </Key>
       <Key ID="STR_A3A_fn_punish_punEval_warning">
         <Original>FF Warning</Original>
+        <French>Avertissement de tir ami</French>
       </Key>
       <Key ID="STR_A3A_fn_punish_punRel_admin">
         <Original>An admin looks with pity upon your soul.&lt;br/&gt;You have been forgiven.</Original>
+        <French>Un Admin à pitié de votre âme.&lt;br/&gt; Vous avez été pardonnée.</French>
       </Key>
       <Key ID="STR_A3A_fn_punish_punRel_enough">
         <Original>Enough then.</Original>
+        <French>Cela suffit.</French>
       </Key>
       <Key ID="STR_A3A_fn_punish_punSenCl_text">
         <Original>Please do not teamkill. Stare at the turtles for %1 more seconds.</Original>
+        <French>S'il vous plait, ne tuez pas d'allié. Regardez les tortues pendant %1 secondes encore.</French>
       </Key>
       <Key ID="STR_A3A_fn_punish_punSenSv_text">
         <Original>has been found guilty of FF (3+ Strikes).&lt;br/&gt;&lt;br/&gt;If you believe this is a mistake, you can forgive him with the corresponding scroll-menu action.</Original>
+        <French>a été reconnu coupable de tir ami (+3 coups).&lt;br/&gt;&lt;br/&gt; Si vous pensez que c'est une erreur, vous pouvez le pardonner avec le menu déroulant adéquat.</French>
       </Key>
     </Container>
     <Container name="A3A_fn_REINF">
       <Key ID="STR_A3A_fn_reinf_addFIAVeh_no_control">
         <Original>You cannot buy vehicles while you are controlling AI.</Original>
+        <French>Vous ne pouvez pas acheter de véhicules pendant que vous contrôler l'IA.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addFIAVeh_no_enemy">
         <Original>You cannot buy vehicles with enemies nearby.</Original>
+        <French>Vous ne pouvez pas acheter de véhicules tant que des ennemis sont proches.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addFIAVeh_no_flag">
         <Original>You need to be close to the flag to be able to purchase a vehicle.</Original>
+        <French>Vous devez être proche du drapeau afin de pouvoir acheter un véhicule.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addFIAVeh_no_money">
         <Original>You do not have enough money for this vehicle: %1 € required.</Original>
+        <French>Vous n'avez pas assez d'argent pour acheter ce véhicule: %1 € requis.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addFIAVeh_no_placing">
         <Original>Unable to buy vehicle, you are already placing something.</Original>
+        <French>Impossible d'acheter un véhicule, vous êtes déja entrain de placer quelque chose.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addFIAVeh_no_supp">
         <Original>The vehicle you requested is not supported in your current modset.</Original>
+        <French>Le véhicule que vous avez demandé n'est pas pris en charge par votre modset actuel.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addFIAVeh_title">
         <Original>Add Vehicle</Original>
+        <French>Ajout du véhicule</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdHC_buyveh">
         <Original>Buy a vehicle for this squad for %1 €.</Original>
+        <French>Acheter un véhicule pour cette escouade pour %1 €.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdHC_no_commander">
         <Original>Only the Commander has access to this function.</Original>
+        <French>Seul le Commandant à accès à cette fonction.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdHC_no_distance">
         <Original>You cant place HC vehicles further than 50m from HQ</Original>
+        <French>Vous ne pouvez pas placer de véhicules HC à plus de 50m du QG.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdHC_no_enemy">
         <Original>You cannot recruit squads with enemies near your HQ.</Original>
+        <French>Vous ne pouvez pas recruter d'escouades tant que des ennemis sont proches de votre QG.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdHC_no_hr">
         <Original>You do not have enough HR for this request (%1 required).</Original>
+        <French>Vous n'avez pas assez de RH pour cette demande (%1 requis).</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdHC_no_many">
         <Original>You have too many high command squads active. Disband or garrison some to recruit more.</Original>
+        <French>Vous avez trop d'escouade HC actives. Renvoyer ou mettez en garnison certaines pour en recruter d'autres.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdHC_no_modset">
         <Original>Your current modset doesn't support packing/unpacking static weapons.</Original>
+        <French>Votre modset actuel ne supporte pas l'emballage/déballage des armes statiques.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdHC_no_money">
         <Original>You do not have enough money for this request (%1 € required).</Original>
+        <French>Vous n'avez pas assez d'argent pour cette requête (%1 € requis).</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdHC_no_money2">
         <Original>No money left to buy a transport vehicle (%1 € required), creating barefoot squad.</Original>
+        <French>Pas assez d'argent pour acheter ce véhicule de transport (%1 € requis), création d'une escouade à pied.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdHC_no_movehq">
         <Original>You cannot recruit a new squad while you are moving your HQ.</Original>
+        <French>Vous ne pouvez pas recruter de nouvelles escouades pendant que vous déplacez votre QG.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdHC_no_notsupp">
         <Original>The group or vehicle type you requested is not supported in your modset.</Original>
+        <French>Le type de groupe ou véhicule que vous avez demandé n'est pas pris en charge par votre modset actuel.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdHC_no_radio">
         <Original>You need a radio in your inventory to be able to give orders to other squads.</Original>
+        <French>Vous avez besoin d'une radio dans votre inventaire pour pouvoir donner des ordres aux autres escouades.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdHC_no_radio2">
         <Original>You need a Radio Man in your group to be able to give orders to other squads</Original>
+        <French>Vous avez besoin d'un Opérateur Radio dans votre groupe afin de pouvoir donner des ordes aux autres escouades</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdHC_title">
         <Original>Recruit Squad</Original>
+        <French>Recrutement d'escouade</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdVeh_assigned">
         <Original>Vehicle assigned to %1 Squad.</Original>
+        <French>Véhicule assigné à l'escouade %1.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdVeh_has_vehicle">
         <Original>This group has a vehicle already and their mission depends on it.</Original>
+        <French>Ce groupe à déja un véhicule et leur mission en dépends.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdVeh_no_change">
         <Original>Static Weapon Squads cannot change of vehicle.</Original>
+        <French>Les Armes Statiques d'Escouade ne peuvent pas changer de véhicule.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdVeh_no_empty">
         <Original>Selected vehicle is not empty.</Original>
+        <French>Le véhicules sélectionné n'est pas vide.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdVeh_no_room">
         <Original>The vehicle selected has no room for this squad.</Original>
+        <French>Le véhicule sélectionné n'a pas de place pour cette escouade.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdVeh_no_static">
         <Original>You cannot assign a Static Weapon to a Squad.</Original>
+        <French>Vous ne pouvez pas assigné d'Arme Statique à une escouade.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdVeh_select_group">
         <Original>You must select one group on the HC bar.</Original>
+        <French>Vous devez sélectionné un groupe dans la barre de HC.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdVeh_title">
         <Original>Add Squad Vehicle</Original>
+        <French>Ajout d'un véhicule à l'escouade</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_addSqdVeh_veh_destr">
         <Original>The selected vehicle is destroyed or cannot move.</Original>
+        <French>Le véhicule sélectionné est détruit ou ne pas bouger.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_increased">
         <Original>Air Support increased in %1 points.</Original>
+        <French>Le Support Aérien est augmenté de %1 points.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_no_airveh">
         <Original>Only Air Vehicles can be used to increase Airstrike points.</Original>
+        <French>Seul les véhicules aériens peuvent être utiliser pour augmenter les points de frappe aérienne.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_no_area">
         <Original>You and the Air vehicle need to be in the Area of an %1 Airport or HQ in order to convert it to Airstrikes.</Original>
+        <French>Le véhicule aérien et vous devez-être dans la zone d'un aéroport %1 ou d'un QG pour pouvoir le convertir en Frappes aériennes.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_no_destr">
         <Original>You can't convert destroyed Air vehicle to Airstrikes.</Original>
+        <French>Vous ne pouvez pas convertir de véhicules aérien détruit en Frappes Aériennes.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_no_drone">
         <Original>Backpack drones can't be used to increase Airstrike points.</Original>
+        <French>Les sacs à dos de drones ne peuvent pas être utiliser pour augmenter les points de Frappe aérienne.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_no_empty">
         <Original>In order to convert, Vehicle must be empty.</Original>
+        <French>Pour pouvoir convertir, le Véhicule doit être vide.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_no_looking">
         <Original>You are not looking at a vehicle.</Original>
+        <French>Vous ne regardez pas un véhicule.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_no_nearby">
         <Original>You can't convert Airstrikes while enemies are near you.</Original>
+        <French>Vous ne pas convertir de Frappes aériennes tant que des ennemis sont près de vous.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_no_owner">
         <Original>You are not the owner of this vehicle. Therefore, you can't convert it.</Original>
+        <French>Vous n'êtes pas le propriétaire de ce véhicule. Vous ne pouvez donc pas le convertir.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_title">
         <Original>Airstrike</Original>
+        <French>Frappe aérienne</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_humanEngi">
         <Original>There is a human engineer in your squad. Ask them to build.&lt;br/&gt;</Original>
+        <French>Il y a un Ingénieur humain dans votre escouade. Demandez-lui de construire.&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_no_controlling">
         <Original>You cannot construct anything while controlling AI.</Original>
+        <French>Vous ne pouvez pas construire pendant que vous controller l'IA.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_no_engi">
         <Original>You are not an engineer.&lt;br/&gt;</Original>
+        <French>Vous n'êtes pas un ingénieur.&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_no_engi2">
         <Original>You have no available engineers in your squad. They may be unconscious or busy.</Original>
+        <French>Vous n'avez aucun ingénieur disponible dans votre escouade. Ils sont peut-être occupés ou inconscients.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_no_money">
         <Original>You do not have enough money for this construction (%1 € needed).</Original>
+        <French>Vous n'avez pas assez d'argent pour cette construction (%1 € requis).</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_no_outside">
         <Original>You cannot build a bunker outside a controlled zone.</Original>
+        <French>Vous ne pouvez pas construire de bunker en-dehors d'une zone sous contrôle.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_no_placing">
         <Original>You can't build while placing something.</Original>
+        <French>Vous ne pouvez pas construire pendant que vous déplacer quelque chose.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_no_road">
         <Original>Roadblocks can only be built on roads</Original>
+        <French>Les Barrages routiers ne peuvent être construits que sur les routes.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_no_sl">
         <Original>Only squad leaders can order AI to build.</Original>
+        <French>Seuls les chefs d'escouade peuvent ordonner à l'IA de construire.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_no_uncon">
         <Original>You are an engineer, but not in a state to build: you may be unconscious or undercover.&lt;br/&gt;</Original>
+        <French>Vous êtes un igénieur, mais vous n'êtes pas en état de construire: vous pouvez être inconscients ou sous couverture.&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_offroad_friendly">
         <Original>Bunkers can only be built off roads, in friendly areas</Original>
+        <French>Les Bunkers ne peuvent être construits qu'en-dehors des routes, dans des zones alliées.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_build_ordering">
         <Original>Ordering %1 to build.</Original>
+        <French>Commande %1 de construire.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_buildCreVehCall_cancelled">
         <Original>Construction cancelled.</Original>
+        <French>Construction annulée.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_buildCreVehCall_no_move">
         <Original>You didn't move to the position, construction has timed out.</Original>
+        <French>Vous ne vous êtes pas déplacé à la position, la construction a expiré.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_buildCreVehCall_walk">
         <Original>Walk to the selected position to start building</Original>
+        <French>Marchez jusqu'à la position sélectionné pour commencer à construire.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_buildinfo_title">
         <Original>Build Info</Original>
+        <French>Info de construction</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlHQSquad_no_commander">
         <Original>Only Commander has the ability to control HC units.</Original>
+        <French>Seul le Commandant à l'abilité de contrôler les unités HC.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlHQSquad_no_nope">
         <Original>Nope. Not happening.</Original>
+        <French>Non. Pas possible.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlHQSquad_no_uncon">
         <Original>You cannot control an unconscious or dead unit.</Original>
+        <French>Vous ne pouvez pas contrôler d'unité inconsciente ou morte.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlHQSquad_no_undercover">
         <Original>You cannot control squads while undercover.</Original>
+        <French>Vous ne pouvez pas contrôler d'escouade en étant sous converture.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlHQSquad_return">
         <Original>Return Control to AI</Original>
+        <French>Rendre le contrôle à l'IA</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlHQSquad_return_damage">
         <Original>Returned to original Unit as it received damage.</Original>
+        <French>Retour à l'unité d'origine car dégats reçus.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlHQSquad_return_damage_ai">
         <Original>Returned to original Unit as controlled AI received damage.</Original>
+        <French>Retour à l'unité d'origine car l'IA contrôler à reçu des dégats.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlHQSquad_return_time">
         <Original>Time to return control to AI: %1.</Original>
+        <French>Temps avant retour du contrôle à l'IA: %1.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlHQSquad_title">
         <Original>Control Squad</Original>
+        <French>Contrôle d'Escouade</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlunit_no_belong">
         <Original>You cannot control a unit which does not belong to %1.</Original>
+        <French>Vous ne pouvez pas contrôler d'unité qui n'appartient pas à %1.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlunit_no_controlling">
         <Original>You cannot control AI while you are controlling another AI.</Original>
+        <French>Vous ne pouvez pas contrôler d'IA alors que vous contrôler déja une autre IA.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlunit_no_deadUnit">
         <Original>You cannot control an unconscious, a dead unit.</Original>
+        <French>Vous ne pouvez pas contrôler une unité inconsciente ou morte.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlunit_no_nope">
         <Original>Nope. Not happening.</Original>
+        <French>Non. Pas possible.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlunit_no_other_player">
         <Original>You cannot control another player.</Original>
+        <French>Vous ne pouvez pas contrôler un autre joueur.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlunit_no_petros">
         <Original>You cannot control Petros.</Original>
+        <French>Vous ne pouvez pas contrôler Petros.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlunit_no_sl">
         <Original>You cannot control AI if you are not the squad leader.</Original>
+        <French>Vous ne pouvez pas contrôler d'IA si n'êtes pas un chef d'escouade.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlunit_no_uncon">
         <Original>You cannot control AI while undercover.</Original>
+        <French>Vous ne pouvez pas contrôler d'IA alors que vous êtes sous converture.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlunit_return">
         <Original>Return Control to AI</Original>
+        <French>Retour du Contrôle à l'IA.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlunit_return_damage">
         <Original>Returned to original Unit as it received damage.</Original>
+        <French>Retour à l'unité d'origine car dégats reçus.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlunit_return_damage_ai">
         <Original>Returned to original Unit as controlled AI received damage.</Original>
+        <French>Retour à l'unité d'origine car l'IA contrôlé à reçu des dégats.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlunit_return_time">
         <Original>Time to return control to AI: %1.</Original>
+        <French>Temps avant retour du contrôle à l'IA: %1.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_controlunit_title">
         <Original>Control Unit</Original>
+        <French>Contrôle de l'unité</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_dissPlaGro_no_sl">
         <Original>You cannot dismiss anyone if you are not the squad leader.</Original>
+        <French>Vous ne pouvez renvoyer personne si vous n'êtes pas un chef d'escouade.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_dissPlaGro_no_uncon">
         <Original>You cannot disband suppressed, undercover or unconscious units.</Original>
+        <French>Vous ne pouvez pas renvoyer des unités suppressées, inconscientes ou sous couvertures.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_dissPlaGro_title">
         <Original>Dismiss Group</Original>
+        <French>Renvoi du Groupe</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_dissSquad_no_nato">
         <Original>You cannot dismiss NATO groups.</Original>
+        <French>Vous ne pouvez pas renvoyer de groupes de NATO</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_dissSquad_no_player">
         <Original>You cannot dismiss player led, Watchpost, Roadblocks or Minefield building squads.</Original>
+        <French>Vous ne pouvez pas renvoyer des escouades controlés par un joueur, de Poste d'observations, de Barrages routiers ou de construction de Champs de mines.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_dissSquad_title">
         <Original>Dismiss Squad</Original>
+        <French>Dissolution de l'escouade</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_FIAinit_lost">
         <Original>%1 lost communication, he will come back with you if possible.</Original>
+        <French>%1 a perdu la communication, il reviendra avec vous si possible.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_FIASkAdd_no_commander">
         <Original>Only our Commander has access to this function.</Original>
+        <French>Seul votre Commandant à accès à cette fonction.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_FIASkAdd_no_money">
         <Original>You do not have enough money to afford additional training. %1 € needed.</Original>
+        <French>Vous n'avez pas assez d'argent pour vous permettre des entrainements supplémentaires. %1 € est nécessaire.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_FIASkAdd_no_wl">
         <Original>You cannot upgrade training in the current War Level.</Original>
+        <French>Vous ne pouvez pas améliorer l'entrainement dans le Niveau de Guerre actuel.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_FIASkAdd_title">
         <Original>Skill Add</Original>
+        <French>Ajout de compétences</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_FIASkAdd_training_max">
         <Original>Your troops have the maximum training.</Original>
+        <French>Vos troupes sont entrainées au maximum.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_FIASkAdd_upgraded">
         <Original>%2 Skill Level has been Upgraded.&lt;br/&gt;Current level is %1.</Original>
+        <French>%2 Niveau de Compétence a été améliorée.&lt;br/&gt; Le niveau Actuel est %1.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_garrDia_no_att">
         <Original>You cannot manage this garrison when there's a major attack incoming.</Original>
+        <French>Vous ne pouvez pas gérer cette garnison alors qu'une attaque majeur est imminente.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_garrDia_no_enemy">
         <Original>You cannot manage this garrison while there are enemies nearby.</Original>
+        <French>Vous ne pouvez pas gérer cette garnison tant que des ennemis sont à proximité.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_garrDia_no_troops">
         <Original>The place has no garrisoned troops to remove.</Original>
+        <French>L'endroint n'a pas de troupes en garnison à enlever.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_garrDia_removed">
         <Original>Garrison removed&lt;br/&gt;&lt;br/&gt;Recovered Money: %1 €&lt;br/&gt;Recovered HR: %2</Original>
+        <French>Garnison supprimée&lt;br/&gt;&lt;br/&gt;Argent Récupéré : %1 €&lt;br/&gt;RH Récupéré : %2</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_garrDia_title">
         <Original>Garrison</Original>
+        <French>Garnison</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_garrDia_zone_add">
         <Original>Select a zone to add garrisoned troops.</Original>
+        <French>Sélectionnez une zone pour ajouter des troupes en garnison.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_garrDia_zone_belong">
         <Original>That zone does not belong to %1.</Original>
+        <French>Cette zone n'appartient pas à %1.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_garrDia_zone_click">
         <Original>You must click near a marked zone.</Original>
+        <French>Vous devez cliquer à côté d'une zone marquée.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_garrDia_zone_remove">
         <Original>Select a zone to remove it's Garrison.</Original>
+        <French>Sélectionnez une zone pour supprimée sa garnison.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_NatoBomb_lack_supp">
         <Original>You lack of enough Air Support to make this request.</Original>
+        <French>Vous manquez de Support Aérien pour faire cette requête.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_NatoBomb_no_control">
         <Original>You need to control an airport in order to fulfill this request.</Original>
+        <French>Vous devez contrôler un aéroport pour compléter cette requête.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_NatoBomb_no_radio">
         <Original>You need a radio in your inventory to be able to give orders to other squads.</Original>
+        <French>Vous avez besoin d'une radio dans votre inventaire afin de pouvoir donner des ordes aux autres escouades.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_NatoBomb_no_radio2">
         <Original>You need a Radio Man in your group to be able to give orders to other squads</Original>
+        <French>Vous avez besoin d'un Opérateur Radio dans votre groupe afin de pouvoir donner des ordes aux autres escouades</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_NatoBomb_select_end">
         <Original>Select the map position to which the plane will exit to calculate plane's route vector.</Original>
+        <French>Sélectionner la position sur la carte vers laquelle l'avion partira pour calculer le vecteur de sa trajectoire.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_NatoBomb_select_start">
         <Original>Select the spot from which the plane will start to drop the bombs.</Original>
+        <French>Sélectionner l'endroit depuis lequel l'avion débutera le bombardement.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_NatoBomb_title">
         <Original>Air Support</Original>
+        <French>Support Aérien</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_reinfPlayer_no_controlling">
         <Original>You cannot buy units while you are controlling AI.</Original>
+        <French>Vous ne pouvez pas acheter d'unités tant que vous contrôlez l'IA.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_reinfPlayer_no_enemy">
         <Original>You cannot Recruit Units with enemies nearby.</Original>
+        <French>Vous ne pouvez pas recruter d'unités tant que des ennemis sont proches.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_reinfPlayer_no_full">
         <Original>Your squad is full or you have too many scattered units with no radio contact.</Original>
+        <French>Votre escouade est pleine ou alors vous avez trop d'unités éparpillées avec aucun contact radio.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_reinfPlayer_no_hr">
         <Original>You do not have enough HR for this request.</Original>
+        <French>Vous n'avez pas assez de RH pour cette demande.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_reinfPlayer_no_lead">
         <Original>You cannot recruit units as you are not your group leader.</Original>
+        <French>Vous ne pouvez pas recruter d'unités car vous n'êtes pas votre chef d'escouade.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_reinfPlayer_no_member">
         <Original>Only Server Members can recruit AI units.</Original>
+        <French>Seul les Membres du Serveur peuvent recruter des unités IA.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_reinfPlayer_no_money">
         <Original>You do not have enough money for this kind of unit (%1 € needed).</Original>
@@ -4430,72 +4597,95 @@
       </Key>
       <Key ID="STR_A3A_fn_reinf_reinfPlayer_title">
         <Original>AI Recruitment</Original>
+        <French>Recrutement d'IA</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_spawnHCGro_atCommand">
         <Original>Group %1 at your command.&lt;br/&gt;&lt;br/&gt;Groups are managed from the High Command bar (Default: CTRL+SPACE)&lt;br/&gt;&lt;br/&gt;If the group gets stuck, use the AI Control feature to make them start moving. Mounted Static teams tend to get stuck (solving this is WiP)&lt;br/&gt;&lt;br/&gt;To assign a vehicle for this group, look at some vehicle, and use Vehicle Squad Mngmt option in Y menu.</Original>
+        <French>Groupe %1 à votre commandement.&lt;br/&gt;&lt;br/&gt;Les Groupes sont gérer depuis la barre HC (Par défaut: CTRL+SPACE)&lt;br/&gt;&lt;br/&gt;Si le groupe est coincé, utilisez la fonction de Contrôle d'IA afin de les faire bouger. Les équipes d'armes statiques montés ont tendance à se bloquer (la résolution est en cours)&lt;br/&gt;&lt;br/&gt;Pour assigner un véhicule pour ce groupe, regardez un véhicule et utiliser l'option de Gestion de Véhicule d'Escouade dans le menu Y.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_spawnHCGro_purchased">
         <Original>Vehicle Purchased</Original>
+        <French>Véhicule acheté</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_spawnHCGro_title">
         <Original>Recruit Squad</Original>
+        <French>Recrutement d'Escouade</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_AA_yes">
         <Original>%1With AA capabilities&lt;br/&gt;</Original>
+        <French>%1 avec capacités AA&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_AT_yes">
         <Original>%1With AT capabilities&lt;br/&gt;</Original>
+        <French>%1 avec capacités AT&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_board">
         <Original>%2%1 boarding&lt;br/&gt;</Original>
+        <French>%2%1 embarquement&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_boarded">
         <Original>%1Boarded:%2/%3</Original>
+        <French>%1Embarqué:%2/%3</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_currVeh">
         <Original>%1Current vehicle:&lt;br/&gt;%2&lt;br/&gt;</Original>
+        <French>%1véhicule Actuel:&lt;br/&gt;%2&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_destr">
         <Original>%1DESTROYED</Original>
+        <French>%1DETRUIT</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_disab">
         <Original>%1DISABLED&lt;br/&gt;</Original>
+        <French>%1DÉSACTIVÉ&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_dismount">
         <Original>%2%1 dismounting&lt;br/&gt;</Original>
+        <French>%2%1 descend&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_medic_no">
         <Original>%1No operative Medic&lt;br/&gt;</Original>
+        <French>%1Aucun médecin opérationnel&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_medic_yes">
         <Original>%1Operative Medic&lt;br/&gt;</Original>
+        <French>%1Médecin Opérationnel&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_mortar_no">
         <Original>%1Mortar not deployed&lt;br/&gt;</Original>
+        <French>%1Mortier non déployé&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_mortar_yes">
         <Original>%1Mortar is deployed&lt;br/&gt;</Original>
+        <French>%1Mortier est déployé&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_munitioned">
         <Original>%1Munitioned&lt;br/&gt;</Original>
+        <French>%1Réarmé&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_select">
         <Original>You must select one group on the HC bar.</Original>
+        <French>Vous devez selectionner un groupe sur la barre HC.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_static_no">
         <Original>%1Static not deployed&lt;br/&gt;</Original>
+        <French>%1Arme statique non déployée&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_static_yes">
         <Original>%1Static is deployed&lt;br/&gt;</Original>
+        <French>%1Arme statique est déployée&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_status">
         <Original>%1 Status&lt;br/&gt;&lt;br/&gt;Alive members: %2&lt;br/&gt;Able to combat: %3&lt;br/&gt;Current task: %4&lt;br/&gt;Combat Mode:%5&lt;br/&gt;</Original>
+        <French>%1 Statut&lt;br/&gt;&lt;br/&gt;Membres en Vie: %2&lt;br/&gt;Capables de combattre: %3&lt;br/&gt;Tâche actuel: %4&lt;br/&gt;Mode de Combat:%5&lt;br/&gt;</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_title">
         <Original>Vehicle Info</Original>
+        <French>Info de Véhicule</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_weaDisab">
         <Original>%1WEAPON DISABLED&lt;br/&gt;</Original>
+        <French>%1ARME DÉSACTIVÉE&lt;br/&gt;</French>
       </Key>
     </Container>
     <Container name="A3A_fn_Revive">
@@ -4516,6 +4706,7 @@
       </Key>
       <Key ID="STR_A3A_fn_revive_actRev_no_dead">
         <Original>%1 is already dead.</Original>
+        <French>%1 est déja mort.</French>
       </Key>
       <Key ID="STR_A3A_fn_revive_actRev_no_meds">
         <Original>You or %1 need a First Aid Kit or Medikit to be able to revive.</Original>
@@ -4531,9 +4722,11 @@
       </Key>
       <Key ID="STR_A3A_fn_revive_carry_addact_release">
         <Original>Release %1</Original>
+        <French>Relâcher %1</French>
       </Key>
       <Key ID="STR_A3A_fn_revive_carry_dead">
         <Original>%1 is dead.</Original>
+        <French>%1 est mort.</French>
       </Key>
       <Key ID="STR_A3A_fn_revive_carry_no_carry">
         <Original>%1 is being carried or transported and you cannot carry him.</Original>
@@ -4543,57 +4736,71 @@
       </Key>
       <Key ID="STR_A3A_fn_revive_carry_title">
         <Original>Carry/Drag</Original>
+        <French>Porter/Traîner</French>
       </Key>
     </Container>
     <Container name="A3A_fn_SalvageRope">
       <Key ID="STR_A3A_fn_salvRope_addact_attach">
         <Original>Attach Rope</Original>
+        <French>Attacher corde</French>
       </Key>
       <Key ID="STR_A3A_fn_salvRope_addact_deploy">
         <Original>Deploy Winch</Original>
+        <French>Déployer Treuil</French>
       </Key>
       <Key ID="STR_A3A_fn_salvRope_addact_stow">
         <Original>Stow Winch</Original>
+        <French>Arrimer Treuil</French>
       </Key>
     </Container>
     <Container name="A3A_fn_Save">
       <Key ID="STR_A3A_fn_save_saveLoop_progress">
         <Original>Server data save is still in progress...</Original>
+        <French>La sauvegarde des données du serveur est toujours en cours...</French>
       </Key>
       <Key ID="STR_A3A_fn_save_saveLoop_saving">
         <Original>Starting persistent save..</Original>
+        <French>Lancement de la sauvegarde persistante...</French>
       </Key>
       <Key ID="STR_A3A_fn_save_saveLoop_text_asset">
         <Original>Assets:&lt;br/&gt;&lt;t color='#f0d498'&gt;HR:</Original>
       </Key>
       <Key ID="STR_A3A_fn_save_saveLoop_text_money">
         <Original>&lt;br/&gt;Money:</Original>
+        <French>&lt;br/&gt;Argent:</French>
       </Key>
       <Key ID="STR_A3A_fn_save_saveLoop_text_options">
         <Original>€&lt;/t&gt;&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;Further infomation is provided in &lt;t color='#f0d498'&gt;Map Screen &gt; Game Options &gt; Persistent Save-game&lt;/t&gt;.</Original>
       </Key>
       <Key ID="STR_A3A_fn_save_saveLoop_title1">
         <Original>Save Game</Original>
+        <French>Sauvegarde du jeu</French>
       </Key>
       <Key ID="STR_A3A_fn_save_saveLoop_title2">
         <Original>Persistent Save</Original>
+        <French>Sauvegarde Persistante</French>
       </Key>
     </Container>
     <Container name="A3A_fn_Undercover">
       <Key ID="STR_A3A_fn_undercover_canGoUn_already">
         <Original>You are Undercover already.</Original>
+        <French>Vous êtes déja sous converture.</French>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_ai">
         <Original>You cannot go Undercover while you are controlling AI!</Original>
+        <French>Vous ne pouvez pas être sous couverture alors que vous contrôlez l'IA!</French>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_close">
         <Original>You cannot go Undercover near Airports, Outposts, Seaports or Roadblocks.</Original>
+        <French>Vous ne pouvez pas être sous Couverture près des Aéroports, des Avants-postes, des Bases Maritimes ou des Barrages routiers.</French>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_nociv">
         <Original>You are not in a civilian vehicle.</Original>
+        <French>Vous n'êtes pas dans un véhicule civile.</French>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_helmet">
         <Original>%1&lt;br/&gt;Wearing a helmet.</Original>
+        <French>%1&lt;br/&gt;Port d'un casque.</French>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_naked">
         <Original>%1&lt;br/&gt;Being naked. Thats what you think is unsuspicious?</Original>
@@ -4639,30 +4846,38 @@
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_entered_veh1">
         <Original>You entered a non civilian vehicle!</Original>
+        <French>Vous entrez dans un véhicule non civile!</French>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_entered_veh2">
         <Original>You entered a reported vehicle!</Original>
+        <French>Vous entrez dans un véhicule recherché!</French>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_Error">
         <Original>Unknown error occured in undercover execution routine!</Original>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_leftveh">
         <Original>You left your vehicle and you are still on the Wanted List!</Original>
+        <French>Vous quittez votre véhicule et êtes toujours recherchées!</French>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_no_distance">
         <Original>You went too far away from any roads and have been spotted!</Original>
+        <French>Vous vous êtes trop éloigné des routes et vous avez été repéré !</French>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_no_explo">
         <Original>Explosives have been spotted on your vehicle!</Original>
+        <French>Des Explosifs ont été repéré sur votre véhicule!</French>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_no_reason_1">
         <Original>You cannot stay Undercover while:&lt;br/&gt;&lt;br/&gt;A weapon is visible&lt;br/&gt;Wearing a vest&lt;br/&gt;Wearing a helmet&lt;br/&gt;Wearing NVGs&lt;br/&gt;Wearing a mil uniform!</Original>
+        <French>Vous ne pouvez pas rester sous couverture pendant que:&lt;br/&gt;&lt;br/&gt;Une arme est visible&lt;br/&gt;vous Portez une veste&lt;br/&gt;vous Portez un casque&lt;br/&gt;vous Portez des LVN&lt;br/&gt;vous Portez un uniforme militaire!</French>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_no_reason_2">
         <Original>You cannot stay Undercover while showing:&lt;br/&gt;&lt;br/&gt;A weapon is visible&lt;br/&gt;Wearing a vest&lt;br/&gt;Wearing a helmet&lt;br/&gt;Wearing NVGs&lt;br/&gt;Wearing a mil uniform&lt;br/&gt;&lt;br/&gt;The enemy added you to their Wanted List!</Original>
+        <French>Vous ne pouvez pas rester sous couverture pendant que vous montrez:&lt;br/&gt;&lt;br/&gt;Une arme est visible&lt;br/&gt;vous Portez une veste&lt;br/&gt;vous Portez un casque&lt;br/&gt;vous Portez des LVN&lt;br/&gt;vous Portez un uniforme militaire!</French>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_no_reason_3">
         <Original>You cannot stay Undercover while healing a compromised resistance member!</Original>
+        <French>Vous ne pouvez pas rester sous couverture alors que vous soigner un membre de la résistance compromis!</French>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_no_reason_4">
         <Original>You cannot stay Undercover while healing a compromised resistance member&lt;br/&gt;&lt;br/&gt;The enemy added you to their Wanted List!</Original>
@@ -4687,23 +4902,26 @@
       <Key ID="STR_A3A_fn_UtilItem_dropOb_addact_drop">
         <Original>Drop object</Original>
       </Key>
-      <Key ID="STR_A3A_fn_UtilItem_initObjRem_addact_build">
-        <Original>Building placer</Original>
-      </Key>
       <Key ID="STR_A3A_fn_UtilItem_initMovOb_addact_carry">
         <Original>Carry object</Original>
       </Key>
       <Key ID="STR_A3A_fn_UtilItem_initMovOb_addact_rotate">
         <Original>Rotate object</Original>
       </Key>
+      <Key ID="STR_A3A_fn_UtilItem_initObjRem_addact_build">
+        <Original>Building placer</Original>
+      </Key>
       <Key ID="STR_A3A_fn_UtilItem_initObjRem_addact_open">
         <Original>Open Doors</Original>
+        <French>Ouvrir Portes</French>
       </Key>
       <Key ID="STR_A3A_fn_UtilItem_initObjRem_addact_pack">
         <Original>Pack object</Original>
+        <French>Emballer objet</French>
       </Key>
       <Key ID="STR_A3A_fn_UtilItem_initObjRem_addact_unpack">
         <Original>Unpack object</Original>
+        <French>Déballer objet</French>
       </Key>
     </Container>
     <Container name="A3A_garrisons">
@@ -5035,6 +5253,7 @@
       </Key>
       <Key ID="STR_A3A_GCTracker_warning_text">
         <Original>Automatic Garbage Clean incoming in %1</Original>
+        <French>Nettoyeur mémoire automatique dans %1</French>
       </Key>
       <Key ID="STR_A3A_GCTracker_warning_title">
         <Original>Final Warning</Original>
@@ -5080,6 +5299,7 @@
       </Key>
       <Key ID="STR_A3A_keybinds_keyAcc_earplugs_title">
         <Original>Ear Plugs</Original>
+        <French>Bouchons d'oreilles</French>
       </Key>
     </Container>
     <Container name="A3A_Scripts">
@@ -5492,6 +5712,23 @@
         <Czech>Krabice byla použita za posledních 30 sekund! Počkejte chvíli prosím.</Czech>
         <Turkish>Kutu son 30 saniyede kullanıldı! Lütfen biraz bekleyin.</Turkish>
         <Chinesesimp>请稍等，箱子在过去30秒内被使用过!</Chinesesimp>
+      </Key>
+    </Container>
+    <Container name="Building_Placer">
+      <Key ID="STR_A3A_builder_box_being_used">
+        <Original>Builder box is already being used by %1</Original>
+      </Key>
+      <Key ID="STR_A3A_builder_enemies_near">
+        <Original>You can not use the placer while there are enemies nearby.</Original>
+      </Key>
+      <Key ID="STR_A3A_builder_not_eligible">
+        <Original>You are not eligible to use the building placer.</Original>
+      </Key>
+      <Key ID="STR_A3A_builder_server_respond_failed">
+        <Original>Server failed to respond to building placer request.</Original>
+      </Key>
+      <Key ID="STR_A3A_builder_title">
+        <Original>Building Placer</Original>
       </Key>
     </Container>
     <Container name="carpet_bombing">
@@ -10649,6 +10886,12 @@
         <Turkish>Cephane İstasyonu</Turkish>
         <Chinesesimp>弹药站</Chinesesimp>
       </Key>
+      <Key ID="STR_A3A_Utility_Items_Name_buildboxlarge">
+        <Original>Large construction kit</Original>
+      </Key>
+      <Key ID="STR_A3A_Utility_Items_Name_buildboxsmall">
+        <Original>Small construction kit</Original>
+      </Key>
       <Key ID="STR_A3A_Utility_Items_Name_fueldrum">
         <Original>Fuel Drum</Original>
         <German>Benzinfass</German>
@@ -10725,12 +10968,6 @@
         <Czech>Opravárenska stanice</Czech>
         <Turkish>Tamir İstasyonu</Turkish>
         <Chinesesimp>修理站</Chinesesimp>
-      </Key>
-      <Key ID="STR_A3A_Utility_Items_Name_buildboxsmall">
-        <Original>Small construction kit</Original>
-      </Key>
-      <Key ID="STR_A3A_Utility_Items_Name_buildboxlarge">
-        <Original>Large construction kit</Original>
       </Key>
       <Key ID="STR_A3A_Utility_Items_Purchase_Title">
         <Original>Item Purchase</Original>
@@ -10859,23 +11096,6 @@
         <Polish>Opcje związane z zarządzaniem pojazdami w oddziałach kontrolowanych przez HC</Polish>
         <Czech>Možnosti související se správou vozidel v jednotkách kontrolovaných HC</Czech>
         <Chinesesimp>与指挥部班组车辆管理相关的选项</Chinesesimp>
-      </Key>
-    </Container>
-    <Container name="Building_Placer">
-      <Key ID="STR_A3A_builder_title">
-        <Original>Building Placer</Original>
-      </Key>
-      <Key ID="STR_A3A_builder_enemies_near">
-        <Original>You can not use the placer while there are enemies nearby.</Original>
-      </Key>
-      <Key ID="STR_A3A_builder_not_eligible">
-        <Original>You are not eligible to use the building placer.</Original>
-      </Key>
-      <Key ID="STR_A3A_builder_server_respond_failed">
-        <Original>Server failed to respond to building placer request.</Original>
-      </Key>
-      <Key ID="STR_A3A_builder_box_being_used">
-        <Original>Builder box is already being used by %1</Original>
       </Key>
     </Container>
   </Package>
