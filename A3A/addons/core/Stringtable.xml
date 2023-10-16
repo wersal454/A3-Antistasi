@@ -10863,7 +10863,7 @@
     </Container>
     <Container name="Building_Placer">
       <Key ID="STR_A3A_builder_title">
-        <Original>Building Placer</original>
+        <Original>Building Placer</Original>
       </Key>
       <Key ID="STR_A3A_builder_enemies_near">
         <Original>You can not use the placer while there are enemies nearby.</Original>
