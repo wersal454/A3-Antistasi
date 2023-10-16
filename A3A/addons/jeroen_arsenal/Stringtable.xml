@@ -248,6 +248,7 @@
       </Key>
       <Key ID="STR_A3A_JNA_rhs_error">
         <Original>ERROR - Please report RPT to Antistasi Devs.</Original>
+        <French>ERREUR - Veuillez signaler le RPT aux développeurs d'Antistasi.</French>
       </Key>
       <Key ID="STR_A3A_JNA_scope_incompatible">
         <Original>&lt;br/&gt;(Not compatible with currently equipped weapons)</Original>
@@ -480,6 +481,7 @@
       </Key>
       <Key ID="STR_A3A_JND_title">
         <Original>Ultra Wide Extended Debug Console With Extra Save Buttons!</Original>
+        <French>Console de débogage étendue ultra large avec boutons de sauvegarde supplémentaires !</French>
       </Key>
     </Container>
   </Package>
