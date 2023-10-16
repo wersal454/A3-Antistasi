@@ -3960,6 +3960,9 @@
       <Key ID="STR_A3A_fn_orgp_tBTogEli_resign_others">
         <Original>You resign from being Commander. Others will take the command if there is someone suitable.</Original>
       </Key>
+      <Key ID="STR_A3A_fn_orgp_unitTraits_title">
+        <Original>Unit Traits</Original>
+      </Key>
       <Key ID="STR_A3A_fn_orgp_tBTogEli_titel">
         <Original>Commander</Original>
       </Key>
@@ -3999,10 +4002,10 @@
       <Key ID="STR_A3A_fn_orgp_unitTraits_rifle2">
         <Original>Riflemen do not have any bonus or penalties but can hack drones.</Original>
       </Key>
-      <Key ID="STR_A3A_fn_orgp_unitTraits_teamllead1">
+      <Key ID="STR_A3A_fn_orgp_unitTraits_teamlead1">
         <Original>Teamleader role.</Original>
       </Key>
-      <Key ID="STR_A3A_fn_orgp_unitTraits_teamllead2">
+      <Key ID="STR_A3A_fn_orgp_unitTraits_teamlead2">
         <Original>Teamleader are more lightweight units with increased camouflage capabilities.</Original>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_titel">
@@ -4683,6 +4686,9 @@
     <Container name="A3A_fn_UtilityItems">
       <Key ID="STR_A3A_fn_UtilItem_dropOb_addact_drop">
         <Original>Drop object</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_UtilItem_initObjRem_addact_build">
+        <Original>Building placer</Original>
       </Key>
       <Key ID="STR_A3A_fn_UtilItem_initMovOb_addact_carry">
         <Original>Carry object</Original>
@@ -10720,6 +10726,12 @@
         <Turkish>Tamir İstasyonu</Turkish>
         <Chinesesimp>修理站</Chinesesimp>
       </Key>
+      <Key ID="STR_A3A_Utility_Items_Name_buildboxsmall">
+        <Original>Small construction kit</Original>
+      </Key>
+      <Key ID="STR_A3A_Utility_Items_Name_buildboxlarge">
+        <Original>Large construction kit</Original>
+      </Key>
       <Key ID="STR_A3A_Utility_Items_Purchase_Title">
         <Original>Item Purchase</Original>
         <Italian>Compra Oggetto</Italian>
@@ -10847,6 +10859,23 @@
         <Polish>Opcje związane z zarządzaniem pojazdami w oddziałach kontrolowanych przez HC</Polish>
         <Czech>Možnosti související se správou vozidel v jednotkách kontrolovaných HC</Czech>
         <Chinesesimp>与指挥部班组车辆管理相关的选项</Chinesesimp>
+      </Key>
+    </Container>
+    <Container name="Building_Placer">
+      <Key ID="STR_A3A_builder_title">
+        <Original>Building Placer</original>
+      </Key>
+      <Key ID="STR_A3A_builder_enemies_near">
+        <Original>You can not use the placer while there are enemies nearby.</Original>
+      </Key>
+      <Key ID="STR_A3A_builder_not_eligible">
+        <Original>You are not eligible to use the building placer.</Original>
+      </Key>
+      <Key ID="STR_A3A_builder_server_respond_failed">
+        <Original>Server failed to respond to building placer request.</Original>
+      </Key>
+      <Key ID="STR_A3A_builder_box_being_used">
+        <Original>Builder box is already being used by %1</Original>
       </Key>
     </Container>
   </Package>

@@ -189,6 +189,20 @@ class CfgFunctions
             class zoneCheck {};
         };
 
+        class Builder {
+            file = QPATHTOFOLDER(functions\Builder);
+            class addBuildingActions {};
+            class buildingComplete {};
+            class buildingPlacer {};
+            class buildingPlacerStart {};
+            class initBuildableObjects {};
+            class initBuilderMonitors {};
+            class initPlacerDB {};
+            class lockBuilderBox {};
+            class placeBuilderObjects {};
+            class processBuildingTimeouts {};
+        };
+
         class Collections {
             file = QPATHTOFOLDER(functions\Collections);
             class getNestedObject {};
@@ -760,7 +774,6 @@ class CfgFunctions
             class buyItem {};
             class carryItem {};
             class dropObject {};
-            class initMovableObject {};
             class initObject {};
             class initObjectRemote {};
             class remainingFuel {};

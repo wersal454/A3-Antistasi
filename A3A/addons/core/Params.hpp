@@ -126,6 +126,13 @@ class Params
         texts[] = {"Disabled", "Withstand"};
         default = 0;
     };
+    class A3A_builderPermissions
+    {
+        title = "Player classes permitted to use the building placer";
+        values[] = {1, 2, 3};
+        texts[] = {"Team leaders", "Engineers", "Both"};
+        default = 3;
+    };
 
     class SpacerMembership
     {
@@ -267,6 +274,7 @@ class Params
         texts[] = {"No limit", "16", "24", "32"};
         default = 24;
     };
+
     class SpacerEquipment
     {
         title = "";
