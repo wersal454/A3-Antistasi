@@ -126,6 +126,13 @@ class Templates
         forceDLC[] = {"ws"};
         climate[] = {"arid"};
     };
+    class WS_ION : WS_Base
+    {
+        side = "Inv";
+        flagTexture = "\A3\Data_F\Flags\flag_ion_CO.paa";
+        name = "WS ION";
+        file = "WS_AI_ION";
+    };
     class WS_SIFA : WS_Base
     {
         side = "Inv";
