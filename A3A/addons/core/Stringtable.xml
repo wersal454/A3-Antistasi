@@ -4902,10 +4902,10 @@
       <Key ID="STR_A3A_fn_UtilItem_dropOb_addact_drop">
         <Original>Drop object</Original>
       </Key>
-      <Key ID="STR_A3A_fn_UtilItem_initMovOb_addact_carry">
+      <Key ID="STR_A3A_fn_UtilItem_initObjRem_addact_carry">
         <Original>Carry object</Original>
       </Key>
-      <Key ID="STR_A3A_fn_UtilItem_initMovOb_addact_rotate">
+      <Key ID="STR_A3A_fn_UtilItem_initObjRem_addact_rotate">
         <Original>Rotate object</Original>
       </Key>
       <Key ID="STR_A3A_fn_UtilItem_initObjRem_addact_build">
