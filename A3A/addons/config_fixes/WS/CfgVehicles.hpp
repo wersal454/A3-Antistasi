@@ -1,4 +1,3 @@
-
 class CfgVehicles
 {
     class O_Truck_02_Ammo_F;
@@ -22,7 +21,6 @@ class CfgVehicles
     class B_Tura_Offroad_armor_AT_lxWS;
     class B_Tura_Offroad_armor_armed_lxWS;
 
-	
     #include "ws_ion.hpp"
 		
     //Misc retextures
@@ -41,7 +39,7 @@ class CfgVehicles
         textureList[] = {};
         hiddenSelectionsTextures[] = {"a3\soft_f\offroad_01\data\offroad_01_ext_base01_co.paa","a3\soft_f\offroad_01\data\offroad_01_ext_base01_co.paa","lxws\vehicles_f_lxws\offroad_01\data\offroad_01_adds_black_co.paa","lxws\vehicles_f_lxws\offroad_01\data\offroad_01_armor_sfia2_co.paa"};
     };
-		
+
     class a3a_green_Offroad_armor : B_Tura_Offroad_armor_lxWS
     {
         textureList[] = {};
@@ -57,7 +55,7 @@ class CfgVehicles
         textureList[] = {};
         hiddenSelectionsTextures[] = {"a3\soft_f_enoch\offroad_01\data\offroad_01_ext_grn_co.paa","a3\soft_f_enoch\offroad_01\data\offroad_01_ext_grn_co.paa","lxws\vehicles_f_lxws\offroad_01\data\offroad_01_adds_black_co.paa","lxws\vehicles_f_lxws\offroad_01\data\offroad_01_armor_rust_co.paa"};
     };
-		
+
     class a3a_ldf_Offroad_armor : B_Tura_Offroad_armor_lxWS
     {
         textureList[] = {};
@@ -82,7 +80,7 @@ class CfgVehicles
         side = 2;
         hiddenSelectionsTextures[] = {"a3\soft_f_enoch\offroad_01\data\offroad_01_ext_eaf_co.paa","a3\soft_f_enoch\offroad_01\data\offroad_01_ext_eaf_co.paa","lxws\vehicles_f_lxws\offroad_01\data\offroad_01_adds_black_co.paa","lxws\vehicles_f_lxws\offroad_01\data\offroad_01_armor_rust_co.paa"};
     };
-		
+
     class a3a_SIFA_Truck_02_medical_F : O_Truck_02_medical_F
     {
         side = 0;
@@ -112,3 +110,4 @@ class CfgVehicles
         hiddenSelectionsTextures[] = {"a3\soft_f_enoch\truck_02\data\truck_02_kab_eaf_co.paa","lxws\vehicles_f_lxws\truck_02\data\truck_02_cargo_eaf_co.paa","a3\soft_f_enoch\truck_02\data\truck_02_int_eaf_co.paa","lxws\vehicles_f_lxws\zu23\data\zu23_base_green_co.paa","lxws\vehicles_f_lxws\zu23\data\zu23_green_co.paa","lxws\vehicles_f_lxws\zu23\data\zu23_addon_1_green_co.paa","lxws\vehicles_f_lxws\zu23\data\zu23_addon_2_green_co.paa","lxws\vehicles_f_lxws\truck_02\data\addons_black_co.paa"};
     };
 };
+
