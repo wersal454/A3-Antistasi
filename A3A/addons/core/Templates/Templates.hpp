@@ -126,6 +126,13 @@ class Templates
         forceDLC[] = {"ws"};
         climate[] = {"arid"};
     };
+    class WS_SIFA : WS_Base
+    {
+        side = "Inv";
+        flagTexture = "\lxws\data_f_lxws\img\flags\flag_SFIA_CO.paa";
+        name = "WS SFIA";
+        file = "WS_AI_SFIA";
+    };
     class WS_ADF : WS_Base
     {
         side = "Occ";
