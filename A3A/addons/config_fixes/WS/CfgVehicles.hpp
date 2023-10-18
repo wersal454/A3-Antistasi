@@ -5,24 +5,24 @@ class CfgVehicles
     class O_Truck_02_box_F;
     class O_Truck_02_transport_F;
     class O_Truck_02_medical_F;
-	
+    
     class I_Truck_02_MRL_F;
-	
+    
     class O_Truck_02_cargo_lxWS;
     class O_Truck_02_flatbed_lxWS;
-	
+    
     class O_Tura_Truck_02_aa_lxWS;
     class O_Tura_ZU23_lxWS;
-	
+    
     class B_G_Offroad_01_armed_F;
     class B_G_Offroad_01_AT_F;
-	
+
     class B_Tura_Offroad_armor_lxWS;
     class B_Tura_Offroad_armor_AT_lxWS;
     class B_Tura_Offroad_armor_armed_lxWS;
 
     #include "ws_ion.hpp"
-		
+
     //Misc retextures
     class a3a_tan_Offroad_armor : B_Tura_Offroad_armor_lxWS
     {
