@@ -126,6 +126,13 @@ class Templates
         forceDLC[] = {"ws"};
         climate[] = {"arid"};
     };
+	class WS_CSAT : WS_Base
+	{
+        side = "Inv";
+        flagTexture = "A3\Data_F\Flags\Flag_CSAT_CO.paa";
+        name = "WS CSAT North Africa";
+        file = "WS_AI_CSAT_NAfrica";
+	};
 	class WS_TURA : WS_Base
 	{
         side = "Reb";
@@ -441,7 +448,7 @@ class Templates
     {
         side = "Reb";
         flagTexture = "uk3cb_factions\addons\uk3cb_factions_ion\flag\ion_flag_co.paa";
-        name = "3CB ION";
+        name = "3CB ION Rebells";
         file = "3CB_Reb_ION";
     };
     class 3CBF_TKM : 3CBF_Base
@@ -456,7 +463,7 @@ class Templates
     {
         side = "Reb";
         flagTexture = "a3\data_f\flags\flag_fia_co.paa";
-        name = "3CB FIA";
+        name = "3CB FIA Rebells";
         file = "3CB_Reb_FIA";
     };
     class 3CBF_CHC : 3CBF_Base

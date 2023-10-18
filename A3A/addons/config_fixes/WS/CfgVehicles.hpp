@@ -110,4 +110,3 @@ class CfgVehicles
         hiddenSelectionsTextures[] = {"a3\soft_f_enoch\truck_02\data\truck_02_kab_eaf_co.paa","lxws\vehicles_f_lxws\truck_02\data\truck_02_cargo_eaf_co.paa","a3\soft_f_enoch\truck_02\data\truck_02_int_eaf_co.paa","lxws\vehicles_f_lxws\zu23\data\zu23_base_green_co.paa","lxws\vehicles_f_lxws\zu23\data\zu23_green_co.paa","lxws\vehicles_f_lxws\zu23\data\zu23_addon_1_green_co.paa","lxws\vehicles_f_lxws\zu23\data\zu23_addon_2_green_co.paa","lxws\vehicles_f_lxws\truck_02\data\addons_black_co.paa"};
     };
 };
-
