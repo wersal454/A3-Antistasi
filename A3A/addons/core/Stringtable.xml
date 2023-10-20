@@ -3907,7 +3907,7 @@
         <Polish>Masz mniej niż 100 € do przekazania.</Polish>
       </Key>
       <Key ID="STR_A3A_fn_orgp_donMon_no_looking">
-        <Original>You must be looking to a player in order to give him money.</Original>
+        <Original>You must be looking at a player in order to give him money.</Original>
         <French>Vous devez regarder un joueur pour pouvoir lui donner de l'argent.</French>
         <Korean>다른 플레이어에게 돈을 주려면 그 플레이어를 바라보고 있어야 합니다.</Korean>
         <Polish>Musisz patrzeć na gracza, aby dać mu pieniądze.</Polish>
@@ -4084,7 +4084,7 @@
         <Polish>Rola - Strzelec RKM</Polish>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_autorifle2">
-        <Original>Autoriflemen have a slight bonus on carry capacity, but make too much noise when they move.</Original>
+        <Original>Autoriflemen have a slight bonus on carry capacity, but make more noise when they move.</Original>
         <French>Les Mitrailleut ont un léger bonus de capacité de transport, mais font beaucoup de bruit quand ils se déplacent.</French>
         <Korean>자동소총수는 운반 용량에 보너스를 가지지만, 이동할 때 매우 큰 소리를 냅니다.</Korean>
         <Polish>Strzelcy automatyczni mają niewielką premię do udźwigu, ale robią więcej hałasu podczas poruszania się.</Polish>
@@ -4212,7 +4212,7 @@
         <Polish>Kara za ogień sojuszniczy</Polish>
       </Key>
       <Key ID="STR_A3A_fn_punish_oob_text">
-        <Original>Return to the AO before your blown up, you have %1 seconds.</Original>
+        <Original>Return to the AO before you are blown up, you have %1 seconds.</Original>
         <French>Retournez dans la zone d'opération avant d'être explosé, vous avez %1 secondes.</French>
         <Korean>폭발하기 전에 작전 구역에서 벗어나십시오! %1초의 시간이 있습니다!</Korean>
         <Polish>Wróć do AO zanim wybuchniesz, masz %1 sekund.</Polish>
@@ -4955,7 +4955,7 @@
         <French>Recrutement d'IA</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_spawnHCGro_atCommand">
-        <Original>Group %1 at your command.&lt;br/&gt;&lt;br/&gt;Groups are managed from the High Command bar (Default: CTRL+SPACE)&lt;br/&gt;&lt;br/&gt;If the group gets stuck, use the AI Control feature to make them start moving. Mounted Static teams tend to get stuck (solving this is WiP)&lt;br/&gt;&lt;br/&gt;To assign a vehicle for this group, look at some vehicle, and use Vehicle Squad Mngmt option in Y menu.</Original>
+        <Original>Group %1 at your command.&lt;br/&gt;&lt;br/&gt;Groups are managed from the High Command bar (Default: CTRL+SPACE)&lt;br/&gt;&lt;br/&gt;If the group gets stuck, use the AI Control feature to make them start moving. Mounted Static teams tend to get stuck (solving this is WiP)&lt;br/&gt;&lt;br/&gt;To assign a vehicle for this group, look at some vehicle, and use Vehicle Squad Management option in Y menu.</Original>
         <French>Groupe %1 à votre commandement.&lt;br/&gt;&lt;br/&gt;Les Groupes sont gérer depuis la barre HC (Par défaut: CTRL+SPACE)&lt;br/&gt;&lt;br/&gt;Si le groupe est coincé, utilisez la fonction de Contrôle d'IA afin de les faire bouger. Les équipes d'armes statiques montés ont tendance à se bloquer (la résolution est en cours)&lt;br/&gt;&lt;br/&gt;Pour assigner un véhicule pour ce groupe, regardez un véhicule et utiliser l'option de Gestion de Véhicule d'Escouade dans le menu Y.</French>
       </Key>
       <Key ID="STR_A3A_fn_reinf_spawnHCGro_purchased">
