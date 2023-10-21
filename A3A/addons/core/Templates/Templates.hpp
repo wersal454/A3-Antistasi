@@ -418,6 +418,15 @@ class Templates
         maps[] = {"altis"};
         climate[] = {"arid"};
     };
+    class 3CBF_AAF_arid : 3CBF_Base
+    {
+        side = "Occ";
+        flagTexture = "a3\data_f\flags\flag_aaf_co.paa";
+        name = "3CB AAF Brown";
+        file = "3CB_AI_AAF_arid";
+        maps[] = {"altis"};
+        climate[] = {"arid"};
+    };
 
     class 3CBF_LDF : 3CBF_Base
     {
@@ -469,7 +478,7 @@ class Templates
     {
         side = "Reb";
         flagTexture = "uk3cb_factions\addons\uk3cb_factions_ion\flag\ion_flag_co.paa";
-        name = "3CB ION Rebells";
+        name = "3CB ION Rebels";
         file = "3CB_Reb_ION";
     };
     class 3CBF_TKM : 3CBF_Base
@@ -484,7 +493,7 @@ class Templates
     {
         side = "Reb";
         flagTexture = "a3\data_f\flags\flag_fia_co.paa";
-        name = "3CB FIA Rebells";
+        name = "3CB FIA Rebels";
         file = "3CB_Reb_FIA";
     };
     class 3CBF_CHC : 3CBF_Base
