@@ -10,7 +10,7 @@
     <nil>
 
     Scope: scheduled
-    Environment: server
+    Environment: client
     Public: no
     Dependencies:
 
@@ -40,12 +40,12 @@ params ["_curatorModules"];
         params ["_curator", "_group"];
         ServerInfo_2("Event: CuratorGroupPlaced, Curator: %1, Group: %2",name player,_group);
     }];
-
+/*
     _x addEventHandler ["CuratorGroupSelectionChanged", {
         params ["_curator", "_group"];
         ServerInfo_2("Event: CuratorGroupSelectionChanged, Curator: %1, Group: %2",name player,_group);
     }];
-
+*/
     _x addEventHandler ["CuratorMarkerDeleted", {
         params ["_curator", "_marker"];
         ServerInfo_2("Event: CuratorMarkerDeleted, Curator: %1, Marker: %2",name player,_marker);
@@ -65,12 +65,12 @@ params ["_curatorModules"];
         params ["_curator", "_marker"];
         ServerInfo_2("Event: CuratorMarkerPlaced, Curator: %1, Marker: %2",name player,_marker);
     }];
-
+/*
     _x addEventHandler ["CuratorMarkerSelectionChanged", {
         params ["_curator", "_marker"];
         ServerInfo_2("Event: CuratorMarkerSelectionChanged, Curator: %1, Marker: %2",name player,_marker);
     }];
-
+*/
     _x addEventHandler ["CuratorObjectDeleted", {
         params ["_curator", "_entity"];
         ServerInfo_3("Event: CuratorObjectDeleted, Curator: %1, Object: %2, Object Type: %3",name player,_entity,typeOf _entity);
@@ -90,17 +90,18 @@ params ["_curatorModules"];
         params ["_curator", "_entity"];
         ServerInfo_3("Event: CuratorObjectPlaced, Curator: %1, Object: %2, Object Type: %3",name player,_entity,typeOf _entity);
     }];
-
+/*
     _x addEventHandler ["CuratorObjectSelectionChanged", {
         params ["_curator", "_entity"];
         ServerInfo_3("Event: CuratorObjectSelectionChanged, Curator: %1, Object: %2, Object Type: %3",name player,_entity,typeOf _entity);
     }];
-
+*/
+/*
     _x addEventHandler ["CuratorPinged", {
         params ["_curator", "_playerPing"];
         ServerInfo_2("Event: CuratorPinged, Curator: %1, Player: %2",name player,name _playerPing);
     }];
-
+*/
     _x addEventHandler ["CuratorWaypointDeleted", {
         params ["_curator", "_waypoint"];
         ServerInfo_2("Event: CuratorWaypointDeleted, Curator: %1, Waypoint: %2",name player,_waypoint);
@@ -120,10 +121,10 @@ params ["_curatorModules"];
         params ["_curator", "_group", "_waypointID"];
         ServerInfo_3("Event: CuratorWaypointPlaced, Curator: %1, Group: %2, WaypointID: %3",name player,_group,_waypointID);
     }];
-
+/*
     _x addEventHandler ["CuratorWaypointSelectionChanged", {
         params ["_curator", "_waypoint"];
         ServerInfo_2("Event: CuratorWaypointSelectionChanged, Curator: %1, Waypoint: %2",name player,_waypoint);
     }];
-
+*/
 } forEach _curatorModules;

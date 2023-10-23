@@ -439,7 +439,7 @@ _layer = ["statisticsX"] call bis_fnc_rscLayer;
 
 if (A3A_hasACE) then {call A3A_fnc_initACE};
 
-[allCurators] remoteExecCall ["A3A_fnc_initZeusLogging",0];
+[allCurators] call A3A_fnc_initZeusLogging;
 
 initClientDone = true;
 Info("initClient completed");
