@@ -25,10 +25,10 @@ private _baseCategory = switch (_itemType select 1) do
         case "BombLauncher": {""}; //Only for vehicles //allBombLaunchers pushBack _nameX};
         case "GrenadeLauncher": {""}; //Only for vehicles //allGrenadeLaunchers pushBack _nameX};
         case "Handgun": {"Handguns"};
-        case "Launcher": {""}; //Unused
         case "MachineGun": {"MachineGuns"};
         case "MissileLauncher": {"MissileLaunchers"};
         case "Mortar": {"Mortars"};
+        case "Launcher";                    // SPE panzerfausts
         case "RocketLauncher": {"RocketLaunchers"};
         case "Shotgun": {"Shotguns"};
         case "Throw": {""}; //Unused
