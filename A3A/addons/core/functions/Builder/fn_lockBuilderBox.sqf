@@ -20,6 +20,15 @@ if (_take) then {
         Debug("Builder box already has a valid owner");
     };
 
+    // Publish ruin->building link for nearby buildings
+    private _nearBuildings = destroyedBuildings inAreaArray [getPosATL _box, 100, 100];
+    {
+        private _ruin = _x getVariable ["ruins", objNull];
+        if (isNull _ruin) then { _ruin = _x getVariable ["BIS_fnc_createRuin_ruin", objNull] };
+        if (isNull _ruin) then { continue };
+        _ruin setVariable ["building", _x, owner player];
+    } forEach _nearBuildings;
+
     private _money = _box getVariable ["A3A_itemPrice", 0];
     _box setVariable ["A3A_itemPrice", 0, true];
     _box setVariable ["A3A_build_money", _money, true];
