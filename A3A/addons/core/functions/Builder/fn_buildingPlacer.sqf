@@ -201,8 +201,8 @@ private _eventHanderEachFrame = addMissionEventHandler ["EachFrame", {
         // Show T key and rebuild cost
         private _ruin = _intersectObj;
         private _building = _ruin getVariable "building";
-        if (isNil "_building") then { _building = _ruin getVariable "BIS_fnc_createRuin_object" };
         if (isNil "_building") exitWith {};																	// non-rebuildable ruin
+        if (_building in antennasDead) exitWith {};                                                         // don't use this for radio towers
         if (-1 != (A3A_building_EHDB # BUILD_OBJECTS_ARRAY) findIf { _x#1 == _building }) exitWith {};		// already rebuilt
 
         // Calculate repair cost from bounding box
