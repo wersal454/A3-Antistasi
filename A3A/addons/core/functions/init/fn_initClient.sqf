@@ -294,7 +294,8 @@ player addEventHandler ["HandleRating", {0}];
 
 // Prevent squad icons showing in 3d display in high command
 addMissionEventHandler ["CommandModeChanged", {
-    setGroupIconsVisible [true, false];
+    params ["_isHighCommand", "_isForced"];
+    if (_isHighCommand) then { setGroupIconsVisible [true, false] };
 }];
 
 call A3A_fnc_initUndercover;
