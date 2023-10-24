@@ -3924,7 +3924,7 @@
         <Czech>Darovat peníze</Czech>
       </Key>
       <Key ID="STR_A3A_fn_orgp_memAdd_added_other">
-        <Original>"%1 has been added to the Server Members List.</Original>
+        <Original>%1 has been added to the Server Members List.</Original>
         <Italian>"%1 è stato aggiunto alla Lista dei Membri del Server</Italian>
         <French>"%1 a été ajouté à la liste des Membres du serveur.</French>
         <Korean>%1이(가) 서버 멤버 목록에 추가되었습니다.</Korean>
