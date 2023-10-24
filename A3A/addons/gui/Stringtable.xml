@@ -145,6 +145,7 @@
       <Key ID="STR_antistasi_teamleader_placer_title">
         <Original>Teamleader Builder</Original>
         <Italian>Costruttore Teamleader</Italian>
+        <Spanish>Teamleader Builder</Spanish>
         <French>Chef d'équipe de constructeurs</French>
         <Korean>조장 빌더</Korean>
       </Key>
@@ -321,6 +322,7 @@
       <Key ID="STR_antistasi_dialogs_buy_vehicle_loot_tooltip">
         <Original>This item can collect loot&lt;br/&gt;%1 max load is %2</Original>
         <German>Dieser Gegenstand kann Beute laden&lt;br/&gt;%1 maximale Kapazität ist %2</German>
+        <Spanish>Este objeto puede recolectar loot&lt;br/&gt;La carga máxima de %1 es %2</Spanish>
         <French>Cet objet peut collecter du butin&lt;br/&gt;%1 charge max est %2</French>
       </Key>
       <Key ID="STR_antistasi_dialogs_buy_vehicle_med_tooltip">
@@ -368,6 +370,7 @@
       <Key ID="STR_antistasi_dialogs_buy_vehicle_refuel_tooltip">
         <Original>This item can refuel others&lt;br/&gt;%1 max fuel is %2</Original>
         <German>Dieser Gegenstand kann andere betanken&lt;br/&gt;%1 Maximaler Füllstand ist %2</German>
+        <Spanish>Este objeto puede repostar a otros&lt;br/&gt;El combustible máximo de %1 es %2</Spanish>
         <French>Cet objet peut ravitailler les autres&lt;br/&gt;%1 carburant max est %2</French>
       </Key>
       <Key ID="STR_antistasi_dialogs_buy_vehicle_repair_tooltip">
@@ -613,6 +616,7 @@
       <Key ID="STR_antistasi_dialogs_hq_dead_population_tooltip">
         <Original>Dead population&lt;br/&gt;You lose when this hits 33%</Original>
         <German>Tote Bevölkerung&lt;br/&gt;Du verlierst wenn es 33% erreicht</German>
+        <Spanish>Población fallecida&lt;br/&gt;Cuando llegue al 33% fracasará</Spanish>
       </Key>
       <Key ID="STR_antistasi_dialogs_hq_faction_money_label">
         <Original>Faction money:</Original>
@@ -729,6 +733,7 @@
       <Key ID="STR_antistasi_dialogs_hq_popular_support_tooltip">
         <Original>Popular support&lt;br/&gt;You need 50% to win</Original>
         <German>Unterstützung der Bevölkerung&lt;br/&gt;Du brauchst 50% um zu gewinnen</German>
+        <Spanish>Apoyo Popular&lt;br/&gt;Necesita el 50% para ganar</Spanish>
       </Key>
       <Key ID="STR_antistasi_dialogs_hq_rest_button">
         <Original>Rest</Original>
@@ -746,7 +751,7 @@
       <Key ID="STR_antistasi_dialogs_hq_rest_environment">
         <Original>Rest &amp; Environment</Original>
         <Italian>Riposa &amp; Ambientati</Italian>
-        <Spanish>Descansar &amp; Alrededores</Spanish>
+        <Spanish>Descanso &amp; Ambiente</Spanish>
         <French>Se reposer &amp; Environnement</French>
         <Korean>휴식 &amp; 환경</Korean>
         <Russian>Отдых &amp; Окружение</Russian>
@@ -1041,7 +1046,7 @@
         <Original>Can't manage garrisons when outpost is under attack.</Original>
         <German>Garnison kann nicht geändert werden wenn der Außenposten angegriffen wird.</German>
         <Italian>Non puoi gestire le guarnigioni quando l'avamposto è sotto attacco.</Italian>
-        <Spanish>No puedes gestionar la guarniciones cuando la base está bajo ataque.</Spanish>
+        <Spanish>No puede gestionar la guarniciones cuando la base está bajo ataque.</Spanish>
         <French>Impossible de gérer les garnisons lorsque l'avant-poste est attaqué.</French>
         <Korean>전초 기지가 공격을 받을 때는 주둔지를 관리할 수 없습니다</Korean>
         <Russian>Невозможно изменять гарнизон, когда аванпост атакуют</Russian>
@@ -1069,7 +1074,7 @@
         <Original>Time will be %2 when you wake up.</Original>
         <German>Es ist %2 wenn du aufwachst.</German>
         <Italian>L'ora sarà %2 quando ti sveglierai.</Italian>
-        <Spanish>Serán las %2 cuando te despiertes.</Spanish>
+        <Spanish>Serán las %2 cuando despierte.</Spanish>
         <French>L'heure sera %2 lorsque vous vous réveillerez.</French>
         <Korean>일어난 후에는 %2시가 되어 있을 겁니다.</Korean>
         <Russian>Вы проснетесь в %2</Russian>
@@ -1566,7 +1571,7 @@
         <Original>Teleport Player to Me</Original>
         <German>Teleportiere Spieler zu mir</German>
         <Italian>Teletrasporta il Giocatore a Te</Italian>
-        <Spanish>Teleportar Jugador a Mi</Spanish>
+        <Spanish>Teleportar Jugador a mi posición</Spanish>
         <French>Téléporter le joueur vers moi</French>
         <Korean>내게로 플레이어 순간이동시키기</Korean>
         <Russian>Переместить Игрока ко мне</Russian>
@@ -1707,6 +1712,7 @@
       <Key ID="STR_antistasi_dialogs_main_ai_management_no_ai_control_tooltip">
         <Original>You can only remote control single units&lt;br/&gt;Select exactly one AI in the list</Original>
         <German>Du kannst nur einzelne Einheiten fernsteuern&lt;br/&gt;Wähle eine einzelne KI aus der Liste aus</German>
+        <Spanish>Sólo puede contorlar una unidad de forma remota&lt;br/&gt;Seleccione exactamente una en la lista de la IA</Spanish>
       </Key>
       <Key ID="STR_antistasi_dialogs_main_ai_management_select_ai_tooltip">
         <Original>Select AI in the list</Original>
@@ -1784,7 +1790,7 @@
         <Original>Get more air support points using the 'Add to Air Support' button in the vehicle section on the player tab.</Original>
         <German>Erhalte mehr Luftunterstützungspunkte über die Schaltfläche "Zur Luftunterstützung hinzufügen" im Fahrzeugbereich auf der Registerkarte "Spieler".</German>
         <Italian>Acquisisci più punti supporto aereo usando il pulsante "Aggiungi al Supporto Aereo" nella sezione veicolo nel menu del giocatore.</Italian>
-        <Spanish>Consigue mas puntos de apoyo aéreo usando el boton de 'Añadir a Apoyo Aéreo' en la sección del vehículo en la hoja del jugador.</Spanish>
+        <Spanish>Consigua más puntos de apoyo aéreo usando el boton 'Añadir a Apoyo Aéreo' en la sección del vehículo de la hoja del jugador.</Spanish>
         <French>Obtenez plus de points d'appui aérien en utilisant le bouton "Ajouter au support aérien" dans la section véhicule de l'onglet joueur.</French>
         <Korean>플레이어 탭의 차량 섹션에 있는 '공중 지원에 추가' 버튼을 사용하여 공중 지원 포인트를 추가하십시오.</Korean>
         <Russian>Получите больше очков поддержки используя кнопку "Добавить к Воздушной Поддержке" в разделе техники во вкладке игрока</Russian>
@@ -1812,7 +1818,7 @@
         <Original>You have no air support points</Original>
         <German>Du hast keine Luftunterstützungspunkte</German>
         <Italian>Non hai punti supporto aereo.</Italian>
-        <Spanish>No tienes puntos de apoyo aéreo</Spanish>
+        <Spanish>No tiene puntos de apoyo aéreo</Spanish>
         <French>Vous n'avez aucun point d'appui aérien</French>
         <Korean>공중 지원 포인트가 없습니다</Korean>
         <Russian>У вас нет очков воздушной поддержки</Russian>
@@ -2427,7 +2433,7 @@
       <Key ID="STR_antistasi_dialogs_main_hc_no_groups">
         <Original>&lt;t align='center'&gt;You have no high command groups.&lt;/t&gt;&lt;br /&gt;&lt;t align='center'&gt;You can recruit them at the flag.&lt;/t&gt;</Original>
         <Italian>&lt;t align='center'&gt;Non hai gruppi Alto Comando.&lt;/t&gt;&lt;br /&gt;&lt;t align='center'&gt;Puoi reclutarli alla bandiera.&lt;/t&gt;</Italian>
-        <Spanish>&lt;t align='center'&gt;No tienes grupos del Alto Mando.&lt;/t&gt;&lt;br /&gt;&lt;t align='center'&gt;Puedes reclutarlos en la bandera.&lt;/t&gt;</Spanish>
+        <Spanish>&lt;t align='center'&gt;No tiene grupos del Alto Mando.&lt;/t&gt;&lt;br /&gt;&lt;t align='center'&gt;Puede reclutarlos en la bandera.&lt;/t&gt;</Spanish>
         <French>&lt;t align='center'&gt;Vous n'avez pas de groupes de haut commandement.&lt;/t&gt;&lt;br /&gt;&lt;t align='center'&gt;Vous pouvez les recruter au drapeau.&lt;/t&gt;</French>
         <Korean>&lt;t align='center'&gt;하이 커맨드 그룹이 없습니다.&lt;/t&gt;&lt;br /&gt;&lt;t align='center'&gt;깃발에서 모집할 수 있습니다.&lt;/t&gt;</Korean>
         <Russian>&lt;t align='center'&gt;У вас нет групп Главнокомандующего.&lt;/t&gt;&lt;br /&gt;&lt;t align='center'&gt;Вы можете нанять их у Флага.&lt;/t&gt;</Russian>
@@ -2440,6 +2446,7 @@
       <Key ID="STR_antistasi_dialogs_main_hc_unit_count_tooltip">
         <Original>Number of units in the group&lt;br/&gt;Able to combat / Total number of units</Original>
         <German>&lt;br/&gt;Anzahl der Saldaten in der Gruppe&lt;br/&gt;Fähig zu kämpfen / Gesammtanzahl der Soldaten</German>
+        <Spanish>Número de unidades en el grupo&lt;br/&gt;Capaces de combatir / Total número de unidades</Spanish>
       </Key>
       <Key ID="STR_antistasi_dialogs_main_hc_vehicle">
         <Original>Vehicle</Original>
@@ -2533,7 +2540,7 @@
         <Original>Click the map to select the location you want %1 to fast travel to.</Original>
         <German>Klicken Sie auf die Karte, um den Ort auszuwählen, zu dem %1 schnell reisen soll.</German>
         <Italian>Clicca la mappa per selezionare la posizone dove vorresti %1 fare il viaggio rapido.</Italian>
-        <Spanish>Selecciona en el mapa el sitio a donde quieres que %1 use el viaje rápido</Spanish>
+        <Spanish>Seleccione en el mapa el sitio a donde quiere que %1 use el viaje rápido</Spanish>
         <French>Cliquez sur la carte pour sélectionner l'emplacement vers lequel vous voulez que %1 se déplacer rapidement.</French>
         <Korean>지도를 클릭하여 %1을(를) 빠른 이동할 위치를 선택하십시오.</Korean>
         <Russian>Кликните на карту для выбора места куда вы хотите переместить %1</Russian>
@@ -2561,7 +2568,7 @@
         <Original>Click the map to select the location you want to fast travel to.</Original>
         <German>Klicken Sie auf die Karte, um den Ort auszuwählen, zu dem du schnell reisen möchtest.</German>
         <Italian>Clicca la mappa per selezionare la posizone dove vorresti fare il viaggio rapido.</Italian>
-        <Spanish>Selecciona en el mapa el sitio a donde quieres usar el viaje rápido.</Spanish>
+        <Spanish>Seleccione en el mapa el sitio a donde quiere usar el viaje rápido.</Spanish>
         <French>Cliquez sur la carte pour sélectionner l'endroit où vous souhaitez vous rendre rapidement.</French>
         <Korean>지도를 클릭하여 원하는 위치를 선택하여 빠른 이동을 합니다.</Korean>
         <Russian>Кликните на карту для выбора места куда вы хотите переместиться</Russian>
@@ -2589,7 +2596,7 @@
         <Original>You will bring your vehicle along as well as any cargo and passengers along with you.</Original>
         <German>Du bringst dein Fahrzeug sowie etwaige Ladung und Passagiere mit.</German>
         <Italian>Porterai con te il tuo veicolo compreso il cargo e i passeggeri.</Italian>
-        <Spanish>Llevaras contigo el vehículo así como el cargamento y pasajeros.</Spanish>
+        <Spanish>Llevará con usted el vehículo así como el cargamento y pasajeros.</Spanish>
         <French>Vous apporterez votre véhicule ainsi que toute cargaison et passagers avec vous.</French>
         <Korean>차량은 물론 화물과 승객도 함께 가져와야 합니다.</Korean>
         <Russian>Вы возьмете с собой свою технику, так же как и груз и пассажиров с вами.</Russian>
@@ -2603,7 +2610,7 @@
         <Original>You will travel to</Original>
         <German>Du reist zu</German>
         <Italian>viaggerai a</Italian>
-        <Spanish>Viajarás a</Spanish>
+        <Spanish>Viajará a</Spanish>
         <French>Vous voyagerez à</French>
         <Korean>당신은 이동할 것입니다</Korean>
         <Russian>Вас переместят к</Russian>
@@ -2646,6 +2653,7 @@
       <Key ID="STR_antistasi_dialogs_main_ai_management_no_ai_tooltip">
         <Original>Needs AI group members&lt;br/&gt;You can recruit them at the flag</Original>
         <German>Benötigt KI-Gruppenmitglieder&lt;br/&gt; Du kannst diese an der Flagge rekrutieren</German>
+        <Spanish>Necesita grupo de miembros de la IA&lt;br/&gt;Puede reclutarlos en la bandera</Spanish>
       </Key>
       <Key ID="STR_antistasi_dialogs_main_ai_management_sl_tooltip">
         <Original>Only available to squad leaders</Original>
@@ -2902,6 +2910,7 @@
       <Key ID="STR_antistasi_dialogs_main_player_money_text">
         <Original>Current money:&lt;br/&gt;€ %1</Original>
         <German>Aktuelles Geld:&lt;br/&gt;€ %1</German>
+        <Spanish>Dinero:&lt;br/&gt;€ %1</Spanish>
       </Key>
       <Key ID="STR_antistasi_dialogs_main_sell_vehicle">
         <Original>Sell</Original>
@@ -3662,7 +3671,7 @@
         <Original>You cannot recruit squads with enemies near your HQ</Original>
         <German>Du kannst keine Truppen Rekrutieren wenn Feinde in der nähe des HQs sind</German>
         <Italian>Non puoi reclutare una squadra quando ci sono nemici nelle vicinanze dell'QG</Italian>
-        <Spanish>No puedes reclutar escuadras con enemigos cercanos a tu CG</Spanish>
+        <Spanish>No puede reclutar escuadras con enemigos cercanos a su CG</Spanish>
         <French>Vous ne pouvez pas recruter d'escouades avec des ennemis à proximité de votre QG</French>
         <Korean>본부 근처에 적이 있는 동안에는 분대를 모집할 수 없습니다</Korean>
         <Russian>Вы не можете нанимать отряды, когда противник возле вашего Штаба</Russian>
@@ -3676,7 +3685,7 @@
         <Original>You do not have enough HR for this request (%1 required)</Original>
         <German>Du hast nicht genug HR für diese Anfrage (%1 benötigt)</German>
         <Italian>Non hai abbastanza HR per questa richiesta (%1 necessario)</Italian>
-        <Spanish>No tienes suficientes RH para esto (1% requeridos)</Spanish>
+        <Spanish>No tiene suficientes RH para esto (1% requeridos)</Spanish>
         <French>Vous n'avez pas assez de RH pour cette demande (%1 requis)</French>
         <Korean>이 요청을 수행할 인력이 부족합니다 (%1 필요)</Korean>
         <Russian>У вас недостаточно ЛР для этого (%1 необходимо)</Russian>
@@ -3690,7 +3699,7 @@
         <Original>You do not have enough money for this request (%1 € required)</Original>
         <German>Du hast nicht genug Geld für diese Anfrage (%1 € benötigt)</German>
         <Italian>Non hai abbastanza denaro per questa richiesta (%1 € necessari)</Italian>
-        <Spanish>No tienes suficiente Dinero para esto (1% requerido)</Spanish>
+        <Spanish>No tiene suficiente Dinero para esto (1% requerido)</Spanish>
         <French>Vous n'avez pas assez d'argent pour cette demande (%1 € requis)</French>
         <Korean>이 요청을 수행할 자금이 부족합니다 (%1€ 필요)</Korean>
         <Russian>У вас недостаточно денег для этого (%1 € необходимо)</Russian>
@@ -3704,7 +3713,7 @@
         <Original>You cannot recruit a new squad while you are moving your HQ</Original>
         <German>Du kannst keinen neuen Trupp Rekrutieren, während du das HQ bewegst</German>
         <Italian>Non puoi reclutare una squadra quando stai muovendo l'QG</Italian>
-        <Spanish>No puedes reclutar una escuadra mientras mueves el CG</Spanish>
+        <Spanish>No puede reclutar una escuadra mientras mueves el CG</Spanish>
         <French>Vous ne pouvez pas recruter une nouvelle escouade pendant que vous déplacez votre QG</French>
         <Korean>본부를 이동하는 동안에는 새 분대를 모집할 수 없습니다</Korean>
         <Russian>Вы не можете нанять новый отряд во время перемещения своего Штаба</Russian>
@@ -3718,7 +3727,7 @@
         <Original>You need a radio in your inventory to be able to give orders to other squads</Original>
         <German>Du brauchst ein Funkgerät in deinem Inventar, um Befehle an andere Truppen zu geben</German>
         <Italian>Hai bisogno di una radio nel tuo inventario per poter dare ordini alle altre squadre</Italian>
-        <Spanish>Necesitas una radio en tu inventario para dar ordenes a otras escuadras</Spanish>
+        <Spanish>Necesita una radio en su inventario para dar ordenes a otras escuadras</Spanish>
         <French>Vous avez besoin d'une radio dans votre inventaire pour pouvoir donner des ordres à d'autres escouades</French>
         <Korean>다른 분대에 명령을 내리려면 소지품에 무전기가 있어야 합니다</Korean>
         <Russian>Вам нужно радио в вашем инвентаре, чтобы иметь возможность отдавать приказы другим отрядам</Russian>
@@ -3732,7 +3741,7 @@
         <Original>You need a Radio Man in your group to be able to give orders to other squads</Original>
         <German>Du brauchst einen Funker in deiner Gruppe, um anderen Trupps Befehle geben zu können.</German>
         <Italian>Hai bisogno di avere un Operatore Radio nel tuo gruppo per poter dare ordini alle altre squadre</Italian>
-        <Spanish>Necesitas un Operador de Radio en tu grupo para dar ordenes a otras escuadras</Spanish>
+        <Spanish>Necesita un Operador de Radio en su grupo para dar ordenes a otras escuadras</Spanish>
         <French>Vous avez besoin d'un opérateur radio dans votre groupe pour pouvoir donner des ordres à d'autres escouades</French>
         <Korean>다른 분대에 명령을 내리려면 당신 그룹 내에 무전병이 있어야 합니다</Korean>
         <Russian>Вам нужен Радист в вашей группе, чтобы иметь возможность отдавать приказы другим отрядам</Russian>
@@ -3760,7 +3769,7 @@
         <Original>The group or vehicle type you requested is not supported in your modset</Original>
         <German>Die angeforderte Gruppe- oder Fahrzeugtyp wird in deinem Modset nicht unterstützt</German>
         <Italian>Il tipo di gruppo o veicolo che hai richiesto non supportato dal tuo modset</Italian>
-        <Spanish>El grupo o tipo de vehículo que pediste no es aceptado en tu modset</Spanish>
+        <Spanish>El grupo o tipo de vehículo que pidió no es aceptado en tu modset</Spanish>
         <French>Le groupe ou le type de véhicule que vous avez demandé n'est pas pris en charge dans votre modset</French>
         <Korean>요청한 그룹 또는 차량이 모드셋에서 지원하는 유형이 아닙니다</Korean>
         <Russian>Запрашиваемая вами группа или техника не доступна с текущими модами</Russian>
@@ -3787,7 +3796,7 @@
       <Key ID="STR_antistasi_recruit_squad_spawn_message">
         <Original>Group %1 at your command.&lt;br/&gt;&lt;br/&gt;Groups are managed from the High Command bar (Default: CTRL+SPACE)&lt;br/&gt;&lt;br/&gt;If the group gets stuck, use the AI Control feature to make them start moving. Mounted Static teams tend to get stuck (solving this is WiP)&lt;br/&gt;&lt;br/&gt;To assign a vehicle for this group, look at some vehicle, and use Vehicle Squad Mngmt option in Y menu</Original>
         <Italian>Gruppo %1 al tuo comando.&lt;br/&gt;&lt;br/&gt;I gruppi vengono gestiti dalla barra dell'Alto Comando(Default: CTRL+SPAZIO)&lt;br/&gt;&lt;br/&gt;Se il gruppo si blocca, usa il controllo IA per farli muovere. Le squadre statiche motorizzate di solito si incastrano facilmente. (Stiamo cercando di risolvere questo problema)&lt;br/&gt;&lt;br/&gt;Per assegnare un veicolo a questo gruppo, guarda il veicolo, e usa l'opzione Gestione Veicolo di Squadra nel menu che apri con Y</Italian>
-        <Spanish>Grupo %1 a tus órdenes.&lt;br/&gt;&lt;br/&gt;Los grupos son gestionados desde la barra de HC (Por defecto: CTRL+ESPACIO)&lt;br/&gt;&lt;br/&gt;Si el grupo queda atascado, usa la opción de Control de IA para hacer que se muevan de nuevo. Los equipos Estáticos Montados tienden a atascarse (resolver esto es WiP)&lt;br/&gt;&lt;br/&gt;Para asignar un vehículo a este grupo, mira hacia un vehículo y usa la opción de Gestión de Vehículo de Escuadra en el menú de Y</Spanish>
+        <Spanish>Grupo %1 a sus órdenes.&lt;br/&gt;&lt;br/&gt;Los grupos son gestionados desde la barra de Alto Mando (Por defecto: CTRL+ESPACIO)&lt;br/&gt;&lt;br/&gt;Si el grupo queda atascado, use la opción de Control de IA para hacer que se muevan de nuevo. Los equipos Estáticos Montados tienden a atascarse (resolver esto es WiP)&lt;br/&gt;&lt;br/&gt;Para asignar un vehículo a este grupo, mire hacia un vehículo y use la opción de Gestión de Vehículo de Escuadra en el menú de Y</Spanish>
         <French>Groupe %1 à votre commande.&lt;br/&gt;&lt;br/&gt;Les groupes sont gérés depuis la barre de commande supérieure (par défaut: CTRL+ESPACE)&lt;br/&gt;&lt;br/&gt;Si le groupe se coince, utilisez la fonction contrôle temporaire de l'IA pour les déplacer. Les équipes statiques montées ont tendance à rester bloquées (résoudre cela est WiP)&lt;br/&gt;&lt;br/&gt;Pour attribuer un véhicule à ce groupe, regardez un véhicule et utilisez l'option Vehicle Squad Mngmt dans le menu Y</French>
         <Korean>%1 그룹은 이제 당신 휘하에 있습니다.&lt;br/&gt;&lt;br/&gt;그룹은 하이 커맨드 표시줄(기본값: 컨트롤+ 스페이스)에서 관리됩니다.&lt;br/&gt;&lt;br/&gt;그룹이 끼인다면 인공지능 조종 기능을 이용하여 이동을 시키십시오. 탑재된 고정화기 팀이 끼이는 경향이 있습니다 (해결 중에 있습니다).&lt;br/&gt;&lt;br/&gt;이 그룹에 차량을 할당하려면 차량을 보고 Y 메뉴의 차량 분대 관리 설정을 사용하십시오.</Korean>
         <Russian>Группа %1 под вашим командованием.&lt;br/&gt;&lt;br/&gt;Управление группами происходит из панели Командования (По стандарту: CTRL+SPACE)&lt;br/&gt;&lt;br/&gt;Если группа застряла, используйте Управление ИИ чтобы заставить их двигаться. Отряды со статичным вооружение любят застревать (Это решается с помощью WiP)&lt;br/&gt;&lt;br/&gt;Чтобы назначить технику к этой группе, посмотрите на неё и используйте Управление Техникой Отряда в меню на клавише Y.</Russian>

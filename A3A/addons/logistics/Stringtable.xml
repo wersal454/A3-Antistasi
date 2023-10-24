@@ -9,6 +9,8 @@
         <Spanish>Cargar 1% al vehículo cercano.</Spanish>
         <French>Charger %1 dans le véhicule le plus proche.</French>
         <Korean>%1을(를) 가장 가까운 차량에 적재하십시오.</Korean>
+        <Portuguese>Carregar %1 no veículo mais próximo.</Portuguese>
+        <Turkish>"En yakın araca %1 yükleyin."</Turkish>
         <Chinesesimp>将%1装载入附近的载具</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_logi_addact_unload">
@@ -18,6 +20,9 @@
         <Spanish>Descargar</Spanish>
         <French>Déchargement du Cargo</French>
         <Korean>화물 내리기</Korean>
+        <Czech>Vyložit náklad</Czech>
+        <Portuguese>Descarregar carga</Portuguese>
+        <Turkish>Yükü Boşalt</Turkish>
         <Chinesesimp>卸下货物</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_logi_addweaponaction_alreadyin">
