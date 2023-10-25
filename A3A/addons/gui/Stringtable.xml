@@ -357,7 +357,7 @@
         <Original>Passenger seat</Original>
         <German>Beifahrer Sitz</German>
         <Italian>Sedile passeggero</Italian>
-        <Spanish>Asiento del pasajero</Spanish>
+        <Spanish>Asiento de pasajero</Spanish>
         <French>Siège passager</French>
         <Korean>객석</Korean>
         <Russian>Пассажирское место</Russian>
@@ -519,7 +519,7 @@
         <Original>Clear Trees</Original>
         <German>Lösche Bäume</German>
         <Italian>Elimina Alberi</Italian>
-        <Spanish>Limpiar Árboles</Spanish>
+        <Spanish>Despejar Árboles</Spanish>
         <French>Effacer les arbres</French>
         <Korean>나무 없애기</Korean>
         <Russian>Очистить от деревьев</Russian>
@@ -616,7 +616,7 @@
       <Key ID="STR_antistasi_dialogs_hq_dead_population_tooltip">
         <Original>Dead population&lt;br/&gt;You lose when this hits 33%</Original>
         <German>Tote Bevölkerung&lt;br/&gt;Du verlierst wenn es 33% erreicht</German>
-        <Spanish>Población fallecida&lt;br/&gt;Cuando llegue al 33% fracasará</Spanish>
+        <Spanish>Población fallecida&lt;br/&gt;Cuando llegue al 33% fracasará la misión</Spanish>
       </Key>
       <Key ID="STR_antistasi_dialogs_hq_faction_money_label">
         <Original>Faction money:</Original>
@@ -963,7 +963,7 @@
         <Original>Mortar</Original>
         <German>Mörser</German>
         <Italian>Mortaio</Italian>
-        <Spanish>Morteros</Spanish>
+        <Spanish>Mortero</Spanish>
         <French>Mortier</French>
         <Korean>박격포</Korean>
         <Russian>Миномет</Russian>
