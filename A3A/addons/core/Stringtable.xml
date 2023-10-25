@@ -27,6 +27,7 @@
         <Russian>&lt;br/&gt;&lt;t size='0.8' color='#%1' shadow='1' shadowColor='#%2' valign='top'&gt;Нажмите &lt;t color='#%3'&gt;%4&lt;/t&gt; чтобы закрыть подсказку. +%5&lt;/t&gt;</Russian>
         <Polish>&lt;br/&gt;&lt;br/&gt;&lt;t size='0.8' color='#%1' shadow='1' shadowColor='#%2' valign='top'&gt;NAciśnij &lt;t color='#%3'&gt;%4&lt;/t&gt; aby odrzucić podpowiedź. +%5&lt;/t&gt;</Polish>
         <Czech>&lt;br/&gt;&lt;t size='0.8' color='#%1' shadow='1' shadowColor='#%2' valign='top'&gt;Stiskni &lt;t color='#%3'&gt;%4&lt;/t&gt; pro odkliknutí rady+%5&lt;/t&gt;</Czech>
+        <Portuguese>&lt;br/&gt;&lt;t size='0.8' color='#%1' shadow='1' shadowColor='#%2' valign='top'&gt;Aperte &lt;t color='#%3'&gt;%4&lt;/t&gt; para descartar a dica. +%5&lt;/t&gt;</Portuguese>
         <Turkish>&lt;br/&gt;&lt;t size='0.8' color='#%1' shadow='1' shadowColor='#%2' valign='top'&gt;İpucunu kapatmak için &lt;t color='#%3'&gt;%4&lt;/t&gt; basın +%5&lt;/t&gt;</Turkish>
         <Chinesesimp>&lt;br/&gt;&lt;t size='0.8' color='#%1' shadow='1' shadowColor='#%2' valign='top'&gt;按 &lt;t color='#%3'&gt;%4&lt;/t&gt;以解除提示。 +%5&lt;/t&gt;</Chinesesimp>
       </Key>
@@ -2322,7 +2323,7 @@
         <Italian>Uno Specialista Esplosivi è disponibile nella barra Alto Comando.&lt;br/&gt;&lt;br/&gt;Mandalo ovunque debbano essere disarmate mine. Caricherà il suo veicolo con le mine disarmate.&lt;br/&gt;&lt;br/&gt;Quando sarà di ritorno al QG scaricherà le mine dal veicolo.</Italian>
         <Spanish>Un especialista en explosivos está disponible en su barra de High Command.&lt;br/&gt;&lt;br/&gt; Envíele a cualquier parte del mapa a desactivar minas. Cargará su camión con las minas que encuentre.&lt;br/&gt;&lt;br/&gt;Cuando vuelva al CG descargará las minas que lleve en su vehículo.</Spanish>
         <French>Un spécialiste des explosifs est disponible sur votre menu de haut commandement.&lt;br/&gt;&lt;br/&gt;Envoyez-le n'importe où sur la carte pour désactiver les mines. Il chargera son camion avec les mines qu'il a trouvées.&lt;br/&gt;&lt;br/&gt;De retour au QG, il déchargera les mines stockées dans son véhicule.</French>
-        <Korean>폭파전문가가 최고 사령부 선택창에서 사용이 가능합니다.&lt;br/&gt;&lt;br/&gt;폭파전문가는 지도 내 배치한 곳 근처에서 지뢰를 탐지할 수 있으며, 탐지한 지뢰를 해체해서 트럭에다 싣을 것입니다.&lt;br/&gt;&lt;br/&gt;폭파전문가가 본부로 돌아오면 가지고 온 모든 지뢰를 내릴 겁니다.</Korean>
+        <Korean>폭파전문가가 하이 커맨드 선택창에서 사용이 가능합니다.&lt;br/&gt;&lt;br/&gt;폭파전문가는 지도 내 배치한 곳 근처에서 지뢰를 탐지할 수 있으며, 탐지한 지뢰를 해체해서 트럭에다 싣을 것입니다.&lt;br/&gt;&lt;br/&gt;폭파전문가가 본부로 돌아오면 가지고 온 모든 지뢰를 내릴 겁니다.</Korean>
         <Polish>Specjalista ds. materiałów wybuchowych jest dostępny na pasku High Command.&lt;br/&gt;&lt;br/&gt;Wyślij go w dowolne miejsce na mapie, aby dezaktywował miny. Załaduje swoją ciężarówkę znalezionymi minami.&lt;br/&gt;&lt;br/&gt;Po powrocie do siedziby rozładuje miny znajdujące się w jego pojeździe.</Polish>
         <Czech>Specialista na výbušniny je dostupný v tabulce vyššího velení.&lt;br/&gt;&lt;br/&gt;Pošli ho kamkoliv na mapě aby odminoval oblast. Deaktivované miny naloží do náklaďáku a&lt;br/&gt;&lt;br/&gt;po návratu zpátky na HQ je vyloží. </Czech>
       </Key>
@@ -4007,6 +4008,10 @@
       </Key>
       <Key ID="STR_A3A_fn_orgp_memAdd_added_other">
         <Original>%1 has been added to the Server Members List.</Original>
+        <Italian>%1 è stato aggiunto alla Lista dei Membri del Server</Italian>
+        <French>%1 a été ajouté à la liste des Membres du serveur.</French>
+        <Korean>%1이(가) 서버 멤버 목록에 추가되었습니다.</Korean>
+        <Polish>%1 został dodany do listy członków serwera.</Polish>
       </Key>
       <Key ID="STR_A3A_fn_orgp_memAdd_added_you">
         <Original>You have been added to the Server Members list.</Original>
@@ -4206,7 +4211,7 @@
         <Original>You resign from being Commander. Others will take the command if there is someone suitable.</Original>
         <Italian>Ti dimetti dal ruolo di Comandante. Altri prenderanno il tuo posto se vi sono candidati idonei.</Italian>
         <French>Vous vous êtes retirés du Commandement. D'autres assumeront la position si quelqu'un est convenable.</French>
-        <Korean>지휘관 직책에서 물러납니다. 다른 사람들은 적당한 사람이 있다면 사령관 직책을 맡을 것입니다.</Korean>
+        <Korean>지휘관 직책에서 물러납니다. 다른 사람들은 적당한 사람이 있다면 지휘관 직책을 맡을 것입니다.</Korean>
         <Polish>Rezygnujesz z funkcji dowódcy. Inni przejmą dowodzenie, jeśli znajdzie się ktoś odpowiedni.</Polish>
         <Czech>Rezignoval jsi jako velitel. Velitelství převezme někdo jiný, pokud je k tomu způsobilý.</Czech>
       </Key>
@@ -4245,7 +4250,7 @@
         <Original>The commander is a lightweight unit with increased camouflage, medical and engineering capabilities.</Original>
         <Italian>Il comandante è un'unità leggera con capacità mimetiche, mediche e di genio aumentate.</Italian>
         <French>Le commandant est une unité légère avec des capacités de camouflage, médical et d'ingéniérie augmentées.</French>
-        <Korean>사령관은 위장, 의료, 공병 능력이 향상된 경량 유닛입니다.</Korean>
+        <Korean>지휘관은 위장, 의료, 공병 능력이 향상된 경량 유닛입니다.</Korean>
         <Polish>Dowódca jest lekką jednostką o zwiększonych możliwościach kamuflażu, medycznych i inżynieryjnych.</Polish>
         <Czech>Velitel je lehká jednotka se zvýšenou kamufláží, a lékařskými a inženýrskými schopnostmi.</Czech>
       </Key>
@@ -4370,17 +4375,20 @@
         <Original>Remote AI</Original>
         <Italian>IA remota</Italian>
         <French>Controle à Distance d'IA</French>
+        <Korean>AI 원격 조종</Korean>
       </Key>
       <Key ID="STR_A3A_fn_proxy_statDepl_text">
         <Original>Static weapon has been deployed for use in a nearby zone, and will be used by garrison militia if you leave it here the next time the zone spawns.</Original>
         <Italian>Le armi statiche sono state dispiegate al fine di essere usate in una zona vicina, saranno utilizzate dalla milizia di guarnigione la prossima volta che viene generata la zona.</Italian>
         <French>L'arme statique a été déployée pour être utilisée dans une zone proche et sera utilisée par la  garnison si vous la laissez ici la prochaine fois que la zone apparaîtra.</French>
+        <Korean>고정화기가 인근에 사용되기 위해 배치되었으며, 그대로 두면 주둔군이 영역에 스폰될 경우 사용할 것입니다.</Korean>
         <Czech>Statická zbraň byla postavena k použití v nejbližší zóně a bude využita posádkou pokud tam zůstane když se objeví další zóna.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_proxy_statDepl_titel">
         <Original>Static Deployed</Original>
         <Italian>Statica Dispiegata</Italian>
         <French>Arme statique déployée</French>
+        <Korean>고정화기 배치됨</Korean>
         <Czech>Statická zbraň rozložena</Czech>
       </Key>
     </Container>
@@ -5876,7 +5884,7 @@
         <Original>Building placer</Original>
         <Italian>Piazzamento Costruzioni</Italian>
         <French>Placeur de Construction</French>
-        <Korean>건물 배치자</Korean>
+        <Korean>건물 배치기</Korean>
         <Czech>Umisťovač budov</Czech>
       </Key>
       <Key ID="STR_A3A_fn_UtilItem_initObjRem_addact_carry">
@@ -6265,6 +6273,7 @@
         <Korean>최종 경고</Korean>
         <Polish>Ostatnie ostrzeżenie</Polish>
         <Czech>Poslední varování</Czech>
+        <Portuguese>Último aviso</Portuguese>
         <Turkish>Son Uyarı</Turkish>
       </Key>
     </Container>
@@ -6273,66 +6282,79 @@
         <Original>Artillery menu</Original>
         <Italian>Menù artiglieria</Italian>
         <French>Menu d'Artillerie</French>
+        <Korean>포병 메뉴</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_CfgUserAct_artyMenu_tip">
         <Original>Opens the Antistasis artillery support menu (commander only).</Original>
         <Italian>Apre il menù del supporto d'artiglieria di Antistasi (solo comandante).</Italian>
         <French>Ouvre le menu de support d'artillerie Antistasi (commandant uniquement).</French>
+        <Korean>안티스타시의 포병 지원 메뉴를 엽니다 (지휘관 전용).</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_CfgUserAct_battleMenu_DN">
         <Original>Battle menu</Original>
         <Italian>Menù battaglia</Italian>
         <French>Menu de Bataille</French>
+        <Korean>전투 메뉴</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_CfgUserAct_battleMenu_tip">
         <Original>Opens the Antistasis battle menu.</Original>
         <Italian>Apre il menù di battaglia di Antistasi.</Italian>
         <French>Ouvre le menu de bataille d'Antistasi.</French>
+        <Korean>안티스타시의 전투 메뉴를 엽니다.</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_CfgUserAct_cusHintDiss_DN">
         <Original>Dismiss Previous Hint</Original>
         <Italian>Chiudi Suggerimento Precedente</Italian>
         <French>Ignore l'Astuce Précédente</French>
+        <Korean>이전 힌트 닫기</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_CfgUserAct_cusHintDiss_tip">
         <Original>Clears the last hint notification.</Original>
         <Italian>Cancella l'ultimo suggerimento.</Italian>
         <French>Enlève la dernière notification d'astuce.</French>
+        <Korean>마지막 힌트 알림을 지웁니다.</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_CfgUserAct_earPlugs_DN">
         <Original>Toggle ear plugs</Original>
         <Italian>Interruttore tappi per le orecchie</Italian>
         <French>Activer les bouchons d'oreilles</French>
+        <Korean>귀마개 토글</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_CfgUserAct_earPlugs_tip">
         <Original>Toggles the ear plugs (no effect when using ace).</Original>
         <Italian>Interruttore tappi per le orecchie (non serve se si utilizza l'ace).</Italian>
         <French>Active les bouchons d'oreilles (sans effet en utilisant ACE).</French>
+        <Korean>귀마개를 토글합니다(ACE 사용 시 효과 없음).</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_CfgUserAct_infoBar_DN">
         <Original>Toggle info bar</Original>
         <Italian>Interruttore barra delle info</Italian>
         <French>Activer la barre d'info</French>
+        <Korean>정보 표시줄 토글</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_CfgUserAct_infoBar_tip">
         <Original>Toggles the visibility of Antistasis information bar at the top of the screen.</Original>
         <Italian>Interruttore visibilità della barra delle informazioni in alto.</Italian>
         <French>Active/desactive l'affichage de la barre d'information Antistasi en haut de l'écran.</French>
+        <Korean>화면 상단에 있는 안티스타시 전용 정보 표시줄의 표시 여부를 전환합니다.</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_keyAcc_earplugs_in">
         <Original>You've inserted your ear plugs.</Original>
         <Italian>Hai inserito i tappi per le orecchie.</Italian>
         <French>Vous avez enfilé vos bouchons d'oreilles.</French>
+        <Korean>귀마개를 끼웠습니다.</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_keyAcc_earplugs_out">
         <Original>You've taken out your ear plugs.</Original>
         <Italian>Hai tolto i tappi per le orecchie.</Italian>
         <French>Vous avez retiré vos bouchons d'oreilles.</French>
+        <Korean>귀마개를 빼냈습니다.</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_keyAcc_earplugs_title">
         <Original>Ear Plugs</Original>
         <Italian>Tappi per le orecchie</Italian>
         <French>Bouchons d'oreilles</French>
+        <Korean>귀마개</Korean>
       </Key>
     </Container>
     <Container name="A3A_Scripts">
@@ -6345,6 +6367,7 @@
         <Korean>견인줄에 걸기</Korean>
         <Polish>Przymocuj do linki holowniczej</Polish>
         <Czech>Přivázat k tažnému lanu</Czech>
+        <Portuguese>Prender nas cordas de reboque</Portuguese>
         <Turkish>"Çekme halatlarına bağla"</Turkish>
       </Key>
       <Key ID="STR_A3A_scripts_advTowInit_addact_deploy">
@@ -6356,6 +6379,7 @@
         <Korean>견인줄 꺼내기</Korean>
         <Polish>Rozłóż linkę holowniczą</Polish>
         <Czech>Vyložit tažné lano</Czech>
+        <Portuguese>Tirar cordas de reboque</Portuguese>
         <Turkish>Çekme Halatlarını Yerleştirin.</Turkish>
       </Key>
       <Key ID="STR_A3A_scripts_advTowInit_addact_drop">
@@ -6367,6 +6391,7 @@
         <Korean>견인줄 떨어뜨리기</Korean>
         <Polish>Upuść linkę holowniczą</Polish>
         <Czech>Zahodit tažné lano</Czech>
+        <Portuguese>Largar cordas de reboque</Portuguese>
         <Turkish>Halatları Bırak</Turkish>
       </Key>
       <Key ID="STR_A3A_scripts_advTowInit_addact_pick">
@@ -6378,6 +6403,7 @@
         <Korean>견인줄 줍기</Korean>
         <Polish>Podnieś linkę holowniczą</Polish>
         <Czech>Sebrat tažné lano</Czech>
+        <Portuguese>Pegar cordas de reboque</Portuguese>
         <Turkish>Çekme halatlarını alın</Turkish>
       </Key>
       <Key ID="STR_A3A_scripts_advTowInit_addact_putAway">
@@ -6389,6 +6415,7 @@
         <Korean>견인줄 넣기</Korean>
         <Polish>Schowaj linkę holowniczą</Polish>
         <Czech>Odložit tažné lano</Czech>
+        <Portuguese>Jogar fora as cordas de reboque</Portuguese>
         <Turkish>Çekme halatlarını kaldırın</Turkish>
       </Key>
       <Key ID="STR_A3A_scripts_advTowInit_attach_no_locked">
@@ -6400,6 +6427,7 @@
         <Korean>잠긴 차량에는 견인줄을 걸 수 없습니다</Korean>
         <Polish>Nie można przymocować linki holowniczej do zamkniętego pojazdu</Polish>
         <Czech>Na zamčené vozidlo nelze přivázat tažné lano</Czech>
+        <Portuguese>Não é possível prender as cordas de reboque em um veículo trancado</Portuguese>
         <Turkish>Kilitli araca çekme halatı bağlanamaz</Turkish>
       </Key>
       <Key ID="STR_A3A_scripts_advTowInit_attach_no_safez">
@@ -6411,6 +6439,7 @@
         <Korean>안전 구역에서는 견인줄을 걸 수 없습니다</Korean>
         <Polish>Nie można zamocować linki holowniczej będąc w bezpiecznej strefie</Polish>
         <Czech>V bezpečné zóně nelze přivázat tažné lano</Czech>
+        <Portuguese>Não é possível prender as cordas de reboque em uma zona segura</Portuguese>
         <Turkish>Güvenli bölgede çekme halatları bağlanamaz.</Turkish>
       </Key>
       <Key ID="STR_A3A_scripts_advTowInit_fail">
@@ -6422,6 +6451,7 @@
         <Korean>어이쿠</Korean>
         <Polish>Uuups</Polish>
         <Czech>Jejda</Czech>
+        <Portuguese>Oops</Portuguese>
         <Turkish>Hoop</Turkish>
       </Key>
       <Key ID="STR_A3A_scripts_advTowInit_pick_no_locked">
@@ -6433,6 +6463,7 @@
         <Korean>잠긴 차량의 견인줄은 주울 수 없습니다</Korean>
         <Polish>Nie można podnieść linki holowniczej z zamkniętego pojazdu</Polish>
         <Czech>Ze zamčeného vozidla nelze vybrat tažné lano</Czech>
+        <Portuguese>Não é possível pegar as cordas de reboque de um veículo trancado</Portuguese>
         <Turkish>Kilitli araçtan çekme halatlarını alamazsınız</Turkish>
       </Key>
       <Key ID="STR_A3A_scripts_advTowInit_pick_no_safez">
@@ -6444,6 +6475,7 @@
         <Korean>안전 구역에서는 견인줄을 주울 수 없습니다</Korean>
         <Polish>Nie można podnieść linki holowniczej będąc w bezpiecznej strefie</Polish>
         <Czech>V bezpečné zóně nelze vybrat tažné lano</Czech>
+        <Portuguese>Não é possível pegar as cordas de reboque em uma zona segura</Portuguese>
         <Turkish>Güvenli bölgede çekme halatlarını alamazsınız</Turkish>
       </Key>
       <Key ID="STR_A3A_scripts_advTowInit_put_no_locked">
@@ -6455,6 +6487,7 @@
         <Korean>잠긴 차량의 견인줄은 넣을 수 없습니다</Korean>
         <Polish>Nie można schować linki holowniczej w zamkniętym pojeździe</Polish>
         <Czech>Do zamčeného vozidla nelze odložit tažné lano</Czech>
+        <Portuguese>Não é possível jogar fora as cordas de reboque em um veículo trancado</Portuguese>
         <Turkish>Çekme halatlarını kilitli araca koyamazsınız</Turkish>
       </Key>
       <Key ID="STR_A3A_scripts_advTowInit_put_no_safez">
@@ -6466,6 +6499,7 @@
         <Korean>안전 구역에서는 견인줄을 넣을 수 없습니다</Korean>
         <Polish>Nie można odłożyć linki holowniczej będąc w bezpiecznej strefie</Polish>
         <Czech>V bezpečné zóně nelze přivázat tažné lano</Czech>
+        <Portuguese>Não é possível jogar fora as cordas de reboque em uma zona segura.</Portuguese>
         <Turkish>Cannot put away tow ropes in safe zone</Turkish>
       </Key>
       <Key ID="STR_A3A_scripts_advTowInit_success">
@@ -6477,6 +6511,7 @@
         <Korean>성공</Korean>
         <Polish>Sukces</Polish>
         <Czech>Úspěch</Czech>
+        <Portuguese>Sucesso</Portuguese>
         <Turkish>Başarılı</Turkish>
       </Key>
       <Key ID="STR_A3A_scripts_advTowInit_take_no_locked">
@@ -6488,6 +6523,7 @@
         <Korean>잠긴 차량의 견인줄은 가져갈 수 없습니다</Korean>
         <Polish>Nie można wyjąć linki holowniczej z zamkniętego pojazdu</Polish>
         <Czech>Ze zamčeného vozidla nelze vybrat tažné lano</Czech>
+        <Portuguese>Não é possível pegar as cordas de reboque de um veículo trancado</Portuguese>
         <Turkish>Kilitli araçtan çekme halatı alınamaz</Turkish>
       </Key>
       <Key ID="STR_A3A_scripts_advTowInit_take_no_safez">
@@ -6498,6 +6534,7 @@
         <Korean>안전 구역에서는 견인줄을 가져갈 수 없습니다</Korean>
         <Polish>Nie można podnieść linki holowniczej będąc w bezpiecznej strefie</Polish>
         <Czech>V bezpečné zóně nelze vzít tažné lano</Czech>
+        <Portuguese>Não é possível pegar as cordas de reboque em uma zona segura</Portuguese>
         <Turkish>Güvenli bölgede çekme halatlarını alamazsınız</Turkish>
       </Key>
       <Key ID="STR_A3A_scripts_advTowInit_title">
@@ -6509,6 +6546,7 @@
         <Korean>고급 견인</Korean>
         <Polish>Zaawansowane Holowanie Pojazdów</Polish>
         <Czech>Pokročilé tahání</Czech>
+        <Portuguese>Reboque avançado</Portuguese>
         <Turkish>Gelişmiş Çekici</Turkish>
       </Key>
     </Container>
@@ -6863,26 +6901,31 @@
         <Original>Builder box is already being used by %1</Original>
         <Italian>La cassa delle costruzioni è già in utilizzo da %1</Italian>
         <French>La boite de construction est déjà utilisée par %1</French>
+        <Korean>건물 배치기는 이미 %1에 의해 사용되는 중입니다</Korean>
       </Key>
       <Key ID="STR_A3A_builder_enemies_near">
         <Original>You can not use the placer while there are enemies nearby.</Original>
         <Italian>Non puoi usare il piazzatore mentre vi sono nemici nelle vicinanze.</Italian>
         <French>Vous ne pouvez pas utiliser le placeur tant que des ennemis sont proches.</French>
+        <Korean>적들이 근처에 있을 때는 배치기를 사용할 수 없습니다.</Korean>
       </Key>
       <Key ID="STR_A3A_builder_not_eligible">
         <Original>You are not eligible to use the building placer.</Original>
         <Italian>Non sei idoneo all'uso del piazza costruzioni.</Italian>
         <French>Vous n'êtes pas éligible pour utiliser le placeur de constructions.</French>
+        <Korean>당신은 건물 배치기를 사용할 자격이 없습니다.</Korean>
       </Key>
       <Key ID="STR_A3A_builder_server_respond_failed">
         <Original>Server failed to respond to building placer request.</Original>
         <Italian>Il server non è riuscito a rispondere alla richiesta di costruzione.</Italian>
         <French>Le serveur n'a pas répondu à la requête du placeur de constructions.</French>
+        <Korean>서버가 건물 배치 요청에 응답하지 못했습니다.</Korean>
       </Key>
       <Key ID="STR_A3A_builder_title">
         <Original>Building Placer</Original>
         <Italian>Piazzamento Costruzioni</Italian>
         <French>Placeur de Constructions</French>
+        <Korean>건물 배치기</Korean>
       </Key>
     </Container>
     <Container name="carpet_bombing">
@@ -12044,11 +12087,13 @@
         <Original>Large construction kit</Original>
         <Italian>Kit di costruzioni grande</Italian>
         <French>Grand kit de construction</French>
+        <Korean>대형 건설 도구</Korean>
       </Key>
       <Key ID="STR_A3A_Utility_Items_Name_buildboxsmall">
         <Original>Small construction kit</Original>
         <Italian>Kit di costruzioni piccolo</Italian>
         <French>Petit kit de construction</French>
+        <Korean>소형 건설 도구</Korean>
       </Key>
       <Key ID="STR_A3A_Utility_Items_Name_fueldrum">
         <Original>Fuel Drum</Original>

@@ -104,7 +104,7 @@
         <Original>Many of these left</Original>
         <German>Es ist noch viel übrig.</German>
         <Italian>Ne sono rimasti tanti</Italian>
-        <Spanish>Nos sobran unas cuantas</Spanish>
+        <Spanish>Quedan muchos todavía</Spanish>
         <French>Il en reste beaucoup</French>
         <Korean>충분히 남음</Korean>
         <Russian>Много таких осталось</Russian>
@@ -118,7 +118,7 @@
         <Original>Some of these left</Original>
         <German>Es ist noch ein wenig übrig.</German>
         <Italian>Ne sono rimasti alcuni</Italian>
-        <Spanish>Quedan unas cuantas</Spanish>
+        <Spanish>Quedan algunos todavía</Spanish>
         <French>Il en reste quelque uns</French>
         <Korean>몇몇개가 남음</Korean>
         <Russian>Немного таких осталось</Russian>
@@ -188,7 +188,7 @@
         <Original>TODO</Original>
         <German>zutun</German>
         <Italian>Da fare</Italian>
-        <Spanish>TODO</Spanish>
+        <Spanish>Pendiente</Spanish>
         <French>TODO</French>
         <Korean>해야 할 일</Korean>
         <Russian>СДЕЛАТЬ</Russian>
@@ -216,7 +216,7 @@
         <Original> has been kept, because there is no </Original>
         <German>wurde aufbewahrt, denn es gibt keine</German>
         <Italian>è stato tenuto, poiché non vi è</Italian>
-        <Spanish>se mantuvo porque no queda ninguna</Spanish>
+        <Spanish>se ha mantenido, porque no hay</Spanish>
         <French>a été conservé, car il n'y a pas</French>
         <Korean>이(가) 다음 아이템이 없기 때문에 보관되었습니다:</Korean>
         <Russian>сохранен, потому что отсутствует </Russian>
@@ -332,7 +332,7 @@
         <Original>Jeroen (Not) Limited Arsenal</Original>
         <German>Jeroen (Not) Limited Arsenal</German>
         <Italian>Arsenale Limitato Jeroen (Not) </Italian>
-        <Spanish>El (No tan) limitado arsenal de Jeroen</Spanish>
+        <Spanish>Jeroen (Not) Limited Arsenal</Spanish>
         <French>Jeroen Arsenal (Pas) Limité</French>
         <Korean>Jeroen의 한정된 (게 아닌) 무기고</Korean>
         <Russian>Ограниченный Арсенал от Jeroen (Not)</Russian>
@@ -346,7 +346,7 @@
         <Original>Add default items like radio and medical supplies</Original>
         <German>Fügen Standardgegenstände wie Funkgeräte und medizinische Hilfsmittel hinzu</German>
         <Italian>Aggiungi oggetti di base come le radio o presidi medici</Italian>
-        <Spanish>Añadir objetos por defecto como radios y suministros médicos.</Spanish>
+        <Spanish>Añadir objetos por defecto como radios y suministros médicos</Spanish>
         <French>Ajoutez des éléments par défaut comme la radio et les fournitures médicales</French>
         <Korean>무전기와 의료물자같은 기본 아이템을 추가합니다</Korean>
         <Russian>Добавить предметы по умолчанию, такие как радио и медицинские принадлежности.</Russian>
@@ -402,7 +402,7 @@
         <Original>Vehicle inventory</Original>
         <German>Fahrzeug Inventar</German>
         <Italian>Inventario del veicolo</Italian>
-        <Spanish>Inventario del Vehículo</Spanish>
+        <Spanish>Inventario del vehículo</Spanish>
         <French>Inventaire des véhicules</French>
         <Korean>차량 인벤토리</Korean>
         <Russian>Инвентарь машины</Russian>
@@ -486,6 +486,7 @@
       </Key>
       <Key ID="STR_A3A_JND_title">
         <Original>Ultra Wide Extended Debug Console With Extra Save Buttons!</Original>
+        <Spanish>Super Amplia y Extendida Consola de Debug con Extra Butones de Guardado!</Spanish>
         <French>Console de débogage étendue ultra large avec boutons de sauvegarde supplémentaires !</French>
       </Key>
     </Container>

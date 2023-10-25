@@ -6,11 +6,11 @@
         <Original>Load %1 into nearest vehicle.</Original>
         <German>%1 in Fahrzeug einladen.</German>
         <Italian>Carica %1 nel veicolo più vicino.</Italian>
-        <Spanish>Cargar 1% al vehículo cercano.</Spanish>
+        <Spanish>Cargar 1% al vehículo más cercano.</Spanish>
         <French>Charger %1 dans le véhicule le plus proche.</French>
         <Korean>%1을(를) 가장 가까운 차량에 적재하십시오.</Korean>
         <Portuguese>Carregar %1 no veículo mais próximo.</Portuguese>
-        <Turkish>"En yakın araca %1 yükleyin."</Turkish>
+        <Turkish>En yakın araca %1 yükleyin.</Turkish>
         <Chinesesimp>将%1装载入附近的载具</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_logi_addact_unload">
@@ -345,7 +345,7 @@
         <Original>No vehicle is close enough.</Original>
         <German>Es ist kein Fahrzeug in der nähe.</German>
         <Italian>Nessun veicolo è abbastanza vicino.</Italian>
-        <Spanish>No hay ningún vehículo cerca.</Spanish>
+        <Spanish>No hay ningún vehículo suficientemente cerca.</Spanish>
         <French>Aucun véhicule n'est assez proche.</French>
         <Korean>충분히 가까운 차량이 없습니다.</Korean>
         <Russian>Ни одна машина не находится достаточно близко.</Russian>
