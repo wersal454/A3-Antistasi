@@ -474,6 +474,8 @@ DECLARE_SERVER_VAR(undercoverVehicles, _undercoverVehicles);
 
 Info("Generating forbidden items list");
 [] call A3U_fnc_grabForbiddenItems;
+Info("Generating black market vehicles list");
+[] call A3U_fnc_grabBlackMarketVehicles;
 Info("Scanning config entries for items");
 [A3A_fnc_equipmentIsValidForCurrentModset] call A3A_fnc_configSort;
 Info("Categorizing vehicle classes");

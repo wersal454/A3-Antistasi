@@ -23,6 +23,7 @@ class A3U
     #include "config\plane\cfgPlaneLoadouts.hpp"
     #include "config\cfgForbiddenItems.hpp"
     #include "config\trader\cfgTraderMods.hpp"
+    #include "config\blackMarket\cfgBlackMarketStock.hpp"
 };
 
 class Extended_PreInit_EventHandlers 

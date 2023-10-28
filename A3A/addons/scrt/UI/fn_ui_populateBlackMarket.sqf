@@ -3,7 +3,7 @@ FIX_LINE_NUMBERS()
 
 private _buyableVehiclesList = [];
 
-private _stock = (A3A_faction_reb get "blackMarketStock") select {
+private _stock = (A3U_blackMarketStock) select {
 	private _fnc_isAvailable = _x select 3;
 	
 	call _fnc_isAvailable
