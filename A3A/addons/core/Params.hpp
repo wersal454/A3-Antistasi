@@ -173,7 +173,7 @@ class Params
     {
         title = $STR_A3A_Params_memberSlots_title;
         values[] = {0,20,40,60,80,100};
-        texts[] = {$STR_A3A_Params_generic_none,"20%","40%","60%","80%", $STR_A3A_Params_generic_allowed};
+        texts[] = {$STR_A3A_Params_generic_none,"20%","40%","60%","80%", $STR_A3A_Params_generic_all};
         default = 20;
     };
     class memberDistance
@@ -545,7 +545,7 @@ class Params
     {
         title = $STR_A3A_Params_logDebugConsole_title;
         values[] = {-1,1,2};
-        texts[] = {$STR_A3A_Params_generic_none, $STR_A3A_Params_logDebugConsole_nondev, $STR_A3A_Params_generic_allowed};
+        texts[] = {$STR_A3A_Params_generic_none, $STR_A3A_Params_logDebugConsole_nondev, $STR_A3A_Params_generic_all};
         default = 1;
     };
     class A3A_GUIDevPreview
