@@ -21,6 +21,11 @@ class CfgFunctions
             class init {};
             class popup {};
         };
+        class REINF
+        {
+            file = QPATHTOFOLDER(functions\REINF);
+            class blackMarketVehiclePrice {};
+        };
         class STALKER
         {
             file = QPATHTOFOLDER(functions\STALKER);

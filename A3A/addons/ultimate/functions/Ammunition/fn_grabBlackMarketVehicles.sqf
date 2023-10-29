@@ -12,14 +12,9 @@
     [] call A3U_grabBlackMarketVehicles;
 */
 private _blackMarketStock = [];
-private _baseCfg = configFile >> "A3U" >> "blackMarketStock";
+private _baseCfg = configFile >> "A3U" >> "traderAddons" >> "blackMarketStock";
 private _cfg = _baseCfg call BIS_fnc_getCfgSubClasses; 
 {
-	if (_x == "black_market_stock_base") then {
-		[format ["Skipped base сlass %1 from adding to black market list.", _x]] call A3U_fnc_log;
-		continue;
-	};
-	
 	private _addons = getArray (_baseCfg >> _x >> "addons");
 	if (count _addons > 0 && { (isClass (configFile >> "CfgPatches" >> _x)) } count _addons != count _addons) then {
 		[format ["Skipped %1 from adding to black market list. Addons requirements not met.", _x]] call A3U_fnc_log;

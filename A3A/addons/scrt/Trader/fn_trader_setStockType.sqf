@@ -16,11 +16,11 @@ params ["_traderX"];
 
 private _modsets = [];
 
-private _cfg = (configfile >> "A3U" >> "traderMods") call BIS_fnc_getCfgSubClasses;
+private _cfg = (configfile >> "A3U" >> "traderAddons" >> "traderPrefixes") call BIS_fnc_getCfgSubClasses;
 
 {
-    private _addons = getArray (configFile >> "A3U" >> "traderMods" >> _x >> "addons");
-    private _prefix = getText (configFile >> "A3U" >> "traderMods" >> _x >> "prefix");
+    private _addons = getArray (configFile >> "A3U" >> "traderAddons" >> "traderPrefixes" >> _x >> "addons");
+    private _prefix = getText (configFile >> "A3U" >> "traderAddons" >> "traderPrefixes" >> _x >> "prefix");
 
     if ([_addons] call A3U_fnc_hasAddon) then {
         _modsets pushBack _prefix;
