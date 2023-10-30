@@ -229,12 +229,14 @@
       <Key ID="STR_A3A_JNA_loadinventory_notin">
         <Original>These items were not in the Arsenal:&lt;br/&gt;</Original>
         <Spanish>Estos objetos no estaban en el Arsenal:&lt;br/&gt;</Spanish>
+        <French>Ces objets n'étaient pas dans l'Arsenal:&lt;br/&gt;</French>
         <Russian>Этих предметов не было в Арсенале:&lt;br/&gt;</Russian>
         <Chinesesimp>这些物品并不在武器库内:&lt;br/&gt;</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_JNA_loadinventory_notin_kept">
         <Original>These items were not in the Arsenal, so the originals have been kept:&lt;br/&gt;</Original>
         <Spanish>Estos objetos no estaban en el Arsenal, asi que se mantuvieron los originales:&lt;br/&gt;</Spanish>
+        <French>Ces objets n'étaient pas dans l'Arsenal, les originaux ont donc été conservés:&lt;br/&gt;</French>
         <Russian>Этих предметов не было в Арсенале, поэтому были сохранены оригиналы:&lt;br/&gt;</Russian>
         <Chinesesimp>这些物品之前不在武器库内, 所以原物件将得以被储存:&lt;br/&gt;</Chinesesimp>
       </Key>
@@ -259,6 +261,7 @@
       </Key>
       <Key ID="STR_A3A_JNA_scope_incompatible">
         <Original>&lt;br/&gt;(Not compatible with currently equipped weapons)</Original>
+        <French>&lt;br/&gt;(Pas compatible avec les armes actuellement équipées)</French>
         <Russian>&lt;br/&gt;(Несовместимо с имеющимся в данный момент оружием)</Russian>
         <Chinesesimp>&lt;br/&gt;(与当前所装备的武器不兼容)</Chinesesimp>
       </Key>
