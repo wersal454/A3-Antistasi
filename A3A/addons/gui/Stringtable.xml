@@ -617,6 +617,7 @@
         <Original>Dead population&lt;br/&gt;You lose when this hits 33%</Original>
         <German>Tote Bevölkerung&lt;br/&gt;Du verlierst wenn es 33% erreicht</German>
         <Spanish>Población fallecida&lt;br/&gt;Cuando llegue al 33% fracasará la misión</Spanish>
+        <French>Population morte&lt;br/&gt;Vous perdez quand cela atteint 33%</French>
       </Key>
       <Key ID="STR_antistasi_dialogs_hq_faction_money_label">
         <Original>Faction money:</Original>
@@ -734,6 +735,7 @@
         <Original>Popular support&lt;br/&gt;You need 50% to win</Original>
         <German>Unterstützung der Bevölkerung&lt;br/&gt;Du brauchst 50% um zu gewinnen</German>
         <Spanish>Apoyo Popular&lt;br/&gt;Necesita el 50% para ganar</Spanish>
+        <French>Support populaire&lt;br/&gt;Vous avez besoin de 50% pour gagner</French>
       </Key>
       <Key ID="STR_antistasi_dialogs_hq_rest_button">
         <Original>Rest</Original>
@@ -1713,6 +1715,7 @@
         <Original>You can only remote control single units&lt;br/&gt;Select exactly one AI in the list</Original>
         <German>Du kannst nur einzelne Einheiten fernsteuern&lt;br/&gt;Wähle eine einzelne KI aus der Liste aus</German>
         <Spanish>Sólo puede contorlar una unidad de forma remota&lt;br/&gt;Seleccione exactamente una en la lista de la IA</Spanish>
+        <French>Vous ne pouvez contrôler à distance que des unités individuelles&lt;br/&gt;Sélectionnez exactement une IA dans la liste</French>
       </Key>
       <Key ID="STR_antistasi_dialogs_main_ai_management_select_ai_tooltip">
         <Original>Select AI in the list</Original>
@@ -2447,6 +2450,7 @@
         <Original>Number of units in the group&lt;br/&gt;Able to combat / Total number of units</Original>
         <German>&lt;br/&gt;Anzahl der Saldaten in der Gruppe&lt;br/&gt;Fähig zu kämpfen / Gesammtanzahl der Soldaten</German>
         <Spanish>Número de unidades en el grupo&lt;br/&gt;Capaces de combatir / Total número de unidades</Spanish>
+        <French>Unités dans le groupe&lt;br/&gt;Prêtes au combat / Nombre totale d'unités</French>
       </Key>
       <Key ID="STR_antistasi_dialogs_main_hc_vehicle">
         <Original>Vehicle</Original>
@@ -2654,6 +2658,7 @@
         <Original>Needs AI group members&lt;br/&gt;You can recruit them at the flag</Original>
         <German>Benötigt KI-Gruppenmitglieder&lt;br/&gt; Du kannst diese an der Flagge rekrutieren</German>
         <Spanish>Necesita grupo de miembros de la IA&lt;br/&gt;Puede reclutarlos en la bandera</Spanish>
+        <French>Nécessite des membres du groupe AI&lt;br/&gt;Vous pouvez les recruter au drapeau</French>
       </Key>
       <Key ID="STR_antistasi_dialogs_main_ai_management_sl_tooltip">
         <Original>Only available to squad leaders</Original>
@@ -2911,6 +2916,7 @@
         <Original>Current money:&lt;br/&gt;€ %1</Original>
         <German>Aktuelles Geld:&lt;br/&gt;€ %1</German>
         <Spanish>Dinero:&lt;br/&gt;€ %1</Spanish>
+        <French>Argent actuel :&lt;br/&gt;€ %1</French>
       </Key>
       <Key ID="STR_antistasi_dialogs_main_sell_vehicle">
         <Original>Sell</Original>

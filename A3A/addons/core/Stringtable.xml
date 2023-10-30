@@ -3995,6 +3995,7 @@
       <Key ID="STR_A3A_fn_orgp_donMon_no_looking">
         <Original>You must be looking at a player in order to give him money.</Original>
         <Spanish>Tiene que mirar a otro jugador para darle dinero.</Spanish>
+        <French>Vous devez regarder un joueur pour pouvoir lui donner de l'argent.</French>
         <Czech>Musiš se dívat na hráče abys mu mohl darovat peníze.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_orgp_donMon_titel">
@@ -6420,381 +6421,630 @@
     <Container name="A3A_Params">
       <Key ID="STR_A3A_Params_aceFood_title">
         <Original>[ACE] Start with Food Items</Original>
+        <French>[ACE] Débuter avec de la Nourriture</French>
+        <Korean>[ACE] 음식 아이템을 해금한 상태로 시작</Korean>
       </Key>
       <Key ID="STR_A3A_Params_allowFuturisticSupports_title">
         <Original>Experimental] Allow futuristic supports to be used by the enemy</Original>
+        <French>&lt;br/&gt;[Expérimental] Autoriser des supports futuristes pour l'ennemi</French>
+        <Korean>[실험적] 적이 미래형 지원을 사용할 수 있도록 허용</Korean>
       </Key>
       <Key ID="STR_A3A_Params_allowGuidedLaunchers_title">
         <Original>Should Guided Launchers become unlocked?</Original>
+        <French>Debloquer les lance-missiles guidés ?</French>
+        <Korean>유도미사일 발사기를 해금할 수 있습니까?</Korean>
       </Key>
       <Key ID="STR_A3A_Params_allowUnfairSupports_title">
         <Original>Allow unfair supports to be used by the enemy</Original>
+        <French>&lt;br/&gt;Autoriser des supports injustes pour l'ennemi</French>
+        <Korean>적이 불공평한 지원을 사용하도록 허용</Korean>
       </Key>
       <Key ID="STR_A3A_Params_allowUnlockedExplosives_title">
         <Original>Should Explosives become unlocked?</Original>
+        <French>Debloquer les Explosifs ?</French>
+        <Korean>폭발물을 해금할 수 있습니까?</Korean>
       </Key>
       <Key ID="STR_A3A_Params_attackHQProximityMul_title">
         <Original>Enemy preference for attacking rebel targets closer to HQ</Original>
+        <French>Préférence de l'ennemi à attaquer les cibles rebelles proches du QG</French>
+        <Korean>적군 선호도 - 반군 표적을 공격하는 것을 선호하는 정도</Korean>
       </Key>
       <Key ID="STR_A3A_Params_autoSave_title">
         <Original>Enable Autosave (every X minutes)</Original>
+        <French>Activer les Sauvegarde Auto (toute les X minutes)</French>
+        <Korean>자동 저장 활성화 (매 X분마다)</Korean>
       </Key>
       <Key ID="STR_A3A_Params_autoSaveInterval_title">
         <Original>Time between autosaves (in minutes)</Original>
+        <French>Temps entre sauvegardes auto (en minutes)</French>
+        <Korean>자동 저장 쿨타임 (분 단위)</Korean>
       </Key>
       <Key ID="STR_A3A_Params_bobChaosCrates_title">
         <Original>[Experimental] Truely Random Crates: Remove all balance checks from Crates</Original>
+        <French>[Experimental] Craisses vraiment aléatoires : Enlève tout les tests d'équilibrage des Caisses</French>
+        <Korean>[실험적] 완전 무작위 전리품 상자: 상자에서 모든 밸런스 체크를 제거합니다</Korean>
       </Key>
       <Key ID="STR_A3A_Params_builderPermissions_both">
         <Original>Both</Original>
+        <French>Les deux</French>
+        <Korean>둘 다</Korean>
       </Key>
       <Key ID="STR_A3A_Params_builderPermissions_engi">
         <Original>Engineers</Original>
+        <French>Ingénieurs</French>
+        <Korean>공병만</Korean>
       </Key>
       <Key ID="STR_A3A_Params_builderPermissions_title">
         <Original>Player classes permitted to use the building placer</Original>
+        <French>Classes joueur autorisée à utiliser le placeur de constructions</French>
+        <Korean>건물 배치기를 사용할 수 있는 플레이어 병과</Korean>
       </Key>
       <Key ID="STR_A3A_Params_builderPermissions_tl">
         <Original>Team leaders</Original>
+        <French>Chef d'équipes</French>
+        <Korean>조장만</Korean>
       </Key>
       <Key ID="STR_A3A_Params_civTraffic_title">
         <Original>Quantity of civilan traffic and parked vehicles</Original>
+        <French>Quantité de traffic civil et véhicules garés</French>
+        <Korean>민간인 보행자 및 주차된 차량 수</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateAmmoNumMax_title">
         <Original>Maximum Ammo Quantity in Crates</Original>
+        <French>Maximum de Munitions dans les Caisses</French>
+        <Korean>상자 내 최대 탄약 수량</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateAmmoTypeMax_title">
         <Original>Maximum Ammo Types in Crates</Original>
+        <French>Maximum de Types de Munitions dans les Caisses</French>
+        <Korean>상자 내 최대 탄약 종류 수</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateAttachmentNumMax_title">
         <Original>Maximum Attachment Quantity in Crates</Original>
+        <French>Maximum d'Accessoires dans les Caisses</French>
+        <Korean>상자 내 최대 부착물 수량</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateAttachmentTypeMax_title">
         <Original>Maximum Attachment Types in Crates</Original>
+        <French>Maximum de Types d'Accessoires dans les Caisses</French>
+        <Korean>상자 내 최대 부착물 종류 수</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateBackpackNumMax_title">
         <Original>Maximum Backpack Quantity in Crates</Original>
+        <French>Maximum de Sacs à Dos dans les Caisses</French>
+        <Korean>상자 내 최대 군장 수량</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateBackpackTypeMax_title">
         <Original>Maximum Backpack Types in Crates</Original>
+        <French>Maximum de Types de Sacs à Dos dans les Caisses</French>
+        <Korean>상자 내 최대 군장 종류 수</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateDeviceNumMax_title">
         <Original>Maximum Device Backpack Quantity in Crates</Original>
+        <French>Maximum de Cacs à Dos avec Dispositifs dans les Caisses</French>
+        <Korean>상자 내 최대 장비 가방 수량</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateDeviceTypeMax_title">
         <Original>Maximum Device Backpack Types in Crates</Original>
+        <French>Maximum de Types de Sacs à Dos avec Dispositifs dans les Caisses</French>
+        <Korean>상자 내 최대 장비 가방 종류 수</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateExplosiveNumMax_title">
         <Original>Maximum Explosive Quantity in Crates</Original>
+        <French>Maximum d'Explosifs dans les Caisses</French>
+        <Korean>상자 내 최대 폭발물 수량</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateExplosiveTypeMax_title">
         <Original>Maximum Explosive Types in Crates</Original>
+        <French>Maximum de Types d'Explosifs dans les Caisses</French>
+        <Korean>상자 내 최대 폭발물 종류 수</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateHelmetNumMax_title">
         <Original>Maximum Helmet Quantity in Crates</Original>
+        <French>Maximum de Casques dans les Caisses</French>
+        <Korean>상자 내 최대 헬멧 수량</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateHelmetTypeMax_title">
         <Original>Maximum Helmet Types in Crates</Original>
+        <French>Maximum de Types de Casques dans les Caisses</French>
+        <Korean>상자 내 최대 헬멧 종류 수</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateItemNumMax_title">
         <Original>Maximum Item Quantity in Crates</Original>
+        <French>Maximum d'Objets dans les Caisses</French>
+        <Korean>상자 내 최대 기타 아이템 수량</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateItemTypeMax_title">
         <Original>Maximum Item Types in Crates</Original>
+        <French>Maximum de Types d'Objets dans les Caisses</French>
+        <Korean>상자 내 최대 기타 아이템 종류 수</Korean>
       </Key>
       <Key ID="STR_A3A_Params_cratePlayerScaling_title">
         <Original>Decrease loot quantity as player count increases? (Yes is recommended for balance reasons)</Original>
+        <French>Réduire la quantité de butin à mesure que le nombre de joueurs augmente ? (Oui c'est conseillé pour des raisons d'équilibre)</French>
+        <Korean>플레이어가 많아질수록 전리품 수량이 줄어듭니까? (밸런스를 위해 '예'를 권장합니다)</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateVestNumMax_title">
         <Original>Maximum Vest Quantity in Crates</Original>
+        <French>Maximum de Vestes dans les Caisses</French>
+        <Korean>상자 내 최대 조끼 수량</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateVestTypeMax_title">
         <Original>Maximum Vest Types in Crates</Original>
+        <French>Maximum de Types de Vestes dans les Caisses</French>
+        <Korean>상자 내 최대 조끼 종류 수</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateWepNumMax_title">
         <Original>Maximum Weapon Quantity in Crates</Original>
+        <French>Maximum d'Armes dans les Caisses</French>
+        <Korean>상자 내 최대 무기 수량</Korean>
       </Key>
       <Key ID="STR_A3A_Params_crateWepTypeMax_title">
         <Original>Maximum Weapon Types in Crates</Original>
+        <French>Maximum de Types d'Armes dans les Caisses</French>
+        <Korean>상자 내 최대 무기 종류 수</Korean>
       </Key>
       <Key ID="STR_A3A_Params_distanceMission_title">
         <Original>Max distance from HQ for tasks</Original>
+        <French>Distance maximale du QG pour les tâches</French>
+        <Korean>본부로부터 임무까지의 최대 거리</Korean>
       </Key>
       <Key ID="STR_A3A_Params_distanceSPWN_title">
         <Original>Spawn distance</Original>
+        <French>Distance d'apparition</French>
+        <Korean>스폰 거리</Korean>
       </Key>
       <Key ID="STR_A3A_Params_enemyAttackMul_title">
         <Original>Enemy attack resource balance (relative to overall balance)</Original>
+        <French>Equilibrage des ressources des attaques enemies (relatif à l'équilibrage global)</French>
+        <Korean>적 공격 자원 밸런스 (전체적인 밸런스와 관련됨)</Korean>
       </Key>
       <Key ID="STR_A3A_Params_enemyBalanceMul_title">
         <Original>Overall enemy resource balance</Original>
+        <French>Equilibrage global des ressources des ennemis</French>
+        <Korean>전체적인 적 자원 밸런스</Korean>
       </Key>
       <Key ID="STR_A3A_Params_enemyNearDistance_title">
         <Original>Distance used to check for nearby enemies</Original>
+        <French>Distance pour la vérification d'ennemis proches</French>
+        <Korean>근처 적 존재 여부를 체크하는 거리</Korean>
       </Key>
       <Key ID="STR_A3A_Params_enemySkillMul_title">
         <Original>Enemy AI skill (also affected by server skill)</Original>
+        <French>Compétence de l'IA ennemie (affectée par le réglage serveur)</French>
+        <Korean>적 AI 숙련도 (서버 숙련도에도 영향을 받음)</Korean>
       </Key>
       <Key ID="STR_A3A_Params_gameMode_RvG">
         <Original>Reb vs Gov</Original>
+        <French>Reb vs Gov</French>
+        <Korean>반군 Vs 정부군</Korean>
       </Key>
       <Key ID="STR_A3A_Params_gameMode_RvGaI">
         <Original>Reb vs Gov + Inv</Original>
+        <French>Reb vs Gov + Envahisseur</French>
+        <Korean>반군 Vs 정부군과 침략군</Korean>
       </Key>
       <Key ID="STR_A3A_Params_gameMode_RvGvI">
         <Original>Reb vs Gov vs Inv</Original>
+        <French>Reb vs Gov vs Envahisseur</French>
+        <Korean>반군 Vs 정부군 Vs 침략군</Korean>
       </Key>
       <Key ID="STR_A3A_Params_gameMode_title">
         <Original>Game Mode - Do NOT change this mid mission</Original>
+        <French>Mode de Jeu - Ne pas changer ceci en milieu de mission</French>
+        <Korean>게임 모드 - 경고: 임무 도중에 이것을 변경하지 마십시오!!</Korean>
       </Key>
       <Key ID="STR_A3A_Params_GCThreshold_title">
         <Original>Garbage Cleaner Threshold for Automatic GC</Original>
+        <French>Limite avant le Nettoyage de Memoire automatique</French>
+        <Korean>자동 쓰레기 청소에 대한 쓰레기 청소 프로그램 임계점</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_10km">
         <Original>10 km</Original>
+        <French>10 km</French>
+        <Korean>10km</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_10m">
         <Original>10 meters</Original>
+        <French>10 mètres</French>
+        <Korean>10</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_10min">
         <Original>10 minutes</Original>
+        <French>10 minutes</French>
+        <Korean>10분</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_15m">
         <Original>15 meters</Original>
+        <French>15 mètres</French>
+        <Korean>15m</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_15min">
         <Original>15 minutes</Original>
+        <French>15 minutes</French>
+        <Korean>15분</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_16km">
         <Original>16 km</Original>
+        <French>16 km</French>
+        <Korean>16km</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_20m">
         <Original>20 meters</Original>
+        <French>20 mètres</French>
+        <Korean>20m</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_20min">
         <Original>20 minutes</Original>
+        <French>20 minutes</French>
+        <Korean>20분</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_2min">
         <Original>2 minutes</Original>
+        <French>2 minutes</French>
+        <Korean>2분</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_30min">
         <Original>30 minutes</Original>
+        <French>30 minutes</French>
+        <Korean>30분</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_4km">
         <Original>4 km</Original>
+        <French>4 km</French>
+        <Korean>4km</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_5km">
         <Original>5 km</Original>
+        <French>5 km</French>
+        <Korean>5km</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_5min">
         <Original>5 minutes</Original>
+        <French>5 minutes</French>
+        <Korean>5분</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_6km">
         <Original>6 km</Original>
+        <French>6 km</French>
+        <Korean>6km</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_7km">
         <Original>7 km</Original>
+        <French>7 km</French>
+        <Korean>7km</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_8km">
         <Original>8 km</Original>
+        <French>8 km</French>
+        <Korean>8km</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_all">
         <Original>All</Original>
+        <French>Tout</French>
+        <Korean>모두</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_allowed">
         <Original>Allowed</Original>
+        <French>Autorisé</French>
+        <Korean>허용</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_always">
         <Original>Always</Original>
+        <French>Toujours</French>
+        <Korean>항상</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_disabled">
         <Original>Disabled</Original>
+        <French>Désactivé</French>
+        <Korean>비활성화</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_enabled">
         <Original>Enabled</Original>
+        <French>Activé</French>
+        <Korean>활성화</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_high">
         <Original>High</Original>
+        <French>Haut</French>
+        <Korean>높음</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_low">
         <Original>Low</Original>
+        <French>Bas</French>
+        <Korean>낮음</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_medium">
         <Original>Medium</Original>
+        <French>Moyen</French>
+        <Korean>중간</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_never">
         <Original>Never</Original>
+        <French>Jamais</French>
+        <Korean>없음</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_nochange">
         <Original>No change</Original>
+        <French>Pas de changements</French>
+        <Korean>변경 없음</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_nolimit">
         <Original>No limit</Original>
+        <French>Pas de limite</French>
+        <Korean>무제한</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_none">
         <Original>None</Original>
+        <French>Aucun</French>
+        <Korean>없음</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_normal">
         <Original>Normal</Original>
+        <French>Normal</French>
+        <Korean>보통</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_notallowed">
         <Original>Not allowed</Original>
+        <French>Interdit</French>
+        <Korean>허용되지 않음</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_nounlocks">
         <Original>No unlocks</Original>
+        <French>Pas de débloquage</French>
+        <Korean>해금 없음</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_often">
         <Original>Often</Original>
+        <French>Souvent</French>
+        <Korean>자주</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_sometimes">
         <Original>Sometimes</Original>
+        <French>Parfois</French>
+        <Korean>가끔</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_unlimited">
         <Original>Unlimited</Original>
+        <French>Illimité</French>
+        <Korean>무제한</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_veryhigh">
         <Original>Very high</Original>
+        <French>Très haut</French>
+        <Korean>매우 높음</Korean>
       </Key>
       <Key ID="STR_A3A_Params_generic_verylow">
         <Original>Very low</Original>
+        <French>Très bas</French>
+        <Korean>매우 낮음</Korean>
       </Key>
       <Key ID="STR_A3A_Params_globalCivilianMax_title">
         <Original>Maximum global civilians</Original>
+        <French>Maximum global de civils</French>
+        <Korean>최대 전체 민간인 수</Korean>
       </Key>
       <Key ID="STR_A3A_Params_guestCommander_title">
         <Original>Allow guests to become commander when no members are eligible</Original>
+        <French>Autoriser aux invités de devenir commandant quand aucun membre n'est éligible</French>
+        <Korean>자격이 있는 멤버가 없다면 게스트가 지휘관이 될 수 있도록 허용</Korean>
       </Key>
       <Key ID="STR_A3A_Params_guestItemLimit_title">
         <Original>Default number of items needed for guests to be able to use them</Original>
+        <French>Quantité  par defaut d'objets necessaire avant que les invités puissent s'en servir</French>
+        <Korean>게스트가 사용하는 데 필요한 기본 아이템 수</Korean>
       </Key>
       <Key ID="STR_A3A_Params_GUIDevPreview_title">
         <Original>Use In-Development UI Preview</Original>
+        <French>Utiliser la Previsualisation de l'UI en Développement</French>
+        <Korean>개발 중인 UI 미리보기 사용</Korean>
       </Key>
       <Key ID="STR_A3A_Params_helmetLossChance_title">
         <Original>Chance of helmet loss on headshots</Original>
+        <French>Chance de perte du casque sur des tirs à la tête</French>
+        <Korean>헤드샷을 당할 시 헬멧을 잃을 확률</Korean>
       </Key>
       <Key ID="STR_A3A_Params_idleTimeout_title">
         <Original>Time before a player is considered AFK</Original>
+        <French>Temps avant qu'un joueur soit considéré AFK</French>
+        <Korean>플레이어가 잠수로 간주되기까지의 시간</Korean>
       </Key>
       <Key ID="STR_A3A_Params_initialFactionMoney_title">
         <Original>Initial Rebel Faction Money</Original>
+        <French>Argent Initial de la Faction Rebelle</French>
+        <Korean>반란군 세력의 초기 자금</Korean>
       </Key>
       <Key ID="STR_A3A_Params_initialHr_title">
         <Original>Initial Rebel Faction Manpower</Original>
+        <French>Effectifs Initial de la Faction Rebelle</French>
+        <Korean>반란군 세력의 초기 인력</Korean>
       </Key>
       <Key ID="STR_A3A_Params_initialPlayerMoney_title">
         <Original>Initial Player Money</Original>
+        <French>Argent Initial du Joueur</French>
+        <Korean>플레이어의 초기 자금</Korean>
       </Key>
       <Key ID="STR_A3A_Params_invaderBalanceMul_title">
         <Original>Resource multiplier for invaders relative to occupants</Original>
+        <French>Multiplicateur de Ressource de l'envahisseur relatif à l'occupant</French>
+        <Korean>점령군과 관련된 침략군에 대한 자원 승수</Korean>
       </Key>
       <Key ID="STR_A3A_Params_limitedFT_any">
         <Original>Any friendly position</Original>
+        <French>Toute position alliée</French>
+        <Korean>모든 우호지역 위치</Korean>
       </Key>
       <Key ID="STR_A3A_Params_limitedFT_hq">
         <Original>Only Airports + HQ</Original>
+        <French>Seulement Aéroports + QG</French>
+        <Korean>공항과 본부만</Korean>
       </Key>
       <Key ID="STR_A3A_Params_limitedFT_title">
         <Original>Fast Travel Targets Allowed</Original>
+        <French>Cibles de Voyage Rapide Autorisées</French>
+        <Korean>빠른 이동 타겟 허용</Korean>
       </Key>
       <Key ID="STR_A3A_Params_logDebugConsole_nondev">
         <Original>All non-dev</Original>
+        <French>Tout les non-dév</French>
+        <Korean>모두 (개발자 버전 제외)</Korean>
       </Key>
       <Key ID="STR_A3A_Params_logDebugConsole_title">
         <Original>Log debug console use</Original>
+        <Korean>디버그 콘솔 사용 로그 작성</Korean>
       </Key>
       <Key ID="STR_A3A_Params_LogLevel_debug">
         <Original>Debug</Original>
+        <French>Déboger</French>
+        <Korean>디버그</Korean>
       </Key>
       <Key ID="STR_A3A_Params_LogLevel_error">
         <Original>Error</Original>
+        <French>Erreur</French>
+        <Korean>오류</Korean>
       </Key>
       <Key ID="STR_A3A_Params_LogLevel_info">
         <Original>Info</Original>
+        <French>Info</French>
+        <Korean>정보</Korean>
       </Key>
       <Key ID="STR_A3A_Params_LogLevel_title">
         <Original>Logging Level (Amount of detail in .rpt file)</Original>
+        <French>Niveau de Logs (Quantité de détails dans le fichier .rpt)</French>
+        <Korean>로그 작성 수준 (.rpt 파일의 세부정보량)</Korean>
       </Key>
       <Key ID="STR_A3A_Params_LogLevel_verbose">
         <Original>Verbose</Original>
+        <French>Verbeux</French>
+        <Korean>세부 정보</Korean>
       </Key>
       <Key ID="STR_A3A_Params_LootToCrateRadius_title">
         <Original>Loot to crate radius</Original>
+        <Korean>전리품 챙기기 반경</Korean>
       </Key>
       <Key ID="STR_A3A_Params_LTCLootUnlocked_title">
         <Original>Loot to crate transfers unlocked items</Original>
+        <Korean>해금된 아이템을 전리품 상자로 옮김</Korean>
       </Key>
       <Key ID="STR_A3A_Params_maxCiviliansPerTown_title">
         <Original>Maximum civilians spawn per town</Original>
+        <French>Maximum de civils par ville</French>
+        <Korean>마을 당 최대 민간인 스폰 수</Korean>
       </Key>
       <Key ID="STR_A3A_Params_memberDistance_title">
         <Original>Max distance of guests from the closest member or HQ</Original>
+        <French>Distance max des invités du membre ou QG le plus proche</French>
+        <Korean>가장 가까운 멤버 또는 본부로부터 게스트의 최대 거리</Korean>
       </Key>
       <Key ID="STR_A3A_Params_membershipEnabled_title">
         <Original>Enable Server Membership</Original>
+        <French>Activer l'Adhésion au Serveur</French>
+        <Korean>서버 멤버십 활성화</Korean>
       </Key>
       <Key ID="STR_A3A_Params_memberSlots_title">
         <Original>Percentage of Reserved Slots for Members</Original>
+        <French>Pourcentage de Places Reservées pour les Membres</French>
+        <Korean>멤버를 위한 예비 슬롯 비율</Korean>
       </Key>
       <Key ID="STR_A3A_Params_minWeaps_title">
         <Original>Number of the same item required to unlock"</Original>
+        <French>Nombre d'exemplaire d'un objet pour le débloquer</French>
+        <Korean>해금에 필요한 동일 아이템의 갯수</Korean>
       </Key>
       <Key ID="STR_A3A_Params_napalmEnabled_title">
         <Original>Enable Napalm Bombing for AI</Original>
+        <French>Activer le Bombardement au Napalm pour l'IA</French>
+        <Korean>AI가 네이팜 폭격을 사용하도록 허용</Korean>
       </Key>
       <Key ID="STR_A3A_Params_playerMarkersEnabled_title">
         <Original>Enable Friendly Player Markers</Original>
+        <French>Activer les Marqueurs de Joueurs Alliés</French>
+        <Korean>아군 플레이어 마커 활성화</Korean>
       </Key>
       <Key ID="STR_A3A_Params_rebelGarrisonLimit_title">
         <Original>How many rebels can be garrisoned (1.5x for airports, 0.5x for resources and factories)?</Original>
+        <French>Combien de rebels peuvent être en garnison (1.5x pour les aéroports, 0.5x pour les ressources et usines) ?</French>
+        <Korean>얼마나 많은 반군을 주둔시킬 수 있는가? (공항은 1.5배, 자원채취소 및 공장은 0.5배)</Korean>
       </Key>
       <Key ID="STR_A3A_Params_rebelGarrisonLimit_tooltip">
         <Original>How many troops can be in garrison. Note that No limit option may affect performance as there might be too many troops for CPU to handle.</Original>
+        <French>Combien de troupes peuvent être en garnison. Notez que Aucune Limite risque d'affecter les performances car il y aura trop de troupes à gérer pour le CPU.</French>
+        <Korean>주둔지에 얼마나 많은 병력을 배치하는 지 여부를 결정합니다. 무제한 옵션은 CPU가 처리할 병력이 너무 많으므로 성능에 영향을 미칠 수 있습니다.</Korean>
       </Key>
       <Key ID="STR_A3A_Params_rebelSkillMul_title">
         <Original>Friendly AI skill (also affected by server skill)</Original>
+        <French>Compétence de l'IA alliée (affectée par le réglage serveur)</French>
+        <Korean>아군 AI 숙련도 (서버 숙련도에 영향을 받음)</Korean>
       </Key>
       <Key ID="STR_A3A_Params_reviveTime_10s">
         <Original>10 seconds</Original>
+        <French>10 secondes</French>
+        <Korean>10초</Korean>
       </Key>
       <Key ID="STR_A3A_Params_reviveTime_15s">
         <Original>15 seconds</Original>
+        <French>15 secondes</French>
+        <Korean>15초</Korean>
       </Key>
       <Key ID="STR_A3A_Params_reviveTime_5s">
         <Original>5 seconds</Original>
+        <French>5 secondes</French>
+        <Korean>5초</Korean>
       </Key>
       <Key ID="STR_A3A_Params_reviveTime_title">
         <Original>Minimum revive time for players</Original>
+        <French>Temps de réanimation minimum pour les joueurs</French>
+        <Korean>플레이어의 최소 소생 시간</Korean>
       </Key>
       <Key ID="STR_A3A_Params_selfReviveMethods_title">
         <Original>Self-revive methods enabled</Original>
+        <French>Méthodes d'auto-réanimation activées</French>
+        <Korean>자가소생 활성화</Korean>
       </Key>
       <Key ID="STR_A3A_Params_selfReviveMethods_withstand">
         <Original>Withstand</Original>
+        <French>Endurer</French>
+        <Korean>견디기</Korean>
       </Key>
       <Key ID="STR_A3A_Params_startWithLongRangeRadio_title">
         <Original>[TFAR] Start with Long Range Radio?</Original>
+        <French>[TFAR] Commencer avec une Radio Longue-Portée ? </French>
+        <Korean>[TFAR] 장거리 무전기를 가지고 시작합니까?</Korean>
       </Key>
       <Key ID="STR_A3A_Params_TitleBalance_title">
         <Original>BALANCE OPTIONS</Original>
+        <French>OPTIONS EQUILIBRAGE</French>
+        <Korean>-밸런스 설정-</Korean>
       </Key>
       <Key ID="STR_A3A_Params_TitleDevelopment_title">
         <Original>DEVELOPMENT OPTIONS</Original>
+        <French>OPTION DEVELOPPEMENT</French>
+        <Korean>-개발자 설정-</Korean>
       </Key>
       <Key ID="STR_A3A_Params_TitleEquipment_title">
         <Original>EQUIPMENT OPTIONS</Original>
+        <French>OPTIONS EQUIPEMENT</French>
+        <Korean>-장비 설정-</Korean>
       </Key>
       <Key ID="STR_A3A_Params_TitleLoot_title">
         <Original>LOOT CRATE OPTIONS</Original>
+        <French>OPTIONS CAISSE DE BUTIN</French>
+        <Korean>-전리품 상자 설정-</Korean>
       </Key>
       <Key ID="STR_A3A_Params_TitleMembership_title">
         <Original>MEMBERSHIP OPTIONS</Original>
+        <French>OPTIONS ADHESION</French>
+        <Korean>-멤버십 설정-</Korean>
       </Key>
       <Key ID="STR_A3A_Params_tkPunish_title">
         <Original>Enable Teamkill Punish</Original>
+        <French>Activer la Punition pour le Teamkill</French>
+        <Korean>팀킬 처벌 활성화</Korean>
       </Key>
       <Key ID="STR_A3A_Params_unlockedUnlimitedAmmo_title">
         <Original>Do Unlocked Weapons Automatically Unlock Their Standard Magazine?</Original>
+        <French>Débloquer Une Arme Débloque Automatiquement Ses Chargeurs Standards ?</French>
+        <Korean>해금된 무기는 해당 무기의 기본 탄창을 자동으로 해금합니까?</Korean>
       </Key>
     </Container>
     <Container name="A3A_Scripts">
