@@ -6901,6 +6901,7 @@
       </Key>
       <Key ID="STR_A3A_Params_LogLevel_debug">
         <Original>Debug</Original>
+        <Italian>Debug</Italian>
         <French>Déboger</French>
         <Korean>디버그</Korean>
         <Russian>Отладка</Russian>
@@ -6908,6 +6909,7 @@
       </Key>
       <Key ID="STR_A3A_Params_LogLevel_error">
         <Original>Error</Original>
+        <Italian>Errore</Italian>
         <French>Erreur</French>
         <Korean>오류</Korean>
         <Russian>Ошибка</Russian>
@@ -6915,6 +6917,7 @@
       </Key>
       <Key ID="STR_A3A_Params_LogLevel_info">
         <Original>Info</Original>
+        <Italian>Informazione</Italian>
         <French>Info</French>
         <Korean>정보</Korean>
         <Russian>Информация</Russian>
@@ -6933,6 +6936,7 @@
       </Key>
       <Key ID="STR_A3A_Params_LootToCrateRadius_title">
         <Original>Loot to crate radius</Original>
+        <Italian>Bottino nel raggio della cassa</Italian>
         <Korean>전리품 챙기기 반경</Korean>
       </Key>
       <Key ID="STR_A3A_Params_LTCLootUnlocked_title">
@@ -6991,16 +6995,19 @@
       </Key>
       <Key ID="STR_A3A_Params_reviveTime_10s">
         <Original>10 seconds</Original>
+        <Italian>10 Secondi</Italian>
         <French>10 secondes</French>
         <Korean>10초</Korean>
       </Key>
       <Key ID="STR_A3A_Params_reviveTime_15s">
         <Original>15 seconds</Original>
+        <Italian>15 Secondi</Italian>
         <French>15 secondes</French>
         <Korean>15초</Korean>
       </Key>
       <Key ID="STR_A3A_Params_reviveTime_5s">
         <Original>5 seconds</Original>
+        <Italian>5 Secondi</Italian>
         <French>5 secondes</French>
         <Korean>5초</Korean>
       </Key>
@@ -7026,21 +7033,25 @@
       </Key>
       <Key ID="STR_A3A_Params_TitleBalance_title">
         <Original>BALANCE OPTIONS</Original>
+        <Italian>OPZIONI DI SALDO</Italian>
         <French>OPTIONS EQUILIBRAGE</French>
         <Korean>-밸런스 설정-</Korean>
       </Key>
       <Key ID="STR_A3A_Params_TitleDevelopment_title">
         <Original>DEVELOPMENT OPTIONS</Original>
+        <Italian>OPZIONI DI SVILUPPAMENTO</Italian>
         <French>OPTION DEVELOPPEMENT</French>
         <Korean>-개발자 설정-</Korean>
       </Key>
       <Key ID="STR_A3A_Params_TitleEquipment_title">
         <Original>EQUIPMENT OPTIONS</Original>
+        <Italian>OPZIONI DI ATTREZZATURE</Italian>
         <French>OPTIONS EQUIPEMENT</French>
         <Korean>-장비 설정-</Korean>
       </Key>
       <Key ID="STR_A3A_Params_TitleLoot_title">
         <Original>LOOT CRATE OPTIONS</Original>
+        <Italian>OPZIONI DELLA CASSA DEL BOTTINO</Italian>
         <French>OPTIONS CAISSE DE BUTIN</French>
         <Korean>-전리품 상자 설정-</Korean>
       </Key>
