@@ -142,17 +142,15 @@ switch (_mode) do
 
 		} forEach _buildableObjects;
 
-		_display setVariable ["displayCordinates", [CENTER_X(160), BOTTOM - PX_H(36), (PX_W(160)) / 2, (PX_H(36)) / 2]];
-
+		// EH to block camera zoom while mouse is over the selection dialog
 		_display displayAddEventHandler ["MouseMoving", {
 
 			params[ "_display" ];
 
-			private _paramsArray = _display getVariable ["displayCordinates", [1,1,1,1]];
-			_paramsArray params ["_xPos", "_yPos", "_wPos", "_hPos"];
-			
+			private _scrollArea = _display displayCtrl A3A_IDC_TEAMLEADERBUILDERMAIN;
+			ctrlPosition _scrollArea params ["_xpos", "_ypos", "_width", "_height"];
 
-			private _isMouseInArea = getMousePosition inArea[[ _xPos + _wPos, _yPos + _hPos ], _wPos, _hPos, 0, true];
+			private _isMouseInArea = getMousePosition inArea [[_xpos + _width/2, _ypos + _height/2], _width/2, _height/2, 0, true];
 
 			if (_isMouseInArea) then {
 				A3A_cam camCommand "manual off";
