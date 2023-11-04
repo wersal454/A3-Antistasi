@@ -58,7 +58,8 @@ aceMedItems = [
 	"ACE_adenosine",
 	"ACE_splint",
 	"ACE_bodyBag",
-	"ACE_personalAidKit"
+	"ACE_personalAidKit",
+	"ACE_suture"
 ];
 
 aceMedItemsBlood = [
