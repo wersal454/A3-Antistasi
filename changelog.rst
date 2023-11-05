@@ -29,7 +29,7 @@ Version 3.4.0
    * During 5min timeout, adds desaturation effect and increased sway
    * Multiple modifications to Antistasi damage system which allows this system to work properly
 
-   .. rubric:: :issue:`2819` Western Sahara Templates
+   .. rubric:: Western Sahara Templates
 
 
    * [Added] - :issue:`2935` WS Civs and Tura Rebels
