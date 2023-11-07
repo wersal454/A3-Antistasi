@@ -5526,6 +5526,9 @@
         <Korean>%1을(를) 잃었다.</Korean>
         <Czech>Ztratili jsme %1.</Czech>
       </Key>
+      <Key ID="STR_A3A_fn_revive_actRev_other">
+        <Original>%1 has been revived by someone else.</Original>
+      </Key>
       <Key ID="STR_A3A_fn_revive_actRev_no_able">
         <Original>You are not able to revive anyone.</Original>
         <Italian>Non sei in grado di rianimare nessuno.</Italian>
