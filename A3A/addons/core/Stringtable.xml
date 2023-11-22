@@ -7065,6 +7065,9 @@
         <French>Activer la Punition pour le Teamkill</French>
         <Korean>팀킬 처벌 활성화</Korean>
       </Key>
+      <Key ID="STR_A3A_Params_tkPunish_logonly">
+        <Original>Notify only</Original>
+      </Key>
       <Key ID="STR_A3A_Params_unlockedUnlimitedAmmo_title">
         <Original>Do Unlocked Weapons Automatically Unlock Their Standard Magazine?</Original>
         <French>Débloquer Une Arme Débloque Automatiquement Ses Chargeurs Standards ?</French>
