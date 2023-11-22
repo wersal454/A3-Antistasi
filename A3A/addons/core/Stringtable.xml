@@ -85,7 +85,7 @@
         <Chinesesimp>你当前的模式设定不支持这种类型的火力支援.</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_ai_artySupport_noammo">
-        <Original>The battery has no ammo to fire. Reload it on HQ.</Original>
+        <Original>The mortar has run out of rounds. Wait a few minutes to restock it.</Original>
         <Italian>La batteria non ha munizioni. Ricaricala su QG.</Italian>
         <Spanish>Esta batería de artillería no tiene munición para disparar. Recárgala en el CG.</Spanish>
         <French>L'artillerie n'a aucune munition à tirer. Rechargez la au QG.</French>
@@ -124,7 +124,7 @@
         <Chinesesimp>你必须选择一个炮群</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_ai_artySupport_selectOr">
-        <Original>You must select an artillery group or it is a mobile mortar which is moving.</Original>
+        <Original>You must select an artillery group or the mortar team you have selected hasn't placed down the mortar yet.</Original>
         <Italian>Devi selezionare un gruppo d'artiglieria oppure è un mortaio mobile in movimento.</Italian>
         <Spanish>Debe seleccionar un grupo de artillería o es un mortero móvil que está en movimiento.</Spanish>
         <French>Vous devez sélectionner un groupe d'artillerie ou une équipe de mortier qui n'est pas en déplacement.</French>
@@ -407,13 +407,13 @@
         <Chinesesimp>伪装</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_base_airspacecontrol_undercover_text">
-        <Original>Unidentified helicopter&lt;br/&gt;&lt;br/&gt;You are closing in on the airspace of %1.&lt;br/&gt;&lt;br/&gt; Change your course or we will take defensive actions!</Original>
+        <Original>Unidentified aircraft!&lt;br/&gt;&lt;br/&gt;You are closing in on the restricted airspace of %1.&lt;br/&gt;&lt;br/&gt; Change your course or we will take defensive actions!</Original>
         <Italian>Elicottero non identificato&lt;br/&gt;&lt;br/&gt;Si sta avvicinando allo spazio aereo di %1.&lt;br/&gt;&lt;br/&gt; Invertite la rotta o intraprenderemo azioni difensive!</Italian>
         <French>Hélicoptère non-identifié&lt;br/&gt;&lt;br/&gt;Vous approchez de l'espace aérien de %1.&lt;br/&gt;&lt;br/&gt; Modifiez votre trajectoire ou nous allons prendre des mesures défensives!</French>
         <Korean>확인되지 않은 헬리콥터&lt;br/&gt;&lt;br/&gt;너는 지금 %1 공역에 들어왔다.&lt;br/&gt;&lt;br/&gt;항로를 바꾸지 않으면 발포하겠다!</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_airspacecontrol_warning">
-        <Original>Unidentified helicopter&lt;br/&gt;&lt;br/&gt;You are closing in on the airspace of %1.&lt;br/&gt;&lt;br/&gt; Change your course or we will take defensive actions!</Original>
+        <Original>Unidentified aircraft!&lt;br/&gt;&lt;br/&gt;You are closing in on the restricted airspace of %1.&lt;br/&gt;&lt;br/&gt; Change your course or we will take defensive actions!</Original>
         <Italian>Elicottero non identificato&lt;br/&gt;&lt;br/&gt;Si sta avvicinando allo spazio aereo di %1.&lt;br/&gt;&lt;br/&gt; Invertite la rotta o intraprenderemo azioni difensive!</Italian>
         <Spanish>Helicóptero no identificado&lt;br/&gt;&lt;br/&gt;Está acercándose al espacio aéreo de %1.&lt;br/&gt;&lt;br/&gt; ¡Cambie de rumbo o tomaremos acciones defensivas!</Spanish>
         <French>Hélicoptère non-identifié&lt;br/&gt;&lt;br/&gt;Vous approchez de l'espace aérien de %1.&lt;br/&gt;&lt;br/&gt; Modifiez votre trajectoire ou nous allons prendre des mesures défensives!</French>
@@ -677,7 +677,7 @@
         <Chinesesimp>在移动总部之前请先将Petros放下</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_base_canmovehq_petros_pickedup">
-        <Original>Petros currently picked up.</Original>
+        <Original>Petros is already picked up.</Original>
         <Italian>Petros attualmente in spalla.</Italian>
         <Spanish>Petros está siendo sujetado.</Spanish>
         <French>Petros est en train d'être deplacé.</French>
@@ -959,7 +959,7 @@
         <Chinesesimp>总部管理</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_base_flagaction_intel_decifer">
-        <Original>Decifer Intel</Original>
+        <Original>Decipher Intel</Original>
         <German>Intel entschlüsseln</German>
         <Italian>Decifra Intelligence</Italian>
         <Spanish>Descifrar Inteligencia</Spanish>
@@ -1086,7 +1086,7 @@
         <Chinesesimp>允许AI使用该武器</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_base_flagaction_static_prevent">
-        <Original>Prevent AIs using this weapon</Original>
+        <Original>Prevent AIs from using this weapon</Original>
         <Italian>Vieta all'IA di usare quest'arma</Italian>
         <Spanish>Prohibir a la IA utilizar esta arma</Spanish>
         <French>Empêcher aux IAs d'utiliser cette arme</French>
@@ -1197,7 +1197,7 @@
         <Chinesesimp>无头客户端</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_base_hcdics_warning">
-        <Original>A Headless Client has been disconnected. This will cause malfunctions. Head back to HQ for saving ASAP and ask and Admin for a restart.</Original>
+        <Original>A Headless Client has been disconnected. This will cause malfunctions. Head back to HQ for saving ASAP and ask an Admin for a restart.</Original>
         <Italian>L'Headless Client è stato disconnesso. Ciò causerà malfunzionamenti. Torna al QG per salvare il prima possibile e chiedi ad un Amministratore di riavviare.</Italian>
         <Spanish>Un Headless Client ha sido desconectado. Esto causará errores. Vuelva al CG lo antes posible para guardar el progreso y pregunte a un administrador para que reinicie. </Spanish>
         <French>Un Client Headless a été déconnecté. Cela va causer des disfonctionnnement. Retournez au QG pour sauvegarder aussi vite que possible et demandez à un Admin pour un redémarrage.</French>
@@ -1300,7 +1300,7 @@
         <Chinesesimp>你无法在伪装模式下夺取战旗</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_base_mrkwin_no_wl3">
-        <Original>You cannot capture Airports until you reach War Level 3.</Original>
+        <Original>You cannot capture airbases until you reach War Level 3.</Original>
         <Italian>Non puoi catturare gli Aeroporti prima del Livello di Guerra 3.</Italian>
         <Spanish>No puede capturar aeropuertos hasta que llegue al Nivel de Guerra 3.</Spanish>
         <French>Vous ne pouvez pas capturer d'Aéroport avant d'atteindre le Niveau de Guerre  3.</French>
@@ -1427,7 +1427,7 @@
         <Chinesesimp>你的班组需要有一个通信员才可以给其他班组下达命令</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_base_outpdiag_no_resources">
-        <Original>You lack of resources to build this Watchpost or Roadblock. &lt;br/&gt;&lt;br/&gt; %1 HR and %2 € needed.</Original>
+        <Original>You lack the resources to build this Watchpost or Roadblock. &lt;br/&gt;&lt;br/&gt; %1 HR and %2 € needed.</Original>
         <Italian>Ti mancano le risorse per costruire questo Posto di Guardia o Posto di Blocco. &lt;br/&gt;&lt;br/&gt; %1 HR e %2 € richiesti.</Italian>
         <Spanish>No tiene los recursos para construir este puesto de vigilancia o bloqueo de carretera. &lt;br/&gt;&lt;br/&gt; Necesita %1 RH y %2 €.</Spanish>
         <French>Vous manquez de ressources pour construire ce Poste d'Observation ou Barrage Routier. &lt;br/&gt;&lt;br/&gt; %1 RH et %2 € requis.</French>
@@ -1487,7 +1487,7 @@
         <Chinesesimp>该区域附近有敌人在游荡，请选择其他区域</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_base_placeselec_no_enemy_zone">
-        <Original>Place selected is very close to enemy zones.&lt;br/&gt;&lt;br/&gt; Please select another position.</Original>
+        <Original>Position selected is very close to an enemy zone.&lt;br/&gt;&lt;br/&gt; Please select another position.</Original>
         <Italian>Il posto selezionato è molto vicino a zone nemiche.&lt;br/&gt;&lt;br/&gt; Selezionane un altro.</Italian>
         <Spanish>El lugar seleccionado está muy cerca de zonas enemigas.&lt;br/&gt;&lt;br/&gt; Por favor, seleccione otra posición.</Spanish>
         <French>Le lieu choisi est très proche des zones ennemies.&lt;br/&gt;&lt;br/&gt; Choisissez une autre position.</French>
@@ -1671,7 +1671,7 @@
         <Chinesesimp>重建资产</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_base_sellveh_no_closer">
-        <Original>Vehicle must be closer than 50 meters to the headquarters marker.</Original>
+        <Original>Vehicle must be closer than 50 meters to the HQ marker.</Original>
         <Italian>Il veicolo deve essere entro 50 metri dal marcatore del quartier generale.</Italian>
         <Spanish>El vehículo debe estar a 50 metros o menos del marcador del CG.</Spanish>
         <French>Le Véhicule doit être à moins de 50 mètres du marqueur du quartier général.</French>
@@ -1780,7 +1780,7 @@
         <Chinesesimp>载具已上锁</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_base_unlockveh_no_destr">
-        <Original>You cannot unlock/lock destroyed vehicles.</Original>
+        <Original>You cannot lock or unlock destroyed vehicles.</Original>
         <Italian>Non puoi aprire/chiudere veicoli distrutti.</Italian>
         <Spanish>No puede abrir/cerrar vehículos destruidos.</Spanish>
         <French>Vous ne pouvez pas verrouiller/déverrouiller un véhicule détruit.</French>
@@ -1834,7 +1834,7 @@
         <Chinesesimp>你当前选定的载具并不属于任何人</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_base_unlockveh_no_owner2">
-        <Original>You cannot unlock/lock vehicles which you do not own.</Original>
+        <Original>You cannot lock or unlock vehicles which you do not own.</Original>
         <Italian>Non puoi aprire/chiudere veicoli che non possiedi.</Italian>
         <Spanish>No puede abrir/cerrar vehículos que no le pertenezcan.</Spanish>
         <French>Vous ne pouvez pas déverrouiller/verrouiller un véhicule qui ne vous appartient pas.</French>
@@ -1910,7 +1910,7 @@
         <Chinesesimp>车队调试</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_convoy_craiact_ammo_text">
-        <Original>A convoy from %1 is about to depart at %2. It will provide ammunition to %3. Try to intercept it. Steal or destroy that truck before it reaches it's destination.</Original>
+        <Original>A convoy from %1 is about to depart at %2. It will provide ammunition to %3. Try to intercept it. Steal or destroy that truck before it reaches its destination.</Original>
         <Italian>Un convoglio da %1 è in procinto di partire alle %2. Trasporta munizioni verso %3. Prova ad intercettarlo. Ruba o distruggi i veicoli prima che raggiungano la destinazione.</Italian>
         <Spanish>Un convoy de %1 saldrá a las %2. Lleva munición munición a %3. Intente interceptarlo. Robe o destruya ese camión antes de que llegue a su destino.</Spanish>
         <French>Un convoi de %1 est sur le point de partir à %2. Cela fournira des munitions à %3. Essayez de l'intercepter. Volez ou détruisez ce camion avant qu'il n'atteigne sa destination.</French>
@@ -1934,7 +1934,7 @@
         <Chinesesimp>弹药补给车队</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_convoy_craiact_armored_text">
-        <Original>A convoy from %1 is about to depart at %2. It will reinforce %3 with armored vehicles. Try to intercept it. Steal or destroy that thing before it reaches it's destination.</Original>
+        <Original>A convoy from %1 is about to depart at %2. It will reinforce %3 with armored vehicles. Try to intercept it. Steal or destroy the armor before it reaches it's destination.</Original>
         <Italian>Un convoglio da %1 è in procinto di partire alle %2. Rinforzerà %3 con veicoli corazzati. Prova ad intercettarlo. Ruba o distruggi i veicoli prima che raggiungano la destinazione.</Italian>
         <Spanish>Un convoy de %1 saldrá a las %2. Reforzará %3 con vehículos blindados. Intente interceptarlo. Robe o destruya esa cosa antes de que alcance su destino.</Spanish>
         <French>Un convoi de %1 est sur le point de partir à %2. Il renforcera %3 avec des véhicules blindés. Essayez de l'intercepter. Volez ou détruisez cette chose avant qu'elle n'atteigne sa destination.</French>
@@ -1982,7 +1982,7 @@
         <Chinesesimp>武装运钞车队</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_convoy_craiact_prison_text">
-        <Original>A group of POWs is being transported from %1 to %3, and it's about to depart at %2. Try to intercept it. Kill or capture the truck driver to make them join you and bring them to HQ. Alive if possible.</Original>
+        <Original>A group of POWs is being transported from %1 to %3, and it's about to depart at %2. Intercept the convoy and bring the POWs back to HQ, alive if possible.</Original>
         <Italian>Un gruppo di PG sta per essere trasportato da %1 verso %3, partirà per le %2. Prova ad intercettarlo. Uccidi o cattura il guidatore e portali al QG.</Italian>
         <Spanish>Un grupo de PDG esta siendo trasladado de %1 a %3, y saldrá a las %2. Intente interceptarlo. Mate o capture al conductor del camión para hacer que se unan a usted y tráigalos al CG. Vivo si  es posible.</Spanish>
         <French>Un groupe de prisonniers de guerre est en cours de transport de %1 à %3 et est sur le point de partir à %2. Essayez de l'intercepter. Tuez ou capturez le chauffeur du camion pour que les prisonniers vous rejoignent et amenez-les au QG. Vivant si possible.</French>
@@ -2003,7 +2003,7 @@
         <Chinesesimp>战俘押运车队</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_convoy_craiact_reinf_text">
-        <Original>Reinforcements are being sent from %1 to %3 in a convoy, and it's about to depart at %2. Try to intercept and kill all the troops and vehicle objective.</Original>
+        <Original>Reinforcements are being sent from %1 to %3 in a convoy, and it's about to depart at %2. Intercept the convoy, kill all the troops, and destroy their vehicles.</Original>
         <Italian>I rinforzi verranno mandati da %1 verso %3, partiranno alle %2. Intercettali e distruggi le truppe e i veicoli.</Italian>
         <Spanish>Se están enviando refuerzos desde %1 hacia %3 en un convoy, y saldrán a las %2. Intente interceptar y eliminar todas las tropas y el vehículo objetivo.</Spanish>
         <French>Des renforts sont envoyés de %1 à %3 dans un convoi, et il est sur le point de partir à %2. Essayez d'intercepter et éliminer tout les objectifs.</French>
@@ -2027,7 +2027,7 @@
         <Chinesesimp>敌方增援车队</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_convoy_craiact_supply_text">
-        <Original>A truck with medical supplies destination %3 it's about to depart at %2 from %1. Steal that truck bring it to %3 and let people in there know it is %4 who's giving those supplies.</Original>
+        <Original>A truck with medical supplies, destination %3, is about to depart at %2 from %1. Intercept the convoy, steal the truck, bring it to %3, and let the people know the %4 is giving the aid they need.</Original>
         <Italian>Un veicolo carico di rifornimenti medici rifornirà %3  partirà per le %2 da %1. Ruba il veicolo e portalo a %3 e fai in modo che la gente sappia che %4 sta portanto i rifornimenti.</Italian>
         <Spanish>Un camión con suministros médicos con destino %3 saldrá a las %2 desde %1. Robe ese camión y tráigalo a %3, asegúrese que la gente sabe que es %4 quién les ha entregado esos suministros.</Spanish>
         <French>Un camion avec des fournitures médicales à destination %3 est sur le point de partir à %2 de %1. Volez ce camion, amenez le à %3 et faites savoir aux gens que c'est %4 qui donne ces fournitures.</French>
@@ -2198,7 +2198,7 @@
         <Turkish>Saldırı altındaki bir bölgeye hızlı yolculuk yapamazsınız</Turkish>
       </Key>
       <Key ID="STR_A3A_fn_dialogs_ftradio_no_attack2">
-        <Original>You cannot Fast Travel to an area under attack or with enemies in the surrounding.</Original>
+        <Original>You cannot Fast Travel to an area under attack or with enemies nearby.</Original>
         <Italian>Non puoi effettuare il Viaggio Rapido verso un'area sotto attaco o con nemici nei paraggi.</Italian>
         <Spanish>No puede usar el viaje rápido a un lugar que está bajo ataque o con enemigos en sus alrededores.</Spanish>
         <French>Vous ne pouvez pas voyager rapidement vers une zone attaquée ou avec des ennemis à proximité.</French>
@@ -2253,7 +2253,7 @@
         <Turkish>Düşmna kontrolündeki bir bölgeye hızlı yolculuk yapamazsınız.</Turkish>
       </Key>
       <Key ID="STR_A3A_fn_dialogs_ftradio_no_ff">
-        <Original>You cannot fast travel while being FF Punished.</Original>
+        <Original>You cannot fast travel while being punished for friendly fire.</Original>
         <Italian>Non puoi effettuare il viaggio rapido mentre sei Ammonito per il FA</Italian>
         <Spanish>No puede usar el viaje rápido mientras tenga una penalización por fuego amigo.</Spanish>
         <French>Vous ne pouvez pas voyager rapidement en étant puni pour tir-ami.</French>
@@ -2685,7 +2685,7 @@
         <Korean>%1&lt;br/&gt;지지하는 세력: %2</Korean>
       </Key>
       <Key ID="STR_A3A_fn_init_cityinfo_overview_1">
-        <Original>%7&lt;br/&gt;&lt;br/&gt;Total pop: %1&lt;br/&gt;%6 Support: %2&lt;br/&gt;%5 Support: %3&lt;br/&gt;&lt;br/&gt;Murdered Pop: %4&lt;br/&gt;&lt;br/&gt;Click on the zone</Original>
+        <Original>%7&lt;br/&gt;&lt;br/&gt;Total population: %1&lt;br/&gt;%6 Support: %2&lt;br/&gt;%5 Support: %3&lt;br/&gt;&lt;br/&gt;Murdered Population: %4&lt;br/&gt;&lt;br/&gt;Click on a zone for a detailed view</Original>
         <Italian>%7&lt;br/&gt;&lt;br/&gt;Popolazione totale:%1&lt;br/&gt;%6 Supporto:%2&lt;br/&gt;%5 Supporto %3:&lt;br/&gt;&lt;br/&gt;Popolazione uccisa: %4&lt;br/&gt;&lt;br/&gt;Clicca sulla zona</Italian>
         <French>%7&lt;br/&gt;&lt;br/&gt;Pop totale : %1&lt;br/&gt;%6 Support : %2&lt;br/&gt;%5 Support : %3&lt;br/&gt;&lt;br/&gt;Pop tuée : %4&lt;br/&gt;&lt;br/&gt;Cliquez sur la zone</French>
         <Korean>%7&lt;br/&gt;&lt;br/&gt;총 인구: %1&lt;br/&gt;%6 지지도: %2&lt;br/&gt;%5 지지도: %3&lt;br/&gt;&lt;br/&gt;죽은 인구: %4&lt;br/&gt;&lt;br/&gt;원하는 구역을 클릭하십시오</Korean>
@@ -3073,7 +3073,7 @@
         <Czech>Dešifrovat význam</Czech>
       </Key>
       <Key ID="STR_A3A_fn_intel_encr_err_2_err">
-        <Original>Ilegible text encountered, need to decipher meaning from context.</Original>
+        <Original>Illegible text encountered, need to decipher meaning from context.</Original>
         <Italian>Testo illegibile pervenuto, necessità di decifrare il significato dal contesto.</Italian>
         <French>Texte inintelligible trouvé, il faut en décrypter le sens basé sur le contexte.</French>
         <Czech>Objevil se nečitelný text, je třeba rozluštit rozluštit význam z kontextu.</Czech>
@@ -3614,7 +3614,7 @@
         <Czech>Zabrat základnu</Czech>
       </Key>
       <Key ID="STR_A3A_fn_mission_conv_ammo_text">
-        <Original>A convoy from %1 is about to depart at %2. It will provide ammunition to %3. Try to intercept it. Steal or destroy that truck before it reaches it's destination.</Original>
+        <Original>A convoy from %1 is about to depart at %2. It will provide ammunition to %3. Try to intercept it. Steal or destroy that truck before it reaches its destination.</Original>
         <Italian>Un convoglio da %1 è in procinto di partire alle %2. Trasporta munizioni verso %3. Prova ad intercettarlo. Ruba o distruggi i veicoli prima che raggiungano la destinazione.</Italian>
         <French>Un convoi partant de %1 est sur le point de partir à %2. Il va fournir des munitions à %3. Essayez de l'intercepter. Volez ou détruisez ce camion avant qu'il n'atteigne sa destination.</French>
         <Korean>%1에서 온 수송대가 %2에서 출발하려고 하며, 이는 %3에게 탄약을 제공할 것입니다. 수송을 방해하여 해당 트럭이 목적지에 도달하기 전에 훔치거나 파괴하십시오.</Korean>
@@ -3631,7 +3631,7 @@
         <Czech>Konvoj s municí</Czech>
       </Key>
       <Key ID="STR_A3A_fn_mission_conv_armor_text">
-        <Original>A convoy from %1 is about to depart at %2. It will reinforce %3 with armored vehicles. Try to intercept it. Steal or destroy that thing before it reaches it's destination.</Original>
+        <Original>A convoy from %1 is about to depart at %2. It will reinforce %3 with armored vehicles. Try to intercept it. Steal or destroy the armor before it reaches it's destination.</Original>
         <Italian>Un convoglio da %1 è in procinto di partire alle %2. Rinforzerà %3 con veicoli corazzati. Prova ad intercettarlo. Ruba o distruggi i veicoli prima che raggiungano la destinazione.</Italian>
         <French>Un convoi de %1 est sur le point de partir à %2. Il renforcera %3 avec des véhicules blindés. Essayez de l'intercepter. Volez ou détruisez cette chose avant qu'elle n'atteigne sa destination.</French>
         <Korean>%1에서 온 수송대가 %2에서 출발하려고 하며, 이는 %3의 기갑 차량을 증원할 것입니다. 수송을 방해하여 그것이 목적지에 도달하기 전에 훔치거나 파괴하십시오.</Korean>
@@ -3711,7 +3711,7 @@
         <Czech>Konvoj se zásobami.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_mission_des_ante_text">
-        <Original>We need to destroy or take a Radio Tower in %1. This will interrupt %3 Propaganda Network. Do it before %2.</Original>
+        <Original>We need to destroy or take a Radio Tower in %1. This will interrupt the coverage of %3 radio propaganda. Do it before %2.</Original>
         <Italian>Dobbiamo distruggere o catturare la Torre Radio a %1. Ciò interromperà la Rete di Propaganda %3. Falla entro %2.</Italian>
         <French>Nous devons détruire ou capturer une Tour Radio dans %1. Cela va interrompre le reseau de propagande de %3. Faites le avant %2.</French>
         <Czech>Musíme zničit nebo obsadit vysílací věž v %1. To přeruší %3 propagandistickou síť. Udělejte to před %2.</Czech>
@@ -3741,7 +3741,7 @@
         <Czech>Zřícený vrtulník</Czech>
       </Key>
       <Key ID="STR_A3A_fn_mission_des_veh_text">
-        <Original>We know an enemy armor (%3) is stationed in %1. It is a good chance to destroy or steal it before it causes more damage. Do it before %2.</Original>
+        <Original>We know an enemy armor (%3) is stationed in %1. We have a unique opportunity to steal or destroy the armor before it becomes an issue later on. Do it before %2.</Original>
         <Italian>Sappiamo che un blindato nemico (%3) è stazionato a %1. Possiamo distruggerlo o rubarlo prima che possa causare danni. Fallo entro %2.</Italian>
         <French>Nous savons qu'un blindé ennemi (%3) est en poste à %1. C'est une bonne opportunité de le détruire ou le capturer avant qu'il ne cause plus de dégats. Faites le avant %2.</French>
         <Korean>%1에 적 기갑(%3)이 배치되었다는 걸 알고 있습니다. 더 큰 피해를 입기 전에 파괴하거나 훔칠 수 있는 좋은 기회입니다. %2 전까지 수행하십시오.</Korean>
@@ -3781,7 +3781,7 @@
         <Czech>Přivez tento náklaďák k %1 bance a zaparkujte ho u hlavního vchodu.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_mission_log_bank_hint_text2">
-        <Original>Don't get the truck far from the bank or count will restart.</Original>
+        <Original>Don't get the truck far from the bank or the countdown will restart.</Original>
         <Italian>Non allontanre il camion dalla banca o il conto ricomincerà.</Italian>
         <French>N'éloignez pas le camion de la banque ou le compte recommencera.</French>
         <Korean>트럭을 은행에서 멀리 두지 마십시오. 멀리 두면 카운트가 초기화됩니다.</Korean>
@@ -3805,7 +3805,7 @@
         <Czech>Bankovní mise</Czech>
       </Key>
       <Key ID="STR_A3A_fn_mission_log_bank_text">
-        <Original>We know Gendarmes are guarding a large amount of money in the bank of %1. Take this truck and go there before %2, hold the truck close to tha bank's main entrance for 2 minutes and the money will be transferred to the truck. Bring it back to HQ and the money will be ours.</Original>
+        <Original>A squad of Gendarmeries are guarding a large amount of money in the bank of %1. Take the Truck at HQ and go there before %2. Once you're there, hold the truck next to the bank's main entrance for 2 minutes and the money will be transferred to the truck. Bring the truck back to HQ and the money will be ours.</Original>
         <Italian>Sappiamo che i Gendarmi sono  a guardia di una grossa somma di denaro nella banca di %1. Prendi questo camion e recati lì entro %2, mantieni il camion nei pressi dell'entrata principale della banca per 2 minuti e il denaro verrà trasferito al veicolo. Riportalo al QG e il denaro sarà nostro.</Italian>
         <French>Nous savons que les Gendarmes gardent une grande quantité d'argent dans la banque de %1. Prenez ce camion et allez y avant %2, maintenez le camion proche de l'entrée principale de la banque pendant 2 minutes et l'argent sera transféré dedans. Ramenez le au QG et l'argent sera à nous.</French>
         <Korean>우린 적 헌병대가 %1의 은행에 거금을 지키고 있다는 걸 알고 있습니다. 이 트럭을 타고 %2 전까지 그 곳으로 가서 트럭을 2분간 주차하고 있으면 돈이 트럭으로 옮겨질 것입니다. 그 돈을 본부로 가져오면 돈은 우리의 것이 될 것입니다.</Korean>
@@ -3878,7 +3878,7 @@
         <Czech>Zásobovací mise</Czech>
       </Key>
       <Key ID="STR_A3A_fn_mission_log_supply_text">
-        <Original>%1 population is in need of supplies. We may improve our relationship with that city if we are the ones who provide them. I have placed a crate with supplies near our HQ. Deliver the crate to %1 city center, hold it there for %3 minutes and it's done. Do this before %2.</Original>
+        <Original>%1 population is in need of supplies. We may improve our relationship with that city if we are the ones who provide them. A crate with enough supplies for the whole town has been placed near our HQ. Deliver the crate to %1 city center, hold it there for %3 minutes and it's done. Do this before %2.</Original>
         <Italian>La popolazione di %1 necessita di approvigionamenti. Possiamo migliorare il nostro rapporto con la città se siamo noi coloro che consegneranno i rifornimenti. Ho posizionato una cassa con i rifornimenti vicino al nostro QG. Consegna la cassa al centro di %1, mantie la posizione per %3 minuti e sarà fatto. Fallo entro %2.</Italian>
         <French>La population de %1 a besoin de provisions. Nous pourrions améliorer nos relation avec cette ville si nous sommes ceux qui les fournissons. J'ai placé une caisse avec des provisions près de notre QG. Livrez la caisse au centre ville de %1, tenez la position pendant %3 minutes et ce sera fait. Faites-le avant %2.</French>
         <Korean>%1의 주민들은 보급품이 필요합니다. 우리가 보급품을 제공할 수 있는 존재라면 그들과의 관계를 개선할 수 있을 것입니다. 본부 근처에 보급품이 있는 상자를 놓았습니다. 상자를 %1의 도심에 배달하여 %3분 동안 그 곳에 두면 완료됩니다. %2 전까지 수행하십시오.</Korean>
@@ -4070,7 +4070,7 @@
         <Czech>Hráč není členem servru.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_orgp_memAdd_no_pointing">
-        <Original>You are not pointing to anyone.</Original>
+        <Original>You are not looking at anyone.</Original>
         <Italian>Non stai indicando nessuno.</Italian>
         <French>Vous ne pointez personne.</French>
         <Korean>당신은 누구에게도 가리키고 있지 않습니다.</Korean>
@@ -4270,7 +4270,7 @@
         <Turkish>Mühendis rolü</Turkish>
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_engi2">
-        <Original>Engineers do not have any bonus or penalties, but have the ability to use Repair Kits for vehicle repair.</Original>
+        <Original>Engineers do not have any bonus or penalties, but have the ability to use Toolkits for vehicle repair.</Original>
         <Italian>I Genieri non hanno bonus o penalità, hanno l'abilità di usare i Kit di Riparazioni per riparare i veicoli.</Italian>
         <French>Les Ingénieurs n'ont pas de bonus ou de malus, mais ils ont la capacité d'utiliser des Kits de Réparation pour restaurer les véhicules.</French>
         <Korean>공병은 보너스나 패널티가 없지만, 차량 수리를 위해 도구모음을 사용할 수 있는 능력이 있습니다.</Korean>
@@ -4416,7 +4416,7 @@
         <Czech>Trest za střelbu do vlastních</Czech>
       </Key>
       <Key ID="STR_A3A_fn_punish_oob_text">
-        <Original>Return to the AO before you are blown up, you have %1 seconds.</Original>
+        <Original>Return to the AO ASAP! You have %1 seconds before you're shredded by enemy defenses.</Original>
         <Czech>Vraťte se do operační oblasti, než budete vyhozeni do povětří, máte %1 sekund.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_punish_oob_titel">
@@ -4490,7 +4490,7 @@
         <Czech>Admin se na tebe dívá s lítostí.&lt;br/&gt;Budiž ti odpuštěno.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_punish_punRel_enough">
-        <Original>Enough then.</Original>
+        <Original>You have been released from the sea, think before you shoot next time.</Original>
         <Italian>Basta.</Italian>
         <French>Cela suffit.</French>
         <Korean>이제 그만.</Korean>
@@ -4756,7 +4756,7 @@
         <Czech>Vybrané vozido je zničené nebo se nemůže hýbat.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_increased">
-        <Original>Air Support increased in %1 points.</Original>
+        <Original>Available Air Support has been increased by %1 points.</Original>
         <Italian>Supporto Aereo incrementato in %1 punti.</Italian>
         <French>Le Support Aérien a augmenté de %1 points.</French>
         <Korean>항공 지원이 %1 포인트 상승했습니다.</Korean>
@@ -4796,7 +4796,7 @@
         <Czech>Batohové drony nemohou být využity k navýšení bodů leteckého úderu.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_no_empty">
-        <Original>In order to convert, Vehicle must be empty.</Original>
+        <Original>In order to convert a vehicle to Air Support, the vehicle must be empty.</Original>
         <Italian>Per essere convertito, il Velivolo deve essere vuoto.</Italian>
         <French>Pour pouvoir convertir, le Véhicule doit être vide.</French>
         <Korean>변환하려면 차량이 비어 있어야 합니다.</Korean>
@@ -5253,7 +5253,7 @@
         <Korean>주둔군을 제거할 구역을 선택하십시오.</Korean>
       </Key>
       <Key ID="STR_A3A_fn_reinf_NatoBomb_lack_supp">
-        <Original>You lack of enough Air Support to make this request.</Original>
+        <Original>You lack the Air Support points needed to fulfill this request.</Original>
         <Italian>Non hai abbastanza Supporto Aereo per richiedere ciò.</Italian>
         <French>Vous manquez de Support Aérien pour faire cette requête.</French>
         <Korean>항공 지원이 부족하여 이 요청을 사용할 수 없습니다.</Korean>
@@ -5520,7 +5520,7 @@
         <Czech>Zrušit  oživení</Czech>
       </Key>
       <Key ID="STR_A3A_fn_revive_actRev_lost">
-        <Original>We lost %1.</Original>
+        <Original>We lost %1. There's nothing you could have done, we need to keep fighting.</Original>
         <Italian>Abbiamo perso %1.</Italian>
         <French>Nous avons perdu %1.</French>
         <Korean>%1을(를) 잃었다.</Korean>
@@ -5548,7 +5548,7 @@
         <Czech>%1 je nesen nebo transportován a nemůžeš ho léčit.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_revive_actRev_no_dead">
-        <Original>%1 is already dead.</Original>
+        <Original>%1 is already dead. Keep moving, soldier.</Original>
         <Italian>%1 è già morto.</Italian>
         <French>%1 est déja mort.</French>
         <Korean>%1은(는) 이미 죽었습니다.</Korean>
@@ -5708,7 +5708,7 @@
         <Czech>Nemůžeš jít do utajení když ovládáš AI!</Czech>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_close">
-        <Original>You cannot go Undercover near Airports, Outposts, Seaports or Roadblocks.</Original>
+        <Original>You cannot go Undercover near Airbases, Outposts, Seaports or Roadblocks.</Original>
         <Italian>Non puoi andare Sotto Copertura vicino ad Aeroporti, Avamposti, Porti o Posti di blocco.</Italian>
         <French>Vous ne pouvez pas être Incognito près des Aéroports, des Avants-postes, des Bases Maritimes ou des Barrages routiers.</French>
         <Korean>공항, 전초기지, 항구 또는 검문소 근처에서는 위장할 수 없습니다.</Korean>
@@ -5729,7 +5729,7 @@
         <Czech>%1&lt;br/&gt;Máš na sobě helmu.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_undercover_canGoUn_no_reason_naked">
-        <Original>%1&lt;br/&gt;Being naked. Thats what you think is unsuspicious?</Original>
+        <Original>%1&lt;br/&gt;Being naked. Put some civilian clothes on, Petros can't bear to watch.</Original>
         <Italian>%1&lt;br/&gt;Nudo? Credi che ciò non dia nell'occhio?</Italian>
         <French>%1&lt;br/&gt;Être nu. C'est ça que vous considérez insoupçonnable ?</French>
         <Korean>%1&lt;br/&gt;알몸 상태. 지금 그게 안 수상하다고 생각하는 건가요?</Korean>
@@ -5806,7 +5806,7 @@
         <Czech>Nemůžeš být v utajení když:&lt;br/&gt;</Czech>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_detect_airspace">
-        <Original>You have violated the airspace of %1!</Original>
+        <Original>Unidentified aircraft, you have violated the restricted airspace of %1!</Original>
         <Italian>Hai violato lo spazio aereo %1!</Italian>
         <French>Vous avez enfreint l'espace aérien de %1 !</French>
         <Korean>%1 소속의 영공을 침범했습니다!</Korean>
@@ -6010,7 +6010,7 @@
         <Chinesesimp>将 %1 小队添加到驻军...</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_garrison_error_enemies_near">
-        <Original>You can't recruit units into garrison when enemies are near the zone.</Original>
+        <Original>You can't recruit units into a garrison when enemies are near the zone.</Original>
         <Italian>Non puoi reclutare unità nella guarnigione mentre vi sono nemici nelle vicinanze.</Italian>
         <Spanish>No puedes reclutar unidades en guarniciones cuando los enemigos se encuentran cerca de la zona.</Spanish>
         <French>Vous ne pouvez pas recruter des unités dans une garnison quand les ennemis sont proche de la zone.</French>
@@ -6023,7 +6023,7 @@
         <Chinesesimp>当敌人靠近区域时，您不能将单位招募到驻军中。</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_garrison_error_no_hr">
-        <Original>You lack HR to recruit units.</Original>
+        <Original>You lack the HR necessary to recruit these units.</Original>
         <Italian>Non hai HR per reclutare unità.</Italian>
         <Spanish>Te falta HR para reclutar unidades.</Spanish>
         <French>Vous manquer de RH pour recruter des unités.</French>
@@ -6074,7 +6074,7 @@
         <Chinesesimp>此驻军仍在更新中，请在几秒钟后重试。</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_garrison_exceed_limit">
-        <Original>Adding this squad to garrison will exceed garrison limit. Some of them will join garrison, the rest will be dismissed and their cost will be refunded.</Original>
+        <Original>Adding this squad to the garrison will exceed the garrison limit. Some of the units will join the garrison, and the rest will be dismissed and their cost refunded.</Original>
         <Italian>Aggiungere questa squadra alla guarnigione supererà il limite di guarnigione. Alcuni si aggiungeranno altri saranno dimessi e il loro costo rimborsato.</Italian>
         <Spanish>Añadir esta escuadra a la guarnición excederá el límite de la guarnición. Algunos de ellos se unirán a la guarnición, el resto serán descartados y su coste será reembolsado.</Spanish>
         <French>L'ajout de cette escouade dans la garnison va excéder la limite. Certains vont rejoindre la garnison, le reste sera remboursé. </French>
@@ -6138,7 +6138,7 @@
         <Chinesesimp>静态机组人员、囚犯、难民、Petros或未知单位不能添加到驻军。</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_garrison_fail_not_markerzone">
-        <Original>You must select any %1 zone with marker.</Original>
+        <Original>You must select any %1 zone with a marker.</Original>
         <Italian>Devi selezionare qualunque zona %1 con un marcatore.</Italian>
         <Spanish>Debes seleccionar alguna zona %1 con marcador.</Spanish>
         <French>Vous devez sélectionner n'importe quel %1 zone avec un marqueur.</French>
@@ -6177,7 +6177,7 @@
         <Chinesesimp>您不能在此类区域上管理驻军。</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_garrison_fail_zone_lost">
-        <Original>%1 group has returned to HC control as the zone which was planned to be garrisoned has been lost.</Original>
+        <Original>You have regained control of the %1 group as the zone where the group was going to be garrisoned has been lost.</Original>
         <Italian>Il gruppo %1 è ritornato sotto il controllo del AC poiché la zona da guarnire è stata perduta.</Italian>
         <Spanish>El grupo %1 ha vuelto bajo el control de HC ya que la zona donde se planeaba aguarnicionar ha sido perdida.</Spanish>
         <French>Groupe %1 retourné sous le contrôle du HC car la zone dans laquelle ils devaient être en garnison a été perdue.</French>
@@ -6190,7 +6190,7 @@
         <Chinesesimp>%1 小队已返回到HC控制，因为计划驻扎的区域已经丢失。</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_garrison_full_limit">
-        <Original>This garrison is full, choose another zone to add this HC squad into it's garrison.</Original>
+        <Original>This garrison is full, choose another zone to add this HC squad into its garrison.</Original>
         <Italian>La guarnigione è piena, seleziona un'altra zona cui mandare questa squadra dell'AC a guarnire.</Italian>
         <Spanish>La guarnición está llena, selecciona otra zona para añadir esta escuadra de HC a su guarnición.</Spanish>
         <French>Cette garnison est pleine, choisissez une autre zone pour ajouter cette escouade HC à sa garnison.</French>
@@ -6272,7 +6272,7 @@
     </Container>
     <Container name="A3A_GCTracker">
       <Key ID="STR_A3A_GCTracker_tracker_notification">
-        <Original>Last Garbage Clean was %1 ago. Keep track of it. Forced GC in %2.</Original>
+        <Original>Last Garbage Clean was %1 ago. Keep track of it. The server will automatically GC in %2.</Original>
         <German>Letzte Müll-Löschung war vor %1, behalte das im Auge. Müll-Löschung wird automatisch in %2 durchgeführt.</German>
         <Italian>L'ultimo Pulisci Immondizia è stato %1 fa. Tienilo d'occhio. PI forzato in %2.</Italian>
         <Spanish>La ultima Limpieza de Basura fue hace %1. Mantenla supervisada. Limpieza de basura forzada en %2.</Spanish>
@@ -6286,7 +6286,7 @@
         <Chinesesimp>距离上次垃圾清理已过去 %1。请留意该细节。强制性垃圾清理将于 %2 后发生。</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_GCTracker_tracker_ran_gc">
-        <Original>Garbage Cleaner Tracker run a garbage clean because the time passed the threshold. Keep track of GC times.</Original>
+        <Original>Garbage Cleaner Tracker has ran a garbage clean because the time passed the threshold. Keep track of GC times.</Original>
         <German>Müll-Löscher hat Löschung durchgeführt, weil der Zeitraum abgelaufen ist. Beachte die Fristen.</German>
         <Italian>Tracciatore Pulisci Immondizia ha eseguito una pulizia poiché il tempo trascorso ha superato la soglia. Tieni d'occhio i tempi del PI.</Italian>
         <Spanish>El Seguimiento del Limpiador de Basura llevó a cabo una limpieza porque se superó el límite de tiempo establecido. Mantenga supervisados los tiempos del Limpiador de Basura.</Spanish>
@@ -6349,7 +6349,7 @@
         <Korean>포병 메뉴</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_CfgUserAct_artyMenu_tip">
-        <Original>Opens the Antistasis artillery support menu (commander only).</Original>
+        <Original>Opens the Antistasi artillery support menu (commander only).</Original>
         <Italian>Apre il menù del supporto d'artiglieria di Antistasi (solo comandante).</Italian>
         <French>Ouvre le menu de support d'artillerie Antistasi (commandant uniquement).</French>
         <Korean>안티스타시의 포병 지원 메뉴를 엽니다 (지휘관 전용).</Korean>
@@ -6361,7 +6361,7 @@
         <Korean>전투 메뉴</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_CfgUserAct_battleMenu_tip">
-        <Original>Opens the Antistasis battle menu.</Original>
+        <Original>Opens the Antistasi battle menu.</Original>
         <Italian>Apre il menù di battaglia di Antistasi.</Italian>
         <French>Ouvre le menu de bataille d'Antistasi.</French>
         <Korean>안티스타시의 전투 메뉴를 엽니다.</Korean>
@@ -6385,7 +6385,7 @@
         <Korean>귀마개 토글</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_CfgUserAct_earPlugs_tip">
-        <Original>Toggles the ear plugs (no effect when using ace).</Original>
+        <Original>Toggles the ear plugs (no effect when using ACE).</Original>
         <Italian>Interruttore tappi per le orecchie (non serve se si utilizza l'ace).</Italian>
         <French>Active les bouchons d'oreilles (sans effet en utilisant ACE).</French>
         <Korean>귀마개를 토글합니다(ACE 사용 시 효과 없음).</Korean>
@@ -6397,7 +6397,7 @@
         <Korean>정보 표시줄 토글</Korean>
       </Key>
       <Key ID="STR_A3A_keybinds_CfgUserAct_infoBar_tip">
-        <Original>Toggles the visibility of Antistasis information bar at the top of the screen.</Original>
+        <Original>Toggles the visibility of the Antistasi information bar at the top of the screen.</Original>
         <Italian>Interruttore visibilità della barra delle informazioni in alto.</Italian>
         <French>Active/desactive l'affichage de la barre d'information Antistasi en haut de l'écran.</French>
         <Korean>화면 상단에 있는 안티스타시 전용 정보 표시줄의 표시 여부를 전환합니다.</Korean>
@@ -6463,7 +6463,7 @@
         <Korean>자동 저장 쿨타임 (분 단위)</Korean>
       </Key>
       <Key ID="STR_A3A_Params_bobChaosCrates_title">
-        <Original>[Experimental] Truely Random Crates: Remove all balance checks from Crates</Original>
+        <Original>[Experimental] Truly Random Crates: Remove all balance checks from Crates</Original>
         <French>[Experimental] Craisses vraiment aléatoires : Enlève tout les tests d'équilibrage des Caisses</French>
         <Korean>[실험적] 완전 무작위 전리품 상자: 상자에서 모든 밸런스 체크를 제거합니다</Korean>
       </Key>
@@ -7350,7 +7350,7 @@
         <Chinesesimp>临时控制AI</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_AI_management_AI_control_tooltip">
-        <Original>Take personal control of the selected squad member or HC squad leader and be able to perform any kind of actions for 60 seconds. Control state will be cancelled if the player or the controlled unit receives any kind of damage</Original>
+        <Original>Take control of a selected AI squad member or High Command Squad Leader. All actions can be performed through the AI for 60 seconds. You will lose control if the player or unit receives any damage</Original>
         <Italian>Prendi il comando personale di un membro di squadra IA selezionato o un Capo squadra assegnato all'Alto Comando e performa ogni tipo di azione che vuoi per 60 secondi, il controllo verrà annullato se il giocatore o l'IA controllata ricevono ogni tipo di danno</Italian>
         <Spanish>Toma el control personal de un miembro de la escuadra seleccionado. Te permitirá tomar cualquier acción por 60 segundos. El control será cancelado si el jugador o el soldado seleccionado reciben cualquier tipo de daño</Spanish>
         <French>Prenez le contrôle personnel du membre d'escouade sélectionné ou du chef d'escouade HC et soyez capable d'effectuer n'importe quel type d'actions pendant 60 secondes. L'état de contrôle sera annulé si le joueur ou l'unité contrôlée subit tout type de dommage</French>
@@ -7377,7 +7377,7 @@
         <Chinesesimp>自动医疗</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_AI_management_auto_heal_tooltip">
-        <Original>AI squad mates will heal proactively each other</Original>
+        <Original>AI squad mates will proactively heal each other</Original>
         <Italian>I compagni di squadra IA si cureranno attivamente tra di loro</Italian>
         <Spanish>Los compañeros de la IA se curarán proactivamente unos a otros</Spanish>
         <French>Les coéquipiers de l'escouade IA se soigneront mutuellement de manière proactive</French>
@@ -7491,7 +7491,7 @@
         <Chinesesimp>班组状态报告</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_AI_management_SITREP_tooltip">
-        <Original>Recover info about a HC squad status</Original>
+        <Original>Gets a situation report from the selected HC squad.</Original>
         <Italian>Recupera info approposito lo stato di una squadra Alto Comando</Italian>
         <Spanish>Recupera informacion sobre el estado de una Escuadra de HC.</Spanish>
         <French>Récupérer des informations sur le statut d'une escouade HC</French>
@@ -7516,7 +7516,7 @@
         <Chinesesimp>为班组分配载具</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_AI_management_squad_add_vehicle_tooltip">
-        <Original>Look at some vehicle and assign it to the selected squad for it's use</Original>
+        <Original>Look at some vehicle and assign it to the selected squad for its use</Original>
         <Italian>Guarda qualche veicolo e assegnalo alla squadra selezionata in modo che possano usarlo</Italian>
         <Spanish>Mira hacia un vehículo y asignalo a la escuadra seleccionada para su uso</Spanish>
         <French>Regardez un véhicule et attribuez-le à l'escouade sélectionnée pour son usage</French>
@@ -7684,7 +7684,7 @@
         <Chinesesimp>添加至空中支援</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_carpet_bombing_add_tooltip">
-        <Original>Gain Airstrike points giving this aircraft to the faction Air pool</Original>
+        <Original>Gain air support points by sacrificing the aircraft you're looking at. Use these points to call in HE, Cluster, and Napalm strikes.</Original>
         <Italian>Ottieni Punti Supporto Aereo consegnado questo veivolo alla fazione</Italian>
         <Spanish>Gana puntos de ataque aéreo dando esta nave al almacén de la facción</Spanish>
         <French>Gagnez des points de support aérien en donnant cet avion à la réserve aérienne de la faction</French>
@@ -7794,7 +7794,7 @@
         <Chinesesimp>清理垃圾</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_commander_comm_clean_tooltip">
-        <Original>Cleans several things in game. Use with caution as it freezes the mission</Original>
+        <Original>Cleans dead bodies, dropped gear, destroyed vehicles and similar entities. Helps massively with client and server performance, and running this every hour is recommended.</Original>
         <Italian>Ripulisce molteplici oggetti in gioco. Attenzione può causare lag</Italian>
         <Spanish>Limpia varias cosas en el juego. Utilizalo con precaución ya que congela la misión.</Spanish>
         <French>Nettoie plusieurs choses dans le jeu. À utiliser avec prudence car cela gèle la mission</French>
@@ -7896,7 +7896,7 @@
         <Czech>O.Post-Odstranit zátaras</Czech>
       </Key>
       <Key ID="STR_antistasi_dialogs_commander_comm_roadblock_delete_tooltip">
-        <Original>Remove selected observation post or roadblock, money will be refunded</Original>
+        <Original>Remove selected observation post or roadblock, the money spent will be refunded</Original>
         <Italian>Rimuovi il posto di osservazione o il posto di blocco selezionato, i soldi verranno rimborsati</Italian>
         <Spanish>Borra el punto de observación o bloqueo de carretera, el dinero sera reembolsado</Spanish>
         <French>Supprimer le poste d'observation ou le barrage routier sélectionné, l'argent sera remboursé</French>
@@ -8132,7 +8132,7 @@
         <Chinesesimp>Antistasi Altis</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_credits_generic_overview_text">
-        <Original>Build FIA Army from scratch and defeat the AAF and CSAT forces in a whole map Dynamic Mission.</Original>
+        <Original>Build your rebellion from scratch and defeat the occupants and invading forces in a persistent whole map Dynamic Mission.</Original>
         <German>Formiere eine FIA Armee und bezwinge die AAF und CSAT Kräfte in einer dynamischen Mission auf der gesamten Karte.</German>
         <Italian>Costruisci l'esercito FIA da zero e sconfiggi le forze AAF e CSAT in una missione dinamica su tutta la mappa.</Italian>
         <Spanish>Construye el ejército FIA desde cero y derrota a las fuerzas AAF y CSAT en una misión dinámica en todo el mapa.</Spanish>
@@ -8669,7 +8669,7 @@
         <Chinesesimp>将总部转移到其他区域</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_hq_button_move_headquarters_tooltip">
-        <Original>Petros will join your group. Ammobox must be empty. To rebuild, select the Build action near Petros</Original>
+        <Original>Petros will join your group. The inventory of the arsenal box must be empty to move HQ. To rebuild, select the Build HQ here option on Petros.</Original>
         <German>Petros tritt deiner Gruppe bei. Munitionskiste muss leer sein. Zur Neuerrichtung die Bauaktion in der Nähe von Petros auswählen.</German>
         <Italian>Petros si unirà al tuo gruppo. La cassa di munizioni deve essere vuota. Per ricostruirla, seleziona la voce Costruisci, stando vicino a Petros</Italian>
         <Spanish>Pertos se unirá a tu grupo. La caja de munición debe estar vacía. Para reconstruir, selecciona la acción Construir cerca de Petros</Spanish>
@@ -8962,7 +8962,7 @@
         <Chinesesimp>民用载具</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_vehicle_purchase_civie_tooltip">
-        <Original>Civilian vehicles will allow you to travel in Undercover mode, while you stay close to roads and not entering bases, outposts and roadblocks.</Original>
+        <Original>Civilian vehicles allow you to travel in Undercover mode. You will be spotted if you stray too far from the road, as well as if you get too close to outposts, seaports, roadblocks, or airbases</Original>
         <German>Zivilfahrzeuge erlaube dir unentdeckt zu reisen, sofern du nahe der Straßen bleibst und in keine Basen, Außenposten oder Straßensperren einfährst.</German>
         <Italian>I veicoli civili ti permetteranno di viaggiare in modalità Sotto copertura ma solo rimanendo vicino alle strade e non entrando in basi, avamposti e posti di blocco.</Italian>
         <Spanish>Los vehículos civiles te permiten viajar en modo encubierto mientras estés cerca de caminos y no entres a bases, bloqueos militares ni zonas de vigilancia</Spanish>
@@ -9559,7 +9559,7 @@
         <Chinesesimp>生成距离</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_maps_spawn_distance_tooltip">
-        <Original>Affects performance. Please use this with caution. Set it to lower distances if you feel Antistasi is running bad.</Original>
+        <Original>Affects performance. Please use this with caution. Set it to lower distances if you feel Antistasi is running poorly.</Original>
         <Italian>Affligge le prestazioni. Usare con estrema cautela. Imposta distanze inferiori se ritieni che Antistasi stia girando male.</Italian>
         <Spanish>Afecta al rendimiento. Por favor, usa esto con cautela. Seleccionalo a menor distancia si notas que Antistasi está funcionando mal.</Spanish>
         <French>Affecte les performances. Veuillez l'utiliser avec prudence. Réglez-le sur des distances plus courtes si vous pensez qu'Antistasi fonctionne mal.</French>
@@ -10165,7 +10165,7 @@
         <Chinesesimp>阵营领袖</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_header_Features_10">
-        <Original>Ammobox Transfer</Original>
+        <Original>Arsenal transfer</Original>
         <German>Munitionskiste transferieren</German>
         <Italian>Trasferimento Cassa di Munizioni</Italian>
         <Spanish>Transferir Caja de Munición</Spanish>
@@ -10694,7 +10694,7 @@
         <Chinesesimp>这个功能旨在模拟AI士兵缺少无线电通讯的情况。你的AI队友不会拥有无线电, 直到你在军火库中解锁了它。在没有无线电的情况下, 如果一名AI队友离得太远, 他们将会失去联络, 并在完成接收到的最后一项命令之后返回队长所在的位置。为了避免这种情况, 你可以从敌军身上搜集一些无线电(也可以使用自动重新武装功能), 或者让AI使用带有长程电台的军用载具。如果失联的士兵经过太长时间也没有找到他们的队长, 他们将会自动返回总部。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_AI_4">
-        <Original>AI Medic squad-mates will heal other AI’s automatically without the need to give any orders. If in combat, your AI will use smoke grenades for cover. If there is no medic in the group, the AI will use their own medikits.</Original>
+        <Original>AI Medic squad-mates will heal other AI’s automatically without the need to give any orders. If in combat, your AI will use smoke grenades for cover. If there is no medic in the group, the AI will use their own first aid kits.</Original>
         <German>KI Sanitäter heilen andere KI Einheiten in der gleichen Gruppe automatisch, ohne dass ein gesonderter Befehl gegeben werden muss. Im Feuergefecht nutzt die KI Rauchgranaten zur Deckung. Sollte kein Sanitäter in der Gruppe sein, wird die KI eigene Erste-Hilfe Ausrüstung nutzen.</German>
         <Italian>I compagni di squadra dell'IA Medic cureranno automaticamente le altre IA senza bisogno di dare ordini. Se in combattimento, la tua IA utilizzerà le granate fumogene come copertura. Se non ci sono medici nel gruppo, l'IA utilizzerà i propri medikit.</Italian>
         <Spanish>Los médicos IA de la escuadra curarán automáticamente a sus compañeros sin necesidad de dar órdenes concretas. Si están en combate, la IA usará granadas de humo como cobertura. Si no hay médicos en la escuadra, la IA usará sus propios kits médicos.</Spanish>
@@ -10706,7 +10706,7 @@
         <Chinesesimp>AI医疗兵无需下达任何指令即可自动治疗其他AI。在战斗中, AI将会使用烟雾弹掩护。如果小组里没有医疗兵, AI将会使用自己的医疗包。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_AI_5">
-        <Original>Your AI squad-mates will automatically look for and scavenge any ammunition from nearby corpses, vehicles and ammoboxes if needed. Also they will try to renew their weapons with more powerful ones. If AI is inside a vehicle, they will loot weapons and launchers, and drop them in their truck until there is nothing in the area. Use this instead of the vanilla Rearm radio option.</Original>
+        <Original>Your AI squad-mates will automatically look for and scavenge any ammunition from nearby corpses, vehicles, and loot boxes if needed. They will also try to improve their weapons if given the chance. If AI is inside a vehicle, they will loot weapons and launchers, and drop them in their truck until there is nothing in the area. Use this instead of the vanilla Rearm radio option.</Original>
         <German>Deine KI Gruppenmitglieder werden automatisch versuchen Munition von ausgeschalteten Feinden, Fahrzeugen oder Munitionskisten zu erbeuten. Außerdem versuchen sie ihre Waffen gegen durchschlagskräftigere auszutauschen. Sind die KI Einheiten in einem Fahrzeug, werden sie Waffen und Werfer plünern und sie in ihrem Fahrzeug verstauen, bis der Bereich komplett geplündert ist. Dies sollte statt des Vanilla Funkbefehls genutzt werden.</German>
         <Italian>I tuoi compagni di squadra IA cercheranno automaticamente tutte le munizioni dai cadaveri, dai veicoli e dalle scatole di munizioni nelle vicinanze, se necessario. Inoltre cercheranno di rinnovare le loro armi con armi migliori. Se l'IA si trova all'interno di un veicolo, saccheggeranno armi e lanciatori e li lasceranno nel loro veicolo finché non ci sarà nulla nell'area. Usa questo al posto dell'opzione radio di riarmo vanilla.</Italian>
         <Spanish>Tus compañeros IA buscarán automátiocamente armas y municiones de bajas cercanas, vehículos y cajas de munición en su defecto. También intentaran cambiar sus armas por unas mejores. Si la IA está dentro de un vehículo, saquearán fusiles y armas autoptopulsadas y las dejaran en el maletero hasta que no haya nada en el área. Usa esta opción en vez de la opción vanila de Rearmar en las opciones de radio.</Spanish>
@@ -10730,7 +10730,7 @@
         <Chinesesimp>仅限指挥官使用。使用该选项将面前的载具分配给任意指挥部班组, 并可检查载具状态, 命令班组搭乘或离开载具, 以及自动搭载固定式武器班组。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_AI_7">
-        <Original>Select the unit and use the 'Dismiss Squad-mate' option to send them back to HQ. You will recover some of the money you spent on them.</Original>
+        <Original>Select the unit and use the 'Dismiss AI/Group' option to send them back to HQ. You will recover some of the money you spent on them.</Original>
         <German>Wähle die gewünschte Einheit und nutze die "Gruppenmitglied entlassen" Option, um sie zurück zum HQ zu schicken. Dabei wirst du einen Anteil des Geldes zurückerhalten, welches du vorher für es ausgegeben hast.</German>
         <Italian>Seleziona un'unità e usa l'opzione "Congeda compagno di squadra" per rimandarli al quartier generale. Recupererai parte dei soldi che hai speso.</Italian>
         <Spanish>Selecciona la unidad y usa la opción 'Desmovilizar Compañero' para mandarlos de vuelta al CG. Recuperarás parete del dinero invertido en ellos.</Spanish>
@@ -10742,7 +10742,7 @@
         <Chinesesimp>选择单位并使用"解散班组成员"来将他们送回总部。你将回收部分开销。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_commander_1">
-        <Original>Having a commander is necessary because he is the commander of the Faction attacking ground forces. Many options are available only to the commander and, depending on your settings, if you play MP, the most experienced player will usually occupy this position.</Original>
+        <Original>Having a commander is necessary because he is the commander of the Faction attacking ground forces. Many options are available only to the commander and, depending on your settings, if you play multiplayer, the most experienced player will usually occupy this position.</Original>
         <German>Einen Kommandanten zu haben ist unumgänglich, da er die Bodentruppen der Fraktion befehligt. Viele Optionen und Möglichkeiten stehen nur dem Kommandanten zur Verfügung. Je nach deinen gewählten Einstellungen, wenn du im Multiplayer spielst, wird der Spieler mit der meisten Erfahrung den Platz des Kommandanten einnehmen.</German>
         <Italian>Avere un comandante è necessario perché è il comandante delle forze offensive di terra della fazione. Molte opzioni sono disponibili solo per il comandante e, a seconda delle tue impostazioni, se giochi in multigiocatore, il giocatore più esperto di solito occuperà questa posizione.</Italian>
         <Spanish>Tener un comandante es necesario ya que es el comandante de las fuerzas terrestres de la Facción. El comandante tiene muchas opciones únicas y, dependiendo de tus ajustes, si juegas online, el jugador más experto suele ocpuar el puesto.</Spanish>
@@ -10778,7 +10778,7 @@
         <Chinesesimp>使用此选项来出售缴获的载具并增加阵营资金。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_commander_12">
-        <Original>Use the radio and select a spot on the map with good field of vision. A group of snipers will join you. Send them to the selected place and they will spot for you, attempting to remain hidden and not engaging enemies upon contact.</Original>
+        <Original>Use the radio and select a spot on the map with a good line of sight to enemy roads and markers. A group of snipers will join you. Send them to the selected place and they will spot for you, attempting to remain hidden and not engaging enemies upon contact.</Original>
         <German>Benutze dein Funkgerät und wähle einen Ort auf der Karte mit einer guten Übersicht. Eine Gruppe Scharfschützen wird sich dir anschließen. Schicke diese zu dem gewählten Ort und sie werden dort einen Beobachtungsposten einrichten. Dabei versuchen sie verdeckt zu bleiben und Feinde bei Kontakt nicht anzugreifen.</German>
         <Italian>Usa la radio e seleziona un punto sulla mappa con un buon campo visivo. Un gruppo di cecchini si unirà a te. Inviali nel luogo selezionato e individueranno i nemici per te, cercando di rimanere nascosti e non ingaggieranno al contatto.</Italian>
         <Spanish>Usa la radio y selecciona un punto en el mapa con buena visión del horizonte. Un grupo de tiradores se unirá. Mándalos al sitio seleccionado y observarán por ti, intentando mantenerse ocultos y evitando el combate hasta que sea inevitable.</Spanish>
@@ -10826,7 +10826,7 @@
         <Chinesesimp>如果启用了服务器会员功能, 你可以在总部的旗帜上查询哪些服务器成员在线和非会员玩家的总数。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_commander_2">
-        <Original>The Commander is responsible for assigning units as garrisons in conquered areas. Use the Garrison Management option in the HQ flag in order to add or remove garrison troops at each zone. Check Map Info screen for a quick overview of how many soldiers are assigned to each zone.</Original>
+        <Original>The Commander is responsible for assigning units as garrisons in conquered areas. Use the Garrison Management option inside the HQ Management action on Petros in order to add or remove garrison troops at each zone. Check Map Info screen for a quick overview of how many soldiers are assigned to each zone.</Original>
         <German>Der Kommandant ist verantwortlich den Garnisonen der eroberten Bereiche Einheiten zuzuweisen. Mit der Garnisonsverwaltung am Flaggenmast im HQ kannst du Einheiten einer Garnison hinzufügen oder entfernen. Über den Kartenbildschirm kannst du dir einen schnellen Überblick über die Größe der jeweiligen Garnisonen verschaffen.</German>
         <Italian>Il comandante è responsabile dell'ass$egnazione delle unità come guarnigioni in aree conquistate. Usa l'opzione gestione della guarnigione alla bandiera del quartier generale per aggiungere o rimuovere truppe di guarnigione in ogni zona. Controlla la schermata Informazioni alla mappa per una rapida panoramica di quanti soldati sono assegnati a ciascuna zona.</Italian>
         <Spanish>El comandante es responsable de asignar unidades a la guarnición de las zonas conquistadas. Usa la opción de Gestionar Guarnición la bandera del CG para añadir o borrar tropas guarnicionadas de cada zona. Comprueba la información de Mapa para un vistazo general sobre cuantos soldados estan asignados en cada zona.</Spanish>
@@ -10862,7 +10862,7 @@
         <Chinesesimp>向Petros申请任何你想要的任务。任务的可用性取决于总部的位置、当前已分配的任务和周围地区的所有权。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_commander_5">
-        <Original>The Commander may select this option on the HQ Flag in order to move the HQ emplacement to another spot. This will allow you to move your HQ to a safer location or move closer to the front-lines. The closer your HQ is to the enemy, the greater the number of possibile side-missions you will have available. Remember! Keep Petros Safe or you will lose the game!</Original>
+        <Original>The Commander may select this option on Petros in order to move the HQ emplacement to another spot. This will allow you to move your HQ to a safer location or move closer to the front-lines. The closer your HQ is to the enemy, the greater the number of possibile side-missions you will have available. Remember! Keep Petros Safe or you will lose the game!</Original>
         <German>Der Kommandant kann über eine Option am Flaggenmast das HQ zu einem anderen Ort verlegen lassen. Dies gibt dir die Möglichkeit dein HQ zu einer sichereren Position oder näher an die Frontlinie zu verlegen. Umso näher dein HQ am feindlichen Gebiet ist, umso größer ist die Anzahl an möglichen Sekundärmissionen. Vorsicht! Beschütze Petros oder du verlierst das Spiel!</German>
         <Italian>Il Comandante può selezionare questa opzione alla Bandiera per spostare il Quartier Generale in un altro punto. Ciò ti consentirà di spostare il tuo quartier generale in un luogo più sicuro o di avvicinarti alla prima linea. Più il tuo quartier generale è vicino al nemico, maggiore sarà il numero di possibili missioni secondarie che avrai a disposizione. Ricorda! Tieni Petros al sicuro o perderai la partita!</Italian>
         <Spanish>El comandante podra seleccionar esta opción o en la bandera del CG con tal de mover la posición del HQ a otra. Esto te permitirá mover el HQ a una posición más segura o moverla más cercana a la linea de frente. Como más cercano sea tu HQ al enemigo, mayores las posibilidades de misiones secundarias. ¡Y recuerda mantener a Petros a Salvo o perderás la partida!</Spanish>
@@ -10874,7 +10874,7 @@
         <Chinesesimp>指挥官可在总部旗帜上选择此选项, 以便将总部移动到其他地点。你可以将总部移动到更安全或者更靠近前线的地方。你的总部离敌人越近, 你可以执行的支线任务就越多。记住! 保护Petros的安全, 否则游戏将会失败!</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_commander_6">
-        <Original>Use the action menu on your HQ Camp-fire to rest for 8 hours.</Original>
+        <Original>Use the action menu on the tent at HQ to rest for 8 hours.</Original>
         <German>Mit dieser Aktion kannst du dich am Lagerfeuer des HQs für 8 Stunden ausruhen.</German>
         <Italian>Interagisci con il falò al quartier generale per riposare 8 ore.</Italian>
         <Spanish>Usa la acción en el menu de tu fogata del CG para descansar 8 horas.</Spanish>
@@ -10957,7 +10957,7 @@
         <Chinesesimp>LanCommi 的美术设计。&lt;br/&gt;Goon 和 jw custom: 部分凝固汽油弹(NAPALM)脚本。&lt;br/&gt;rebel12340: 无线电阻塞脚本。&lt;br/&gt;Manko: 耳塞脚本。&lt;br/&gt;bobchaos: 尽管困难重重, 但仍在管理社区。&lt;br/&gt;以及所有花时间在Steam、Github和BIS论坛上发表评论、建议和报告的玩家。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_Default_1">
-        <Original>Welcome to Arma 3 - %1. This mission aims to simulate guerilla combat, tactics and strategic situations. It is not a quick and easy mod, it is long term, step-by-step mission with LOTS of features and enhanced AI.</Original>
+        <Original>Welcome to Arma 3 - %1. This mission aims to simulate guerilla combat, tactics and strategic situations. It is not a quick and easy mod, it is a long term, step-by-step mission with LOTS of features and enhanced AI.</Original>
         <German>Willkommen zu Arma 3 - %1. Diese Mission zielt darauf ab Guerillakrieg, -taktiken und -strategien zu simulieren. Es ist kein schneller und einfacher Spielmodus. Es ist eine Mission ausgelegt auf eine lange Spielzeit mit einer MENGE an Features und erweiterter KI.</German>
         <Italian>Benvenuto in Arma 3 - %1. Questa missione cerca di simulare il combattimento da guerrilla, tattiche e situazioni strategiche. Non è una mod facile e veloce, è a lungo termine, una missione passo dopo passo con MOLTE caratteristiche e un IA migliorata.</Italian>
         <Spanish>Bienvenidos a Arma 3 - %1. Esta misión quiere simular el combate de guerrillas, así como situaciones tácticas y estratégicas. No es un modo rápido ni fácil, es a largo plazo, misiones paso a paso con MUCHAS opciones e IA avanzada.</Spanish>
@@ -10969,7 +10969,7 @@
         <Chinesesimp>欢迎来到 Arma 3 - %1。本任务旨在模拟游击战的战斗、战术和战略态势。这不是一个快速、简单的模式, 而是长期的、循序渐进的, 带有大量特性和增强型AI的任务。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_Default_2">
-        <Original>You will win the game when most of the population supports Faction and you have conquered all the Airbases.</Original>
+        <Original>You will win the game when most of the population supports the rebellion and you have conquered all the Airbases.</Original>
         <German>Du erringst den Sieg, wenn der Großteil der Zivilbevölkerung deine Fraktion unterstützt und sich alle Flugplätze in deiner Hand befinden.</German>
         <Italian>Vincerai una volta che la maggior parte della popolazione supporta la tua Fazione e quando avrai conquistato tutte le basi aeree</Italian>
         <Spanish>Conseguiras la victoria si la mayoria de la población apoya tu facción y si conquistas todas las bases aéreas.</Spanish>
@@ -10981,7 +10981,7 @@
         <Chinesesimp>当绝大多数民众支持我方阵营, 并且我方已占领所有空军基地时, 你将赢得游戏胜利。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_Default_3">
-        <Original>You will lose the game if %1 has murdered 1/3 of the total population.</Original>
+        <Original>You will lose the game if %1 murders 1/3 of the total population. To prevent this, respond to %1 punishment attacks against civilians.</Original>
         <German>Du verlierst das Spiel, wenn %1 1/3 der gesamten Bevölkerung ermordet hat.</German>
         <Italian>Perderai se il %1 ha ucciso 1/3 della popolazione totale.</Italian>
         <Spanish>Perderás si %1 asesina a 1/3 del total de la población.</Spanish>
@@ -10993,7 +10993,7 @@
         <Chinesesimp>如果 %1 谋杀了总人口的1/3, 你将输掉这场游戏。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_Diary_1">
-        <Original>There is an All vs All war in %4. %1 and %2 are constantly attacking each other, but that does not mean they don't shoot at %3 on first sight.&lt;br/&gt;&lt;br/&gt;%1 and %2 Aggro points represent how much threat they see in %3 faction.&lt;br/&gt;&lt;br/&gt;Generally speaking those points will low or raise depending on your actions against them and civilians.</Original>
+        <Original>There is a total war on %4. The three factions competing for total control of the island are the rogue occupant military of %1, the ruthless invaders of %2, and the emerging rebellion of %3. %1 and %2 are constantly fighting, but also shoot %3 members on sight.&lt;br/&gt;&lt;br/&gt;%1 and %2 Aggro points represent how much threat they see in %3 faction.&lt;br/&gt;&lt;br/&gt;Generally speaking those points will low or raise depending on your actions against them and civilians.</Original>
         <German>Es ist ein Jeder gegen Jeden Krieg in %4. %1 und %2 greifen sind ununterbrochen gegenseitig an. Dies bedeutet aber nicht, dass sie nicht bei Kontakt direkt %3 angreifen.&lt;br/&gt;&lt;br/&gt;%1 und %2 Aggressivitätspunkte zeigen an, wie hoch diese die Bedrohung der %3 Fraktion einschätzen.&lt;br/&gt;&lt;br/&gt;Grundsätzlich erhöhen und verringern sich diese Werte gemäß deinen Unternehmungen gegen die jeweilige Fraktion oder die Zivilbevölkerung.</German>
         <Italian>C'è una guerra Tutti contro Tutti in %4. %1 e %2 si attaccano costantemente a vicenda, ma ciò non significa che non sparino a %3 a prima vista.&lt;br/&gt;&lt;br/&gt;%1 e %2 punti Aggro rappresentano la quantità di minaccia che vedono in %3 fazione.&lt;br/&gt;&lt;br/&gt;In generale, quei punti diminuiranno o aumenteranno a seconda delle tue azioni contro di loro e contro i civili.</Italian>
         <Spanish>Esta guerra es un todos contra todos en %4. %1 y %2 están constantemente atacándose, pero esto no significa que no dispararán si previo aviso a %3.&lt;br/&gt;&lt;br/&gt;Puntos de Aggre de %1 y de %2 representan cuanto pelígro ven en la facción %3.&lt;br/&gt;&lt;br/&gt;En términos generales, estos puntos incrementarán o descenderán dependiendo de tus acciones contra ellos y/o civiles.</Spanish>
@@ -11053,7 +11053,7 @@
         <Chinesesimp>每隔10分钟, 每个阵营将会受到资金和人力, 其数量取决于阵营占领的区域和所处状态。拥有足够多的资源点和工厂, 是获取足够资源从而赢得这场战争的方法。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_Diary_6">
-        <Original>Flag: Vehicle and Squad Unit Recruitment. Commander Options.&lt;br/&gt;Petros: Side-missions (Commander Only).&lt;br/&gt;Map: Game Options.&lt;br/&gt;Camp-fire: Rest for 8 hours and Clear Forest (Commander Only).</Original>
+        <Original>Flag: Squad Unit Recruitment. Commander Options.<br/>Petros: Side-missions (Commander Only) and other actions related to managing HQ.<br/>Map: Game Options.<br/>Tent: Rest for 8 hours and Clear Forest (Commander Only)</Original>
         <German>Flaggenmast: Fahrzeug und Gruppen kaufen/rekrutieren, Kommandantenoptionen.&lt;br/&gt;Petros: Sekundärmissionen (nur Kommandant).&lt;br/&gt;Karte: Spieloptionen.&lt;br/&gt;Lagerfeuer: 8 Stunden ausruhen und Wald abholzen (nur Kommandant).</German>
         <Italian>Bandiera: Veicoli e Reclutamento Squadre e Unità.Opzioni del Comandante. &lt;br/&gt;Petros: Missioni-Secondarie (Solo per il Comandante).&lt;br/&gt;Mappa: Opzioni di Gioco.&lt;br/&gt;Falò: Riposa per 8 ore e ripulisci la foresta (Solo per il Comandante).</Italian>
         <Spanish>Bandera: Vehículos y recltamiento de escuadras. Opciones del Comandante.&lt;br/&gt;Petros: Misiones secundarias (Solo para el Comandante).&lt;br/&gt;Mapa: Opciones de Juego.&lt;br/&gt;Campamento: Descansa por 8 horas y despeja la maleza (Solo para el Comandante).</Spanish>
@@ -11101,7 +11101,7 @@
         <Chinesesimp>当附近没有敌人时, 快速旅行至我方阵营控制的地方。指挥官还可以在指挥部选单中选择班组, 再点击此按钮, 即可对指挥部班组使用此选项。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_Features_12">
-        <Original>Purchased static weapons won't despawn if you leave them in a base or zone, AI garrison will man them. Reinforce places as you desire.</Original>
+        <Original>Purchased static weapons won't despawn if you leave them in a base or zone, the AI garrison will instead man them. Reinforce places as you desire.</Original>
         <German>Gekaufte statische Geschütze werden werden nicht entfernt, wenn du sie in der Nähe einer Basis oder Zone stehen lässt. Die KI Garnison wird sie dann bemannen. Verstärke somit Orte ganz nach deinem Geschmack.</German>
         <Italian>Le armi fisse acquistate non scompariranno se le lasci in una base o vicino a zone alleante, verranno utilizzate dall'IA, Rinforza come desideri.</Italian>
         <Spanish>Las armas estáticas compradas no desaparecerán si las dejas en una base o zona, la guarnición de la IA las manejarán. Refuerza posiciones a tu gusto.</Spanish>
@@ -11113,7 +11113,7 @@
         <Chinesesimp>如果你将购买的固定式武器留在基地或占领区内, 他们不会消失。AI守军将会管理他们。按你的意愿加强该地区的防守。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_Features_13">
-        <Original>You can build groups with up to 10 human players. Commander is excluded of this function.</Original>
+        <Original>You can build groups with human players to organize different squads for different tasks.</Original>
         <German>Eine Gruppe kann aus bis zu 10 Spielern bestehen. Der Kommandant ist hiervon ausgenommen.</German>
         <Italian>Puoi creare gruppi con un massimo di 10 giocatori umani. Il comandante è escluso da questa funzione.</Italian>
         <Spanish>Puedes construir grupos con 10 personas reales. El comandante tiene excluida esta opción.</Spanish>
@@ -11149,7 +11149,7 @@
         <Chinesesimp>使用此选项向其他玩家或阵营资金捐款。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_Features_16">
-        <Original>Tanks and APC can be breached by engineers with explosives to open them and get their crew out. Check 'Breaching charges' for the charges needed. Breaching vehicles applies damage, so take care when breaching heavily damaged vehicles. To breach a vehicle, get close to it and select the breaching option!</Original>
+        <Original>Armored vehicles can be breached by engineers with shaped charges to make the crew surrender and capture the vehicle for the rebellion. Look at the 'Breaching charges' section for a detailed description of what charges you need. If you are an engineer and have the charges, you simply need to approach the vehicle and select the breaching option.</Original>
         <German>Panzer und Truppentransporter können von Ingenieuren mit Sprengstoff aufgebrochen werden, um die Besatzung absitzen zu lassen. Unter "Aufspengladungen" findest du die benötigten Sprengstoffe. Ein Fahrzeug derart aufzubrechen verursacht Schaden. Sei also vorsichtig, wenn du dies an einem bereits schwer beschädigten Fahrzeug durchführst. Um ein Fahrzeug aufzubrechen, gehe nah an es heran und wähle die "Aufbrechen" Aktion.</German>
         <Italian>I carri armati e gli APC possono essere violati dagli ingegneri con esplosivi per aprirli e far uscire il loro equipaggio. Seleziona "Addebiti di violazione" per gli addebiti necessari. L'irruzione dei veicoli comporta danni, quindi fai attenzione quando fai irruzione in veicoli gravemente danneggiati. Per violare un veicolo, avvicinati ad esso e seleziona l'opzione di violazione!</Italian>
         <Spanish>Puedes abrir y sacar a la tripulación de los Tanques y TBPs con un ingeniero y explosivos. Comprueba "Cargas de Apertura" para las cargas necesarias. Abrir vehículos implica daños, así que ten cuidado cuando abras vehñiculos muy dañados. Para rabrir un vehículo, acércate a él y selecciona la opción de apertura.</Spanish>
@@ -11257,7 +11257,7 @@
         <Chinesesimp>你可以偷取在敌方机场发现的固定式武器。你必须使用"偷取固定式武器"动作来执行此操作。在使用"偷取固定式武器"动作之前, 不要拆解固定式武器!</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_Features_9">
-        <Original>Some zones, like airports require you to use the ""Take the Flag"" action on their respective flags in order to conquer them. Some others, like roadblocks and some outposts, simply require you to defeat the garrison.</Original>
+        <Original>Once you have defeated the enemy garrison, you can go to the marker and select the "Take the Flag" option to convert the outpost to your faction. Roadblock flags are cosmetic and cannot be taken.</Original>
         <German>Um eine Zone, wie z.B. einen Flugplatz, einzunehmen, musst du die "Nimm die Flagge" Aktion an dem entsprechenden Flaggenmast vor Ort nutzen.</German>
         <Italian>Alcune zone, come gli aeroporti, richiedono l'utilizzo dell'azione ""Prendi la bandiera"" sulle rispettive bandiere per conquistarle. Alcuni altri, come posti di blocco e alcuni avamposti, richiedono semplicemente che tu sconfigga la guarnigione.</Italian>
         <Spanish>Algunas zonas como aeropuertos requieren de ti para usar la acción de "Tomar la Bandera" en las respectivas banderas para conquistarlas. Algunas otras, como bloqueos de carreteras y algunos puntos de control, solo requieren que derrotes a la guarnición.</Spanish>
@@ -11424,7 +11424,7 @@
         <Chinesesimp>在游戏中随时按 Y 来访问作战选项。大部分功能已在指挥官或特性章节进行过解释。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_SpecialK_2">
-        <Original>When you are the Commander, hit CTRL + SPACE to give way-points and other orders to your AI squads using the HC mode. Non commanders may use it to check enemy contacts reported by the Faction communications network.</Original>
+        <Original>When you are the Commander, hit CTRL + SPACE to give way-points and other orders to your AI squads using the HC mode.</Original>
         <German>Wenn du der Kommandant bist, kannst du über Strg + Leertaste in den Oberbefehlsmodus wechseln und somit KI Gruppen Befehle geben. Nicht-Kommandanten können dies nutzen, um Berichte über feindliche Kontakte zu überprüfen.</German>
         <Italian>Usa il menu e seleziona un punto sulla mappa. Fai clic su una strada. Un gruppo di soldati AT si unirà a te. Inviali nel luogo selezionato e lì stabiliranno un posto di blocco.</Italian>
         <Spanish>Cuando eres el comandante, presiona CTRL + ESPACIO para dar puntos de reunión y otras ordenes a las escuadras controladas por IA usando el modo HC. Los no comandantes pueden usarlo para visualizar las unidades enemigas reportadas por la red de comunicaciones de la Facción.</Spanish>
@@ -11495,7 +11495,7 @@
         <Chinesesimp>不要指望在前期就征服一切。首先, 你必须获取足够的资源(人力资源和资金), 才能攻占并守住你的领地。本任务试图模拟真实世界中的游击态势。如果你有疑问, 问问自己在现实生活中会怎么做。不要期待百战百胜。打完就跑是这里的基本策略。赚取各种资源、武器和弹药, 来积攒真正足以对抗敌人的资产。与此同时, 扰乱敌军的行动, 并获得民众的支持。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_journal_entry_text_tutorial_2">
-        <Original>Keep an eye on those. If it's too high, you will have to face more attacks with better troops.</Original>
+        <Original>Keep an eye on both faction's Aggro level. A higher level means more attacks with more powerful weaponry.</Original>
         <German>Behalte dies im Auge. Wenn sie zu hoch wird, wirst du dich deutlich mehr Angriffen und besseren Einheiten entgegenstellen müssen.</German>
         <Italian>Tienilo d'occhio. Se è troppo alto, dovrai affrontare più attacchi con truppe migliori.</Italian>
         <Spanish>Echale un ojo, si es muy alto, te tendrás que enfrentar a más ataques con mejores tropas</Spanish>
@@ -11937,7 +11937,7 @@
         <Chinesesimp>使用该选项将你面前的玩家从会员列表中移除</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_toggle_info_bar_body_off">
-        <Original>You've turned off top information bar. To enable it, press %1.</Original>
+        <Original>You've turned off the top information bar. To enable it, press %1.</Original>
         <Italian>Hai disabilitato la Barra Informazioni. Per abilitarla, premi %1.</Italian>
         <Spanish>Has ocultado la barra de información superior. Para activarla, pulsa %1</Spanish>
         <French>Vous avez désactivé la barre d'informations supérieure. Pour l'activer, appuyez sur %1.</French>
@@ -11948,7 +11948,7 @@
         <Chinesesimp>你关闭了顶部信息栏。 要启用它，请按%1。</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_toggle_info_bar_body_on">
-        <Original>You've turned on top information bar. To disable it, press %1.</Original>
+        <Original>You've turned on the top information bar. To disable it, press %1.</Original>
         <Italian>Hai abilitato la Barra Informazioni. Per disabilitarla, premi %1.</Italian>
         <Spanish>Has activado la barra de información superior. Para ocultarla, pulsa %1</Spanish>
         <French>Vous avez activé la barre d'informations supérieure. Pour la désactiver, appuyez sur %1.</French>
@@ -12939,7 +12939,7 @@
         <Chinesesimp>增加至空中支援</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_vehicle_manager_add_air_support_tooltip">
-        <Original>Gain Airstrike points giving this vehicle to the faction Air pool</Original>
+        <Original>Gain air support points by sacrificing the aircraft you're looking at. Use these points to call in HE, Cluster, and Napalm strikes.</Original>
         <Italian>Ottieni Punti Supporto Aereo consegnado questo veivolo alla fazione</Italian>
         <Spanish>Gana puntos de ataque aéreo dando este vehículo al almacen de la Facción</Spanish>
         <French>Gagnez des points de frappe aérienne en donnant ce véhicule à la réserve aérienne de la faction</French>
