@@ -165,9 +165,9 @@ class Params
     class tkPunish
     {
         title = $STR_A3A_Params_tkPunish_title;
-        values[] = {0,1};
-        texts[] = {$STR_antistasi_dialogs_generic_button_no_tooltip,$STR_antistasi_dialogs_generic_button_yes_text};
-        default = 1;
+        values[] = {0,1,2};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_tooltip,$STR_antistasi_dialogs_generic_button_yes_text,$STR_A3A_Params_tkPunish_logonly};
+        default = 2;
     };
     class memberSlots
     {
