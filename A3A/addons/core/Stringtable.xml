@@ -7028,7 +7028,7 @@
         <Chinesesimp>服务器会员专属空位的总占比</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_minWeaps_title">
-        <Original>Number of the same item required to unlock"</Original>
+        <Original>Number of the same item required to unlock</Original>
         <Italian>Quantità dello stesso oggetto richiesta per sbloccarlo"</Italian>
         <French>Nombre d'exemplaire d'un objet pour le débloquer</French>
         <Korean>해금에 필요한 동일 아이템의 갯수</Korean>
