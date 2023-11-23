@@ -5518,6 +5518,9 @@
         <Original>We lost %1. There's nothing you could have done, we need to keep fighting.</Original>
         <Korean>%1을(를) 잃었습니다. 당신이 할 수 있는 일은 아무것도 없었지만, 계속 싸워야 합니다.</Korean>
       </Key>
+      <Key ID="STR_A3A_fn_revive_actRev_other">
+        <Original>%1 has been revived by someone else.</Original>
+      </Key>
       <Key ID="STR_A3A_fn_revive_actRev_no_able">
         <Original>You are not able to revive anyone.</Original>
         <Italian>Non sei in grado di rianimare nessuno.</Italian>
