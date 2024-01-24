@@ -832,36 +832,54 @@ class Templates
     {
         side = "Inv";
         flagTexture = "\gm\gm_core\data\flags\gm_flag_gc_co";
-        name = "GM Nationale Volksarmee Temperate";
+        name = "GM NVA Temperate";
         file = "GM_AI_NVA";
-        climate[] = {"temperate","tropical","arid"};
+        climate[] = {"temperate","tropical"};
     };
 
     class GM_NVA_Arctic : GM_Base
     {
         side = "Inv";
         flagTexture = "\gm\gm_core\data\flags\gm_flag_gc_co";
-        name = "GM Nationale Volksarmee Arctic";
+        name = "GM NVA Arctic";
         file = "GM_AI_NVA_arctic";
         climate[] = {"arctic"};
+    };
+
+    class GM_NVA_Desert : GM_Base
+    {
+        side = "Inv";
+        flagTexture = "\gm\gm_core\data\flags\gm_flag_gc_co";
+        name = "GM NVA Desert";
+        file = "GM_AI_NVA_desert";
+        climate[] = {"arid"};
     };
 
     class GM_BW : GM_Base
     {
         side = "Occ";
         flagTexture = "\gm\gm_core\data\flags\gm_flag_ge_co";
-        name = "GM Bundeswehr Temperate";
+        name = "GM BW Temperate";
         file = "GM_AI_BW";
-        climate[] = {"temperate","tropical","arid"};
+        climate[] = {"temperate","tropical"};
     };
 
     class GM_BW_Arctic : GM_Base
     {
         side = "Occ";
         flagTexture = "\gm\gm_core\data\flags\gm_flag_ge_co";
-        name = "GM Bundeswehr Arctic";
+        name = "GM BW Arctic";
         file = "GM_AI_BW_arctic";
         climate[] = {"arctic"};
+    };
+
+    class GM_BW_Desert : GM_Base
+    {
+        side = "Occ";
+        flagTexture = "\gm\gm_core\data\flags\gm_flag_ge_co";
+        name = "GM BW Desert";
+        file = "GM_AI_BW_desert";
+        climate[] = {"arid"};
     };
 
     class GM_Reb : GM_Base
