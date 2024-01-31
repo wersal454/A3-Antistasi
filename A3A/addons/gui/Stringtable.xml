@@ -500,24 +500,38 @@
     <Container name="dialog_hq">
       <Key ID="STR_A3A_fn_GUI_hqDialog_DEF_HQ">
         <Original>You cannot rest while our HQ is under attack.</Original>
+        <Korean>우리 본부가 공격받는 동안에는 쉴 수 없습니다.</Korean>
+        <Czech>Nemůžeš odpočívat když je základna pod útokem.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_GUI_hqDialog_enemiesNear">
         <Original>You cannot rest while enemies are near our HQ.</Original>
+        <Korean>적들이 우리 본부 근처에 있는 동안에는 쉴 수 없습니다.</Korean>
+        <Czech>Nemůžeš odpočívat když jsou nepřátelkské jednotky poblíž základny.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_GUI_hqDialog_invaderPunish">
         <Original>You cannot rest while %1 is attacking civilians.</Original>
+        <Korean>%1 세력이 민간인을 공격하는 동안에는 쉴 수 없습니다.</Korean>
+        <Czech>Nemůžeš odpočívat když %1 útočí na civilisty.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_GUI_hqDialog_notBoss">
         <Original>Only the commander can skip time.</Original>
+        <Korean>지휘관만이 시간을 스킵할 수 있습니다.</Korean>
+        <Czech>Pouze velitel může přeskočit čas.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_GUI_hqDialog_playersNotAtHQ">
         <Original>All players must be within 100m of the HQ marker to skip time.</Original>
+        <Korean>시간을 스킵하려면 모든 플레이어가 본부 마커로부터 100m 이내에 있어야 합니다.</Korean>
+        <Czech>Všichni hráči musí být v okruhu méně než 100m od základny, aby se mohl přeskočit čas.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_GUI_hqDialog_rebelAttack">
         <Original>You cannot rest while the enemy is launching a major attack.</Original>
+        <Korean>적이 대규모 공격을 가하는 동안에는 쉴 수 없습니다.</Korean>
+        <Czech>Nemůžeš odpočívat když nepřítel zahajuje velký útok.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_GUI_hqDialog_title">
         <Original>Skip Time / Rest</Original>
+        <Korean>시간 스킵 / 휴식</Korean>
+        <Czech>Přeskočit čas / Odpočívat</Czech>
       </Key>
       <Key ID="STR_antistasi_dialogs_hq_aggression">
         <Original>Aggression:</Original>
@@ -1685,6 +1699,8 @@
     <Container name="dialog_main_ai_management">
       <Key ID="STR_A3A_fn_GUI_aiManaagement_noAI">
         <Original>No AIs in group. Recruit some at an allied marker's flag.</Original>
+        <Korean>그룹에 AI가 없습니다. 아군 마커의 깃발에서 AI를 모집하십시오.</Korean>
+        <Czech>Žádné AI ve skupině. Naverbuj nějaké na značce spřátelené vlajky.</Czech>
       </Key>
       <Key ID="STR_antistasi_dialogs_main_ai_management_ai_list_label">
         <Original>AI Group members</Original>
@@ -3308,6 +3324,8 @@
     <Container name="dialog_recruit_units">
       <Key ID="STR_antistasi_dialogs_recruit_units_antitank">
         <Original>Anti-Tank</Original>
+        <Korean>대전차병</Korean>
+        <Czech>Protitankový střelec</Czech>
       </Key>
       <Key ID="STR_antistasi_dialogs_recruit_units_autorifleman">
         <Original>Autorifleman</Original>
@@ -3880,21 +3898,33 @@
     <Container name="setup_dialog">
       <Key ID="STR_A3A_fn_GUI_setupLoadgameTab_copy">
         <Original>Copy game with ID %1</Original>
+        <Korean>게임 ID %1 복사</Korean>
+        <Czech>Skopírovat hru s ID %1</Czech>
       </Key>
       <Key ID="STR_A3A_fn_GUI_setupLoadgameTab_create">
         <Original>Create new game with</Original>
+        <Korean>다음으로 새 게임 생성:</Korean>
+        <Czech>Vytvořit novou hru s</Czech>
       </Key>
       <Key ID="STR_A3A_fn_GUI_setupLoadgameTab_delete">
         <Original>Are you sure you want to delete game ID %1 on %2?</Original>
+        <Korean>%2에서 게임 ID %1을(를) 삭제하시겠습니까?</Korean>
+        <Czech>Jsi si jistý, že chceš smazat hru s ID %1 na %2?</Czech>
       </Key>
       <Key ID="STR_A3A_fn_GUI_setupLoadgameTab_load">
         <Original>Load game with ID %1</Original>
+        <Korean>게임 ID %1 불러오기</Korean>
+        <Czech>Načíst hru s ID %1</Czech>
       </Key>
       <Key ID="STR_A3A_fn_GUI_setupLoadgameTab_loadName">
         <Original>name ""%1""</Original>
+        <Korean>이름 ""%1""</Korean>
+        <Czech>Název ""%1""</Czech>
       </Key>
       <Key ID="STR_A3A_fn_GUI_setupLoadgameTab_occInv">
         <Original>%1 occupants and %2 invaders?</Original>
+        <Korean>%1이(가) 점령군이고 %2이(가) 침략군입니까?</Korean>
+        <Czech>%1 okupanti a %2 vetřelci?</Czech>
       </Key>
       <Key ID="STR_antistasi_dialogs_setup_addonvics">
         <Original>Addon vehicles</Original>
