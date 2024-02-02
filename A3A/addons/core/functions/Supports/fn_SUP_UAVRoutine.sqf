@@ -33,7 +33,7 @@ _wp = _groupVeh addWayPoint [_suppCenter, 0];
 _wp setWaypointBehaviour "AWARE";
 _wp setWaypointType "SAD";
 _groupVeh setCurrentWaypoint _wp;
-//_uav flyInHeight 500;           // maybe not necessary if we lock the waypoint
+_uav flyInHeight 500;           // maybe not necessary if we lock the waypoint
 _groupVeh lockWP true;          // prevent exiting the SAD waypoint
 
 // do we just run for 20mins and then RTB?
