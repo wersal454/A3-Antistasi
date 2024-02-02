@@ -1,15 +1,16 @@
-params ["_sleepTime", "_timerIndex", "_airport", "_supportPos", "_supportName"];
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-while {_sleepTime > 0} do
+params ["_suppData", "_resPool", "_airport", "_sleepTime", "_reveal"];
+_suppData params ["_supportName", "_side", "_suppType", "_suppCenter", "_suppRadius", "_suppTarget"];
+/* while {_sleepTime > 0} do
 {
     sleep 1;
     _sleepTime = _sleepTime - 1;
     if((spawner getVariable _airport) != 2) exitWith {};
-};
+}; */
 
-private _gunshipData = [Invaders, _airport, _timerIndex, "O_T_VTOL_02_vehicle_dynamicLoadout_F", FactionGet(inv,"unitPilot"), _supportPos] call A3A_fnc_SUP_gunshipSpawn;
+private _gunshipData = [Invaders, _airport, _supportName, selectRandom (A3A_faction_inv get "vehiclesPlanesGunship"), _suppTarget, _resPool, _suppCenter, (A3A_faction_inv get "unitPilot")] call A3A_fnc_SUP_gunshipSpawn;
 _gunshipData params ["_gunship", "_strikeGroup"];
 
 {
@@ -283,7 +284,7 @@ _gunship setVariable ["Rockets", 76];
 private _supportMarker = format ["%1_coverage", _supportName];
 private _supportPos = getMarkerPos _supportMarker;
 
-//_strikeGroup setCombatMode "YELLOW";
+_strikeGroup setCombatMode "YELLOW";
 
 private _lifeTime = 300;
 while {_lifeTime > 0} do
