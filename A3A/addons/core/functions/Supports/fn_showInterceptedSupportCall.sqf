@@ -75,7 +75,7 @@ else
             _text = format [localize "STR_notifiers_SUP_execute_orbitalStrike", _sideName];
             _markerText = localize "STR_notifiers_SUP_execute_orbitalStrike_marker";
         };
-        case ("CRUISEMISSILE"):
+        case ("MISSILE"):
         {
             _text = format [localize "STR_notifiers_SUP_execute_cruise_missile", _sideName];
             _markerText = localize "STR_notifiers_SUP_execute_cruise_missile_marker";
