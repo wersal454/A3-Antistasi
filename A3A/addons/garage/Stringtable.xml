@@ -1161,6 +1161,7 @@
       <Key ID="STR_A3A_inc_public_config_baseCapTitle">
         <Original>Base Capacity</Original>
         <Korean>기본 수용량</Korean>
+        <Polish>Pojemność bazy</Polish>
         <Czech>Základní kapacita</Czech>
       </Key>
       <Key ID="STR_A3A_inc_public_config_capIncLong">

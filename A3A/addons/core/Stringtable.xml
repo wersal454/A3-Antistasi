@@ -2285,9 +2285,6 @@
       </Key>
       <Key ID="STR_A3A_fn_convoy_craiact_armored_text">
         <Original>A convoy from %1 is about to depart at %2. It will reinforce %3 with armored vehicles. Try to intercept it. Steal or destroy the armor before it reaches its destination.</Original>
-        <Italian>Un convoglio da %1 è in procinto di partire alle %2. Rinforzerà %3 con veicoli corazzati. Prova ad intercettarlo. Ruba o distruggi i veicoli prima che raggiungano la destinazione.</Italian>
-        <Korean>%1에서 온 수송대가 %2에서 출발하려고 하며, 이는 %3의 기갑 차량을 증원할 것입니다. 수송을 방해하여 그것이 목적지에 도달하기 전에 훔치거나 파괴하십시오.</Korean>
-        <Czech>Konvoj z %1 bude odjíždět v %2. Posílí %3 obrněnými vozidly. Zkus ho zachytit. Ukradni nebo znič náklaďák než dosáhne cíle.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_convoy_craiact_armored_title">
         <Original>Armored Convoy</Original>
@@ -6322,10 +6319,6 @@
       </Key>
       <Key ID="STR_A3A_fn_reinf_spawnHCGro_atCommand">
         <Original>Group %1 at your command.&lt;br/&gt;&lt;br/&gt;Groups are managed from the High Command bar (Default: CTRL+SPACE)&lt;br/&gt;&lt;br/&gt;If the group gets stuck, use the AI Control feature to make them start moving.&lt;br/&gt;&lt;br/&gt;To assign a vehicle for this group, look at a vehicle and use the Add Vehicle option in the Y menu.</Original>
-        <Italian>Gruppo %1 a rapporto.&lt;br/&gt;&lt;br/&gt;I gruppi sono gestiti dalla barra dell'Alto Comando (Default: CTRL+SPAZIO)&lt;br/&gt;&lt;br/&gt;Se il gruppo rimane bloccato, usa la funzione di Controllo IA per farli muovere. I team di Statiche tendono a bloccarsi (stiamo cercando di risolvere)&lt;br/&gt;&lt;br/&gt;Per assegnare un veicolo a questo gruppo, guarda un veicolo e usa l'opzione Gestione Veicolo di Squadra nel menù Y.</Italian>
-        <French>Groupe %1 à votre commandement.&lt;br/&gt;&lt;br/&gt;Les Groupes sont gérer depuis la barre HC (Par défaut: CTRL+ESPACE)&lt;br/&gt;&lt;br/&gt;Si le groupe est coincé, utilisez la fonction de Contrôle d'IA afin de les faire bouger. Les équipes d'armes statiques montés ont tendance à se bloquer (la résolution est en cours)&lt;br/&gt;&lt;br/&gt;Pour assigner un véhicule pour ce groupe, regardez un véhicule et utiliser l'option de Gestion de Véhicule d'Escouade dans le menu Y.</French>
-        <Korean>당신의 명령으로 %1 그룹을 생성하십시오.&lt;br/&gt;&lt;br/&gt;그룹은 하이 커맨드 표시줄(기본값: 컨트롤 + 스페이스 키)에서 관리됩니다.&lt;br/&lt;br/&gt;그룹이 끼었다면 AI 조종 기능을 사용하여 이동을 시작하십시오. 고정화기 탑승 팀은 자주 끼이는 경향이 있습니다 (아직 해결 중).&lt;br/&gt;&lt;br/&gt;그룹에 차량을 할당하려면 이 차량을 보고 Y 메뉴의 차량 분대 관리 옵션을 사용하십시오.</Korean>
-        <Chinesesimp>班组%1听从您的指挥.&lt;br/&gt;&lt;br/&gt;班组可以通过高等指挥菜单进行管理（默认键位：CTRL+空格）&lt;br/&gt;&lt;br/&gt;如果该班组卡住了，可以用AI控制功能来督促他们前进.固定式武器班组很容易卡住（这个问题还在解决中）&lt;br/&gt;&lt;br/&gt;如果要分配载具给这个班组，请看着要用的载具然后按Y键来访问载具班组管理选项</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_reinf_spawnHCGro_purchased">
         <Original>Vehicle Purchased</Original>
@@ -7323,6 +7316,7 @@
         <German>Letzte Müll-Löschung war vor %1, behalte das im Auge. Müll-Löschung wird automatisch in %2 durchgeführt.</German>
         <Italian>L'ultimo Pulisci Immondizia è stato %1 fa. Tienilo d'occhio. PI forzato in %2.</Italian>
         <Korean>마지막 쓰레기 청소는 %1 전에 실행되었습니다. 쓰레기 청소 시간을 추적합니다. 서버는 %2 후에 자동으로 쓰레기 청소를 수행할 것입니다.</Korean>
+        <Polish>Ostatnie czyszczenie śmieci miało miejsce %1 temu. Uważaj na następne. Czyszczenie będzie wymuszone za %2.</Polish>
         <Czech>Poslední čistění odpadu bylo %1 zpátky. Dávejte si na to pozor. Vynucené čistění odpadu za %2.</Czech>
       </Key>
       <Key ID="STR_A3A_GCTracker_tracker_ran_gc">
@@ -7330,6 +7324,7 @@
         <German>Müll-Löscher hat Löschung durchgeführt, weil der Zeitraum abgelaufen ist. Beachte die Fristen.</German>
         <Italian>Tracciatore Pulisci Immondizia ha eseguito una pulizia poiché il tempo trascorso ha superato la soglia. Tieni d'occhio i tempi del PI.</Italian>
         <Korean>쓰레기 청소 기록 프로그램이 임계값을 초과하여 쓰레기를 청소합니다. 쓰레기 청소 시간을 추적합니다.</Korean>
+        <Polish>Skrypt do czyszczenia śmieci został uruchomiony, ponieważ minęło zbyt dużo czasu od ostatniego czyszczenia. Śledź czasy czyszczenia.</Polish>
         <Czech>Monitor čistení odpadků spustil sběr, jelikož čas překročil časový práh. Hlídejte si čas sběru.</Czech>
       </Key>
       <Key ID="STR_A3A_GCTracker_tracker_title">
@@ -7471,11 +7466,6 @@
       </Key>
       <Key ID="STR_A3A_Params_allowFuturisticSupports_title">
         <Original>[Experimental] Allow futuristic supports to be used by the enemy</Original>
-        <Italian>Sperimentale] Permetti al nemico di usare supporti futuristici</Italian>
-        <Spanish> [Experimental] Permitir al enemigo usar apoyos futuristas</Spanish>
-        <French>&lt;br/&gt;[Expérimental] Autoriser des supports futuristes pour l'ennemi</French>
-        <Korean>[실험적] 적이 미래형 지원을 사용할 수 있도록 허용</Korean>
-        <Chinesesimp>实验性] 允许敌人使用未来科技化支援</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_allowGuidedLaunchers_title">
         <Original>Should Guided Launchers become unlocked?</Original>
@@ -7483,6 +7473,7 @@
         <Spanish>¿Deberían desbloquearse los lanzadores guiados?</Spanish>
         <French>Debloquer les lance-missiles guidés ?</French>
         <Korean>유도미사일 발사기를 해금할 수 있습니까?</Korean>
+        <Polish>Czy namierzane wyrzutnie powinny zostać odblokowane?</Polish>
         <Chinesesimp>是否允许解锁可制导导弹？</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_allowUnfairSupports_title">
@@ -7491,6 +7482,7 @@
         <Spanish>Permitir que el enemigo utilice apoyos injustos</Spanish>
         <French>&lt;br/&gt;Permettre à l'ennemi d'utiliser des soutiens inéquitable</French>
         <Korean>적이 불공평한 지원을 사용하도록 허용</Korean>
+        <Polish>Pozwól wrogowi na użycie nieuczciwego wsparcia</Polish>
         <Chinesesimp>是否允许敌方使用不平衡的支援类型</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_allowUnlockedExplosives_title">
@@ -7499,6 +7491,7 @@
         <Spanish>¿Deberían desbloquearse los explosivos?</Spanish>
         <French>Debloquer les Explosifs ?</French>
         <Korean>폭발물을 해금할 수 있습니까?</Korean>
+        <Polish>Czy materiały wybuchowe powinny zostać odblokowane?</Polish>
         <Chinesesimp>是否允许解锁爆炸物？</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_attackHQProximityMul_title">
@@ -7507,6 +7500,7 @@
         <Spanish>Preferencia de los enemigos para atacar objetivos rebeldes cerca del CG</Spanish>
         <French>Préférence de l'ennemi à attaquer les cibles rebelles proches du QG</French>
         <Korean>적군 선호도 - 반군 표적을 공격하는 것을 선호하는 정도</Korean>
+        <Polish>Wróg woli atakować cele rebeliantów bliżej sztabu</Polish>
         <Chinesesimp>敌方针对总部附近抵抗军的攻击倾向</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_autoSave_title">
@@ -7515,6 +7509,7 @@
         <Spanish>Activar autoguardado (cada X minutos)</Spanish>
         <French>Activer les Sauvegarde Auto (toute les X minutes)</French>
         <Korean>자동 저장 활성화 (매 X분마다)</Korean>
+        <Polish>Włącz auto-zapis (co X minut)</Polish>
         <Chinesesimp>启用自动保存 (每 X 分钟一次)</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_autoSaveInterval_title">
@@ -7523,6 +7518,7 @@
         <Spanish>Tiempo entre autoguardados (en minutos)</Spanish>
         <French>Temps entre sauvegardes auto (en minutes)</French>
         <Korean>자동 저장 쿨타임 (분 단위)</Korean>
+        <Polish>Czas pomiędzy automatycznymi zapisami (w minutach)</Polish>
         <Chinesesimp>自动保存间隔时间（分钟）</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_bobChaosCrates_title">
@@ -7536,6 +7532,7 @@
         <Spanish>Ambos</Spanish>
         <French>Les deux</French>
         <Korean>둘 다</Korean>
+        <Polish>Oba</Polish>
         <Chinesesimp>两个都允许</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_builderPermissions_engi">
@@ -7544,6 +7541,7 @@
         <Spanish>Ingenieros</Spanish>
         <French>Ingénieurs</French>
         <Korean>공병만</Korean>
+        <Polish>Inżynierowie</Polish>
         <Chinesesimp>工程师</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_builderPermissions_title">
@@ -7560,6 +7558,7 @@
         <Spanish>Líderes de equipo</Spanish>
         <French>Chef d'équipes</French>
         <Korean>조장만</Korean>
+        <Polish>Liderzy zespołów</Polish>
         <Chinesesimp>班组组长</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_civTraffic_title">
@@ -7568,6 +7567,7 @@
         <Spanish>Cantidad de tráfico de civiles y vehículos aparcados</Spanish>
         <French>Quantité de traffic civil et véhicules garés</French>
         <Korean>민간인 보행자 및 주차된 차량 수</Korean>
+        <Polish>Ilość ruchu cywilnego i pojazdów zaparkowanych</Polish>
         <Chinesesimp>平民出行程度以及停靠车辆数量</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateAmmoNumMax_title">
@@ -7576,6 +7576,7 @@
         <Spanish>Munición máxima en cajas</Spanish>
         <French>Maximum de Munitions dans les Caisses</French>
         <Korean>상자 내 최대 탄약 수량</Korean>
+        <Polish>Maksymalna ilość amunicji w skrzyniach</Polish>
         <Chinesesimp>弹药箱中可容纳弹药的数量已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateAmmoTypeMax_title">
@@ -7584,6 +7585,7 @@
         <Spanish>Tipos de munición máximos en cajas</Spanish>
         <French>Maximum de Types de Munitions dans les Caisses</French>
         <Korean>상자 내 최대 탄약 종류 수</Korean>
+        <Polish>Maksymalna liczba typów amunicji w skrzynkach</Polish>
         <Chinesesimp>弹药箱中可容纳弹药的种类已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateAttachmentNumMax_title">
@@ -7592,6 +7594,7 @@
         <Spanish>Cantidad máxima de accesorios en cajas</Spanish>
         <French>Maximum d'Accessoires dans les Caisses</French>
         <Korean>상자 내 최대 부착물 수량</Korean>
+        <Polish>Maksymalna ilość dodatków do broni w skrzyniach</Polish>
         <Chinesesimp>弹药箱中可容纳枪械配件的数量已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateAttachmentTypeMax_title">
@@ -7600,6 +7603,7 @@
         <Spanish>Tipos de accesorios máximos en cajas</Spanish>
         <French>Maximum de Types d'Accessoires dans les Caisses</French>
         <Korean>상자 내 최대 부착물 종류 수</Korean>
+        <Polish>Maksymalna liczba typów dodatków do broni w skrzyniach</Polish>
         <Chinesesimp>弹药箱中可容纳枪械配件的种类已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateBackpackNumMax_title">
@@ -7608,6 +7612,7 @@
         <Spanish>Cantidad de mochilas máxima en cajas</Spanish>
         <French>Maximum de Sacs à Dos dans les Caisses</French>
         <Korean>상자 내 최대 군장 수량</Korean>
+        <Polish>Maksymalna ilość plecaków w skrzyniach</Polish>
         <Chinesesimp>弹药箱中可容纳背包的数量已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateBackpackTypeMax_title">
@@ -7616,6 +7621,7 @@
         <Spanish>Tipos de mochila máximos en cajas</Spanish>
         <French>Maximum de Types de Sacs à Dos dans les Caisses</French>
         <Korean>상자 내 최대 군장 종류 수</Korean>
+        <Polish>Maksymalna liczba typów plecaków w skrzyniach</Polish>
         <Chinesesimp>弹药箱中可容纳背包的种类已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateDeviceNumMax_title">
@@ -7637,6 +7643,7 @@
         <Italian>Quantità massima di esplosivi nelle casse</Italian>
         <French>Maximum d'Explosifs dans les Caisses</French>
         <Korean>상자 내 최대 폭발물 수량</Korean>
+        <Polish>Maksymalna ilość materiału wybuchowego w skrzyniach</Polish>
         <Chinesesimp>弹药箱中爆炸物的数量已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateExplosiveTypeMax_title">
@@ -7644,6 +7651,7 @@
         <Italian>Tipi massimi di esplosivi nelle casse</Italian>
         <French>Maximum de Types d'Explosifs dans les Caisses</French>
         <Korean>상자 내 최대 폭발물 종류 수</Korean>
+        <Polish>Maksymalna liczba typów materiałów wybuchowych w skrzyniach</Polish>
         <Chinesesimp>弹药箱中爆炸物的种类已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateHelmetNumMax_title">
@@ -7651,6 +7659,7 @@
         <Italian>Quantità massima di elmetti nelle casse</Italian>
         <French>Maximum de Casques dans les Caisses</French>
         <Korean>상자 내 최대 헬멧 수량</Korean>
+        <Polish>Maksymalna ilość hełmów w skrzyniach</Polish>
         <Chinesesimp>弹药箱中头盔的数量已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateHelmetTypeMax_title">
@@ -7658,6 +7667,7 @@
         <Italian>Tipi massimi di elmetti nelle casse</Italian>
         <French>Maximum de Types de Casques dans les Caisses</French>
         <Korean>상자 내 최대 헬멧 종류 수</Korean>
+        <Polish>Maksymalna liczba typów hełmów w skrzyniach</Polish>
         <Chinesesimp>弹药箱中头盔的种类已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateItemNumMax_title">
@@ -7665,6 +7675,7 @@
         <Italian>Quantità massima di oggetti nelle casse</Italian>
         <French>Maximum d'Objets dans les Caisses</French>
         <Korean>상자 내 최대 기타 아이템 수량</Korean>
+        <Polish>Maksymalna ilość przedmiotów w skrzyniach</Polish>
         <Chinesesimp>弹药箱中可容纳物品的数量已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateItemTypeMax_title">
@@ -7672,6 +7683,7 @@
         <Italian>Tipi massimi di oggetti nelle casse</Italian>
         <French>Maximum de Types d'Objets dans les Caisses</French>
         <Korean>상자 내 최대 기타 아이템 종류 수</Korean>
+        <Polish>Maksymalna liczba typów przedmiotów w skrzyniach</Polish>
         <Chinesesimp>弹药箱中可容纳物品的种类已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_cratePlayerScaling_title">
@@ -7679,6 +7691,7 @@
         <Italian>Diminuisci la quantità di loot man mano che il numero di giocatori aumenta? ("Sì" è raccomandato per motivi di bilanciamento)</Italian>
         <French>Réduire la quantité de butin à mesure que le nombre de joueurs augmente ? (Oui c'est conseillé pour des raisons d'équilibrage)</French>
         <Korean>플레이어가 많아질수록 전리품 수량이 줄어듭니까? (밸런스를 위해 '예'를 권장합니다)</Korean>
+        <Polish>Zmniejszyć ilość łupów wraz ze wzrostem liczby graczy? (Tak jest zalecane ze względu na równowagę)</Polish>
         <Chinesesimp>是否根据玩家人数来调节战利品生成概率？(追求游戏平衡的前提下, 建议启用)</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateVestNumMax_title">
@@ -7686,6 +7699,7 @@
         <Italian>Quantità massima di gilet tattici nelle casse </Italian>
         <French>Maximum de Vestes dans les Caisses</French>
         <Korean>상자 내 최대 조끼 수량</Korean>
+        <Polish>Maksymalna ilość kamizelek w skrzyniach</Polish>
         <Chinesesimp>弹药箱中防弹背心的数量已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateVestTypeMax_title">
@@ -7693,6 +7707,7 @@
         <Italian>Tipi massimi di gilet tattici nelle casse</Italian>
         <French>Maximum de Types de Vestes dans les Caisses</French>
         <Korean>상자 내 최대 조끼 종류 수</Korean>
+        <Polish>Maksymalna liczba typów kamizelek w skrzyniach</Polish>
         <Chinesesimp>弹药箱中防弹背心的种类已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateWepNumMax_title">
@@ -7700,6 +7715,7 @@
         <Italian>Quantità massima di armi nelle casse</Italian>
         <French>Maximum d'Armes dans les Caisses</French>
         <Korean>상자 내 최대 무기 수량</Korean>
+        <Polish>Maksymalna ilość broni w skrzyniach</Polish>
         <Chinesesimp>弹药箱中可容纳枪械的数量已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_crateWepTypeMax_title">
@@ -7707,6 +7723,7 @@
         <Italian>Tipi massimi di armi nelle case</Italian>
         <French>Maximum de Types d'Armes dans les Caisses</French>
         <Korean>상자 내 최대 무기 종류 수</Korean>
+        <Polish>Maksymalna liczba typów broni w skrzyniach</Polish>
         <Chinesesimp>弹药箱中可容纳枪械的种类已达最大值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_distanceMission_title">
@@ -7714,6 +7731,7 @@
         <Italian>Distanza massima dal QG per le missioni</Italian>
         <French>Distance maximale du QG pour les tâches</French>
         <Korean>본부로부터 임무까지의 최대 거리</Korean>
+        <Polish>Maksymalny dystans od bazy dla zadań</Polish>
         <Chinesesimp>总部距离任务所在地点的最大距离</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_distanceSPWN_title">
@@ -7721,6 +7739,7 @@
         <Italian>Distanza di spawn</Italian>
         <French>Distance d'apparition</French>
         <Korean>스폰 거리</Korean>
+        <Polish>Odległość spawnu</Polish>
         <Chinesesimp>生成距离</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_enemyAttackMul_title">
@@ -7735,6 +7754,7 @@
         <Italian>Bilancio complessivo delle risorse del nemico </Italian>
         <French>Equilibrage global des ressources des ennemis</French>
         <Korean>전체적인 적 자원 밸런스</Korean>
+        <Polish>Łączny balans zasobów przeciwnika</Polish>
         <Chinesesimp>平衡敌人总体资源</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_enemyNearDistance_title">
@@ -7742,6 +7762,7 @@
         <Italian>Distanza usata per controllare se vi sono nemici nelle vicinanze</Italian>
         <French>Distance pour la vérification d'ennemis proches</French>
         <Korean>근처 적 존재 여부를 체크하는 거리</Korean>
+        <Polish>Dystans używany do szukania pobliskich przeciwników</Polish>
         <Chinesesimp>用于探查附近敌情的距离</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_enemySkillMul_title">
@@ -7749,6 +7770,7 @@
         <Italian>Abilità delle IA nemiche (influenzato anche dal livello di abilità del server)</Italian>
         <French>Compétence de l'IA ennemie (affectée par le réglage serveur)</French>
         <Korean>적 AI 숙련도 (서버 숙련도에도 영향을 받음)</Korean>
+        <Polish>Poziom umiejętności AI (umiejętności serwera również na to wpływa)</Polish>
         <Chinesesimp>敌方AI能力水平 (会被服务器设定所影响)</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_gameMode_RvG">
@@ -7756,6 +7778,7 @@
         <Italian>Rib vs Gov</Italian>
         <French>Reb vs Gouv</French>
         <Korean>반군 Vs 정부군</Korean>
+        <Polish>Rebelia vs Rząd</Polish>
         <Chinesesimp>起义军 vs 政府军</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_gameMode_RvGaI">
@@ -7763,6 +7786,7 @@
         <Italian>Rib vs Gov + Inv</Italian>
         <French>Reb vs Gouv + Envahisseur</French>
         <Korean>반군 Vs 정부군과 침략군</Korean>
+        <Polish>Rebelia vs Rząd + Najeźccy </Polish>
         <Chinesesimp>起义军 vs 政府军 + 侵略者</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_gameMode_RvGvI">
@@ -7770,6 +7794,7 @@
         <Italian>Rib vs Gov vs Inv</Italian>
         <French>Reb vs Gouv vs Envahisseur</French>
         <Korean>반군 Vs 정부군 Vs 침략군</Korean>
+        <Polish>Rebelia vs Rząd vs Najeźccy </Polish>
         <Chinesesimp>起义军 vs 政府军 vs 侵略者</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_gameMode_title">
@@ -7777,6 +7802,7 @@
         <Italian>Modalità di gioco - NON cambiare nel mezzo della missione</Italian>
         <French>Mode de Jeu - Ne pas changer ceci en milieu de mission</French>
         <Korean>게임 모드 - 경고: 임무 도중에 이것을 변경하지 마십시오!!</Korean>
+        <Polish>Tryb gry - NIE zmieniaj tego w trakcie misji</Polish>
         <Chinesesimp>游玩模式 - 请勿在游玩过程中改变此选项</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_GCThreshold_title">
@@ -7786,6 +7812,7 @@
         <French>Limite avant le Nettoyage de Memoire automatique</French>
         <Korean>자동 쓰레기 청소에 대한 쓰레기 청소 프로그램 임계점</Korean>
         <Russian>Порог очистки мусора для автоматической очистки мусора</Russian>
+        <Polish>Próg czyszczenia śmieci dla automatycznego czyszczenia śmieci</Polish>
         <Chinesesimp>自动化垃圾清理阈值</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_10km">
@@ -7794,6 +7821,7 @@
         <Italian>10 km</Italian>
         <French>10 km</French>
         <Korean>10km</Korean>
+        <Polish>10 km</Polish>
         <Chinesesimp>10 千米</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_10m">
@@ -7802,6 +7830,7 @@
         <Italian>10 metri</Italian>
         <French>10 mètres</French>
         <Korean>10</Korean>
+        <Polish>10 metrów</Polish>
         <Chinesesimp>10 米</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_10min">
@@ -7809,6 +7838,7 @@
         <Italian>10 minuti </Italian>
         <French>10 minutes</French>
         <Korean>10분</Korean>
+        <Polish>10 minut</Polish>
         <Chinesesimp>10 分钟</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_15m">
@@ -7817,6 +7847,7 @@
         <Italian>15 metri </Italian>
         <French>15 mètres</French>
         <Korean>15m</Korean>
+        <Polish>15 metrów</Polish>
         <Chinesesimp>15 米</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_15min">
@@ -7824,6 +7855,7 @@
         <Italian>15 minuti </Italian>
         <French>15 minutes</French>
         <Korean>15분</Korean>
+        <Polish>15 minut</Polish>
         <Chinesesimp>15 分钟</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_16km">
@@ -7832,6 +7864,7 @@
         <Italian>16 km</Italian>
         <French>16 km</French>
         <Korean>16km</Korean>
+        <Polish>16 km</Polish>
         <Chinesesimp>16 千米</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_20m">
@@ -7840,6 +7873,7 @@
         <Italian>20 metri </Italian>
         <French>20 mètres</French>
         <Korean>20m</Korean>
+        <Polish>20 metrów</Polish>
         <Chinesesimp>20 米</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_20min">
@@ -7847,6 +7881,7 @@
         <Italian>20 minuti </Italian>
         <French>20 minutes</French>
         <Korean>20분</Korean>
+        <Polish>20 minut</Polish>
         <Chinesesimp>20 分钟</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_2min">
@@ -7854,6 +7889,7 @@
         <Italian>2 minuti </Italian>
         <French>2 minutes</French>
         <Korean>2분</Korean>
+        <Polish>2 minuty</Polish>
         <Chinesesimp>2 分钟</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_30min">
@@ -7861,6 +7897,7 @@
         <Italian>30 minuti</Italian>
         <French>30 minutes</French>
         <Korean>30분</Korean>
+        <Polish>30 minut</Polish>
         <Chinesesimp>30 分钟</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_4km">
@@ -7869,6 +7906,7 @@
         <Italian>4 km</Italian>
         <French>4 km</French>
         <Korean>4km</Korean>
+        <Polish>4 km</Polish>
         <Chinesesimp>4 千米</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_5km">
@@ -7877,6 +7915,7 @@
         <Italian>5 km</Italian>
         <French>5 km</French>
         <Korean>5km</Korean>
+        <Polish>5 km</Polish>
         <Chinesesimp>5 千米</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_5min">
@@ -7884,6 +7923,7 @@
         <Italian>5 minuti </Italian>
         <French>5 minutes</French>
         <Korean>5분</Korean>
+        <Polish>5 minut</Polish>
         <Chinesesimp>5 分钟</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_6km">
@@ -7892,6 +7932,7 @@
         <Italian>6 km</Italian>
         <French>6 km</French>
         <Korean>6km</Korean>
+        <Polish>6 km</Polish>
         <Chinesesimp>6 千米</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_7km">
@@ -7900,6 +7941,7 @@
         <Italian>7 km</Italian>
         <French>7 km</French>
         <Korean>7km</Korean>
+        <Polish>7 km</Polish>
         <Chinesesimp>7 千米</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_8km">
@@ -7908,6 +7950,7 @@
         <Italian>8 km</Italian>
         <French>8 km</French>
         <Korean>8km</Korean>
+        <Polish>8 km</Polish>
         <Chinesesimp>8 千米</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_all">
@@ -7916,6 +7959,7 @@
         <Italian>Tutti </Italian>
         <French>Tout</French>
         <Korean>모두</Korean>
+        <Polish>Wszystko</Polish>
         <Chinesesimp>所有</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_allowed">
@@ -7924,6 +7968,7 @@
         <Italian>Permesso </Italian>
         <French>Autorisé</French>
         <Korean>허용</Korean>
+        <Polish>Dozwolone</Polish>
         <Chinesesimp>允许</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_always">
@@ -7932,6 +7977,7 @@
         <Italian>Sempre</Italian>
         <French>Toujours</French>
         <Korean>항상</Korean>
+        <Polish>Zawsze</Polish>
         <Chinesesimp>时常的</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_disabled">
@@ -7940,6 +7986,7 @@
         <Italian>Disabilitato</Italian>
         <French>Désactivé</French>
         <Korean>비활성화</Korean>
+        <Polish>Wyłączone</Polish>
         <Chinesesimp>不启用</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_enabled">
@@ -8197,6 +8244,7 @@
         <French>Erreur</French>
         <Korean>오류</Korean>
         <Russian>Ошибка</Russian>
+        <Polish>Błąd</Polish>
         <Czech>Chyba</Czech>
         <Chinesesimp>错误</Chinesesimp>
       </Key>
@@ -8208,6 +8256,7 @@
         <French>Info</French>
         <Korean>정보</Korean>
         <Russian>Информация</Russian>
+        <Polish>Informacja</Polish>
         <Czech>Informace</Czech>
         <Chinesesimp>信息</Chinesesimp>
       </Key>
@@ -8376,6 +8425,7 @@
         <Spanish>OPCIONES DE DESARROLLO</Spanish>
         <French>OPTION DEVELOPPEMENT</French>
         <Korean>-개발자 설정-</Korean>
+        <Polish>Opcje rozwoju</Polish>
         <Chinesesimp>研发选项</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_TitleEquipment_title">
@@ -8384,6 +8434,7 @@
         <Spanish>OPCIONES DE EQUIPAMIENTO</Spanish>
         <French>OPTIONS EQUIPEMENT</French>
         <Korean>-장비 설정-</Korean>
+        <Polish>opcje wyposażenia</Polish>
         <Chinesesimp>装备选项</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_TitleLoot_title">
@@ -8400,6 +8451,7 @@
         <Spanish>OPCIONES DE MEMBRESÍA</Spanish>
         <French>OPTIONS ADHESION</French>
         <Korean>-멤버십 설정-</Korean>
+        <Polish>opcje członkostwa</Polish>
         <Chinesesimp>白名单设置</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_tkPunish_logonly">
