@@ -306,7 +306,7 @@
         <French>Attention : le Père Noël vous chasse !</French>
         <Korean>경고: 산타 할아버지가 당신을 사냥하고 있습니다!</Korean>
         <Russian>Остерегайтесь: Санта-Клаус охотится на вас!</Russian>
-        <Polish>Uwaga: Święty Mikołaj Cię szuka!</Polish>
+        <Polish>Uwaga: Święty Mikołaj poluje na Ciebie!</Polish>
         <Czech>Pozor: Santa Claus tě loví!</Czech>
         <Portuguese>Cuidado: O Pai Natal anda à tua caça!</Portuguese>
         <Turkish>Dikkat: Noel Baba seni avlıyor!</Turkish>
@@ -334,7 +334,7 @@
         <French>Antistasi Chernarus Hiver</French>
         <Korean>안티스타시 체르나루스 겨울</Korean>
         <Russian>Antistasi Чернорусь Зима</Russian>
-        <Polish>Antistasi Chernarus Winter</Polish>
+        <Polish>Antistasi Czarnoruś Zima</Polish>
         <Czech>Antistasi Zimní Černarus</Czech>
         <Portuguese>Antistasi Chernarus Inverno</Portuguese>
         <Turkish>Antistasi Chernarus Winter</Turkish>
@@ -404,7 +404,7 @@
         <French>Antistasi - Une autre liberation de Cherno</French>
         <Korean>안티스타시 - 또 다른 체르나루스의 자유</Korean>
         <Russian>Antistasi - Ещё одно Освобождение Черноруси</Russian>
-        <Polish>Antistasi - Kolejne wyzwolenie Czarnorusi</Polish>
+        <Polish>Antistasi - Kolejne wyzwalanie Czarnorusi</Polish>
         <Czech>Antistasi - Další osvobození Černa</Czech>
         <Portuguese>Antistasi - Outra Libertação de Cherno</Portuguese>
         <Turkish>Antistasi - Cherno'nun Başka Bir Kurtuluşu</Turkish>
@@ -469,11 +469,13 @@
       <Key ID="STR_antistasi_mission_info_gm_weferlingen_summer_blurb_text">
         <Original>United Germany is Best Germany.</Original>
         <Korean>통일된 독일이 최고의 독일이다.</Korean>
+        <Polish>Zjednoczone Niemcy to najlepsze Niemcy</Polish>
         <Czech>Spojené Německo je nejlepší Německo.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_gm_weferlingen_summer_description_text">
         <Original>Be the Resistance Leader. Fight against a superior enemy in technology, number, assets and vehicles. Use guerrilla tactics in a totally dynamic world, with around 18 sidemissions, everywhere, anytime, anything.</Original>
         <Korean>반군 지도자가 되어 아군보다 기술, 머릿수, 차량, 자산이 월등한 적과 싸우십시오. 완전 다이나믹한 세계에서 게릴라 전술을 활용하십시오. 약 18개 이상의 사이드 임무가 있으며, 언제 어디서나 무엇이든 가능합니다.</Korean>
+        <Polish>Bądź liderem ruchu oporu. Walcz z lepszym wrogiem pod względem technologii, liczby żołnierzy, zasobów i pojazdów. Używaj taktyk partyzanckich w całkowicie dynamicznym świecie, z około 18 misjami pobocznymi, w dowolnym miejscu i czasie.</Polish>
         <Czech>Buďte vůdcem odboje. Bojujte proti nadřazenému nepříteli v technologii, počtu, majetku a vozidlech. Použijte partyzánskou taktiku ve zcela dynamickém světě, přibližně s 18 vedlejšími misemi, všude kdykoli a cokoli.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_gm_weferlingen_summer_mapname_short_text">
@@ -489,11 +491,13 @@
       <Key ID="STR_antistasi_mission_info_gm_weferlingen_winter_blurb_text">
         <Original>United Germany is Best Germany, also in the winter.</Original>
         <Korean>겨울에 통일된 독일이 최고의 독일이다.</Korean>
+        <Polish>Zjednoczone Niemcy to najlepsze Niemcy, również w zimę.</Polish>
         <Czech>Spojené Německo je nejlepší Německo, i přes zimu.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_gm_weferlingen_winter_description_text">
         <Original>Be the Resistance Leader. Fight against a superior enemy in technology, number, assets and vehicles. Use guerrilla tactics in a totally dynamic world, with around 18 sidemissions, everywhere, anytime, anything.</Original>
         <Korean>반군 지도자가 되어 아군보다 기술, 머릿수, 차량, 자산이 월등한 적과 싸우십시오. 완전 다이나믹한 세계에서 게릴라 전술을 활용하십시오. 약 18개 이상의 사이드 임무가 있으며, 언제 어디서나 무엇이든 가능합니다.</Korean>
+        <Polish>Bądź liderem ruchu oporu. Walcz z lepszym wrogiem pod względem technologii, liczby żołnierzy, zasobów i pojazdów. Używaj taktyk partyzanckich w całkowicie dynamicznym świecie, z około 18 misjami pobocznymi, w dowolnym miejscu i czasie.</Polish>
         <Czech>Buďte vůdcem odboje. Bojujte proti nadřazenému nepříteli v technologii, počtu, majetku a vozidlech. Použijte partyzánskou taktiku ve zcela dynamickém světě, přibližně s 18 vedlejšími misemi, všude kdykoli a cokoli.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_gm_weferlingen_winter_mapname_short_text">
@@ -509,10 +513,12 @@
       <Key ID="STR_antistasi_mission_info_isladuala3_blurb_text">
         <Original>African Islands under siege</Original>
         <Korean>포위당한 아프리카의 섬들</Korean>
+        <Polish>Oblężenie Afrykańskich wysp</Polish>
       </Key>
       <Key ID="STR_antistasi_mission_info_isladuala3_description_text">
         <Original>Be the Resistance Leader. Fight against a superior enemy in technology, number, assets and vehicles. Use guerrilla tactics in a totally dynamic world, with around 18 sidemissions, everywhere, anytime, anything.</Original>
         <Korean>반군 지도자가 되어 아군보다 기술, 머릿수, 차량, 자산이 월등한 적과 싸우십시오. 완전 다이나믹한 세계에서 게릴라 전술을 활용하십시오. 약 18개 이상의 사이드 임무가 있으며, 언제 어디서나 무엇이든 가능합니다.</Korean>
+        <Polish>Bądź liderem ruchu oporu. Walcz z lepszym wrogiem pod względem technologii, liczby żołnierzy, zasobów i pojazdów. Używaj taktyk partyzanckich w całkowicie dynamicznym świecie, z około 18 misjami pobocznymi, w dowolnym miejscu i czasie.</Polish>
         <Czech>Buďte vůdcem odboje. Bojujte proti nadřazenému nepříteli v technologii, počtu, majetku a vozidlech. Použijte partyzánskou taktiku ve zcela dynamickém světě, přibližně s 18 vedlejšími misemi, všude kdykoli a cokoli.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_isladuala3_mapname_short_text">
@@ -528,21 +534,25 @@
       <Key ID="STR_antistasi_mission_info_kujari_blurb_text">
         <Original>African Action</Original>
         <Korean>아프리카 작전</Korean>
+        <Polish>Afrykańska Akcja</Polish>
         <Czech>Africká Mise</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_kujari_description_text">
         <Original>Be the Resistance Leader. Fight against a superior enemy in technology, number, assets and vehicles. Use guerrilla tactics in a totally dynamic world, with around 18 sidemissions, everywhere, anytime, anything.</Original>
         <Korean>반군 지도자가 되어 아군보다 기술, 머릿수, 차량, 자산이 월등한 적과 싸우십시오. 완전 다이나믹한 세계에서 게릴라 전술을 활용하십시오. 약 18개 이상의 사이드 임무가 있으며, 언제 어디서나 무엇이든 가능합니다.</Korean>
+        <Polish>Bądź liderem ruchu oporu. Walcz z lepszym wrogiem pod względem technologii, liczby żołnierzy, zasobów i pojazdów. Używaj taktyk partyzanckich w całkowicie dynamicznym świecie, z około 18 misjami pobocznymi, w dowolnym miejscu i czasie.</Polish>
         <Czech>Buďte vůdcem odboje. Bojujte proti nadřazenému nepříteli v technologii, počtu, majetku a vozidlech. Použijte partyzánskou taktiku ve zcela dynamickém světě, přibližně s 18 vedlejšími misemi, všude kdykoli a cokoli.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_kujari_mapname_short_text">
         <Original>Antistasi Kujari</Original>
         <Korean>안티스타시 쿠자리</Korean>
+        <Polish>Antistasi Kujari</Polish>
         <Czech>Antistasi Kujari</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_kujari_mapname_text">
         <Original>Antistasi - Liberation of Kujari</Original>
         <Korean>안티스타시 - 쿠자리 해방</Korean>
+        <Polish>Antistasi - Wyzwolenie Kujari</Polish>
         <Czech>Antistasi - Osvobození Kujari</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_kunduz_blurb_text">
@@ -996,21 +1006,25 @@
       <Key ID="STR_antistasi_mission_info_umb_colombia_blurb_text">
         <Original>Something with cocaine or such.</Original>
         <Korean>코카인같은 뭔가가 있습니다.</Korean>
+        <Polish>Coś z kokainą lub czymś podobnym.</Polish>
         <Czech>Něco s kokainem, nebo tak něco.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_umb_colombia_description_text">
         <Original>Be the Resistance Leader. Fight against a superior enemy in technology, number, assets and vehicles. Use guerrilla tactics in a totally dynamic world, with around 18 sidemissions, everywhere, anytime, anything.</Original>
         <Korean>반군 지도자가 되어 아군보다 기술, 머릿수, 차량, 자산이 월등한 적과 싸우십시오. 완전 다이나믹한 세계에서 게릴라 전술을 활용하십시오. 약 18개 이상의 사이드 임무가 있으며, 언제 어디서나 무엇이든 가능합니다.</Korean>
+        <Polish>Bądź liderem ruchu oporu. Walcz z lepszym wrogiem pod względem technologii, liczby żołnierzy, zasobów i pojazdów. Używaj taktyk partyzanckich w całkowicie dynamicznym świecie, z około 18 misjami pobocznymi, w dowolnym miejscu i czasie.</Polish>
         <Czech>Buďte vůdcem odboje. Bojujte proti nadřazenému nepříteli v technologii, počtu, majetku a vozidlech. Použijte partyzánskou taktiku ve zcela dynamickém světě, přibližně s 18 vedlejšími misemi, všude kdykoli a cokoli.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_umb_colombia_mapname_short_text">
         <Original>Antistasi Colombia</Original>
         <Korean>안티스타시 콜롬비아</Korean>
+        <Polish>Antistasi Columbia</Polish>
         <Czech>Antistasi Kolumbie</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_umb_colombia_mapname_text">
         <Original>Antistasi - Liberation of Colombia</Original>
         <Korean>안티스타시 - 콜롬비아 해방</Korean>
+        <Polish>Antistasi - Wyzwolenie Kolumbii</Polish>
         <Czech>Antistasi - Osvobození Kolumbie</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_vn_khe_sanh_blurb_text">
@@ -1134,6 +1148,7 @@
         <Spanish>10 minutos</Spanish>
         <French>10 minutes</French>
         <Korean>10분</Korean>
+        <Polish>10 minut</Polish>
         <Czech>10 minut</Czech>
         <Portuguese>10 minutos</Portuguese>
         <Chinesesimp>10 分钟</Chinesesimp>
@@ -1145,6 +1160,7 @@
         <Spanish>1 minuto</Spanish>
         <French>1 minute</French>
         <Korean>1분</Korean>
+        <Polish>1 minuta</Polish>
         <Czech>1 minuta</Czech>
         <Portuguese>1 minuto</Portuguese>
         <Chinesesimp>1 分钟</Chinesesimp>
@@ -1156,6 +1172,7 @@
         <Spanish>2 minutos</Spanish>
         <French>2 minutes</French>
         <Korean>2분</Korean>
+        <Polish>2 minuty</Polish>
         <Czech>2 minuty</Czech>
         <Portuguese>2 minutos</Portuguese>
         <Chinesesimp>2 分钟</Chinesesimp>
@@ -1167,6 +1184,7 @@
         <Spanish>3 minutos</Spanish>
         <French>3 minutes</French>
         <Korean>3분</Korean>
+        <Polish>3 minuty</Polish>
         <Czech>3 minuty</Czech>
         <Portuguese>3 minutos</Portuguese>
         <Chinesesimp>3 分钟</Chinesesimp>
@@ -1178,6 +1196,7 @@
         <Spanish>5 minutos</Spanish>
         <French>5 minutes</French>
         <Korean>5분</Korean>
+        <Polish>5 minut</Polish>
         <Czech>5 minut</Czech>
         <Portuguese>5 minutos</Portuguese>
         <Chinesesimp>5 分钟</Chinesesimp>
@@ -1188,6 +1207,7 @@
         <Italian>No caricamento automatico</Italian>
         <French>Pas de chargement automatique</French>
         <Korean>자동 로드 없음</Korean>
+        <Polish>Brak automatycznego ładowania</Polish>
         <Czech>Žádné automatické načtění</Czech>
         <Portuguese>Não carregar automaticamente</Portuguese>
         <Chinesesimp>取消自动读取最近的存档</Chinesesimp>
@@ -1210,6 +1230,7 @@
         <Spanish>Todos</Spanish>
         <French>Tout</French>
         <Korean>모두</Korean>
+        <Polish>wszystko</Polish>
         <Czech>Vše</Czech>
         <Portuguese>Todos</Portuguese>
       </Key>
@@ -1229,6 +1250,7 @@
         <Spanish>Ninguno</Spanish>
         <French>Aucun</French>
         <Korean>없음</Korean>
+        <Polish>Nic</Polish>
         <Czech>Nic</Czech>
         <Portuguese>Nenhum</Portuguese>
       </Key>
@@ -1250,6 +1272,7 @@
         <French>Déboguer</French>
         <Korean>디버그</Korean>
         <Russian>Отладка</Russian>
+        <Polish>Debug</Polish>
         <Czech>Ladění</Czech>
         <Portuguese>Debug</Portuguese>
         <Chinesesimp>调试</Chinesesimp>
@@ -1262,6 +1285,7 @@
         <French>Erreur</French>
         <Korean>오류</Korean>
         <Russian>Ошибки</Russian>
+        <Polish>Błąd</Polish>
         <Czech>Chyba</Czech>
         <Portuguese>Erro</Portuguese>
         <Chinesesimp>错误</Chinesesimp>
@@ -1274,6 +1298,7 @@
         <French>Info</French>
         <Korean>정보</Korean>
         <Russian>Информация</Russian>
+        <Polish>Informacja</Polish>
         <Czech>Informace</Czech>
         <Portuguese>Info</Portuguese>
         <Chinesesimp>信息</Chinesesimp>
