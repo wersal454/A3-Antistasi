@@ -13461,7 +13461,7 @@
         <Chinesesimp>建造</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_radio_comm_construct_tooltip">
-        <Original>Construct in the spot where you are a selected building facing this direction</Original>
+        <Original>To construct buildings in this version, buy a construction kit from the Buy Vehicle menu and use the action on it</Original>
         <Italian>Costruisci nel punto dove hai selezionato una struttura rivolta verso questa direzione</Italian>
         <Spanish>Construye en el sitio el edificio seleccionado mirando hacia esta dirección</Spanish>
         <French>Construire à l'endroit où vous vous trouvez un bâtiment sélectionné faisant face à cette direction</French>
