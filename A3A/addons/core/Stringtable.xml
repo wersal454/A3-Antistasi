@@ -2285,6 +2285,7 @@
       </Key>
       <Key ID="STR_A3A_fn_convoy_craiact_armored_text">
         <Original>A convoy from %1 is about to depart at %2. It will reinforce %3 with armored vehicles. Try to intercept it. Steal or destroy the armor before it reaches its destination.</Original>
+        <Korean>%1의 호송대가 %2에서 출발하려고 하며, 이는 %3에 기갑 차량을 증원할 것입니다. 수송을 방해하여 그것이 목적지에 도달하기 전에 훔치거나 파괴하십시오.</Korean>
       </Key>
       <Key ID="STR_A3A_fn_convoy_craiact_armored_title">
         <Original>Armored Convoy</Original>
@@ -6319,6 +6320,7 @@
       </Key>
       <Key ID="STR_A3A_fn_reinf_spawnHCGro_atCommand">
         <Original>Group %1 at your command.&lt;br/&gt;&lt;br/&gt;Groups are managed from the High Command bar (Default: CTRL+SPACE)&lt;br/&gt;&lt;br/&gt;If the group gets stuck, use the AI Control feature to make them start moving.&lt;br/&gt;&lt;br/&gt;To assign a vehicle for this group, look at a vehicle and use the Add Vehicle option in the Y menu.</Original>
+        <Korean>%1 그룹이 당신 휘하에 있습니다.&lt;br/&gt;&lt;br/&gt;그룹은 하이 커맨드 표시줄(기본값: 컨트롤 + 스페이스 키)에서 관리됩니다.&lt;br/&lt;br/&gt;그룹이 끼었다면 AI 조종 기능을 사용하여 이동을 시작하십시오.&lt;br/&gt;&lt;br/&gt;그룹에 차량을 할당하려면 이 차량을 보고 Y 메뉴의 차량 분대 관리 옵션을 사용하십시오.</Korean>
       </Key>
       <Key ID="STR_A3A_fn_reinf_spawnHCGro_purchased">
         <Original>Vehicle Purchased</Original>
@@ -7466,6 +7468,7 @@
       </Key>
       <Key ID="STR_A3A_Params_allowFuturisticSupports_title">
         <Original>[Experimental] Allow futuristic supports to be used by the enemy</Original>
+        <Korean>[실험적] 적이 미래형 지원을 사용할 수 있도록 허용</Korean>
       </Key>
       <Key ID="STR_A3A_Params_allowGuidedLaunchers_title">
         <Original>Should Guided Launchers become unlocked?</Original>
@@ -7995,6 +7998,7 @@
         <Italian>Abilitato</Italian>
         <French>Activé</French>
         <Korean>활성화</Korean>
+        <Polish>Włączone</Polish>
         <Chinesesimp>启用</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_Params_generic_high">
@@ -8851,6 +8855,7 @@
       </Key>
       <Key ID="STR_A3A_fn_support_showIntStpCll_arrivalTime">
         <Original>Estimated arrival in %1 minutes.</Original>
+        <Korean>%1분 후에 도착 예상</Korean>
       </Key>
       <Key ID="STR_A3A_fn_support_showIntStpCll_ARTILLERY">
         <Original>%1 is preparing a heavy artillery position.</Original>
@@ -8910,6 +8915,7 @@
       </Key>
       <Key ID="STR_A3A_fn_support_showIntStpCll_setupTime">
         <Original>Estimated setup: %1 minutes.</Original>
+        <Korean>예상 설정 시간: %1분</Korean>
       </Key>
       <Key ID="STR_A3A_fn_support_showIntStpCll_UAV">
         <Original>%1 is sending a spotting UAV.</Original>
@@ -13462,14 +13468,6 @@
       </Key>
       <Key ID="STR_antistasi_dialogs_radio_comm_construct_tooltip">
         <Original>To construct buildings in this version, buy a construction kit from the Buy Vehicle menu and use the action on it</Original>
-        <Italian>Costruisci nel punto dove hai selezionato una struttura rivolta verso questa direzione</Italian>
-        <Spanish>Construye en el sitio el edificio seleccionado mirando hacia esta dirección</Spanish>
-        <French>Construire à l'endroit où vous vous trouvez un bâtiment sélectionné faisant face à cette direction</French>
-        <Korean>선택한 건물을 해당 지점에 당신이 바라보고 있는 방향으로 건설합니다.</Korean>
-        <Russian>Постройте в том месте, где вы выбрали здание, обращенное в этом направлении</Russian>
-        <Polish>Zbuduj, w miejscu w którym jesteś, wybrany budynek zwrócony w tym kierunku</Polish>
-        <Czech>Stavějte na místě, kde jste vybraly budovu otočenou tímto směrem</Czech>
-        <Chinesesimp>在你所在的位置, 朝向此方向建造所选建筑</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_radio_comm_fast_travel">
         <Original>Fast Travel</Original>
