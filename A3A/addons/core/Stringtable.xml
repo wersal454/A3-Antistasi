@@ -14218,9 +14218,6 @@
         <Turkish>Cephane İstasyonu</Turkish>
         <Chinesesimp>弹药站</Chinesesimp>
       </Key>
-      <Key ID="STR_A3A_Utility_Items_Name_buildboxmedium">
-        <Original>Medium construction kit</Original>
-      </Key>
       <Key ID="STR_A3A_Utility_Items_Name_buildboxlarge">
         <Original>Large construction kit</Original>
         <Italian>Kit di costruzioni grande</Italian>
@@ -14228,6 +14225,9 @@
         <French>Grand kit de construction</French>
         <Korean>대형 건설 도구</Korean>
         <Chinesesimp>大型建筑包</Chinesesimp>
+      </Key>
+      <Key ID="STR_A3A_Utility_Items_Name_buildboxmedium">
+        <Original>Medium construction kit</Original>
       </Key>
       <Key ID="STR_A3A_Utility_Items_Name_buildboxsmall">
         <Original>Small construction kit</Original>
