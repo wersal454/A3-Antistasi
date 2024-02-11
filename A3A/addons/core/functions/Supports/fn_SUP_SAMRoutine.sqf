@@ -27,7 +27,7 @@ private _targetObj = objNull;
 private _timeout = time + 900;
 private _targTimeout = 0;
 private _acquisition = 0;
-private _missiles = 4;
+private _missiles = 4; // needs smarter count for available missiles , also this system won't delete the launcher until all missiles are fired 
 while {true} do
 {
     // check if launcher/crew are intact
@@ -53,7 +53,7 @@ while {true} do
         };
         Debug_2("Next target for %2 is %1", _suppTarget, _supportName);
 
-        [_reveal, getPosATL _targetObj, _side, "SAM", _targetObj, 60] spawn A3A_fnc_showInterceptedSupportCall;
+        [_reveal, getPosATL _targetObj, _side, "SAM", _targetObj, 60] spawn A3A_fnc_showInterceptedSupportCall; // does message doubles after first launch?
         
         _targTimeout = (time + 120);
         _acquisition = 0;
@@ -73,16 +73,18 @@ while {true} do
     private _intercept = (getPosASL _launcher) getPos [250, _dir] vectorAdd [0,0,300];
     private _isBlocked = terrainIntersectASL [_intercept, getPosASL _targetObj];
     _acquisition = _acquisition + ([0.1, -0.1] select _isBlocked);
-    _acquisition = 1 min _acquisition max 0;
+    _acquisition = 1 min _acquisition max 0;     //does acquisition actually works?
     _launcher doWatch _intercept;
     if (_acquisition < 1) then { sleep 1; continue };
 
     // wait for previous missile to have effect (or not)
-    if (alive (_launcher getVariable ["A3A_currentMissile", objNull])) then { sleep 1; continue };
+    if (alive (_launcher getVariable ["A3A_currentMissile", objNull])) then { sleep 1; continue }; // is it right? change objNull to "IsNull"?
 
     // Actually fire
     Debug("Firing at target");
     _launcher reveal [_targetObj, 4];           // does this do anything?
+    _targetObj confirmSensorTarget [_side, true];
+    _side reportRemoteTarget [_targetObj, 300];  // I belive with this acquisition will not work(if it does in the firts place)
     _launcher fireAtTarget [_targetObj];
     [_reveal, getPosATL _targetObj, _side, "SAM", _targetObj, 60] spawn A3A_fnc_showInterceptedSupportCall;
     _missiles = _missiles - 1;
@@ -93,4 +95,5 @@ while {true} do
 _suppData set [4, 0];       // zero radius to signal termination
 
 [_launcher] spawn A3A_fnc_vehDespawner;
+//deleteVehicle _launcher;
 [_group] spawn A3A_fnc_groupDespawner;
