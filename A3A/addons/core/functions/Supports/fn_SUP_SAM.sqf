@@ -44,6 +44,8 @@ if (_airports isEqualTo []) exitWith {
 };
 
 private _airport = _airports selectRandomWeighted _weights;
+/* private _faction = Faction(_side);
+private _launcherType = selectRandom (_side get "vehicleSam") */
 private _launcherType = ["B_SAM_System_03_F", "O_SAM_System_04_F"] select (_side == Invaders);
 private _launcher = [_launcherType, markerPos _airport, 50, 5, true] call A3A_fnc_safeVehicleSpawn;
 
