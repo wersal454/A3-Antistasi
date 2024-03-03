@@ -47,6 +47,7 @@
     <Container name="A3A_fn_ai">
       <Key ID="STR_A3A_fn_ai_artySupport_artyStrike">
         <Original>Artillery Strike</Original>
+        <French>Frappe d'artillerie</French>
         <Korean>포병 타격</Korean>
         <Chinesesimp>重炮投送</Chinesesimp>
       </Key>
@@ -78,6 +79,7 @@
       </Key>
       <Key ID="STR_A3A_fn_ai_artySupport_fireMission">
         <Original>Requesting a mortar strike on Grid %1. %2 %3.</Original>
+        <French>Demande d'attaque au mortier sur la grille %1. %2 %3.</French>
         <Korean>좌표 %1에 %2 %3의 박격포 포격을 요청한다.</Korean>
         <Chinesesimp>请求迫击炮打击于坐标 %1.%2 %3.</Chinesesimp>
       </Key>
@@ -96,16 +98,19 @@
       </Key>
       <Key ID="STR_A3A_fn_ai_artySupport_mrkFinal">
         <Original>Artillery Barrage Begin</Original>
+        <French>Début du barrage d'artillerie</French>
         <Korean>포병 연발타격 시작</Korean>
         <Chinesesimp>重炮火力投送开始</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_ai_artySupport_mrkFinal2">
         <Original>Artillery Barrage End</Original>
+        <French>Fin du barrage d'artillerie</French>
         <Korean>포병 연발타격 끝</Korean>
         <Chinesesimp>重炮火力投送结束</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_ai_artySupport_multiRound">
         <Original>Rounds</Original>
+        <French>Obus</French>
         <Korean>발</Korean>
         <Chinesesimp>多发着弹</Chinesesimp>
       </Key>
@@ -176,11 +181,13 @@
       </Key>
       <Key ID="STR_A3A_fn_ai_artySupport_singleRound">
         <Original>Round</Original>
+        <French>Obus</French>
         <Korean>발</Korean>
         <Chinesesimp>单发着弹</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_ai_artySupport_splash">
         <Original>Splash. Out.</Original>
+        <French>Impact. Terminé.</French>
         <Korean>착탄한다, 이상.</Korean>
         <Chinesesimp>压制着弹完毕</Chinesesimp>
       </Key>
@@ -248,6 +255,7 @@
       </Key>
       <Key ID="STR_A3A_fn_ai_autoLoot_noCorpses">
         <Original>"I see no corpses here to loot.</Original>
+        <French>"Je ne vois pas de corps à piller ici.</French>
         <Korean>여기엔 노획할 시체가 보이지 않습니다.</Korean>
         <Chinesesimp>"我没看到这里有什么尸体可以收缴战利品.</Chinesesimp>
       </Key>
@@ -258,16 +266,19 @@
       </Key>
       <Key ID="STR_A3A_fn_ai_autoLoot_noHelping">
         <Original>I cannot rearm right now. I'm healing a comrade.</Original>
+        <French>Je ne peux pas réarmer en ce moment. Je soigne un camarade.</French>
         <Korean>지금은 재무장할 수 없습니다. 전우를 치료 중입니다.</Korean>
         <Chinesesimp>我现在没办法进行武器补给. 我正在抢救受伤的同志</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_ai_autoLoot_noLoot">
         <Original>There is nothing to loot.</Original>
+        <French>Il n'y as rien à piller.</French>
         <Korean>노획할 것이 없습니다.</Korean>
         <Chinesesimp>周边没有战利品可以缴获</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_ai_autoLoot_noRepairs">
         <Original>It is useless to load my vehicle, as it needs repairs.</Original>
+        <French>Il est inutile de charger mon véhicule, car il a besoin de réparations.</French>
         <Korean>수리가 필요해서 해당 차량에 짐을 싣는 것을 쓸데없는 행위입니다.</Korean>
         <Chinesesimp>装载我的车辆毫无意义,它需要修理.</Chinesesimp>
       </Key>
@@ -278,11 +289,13 @@
       </Key>
       <Key ID="STR_A3A_fn_ai_autoLoot_noWeapons">
         <Original>No more weapons to loot.</Original>
+        <French>Il n'y a plus d'armes à piller.</French>
         <Korean>노획할 무기가 더 이상 없습니다.</Korean>
         <Chinesesimp>没有更多的武器以供收缴了</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_ai_autoLoot_startLoot">
         <Original>Starting to loot.</Original>
+        <French>Début du pillage.</French>
         <Korean>노획을 시작합니다.</Korean>
         <Chinesesimp>开始收缴战利品</Chinesesimp>
       </Key>
@@ -363,11 +376,13 @@
       </Key>
       <Key ID="STR_A3A_fn_ai_autoRearm_rearmed">
         <Original>Rearmed.</Original>
+        <French>Réarmé.</French>
         <Korean>재무장했습니다.</Korean>
         <Chinesesimp>补给完毕</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_ai_autoRearm_rearming">
         <Original>Rearming.</Original>
+        <French>Réarmement.</French>
         <Korean>재무장 중.</Korean>
         <Chinesesimp>正在补给中</Chinesesimp>
       </Key>
@@ -997,10 +1012,12 @@
       </Key>
       <Key ID="STR_A3A_fn_base_croutpFIA_roadblock">
         <Original>%1 Roadblock</Original>
+        <French>%1 Barrage routier</French>
         <Korean>%1 검문소</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_croutpFIA_watchpost">
         <Original>%1 Watchpost</Original>
+        <French>%1 Poste d'observation</French>
         <Korean>%1 관측초소</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_flagaction_asset_move">
@@ -1422,94 +1439,117 @@
       </Key>
       <Key ID="STR_A3A_fn_base_localizar_airport">
         <Original>%1 Airbase</Original>
+        <French>%1 Base Aérienne</French>
         <Korean>%1 공군 기지</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_localizar_factory">
         <Original>Factory near %1</Original>
+        <French>Usine près de %1</French>
         <Korean>%1 인근 공장</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_localizar_forest">
         <Original>Forest near %1</Original>
+        <French>Foret près de %1</French>
         <Korean>%1 인근 숲</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_localizar_outpost">
         <Original>Outpost near %1</Original>
+        <French>Avant-poste près de %1</French>
         <Korean>%1 인근 전초기지</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_localizar_resource">
         <Original>Resource near %1</Original>
+        <French>Ressource près de %1</French>
         <Korean>%1 인근 자원채취소</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_localizar_roadblock">
         <Original>Roadblock near %1</Original>
+        <French>Barrage routier près de %1</French>
         <Korean>%1 인근 검문소</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_localizar_seaport">
         <Original>Seaport near %1</Original>
+        <French>Port près de %1</French>
         <Korean>%1 인근 항구</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_localizar_watchpost">
         <Original>Watchpost near %1</Original>
+        <French>Poste d'observation près de %1</French>
         <Korean>%1 인근 관측초소</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_markerChange_noAirbase">
         <Original>Airbase Lost</Original>
+        <French>Base Aérienne perdu</French>
         <Korean>공군 기지 잃음</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_markerChange_noFactory">
         <Original>Factory Lost</Original>
+        <French>Usine perdu</French>
         <Korean>공장 잃음</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_markerChange_noOutpost">
         <Original>Outpost Lost</Original>
+        <French>Avant-poste perdu</French>
         <Korean>전초기지 잃음</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_markerChange_noResource">
         <Original>Resource Lost</Original>
+        <French>Ressource perdu</French>
         <Korean>자원채취소 잃음</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_markerChange_noSeaport">
         <Original>Seaport Lost</Original>
+        <French>Port perdu</French>
         <Korean>항구 잃음</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_markerChange_otherAirbase">
         <Original>%1 lost an Airbase</Original>
+        <French>%1 à perdu une Base Aérienne</French>
         <Korean>%1 세력이 공군 기지를 잃음</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_markerChange_otherFactory">
         <Original>%1 lost a Factory</Original>
+        <French>%1 à perdu une Usine</French>
         <Korean>%1 세력이 공장을 잃음</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_markerChange_otherOutpost">
         <Original>%1 lost an Outpost</Original>
+        <French>%1 à perdu un Avant-poste</French>
         <Korean>%1 세력이 전초기지를 잃음</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_markerChange_otherResource">
         <Original>%1 lost a Resource</Original>
+        <French>%1 à perdu une Ressource</French>
         <Korean>%1 세력이 자원채취소를 잃음</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_markerChange_otherSeaport">
         <Original>%1 lost a Seaport</Original>
+        <French>%1 à perdu un Port.</French>
         <Korean>%1 세력이 항구를 잃음</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_markerChange_yesAirbase">
         <Original>Airbase Taken</Original>
+        <French>Base Aérienne capturé</French>
         <Korean>공군 기지 점령</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_markerChange_yesFactory">
         <Original>Factory Taken</Original>
+        <French>Usine capturé</French>
         <Korean>공장 점령</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_markerChange_yesOutpost">
         <Original>Outpost Taken</Original>
+        <French>Avant-poste capturé</French>
         <Korean>전초기지 점령</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_markerChange_yesResource">
         <Original>Resource Taken</Original>
+        <French>Ressource capturé</French>
         <Korean>자원채취소 점령</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_markerChange_yesSeaport">
         <Original>Seaport Taken</Original>
+        <French>Port capturé</French>
         <Korean>항구 점령</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_movehq_garrison">
@@ -1961,10 +2001,12 @@
       </Key>
       <Key ID="STR_A3A_fn_base_rebuildRadioTower_destr">
         <Original>Radio Tower Destroyed</Original>
+        <French>Tour Radio détruite</French>
         <Korean>통신탑 파괴함</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_rebuildRadioTower_marker">
         <Original>Radio Tower</Original>
+        <French>Tour Radio</French>
         <Korean>통신탑</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_resourcecheckSkipTime_begin">
@@ -2209,22 +2251,27 @@
       </Key>
       <Key ID="STR_A3A_fn_getAggroLevelString_1">
         <Original>Low</Original>
+        <French>Bas</French>
         <Korean>낮음</Korean>
       </Key>
       <Key ID="STR_A3A_fn_getAggroLevelString_2">
         <Original>Medium</Original>
+        <French>Moyen</French>
         <Korean>중간</Korean>
       </Key>
       <Key ID="STR_A3A_fn_getAggroLevelString_3">
         <Original>High</Original>
+        <French>Haut</French>
         <Korean>높음</Korean>
       </Key>
       <Key ID="STR_A3A_fn_getAggroLevelString_4">
         <Original>Very High</Original>
+        <French>Très haut</French>
         <Korean>매우 높음</Korean>
       </Key>
       <Key ID="STR_A3A_fn_getAggroLevelString_5">
         <Original>Extreme</Original>
+        <French>Extrême</French>
         <Korean>최대</Korean>
       </Key>
     </Container>
@@ -2387,14 +2434,17 @@
       </Key>
       <Key ID="STR_A3A_fn_base_attackHQ_defendTitle">
         <Original>Defend Petros</Original>
+        <French>Défendez Petros</French>
         <Korean>페트로스 보호</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_craicts_rbDestr">
         <Original>Roadblock Destroyed</Original>
+        <French>Barrage routier Détruit</French>
         <Korean>검무소 파괴됨</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_crfiaOP2_lostWatchpost">
         <Original>Watchpost Lost</Original>
+        <French>Poste d'observation perdu</French>
         <Korean>관측초소 잃음</Korean>
       </Key>
       <Key ID="STR_A3A_fn_base_invaderPunish_long">
@@ -2418,6 +2468,7 @@
       </Key>
       <Key ID="STR_A3A_fn_base_wavedAttack_title">
         <Original>%1 Attack</Original>
+        <French>%1 Attaque</French>
         <Korean>%1의 공격</Korean>
       </Key>
       <Key ID="STR_A3A_fn_create_aivehinit_general">
@@ -2498,6 +2549,7 @@
       </Key>
       <Key ID="STR_A3A_fn_dialogs_createDialog_SLPS_line4">
         <Original>W A R N I N G</Original>
+        <French>ATTENTION</French>
         <Korean>경   고</Korean>
       </Key>
       <Key ID="STR_A3A_fn_dialogs_dialogHQ_upgrade">
@@ -2712,10 +2764,12 @@
       </Key>
       <Key ID="STR_A3A_fn_dialogs_HQGameOptions_AILimit">
         <Original>AI Limit</Original>
+        <French>Limite d'IA</French>
         <Korean>AI 제한</Korean>
       </Key>
       <Key ID="STR_A3A_fn_dialogs_HQGameOptions_civLimit">
         <Original>Civilian Limit</Original>
+        <French>Limite de Civils</French>
         <Korean>민간인 제한</Korean>
       </Key>
       <Key ID="STR_A3A_fn_dialogs_HQGameOptions_commOnly">
@@ -3043,24 +3097,29 @@
       </Key>
       <Key ID="STR_A3A_fn_dialogs_unit_recruit">
         <Original>Cost: %1 €</Original>
+        <French>Coût! %1 €</French>
         <Korean>비용: %1 €</Korean>
       </Key>
       <Key ID="STR_A3A_fn_dialogs_unit_recruit_radioOP">
         <Original>Radio Operator</Original>
+        <French>Opérateur Radio</French>
         <Korean>무전병</Korean>
       </Key>
     </Container>
     <Container name="A3A_fn_garrison">
       <Key ID="STR_A3A_fn_garrison_getGarrisonStatus_decimated">
         <Original>Decimated</Original>
+        <French>Décimé</French>
         <Korean>전멸</Korean>
       </Key>
       <Key ID="STR_A3A_fn_garrison_getGarrisonStatus_good">
         <Original>Good</Original>
+        <French>Bon</French>
         <Korean>좋음</Korean>
       </Key>
       <Key ID="STR_A3A_fn_garrison_getGarrisonStatus_weakened">
         <Original>Weakened</Original>
+        <French>Affaibli</French>
         <Korean>약해짐</Korean>
       </Key>
     </Container>
@@ -3228,22 +3287,27 @@
       </Key>
       <Key ID="STR_A3A_fn_init_initBases_airbase">
         <Original>%1 Airbase</Original>
+        <French>%1 Base Aérienne</French>
         <Korean>%1 공군 기지</Korean>
       </Key>
       <Key ID="STR_A3A_fn_init_initBases_factory">
         <Original>Factory</Original>
+        <French>Usine</French>
         <Korean>공장</Korean>
       </Key>
       <Key ID="STR_A3A_fn_init_initBases_outpost">
         <Original>%1 Outpost</Original>
+        <French>%1 Avant-poste</French>
         <Korean>%1 전초기지</Korean>
       </Key>
       <Key ID="STR_A3A_fn_init_initBases_resources">
         <Original>Resources</Original>
+        <French>Ressources</French>
         <Korean>자원채취소</Korean>
       </Key>
       <Key ID="STR_A3A_fn_init_initBases_seaPort">
         <Original>Sea Port</Original>
+        <French>Port</French>
         <Korean>항구</Korean>
       </Key>
       <Key ID="STR_A3A_fn_init_initclient_addact_ailoadinfo">
@@ -3545,10 +3609,12 @@
       </Key>
       <Key ID="STR_A3A_fn_init_resourceCheck_arsenal">
         <Original>Arsenal Updated</Original>
+        <French>Arsenal mis à jour</French>
         <Korean>무기고 업데이트</Korean>
       </Key>
       <Key ID="STR_A3A_fn_init_resourceCheck_cityChange">
         <Original>%1 joined %2</Original>
+        <French>%1 rejoint %2</French>
         <Korean>%2 마을이 %1 세력을 지지함</Korean>
       </Key>
       <Key ID="STR_A3A_fn_init_resourceCheck_income">
@@ -4547,6 +4613,7 @@
       </Key>
       <Key ID="STR_A3A_fn_mission_request_title">
         <Original>Missions</Original>
+        <French>Missions</French>
         <Korean>임무</Korean>
       </Key>
       <Key ID="STR_A3A_fn_mission_res_prison_text">
@@ -4832,21 +4899,25 @@
       </Key>
       <Key ID="STR_A3A_fn_orgp_playerScoreAdd_money">
         <Original>Money +%1</Original>
+        <French>Argent +%1</French>
         <Korean>+%1 자금</Korean>
         <Chinesesimp>资金增加 +%1</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_orgp_promotedPlayers">
         <Original>Promoted Players:</Original>
+        <French>Joueurs Promus:</French>
         <Korean>진급된 플레이어:</Korean>
         <Chinesesimp>已晋升的玩家有：</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_orgp_promotePlayer_promotion">
         <Original>Promotion</Original>
+        <French>Promotion</French>
         <Korean>진급</Korean>
         <Chinesesimp>晋升</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_orgp_promotePlayer_yes">
         <Original>Congratulations!</Original>
+        <French>Félicitations!</French>
         <Korean>축하합니다!</Korean>
         <Chinesesimp>恭喜你</Chinesesimp>
       </Key>
@@ -4934,16 +5005,19 @@
       </Key>
       <Key ID="STR_A3A_fn_orgp_tBTransfer_newCommLong">
         <Original>%1 is the new commander of our forces. Greet them!</Original>
+        <French>%1 est notre nouveau commandant. Saluez-les!</French>
         <Korean>%1 님이 우리 군의 새 지휘관입니다. 인사하십시오!</Korean>
         <Chinesesimp>%1 是咱们阵营目前最新的指挥官. 快去打个招呼！</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_orgp_tBTransfer_newCommTitle">
         <Original>New Commander</Original>
+        <French>Nouveau Commandant</French>
         <Korean>새 지휘관</Korean>
         <Chinesesimp>新指挥官</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_orgp_tBTransfer_noEligible">
         <Original>The commander has resigned. There is no eligible commander.</Original>
+        <French>Le commandant à démissionner. Il n'y as pas de commandant éligible.</French>
         <Korean>지휘관이 사임했습니다. 적합한 지휘관이 없습니다.</Korean>
         <Chinesesimp>指挥官已离线.目前没有合适的指挥官.</Chinesesimp>
       </Key>
@@ -4959,6 +5033,7 @@
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_autorifle2">
         <Original>Autoriflemen have a slight bonus on carry capacity, but make more noise when they move</Original>
+        <French>Les Mitrailleurs ont un léger bonus de capacité de transport, mais sont plus bruyants quand ils se déplacent.</French>
         <Korean>자동소총수는 운반 용량에 약간의 보너스를 가지지만, 이동할 때 더 큰 소리를 냅니다.</Korean>
         <Czech>Kulometčíci mají menší bonus k maximální váze, kterou unesou, ale dělají větší hluk při pohybu</Czech>
       </Key>
@@ -4974,6 +5049,7 @@
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_commander2">
         <Original>The commander is a lightweight unit with increased camouflage, medical and engineering capabilities</Original>
+        <French>Le commandant est une unité légère avec des capacités de camouflage, médical et d'ingéniérie augmentées.</French>
         <Korean>지휘관은 위장, 의료, 공병 능력이 향상된 경량 유닛입니다.</Korean>
         <Czech>Velitel je lehká jednotka se zvýšenou kamufláží, a lékařskými a inženýrskými schopnostmi</Czech>
       </Key>
@@ -4989,6 +5065,7 @@
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_engi2">
         <Original>Engineers do not have any bonus or penalties, but have the ability to use Toolkits for vehicle repair</Original>
+        <French>Les Ingénieurs n'ont pas de bonus ou de malus, mais ils ont la capacité d'utiliser des Kits de Réparation pour réparer les véhicules.</French>
         <Korean>공병은 아무 보너스나 패널티가 없지만, 차량 수리를 위해 도구모음을 사용할 수 있는 능력이 있습니다.</Korean>
         <Czech>Inženýři nemají žádné bonusy ani penalizace, ale můžou používat opravovací sady na opravení vozidel</Czech>
       </Key>
@@ -5004,6 +5081,7 @@
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_grenadier2">
         <Original>Grenadiers have a slight bonus on carry capacity, but are easy to spot</Original>
+        <French>Les Grenadiers ont un léger bonus de capacité de transport, mais sont facile à réperer.</French>
         <Korean>유탄수는 운반 용량에 보너스를 가지지만, 발견되기 더 쉬워집니다.</Korean>
         <Czech>Granátometčíci mají menší bonus k váze kterou unesou, ale dají se jednodušeji spatřit</Czech>
       </Key>
@@ -5019,6 +5097,7 @@
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_medic2">
         <Original>Medics do not have any bonus or penalties, but have the ability to use certain medical items for full health restoration</Original>
+        <French>Les Médecins n'ont pas de bonus ou de malus, mais ils ont la capacité d'utiliser certains objets médicaux afin de prodiguer des soins complets.</French>
         <Korean>의무병은 보너스나 패널티가 없지만, 완치를 위해 특정한 의료품을 사용할 수 있는 능력이 있습니다.</Korean>
         <Czech>Doktoři nemají žádné bonusy ani penalizace, ale můžou používat některé lékařské předměty k doplnění plného zdraví</Czech>
       </Key>
@@ -5034,6 +5113,7 @@
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_rifle2">
         <Original>Riflemen do not have any bonus or penalties but can hack drones</Original>
+        <French>Les Fusiliers n'ont pas de bonus ou de malus mais ils peuvent hacker des drones.</French>
         <Korean>소총수는 보너스나 패널티가 없지만, 무인기를 해킹할 수 있습니다.</Korean>
         <Czech>Střelci nemají žádné bonusy ani penalizace, ale můžou hackovat drony</Czech>
       </Key>
@@ -5049,6 +5129,7 @@
       </Key>
       <Key ID="STR_A3A_fn_orgp_unitTraits_teamlead2">
         <Original>Teamleader are more lightweight units with increased camouflage capabilities</Original>
+        <French>Les Chefs d'équipe sont des unités légères avec des capacités de camouflage augmentées.</French>
         <Korean>조장은 위장 능력이 향상된 경량 유닛입니다.</Korean>
         <Czech>Velitel týmu je lehká jednotka se zvýšenou kamufláží</Czech>
       </Key>
@@ -5136,6 +5217,7 @@
       <Key ID="STR_A3A_fn_punish_oob_text">
         <Original>Return to the AO ASAP! You have %1 seconds before you're shredded by enemy defenses.</Original>
         <Italian>Ritorna alla AO prima che tu venga fatto esplodere, hai %1 secondi.</Italian>
+        <French>Retournez dans la zone d'opération avant d'être explosé, vous avez %1 secondes.</French>
         <Korean>최대한 빨리 작전 구역으로 돌아가십시오! 적의 방어에 압도되기 전까지 %1초의 시간이 남아 있습니다.</Korean>
         <Czech>Vraťte se do operační oblasti ASAP! Máte %1 sekund než budete roztrháni nepřítelskou obranou.</Czech>
       </Key>
@@ -5237,41 +5319,49 @@
       </Key>
       <Key ID="STR_A3A_fn_punish_punSenSv_text1">
         <Original>%1 has been found guilty of FF (3+ Strikes). Last hit was against %2.&lt;br/&gt;&lt;br/&gt;If you believe this is a mistake, you can forgive him with the corresponding scroll-menu action.</Original>
+        <French>%1 a été reconnu coupable de tir ami (3+ reprises). Le dernier coup a été porté contre %2. &lt;br/&gt;&lt;br/&gt; Si vous pensez que c'est une erreur, vous pouvez le pardonner avec le menu déroulant adéquat.</French>
         <Korean>%1 님이 아군 오사(3번 이상 공격)를 행했습니다. 마지막 공격은 %2 님에게 행하였습니다.&lt;br/&gt;&lt;br/&gt;이것이 실수라고 판단된다면 해당 스크롤 메뉴 행동으로 용서할 수 있습니다.</Korean>
         <Chinesesimp>%1 因造成过度友军火力（3次以上），现被判处有期徒刑. 最近的一次是针对 %2. &lt;br/&gt;&lt;br/&gt; 如果你坚信这是误判的话，请你通过相对应的下滑菜单动作原谅他</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_punish_punSenSv_text2">
         <Original>%1 has been found guilty of FF (3+ Strikes).&lt;br/&gt;&lt;br/&gt;If you believe this is a mistake, you can forgive him with the corresponding scroll-menu action.</Original>
+        <French>%1 a été reconnu coupable de tir ami (3+ reprises).&lt;br/&gt;&lt;br/&gt; Si vous pensez que c'est une erreur, vous pouvez le pardonner avec le menu déroulant adéquat.</French>
         <Korean>%1 님이 아군 오사(3번 이상 공격)에 대해 유죄가 인정되었습니다.&lt;br/&gt;&lt;br/&gt;실수라고 판단된다면 해당 스크롤 메뉴 행동으로 용서할 수 있습니다.</Korean>
         <Chinesesimp>%1 因造成过度友军火力（3次以上），现被判处有期徒刑.&lt;br/&gt;&lt;br/&gt; 如果你坚信这是误判的话，请你通过相对应的下滑菜单动作原谅他</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_punishment_evalEvent_admin">
         <Original>You damaged a friendly as an admin.</Original>
+        <French>Vous avez endommagé un ami en tant qu'admin.</French>
         <Korean>관리자로 아군에게 피해를 입혔습니다.</Korean>
         <Chinesesimp>你作为管理员伤害了一名友军</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_punishment_evalEvent_arty">
         <Original>You damaged a friendly as artillery support.</Original>
+        <French>Vous avez endommagé un ami en tant que soutien d'artillerie.</French>
         <Korean>포격 지원으로 아군에게 피해를 입혔습니다.</Korean>
         <Chinesesimp>你控制炮火支援伤害了一名友军</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_punishment_evalEvent_CAS">
         <Original>You damaged a friendly as an air asset.</Original>
+        <French>Vous avez endommagé un ami en tant que ressource aérienne.</French>
         <Korean>항공 자산으로 아군에게 피해를 입혔습니다.</Korean>
         <Chinesesimp>你控制空中单位伤害了一名友军</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_punishment_evalEvent_driver">
         <Original>You hit a friendly while driving.</Original>
+        <French>Vous percutez un ami en conduisant.</French>
         <Korean>운전 중에 아군을 쳤습니다.</Korean>
         <Chinesesimp>你开车的时候撞到了一名友军.</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_punishment_FF_addAcFor">
         <Original>Forgive FF</Original>
+        <French>Pardonner le tir-ami</French>
         <Korean>아군 오사 용서</Korean>
         <Chinesesimp>原谅友军之围</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_punishment_FF_checkNearHQ">
         <Original>You cannot throw grenades or place explosives within 75m of base.</Original>
+        <French>Vous ne pouvez pas jeter de grenades ou placer des explosifs à moins de 75m de la base.</French>
         <Korean>기지로부터 75m 이내에는 수류탄을 던지거나 폭발물을 배치할 수 없습니다.</Korean>
         <Chinesesimp>你不能在基地周边75米的范围内投掷手雷或者放置爆炸物.</Chinesesimp>
       </Key>
@@ -5575,12 +5665,14 @@
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_no_destr">
         <Original>You can't convert a destroyed Air vehicle to Airstrikes.</Original>
+        <French>Vous ne pouvez pas convertir de véhicules aérien détruit en Frappes Aériennes.</French>
         <Korean>파괴된 항공기는 공습 포인트로 전환할 수 없습니다.</Korean>
         <Czech>Zničené letecké vozidla nemůžeš převést na body leteckého úderu.</Czech>
         <Chinesesimp>你不能将一辆被摧毁的空中载具转换成空中打击.</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_no_distance">
         <Original>You can't convert vehicles further than 25m away to Air Support.</Original>
+        <French>Vous ne pouvez pas convertir des véhicules situés à plus de 25 mètres en soutien aérien.</French>
         <Korean>25m 이상 떨어진 차량은 항공 지원으로 전환할 수 없습니다.</Korean>
         <Chinesesimp>你不能将25米开外的载具转换成空中支援</Chinesesimp>
       </Key>
@@ -5596,17 +5688,20 @@
       <Key ID="STR_A3A_fn_reinf_bombrun_no_empty">
         <Original>In order to convert a vehicle to Air Support, the vehicle must be empty.</Original>
         <Italian>Per essere convertito, il Velivolo deve essere vuoto.</Italian>
+        <French>Pour convertir un véhicule en soutien aérien, le véhicule doit être vide.</French>
         <Korean>해당 항공기를 항공 지원으로 전환하려면 항공기가 비어 있어야 합니다.</Korean>
         <Czech>K převedení vozidla na vzdušnou podporu, musí být vozidlo prázdné.</Czech>
         <Chinesesimp>在转换载具成空中支援之前，这个载具得先是空的</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_no_inVehicle">
         <Original>You can't convert vehicles to Air Support while in a vehicle.</Original>
+        <French>Vous ne pouvez pas convertir les véhicules en soutien aérien lorsque vous êtes dans un véhicule.</French>
         <Korean>차량에 탑승한 상태에서는 차량을 항공 지원으로 전환할 수 없습니다.</Korean>
         <Chinesesimp>你不能在身处另外一辆载具的情况下转换一辆载具成空中支援</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_reinf_bombrun_no_locked">
         <Original>You can't convert a locked vehicle to Air Support</Original>
+        <French>Vous ne pouvez pas convertir un véhicule verrouillé en véhicule de soutien aérien.</French>
         <Korean>잠긴 차량은 항공 지원으로 전환할 수 없습니다.</Korean>
         <Chinesesimp>你不能将一辆锁着的载具转换成空中支援</Chinesesimp>
       </Key>
@@ -5775,21 +5870,25 @@
       </Key>
       <Key ID="STR_A3A_fn_reinf_buildMinefield_building">
         <Original>Engineering Team deploying mines.</Original>
+        <French>L'équipe d'ingénieurs déploie des mines.</French>
         <Korean>공병 팀이 지뢰를 배치 중입니다.</Korean>
         <Chinesesimp>工兵小组放置地雷</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_reinf_buildMinefield_buildingTitle">
         <Original>Minefield</Original>
+        <French>Champs de mines</French>
         <Korean>지뢰지대</Korean>
         <Chinesesimp>雷区</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_reinf_buildMinefield_long">
         <Original>An Engineering Team has been deployed at your command. You can use the High Command menu to move them to their destination. Once they reach the position, they will start to deploy %1 mines in the area. Cover them in the meantime.</Original>
+        <French>Une équipe d'ingénieurs a été déployée à votre commandement. Vous pouvez utiliser le menu Haut Commandement pour les déplacer vers leur destination. Une fois qu'ils auront atteint leur position, ils commenceront à déployer %1 mines dans la zone. Couvrez-les pendant ce temps.</French>
         <Korean>당신의 명령에 따라 공병 팀이 배치되었습니다. 하이 커맨드 메뉴를 사용하여 목적지로 이동할 수 있습니다. 해당 위치에 도달하면 해당 지역에 %1개의 지뢰를 배치하기 시작합니다. 그 동안 그들을 엄호하십시오.</Korean>
         <Chinesesimp>已根据你的命令下放一支工兵小组.你能通过高等指挥菜单来操控小队到达目标区域.一旦小队抵达目标区域，他们将开始在区域内放置 %1 枚地雷. 此期间请为他们提供掩护.</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_reinf_buildMinefield_title">
         <Original>Minefield Deploy</Original>
+        <French>Champs de mines déployé</French>
         <Korean>지뢰지대 배치</Korean>
         <Chinesesimp>部署雷区</Chinesesimp>
       </Key>
@@ -5970,11 +6069,13 @@
       </Key>
       <Key ID="STR_A3A_fn_reinf_dismissPlayerGroup_GTFO">
         <Original>Get out of my sight you useless scum!</Original>
+        <French>Hors de ma vue vermine!</French>
         <Korean>내 앞에서 사라져, 이 쓸모없는 쓰레기야!</Korean>
         <Chinesesimp>从我的眼前消失，你这个没用的杂种！</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_reinf_dismissSquad_RTB">
         <Original>Petros, I'm sending %1 back to base.</Original>
+        <French>Petros, Je renvoie %1 à la base.</French>
         <Korean>페트로스, %1을(를) 기지로 돌려보내겠습니다.</Korean>
         <Chinesesimp>Petros，我即刻派遣 %1 返回基地</Chinesesimp>
       </Key>
@@ -6113,6 +6214,7 @@
       </Key>
       <Key ID="STR_A3A_fn_reinf_garrDia_no_wPost">
         <Original>Additional garrison units cannot be added to observation posts.</Original>
+        <French>Les unités de garnison supplémentaires ne peuvent pas être ajoutées aux postes d'observation.</French>
         <Korean>관측소에는 주둔군을 더 추가할 수 없습니다.</Korean>
         <Chinesesimp>额外的驻军单位无法被添加到观察哨</Chinesesimp>
       </Key>
@@ -6160,16 +6262,19 @@
       </Key>
       <Key ID="STR_A3A_fn_reinf_garrisonDialog_cost">
         <Original>Cost</Original>
+        <French>Coût</French>
         <Korean>비용</Korean>
         <Chinesesimp>开销</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_reinf_NATObomb_exit">
         <Original>Bomb Run Exit</Original>
+        <French>Fin du bombardement</French>
         <Korean>폭격 퇴출 지점</Korean>
         <Chinesesimp>轰炸退出点</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_reinf_NATObomb_init">
         <Original>Bomb Run Init</Original>
+        <French>Début du bombardement</French>
         <Korean>폭격 실행 지점</Korean>
         <Chinesesimp>轰炸起始点</Chinesesimp>
       </Key>
@@ -6210,6 +6315,7 @@
       </Key>
       <Key ID="STR_A3A_fn_reinf_NATObomb_run">
         <Original>Friendly airstrike is inbound. ETA 30 seconds.</Original>
+        <French>Attaque aérienne allié en approche. ETA 30 secondes.</French>
         <Korean>아군 공습이 시작됩니다. 예상 도착 시간은 30초입니다.</Korean>
         <Chinesesimp>友军空中打击已入境. 预计30秒后到达</Chinesesimp>
       </Key>
@@ -6438,6 +6544,7 @@
       </Key>
       <Key ID="STR_A3A_fn_reinf_vehStats_sitrep">
         <Original>%1, SITREP, over.</Original>
+        <French>%1, SITREP, terminé.</French>
         <Korean>%1, 보고하라, 이상.</Korean>
         <Chinesesimp>%1，报告情况，完毕</Chinesesimp>
       </Key>
@@ -6537,6 +6644,7 @@
       </Key>
       <Key ID="STR_A3A_fn_revive_actRev_no_meds_AI">
         <Original>I'm out of First Aid Kits and I have no Medikit!</Original>
+        <French>Je n'ai plus de trousse de premiers secours et je n'ai pas de Medikit !</French>
         <Korean>구급상자가 떨어졌고 응급처치도구도 없습니다!</Korean>
         <Chinesesimp>我的个人急救包已经用光了而且我还没有医疗包！</Chinesesimp>
       </Key>
@@ -6550,6 +6658,7 @@
       </Key>
       <Key ID="STR_A3A_fn_revive_actRev_no_up_AI">
         <Original>%1 no longer needs my help.</Original>
+        <French>%1 n'as plus besoin de mon aide.</French>
         <Korean>%1은(는) 더 이상 내 도움이 필요하지 않다.</Korean>
         <Chinesesimp>%1不再需要我的帮助</Chinesesimp>
       </Key>
@@ -6618,26 +6727,31 @@
       </Key>
       <Key ID="STR_A3A_fn_revive_unconscious_helping">
         <Original>%1 is helping you.</Original>
+        <French>%1 est en train de vous aider.</French>
         <Korean>%1 님이 당신을 돕고 있습니다.</Korean>
         <Chinesesimp>%1正在尝试帮助你</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_revive_unconscious_noAI">
         <Original>There is no AI nearby to help you.</Original>
+        <French>Il n'y as pas d'IA à proximité pour vous aider.</French>
         <Korean>근처에 당신을 도울 AI가 없습니다.</Korean>
         <Chinesesimp>你的周边没有AI能够帮助你</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_revive_unconscious_onTheWay">
         <Original>%1 is on the way to help you.</Original>
+        <French>%1 est en route pour vous aider.</French>
         <Korean>%1이(가) 당신을 도와주기 위해 가는 중입니다.</Korean>
         <Chinesesimp>%1正在赶来救助你的路上</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_revive_unconscious_respawn">
         <Original>Press R to respawn.</Original>
+        <French>Appuyez sur R pour réapparaître.</French>
         <Korean>R 키를 눌러 리스폰합니다.</Korean>
         <Chinesesimp>按R键重生</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_revive_unconscious_selfRevive">
         <Original>Press H to shake off the injury.</Original>
+        <French>Appuyez sur H pour vous débarrasser de la blessure.</French>
         <Korean>H 키를 눌러 부상을 떨쳐냅니다.</Korean>
         <Chinesesimp>按H键来甩开疼痛</Chinesesimp>
       </Key>
@@ -6974,11 +7088,13 @@
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_off">
         <Original>Undercover OFF</Original>
+        <French>Incognito OFF</French>
         <Korean>위장 끔</Korean>
         <Chinesesimp>退出伪装</Chinesesimp>
       </Key>
       <Key ID="STR_A3A_fn_undercover_goUn_on">
         <Original>Undercover ON</Original>
+        <French>Incognito ON</French>
         <Korean>위장 켬</Korean>
         <Chinesesimp>进行伪装</Chinesesimp>
       </Key>
@@ -8426,7 +8542,7 @@
         <Original>DEVELOPMENT OPTIONS</Original>
         <Italian>OPZIONI DI SVILUPPO</Italian>
         <Spanish>OPCIONES DE DESARROLLO</Spanish>
-        <French>OPTION DEVELOPPEMENT</French>
+        <French>OPTION DE DEVELOPPEMENT</French>
         <Korean>-개발자 설정-</Korean>
         <Polish>Opcje rozwoju</Polish>
         <Chinesesimp>研发选项</Chinesesimp>
@@ -8435,7 +8551,7 @@
         <Original>EQUIPMENT OPTIONS</Original>
         <Italian>OPZIONI DELL'ATTREZZATURA</Italian>
         <Spanish>OPCIONES DE EQUIPAMIENTO</Spanish>
-        <French>OPTIONS EQUIPEMENT</French>
+        <French>OPTIONS D'EQUIPEMENT</French>
         <Korean>-장비 설정-</Korean>
         <Polish>opcje wyposażenia</Polish>
         <Chinesesimp>装备选项</Chinesesimp>
@@ -8444,7 +8560,7 @@
         <Original>LOOT CRATE OPTIONS</Original>
         <Italian>OPZIONI DELLA CASSA DEL BOTTINO</Italian>
         <Spanish>OPCIONES DE CAJAS DE BOTÍN</Spanish>
-        <French>OPTIONS CAISSE DE BUTIN</French>
+        <French>OPTIONS DES CAISSE DE BUTIN</French>
         <Korean>-전리품 상자 설정-</Korean>
         <Chinesesimp>弹药箱装载选项</Chinesesimp>
       </Key>
@@ -8452,7 +8568,7 @@
         <Original>MEMBERSHIP OPTIONS</Original>
         <Italian>OPZIONI MEMBRI</Italian>
         <Spanish>OPCIONES DE MEMBRESÍA</Spanish>
-        <French>OPTIONS ADHESION</French>
+        <French>OPTIONS D'ADHESION</French>
         <Korean>-멤버십 설정-</Korean>
         <Polish>opcje członkostwa</Polish>
         <Chinesesimp>白名单设置</Chinesesimp>
