@@ -468,89 +468,105 @@
       </Key>
       <Key ID="STR_antistasi_mission_info_gm_weferlingen_summer_blurb_text">
         <Original>United Germany is Best Germany.</Original>
+        <French>L'Allemagne unie est la meilleure Allemagne.</French>
         <Korean>통일된 독일이 최고의 독일이다.</Korean>
         <Polish>Zjednoczone Niemcy to najlepsze Niemcy</Polish>
         <Czech>Spojené Německo je nejlepší Německo.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_gm_weferlingen_summer_description_text">
         <Original>Be the Resistance Leader. Fight against a superior enemy in technology, number, assets and vehicles. Use guerrilla tactics in a totally dynamic world, with around 18 sidemissions, everywhere, anytime, anything.</Original>
+        <French>Devenez le Chef de la Résistance. Battez-vous contre un ennemi en surnombre et avec un niveau technologique supérieur. Utilisez les tactiques des Guerrillas dans un monde complétement dynamique, avec environ 18 missions secondaires. Quand vous voulez, où vous voulez, avec ce que vous voulez.</French>
         <Korean>반군 지도자가 되어 아군보다 기술, 머릿수, 차량, 자산이 월등한 적과 싸우십시오. 완전 다이나믹한 세계에서 게릴라 전술을 활용하십시오. 약 18개 이상의 사이드 임무가 있으며, 언제 어디서나 무엇이든 가능합니다.</Korean>
         <Polish>Bądź liderem ruchu oporu. Walcz z lepszym wrogiem pod względem technologii, liczby żołnierzy, zasobów i pojazdów. Używaj taktyk partyzanckich w całkowicie dynamicznym świecie, z około 18 misjami pobocznymi, w dowolnym miejscu i czasie.</Polish>
         <Czech>Buďte vůdcem odboje. Bojujte proti nadřazenému nepříteli v technologii, počtu, majetku a vozidlech. Použijte partyzánskou taktiku ve zcela dynamickém světě, přibližně s 18 vedlejšími misemi, všude kdykoli a cokoli.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_gm_weferlingen_summer_mapname_short_text">
         <Original>Antistasi Weferlingen Summer</Original>
+        <French>Antistasi Weferlingen Eté</French>
         <Korean>안티스타시 웨퍼링겐 여름</Korean>
         <Czech>Antistasi Léto ve Weferlingenu</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_gm_weferlingen_summer_mapname_text">
         <Original>Antistasi - Liberation of Weferlingen - Summer</Original>
+        <French>Antistasi - Liberation de Weferlingen - Eté</French>
         <Korean>안티스타시 - 웨퍼링겐 해방 - 여름</Korean>
         <Czech>Antistasi - Osvobození Weferlingenu - Léto</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_gm_weferlingen_winter_blurb_text">
         <Original>United Germany is Best Germany, also in the winter.</Original>
+        <French>L'Allemagne unie est la meilleure Allemagne, même en hiver.</French>
         <Korean>겨울에 통일된 독일이 최고의 독일이다.</Korean>
         <Polish>Zjednoczone Niemcy to najlepsze Niemcy, również w zimę.</Polish>
         <Czech>Spojené Německo je nejlepší Německo, i přes zimu.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_gm_weferlingen_winter_description_text">
         <Original>Be the Resistance Leader. Fight against a superior enemy in technology, number, assets and vehicles. Use guerrilla tactics in a totally dynamic world, with around 18 sidemissions, everywhere, anytime, anything.</Original>
+        <French>Devenez le Chef de la Résistance. Battez-vous contre un ennemi en surnombre et avec un niveau technologique supérieur. Utilisez les tactiques des Guerrillas dans un monde complétement dynamique, avec environ 18 missions secondaires. Quand vous voulez, où vous voulez, avec ce que vous voulez.</French>
         <Korean>반군 지도자가 되어 아군보다 기술, 머릿수, 차량, 자산이 월등한 적과 싸우십시오. 완전 다이나믹한 세계에서 게릴라 전술을 활용하십시오. 약 18개 이상의 사이드 임무가 있으며, 언제 어디서나 무엇이든 가능합니다.</Korean>
         <Polish>Bądź liderem ruchu oporu. Walcz z lepszym wrogiem pod względem technologii, liczby żołnierzy, zasobów i pojazdów. Używaj taktyk partyzanckich w całkowicie dynamicznym świecie, z około 18 misjami pobocznymi, w dowolnym miejscu i czasie.</Polish>
         <Czech>Buďte vůdcem odboje. Bojujte proti nadřazenému nepříteli v technologii, počtu, majetku a vozidlech. Použijte partyzánskou taktiku ve zcela dynamickém světě, přibližně s 18 vedlejšími misemi, všude kdykoli a cokoli.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_gm_weferlingen_winter_mapname_short_text">
         <Original>Antistasi Weferlingen Winter</Original>
+        <French>Antistasi Weferlingen Hiver</French>
         <Korean>안티스타시 웨퍼링겐 겨울</Korean>
         <Czech>Antistasi Weferlingenská Zima</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_gm_weferlingen_winter_mapname_text">
         <Original>Antistasi - Liberation of Weferlingen - Winter</Original>
+        <French>Antistasi - Liberation de Weferlingen - Hiver</French>
         <Korean>안티스타시 - 웨퍼링겐 해방 - 겨울</Korean>
         <Czech>Antistasi - Osvobození Weferlingenu - Zima</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_isladuala3_blurb_text">
         <Original>African Islands under siege</Original>
+        <French>Les îles africaines en état de siège</French>
         <Korean>포위당한 아프리카의 섬들</Korean>
         <Polish>Oblężenie Afrykańskich wysp</Polish>
       </Key>
       <Key ID="STR_antistasi_mission_info_isladuala3_description_text">
         <Original>Be the Resistance Leader. Fight against a superior enemy in technology, number, assets and vehicles. Use guerrilla tactics in a totally dynamic world, with around 18 sidemissions, everywhere, anytime, anything.</Original>
+        <French>Devenez le Chef de la Résistance. Battez-vous contre un ennemi en surnombre et avec un niveau technologique supérieur. Utilisez les tactiques des Guerrillas dans un monde complétement dynamique, avec environ 18 missions secondaires. Quand vous voulez, où vous voulez, avec ce que vous voulez.</French>
         <Korean>반군 지도자가 되어 아군보다 기술, 머릿수, 차량, 자산이 월등한 적과 싸우십시오. 완전 다이나믹한 세계에서 게릴라 전술을 활용하십시오. 약 18개 이상의 사이드 임무가 있으며, 언제 어디서나 무엇이든 가능합니다.</Korean>
         <Polish>Bądź liderem ruchu oporu. Walcz z lepszym wrogiem pod względem technologii, liczby żołnierzy, zasobów i pojazdów. Używaj taktyk partyzanckich w całkowicie dynamicznym świecie, z około 18 misjami pobocznymi, w dowolnym miejscu i czasie.</Polish>
         <Czech>Buďte vůdcem odboje. Bojujte proti nadřazenému nepříteli v technologii, počtu, majetku a vozidlech. Použijte partyzánskou taktiku ve zcela dynamickém světě, přibližně s 18 vedlejšími misemi, všude kdykoli a cokoli.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_isladuala3_mapname_short_text">
         <Original>Antistasi Isla Duala</Original>
+        <French>Antistasi Isla Duala</French>
         <Korean>안티스타시 이슬라 듀알라</Korean>
         <Czech>Antistasi Ostrov Duala</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_isladuala3_mapname_text">
         <Original>Antistasi - Liberation of Isla Duala</Original>
+        <French>Antistasi - Libération d'Isla Duala</French>
         <Korean>안티스타시 - 이슬라 듀알라 해방</Korean>
         <Czech>Antistasi - Osvobození Ostrova Duala</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_kujari_blurb_text">
         <Original>African Action</Original>
+        <French>Action africaine</French>
         <Korean>아프리카 작전</Korean>
         <Polish>Afrykańska Akcja</Polish>
         <Czech>Africká Mise</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_kujari_description_text">
         <Original>Be the Resistance Leader. Fight against a superior enemy in technology, number, assets and vehicles. Use guerrilla tactics in a totally dynamic world, with around 18 sidemissions, everywhere, anytime, anything.</Original>
+        <French>Devenez le Chef de la Résistance. Battez-vous contre un ennemi en surnombre et avec un niveau technologique supérieur. Utilisez les tactiques des Guerrillas dans un monde complétement dynamique, avec environ 18 missions secondaires. Quand vous voulez, où vous voulez, avec ce que vous voulez.</French>
         <Korean>반군 지도자가 되어 아군보다 기술, 머릿수, 차량, 자산이 월등한 적과 싸우십시오. 완전 다이나믹한 세계에서 게릴라 전술을 활용하십시오. 약 18개 이상의 사이드 임무가 있으며, 언제 어디서나 무엇이든 가능합니다.</Korean>
         <Polish>Bądź liderem ruchu oporu. Walcz z lepszym wrogiem pod względem technologii, liczby żołnierzy, zasobów i pojazdów. Używaj taktyk partyzanckich w całkowicie dynamicznym świecie, z około 18 misjami pobocznymi, w dowolnym miejscu i czasie.</Polish>
         <Czech>Buďte vůdcem odboje. Bojujte proti nadřazenému nepříteli v technologii, počtu, majetku a vozidlech. Použijte partyzánskou taktiku ve zcela dynamickém světě, přibližně s 18 vedlejšími misemi, všude kdykoli a cokoli.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_kujari_mapname_short_text">
         <Original>Antistasi Kujari</Original>
+        <French>&lt;br/&gt;Antistasi Kujari</French>
         <Korean>안티스타시 쿠자리</Korean>
         <Polish>Antistasi Kujari</Polish>
         <Czech>Antistasi Kujari</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_kujari_mapname_text">
         <Original>Antistasi - Liberation of Kujari</Original>
+        <French>Antistasi - Libération de Kujari</French>
         <Korean>안티스타시 - 쿠자리 해방</Korean>
         <Polish>Antistasi - Wyzwolenie Kujari</Polish>
         <Czech>Antistasi - Osvobození Kujari</Czech>
@@ -1005,24 +1021,28 @@
       </Key>
       <Key ID="STR_antistasi_mission_info_umb_colombia_blurb_text">
         <Original>Something with cocaine or such.</Original>
+        <French>Quelque chose avec de la cocaine ou autre.</French>
         <Korean>코카인같은 뭔가가 있습니다.</Korean>
         <Polish>Coś z kokainą lub czymś podobnym.</Polish>
         <Czech>Něco s kokainem, nebo tak něco.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_umb_colombia_description_text">
         <Original>Be the Resistance Leader. Fight against a superior enemy in technology, number, assets and vehicles. Use guerrilla tactics in a totally dynamic world, with around 18 sidemissions, everywhere, anytime, anything.</Original>
+        <French>Devenez le Chef de la Résistance. Battez-vous contre un ennemi en surnombre et avec un niveau technologique supérieur. Utilisez les tactiques des Guerrillas dans un monde complétement dynamique, avec environ 18 missions secondaires. Quand vous voulez, où vous voulez, avec ce que vous voulez.</French>
         <Korean>반군 지도자가 되어 아군보다 기술, 머릿수, 차량, 자산이 월등한 적과 싸우십시오. 완전 다이나믹한 세계에서 게릴라 전술을 활용하십시오. 약 18개 이상의 사이드 임무가 있으며, 언제 어디서나 무엇이든 가능합니다.</Korean>
         <Polish>Bądź liderem ruchu oporu. Walcz z lepszym wrogiem pod względem technologii, liczby żołnierzy, zasobów i pojazdów. Używaj taktyk partyzanckich w całkowicie dynamicznym świecie, z około 18 misjami pobocznymi, w dowolnym miejscu i czasie.</Polish>
         <Czech>Buďte vůdcem odboje. Bojujte proti nadřazenému nepříteli v technologii, počtu, majetku a vozidlech. Použijte partyzánskou taktiku ve zcela dynamickém světě, přibližně s 18 vedlejšími misemi, všude kdykoli a cokoli.</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_umb_colombia_mapname_short_text">
         <Original>Antistasi Colombia</Original>
+        <French>Antistasi Colombia</French>
         <Korean>안티스타시 콜롬비아</Korean>
         <Polish>Antistasi Columbia</Polish>
         <Czech>Antistasi Kolumbie</Czech>
       </Key>
       <Key ID="STR_antistasi_mission_info_umb_colombia_mapname_text">
         <Original>Antistasi - Liberation of Colombia</Original>
+        <French>Antistasi - Libération de Colombia</French>
         <Korean>안티스타시 - 콜롬비아 해방</Korean>
         <Polish>Antistasi - Wyzwolenie Kolumbii</Polish>
         <Czech>Antistasi - Osvobození Kolumbie</Czech>
