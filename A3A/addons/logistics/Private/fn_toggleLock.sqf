@@ -41,9 +41,9 @@ if !(isNil "_seats") then {//for vehicle loading cargo
         _vehicle lockCargo [_x, true];
     } forEach _seatsToLock;
 } else {//for cargo, lock it fully and kick out any crew
-    if (_vehicle isKindOf "StaticWeapon") exitWith {}; // dont lock statics, cant get out otherwise
+    /* if (_vehicle isKindOf "StaticWeapon") exitWith {}; // dont lock statics, cant get out otherwise
     _vehicle lock _lock;
-    if (_lock) then {
+    if (_lock) then { */
         //move out crew
         {moveOut _x}forEach crew _vehicle;
 
@@ -57,5 +57,5 @@ if !(isNil "_seats") then {//for vehicle loading cargo
             //detach tow ropes from cargo
             [_vehicle,player] call SA_Put_Away_Tow_Ropes;
         };
-    };
+    /* }; */
 };
