@@ -6,7 +6,7 @@ private _hasApex = "expansion" in A3A_enabledDLC;
 private _hasHelicopters = "heli" in A3A_enabledDLC;
 private _hasContact = "enoch" in A3A_enabledDLC;
 private _hasJets = "jets" in A3A_enabledDLC;
-private _hasArtOfWar = "aow" A3A_enabledDLC;
+private _hasArtOfWar = "aow" in A3A_enabledDLC;
 private _hasKart = "kart" in A3A_enabledDLC;
 
 ///////////////////////////
@@ -163,7 +163,7 @@ private _vehiclesBlackMarket = _shopWs + _shopLawsOfWar + _shopContact + _shopJe
 ["blackMarketStock", _vehiclesBlackMarket] call _fnc_saveToTemplate;
 
 ["variants", [
-    ["I_Heli_light_03_dynamicLoadout_F", ["Green",1],
+    ["I_Heli_light_03_dynamicLoadout_F", ["Green",1]],
     ["I_APC_Wheeled_03_cannon_F", ["Guerilla_01",0.5, "Guerilla_02",0.5, "Guerilla_03",0.5, "Indep",0, "Indep_03",0, "Indep_02",0]],
     ["I_LT_01_AA_F", ["Indep_Olive",1]],
     ["I_LT_01_scout_F", ["Indep_Olive",1]],
@@ -495,7 +495,7 @@ _loadoutData set ["balaclavas", ["G_Balaclava_blk", "G_Balaclava_BlueStrips", "G
 _loadoutData set ["argoFacemask", ["G_Bandanna_BlueFlame1", "G_Bandanna_BlueFlame2", "G_Bandanna_CandySkull", "G_Bandanna_OrangeFlame1", "G_Bandanna_RedFlame1", "G_Bandanna_Skull1", "G_Bandanna_Syndikat1", "G_Bandanna_Syndikat2","G_Bandanna_Skull2", "G_Bandanna_Vampire_01"]];
 
 if (_hasWs) then {
-    _loadoutData set ["facewearWS", ["G_Balaclava_blk_lxWS", "G_Balaclava_oli_lxWS", "G_Balaclava_snd_lxWS", "G_Combat_lxWS", "G_Headset_lxWS"];
+    _loadoutData set ["facewearWS", ["G_Balaclava_blk_lxWS", "G_Balaclava_oli_lxWS", "G_Balaclava_snd_lxWS", "G_Combat_lxWS", "G_Headset_lxWS"]];
 } else {
     _loadoutData set ["facewearWS", []];
 };

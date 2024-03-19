@@ -6,7 +6,7 @@ private _hasHelicopters = "heli" in A3A_enabledDLC;
 private _hasLawsOfWar = "orange" in A3A_enabledDLC;
 private _hasContact = "enoch" in A3A_enabledDLC;
 private _hasJets = "jets" in A3A_enabledDLC;
-private _hasArtOfWar = "aow" A3A_enabledDLC;
+private _hasArtOfWar = "aow" in A3A_enabledDLC;
 
 //////////////////////////
 //   Side Information   //
@@ -56,7 +56,7 @@ private _tanks = ["O_T_MBT_02_cannon_ghex_F","O_T_MBT_02_railgun_ghex_F"];
 ["vehiclesGunBoats", ["O_T_Boat_Armed_01_hmg_F"]] call _fnc_saveToTemplate;
 
 private _planeCAS = ["O_Plane_CAS_02_dynamicLoadout_F"];
-private _planeAA = ["O_Plane_CAS_02_dynamicLoadout_F];
+private _planeAA = ["O_Plane_CAS_02_dynamicLoadout_F"];
 ["vehiclesPlanesTransport", ["O_T_VTOL_02_infantry_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 
 private _lightHelicopters = ["O_Heli_Light_02_unarmed_F"];
@@ -149,7 +149,7 @@ if (_hasWs) then {
 #include "Vanilla_Vehicle_Attributes.sqf"
 
 ["animations", [
-    ["O_T_MBT_02_railgun_ghex_F", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showLog",0.3],
+    ["O_T_MBT_02_railgun_ghex_F", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showLog",0.3]],
     ["O_T_MBT_04_command_F", ["showCamonetHull", 0.3, "showCamonetTurret", 0.3]],
     ["O_T_MBT_04_cannon_F", ["showCamonetHull", 0.3, "showCamonetTurret", 0.3]],
     ["O_T_MBT_02_cannon_ghex_F", ["showCamonetHull", 0.3, "showCamonetTurret", 0.3, "showLog", 0.4]],
@@ -165,9 +165,9 @@ if (_hasWs) then {
 ]] call _fnc_saveToTemplate;
 
 ["variants", [
-    ["O_Plane_Fighter_02_F", ["CamoGreyHex",0.5 , "CamoBlue",0.5 ,"CamoAridHex",0],
-    ["O_Plane_Fighter_02_Stealth_F", ["CamoGreyHex",0.5 , "CamoBlue",0.5 ,"CamoAridHex",0],
-    ["O_T_VTOL_02_infantry_dynamicLoadout_F", ["Grey", 0.5],
+    ["O_Plane_Fighter_02_F", ["CamoGreyHex",0.5 , "CamoBlue",0.5 ,"CamoAridHex",0]],
+    ["O_Plane_Fighter_02_Stealth_F", ["CamoGreyHex",0.5 , "CamoBlue",0.5 ,"CamoAridHex",0]],
+    ["O_T_VTOL_02_infantry_dynamicLoadout_F", ["Grey", 0.5]],
     ["O_Heli_Attack_02_dynamicLoadout_F", ["Black", 1]],
     ["O_T_LSV_02_armed_F", ["Black", 0.3]],
     ["O_T_LSV_02_unarmed_F", ["Black", 0.3]],
@@ -177,7 +177,7 @@ if (_hasWs) then {
     ["O_Heli_Transport_04_bench_F", ["Black",1]],
     ["O_Heli_Transport_04_covered_F", ["Black",1]],
     ["O_T_MBT_02_railgun_ghex_F", ["Grey",0.4]],
-    ["O_T_MBT_04_command_F, ["Grey",0.4, "Jungle",0.4]],
+    ["O_T_MBT_04_command_F", ["Grey",0.4, "Jungle",0.4]],
     ["O_T_MBT_04_cannon_F", ["Grey",0.4, "Jungle",0.4]],
     ["O_T_MBT_02_cannon_ghex_F", ["Grey",0.4]],
     ["O_Heli_Light_02_unarmed_F", ["GreenHex",0.6, "Black", 0.2 , "Blackcustom", 0.2, "Opfor",0,]],
@@ -268,8 +268,8 @@ _loadoutData set ["binoculars", ["Binocular"]];
 _loadoutData set ["rangefinders", ["Rangefinder"]];
 
 if (_hasArtOfWar) then {
-	_loadoutData set ["officerUniforms", [U_O_ParadeUniform_01_CSAT_decorated_F,"U_O_ParadeUniform_01_CSAT_F"]];
-	_loadoutData set ["officerVests", ["V_TacVest_khk", V_TacVest_brn"]];
+	_loadoutData set ["officerUniforms", ["U_O_ParadeUniform_01_CSAT_decorated_F","U_O_ParadeUniform_01_CSAT_F"]];
+	_loadoutData set ["officerVests", ["V_TacVest_khk", "V_TacVest_brn"]];
 	_loadoutData set ["officerHats", ["H_ParadeDressCap_01_CSAT_F", "H_Beret_CSAT_01_F", "H_Beret_blk"]];
 } else {
 	_loadoutData set ["officerUniforms", ["U_O_T_Officer_F"]];

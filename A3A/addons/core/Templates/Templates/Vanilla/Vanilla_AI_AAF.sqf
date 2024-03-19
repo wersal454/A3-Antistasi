@@ -4,9 +4,9 @@ private _hasLawsOfWar = "orange" in A3A_enabledDLC;
 private _hasTanks = "tank" in A3A_enabledDLC;
 private _hasContact = "enoch" in A3A_enabledDLC;
 private _hasJets = "jets" in A3A_enabledDLC;
-private _hasHelicopters = "heli" A3A_enabledDLC;
-private _hasArtOfWar = "aow" A3A_enabledDLC;
-private _hasApex = "expansion" A3A_enabledDLC;
+private _hasHelicopters = "heli" in A3A_enabledDLC;
+private _hasArtOfWar = "aow" in A3A_enabledDLC;
+private _hasApex = "expansion" in A3A_enabledDLC;
 
 //////////////////////////
 //   Side Information   //
@@ -144,7 +144,7 @@ if (_hasWs) then {
     ["I_LT_01_AT_F", ["Indep_Olive", 0]],
     ["I_LT_01_scout_F",["Indep_Olive", 0]],
     ["I_Plane_Fighter_04_F",["CamoGrey",0.3,"DigitalCamoGrey",0.3]]
-    ["I_Heli_light_03_unarmed_F",["Indep",0.5]
+    ["I_Heli_light_03_unarmed_F",["Indep",0.5]]
 ]] call _fnc_saveToTemplate;
 /////////////////////
 ///  Identities   ///

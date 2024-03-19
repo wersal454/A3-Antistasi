@@ -206,7 +206,7 @@ class planeLoadouts
             missileLauncher[] = {"weapon_MICAIRLauncher","weapon_MICAEMLauncher","weapon_METEORLauncher"};
             diveParams[] = {1000, 600, 180, 55, 15, {0,0}};
         };
-        B_AMF_PLANE_FIGHTER_02_F
+        class B_AMF_PLANE_FIGHTER_02_F
         {
             loadout[] = {"PylonRack_Missile_MAGIC2_x1","PylonRack_mirage2_Missile_MICAEM_x1","PylonRack_mirage2_Missile_MICAEM_x1","PylonRack_Missile_MAGIC2_x1","PylonRack_mirage1_Missile_MICAIR_x1","PylonRack_mirage1_Missile_MICAIR_x1"};
             mainGun = "weapon_30defa554";

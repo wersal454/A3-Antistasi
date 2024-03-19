@@ -5,6 +5,8 @@ private _hasTanks = "tank" in A3A_enabledDLC;
 private _hasApex = "expansion" in A3A_enabledDLC;
 private _hasHelicopters = "heli" in A3A_enabledDLC;
 private _hasContact = "enoch" in A3A_enabledDLC;
+private _hasJets = "jets" in A3A_enabledDLC;
+private _hasArtOfWar = "aow" in A3A_enabledDLC;
 
 //////////////////////////
 //   Side Information   //
@@ -47,7 +49,7 @@ private _lightTanks = [];
 ["vehiclesGunBoats", ["B_T_Boat_Armed_01_minigun_F"]] call _fnc_saveToTemplate;
 
 private _planeCAS = ["B_Plane_CAS_01_dynamicLoadout_F"];
-private _planeAA = ["B_Plane_CAS_01_dynamicLoadout_F];
+private _planeAA = ["B_Plane_CAS_01_dynamicLoadout_F"];
 ["vehiclesPlanesTransport", ["B_T_VTOL_01_infantry_F"]] call _fnc_saveToTemplate;
 
 private _transportHelicopters = ["B_Heli_Transport_01_F", "B_CTRG_Heli_Transport_01_tropic_F"];
@@ -158,17 +160,17 @@ if (_hasWs) then {
     ["B_LSV_01_unarmed_F", ["HideDoor1",0.5,"HideDoor2",0.5,"HideDoor3",0.5,"HideDoor4",0.5]],
     ["B_LSV_01_AT_F", ["HideDoor1",0.5,"HideDoor2",0.5,"HideDoor3",0.5,"HideDoor4",0.5]],
     ["B_CTRG_LSV_01_light_F", ["HideDoor1",0.5,"HideDoor2",0.5,"HideDoor3",0.5,"HideDoor4",0.5]],
-    ["B_Plane_Fighter_01_F", ["wing_fold_l",1],
-    ["B_Plane_Fighter_01_Stealth_F", ["wing_fold_l",1],
+    ["B_Plane_Fighter_01_F", ["wing_fold_l",1]],
+    ["B_Plane_Fighter_01_Stealth_F", ["wing_fold_l",1]],
     ["B_T_APC_Wheeled_01_command_lxWS", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
     ["B_T_APC_Wheeled_01_atgm_lxWS", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
-    ["B_T_APC_Wheeled_01_mortar_lxWS",["showBags",0.3,"showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3],
+    ["B_T_APC_Wheeled_01_mortar_lxWS",["showBags",0.3,"showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
     ["B_T_APC_Wheeled_01_cannon_F", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
     ["B_T_APC_Tracked_01_AA_F", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3]]
 ]] call _fnc_saveToTemplate;
 
 ["variants", [
-    ["B_UAV_05_F", ["DarkGreyCamo",0.5], 
+    ["B_UAV_05_F", ["DarkGreyCamo",0.5]], 
     ["B_AAA_System_01_F", ["Green",0.7]],
     ["B_SAM_System_01_F", ["Green",0.7]],
     ["B_SAM_System_02_F", ["Green",0.7]],
@@ -510,9 +512,9 @@ _eliteLoadoutData set ["helmets", ["H_HelmetB_tna_F", "H_HelmetB_Enh_tna_F", "H_
 _eliteLoadoutData set ["binoculars", ["Laserdesignator"]];
 
 if (_hasWs) then {
-   _eliteLoadoutData set ["backpacks", [""B_Carryall_oli", "B_Kitbag_rgr, "B_shield_backpack_lxWS"]]
+   _eliteLoadoutData set ["backpacks", ["B_Carryall_oli", "B_Kitbag_rgr", "B_shield_backpack_lxWS"]]
 } else {
-   _eliteLoadoutData set ["backpacks", ["B_Carryall_oli", "B_Kitbag_rgr]]
+   _eliteLoadoutData set ["backpacks", ["B_Carryall_oli", "B_Kitbag_rgr"]]
 };
 
 _eliteLoadoutData set ["rifles", [

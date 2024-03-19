@@ -3,7 +3,7 @@ private _hasLawsOfWar = "orange" in A3A_enabledDLC;
 private _hasApex = "expansion" in A3A_enabledDLC;
 private _hasContact = "enoch" in A3A_enabledDLC;
 private _hasKart = "kart" in A3A_enabledDLC;
-private _hasArtOfWar = "aow" A3A_enabledDLC;
+private _hasArtOfWar = "aow" in A3A_enabledDLC;
 
 //////////////////////////////
 //   Civilian Information   //
@@ -95,9 +95,9 @@ if (_hasApex) then {
 ["vehiclesCivHeli", ["C_Heli_Light_01_civil_F" , "O_Heli_Light_02_unarmed_F" , "I_Heli_Transport_02_F"]] call _fnc_saveToTemplate;
 
 ["vehiclesCivIndustrial", _civCarsWithWeights] call _fnc_saveToTemplate;
-["vehiclesCivBoat, _civCarsWithWeights] call _fnc_saveToTemplate;
+["vehiclesCivBoat", _civCarsWithWeights] call _fnc_saveToTemplate;
 ["vehiclesCivRepair", _civCarsWithWeights] call _fnc_saveToTemplate;
-["vehiclesCivMedical, _civCarsWithWeights] call _fnc_saveToTemplate;
+["vehiclesCivMedical", _civCarsWithWeights] call _fnc_saveToTemplate;
 ["vehiclesCivFuel", _civCarsWithWeights] call _fnc_saveToTemplate;
 ["vehiclesCivPlanes", _civCarsWithWeights] call _fnc_saveToTemplate;
 

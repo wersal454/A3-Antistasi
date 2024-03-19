@@ -6,7 +6,7 @@ private _hasHelicopters = "heli" in A3A_enabledDLC;
 private _hasLawsOfWar = "orange" in A3A_enabledDLC;
 private _hasContact = "enoch" in A3A_enabledDLC;
 private _hasJets = "jets" in A3A_enabledDLC;
-private _hasArtOfWar = "aow" A3A_enabledDLC;
+private _hasArtOfWar = "aow" in A3A_enabledDLC;
 
 //////////////////////////
 //   Side Information   //
@@ -156,7 +156,7 @@ if (_hasWs) then {
 #include "Vanilla_Vehicle_Attributes.sqf"
 
 ["animations", [
-    ["O_MBT_02_railgun_F", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showLog",0.3],
+    ["O_MBT_02_railgun_F", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showLog",0.3]],
     ["O_MBT_04_command_F", ["showCamonetHull", 0.3, "showCamonetTurret", 0.3]],
     ["O_MBT_04_cannon_F", ["showCamonetHull", 0.3, "showCamonetTurret", 0.3]],
     ["O_MBT_02_cannon_F", ["showCamonetHull", 0.3, "showCamonetTurret", 0.3, "showLog", 0.4]],
@@ -187,7 +187,7 @@ if (_hasWs) then {
     ["B_ION_Heli_Light_02_dynamicLoadout_lxWS", ["Opfor",0.6, "Black", 0.2 , "Blackcustom", 0.2 ,"ION_BLACK",0]],
     ["O_Heli_Light_02_unarmed_F", ["Opfor",0.6, "Black", 0.2 , "Blackcustom", 0.2]],
     ["O_Heli_Light_02_dynamicLoadout_F", ["Opfor",0.6, "Black", 0.2 , "Blackcustom", 0.2]],
-    ["O_T_VTOL_02_infantry_dynamicLoadout_F", ["Hex",1]
+    ["O_T_VTOL_02_infantry_dynamicLoadout_F", ["Hex",1]]
 ]] call _fnc_saveToTemplate;
 
 /////////////////////

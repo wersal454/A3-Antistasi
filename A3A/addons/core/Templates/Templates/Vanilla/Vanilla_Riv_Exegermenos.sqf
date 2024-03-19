@@ -6,7 +6,7 @@ private _hasApex = "expansion" in A3A_enabledDLC;
 private _hasHelicopters = "heli" in A3A_enabledDLC;
 private _hasContact = "enoch" in A3A_enabledDLC;
 private _hasJets = "jets" in A3A_enabledDLC;
-private _hasArtOfWar = "aow" A3A_enabledDLC;
+private _hasArtOfWar = "aow" in A3A_enabledDLC;
 private _hasKart = "kart" in A3A_enabledDLC;
 
 ////////////////////////////

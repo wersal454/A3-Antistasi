@@ -6,7 +6,7 @@ private _hasHelicopters = "heli" in A3A_enabledDLC;
 private _hasLawsOfWar = "orange" in A3A_enabledDLC;
 private _hasContact = "enoch" in A3A_enabledDLC;
 private _hasJets = "jets" in A3A_enabledDLC;
-private _hasArtOfWar = "aow" A3A_enabledDLC;
+private _hasArtOfWar = "aow" in A3A_enabledDLC;
 
 //////////////////////////
 //   Side Information   //
@@ -65,7 +65,7 @@ if (_hasHelicopters) then {
 };
 
 private _helisLight = ["B_Heli_Light_01_F"];
-private _helisLightAttack = ["B_Heli_Light_01_dynamicLoadout_F];
+private _helisLightAttack = ["B_Heli_Light_01_dynamicLoadout_F"];
 private _helisAttack = ["B_Heli_Attack_01_dynamicLoadout_F"];
 
 private _arillery = ["B_MBT_01_arty_F","B_MBT_01_mlrs_F"];
@@ -121,7 +121,7 @@ if (_hasJets) then {
 ["minefieldAPERS", ["APERSMine"]] call _fnc_saveToTemplate;
 
 if (_hasApex) then {
-    _unarmedVehicles pushBack ["B_LSV_01_unarmed_F, "B_CTRG_LSV_01_light_F"];
+    _unarmedVehicles pushBack ["B_LSV_01_unarmed_F", "B_CTRG_LSV_01_light_F"];
     _armedVehicles append ["B_LSV_01_armed_F", "B_LSV_01_AT_F"];
 };
 
@@ -174,11 +174,11 @@ if (_hasWs) then {
     ["B_LSV_01_unarmed_F", ["HideDoor1",0.5,"HideDoor2",0.5,"HideDoor3",0.5,"HideDoor4",0.5]],
     ["B_LSV_01_AT_F", ["HideDoor1",0.5,"HideDoor2",0.5,"HideDoor3",0.5,"HideDoor4",0.5]],
     ["B_CTRG_LSV_01_light_F", ["HideDoor1",0.5,"HideDoor2",0.5,"HideDoor3",0.5,"HideDoor4",0.5]],
-    ["B_Plane_Fighter_01_F", ["wing_fold_l",1],
-    ["B_Plane_Fighter_01_Stealth_F", ["wing_fold_l",1],
+    ["B_Plane_Fighter_01_F", ["wing_fold_l",1]],
+    ["B_Plane_Fighter_01_Stealth_F", ["wing_fold_l",1]],
     ["APC_Wheeled_01_command_base_lxWS", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
     ["APC_Wheeled_01_atgm_base_lxWS", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
-    ["APC_Wheeled_01_mortar_base_lxWS",["showBags",0.3,"showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3],
+    ["APC_Wheeled_01_mortar_base_lxWS",["showBags",0.3,"showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
     ["B_APC_Wheeled_01_cannon_F", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
     ["B_APC_Tracked_01_AA_F", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3]]
 ]] call _fnc_saveToTemplate;

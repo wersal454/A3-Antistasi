@@ -579,7 +579,7 @@ if (_type == "CASDIVE") then
             _loadout = ["PRACS_Mk84_X1","PRACS_Mk84_X1","PRACS_M117_X1","PRACS_M117_X1","PRACS_Mk84_X1","PRACS_Mk84_X1","PRACS_Mk84_X1","PRACS_Mk84_X1"];
             _plane setVariable ["bombRacks", ["PRACS_Mk84_Launcher","PRACS_M117_Launcher"]];
             _plane setVariable ["diveParams", [1200, 350, 110, 55, 15, [3, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
-        }
+        };
         ///RACS (SLA)
         case "PRACS_SLA_MiG21":
         {
@@ -924,8 +924,7 @@ if (_type == "CAS") then
             _loadout = ["uns_pylonRack_1Rnd_AGM12","uns_pylonRack_1Rnd_AGM12","uns_pylonRack_f4_38Rnd_Rocket_FFAR_HEAT","uns_pylonRack_f4_38Rnd_Rocket_FFAR_HEAT","uns_pylonRack_1Rnd_AIM9E","uns_pylonRack_1Rnd_AIM9E","uns_pylonRack_1Rnd_AIM9E","uns_pylonRack_1Rnd_AIM9E","uns_pylonRack_1Rnd_AIM7","uns_pylonRack_1Rnd_AIM7","uns_pylonRack_1Rnd_AIM7","uns_pylonRack_1Rnd_AIM7","uns_pylonRack_1Rnd_AGM12"];
             _plane setVariable ["rocketLauncher", ["Uns_FFAR_HEAT_Launcher_dl"]];
             _plane setVariable ["missileLauncher", ["uns_AGM12_Launcher_dl"]];
-        };
-        
+        };     
         case "Tornado_AWS_camo_ger":
         {
             _loadout = ["Tornado_AWS_ECMpod_1rnd_M","FIR_IRIS_T_P_1rnd_M","Tornado_AWS_fuelsmall_1rnd_M","FIR_Litening_std_P_1rnd_M","FIR_Brimstone_DM_type1_P_3rnd_M","FIR_Brimstone_DM_type1_P_3rnd_M","FIR_GBU12_P_1rnd_M","FIR_Brimstone_DM_type2_P_3rnd_M","FIR_Brimstone_DM_type2_P_3rnd_M","Tornado_AWS_fuelsmall_1rnd_M","FIR_IRIS_T_P_1rnd_M","Tornado_AWS_AIRCMpod_1rnd_M","FIR_BK27_R_M","FIR_BK27_L_M"];
@@ -969,7 +968,7 @@ if (_type == "CAS") then
             _plane setVariable ["bombRacks", ["SPE_US_500lb_Bomb_Mount"]];
             _plane setVariable ["diveParams", [1200, 350, 110, 55, 15, [3, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
         };
-		// Clone Wars Planes (3AS)
+	// Clone Wars Planes (3AS)
         case "3AS_ARC_170_Yellow";
         case "3AS_ARC_170_Orange";
         case "3AS_ARC_170_Green";
@@ -1012,12 +1011,12 @@ if (_type == "CAS") then
             _plane setVariable ["mainGun", "3AS_T47_20mm_AA_Cannon"];
         };
         case "3AS_VWing_Imperial";
-        case "3as_Vwing_base"
+        case "3as_Vwing_base":
         {
             _loadout = ["","","","","","","","","3as_Vwing_700Rnd_Medium_shells","3as_Vwing_700Rnd_Medium_shells","3as_Vwing_700Rnd_Medium_shells"];
             _plane setVariable ["mainGun", "3as_Vwing_Medium_Cannon"];
         };
-        case "3as_V19_base"
+        case "3as_V19_base":
         {
             _loadout = ["","","","","","","","","3as_V19_800Rnd_Medium_shells","3as_V19_800Rnd_Medium_shells","3as_V19_800Rnd_Medium_shells"];
             _plane setVariable ["mainGun", "3as_V19_Medium_Cannon"];
@@ -1184,7 +1183,7 @@ if (_type == "CAS") then
         {
             _loadout = ["PRACS_Harpoon_X1","PRACS_AGM65_B_X1","PRACS_Exocet_X1","PRACS_Exocet_X1","PRACS_Exocet_X1","PRACS_SeaSkua_X1","PRACS_Delilah_X1","PRACS_AGM65_TL_X1"];
             _plane setVariable ["missileLauncher", ["PRACS_Harpoon_launcher","PRACS_AGM65B_launcher","PRACS_Exocet_launcher","PRACS_SeaSkua_launcher","PRACS_Delilah_launcher","PRACS_AGM65_launcher"]];
-        }
+        };
         ///RACS (SLA)
         case "PRACS_SLA_MiG21":
         {
@@ -1208,14 +1207,14 @@ if (_type == "CAS") then
         {
             _loadout = ["","","rhs_mag_ub16_s5ko","rhs_mag_b13l_s13df","PRACS_Kh35_X1","rhs_mag_ub16_s5ko"];
             _plane setVariable ["mainGun", "PRACS_NR23_23mm"];
-            _plane setVariable ["rocketLauncher", [,"rhs_weap_s5ko","rhs_weap_s13df"]];
+            _plane setVariable ["rocketLauncher", ["rhs_weap_s5ko","rhs_weap_s13df"]];
             _plane setVariable ["missileLauncher", ["PRACS_KH35_launcher"]];
         };
         case "PRACS_SLA_SU22":
         {
             _loadout = ["","","rhs_mag_ub32_s5m1","rhs_mag_ub32_s5ko","rhs_mag_ub32_s5","PRACS_KH29D_X1","PRACS_Kh25_mp_X1","PRACS_Kh25_ml_X1","","","","","",""];
             _plane setVariable ["mainGun", "PRACS_NR30_30mm"];
-            _plane setVariable ["rocketLauncher", [,"rhs_weap_s5ko","rhs_weap_s5m1","rhs_weap_s5"]];
+            _plane setVariable ["rocketLauncher", ["rhs_weap_s5ko","rhs_weap_s5m1","rhs_weap_s5"]];
             _plane setVariable ["missileLauncher", ["PRACS_KH29_D_launcher","PRACS_Kh25_mp_launcher","PRACS_Kh25_ml_launcher"]];
         };
         case "PRACS_SLA_Su25":
@@ -1450,7 +1449,7 @@ if (_type == "AA") then
             _loadout = ["Tornado_AWS_AIRCMpod_1rnd_M","FIR_AIM9L_P_1rnd_M","Tornado_AWS_fuelsmall_1rnd_M","FIR_Litening_std_P_1rnd_M","FIR_Brimstone_type1_P_3rnd_M","FIR_Brimstone_type1_P_3rnd_M","FIR_GBU12_P_1rnd_M","FIR_Brimstone_type2_P_3rnd_M","FIR_Brimstone_type2_P_3rnd_M","Tornado_AWS_fuelsmall_1rnd_M","FIR_AIM9L_P_1rnd_M","Tornado_AWS_ECMpod_1rnd_M","FIR_BK27_R_M","FIR_BK27_L_M"];
         };
         case "LIB_FW190F8";
-		case "LIB_DAK_FW190F8";
+	case "LIB_DAK_FW190F8";
         case "LIB_FW190F8_w": 
         {
             _loadout = ["LIB_1Rnd_SC50", "LIB_1Rnd_SC50", "LIB_1Rnd_SC50", "LIB_1Rnd_SC50", "LIB_1Rnd_SC50"];
@@ -1463,7 +1462,7 @@ if (_type == "AA") then
         {
             _loadout = ["LIB_1Rnd_SC250"];
         };
-		// Clone Wars Planes (3AS)
+	// Clone Wars Planes (3AS)
         case "3AS_ARC_170_Yellow";
         case "3AS_ARC_170_Orange";
         case "3AS_ARC_170_Green";
@@ -1495,13 +1494,13 @@ if (_type == "AA") then
             _plane setVariable ["mainGun", "3AS_T47_20mm_AA_Cannon"];
         };
         case "3AS_VWing_Imperial";
-        case "3as_Vwing_base"
+        case "3as_Vwing_base":
         {
             _loadout = ["3as_PylonMissile_ARC_2Rnd_Missile_AA","3as_PylonMissile_ARC_2Rnd_Missile_AA","3as_PylonMissile_ARC_2Rnd_Missile_AA","3as_PylonMissile_ARC_2Rnd_Missile_AA","PylonRack_Missile_AMRAAM_C_x2","PylonRack_Missile_AMRAAM_C_x2"];
             _plane setVariable ["mainGun", "3as_Vwing_Medium_Cannon"];            
             _plane setVariable ["missileLauncher", ["3AS_ARC_Missile_AA","weapon_AMRAAMLauncher"]];
         };
-        case "3as_V19_base"
+        case "3as_V19_base":
         {
             _loadout = ["3as_PylonMissile_ARC_2Rnd_Missile_AA","3as_PylonMissile_ARC_2Rnd_Missile_AA","3as_PylonMissile_ARC_2Rnd_Missile_AA","3as_PylonMissile_ARC_2Rnd_Missile_AA","PylonRack_Missile_AMRAAM_C_x2","PylonRack_Missile_AMRAAM_C_x2"];
             _plane setVariable ["mainGun", "3as_V19_Medium_Cannon"];
@@ -1530,7 +1529,7 @@ if (_type == "AA") then
             _loadout = ["3AS_500Rnd_Delta7_20mm_AA","3AS_500Rnd_Delta7_20mm_AA"];
             _plane setVariable ["mainGun", "3AS_Delta7_20mm_AA_Cannon"];
         };
-		//FFAA
+	//FFAA
         case "ffaa_ar_harrier":
         {
             _loadout = ["PylonRack_Missile_BIM9X_x2","PylonRack_Missile_AMRAAM_C_x1","PylonRack_Missile_AMRAAM_C_x1","PylonRack_Missile_AMRAAM_C_x1","PylonRack_Missile_AMRAAM_C_x1","PylonRack_Missile_BIM9X_x2"];
@@ -1543,7 +1542,7 @@ if (_type == "AA") then
             _plane setVariable ["mainGun", "weapon_Fighter_Gun20mm_AA"];
             _plane setVariable ["missileLauncher", ["Missile_AA_04_Plane_CAS_01_F","weapon_AMRAAMLauncher","weapon_BIM9xLauncher"]];
         };
-		//Pedagne
+	//Pedagne
         case "ASZ_AV8B":
         {
             _loadout = ["PylonRack_1Rnd_GAA_missiles","PylonRack_1Rnd_Missile_AA_03_F","PylonRack_1Rnd_Missile_AA_03_F","PylonRack_1Rnd_Missile_AA_03_F","PylonRack_1Rnd_Missile_AA_03_F","PylonMissile_1Rnd_Missile_AA_04_F"];
@@ -1556,7 +1555,7 @@ if (_type == "AA") then
             _plane setVariable ["mainGun", "weapon_Fighter_Gun_30mm"];
             _plane setVariable ["missileLauncher", ["weapon_BIM9xLauncher","weapon_AMRAAMLauncher","Missile_AA_04_Plane_CAS_01_F"]];
         };
-		//PLA
+	//PLA
         case "PLAAF_Fighter_J10":
         {
             _loadout = ["PylonMissile_Missile_AA_R73_x1","PylonMissile_LK_PL10_AAM_X2","PylonMissile_LK_PL15_AAM_X2","PylonMissile_LK_PL15_AAM_X2","PylonMissile_LK_PL10_AAM_X2","PylonMissile_Missile_AA_R77_x1","PylonMissile_LK_PL15_AAM_X2"];
@@ -1592,12 +1591,12 @@ if (_type == "AA") then
             _plane setVariable ["mainGun", "weapon_Fighter_Gun_30mm"];
             _plane setVariable ["missileLauncher", ["weapon_R73Launcher","weapon_R77Launcher"]];
         };
-		//Jms Empire
+	//Jms Empire
         case "JMSLLTE_TIEinterceptor_veh_F": 
         {
             _loadout = [];
         };
-		//Project RACS
+	//Project RACS
         case "PRACS_F16CJ":
         {
             _loadout = ["PRACS_AIM9M_WT_X1","PRACS_AIM120_WT_X1","PRACS_Python_5_WT_X1","PRACS_R550_WT_X1","PRACS_Python_5_X1","PRACS_Python_5_X1","PRACS_F16_Wingtanks_X1","PRACS_F16_Wingtanks_X1","PRACS_F16_Bellytank_X1","PRACS_F16_CFT_X1"];
