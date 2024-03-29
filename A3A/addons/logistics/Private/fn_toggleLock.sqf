@@ -19,7 +19,6 @@
     Example: [_vehicle, true, _seats] remoteExecCall ["A3A_Logistics_fnc_toggleLock", 0, _vehicle];
 */
 params ["_vehicle", "_lock", "_seats"];
-
 //toggle lock of the propper seats
 _vehicle lockCargo false;
 if !(isNil "_seats") then {//for vehicle loading cargo
@@ -33,7 +32,6 @@ if !(isNil "_seats") then {//for vehicle loading cargo
         _seatsToLock = _seatsToLock - _seats;
     };
     _vehicle setVariable ["Logistics_occupiedSeats", _seatsToLock, true];
-
     {
         if (_x in _crewCargoIndex) then {
             moveOut (_crew # (_crewCargoIndex find _x)); //incase someone got into the seat before it is locked in the loading process
@@ -53,7 +51,6 @@ if !(isNil "_seats") then {//for vehicle loading cargo
                 _veh = ropeAttachedTo _x;
                 if (!isNull _veh) then {[_veh,player] call SA_Put_Away_Tow_Ropes};
             } forEach attachedObjects _vehicle;
-
             //detach tow ropes from cargo
             [_vehicle,player] call SA_Put_Away_Tow_Ropes;
         };
