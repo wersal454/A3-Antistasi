@@ -44,7 +44,7 @@ if (_vehicle isKindOf "Air" || typeOf _vehicle = "") then
         else
         {
             if (typeOf _vehicle == "vehiclesDropPod") then {
-                    [_vehicle, _cargoGroup, _posDestination, _posOrigin, _crewGroup] spawn A3A_fnc_OrbitalLanding;
+                    [_vehicle, _cargoGroup, _posDestination, _posOrigin/* , _crewGroup */] spawn A3A_fnc_OrbitalLanding;
             } else {
                 if ((typeOf _vehicle) in vehFastRope) then {
                     [_vehicle, _cargoGroup, _posDestination, _posOrigin, _crewGroup] spawn A3A_fnc_fastrope;
