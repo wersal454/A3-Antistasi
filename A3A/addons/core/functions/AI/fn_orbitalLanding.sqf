@@ -1,4 +1,4 @@
-params ["_pod", "_groupX", "_positionX", "_posOrigin", /* "_crew" */];
+params ["_pod", "_groupX", "_positionX", "_posOrigin"/* , "_crew" */];
 
 ///TODO
 ///Make as many landing positions as there landing Pods
