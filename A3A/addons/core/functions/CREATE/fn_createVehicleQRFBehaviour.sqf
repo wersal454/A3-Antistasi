@@ -22,7 +22,7 @@ params ["_vehicle", "_crewGroup", "_cargoGroup", "_posDestination", "_markerOrig
 
 
 private _vehType = typeof _vehicle;
-if (_vehicle isKindOf "Air" || typeOf _vehicle = "") then
+if (_vehicle isKindOf "Air" || (typeOf _vehicle == "vehiclesDropPod"))  then
 {
     if (_vehType in FactionGet(all,"vehiclesHelisTransport") + FactionGet(all,"vehiclesHelisLight") + FactionGet(all,"vehiclesDropPod")) exitWith
     {
