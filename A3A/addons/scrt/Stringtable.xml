@@ -2649,6 +2649,14 @@
                 <Chinesesimp>机械化空中快速反应部队</Chinesesimp>
                 <Korean>공수 기계화 신속대응군</Korean>
             </Key>
+            <Key ID="STR_notifiers_SUP_execute_QRFOrbital">
+                <Original>A %1 orbital QRF just dropped</Original>
+                <Russian>Орбитальный десант %1 приземлились</Russian>
+            </Key>
+            <Key ID="STR_notifiers_SUP_execute_QRFOrbital_marker">
+                <Original>Orbital QRF</Original>
+                <Russian>Орибальный СБР</Russian>
+            </Key>
             <Key ID="STR_notifiers_SUP_execute_airstrike">
                 <Original>%1 is about to execute an airstrike</Original>
                 <Russian>%1 собирается нанести авиаудар</Russian>
@@ -2924,6 +2932,10 @@
                 <Russian>%1 отправили десантные механизированные силы быстрого реагирования</Russian>
                 <Chinesesimp>%1 派出了一支机械化快速反应部队</Chinesesimp>
                 <Korean>%1이(가) 방금 공수 기계화 신속대응군을 보냈습니다</Korean>
+            </Key>
+            <Key ID="STR_notifiers_SUP_setup_QRFOrbital">
+                <Original>%1 just sent a orbital landing</Original>
+                <Russian>%1 отправили орбитальный десант</Russian>
             </Key>
             <Key ID="STR_notifiers_SUP_setup_wavedAttack">
                 <Original>%1 just sent a major attack wave</Original>
