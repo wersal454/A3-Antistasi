@@ -22,9 +22,9 @@ params ["_vehicle", "_crewGroup", "_cargoGroup", "_posDestination", "_markerOrig
 
 
 private _vehType = typeof _vehicle;
-if (_vehicle isKindOf "Air") then
+if (_vehicle isKindOf "Air" || typeOf _vehicle = "") then
 {
-    if (_vehType in FactionGet(all,"vehiclesHelisTransport") + FactionGet(all,"vehiclesHelisLight")) exitWith
+    if (_vehType in FactionGet(all,"vehiclesHelisTransport") + FactionGet(all,"vehiclesHelisLight") + FactionGet(all,"vehiclesDropPod")) exitWith
     {
         //Transport helicopter
         _landPos = [_posDestination, 200, 400, 10, 0, 0.12, 0, [], [[0,0,0],[0,0,0]]] call BIS_fnc_findSafePos;
@@ -43,11 +43,15 @@ if (_vehicle isKindOf "Air") then
         }
         else
         {
-            if ((typeOf _vehicle) in vehFastRope) then {
-                [_vehicle, _cargoGroup, _posDestination, _posOrigin, _crewGroup] spawn A3A_fnc_fastrope;
+            if (typeOf _vehicle == "vehiclesDropPod") then {
+                    [_vehicle, _cargoGroup, _posDestination, _posOrigin, _crewGroup] spawn A3A_fnc_OrbitalLanding;
             } else {
-                [_vehicle, _cargoGroup, _posDestination, _markerOrigin] spawn A3A_fnc_paradrop;
-            };
+                if ((typeOf _vehicle) in vehFastRope) then {
+                    [_vehicle, _cargoGroup, _posDestination, _posOrigin, _crewGroup] spawn A3A_fnc_fastrope;
+                } else {
+                    [_vehicle, _cargoGroup, _posDestination, _markerOrigin] spawn A3A_fnc_paradrop;
+                };
+            };  
         };
     };
     if (_vehType in FactionGet(all,"vehiclesHelisAttack") + FactionGet(all,"vehiclesHelisLightAttack")) exitWith 
@@ -187,3 +191,4 @@ else            // ground vehicle
 };
 
 _landPosBlacklist;
+
