@@ -61,8 +61,8 @@ private _groups = [];
 {
 	_unitgroupX = select random units _groupX;
 	_newgroup = [];
-	_newgroup = append _unitgroupX;
-	_groups = append _newgroup;
+	_newgroup  append _unitgroupX;
+	_groups  append _newgroup;
 }forEach _pods;
 
 private _i = 0;
@@ -85,23 +85,23 @@ private _i = 0;
 private _i = 0;
 {
 	_j = _landingpositions select _i;
-	_x = setPos [(_j select 0),(_j select 1), 3000]; ///3000 or whatever to give sometime for message to pop up to let rebels prepare(if there is any message about orbital drop)
-	_x setVelocity [0,0,-200] ///should probably be more then 200
+	_x setPos [(_j select 0),(_j select 1), 3000]; ///3000 or whatever to give sometime for message to pop up to let rebels prepare(if there is any message about orbital drop)
+	_x setVelocity [0,0,-200]; ///should probably be more then 200
 	[_x] call A3A_fnc_Satellitelaunch; ///A3A_fnc_effects
     //_bomb ="ammo_Missile_Cruise_01" createVehicle [(_j  select 0),(_j  select 1),0]; //bomb should be "smaller"
 	_i = _i + 1;
-	sleep random from 0.5 to 2; //probably too bad, can lead to undesireble behaviour
+	/* sleep random from 0.5 to 2; */ //probably too bad, can lead to undesireble behaviour
 }forEach _pods;
 
-{
-	_bomb ="ammo_Missile_Cruise_01" createVehicle [(_x  select 0),(_x  select 1),0]; //bomb should be "smaller"
-}forEach _pods;
+/* {
+	_bomb = "ammo_Missile_Cruise_01" createVehicle [(getPos _x  select 0),(getPos _x  select 1),0]; //bomb should be "smaller"
+}forEach _pods; */
 
-{
-	_wp2 = _x addWaypoint [_positionX, 2];
-	_wp2 setWaypointType "SAD";
-}forEach _groups;
-
+/* {
+	_wp = _x addWaypoint [_positionX, 2];
+	_wp setWaypointType "SAD";
+}forEach _groups; */
+/* 
 {
 	_x animateDoor ['door_R', 1];
 	_x animateDoor ["Door_rear_source", 1, true];
@@ -114,7 +114,7 @@ private _i = 0;
 	_units select _i  moveout _x;
 	_i = _i + 1;
 }forEach _pods;
-
+ */
 
 
 ///somehow rejoin all units back to original group(maybe under certian condition)
