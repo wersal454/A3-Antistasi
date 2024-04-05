@@ -17,6 +17,14 @@ class Templates
         equipFlags[] = {"vanilla"};
     };
 
+    class WS_Civ : WS_Base
+    {
+        side = "Civ";
+        flagTexture = "\lxws\data_f_lxws\img\flags\flag_Argana_CO.paa";
+        name = "Western Sahara";
+        file = "WS_Civ";
+    };
+
     class WS_Tura : WS_Base
     {
         side = "Reb";

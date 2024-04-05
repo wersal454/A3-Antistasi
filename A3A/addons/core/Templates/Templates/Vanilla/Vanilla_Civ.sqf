@@ -4,6 +4,7 @@ private _hasApex = "expansion" in A3A_enabledDLC;
 private _hasContact = "enoch" in A3A_enabledDLC;
 private _hasKart = "kart" in A3A_enabledDLC;
 private _hasArtOfWar = "aow" in A3A_enabledDLC;
+private _hasRF = "rf" in A3A_enabledDLC;
 
 //////////////////////////////
 //   Civilian Information   //
@@ -35,8 +36,6 @@ if (_hasLawsOfWar) then {
 if (_hasWs) then {
     _civCarsWithWeights append ["C_Truck_02_racing_lxWS" , 0.1 , "C_Offroad_lxWS", 0.5];
 };
-
-["vehiclesCivCar", _civCarsWithWeights] call _fnc_saveToTemplate;
 
 private _civIndustrial = [
     "C_Van_01_transport_F", 1.0
@@ -92,8 +91,15 @@ if (_hasApex) then {
     _civPlanes append ["C_Plane_Civil_01_racing_F", "C_Plane_Civil_01_F"]
 };
 
+if (_hasRF) then {
+    _civCarsWithWeights append ["C_Pickup_rf", 2.0, "C_Pickup_covered_rf", 0.1];
+    _civRepair append ["C_Pickup_repair_rf", 0.3];
+    _civFuel append ["a3a_civ_Pickup_fuel_rf", 0.1];
+};
+
 ["vehiclesCivHeli", ["C_Heli_Light_01_civil_F" , "O_Heli_Light_02_unarmed_F" , "I_Heli_Transport_02_F"]] call _fnc_saveToTemplate;
 
+["vehiclesCivCar", _civCarsWithWeights] call _fnc_saveToTemplate;
 ["vehiclesCivIndustrial", _civIndustrial] call _fnc_saveToTemplate;
 ["vehiclesCivBoat", _civBoat] call _fnc_saveToTemplate;
 ["vehiclesCivRepair", _civRepair] call _fnc_saveToTemplate;
@@ -206,6 +212,21 @@ if (_hasWs && {(toLowerANSI worldName) in ["sefrouramal", "takistan"]}) then {
     "U_lxWS_Tak_03_B",
     "U_lxWS_Tak_03_C"
   ];
+};
+
+if (_hasRF) then {
+    private _RFleatherJackets = [
+        "U_C_PilotJacket_black_RF",
+        "U_C_PilotJacket_brown_RF",
+        "U_C_PilotJacket_lbrown_RF",
+        "U_C_PilotJacket_open_black_RF",
+        "U_C_PilotJacket_open_brown_RF",
+        "U_C_PilotJacket_open_lbrown_RF"
+    ];
+    _dlcUniforms append _RFleatherJackets;
+    if (A3A_climate in ["temperate","arctic"]) then {
+        _civUniforms append _RFleatherJackets;
+    };
 };
 
 ["uniforms", _civUniforms + _pressUniforms + _workerUniforms + _dlcUniforms] call _fnc_saveToTemplate;
