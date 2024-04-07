@@ -107,23 +107,29 @@ while {time < _bleedOut && _unit getVariable ["incapacitated",false] && alive _u
 
 		_consciousUnits = [] call SCRT_fnc_ai_getNearFriendlyUnits;
 
+		private _selfRevive = ["", localize "STR_antistasi_actions_unconscious_action_prompt_selfrevive"] select ("A3AP_SelfReviveKit" in (backpackItems player));
+
+		if (A3A_selfReviveMethods) then {_selfRevive = localize "STR_antistasi_actions_unconscious_action_prompt_withstand"};
+		// Self revive with Q will still work, it just won't say to use it. Instead it will say to use H (If A3A_selfReviveMethods param is set to "Withstand")
+
 		_textX = format [
 			localize "STR_antistasi_actions_unconscious_action_prompt0_base", 
 			["", localize "STR_antistasi_actions_unconscious_action_prompt_possess"] select (count _consciousUnits > 0),
-			["", localize "STR_antistasi_actions_unconscious_action_prompt_selfrevive"] select ("A3AP_SelfReviveKit" in (backpackItems player))
+			_selfRevive
 		];
+	
 		if !(isNull _helper) then {
 			if (_helper distance _unit < 3) then {
 				_textX = format [ localize "STR_antistasi_actions_unconscious_action_prompt1_base", 
 					name _helper,
 					["", localize "STR_antistasi_actions_unconscious_action_prompt_possess"] select (count _consciousUnits > 0),
-					["", localize "STR_antistasi_actions_unconscious_action_prompt_selfrevive"] select ("A3AP_SelfReviveKit" in (backpackItems player))
+					_selfRevive
 				];
 			} else {
 				_textX = format [localize "STR_antistasi_actions_unconscious_action_prompt2_base", 
 					name _helper, 
 					["", localize "STR_antistasi_actions_unconscious_action_prompt_possess"] select (count _consciousUnits > 0),
-					["", localize "STR_antistasi_actions_unconscious_action_prompt_selfrevive"] select ("A3AP_SelfReviveKit" in (backpackItems player))
+					_selfRevive
 				];
 			};
 		};

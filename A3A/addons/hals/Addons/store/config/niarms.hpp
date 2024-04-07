@@ -147,7 +147,7 @@
 		class opticsNIArms
 		{
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_niarms", localize "STR_A3AU_sights"]);
-			picture = "";
+			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 
 			class hlc_optic_zf95base {
 				price = 1500;

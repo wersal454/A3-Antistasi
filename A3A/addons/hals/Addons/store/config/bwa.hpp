@@ -180,7 +180,7 @@
 
 		class opticsbwa{
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_bwa", localize "STR_A3AU_sights"]);
-			picture = "";
+			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 			
 			ITEM(bwa3_optic_pmii_shortdotcc, 250, MAGAZINE_STOCK);
 			ITEM(bwa3_optic_pmii_dmr, 250, MAGAZINE_STOCK);

@@ -502,6 +502,12 @@
                 <Russian>Арма 3</Russian>
                 <Korean>아르마 3</Korean>
             </Key>
+            <Key ID="STR_A3AU_RF">
+                <Original>Reaction Force</Original>
+                <English>Reaction Force</English>
+                <Russian>Reaction Force</Russian>
+                <Korean>Reaction Force</Korean>
+            </Key>
             <Key ID="STR_A3AU_3cbbaf">
                 <Original>3CBBAF</Original>
                 <English>3CBBAF</English>

@@ -4,7 +4,7 @@
 
 #include "..\..\..\script_component.hpp"
 
-["name", "Turkish Land Forces"] call _fnc_saveToTemplate; 						
+["name", "Turkish Forces"] call _fnc_saveToTemplate; 						
 ["spawnMarkerName", "Turkish Support Corridor"] call _fnc_saveToTemplate; 			
 
 ["flag", "Flag_NATO_F"] call _fnc_saveToTemplate; 						
@@ -140,6 +140,9 @@ _loadoutData set ["traitorHats", ["tmt_Booniehat_sof_HS"]];
 _loadoutData set ["officerUniforms", ["tmt_specialforces_combat_sfshell_uniform"]];
 _loadoutData set ["officerVests", ["CUP_V_B_RRV_Officer_CB", "TACTEC_medium"]];
 _loadoutData set ["officerHats", ["TMT_Beret_Maroon_officer"]];
+
+_loadoutData set ["cloakUniforms", []];
+_loadoutData set ["cloakVests", []];
 
 _loadoutData set ["uniforms", []];
 _loadoutData set ["slUniforms", []];
@@ -425,31 +428,42 @@ _militiaLoadoutData set ["helmets", ["tmt_8ABMK_helmet", "tmt_m88helmet_green", 
 _militiaLoadoutData set ["sniHats", ["tmt_garanti_helmet_cut_patch_peltor_sof", "tmt_Booniehat_kkk_peltor"]];
 
 _militiaLoadoutData set ["rifles", [
-    ["TMT_MPT76_Handle_2", "", "", "", ["TMT_20Rnd_762x51_B_mpt76"], [], ""],
-    ["TMT_MPT76", "", "", "", ["TMT_20Rnd_762x51_B_mpt76"], [], ""],
-    ["TMT_MPT76", "", "", "CUP_optic_Elcan", ["TMT_20Rnd_762x51_B_mpt76"], [], ""]
+    ["TMT_SAR308", "", "", "", ["TMT_30Rnd_PMAG_AK_7x62_Mag"], [], ""],
+	["TMT_SAR308_Grip", "", "", "", ["TMT_30Rnd_PMAG_AK_7x62_Mag"], [], ""],
+    ["TMT_HK33_RIFLE", "", "", "", ["TMT_30Rnd_HK33_Mag"], [], ""],
+	["TMT_HK33_RIFLE_STOCK", "", "", "", ["TMT_30Rnd_HK33_Mag"], [], ""],
+	["CUP_arifle_M16A4_Base", "", "", "", ["CUP_30Rnd_556x45_Stanag"], [], ""]
 ]];
 _militiaLoadoutData set ["carbines", [
-    ["TMT_MPT76", "", "", "", ["TMT_20Rnd_762x51_B_mpt76"], [], ""],
-    ["TMT_MPT76", "", "", "", ["TMT_20Rnd_762x51_B_mpt76"], [], ""],
-    ["TMT_MPT55_grip", "", "", "CUP_optic_Eotech553_Black", ["TMT_30Rnd_Lancer_Mag"], [], ""],
-    ["TMT_HK416_11_RAL", "", "", "", ["TMT_30Rnd_Lancer_Mag"], [], ""]
+    ["CUP_arifle_AUG_A1", "", "", "", ["CUP_30Rnd_556x45_AUG"], [], ""],
+    ["TMT_HK33_RIFLE", "", "", "", ["TMT_30Rnd_HK33_Mag"], [], ""],
+	["TMT_HK33_RIFLE_STOCK", "", "", "", ["TMT_30Rnd_HK33_Mag"], [], ""],
+    ["TMT_M4A1_V2", "", "", "", ["TMT_30Rnd_STANAG_Mag"], [], ""],
+	["TMT_M4A1", "", "", "", ["TMT_30Rnd_STANAG_Mag"], [], ""]
 ]];
 _militiaLoadoutData set ["grenadeLaunchers", [
-    ["TMT_MPT76_AK40", "", "", "", ["TMT_20Rnd_762x51_B_mpt76"], ["1Rnd_HE_Grenade_shell", "UGL_FlareGreen_F", "1Rnd_Smoke_Grenade_shell"], ""]
+    ["CUP_arifle_M16A4_GL", "", "", "", ["CUP_30Rnd_556x45_Stanag"], ["CUP_1Rnd_HE_M203","CUP_1Rnd_HE_M203","CUP_1Rnd_HE_M203","CUP_FlareWhite_M203","CUP_1Rnd_Smoke_M203"], ""],
+	["TMT_M4A1_M203", "", "", "", ["TMT_30Rnd_STANAG_Mag"], ["CUP_1Rnd_HE_M203","CUP_1Rnd_HE_M203","CUP_1Rnd_HE_M203","CUP_FlareWhite_M203","CUP_1Rnd_Smoke_M203"], ""]
 ]];
 _militiaLoadoutData set ["SMGs", [
     ["TMT_SAR109_Standart", "", "", "", ["TMT_30Rnd_9x19_Mag_SAR109"], [], ""],
     ["CUP_smg_MP5A5_Rail_AFG", "", "", "", ["CUP_30Rnd_9x19_MP5"], [], ""]
 ]];
 _militiaLoadoutData set ["machineGuns", [
-    ["TMT_PKM", "", "", "", ["150Rnd_762x54_Box"], [], ""]
+    ["TMT_PKM", "", "", "", ["150Rnd_762x54_Box"], [], ""],
+	["CUP_lmg_MG3", "", "", "", ["CUP_120Rnd_TE4_LRT4_White_Tracer_762x51_Belt_M"], [], ""],
+	["TMT_PKM_Grip", "", "", "", ["150Rnd_762x54_Box"], [], ""]
 ]];
 _militiaLoadoutData set ["marksmanRifles", [
-    ["TMT_KNT76_BLACK", "", "", "TMT_3EOS_KESKIN_B", ["TMT_20Rnd_762x51_B_mpt76"], [], "TMT_Bipod_blk"]
+    ["TMT_G3A3", "", "", "", ["TMT_20Rnd_762x51_B_G3"], [], ""],
+	["TMT_G3A4", "", "", "", ["TMT_20Rnd_762x51_B_G3"], [], ""],
+	["CUP_srifle_M14_DMR", "", "", "", ["CUP_20Rnd_762x51_DMR"], [], ""],
+	["TMT_G3A3_RAIL", "", "", "CUP_optic_LeupoldM3LR", ["TMT_20Rnd_762x51_B_G3"], [], ""],
+	["TMT_G3A4_RAIL", "", "", "CUP_optic_LeupoldM3LR", ["TMT_20Rnd_762x51_B_G3"], [], ""]
 ]];
 _militiaLoadoutData set ["sidearms", [
     ["CUP_hgun_Glock17_blk", "", "", "", ["CUP_17Rnd_9x19_glock17"], [], ""],
+	["CUP_hgun_Colt1911", "", "", "", ["CUP_7Rnd_45ACP_1911"], [], ""],
     ["TMT_Zigana_PX9", "", "", "", ["TMT_16Rnd_9x19_Mag"], [], ""]
 ]];
 
@@ -955,6 +969,57 @@ private _officerTemplate = {
     ["radios"] call _fnc_addRadio;
 };
 
+private _patrolSniperTemplate = {
+    ["sniHats"] call _fnc_setHelmet;
+    [selectRandomWeighted [[], 2, "glasses", 0.75, "goggles", 0.5]] call _fnc_setFacewear;
+    [["cloakVests","vests"] call _fnc_fallback] call _fnc_setVest;
+    [["cloakUniforms","uniforms"] call _fnc_fallback] call _fnc_setUniform;
+
+    [["sniperRifles", "marksmanRifles"] call _fnc_fallback] call _fnc_setPrimary;
+    ["primary", 6] call _fnc_addMagazines;
+
+    ["sidearms"] call _fnc_setHandgun;
+    ["handgun", 2] call _fnc_addMagazines;
+
+    ["items_medical_standard"] call _fnc_addItemSet;
+    ["items_sniper_extras"] call _fnc_addItemSet;
+    ["items_miscEssentials"] call _fnc_addItemSet;
+    ["antiInfantryGrenades", 1] call _fnc_addItem;
+    ["smokeGrenades", 2] call _fnc_addItem;
+
+    ["maps"] call _fnc_addMap;
+    ["watches"] call _fnc_addWatch;
+    ["compasses"] call _fnc_addCompass;
+    ["radios"] call _fnc_addRadio;
+    ["NVGs"] call _fnc_addNVGs;
+};
+
+private _patrolSpotterTemplate = {
+    ["sniHats"] call _fnc_setHelmet;
+    [selectRandomWeighted [[], 2, "glasses", 0.75, "goggles", 0.5]] call _fnc_setFacewear;
+    [["cloakVests","vests"] call _fnc_fallback] call _fnc_setVest;
+    [["cloakUniforms","uniforms"] call _fnc_fallback] call _fnc_setUniform;
+
+    [selectRandom ["rifles", "carbines", "marksmanRifles"]] call _fnc_setPrimary;
+    ["primary", 6] call _fnc_addMagazines;
+
+    ["sidearms"] call _fnc_setHandgun;
+    ["handgun", 2] call _fnc_addMagazines;
+
+    ["items_medical_standard"] call _fnc_addItemSet;
+    ["items_sniper_extras"] call _fnc_addItemSet;
+    ["items_miscEssentials"] call _fnc_addItemSet;
+    ["antiInfantryGrenades", 1] call _fnc_addItem;
+    ["smokeGrenades", 2] call _fnc_addItem;
+
+    ["maps"] call _fnc_addMap;
+    ["watches"] call _fnc_addWatch;
+    ["compasses"] call _fnc_addCompass;
+    ["radios"] call _fnc_addRadio;
+    ["rangefinders"] call _fnc_addBinoculars;
+    ["NVGs"] call _fnc_addNVGs;
+};
+
 ////////////////////////////////////////////////////////////////////////////////////////
 //  You shouldn't touch below this line unless you really really know what you're doing.
 //  Things below here can and will break the gamemode if improperly changed.
@@ -1008,7 +1073,9 @@ private _unitTypes = [
 	["AA", _aaTemplate, [], [_prefix]],
 	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
 	["Marksman", _marksmanTemplate, [], [_prefix]],
-	["Sniper", _sniperTemplate, [], [_prefix]]
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    	["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    	["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _militaryLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
@@ -1041,7 +1108,9 @@ private _unitTypes = [
 	["AA", _aaTemplate, [], [_prefix]],
 	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
 	["Marksman", _marksmanTemplate, [], [_prefix]],
-	["Sniper", _sniperTemplate, [], [_prefix]]
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    	["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    	["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _militiaLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
@@ -1063,7 +1132,9 @@ private _unitTypes = [
 	["AA", _aaTemplate, [], [_prefix]],
 	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
 	["Marksman", _marksmanTemplate, [], [_prefix]],
-	["Sniper", _sniperTemplate, [], [_prefix]]
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    	["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    	["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _eliteLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;

@@ -31,7 +31,7 @@ if (!([player] call A3A_fnc_hasRadio)) exitWith {
     ] spawn SCRT_fnc_ui_showMessage;
 };
 
-if (_mineQuantity < 5) exitWith {
+if (_mineQuantity < 5 && {_mineQuantity isNotEqualTo -1}) exitWith {
     [
         localize "STR_notifiers_fail_type",
         localize "STR_notifiers_minefield_header",  

@@ -8,18 +8,18 @@ class EditorData
 	toggles=1025;
 	class ItemIDProvider
 	{
-		nextID=1394;
+		nextID=1396;
 	};
 	class LayerIndexProvider
 	{
-		nextID=270;
+		nextID=289;
 	};
 	class Camera
 	{
-		pos[]={18352.666,174.43069,16674.818};
-		dir[]={-0.22683175,-0.558846,0.79764605};
-		up[]={-0.15286188,0.8292715,0.53753364};
-		aside[]={0.9618637,2.1827873e-008,0.27353138};
+		pos[]={17731.32,176.79892,15494.882};
+		dir[]={0.19410019,-0.59586841,0.77927476};
+		up[]={0.14401759,0.80308098,0.57820296};
+		aside[]={0.97035354,-2.514571e-008,-0.24169382};
 	};
 };
 binarizationWanted=0;
@@ -200,7 +200,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=337;
+		items=339;
 		class Item0
 		{
 			dataType="Layer";
@@ -2849,7 +2849,6 @@ class Mission
 					dataType="Marker";
 					position[]={7455.9814,2.7037606e+012,16905.93};
 					name="respawn_guerrila";
-					text=$STR_headquarters;
 					type="hd_flag";
 					colorName="ColorGUER";
 					id=36;
@@ -4612,7 +4611,7 @@ class Mission
 							colorName="ColorGreen";
 							a=5;
 							b=5;
-							angle=228.90968;
+							angle=228.90967;
 							id=847;
 							atlOffset=246.14381;
 						};
@@ -5099,7 +5098,7 @@ class Mission
 							colorName="ColorGreen";
 							a=94.710114;
 							b=65.818459;
-							angle=223.89294;
+							angle=223.89293;
 							id=1378;
 							atlOffset=0.46084595;
 						};
@@ -5141,7 +5140,7 @@ class Mission
 							colorName="ColorGreen";
 							a=5;
 							b=5;
-							angle=352.93393;
+							angle=352.9339;
 							id=1390;
 							atlOffset=246.14438;
 						};
@@ -5751,7 +5750,7 @@ class Mission
 							colorName="ColorBrown";
 							a=80.489746;
 							b=55.738037;
-							angle=0.88996887;
+							angle=0.88996881;
 							id=189;
 							atlOffset=0.0031738281;
 						};
@@ -5778,7 +5777,7 @@ class Mission
 							colorName="ColorBrown";
 							a=80.489746;
 							b=46.626835;
-							angle=0.88996881;
+							angle=0.88996875;
 							id=208;
 							atlOffset=0.055903435;
 						};
@@ -5806,7 +5805,7 @@ class Mission
 							colorName="ColorBrown";
 							a=87.915451;
 							b=76.988754;
-							angle=0.88996881;
+							angle=0.88996875;
 							id=216;
 							atlOffset=0.30142212;
 						};
@@ -12776,7 +12775,7 @@ class Mission
 							type="rectangle";
 							a=99.020477;
 							b=118.70475;
-							angle=222.30339;
+							angle=222.30338;
 							id=1309;
 						};
 						class Item22
@@ -13801,6 +13800,90 @@ class Mission
 			};
 			id=1391;
 			type="Land_i_Barracks_V2_F";
+		};
+		class Item337
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14048.957,71.389999,15732.367};
+			};
+			areaSize[]={5,0,2.7587891};
+			flags=1;
+			id=1394;
+			type="ModuleHideTerrainObjects_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=15;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="#hideLocally";
+					expression="_this setVariable [""#hideLocally"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item338
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={17740.393,144.5,15530.718};
+			};
+			areaSize[]={2.9228516,0,5};
+			flags=1;
+			id=1395;
+			type="ModuleHideTerrainObjects_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=15;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="#hideLocally";
+					expression="_this setVariable [""#hideLocally"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
 		};
 	};
 	class Connections

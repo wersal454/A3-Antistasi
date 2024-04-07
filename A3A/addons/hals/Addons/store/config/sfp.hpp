@@ -156,7 +156,7 @@
 
 		class opticsswe{
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_sfp", localize "STR_A3AU_sights"]);
-			picture = "";
+			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 			
 			ITEM(sfp_optic_aimpoint, 150, MAGAZINE_STOCK);
 			ITEM(sfp_optic_3x_aimpoint, 250, MAGAZINE_STOCK);

@@ -338,4 +338,6 @@ if(A3A_hasACE) then
     }] call CBA_fnc_addEventHandler;
 };
 
+call A3U_fnc_initZones;
+
 Info("initServer completed");

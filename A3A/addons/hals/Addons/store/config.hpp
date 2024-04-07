@@ -47,6 +47,7 @@ class cfgHALsStore
 		#include "config\niarms.hpp"
 		#include "config\optre.hpp"
 		#include "config\pla.hpp"
+		#include "config\rf.hpp"
 		#include "config\rhs.hpp"
 		#include "config\scion.hpp"
 		#include "config\sfp.hpp"
@@ -79,6 +80,23 @@ class cfgHALsStore
 				"pointersVanilla", 
 				"navigationVanilla", 
 				"miscVanilla"
+			};
+		};
+
+		class rf 
+		{
+			displayName = $STR_ARMS_DEALER_STORE;
+			categories[] = {
+				"riflesRF", 
+				"sniperRiflesRF", 
+				"smgRF", 
+				"handgunsRF", 
+				"magazinesRF", 
+				"navigationRF", 
+				"pointersRF", 
+				"muzzlesRF", 
+				"opticsRF", 
+				"miscRF"
 			};
 		};
 

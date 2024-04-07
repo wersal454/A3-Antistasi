@@ -102,7 +102,7 @@
 
 		class opticsemp{
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_empire", localize "STR_A3AU_sights"]);
-			picture = "";
+			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 
 			ITEM(jmsllte_dh17_bl_scope, 60, MAGAZINE_STOCK);
 			ITEM(jmsllte_a280_bl_scope, 80, MAGAZINE_STOCK);

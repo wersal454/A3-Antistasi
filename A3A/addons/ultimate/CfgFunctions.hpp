@@ -19,6 +19,7 @@ class CfgFunctions
             file = QPATHTOFOLDER(functions\init);
             class checkMods {};
             class init {};
+            class initZones {};
             class popup {};
         };
         class patches
@@ -39,10 +40,19 @@ class CfgFunctions
             file = QPATHTOFOLDER(functions\Utility);
             class exportCrate {};
             class exportPylons {};
+            class exportTowns {};
             class hasAddon {};
             class log {};
             class logisticsGrabSeats {};
             class weightTest {};
+        };
+        class zones
+        {
+            file = QPATHTOFOLDER(functions\zones);
+            class revealRandomZones {};
+            class revealZone {};
+            class revealZones {};
+            class revealZonesDistance {};
         };
     };
 };

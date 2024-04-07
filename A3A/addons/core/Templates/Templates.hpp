@@ -17,6 +17,14 @@ class Templates
         equipFlags[] = {"vanilla"};
     };
 
+    class WS_Civ : WS_Base
+    {
+        side = "Civ";
+        flagTexture = "\lxws\data_f_lxws\img\flags\flag_Argana_CO.paa";
+        name = "Western Sahara";
+        file = "WS_Civ";
+    };
+
     class WS_Tura : WS_Base
     {
         side = "Reb";
@@ -200,7 +208,7 @@ class Templates
         flagTexture = "\rhsgref\addons\rhsgref_main\data\Flags\flag_cdf_co.paa";
         name = "RHS CDF";
         file = "RHS_AI_CDF";
-        maps[] = {"cup_chernarus_A3"};
+        maps[] = {"cup_chernarus_A3", "brf_sumava"};
         climate[] = {"temperate", "arctic"};
         description = $STR_A3AP_setupFactionsTab_cdf;
     };
@@ -264,6 +272,14 @@ class Templates
         logo = "rhsgref\addons\rhsgref_main\data\rhs_logo_ca.paa";
         name = "RHS";
         file = "RHS_Civ";
+    };
+	
+    class RHS_SAF : RHS_Base
+    {
+	    side = "Inv";
+	    flagTexture = "rhssaf\addons\rhssaf_main\data\flags\flag_serbia_co.paa";
+        name = "RHS SAF";
+        file = "RHS_AI_SAF";
     };
 
 
@@ -392,7 +408,7 @@ class Templates
         file = "3CBF_AI_CDF";
         description = $STR_A3AP_setupFactionsTab_cdf;
         climate[] = {"temperate"};
-        maps[] = {"cup_chernarus_A3", "chernarus", "chernarus_summer", "Chernarus_Winter"};
+        maps[] = {"cup_chernarus_A3", "brf_sumava", "chernarus", "chernarus_summer", "Chernarus_Winter"};
     };
 
     class 3CBF_HIDF : 3CBF_Base

@@ -5,6 +5,11 @@ class traderMods
         addons[] = {};
         prefix = "";
     };
+    class aegis : base
+    {
+        addons[] = {"Weapons_1_F_lxWS","A3_Aegis_Armor_F_Aegis_APC_Tracked_02", "A3_Atlas_Armor_F_Atlas_APC_Tracked_02", "A3_Opf_Armor_F_Opf_APC_Tracked_02"};
+        prefix = "aegis";
+    };
     class empire : base
     {
         addons[] = {"JMSLLTE_empire_mod"};
@@ -54,6 +59,11 @@ class traderMods
     {
         addons[] = {"mas_chi_army"};
         prefix = "plastock";
+    };
+    class rf : base
+    {
+        addons[] = {"RF_Weapons"};
+        prefix = "rf";
     };
     class BWA3 : base
     {

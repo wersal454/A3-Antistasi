@@ -1,8 +1,14 @@
 private _hasWs = "ws" in A3A_enabledDLC;
-private _hasLawsOfWar = "orange" in A3A_enabledDLC;
-private _hasApex = "expansion" in A3A_enabledDLC;
-private _hasContact = "enoch" in A3A_enabledDLC;
 private _hasMarksman = "mark" in A3A_enabledDLC;
+private _hasLawsOfWar = "orange" in A3A_enabledDLC;
+private _hasTanks = "tank" in A3A_enabledDLC;
+private _hasApex = "expansion" in A3A_enabledDLC;
+private _hasHelicopters = "heli" in A3A_enabledDLC;
+private _hasContact = "enoch" in A3A_enabledDLC;
+private _hasJets = "jets" in A3A_enabledDLC;
+private _hasArtOfWar = "aow" in A3A_enabledDLC;
+private _hasKart = "kart" in A3A_enabledDLC;
+private _hasRF = "rf" in A3A_enabledDLC;
 
 ////////////////////////////
 //   Rivals Information   //
@@ -43,33 +49,48 @@ private _hasMarksman = "mark" in A3A_enabledDLC;
 
 private _lightArmedVehicles = [];
 private _lightUnarmedVehicles = [];
+private _apc = [];
+private _tanks = [];
+private _helis = ["B_Heli_Light_01_F","I_Heli_light_03_unarmed_F"];
+private _uav = [];
+private _trucks = ["O_G_Van_01_transport_F"];
 
 if (_hasApex) then {
-	_lightArmedVehicles append ["I_C_Offroad_02_AT_F", "I_C_Offroad_02_LMG_F"];
-	_lightUnarmedVehicles pushBack "I_C_Offroad_02_unarmed_F";
+	_lightArmedVehicles append ["I_C_Offroad_02_AT_F", "I_C_Offroad_02_LMG_F", "O_G_Offroad_01_AT_F", "O_G_Offroad_01_armed_F"];
+	_lightUnarmedVehicles append ["I_C_Offroad_02_unarmed_F","B_G_Offroad_01_F"];
 } else {
 	_lightArmedVehicles append ["O_G_Offroad_01_AT_F", "O_G_Offroad_01_armed_F"];
-	_lightUnarmedVehicles pushBack "I_C_Offroad_02_unarmed_F";
+	_lightUnarmedVehicles pushBack "I_G_Offroad_01_F";
 };
 
 if (_hasWs) then {
 	_lightArmedVehicles append ["O_G_Offroad_01_armor_AT_lxWS", "O_G_Offroad_01_armor_armed_lxWS"];
 	_lightUnarmedVehicles pushBack "O_G_Offroad_01_armor_base_lxWS";
+	_apc append ["O_SFIA_APC_Wheeled_02_hmg_lxWS","O_SFIA_APC_Wheeled_02_unarmed_lxWS"];
+    _uav append ["O_UAV_02_lxWS","O_Tura_UAV_02_IED_lxWS"];
 };
 
-private _trucks = ["O_G_Van_01_transport_F"];
-
 if (_hasLawsOfWar) then {
-	_trucks pushBack "O_G_Van_02_transport_F";
+	_trucks append ["O_G_Van_02_transport_F", "O_G_Van_02_vehicle_F"];
+    _uav append ["O_UAV_06_F","O_UAV_06_medical_F","C_IDAP_UAV_06_antimine_F"];
+};
+
+if (_hasTanks) then {
+	_tanks pushBack "I_LT_01_cannon_F";
+};
+
+if (_hasRF) then {
+	_lightArmedVehicles append ["a3a_black_Pickup_mmg_rf", "a3u_black_Pickup_mmg_frame_rf", "a3u_black_Pickup_mmg_alt_rf"];
+	_lightUnarmedVehicles pushBack "a3u_black_Pickup_rival_rf";
 };
 
 ["vehiclesRivalsLightArmed", _lightArmedVehicles] call _fnc_saveToTemplate;
 ["vehiclesRivalsTrucks", _trucks] call _fnc_saveToTemplate;
 ["vehiclesRivalsCars", _lightUnarmedVehicles] call _fnc_saveToTemplate;
-["vehiclesRivalsAPCs", []] call _fnc_saveToTemplate;
-["vehiclesRivalsTanks", []] call _fnc_saveToTemplate;
-["vehiclesRivalsHelis", []] call _fnc_saveToTemplate;			
-["vehiclesRivalsUavs", ["O_UAV_01_F"]] call _fnc_saveToTemplate;			
+["vehiclesRivalsAPCs", _apc] call _fnc_saveToTemplate;
+["vehiclesRivalsTanks", _tanks] call _fnc_saveToTemplate;
+["vehiclesRivalsHelis", _helis] call _fnc_saveToTemplate;			
+["vehiclesRivalsUavs", _uav] call _fnc_saveToTemplate;			
 
 ["staticLowWeapons", ["O_G_HMG_02_F"]] call _fnc_saveToTemplate;
 ["staticAT", ["O_static_AT_F"]] call _fnc_saveToTemplate;
@@ -82,6 +103,18 @@ if (_hasLawsOfWar) then {
 
 ["minefieldAT", ["ATMine"]] call _fnc_saveToTemplate;
 ["minefieldAPERS", ["APERSMine", "APERSBoundingMine"]] call _fnc_saveToTemplate;
+
+["animations", [
+    ["O_SFIA_APC_Wheeled_02_hmg_lxWS", ["mg_hide_armor_front",0.3,"mg_hide_armor_rear",0.3,"mg_Hide_Rail",0.3,"showBags",0.3,"showCanisters",0.3,"showTools",0.3,"showCamonetHull",0.3,"showSLATHull",0.3]],
+    ["O_SFIA_APC_Wheeled_02_unarmed_lxWS", ["showBags",0.3,"showCanisters",0.3,"showTools",0.3,"showCamonetHull",0.3,"showSLATHull",0.3]],
+    ["I_LT_01_cannon_F", ["showTools",0.3,"showCamonetHull",0.3,"showBags",0.3,"showSLATHull",0.3]]
+]] call _fnc_saveToTemplate;
+
+["variants", [
+    ["I_LT_01_cannon_F", ["Indep_Olive",1]],
+    ["I_Heli_Transport_02_F", ["Dahoman", 1]],
+    ["O_Heli_Light_02_unarmed_F", ["Blue", 1]]
+]] call _fnc_saveToTemplate;
 
 //////////////////////////
 //       Loadouts       //
@@ -124,6 +157,13 @@ private _rpgs = [
 ];
 
 private _pistols = ["hgun_Rook40_F"];
+
+if (_hasRF) then {
+	_marksmanRifles pushBack ["srifle_DMR_01_black_RF", "", "acc_flashlight", "optic_VRCO_RF", ["10Rnd_762x54_Mag"], [], ""];
+	_enforcerRifles pushBack ["arifle_ash12_LR_blk_RF", "", "", "optic_VRCO_RF", ["20Rnd_127x55_Mag_RF"], [], ""];
+	_gls pushBack ["arifle_ash12_GL_blk_RF", "", "acc_flashlight", "optic_VRCO_khk_RF", ["10Rnd_127x55_Mag_RF", "20Rnd_127x55_Mag_RF"], ["1Rnd_HE_Grenade_shell", "1Rnd_SmokeGreen_Grenade_shell", "UGL_FlareGreen_F"], ""];
+	_pistols = ["hgun_Glock19_RF", "hgun_Glock19_auto_RF", "hgun_DEagle_RF"];
+};
 
 if (_hasContact) then {
 	_carbines pushBack ["arifle_AK12U_F", "", "", "", ["30Rnd_762x39_Mag_Green_F", "30Rnd_762x39_Mag_Green_F", "30Rnd_762x39_Mag_Tracer_Green_F"], [], ""];
@@ -235,7 +275,44 @@ _loadoutData set ["NVGs", ["NVGoggles_INDEP"]];
 _loadoutData set ["binoculars", ["Binocular"]];
 _loadoutData set ["Rangefinder", ["Rangefinder"]];
 
+/////Vests
+private _vests = ["V_Chestrig_oli", "V_TacChestrig_oli_F", "V_TacVest_oli", "V_HarnessOGL_brn", "V_HarnessO_brn"];
 
+if (_hasApex) then {
+	_vests append ["V_TacChestrig_cbr_F", "V_TacChestrig_grn_F", "V_TacChestrig_oli_F"];
+};
+
+if (_hasWs) then {
+	_vests pushback "V_lxWS_HarnessO_oli";
+};
+
+if (_hasContact) then {
+	_vests append ["V_SmershVest_01_F", "V_SmershVest_01_radio_F"];
+};
+
+if (_hasLawsOfWar) then {
+	_vests append ["V_Pocketed_black_F", "V_Pocketed_coyote_F", "V_Pocketed_olive_F"];
+};
+
+private _heavyVests = ["V_TacVestIR_blk", "V_Press_F", "V_PlateCarrierIAGL_oli", "V_I_G_resistanceLeader_F", "V_TacVest_blk_POLICE"];
+
+if (_hasApex) then {
+	_heavyVests append ["V_TacVest_gen_F"];
+};
+
+if (_hasWs) then {
+	_heavyVests append ["V_lxWS_TacVestIR_oli"];
+};
+
+if (_hasContact) then {
+	_heavyVests append ["V_CarrierRigKBT_01_EAF_F", "V_CarrierRigKBT_01_Olive_F"];
+};
+
+if (_hasJets) then {
+	_heavyVests pushBack "V_DeckCrew_brown_F";
+};
+
+/////Uniforms
 _loadoutData set ["uniforms", [
 	"U_I_C_Soldier_Para_4_F",
 	"U_I_C_Soldier_Para_2_F",
@@ -243,28 +320,44 @@ _loadoutData set ["uniforms", [
 	"U_I_C_Soldier_Para_1_F",
 	"U_I_C_Soldier_Camo_F"
 ]];
-_loadoutData set ["heavyUniforms", []];
+_loadoutData set ["heavyUniforms", []]; ///don't know why it's here but could be useful in the future
 
-private _helmets = [];
+/////Helmets
+private _helmets = ["H_HelmetB"];
 
 if (_hasWs) then {
-	_helmets append ["lxWS_H_bmask_camo02", "lxWS_H_PASGT_facewear_olive_F"];
+	_helmets append ["lxWS_H_Headset", "lxWS_H_ssh40_black", "lxWS_H_ssh40_green", "lxWS_H_ssh40_sand","lxWS_H_bmask_base", "H_turban_02_mask_black_lxws", "lxWS_H_bmask_camo01", "H_bmask_snake_lxws","H_turban_02_mask_snake_lxws", "lxWS_H_bmask_white", "lxWS_H_bmask_camo02", "lxWS_H_bmask_yellow", "lxWS_H_PASGT_goggles_black_F", "lxWS_H_PASGT_goggles_olive_F", "lxWS_H_HelmetCrew_I"];
+};
+
+if (_hasContact) then {
+	_helmets append ["H_Booniehat_mgrn", "H_Booniehat_taiga", "H_Booniehat_wdl", "H_Booniehat_eaf", "H_MilCap_grn", "H_MilCap_taiga", "H_MilCap_wdl", "H_MilCap_eaf"];
 };
 
 if (_hasLawsOfWar) then {
-	_helmets pushBack "H_PASGT_basic_olive_F";
+	_helmets append ["H_PASGT_basic_black_F", "H_PASGT_basic_blue_F", "H_PASGT_basic_olive_F", "H_PASGT_neckprot_blue_press_F", "H_PASGT_basic_blue_press_F","H_HeadBandage_clean_F", "H_HeadBandage_stained_F", "H_HeadBandage_bloody_F"];
 };
 
-if (_helmets isEqualTo []) then {
-	_helmets = ["H_HelmetB"];
+private _crewhelmets = ["H_Tank_black_F"];
+
+if (_hasWs) then {
+	_crewhelmets append ["lxWS_H_Tank_tan_F", "lxWS_H_HelmetCrew_I"];
 };
 
+if (_hasContact) then {
+	_crewhelmets append ["H_Tank_eaf_F", "H_HelmetCrew_I_E", "H_Booniehat_wdl", "H_Booniehat_eaf"];
+};
+
+if (_hasLawsOfWar) then {
+	_crewhelmets pushBack "H_Construction_headset_black_F";
+};
+
+/////
 _loadoutData set ["offuniforms", ["U_I_C_Soldier_Camo_F"]];
-_loadoutData set ["vests", ["V_Chestrig_oli", "V_TacChestrig_oli_F", "V_TacVest_oli"]];
-_loadoutData set ["heavyVests", ["V_TacVestIR_blk"]];
+_loadoutData set ["vests", _vests];
+_loadoutData set ["heavyVests", _heavyVests];
 _loadoutData set ["backpacks", ["B_TacticalPack_oli", "B_Carryall_oli"]];
 _loadoutData set ["helmets", _helmets];
-_loadoutData set ["crewHelmets", ["H_Tank_black_F"]];
+_loadoutData set ["crewHelmets", _crewhelmets];
 
 //Item *set* definitions. These are added in their entirety to unit loadouts. No randomisation is applied.
 _loadoutData set ["items_medical_basic", ["BASIC"] call A3A_fnc_itemset_medicalSupplies]; //this line defines the basic medical loadout for vanilla
@@ -304,12 +397,12 @@ _loadoutData set ["items_unarmed_extras", []];
 //////////////////////////
 
 private _crewLoadoutData = _loadoutData call _fnc_copyLoadoutData;
-_crewLoadoutData set ["vests", ["V_BandollierB_oli"]];
-_crewLoadoutData set ["helmets", ["H_Tank_black_F"]];
+_crewLoadoutData set ["vests", _vests];
+_crewLoadoutData set ["crewHelmets", _crewhelmets];
 
 private _pilotLoadoutData = _loadoutData call _fnc_copyLoadoutData;
-_pilotLoadoutData set ["vests", ["V_BandollierB_oli"]];
-_pilotLoadoutData set ["helmets", ["H_PilotHelmetHeli_O"]];
+_pilotLoadoutData set ["vests", _vests];
+_pilotLoadoutData set ["helmets", ["H_PilotHelmetHeli_O", "H_CrewHelmetHeli_O", "H_PilotHelmetHeli_B", "H_CrewHelmetHeli_B"]];
 
 
 // ##################### DO NOT TOUCH ANYTHING BELOW THIS LINE #####################

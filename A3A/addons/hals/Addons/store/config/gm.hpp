@@ -231,7 +231,7 @@
 		class opticsgm
 		{
 			displayName = "GM Optics";
-			picture = "";
+			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 
 			class gm_pso1_gry {
 				price = 500;

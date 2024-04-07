@@ -338,7 +338,7 @@
 		class optics3cbfcw 
 		{
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_3cbfcw", localize "STR_A3AU_sights"]);
-			picture = "";
+			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 
 			class uk3cb_optic_sro {
 				price = 500;

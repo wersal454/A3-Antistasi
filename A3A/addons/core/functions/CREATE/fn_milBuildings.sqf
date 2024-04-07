@@ -305,7 +305,7 @@ for "_i" from 0 to (count _buildings) - 1 do
             _static setPos _pos; 
         };
         if (_typeB isEqualTo "land_gm_euro_misc_viewplatform_01") exitWith {
-            private _type = selectRandom (_faction get "staticAAs");
+            private _type = selectRandom (_faction get "staticAA");
             private _dir = (getDir _building) - 180;
             private _zpos = AGLToASL (position _building);
             private _zOffset = [0, 0, 5.2];

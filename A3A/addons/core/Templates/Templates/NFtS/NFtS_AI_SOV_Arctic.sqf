@@ -145,6 +145,9 @@ _loadoutData set ["officerUniforms", ["U_LIB_SOV_Strelok_2_w"]];
 _loadoutData set ["officerVests", ["V_LIB_SOV_RA_OfficerVest"]];
 _loadoutData set ["officerHats", ["H_LIB_SOV_Ushanka"]];
 
+_loadoutData set ["cloakUniforms", []];
+_loadoutData set ["cloakVests", []];
+
 _loadoutData set ["uniforms", []];
 _loadoutData set ["slUniforms", []];
 _loadoutData set ["vests", []];
@@ -199,165 +202,176 @@ _loadoutData set ["items_unarmed_extras", []];
 ///////////////////////////////////////
 
 private _sfLoadoutData = _loadoutData call _fnc_copyLoadoutData; // touch and shit breaks
-_sfLoadoutData set ["uniforms", ["U_LIB_SOV_Sniper_w"]];
-_sfLoadoutData set ["vests", ["V_LIB_SOV_IShBrVestPPShMag","V_LIB_SOV_IShBrVestPPShDisc","V_LIB_SOV_IShBrVestMG"]];
-_sfLoadoutData set ["glVests", ["V_LIB_SOV_IShBrVestPPShDisc"]];
-_sfLoadoutData set ["Hvests", ["V_LIB_SOV_IShBrVestPPShMag"]];
-_sfLoadoutData set ["backpacks", ["B_LIB_SOV_RA_Rucksack2_Gas_Kit_Shinel_Green"]];
-_sfLoadoutData set ["helmets", ["H_LIB_SOV_RA_Helmet_w"]];
-_sfLoadoutData set ["sniHats", ["H_LIB_SOV_RA_Helmet_w"]];
-_sfLoadoutData set ["slHat", ["H_LIB_SOV_RA_Helmet_w"]];
+_sfLoadoutData set ["uniforms", ["U_NORTH_SOV_Obr37_43_W_MKK","U_NORTH_SOV_Obr37_43_W_MKK_2","U_NORTH_SOV_Obr37_43_W_MKK_3","U_NORTH_SOV_Obr37_43_W_MKK_4","U_NORTH_SOV_Obr37_43_W_MKK_5"]];
+_sfLoadoutData set ["vests", ["V_NORTH_SOV_SN42"]];
+_sfLoadoutData set ["glVests", ["V_NORTH_SOV_SN42"]];
+_sfLoadoutData set ["Hvests", ["V_NORTH_SOV_SN42"]];
+_sfLoadoutData set ["backpacks", ["NORTH_SOV_Veshmeshok_Gasmaskbag","NORTH_SOV_Veshmeshok_Gasmaskbag_2","NORTH_SOV_Veshmeshok_Gasmaskbag_3"]];
+_sfLoadoutData set ["helmets", ["H_NORTH_SOV_SSh40_Helmet_camo_winter","H_NORTH_SOV_SSh40_Helmet_camo_winter_2","H_NORTH_SOV_SSh40_Helmet_camo_winter_3","H_NORTH_SOV_SSh40_Helmet_camo_winter_4","H_NORTH_SOV_SSh40_Helmet_camo_winter_5","H_NORTH_SOV_SSh40_Helmet_camo_winter_6"]];
+_sfLoadoutData set ["sniHats", ["H_NORTH_SOV_Obr40_Ushanka","H_NORTH_SOV_Obr40_Ushanka_2","H_NORTH_SOV_Obr40_Ushanka_3","H_NORTH_SOV_Obr40_Ushanka_4","H_NORTH_SOV_Obr40_Ushanka_5","H_NORTH_SOV_Obr40_Ushanka_6","H_NORTH_SOV_Obr40_Ushanka_7"]];
+_sfLoadoutData set ["slHat", ["H_NORTH_SOV_Obr40_Ushanka","H_NORTH_SOV_Obr40_Ushanka_2","H_NORTH_SOV_Obr40_Ushanka_3","H_NORTH_SOV_Obr40_Ushanka_4","H_NORTH_SOV_Obr40_Ushanka_5","H_NORTH_SOV_Obr40_Ushanka_6","H_NORTH_SOV_Obr40_Ushanka_7"]];
 _sfLoadoutData set ["binoculars", ["LIB_Binocular_SU"]];
 
 //SF Weapons
-_sfLoadoutData set ["rifles", [["LIB_M9130", "", "", "", ["LIB_5Rnd_762x54_b30","LIB_5Rnd_762x54_D"], [], ""],
-        ["LIB_SVT_40", "", "", "", ["LIB_10Rnd_762x54"], [], ""]]];
-_sfLoadoutData set ["carbines", [["LIB_SVT_40", "", "", "", ["LIB_10Rnd_762x54"], [], ""],
-        ["LIB_PPSh41_m", "", "", "", ["LIB_35Rnd_762x25_t"], [], ""]]];
-_sfLoadoutData set ["grenadeLaunchers", [["LIB_M9130_DYAKONOV", "LIB_ACC_GL_DYAKONOV_Empty", "", "", ["LIB_5Rnd_762x54"], ["LIB_1Rnd_G_DYAKONOV"], ""]]];
-_sfLoadoutData set ["SMGs", [["LIB_PPSh41_d", "", "", "", ["LIB_71Rnd_762x25_ap"], [], ""],
-        ["LIB_PPSh41_m", "", "", "", ["LIB_35Rnd_762x25_t"], [], ""]]];
-_sfLoadoutData set ["machineGuns", [["LIB_DT_OPTIC", "", "", "", ["LIB_63Rnd_762x54d"], [], ""],
-        ["LIB_DT", "", "", "", ["LIB_63Rnd_762x54"], [], ""],
-	["LIB_DP28", "", "", "", ["LIB_47Rnd_762x54"], [], ""]]];
-_sfLoadoutData set ["marksmanRifles", [["LIB_SVT_40", "", "", "", ["LIB_10Rnd_762x54"], [], ""],
-        ["LIB_PPSh41_d", "", "", "", ["LIB_71Rnd_762x25"], [], ""]]];
-_sfLoadoutData set ["sniperRifles", [["LIB_M9130PU", "", "", "", ["LIB_5Rnd_762x54_b30"], [], ""]]];
-_sfLoadoutData set ["sidearms", [["LIB_TT33", "", "", "", ["LIB_8Rnd_762x25"], [], ""]]];
+_sfLoadoutData set ["rifles", [["NORTH_Fedorov_Avtomat", "", "", "", ["NORTH_25rnd_Fedorov_mag"], [], ""],
+        ["NORTH_AVT40", "", "", "", ["NORTH_10rnd_SVT_mag"], [], ""]]];
+_sfLoadoutData set ["carbines", [["NORTH_SVT40", "", "", "", ["NORTH_10rnd_SVT_mag"], [], ""],
+        ["NORTH_ppsh41", "", "", "", ["NORTH_35rnd_ppsh41_mag"], [], ""]]];
+_sfLoadoutData set ["grenadeLaunchers", [["LIB_M9130", "LIB_ACC_GL_DYAKONOV_Empty", "", "", ["LIB_5Rnd_762x54"], ["LIB_1Rnd_G_DYAKONOV"], ""]]];
+_sfLoadoutData set ["SMGs", [["NORTH_ppsh41", "", "", "", ["NORTH_71rnd_ppsh41_mag"], [], ""],
+        ["NORTH_ppsh41", "", "", "", ["NORTH_35rnd_ppsh41_mag"], [], ""]]];
+_sfLoadoutData set ["machineGuns", [["NORTH_DT_hand", "", "", "", ["NORTH_63rnd_dt_mag"], [], ""],
+        ["NORTH_DT_hand", "", "", "", ["NORTH_63rnd_dt_mag"], [], ""],
+	["NORTH_dp27", "", "", "", ["NORTH_47rnd_dp27_mag"], [], ""]]];
+_sfLoadoutData set ["marksmanRifles", [["NORTH_SVT40", "", "", "", ["NORTH_10rnd_SVT_mag"], [], ""],
+        ["NORTH_ppsh41", "", "", "", ["NORTH_71rnd_ppsh41_mag"], [], ""]]];
+_sfLoadoutData set ["sniperRifles", [["NORTH_sov_m9130_PU", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+		["NORTH_SVT40PU", "", "", "", ["NORTH_10rnd_SVT_mag"], [], ""]]];
+_sfLoadoutData set ["sidearms", [["NORTH_TT33", "", "", "", ["NORTH_8Rnd_tt33_mag"], [], ""]]];
 
 /////////////////////////////////
 //    Elite Loadout Data    //
 /////////////////////////////////
 
 private _eliteLoadoutData = _loadoutData call _fnc_copyLoadoutData; // touch and shit breaks
-_eliteLoadoutData set ["uniforms", ["U_LIB_SOV_Strelok_2_w"]];
-_eliteLoadoutData set ["slUniforms", ["U_LIB_SOV_Strelok_2_w"]];
-_eliteLoadoutData set ["vests", ["V_LIB_SOV_RA_MosinBelt","V_LIB_SOV_RA_PPShBelt"]];
-_eliteLoadoutData set ["glVests", ["V_LIB_SOV_RA_SVTBelt"]];
-_eliteLoadoutData set ["Hvests", ["V_LIB_SOV_RA_OfficerVest"]];
-_eliteLoadoutData set ["backpacks", ["B_LIB_SOV_RA_Rucksack_Green"]];
-_eliteLoadoutData set ["helmets", ["H_LIB_SOV_Ushanka","H_LIB_SOV_RA_Helmet_w"]];
-_eliteLoadoutData set ["slHat", ["H_LIB_SOV_Ushanka","H_LIB_SOV_RA_Helmet_w"]];
-_eliteLoadoutData set ["sniHats", ["H_LIB_SOV_Ushanka","H_LIB_SOV_RA_Helmet_w"]];
+_eliteLoadoutData set ["uniforms", ["U_NORTH_SOV_Obr37_43_W_MKK","U_NORTH_SOV_Obr37_43_W_MKK_2","U_NORTH_SOV_Obr37_43_W_MKK_3","U_NORTH_SOV_Obr37_43_W_MKK_4","U_NORTH_SOV_Obr37_43_W_MKK_5"]];
+_eliteLoadoutData set ["slUniforms", ["U_NORTH_SOV_Obr41_W_Greatcoat_Cpt"]];
+_eliteLoadoutData set ["vests", ["V_NORTH_SOV_Belt_Late_Mosin_1","V_NORTH_SOV_Belt_Late_Mosin_2","V_NORTH_SOV_Belt_Late_Mosin_3","V_NORTH_SOV_Belt_Late_Mosin_4","V_NORTH_SOV_Belt_Late_SMG","V_NORTH_SOV_Belt_Late_SMG_2","V_NORTH_SOV_Belt_Late_SMG_3","V_NORTH_SOV_Belt_Late_SMG_4"]];
+_eliteLoadoutData set ["glVests", ["V_NORTH_SOV_Belt_Late_SVT","V_NORTH_SOV_Belt_Late_SVT_2"]];
+_eliteLoadoutData set ["Hvests", ["V_NORTH_SOV_SN42"]];
+_eliteLoadoutData set ["backpacks", ["NORTH_SOV_Veshmeshok_Gasmaskbag_Shinel","NORTH_SOV_Veshmeshok_Gasmaskbag_Shinel_2","NORTH_SOV_Veshmeshok_Gasmaskbag_Shinel_3"]];
+_eliteLoadoutData set ["helmets", ["H_NORTH_SOV_SSh40_Helmet_Winter_1","H_NORTH_SOV_SSh40_Helmet_Winter_2","H_NORTH_SOV_SSh40_Helmet_Winter_3","H_NORTH_SOV_SSh40_Helmet_camo_winter","H_NORTH_SOV_SSh40_Helmet_camo_winter_2","H_NORTH_SOV_SSh40_Helmet_camo_winter_3","H_NORTH_SOV_SSh40_Helmet_camo_winter_4","H_NORTH_SOV_SSh40_Helmet_camo_winter_5","H_NORTH_SOV_SSh40_Helmet_camo_winter_6"]];
+_eliteLoadoutData set ["sniHats", ["H_NORTH_SOV_Obr40_Ushanka","H_NORTH_SOV_Obr40_Ushanka_2","H_NORTH_SOV_Obr40_Ushanka_3","H_NORTH_SOV_Obr40_Ushanka_4","H_NORTH_SOV_Obr40_Ushanka_5","H_NORTH_SOV_Obr40_Ushanka_6","H_NORTH_SOV_Obr40_Ushanka_7"]];
+_eliteLoadoutData set ["slHat", ["H_NORTH_SOV_Obr40_Ushanka","H_NORTH_SOV_Obr40_Ushanka_2","H_NORTH_SOV_Obr40_Ushanka_3","H_NORTH_SOV_Obr40_Ushanka_4","H_NORTH_SOV_Obr40_Ushanka_5","H_NORTH_SOV_Obr40_Ushanka_6","H_NORTH_SOV_Obr40_Ushanka_7"]];
 _eliteLoadoutData set ["binoculars", ["LIB_Binocular_SU"]];
 
 _eliteLoadoutData set ["rifles", [
-	["LIB_M9130", "", "", "", ["LIB_5Rnd_762x54_D"], [], ""],
-    ["LIB_M38", "", "", "", ["LIB_5Rnd_762x54_D"], [], ""],
-	["LIB_M44", "", "", "", ["LIB_5Rnd_762x54_D"], [], ""]
+	["NORTH_sov_M9130", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+    ["NORTH_SOV_M38", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+	["NORTH_SVT40", "", "", "", ["NORTH_10rnd_SVT_mag"], [], ""]
 	]];
 _eliteLoadoutData set ["carbines", [
-	["LIB_SVT_40", "", "", "", ["LIB_10Rnd_762x54"], [], ""],
-        ["LIB_M38", "", "", "", ["LIB_5Rnd_762x54_D"], [], ""],
-	["LIB_M44", "", "", "", ["LIB_5Rnd_762x54_D"], [], ""]
+	["NORTH_SVT40", "", "", "", ["NORTH_10rnd_SVT_mag"], [], ""],
+        ["NORTH_SOV_M38", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+	["NORTH_SVT38", "", "", "", ["NORTH_10rnd_SVT_mag"], [], ""]
 	]];
-_eliteLoadoutData set ["grenadeLaunchers", [["LIB_M9130_DYAKONOV", "LIB_ACC_GL_DYAKONOV_Empty", "", "", ["LIB_5Rnd_762x54"], ["LIB_1Rnd_G_DYAKONOV"], ""]]];
-_eliteLoadoutData set ["SMGs", [["LIB_PPSh41_m", "", "", "", ["LIB_35Rnd_762x25_t"], [], ""],
-        ["LIB_PPSh41_d", "", "", "", ["LIB_71Rnd_762x25_t2"], [], ""]]];
-_eliteLoadoutData set ["machineGuns", [["LIB_DT", "", "", "", ["LIB_63Rnd_762x54"], [], ""],
-        ["LIB_DP28", "", "", "", ["LIB_47Rnd_762x54"], [], ""]]];
-_eliteLoadoutData set ["marksmanRifles", [["LIB_SVT_40", "", "", "", ["LIB_10Rnd_762x54"], [], ""],
-        ["LIB_M9130", "", "", "", ["LIB_5Rnd_762x54"], [], ""]]];
-_eliteLoadoutData set ["sniperRifles", [["LIB_M9130PU", "", "", "", ["LIB_5Rnd_762x54_b30","LIB_5Rnd_762x54","LIB_5Rnd_762x54"], [], ""]]];
-_eliteLoadoutData set ["sidearms", [["LIB_TT33", "", "", "", ["LIB_8Rnd_762x25"], [], ""]]];
+_eliteLoadoutData set ["grenadeLaunchers", [["LIB_M9130", "LIB_ACC_GL_DYAKONOV_Empty", "", "", ["LIB_5Rnd_762x54"], ["LIB_1Rnd_G_DYAKONOV"], ""]]];
+_eliteLoadoutData set ["SMGs", [["NORTH_ppsh41", "", "", "", ["NORTH_35rnd_ppsh41_mag"], [], ""],
+        ["NORTH_ppsh41", "", "", "", ["NORTH_71rnd_ppsh41_mag"], [], ""]]];
+_eliteLoadoutData set ["machineGuns", [["NORTH_DT_hand", "", "", "", ["NORTH_63rnd_dt_mag"], [], ""],
+        ["NORTH_dp27", "", "", "", ["NORTH_47rnd_dp27_mag"], [], ""]]];
+_eliteLoadoutData set ["marksmanRifles", [["NORTH_SVT40", "", "", "", ["NORTH_10rnd_SVT_mag"], [], ""]]];
+_eliteLoadoutData set ["sniperRifles", [["NORTH_sov_m9130_PU", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+		["NORTH_SVT40PU", "", "", "", ["NORTH_10rnd_SVT_mag"], [], ""],
+		["NORTH_sov_m9130_PEM", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""]]];
+_eliteLoadoutData set ["sidearms", [["NORTH_TT33", "", "", "", ["NORTH_8Rnd_tt33_mag"], [], ""]]];
 
 /////////////////////////////////
 //    Military Loadout Data    //
 /////////////////////////////////
 
 private _militaryLoadoutData = _loadoutData call _fnc_copyLoadoutData; // touch and shit breaks
-_militaryLoadoutData set ["uniforms", ["U_LIB_SOV_Strelok_2_w"]];
-_militaryLoadoutData set ["slUniforms", ["U_LIB_SOV_Strelok_2_w"]];
-_militaryLoadoutData set ["vests", ["V_LIB_SOV_RA_MosinBelt","V_LIB_SOV_RA_PPShBelt"]];
-_militaryLoadoutData set ["glVests", ["V_LIB_SOV_RA_SVTBelt"]];
-_militaryLoadoutData set ["Hvests", ["V_LIB_SOV_RA_OfficerVest"]];
-_militaryLoadoutData set ["backpacks", ["B_LIB_SOV_RA_Rucksack_Green"]];
-_militaryLoadoutData set ["helmets", ["H_LIB_SOV_Ushanka","H_LIB_SOV_RA_Helmet_w"]];
-_militaryLoadoutData set ["slHat", ["H_LIB_SOV_Ushanka","H_LIB_SOV_RA_Helmet_w"]];
-_militaryLoadoutData set ["sniHats", ["H_LIB_SOV_Ushanka","H_LIB_SOV_RA_Helmet_w"]];
+_militaryLoadoutData set ["uniforms", ["U_NORTH_SOV_Obr37_43_W_MKK","U_NORTH_SOV_Obr37_43_W_MKK_2","U_NORTH_SOV_Obr37_43_W_MKK_3","U_NORTH_SOV_Obr37_43_W_MKK_4","U_NORTH_SOV_Obr37_43_W_MKK_5"]];
+_militaryLoadoutData set ["slUniforms", ["U_NORTH_SOV_Obr41_W_Greatcoat_Lt"]];
+_militaryLoadoutData set ["vests", ["V_NORTH_SOV_Belt_Late_Mosin_1","V_NORTH_SOV_Belt_Late_Mosin_2","V_NORTH_SOV_Belt_Late_Mosin_3","V_NORTH_SOV_Belt_Late_Mosin_4"]];
+_militaryLoadoutData set ["glVests", ["V_NORTH_SOV_Belt_Late_SVT","V_NORTH_SOV_Belt_Late_SVT_2"]];
+_militaryLoadoutData set ["Hvests", ["V_NORTH_SOV_Belt_Late_SMG","V_NORTH_SOV_Belt_Late_SMG_2","V_NORTH_SOV_Belt_Late_SMG_3","V_NORTH_SOV_Belt_Late_SMG_4"]];
+_militaryLoadoutData set ["backpacks", ["NORTH_SOV_Veshmeshok_Gasmaskbag","NORTH_SOV_Veshmeshok_Gasmaskbag_2","NORTH_SOV_Veshmeshok_Gasmaskbag_3"]];
+_militaryLoadoutData set ["helmets", ["H_NORTH_SOV_SSh40_Helmet_Winter_1","H_NORTH_SOV_SSh40_Helmet_Winter_2","H_NORTH_SOV_SSh40_Helmet_Winter_3","H_NORTH_SOV_SSh36_Helmet_cover_winter_1","H_NORTH_SOV_SSh36_Helmet_cover_winter_2","H_NORTH_SOV_SSh36_Helmet_cover_winter_3"]];
+_militaryLoadoutData set ["slHat", ["H_NORTH_SOV_Obr40_Ushanka","H_NORTH_SOV_Obr40_Ushanka_2","H_NORTH_SOV_Obr40_Ushanka_3","H_NORTH_SOV_Obr40_Ushanka_4","H_NORTH_SOV_Obr40_Ushanka_5","H_NORTH_SOV_Obr40_Ushanka_6","H_NORTH_SOV_Obr40_Ushanka_7"]];
+_militaryLoadoutData set ["sniHats", ["H_NORTH_SOV_Obr40_Ushanka","H_NORTH_SOV_Obr40_Ushanka_2","H_NORTH_SOV_Obr40_Ushanka_3","H_NORTH_SOV_Obr40_Ushanka_4","H_NORTH_SOV_Obr40_Ushanka_5","H_NORTH_SOV_Obr40_Ushanka_6","H_NORTH_SOV_Obr40_Ushanka_7"]];
 _militaryLoadoutData set ["binoculars", ["LIB_Binocular_SU"]];
 
 _militaryLoadoutData set ["rifles", [
-	["LIB_M9130", "", "", "", ["LIB_5Rnd_762x54_D"], [], ""],
-    ["LIB_M38", "", "", "", ["LIB_5Rnd_762x54_D"], [], ""],
-	["LIB_M44", "", "", "", ["LIB_5Rnd_762x54_D"], [], ""]
+	["NORTH_sov_M9130", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+	["NORTH_sov_M9130", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+	["NORTH_sov_M9130", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+    ["NORTH_SOV_M38", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+	["NORTH_SVT40", "", "", "", ["NORTH_10rnd_SVT_mag"], [], ""]
 	]];
 _militaryLoadoutData set ["carbines", [
-	["LIB_SVT_40", "", "", "", ["LIB_10Rnd_762x54"], [], ""],
-        ["LIB_M38", "", "", "", ["LIB_5Rnd_762x54_D"], [], ""],
-	["LIB_M44", "", "", "", ["LIB_5Rnd_762x54_D"], [], ""]
+	["NORTH_SVT40", "", "", "", ["NORTH_10rnd_SVT_mag"], [], ""],
+    ["NORTH_SOV_M38", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+	["NORTH_SOV_M38", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""]
 	]];
-_militaryLoadoutData set ["grenadeLaunchers", [["LIB_M9130_DYAKONOV", "LIB_ACC_GL_DYAKONOV_Empty", "", "", ["LIB_5Rnd_762x54"], ["LIB_1Rnd_G_DYAKONOV"], ""]]];
-_militaryLoadoutData set ["SMGs", [["LIB_PPSh41_m", "", "", "", ["LIB_35Rnd_762x25_t"], [], ""],
-        ["LIB_PPSh41_d", "", "", "", ["LIB_71Rnd_762x25_t2"], [], ""]]];
-_militaryLoadoutData set ["machineGuns", [["LIB_DT", "", "", "", ["LIB_63Rnd_762x54"], [], ""],
-        ["LIB_DP28", "", "", "", ["LIB_47Rnd_762x54"], [], ""]]];
-_militaryLoadoutData set ["marksmanRifles", [["LIB_SVT_40", "", "", "", ["LIB_10Rnd_762x54"], [], ""],
-        ["LIB_M9130", "", "", "", ["LIB_5Rnd_762x54"], [], ""]]];
-_militaryLoadoutData set ["sniperRifles", [["LIB_M9130PU", "", "", "", ["LIB_5Rnd_762x54_b30","LIB_5Rnd_762x54","LIB_5Rnd_762x54"], [], ""]]];
-_militaryLoadoutData set ["sidearms", [["LIB_TT33", "", "", "", ["LIB_8Rnd_762x25"], [], ""]]];
+_militaryLoadoutData set ["grenadeLaunchers", [["LIB_M9130", "LIB_ACC_GL_DYAKONOV_Empty", "", "", ["LIB_5Rnd_762x54"], ["LIB_1Rnd_G_DYAKONOV"], ""]]];
+_militaryLoadoutData set ["SMGs", [["NORTH_ppsh41", "", "", "", ["NORTH_35rnd_ppsh41_mag"], [], ""],
+        ["NORTH_ppsh41", "", "", "", ["NORTH_35rnd_ppsh41_mag"], [], ""],
+		["NORTH_PPS43", "", "", "", ["NORTH_35rnd_pps43_mag"], [], ""],
+		["NORTH_PPD34_38", "", "", "", ["NORTH_71rnd_PPD34_38_mag"], [], ""],
+		["NORTH_PPD40", "", "", "", ["NORTH_71rnd_PPD40_mag"], [], ""]]];
+_militaryLoadoutData set ["machineGuns", [["NORTH_DT_hand", "", "", "", ["NORTH_63rnd_dt_mag"], [], ""],
+        ["NORTH_dp27", "", "", "", ["NORTH_47rnd_dp27_mag"], [], ""]]];
+_militaryLoadoutData set ["marksmanRifles", [["NORTH_SVT40", "", "", "", ["NORTH_10rnd_SVT_mag"], [], ""],
+		["NORTH_sov_m9130_PEM", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+        ["NORTH_sov_M9130", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""]]];
+_militaryLoadoutData set ["sniperRifles", [["NORTH_sov_m9130_PU", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+		["NORTH_sov_m9130_PEM", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""]]];
+_militaryLoadoutData set ["sidearms", [["NORTH_TT33", "", "", "", ["NORTH_8Rnd_tt33_mag"], [], ""]]];
 
 ///////////////////////////////
 //    Police Loadout Data    //
 ///////////////////////////////
 
 private _policeLoadoutData = _loadoutData call _fnc_copyLoadoutData; // touch and shit breaks
-_policeLoadoutData set ["uniforms", ["U_LIB_NKVD_Leutenant"]];
-_policeLoadoutData set ["vests", ["V_LIB_SOV_RA_OfficerVest"]];
-_policeLoadoutData set ["helmets", ["H_LIB_NKVD_OfficerCap"]];
-_policeLoadoutData set ["SMGs", [["LIB_PPSh41_m", "", "", "", ["LIB_35Rnd_762x25"], [], ""]]];
-_policeLoadoutData set ["sidearms", [["LIB_TT33", "", "", "", ["LIB_8Rnd_762x25"], [], ""],
-        ["LIB_M1896", "", "", "", ["LIB_10Rnd_9x19_M1896"], [], ""]]];
+_policeLoadoutData set ["uniforms", ["U_NORTH_SOV_Obr41_W_Greatcoat_NKVD_Private","U_NORTH_SOV_Obr41_W_Greatcoat_NKVD_Private_2","U_NORTH_SOV_Obr41_W_Greatcoat_NKVD_Private_1CL"]];
+_policeLoadoutData set ["vests", ["V_NORTH_SOV_Belt_Officer_Assault","V_NORTH_SOV_Belt_Officer_Assault_2","V_NORTH_SOV_Belt_Officer_Assault_3","V_NORTH_SOV_Belt_Officer_Assault_4"]];
+_policeLoadoutData set ["helmets", ["H_NORTH_SOV_Obr31_Finka_NKVD","H_NORTH_SOV_Obr31_Finka_NKVD_2","H_NORTH_SOV_Obr31_Finka_NKVD_3","H_NORTH_SOV_Obr31_Finka_NKVD_4"]];
+_policeLoadoutData set ["SMGs", [
+	["NORTH_ppsh41", "", "", "", ["NORTH_35rnd_ppsh41_mag"], [], ""],
+	["NORTH_PPS43", "", "", "", ["NORTH_35rnd_pps43_mag"], [], ""],
+    ["NORTH_PPD34", "", "", "", ["NORTH_34rnd_PPD_mag"], [], ""]]];
+_policeLoadoutData set ["sidearms", [["NORTH_TT33", "", "", "", ["NORTH_8Rnd_tt33_mag"], [], ""],
+        ["NORTH_m1895", "", "", "", ["NORTH_6Rnd_m1895_mag"], [], ""]]];
 
 ////////////////////////////////
 //    Militia Loadout Data    //
 ////////////////////////////////
 
 private _militiaLoadoutData = _loadoutData call _fnc_copyLoadoutData; // touch and shit breaks
-_militiaLoadoutData set ["uniforms", ["U_LIB_SOV_Strelok_w"]];
-_militiaLoadoutData set ["slUniforms", ["U_LIB_SOV_Strelok_w"]];
-_militiaLoadoutData set ["vests", ["V_LIB_SOV_RA_MosinBelt","V_LIB_SOV_RA_PPShBelt"]];
-_militiaLoadoutData set ["glVests", ["V_LIB_SOV_RA_SVTBelt"]];
-_militiaLoadoutData set ["Hvests", ["V_LIB_SOV_RA_OfficerVest"]];
-_militiaLoadoutData set ["backpacks", ["B_LIB_SOV_RA_Rucksack_Green"]];
-_militiaLoadoutData set ["helmets", ["H_LIB_SOV_Ushanka"]];
-_militiaLoadoutData set ["sniHats", ["H_LIB_SOV_Ushanka"]];
-_militiaLoadoutData set ["slHat", ["H_LIB_SOV_Ushanka"]];
+_militiaLoadoutData set ["uniforms", ["U_NORTH_SOV_Obr37_W_MKK","U_NORTH_SOV_Obr37_W_MKK_2","U_NORTH_SOV_Obr37_W_MKK_3","U_NORTH_SOV_Obr37_W_MKK_4","U_NORTH_SOV_Obr37_W_MKK_5"]];
+_militiaLoadoutData set ["slUniforms", ["U_NORTH_SOV_Obr35_W_Greatcoat_2ndLt"]];
+_militiaLoadoutData set ["vests", ["V_NORTH_SOV_Belt_Mosin","V_NORTH_SOV_Belt_Mosin_2","V_NORTH_SOV_Belt_Mosin_3","V_NORTH_SOV_Belt_Mosin_4","V_NORTH_SOV_Belt_Mosin_5","V_NORTH_SOV_Belt_SMG","V_NORTH_SOV_Belt_SMG_2","V_NORTH_SOV_Belt_SMG_3","V_NORTH_SOV_Belt_SMG_4","V_NORTH_SOV_Belt_SMG_5"]];
+_militiaLoadoutData set ["glVests", ["V_NORTH_SOV_Belt_SVT","V_NORTH_SOV_Belt_SVT_2"]];
+_militiaLoadoutData set ["Hvests", ["V_NORTH_SOV_Belt_Officer_Assault","V_NORTH_SOV_Belt_Officer_Assault_2","V_NORTH_SOV_Belt_Officer_Assault_3","V_NORTH_SOV_Belt_Officer_Assault_4"]];
+_militiaLoadoutData set ["backpacks", ["NORTH_SOV_Veshmeshok","NORTH_SOV_Veshmeshok_2","NORTH_SOV_Veshmeshok_3"]];
+_militiaLoadoutData set ["helmets", ["H_NORTH_SOV_Obr40_Ushanka","H_NORTH_SOV_Obr40_Ushanka_2","H_NORTH_SOV_Obr40_Ushanka_3","H_NORTH_SOV_Obr40_Ushanka_4","H_NORTH_SOV_Obr40_Ushanka_5","H_NORTH_SOV_Obr40_Ushanka_6","H_NORTH_SOV_Obr40_Ushanka_7","H_NORTH_SOV_SSh40_Helmet_Winter_1","H_NORTH_SOV_SSh40_Helmet_Winter_2","H_NORTH_SOV_SSh40_Helmet_Winter_3","H_NORTH_SOV_SSh39_Helmet_Winter_1","H_NORTH_SOV_SSh39_Helmet_Winter_2"]];
+_militiaLoadoutData set ["sniHats", ["H_NORTH_SOV_Obr40_Ushanka","H_NORTH_SOV_Obr40_Ushanka_2","H_NORTH_SOV_Obr40_Ushanka_3","H_NORTH_SOV_Obr40_Ushanka_4","H_NORTH_SOV_Obr40_Ushanka_5","H_NORTH_SOV_Obr40_Ushanka_6","H_NORTH_SOV_Obr40_Ushanka_7"]];
+_militiaLoadoutData set ["slHat", ["H_NORTH_SOV_Obr40_Ushanka","H_NORTH_SOV_Obr40_Ushanka_2","H_NORTH_SOV_Obr40_Ushanka_3","H_NORTH_SOV_Obr40_Ushanka_4","H_NORTH_SOV_Obr40_Ushanka_5","H_NORTH_SOV_Obr40_Ushanka_6","H_NORTH_SOV_Obr40_Ushanka_7"]];
 
-_militiaLoadoutData set ["rifles", [["LIB_M9130", "", "", "", ["LIB_5Rnd_762x54"], [], ""],
-        ["LIB_M38", "", "", "", ["LIB_5Rnd_762x54"], [], ""],
-	["LIB_M44", "", "", "", ["LIB_5Rnd_762x54"], [], ""]]];
-_militiaLoadoutData set ["carbines", [["LIB_M38", "", "", "", ["LIB_5Rnd_762x54"], [], ""],
-        ["LIB_M44", "", "", "", ["LIB_5Rnd_762x54"], [], ""]]];
-_militiaLoadoutData set ["grenadeLaunchers", [["LIB_M9130_DYAKONOV", "LIB_ACC_GL_DYAKONOV_Empty", "", "", ["LIB_5Rnd_762x54"], ["LIB_1Rnd_G_DYAKONOV"], ""]]];
-_militiaLoadoutData set ["SMGs", [["LIB_PPSh41_m", "", "", "", ["LIB_35Rnd_762x25_t"], [], ""],
-        ["LIB_MP40", "", "", "", ["LIB_32rnd_9x19"], [], ""]]];
-_militiaLoadoutData set ["machineGuns", [["LIB_DP28", "", "", "", ["LIB_47Rnd_762x54"], [], ""]]];
-_militiaLoadoutData set ["marksmanRifles", [["LIB_M9130", "", "", "", ["LIB_5Rnd_762x54_t30"], [], ""],
-        ["LIB_SVT_40", "", "", "", ["LIB_10Rnd_762x54"], [], ""]]];
-_militiaLoadoutData set ["sniperRifles", [["LIB_M9130", "", "", "", ["LIB_5Rnd_762x54_t46"], [], ""],
-        ["LIB_M9130PU", "", "", "", ["LIB_5Rnd_762x54"], [], ""]]];
-_militiaLoadoutData set ["sidearms", [["LIB_TT33", "", "", "", ["LIB_8Rnd_762x25"], [], ""],
-        ["LIB_M1896", "", "", "", ["LIB_10Rnd_9x19_M1896"], [], ""]]];
+_militiaLoadoutData set ["rifles", [["NORTH_sov_M9130", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+        ["NORTH_SOV_M38", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""]]];
+_militiaLoadoutData set ["carbines", [["NORTH_SOV_M38", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""]]];
+_militiaLoadoutData set ["grenadeLaunchers", [["LIB_M9130", "LIB_ACC_GL_DYAKONOV_Empty", "", "", ["LIB_5Rnd_762x54"], ["LIB_1Rnd_G_DYAKONOV"], ""]]];
+_militiaLoadoutData set ["SMGs", [["NORTH_PPS43", "", "", "", ["NORTH_35rnd_pps43_mag"], [], ""],
+        ["NORTH_PPD34", "", "", "", ["NORTH_34rnd_PPD_mag"], [], ""]]];
+_militiaLoadoutData set ["machineGuns", [["NORTH_dp27", "", "", "", ["NORTH_47rnd_dp27_mag"], [], ""]]];
+_militiaLoadoutData set ["marksmanRifles", [["NORTH_sov_M9130", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+        ["NORTH_SVT40", "", "", "", ["NORTH_10rnd_SVT_mag"], [], ""]]];
+_militiaLoadoutData set ["sniperRifles", [["NORTH_sov_M9130", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+		["NORTH_sov_m9130_PEM", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""],
+        ["NORTH_sov_m9130_PU", "", "", "", ["NORTH_5Rnd_m39_mag"], [], ""]]];
+_militiaLoadoutData set ["sidearms", [["NORTH_TT33", "", "", "", ["NORTH_8Rnd_tt33_mag"], [], ""],
+        ["NORTH_m1895", "", "", "", ["NORTH_6Rnd_m1895_mag"], [], ""]]];
 //////////////////////////
 //    Misc Loadouts     //
 //////////////////////////
 
 
 private _crewLoadoutData = _militaryLoadoutData call _fnc_copyLoadoutData; // touch and shit breaks
-_crewLoadoutData set ["uniforms", ["U_LIB_SOV_Tank_ryadovoi"]];
-_crewLoadoutData set ["vests", ["V_LIB_SOV_RAZV_MGBelt"]];
-_crewLoadoutData set ["helmets", ["H_LIB_SOV_TankHelmet"]];
+_crewLoadoutData set ["uniforms", ["U_NORTH_SOV_Obr43_Uniform_CAV_Private","U_NORTH_SOV_Obr43_Uniform_CAV_Private_2","U_NORTH_SOV_Obr43_Uniform_CAV_Private_3"]];
+_crewLoadoutData set ["vests", ["V_NORTH_SOV_Belt_Late_Pistol","V_NORTH_SOV_Belt_Late_Pistol_3"]];
+_crewLoadoutData set ["helmets", ["H_NORTH_SOV_Tankerhelmet","H_NORTH_SOV_Tankerhelmet_open","H_NORTH_SOV_Tankerhelmet_dustgoggles","H_NORTH_SOV_Tankerhelmet_dustgoggles_open"]];
 _crewLoadoutData set ["carbines", [
-    ["LIB_PPSh41_m", "", "", "", ["LIB_35Rnd_762x25_t"], [], ""]
+    ["NORTH_PPS43", "", "", "", ["NORTH_35rnd_pps43_mag"], [], ""]
 ]];	
 
 private _pilotLoadoutData = _militaryLoadoutData call _fnc_copyLoadoutData;
-_pilotLoadoutData set ["uniforms", ["U_LIB_SOV_Pilot"]];
-_pilotLoadoutData set ["vests", ["V_LIB_SOV_RA_Belt"]];
-_pilotLoadoutData set ["helmets", ["H_LIB_SOV_PilotHelmet"]];
+_pilotLoadoutData set ["uniforms", ["U_NORTH_SOV_Obr43_Uniform_AIR_Private","U_NORTH_SOV_Obr43_Uniform_AIR_Private_2"]];
+_pilotLoadoutData set ["vests", ["V_NORTH_SOV_Belt_Late_Pistol","V_NORTH_SOV_Belt_Late_Pistol_3"]];
+_pilotLoadoutData set ["helmets", ["H_NORTH_SOV_AIR_helmet","H_NORTH_SOV_AIR_helmet_goggles","H_NORTH_SOV_AIR_helmet_goggles_2"]];
 _pilotLoadoutData set ["carbines", [
-    ["LIB_PPSh41_m", "", "", "", ["LIB_35Rnd_762x25_t"], [], ""]
+    ["NORTH_PPS43", "", "", "", ["NORTH_35rnd_pps43_mag"], [], ""]
 ]];	
 
 
@@ -822,6 +836,57 @@ private _officerTemplate = {
     ["radios"] call _fnc_addRadio;
 };
 
+private _patrolSniperTemplate = {
+    ["sniHats"] call _fnc_setHelmet;
+    [selectRandomWeighted [[], 2, "glasses", 0.75, "goggles", 0.5]] call _fnc_setFacewear;
+    [["cloakVests","vests"] call _fnc_fallback] call _fnc_setVest;
+    [["cloakUniforms","uniforms"] call _fnc_fallback] call _fnc_setUniform;
+
+    [["sniperRifles", "marksmanRifles"] call _fnc_fallback] call _fnc_setPrimary;
+    ["primary", 6] call _fnc_addMagazines;
+
+    ["sidearms"] call _fnc_setHandgun;
+    ["handgun", 2] call _fnc_addMagazines;
+
+    ["items_medical_standard"] call _fnc_addItemSet;
+    ["items_sniper_extras"] call _fnc_addItemSet;
+    ["items_miscEssentials"] call _fnc_addItemSet;
+    ["antiInfantryGrenades", 1] call _fnc_addItem;
+    ["smokeGrenades", 2] call _fnc_addItem;
+
+    ["maps"] call _fnc_addMap;
+    ["watches"] call _fnc_addWatch;
+    ["compasses"] call _fnc_addCompass;
+    ["radios"] call _fnc_addRadio;
+    ["NVGs"] call _fnc_addNVGs;
+};
+
+private _patrolSpotterTemplate = {
+    ["sniHats"] call _fnc_setHelmet;
+    [selectRandomWeighted [[], 2, "glasses", 0.75, "goggles", 0.5]] call _fnc_setFacewear;
+    [["cloakVests","vests"] call _fnc_fallback] call _fnc_setVest;
+    [["cloakUniforms","uniforms"] call _fnc_fallback] call _fnc_setUniform;
+
+    [selectRandom ["rifles", "carbines", "marksmanRifles"]] call _fnc_setPrimary;
+    ["primary", 6] call _fnc_addMagazines;
+
+    ["sidearms"] call _fnc_setHandgun;
+    ["handgun", 2] call _fnc_addMagazines;
+
+    ["items_medical_standard"] call _fnc_addItemSet;
+    ["items_sniper_extras"] call _fnc_addItemSet;
+    ["items_miscEssentials"] call _fnc_addItemSet;
+    ["antiInfantryGrenades", 1] call _fnc_addItem;
+    ["smokeGrenades", 2] call _fnc_addItem;
+
+    ["maps"] call _fnc_addMap;
+    ["watches"] call _fnc_addWatch;
+    ["compasses"] call _fnc_addCompass;
+    ["radios"] call _fnc_addRadio;
+    ["rangefinders"] call _fnc_addBinoculars;
+    ["NVGs"] call _fnc_addNVGs;
+};
+
 ////////////////////////////////////////////////////////////////////////////////////////
 //  You shouldn't touch below this line unless you really really know what you're doing.
 //  Things below here can and will break the gamemode if improperly changed.
@@ -875,7 +940,9 @@ private _unitTypes = [
 	["AA", _aaTemplate, [], [_prefix]],
 	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
 	["Marksman", _marksmanTemplate, [], [_prefix]],
-	["Sniper", _sniperTemplate, [], [_prefix]]
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    	["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    	["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _militaryLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
@@ -908,7 +975,9 @@ private _unitTypes = [
 	["AA", _aaTemplate, [], [_prefix]],
 	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
 	["Marksman", _marksmanTemplate, [], [_prefix]],
-	["Sniper", _sniperTemplate, [], [_prefix]]
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    	["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    	["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _militiaLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
@@ -930,7 +999,9 @@ private _unitTypes = [
 	["AA", _aaTemplate, [], [_prefix]],
 	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
 	["Marksman", _marksmanTemplate, [], [_prefix]],
-	["Sniper", _sniperTemplate, [], [_prefix]]
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    	["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    	["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _eliteLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;

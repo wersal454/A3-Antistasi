@@ -95,7 +95,7 @@
 		class opticsSMA
 		{
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_sma", localize "STR_A3AU_sights"]);
-			picture = "";
+			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 
 			class sma_elcan_specter_ardrds {
 				price = 1000;

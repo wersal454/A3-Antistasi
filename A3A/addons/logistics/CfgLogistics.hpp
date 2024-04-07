@@ -12,6 +12,7 @@ class DOUBLES(ADDON,Nodes)
     #include "Nodes\D3S.hpp"
     #include "Nodes\GM.hpp"
     #include "Nodes\RDS.hpp"
+    #include "Nodes\RF.hpp"
     #include "Nodes\RHS.hpp"
     #include "Nodes\RNT.hpp"
     #include "Nodes\Scion.hpp"
@@ -50,6 +51,7 @@ class DOUBLES(ADDON,Cargo)
 
     #include "Cargo\3CBFactions.hpp"
     #include "Cargo\ACE.hpp"
+    #include "Cargo\Aegis.hpp"
     #include "Cargo\BWA3.hpp"
     #include "Cargo\CUP.hpp"
     #include "Cargo\GM.hpp"

@@ -61,7 +61,7 @@ class lythium
 	};
 	garrison[] = {
 		// {},{"airport_2", "resource_8", "outpost_2", "outpost_3", "outpost_1", "resource_4", "factory_2"},{},{}
-		{},{},{},{}
+		{},{"airport_2","resource_8","outpost_2","outpost_17","outpost_19","factory_2","control_7","control_8","control_9","control_10","control_12"},{},{"control_7","control_8","control_9","control_10","control_12"}
 	};
 	fuelStationTypes[] = {
 		"Land_FuelStation_Feed_F","Land_fs_feed_F","Land_FuelStation_01_pump_malevil_F","Land_FuelStation_01_pump_F","Land_FuelStation_02_pump_F","Land_FuelStation_03_pump_F"

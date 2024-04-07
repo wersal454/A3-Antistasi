@@ -339,7 +339,7 @@
 
 		class opticscw{
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_cw", localize "STR_A3AU_sights"]);
-			picture = "";
+			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 			
 			ITEM(swlw_attachment_scope_dc17m_sniper, 80, MAGAZINE_STOCK);
 			ITEM(swlw_sniper_scope, 100, MAGAZINE_STOCK);

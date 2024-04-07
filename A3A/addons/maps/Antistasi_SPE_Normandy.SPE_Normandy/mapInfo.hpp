@@ -20,7 +20,7 @@ class SPE_Normandy {
 	milAdministrations[] = {
 		{6411.522,6996.073,0}, {2414.713,3882.5,0}
 	};
-	climate = "arid";
+	climate = "temperate";
 	buildObjects[] = {
 		// Pillbox bunkers
 		{"Land_PillboxBunker_01_hex_F", 200}, {"Land_PillboxBunker_01_rectangle_F", 300},

@@ -1,6 +1,10 @@
 private _hasWs = "ws" in A3A_enabledDLC;
 private _hasLawsOfWar = "orange" in A3A_enabledDLC;
 private _hasApex = "expansion" in A3A_enabledDLC;
+private _hasContact = "enoch" in A3A_enabledDLC;
+private _hasKart = "kart" in A3A_enabledDLC;
+private _hasArtOfWar = "aow" in A3A_enabledDLC;
+private _hasRF = "rf" in A3A_enabledDLC;
 
 //////////////////////////////
 //   Civilian Information   //
@@ -12,51 +16,96 @@ private _hasApex = "expansion" in A3A_enabledDLC;
 
 private _civCarsWithWeights = [
     "C_Quadbike_01_F", 0.3
-    ,"C_Hatchback_01_F", 1.0
+    ,"C_Hatchback_01_F", 7.0
     ,"C_Hatchback_01_sport_F", 0.3
     ,"C_Offroad_01_F", 1.0
     ,"C_SUV_01_F", 1.0
-    ,"C_Van_02_vehicle_F", 1.0                // van from Orange
-    ,"C_Van_02_transport_F", 0.2            // minibus
-    ,"C_Offroad_02_unarmed_F", 0.5            // Apex 4WD
-    ,"C_Offroad_01_comms_F", 0.1            // Contact
-    ,"C_Offroad_01_covered_F", 0.1
 ];
-
+if (_hasKart) then {
+    _civCarsWithWeights append ["C_Kart_01_F", 0.01, "C_Kart_01_Blu_F", 0.01, "C_Kart_01_Fuel_F", 0.01, "C_Kart_01_Red_F", 0.01, "C_Kart_01_Vrana_F", 0.01];
+};
 if (_hasApex) then {
-    _civCarsWithWeights append ["C_Offroad_02_unarmed_F", 1.0];
+    _civCarsWithWeights append ["C_Offroad_02_unarmed_F", 0.7];
+};
+if (_hasContact) then {
+    _civCarsWithWeights append ["C_Offroad_01_comms_F", 0.4 , "C_Offroad_01_covered_F", 0.4];
+};
+if (_hasLawsOfWar) then {
+    _civCarsWithWeights append ["C_Van_02_transport_F", 0.2];
+};
+if (_hasWs) then {
+    _civCarsWithWeights append ["C_Truck_02_racing_lxWS" , 0.1 , "C_Offroad_lxWS", 0.5];
 };
 
-["vehiclesCivCar", _civCarsWithWeights] call _fnc_saveToTemplate;
-
-
-["vehiclesCivIndustrial", [
+private _civIndustrial = [
     "C_Van_01_transport_F", 1.0
     ,"C_Van_01_box_F", 0.8
     ,"C_Truck_02_transport_F", 0.5
     ,"C_Truck_02_covered_F", 0.5
-    ,"C_Tractor_01_F", 0.3    ]] call _fnc_saveToTemplate;
+];
 
-["vehiclesCivBoat", [
+if (_hasContact) then {
+    _civIndustrial append ["C_Tractor_01_F", 0.2];
+};
+if (_hasLawsOfWar) then {
+    _civIndustrial append ["C_Van_02_vehicle_F", 0.8];
+};
+if (_hasWs) then {
+    _civIndustrial append ["C_Truck_02_cargo_lxWS" , 0.4 , "C_Truck_02_flatbed_lxWS" , 0.4];
+};
+
+private _civBoat = [
     "C_Boat_Civil_01_rescue_F", 0.1            // motorboats
     ,"C_Boat_Civil_01_police_F", 0.1
     ,"C_Boat_Civil_01_F", 1.0
     ,"C_Rubberboat", 1.0                    // rescue boat
-    ,"C_Boat_Transport_02_F", 1.0            // RHIB
-    ,"C_Scooter_Transport_01_F", 0.5]] call _fnc_saveToTemplate;
+];
 
-["vehiclesCivRepair", [
+if (_hasApex) then {
+    _civBoat append ["C_Boat_Transport_02_F", 1.0 ,"C_Scooter_Transport_01_F", 0.5];
+};
+
+private _civRepair = [
     "C_Offroad_01_repair_F", 0.3
-    ,"C_Van_02_service_F", 0.3                // orange
-    ,"C_Truck_02_box_F", 0.1]] call _fnc_saveToTemplate;
+    ,"C_Truck_02_box_F", 0.1
+];
 
-["vehiclesCivMedical", ["C_Van_02_medevac_F", 0.1]] call _fnc_saveToTemplate;
+if (_hasLawsOfWar) then {
+    _civRepair append ["C_Van_02_service_F", 0.3];
+};
 
-["vehiclesCivFuel", [
+private _civMedical = [];
+
+if (_hasLawsOfWar) then {
+    _civRepair append ["C_Van_02_medevac_F", 0.3];
+};
+
+private _civFuel = [
     "C_Van_01_fuel_F", 0.2
-    ,"C_Truck_02_fuel_F", 0.1]] call _fnc_saveToTemplate;
+    ,"C_Truck_02_fuel_F", 0.1
+];
+
+private _civPlanes = [];
+
+if (_hasApex) then {
+    _civPlanes append ["C_Plane_Civil_01_racing_F", "C_Plane_Civil_01_F"]
+};
+
+if (_hasRF) then {
+    _civCarsWithWeights append ["C_Pickup_rf", 2.0, "C_Pickup_covered_rf", 0.1];
+    _civRepair append ["C_Pickup_repair_rf", 0.3];
+    _civFuel append ["a3a_civ_Pickup_fuel_rf", 0.1];
+};
 
 ["vehiclesCivHeli", ["C_Heli_Light_01_civil_F" , "O_Heli_Light_02_unarmed_F" , "I_Heli_Transport_02_F"]] call _fnc_saveToTemplate;
+
+["vehiclesCivCar", _civCarsWithWeights] call _fnc_saveToTemplate;
+["vehiclesCivIndustrial", _civIndustrial] call _fnc_saveToTemplate;
+["vehiclesCivBoat", _civBoat] call _fnc_saveToTemplate;
+["vehiclesCivRepair", _civRepair] call _fnc_saveToTemplate;
+["vehiclesCivMedical", _civMedical] call _fnc_saveToTemplate;
+["vehiclesCivFuel", _civFuel] call _fnc_saveToTemplate;
+["vehiclesCivPlanes", _civPlanes] call _fnc_saveToTemplate;
 
 ["variants", [
     ["I_Heli_Transport_02_F", ["Dahoman", 1]],
@@ -117,7 +166,19 @@ if (_hasApex) then {_dlcUniforms append [
     "U_C_man_sport_2_F",
     "U_C_man_sport_3_F"];
 };
-
+if (_hasContact) then {_dlcUniforms append [
+    "U_O_R_Gorka_01_black_F",
+    "U_C_CBRN_Suit_01_Blue_F",
+    "U_C_CBRN_Suit_01_White_F"];
+};
+if (_hasArtOfWar) then {_dlcUniforms append [
+    "U_C_FormalSuit_01_black_F",
+    "U_C_FormalSuit_01_blue_F",
+    "U_C_FormalSuit_01_gray_F",
+    "U_C_FormalSuit_01_khaki_F",
+    "U_C_FormalSuit_01_tshirt_black_F",
+    "U_C_FormalSuit_01_tshirt_gray_F"];
+};
 if (_hasLawsOfWar) then {
   _dlcUniforms append [
     "U_C_Paramedic_01_F",
@@ -151,6 +212,21 @@ if (_hasWs && {(toLowerANSI worldName) in ["sefrouramal", "takistan"]}) then {
     "U_lxWS_Tak_03_B",
     "U_lxWS_Tak_03_C"
   ];
+};
+
+if (_hasRF) then {
+    private _RFleatherJackets = [
+        "U_C_PilotJacket_black_RF",
+        "U_C_PilotJacket_brown_RF",
+        "U_C_PilotJacket_lbrown_RF",
+        "U_C_PilotJacket_open_black_RF",
+        "U_C_PilotJacket_open_brown_RF",
+        "U_C_PilotJacket_open_lbrown_RF"
+    ];
+    _dlcUniforms append _RFleatherJackets;
+    if (A3A_climate in ["temperate","arctic"]) then {
+        _civUniforms append _RFleatherJackets;
+    };
 };
 
 ["uniforms", _civUniforms + _pressUniforms + _workerUniforms + _dlcUniforms] call _fnc_saveToTemplate;
