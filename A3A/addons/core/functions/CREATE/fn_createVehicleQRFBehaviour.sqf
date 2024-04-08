@@ -22,7 +22,7 @@ params ["_vehicle", "_crewGroup", "_cargoGroup", "_posDestination", "_markerOrig
 
 
 private _vehType = typeof _vehicle;
-if (_vehicle isKindOf "Air" || (typeOf _vehicle == "vehiclesDropPod"))  then
+if (_vehicle isKindOf "Air" || (typeOf _vehicle in (_faction get "vehiclesDropPod")))  then
 {
     if (_vehType in FactionGet(all,"vehiclesHelisTransport") + FactionGet(all,"vehiclesHelisLight") + FactionGet(all,"vehiclesDropPod")) exitWith
     {
@@ -35,6 +35,10 @@ if (_vehicle isKindOf "Air" || (typeOf _vehicle == "vehiclesDropPod"))  then
             if(_x distance2D _landPos < 20) exitWith { _landPos = [0, 0, 0] };
         } forEach _landPosBlacklist;
 
+        if (typeOf _vehicle in (_faction get "vehiclesDropPod") ) exitwith {
+            [_vehicle, _cargoGroup, _posDestination, _posOrigin/* , _crewGroup */] spawn A3A_fnc_OrbitalLanding;
+        };
+
         if !(_landPos isEqualTo [0,0,0]) then
         {
             _landPos set [2, 0];
@@ -43,15 +47,11 @@ if (_vehicle isKindOf "Air" || (typeOf _vehicle == "vehiclesDropPod"))  then
         }
         else
         {
-            if (typeOf _vehicle == "vehiclesDropPod") then {
-                    [_vehicle, _cargoGroup, _posDestination, _posOrigin/* , _crewGroup */] spawn A3A_fnc_OrbitalLanding;
+            if ((typeOf _vehicle) in vehFastRope) then {
+                [_vehicle, _cargoGroup, _posDestination, _posOrigin, _crewGroup] spawn A3A_fnc_fastrope;
             } else {
-                if ((typeOf _vehicle) in vehFastRope) then {
-                    [_vehicle, _cargoGroup, _posDestination, _posOrigin, _crewGroup] spawn A3A_fnc_fastrope;
-                } else {
-                    [_vehicle, _cargoGroup, _posDestination, _markerOrigin] spawn A3A_fnc_paradrop;
-                };
-            };  
+                [_vehicle, _cargoGroup, _posDestination, _markerOrigin] spawn A3A_fnc_paradrop;
+            };
         };
     };
     if (_vehType in FactionGet(all,"vehiclesHelisAttack") + FactionGet(all,"vehiclesHelisLightAttack")) exitWith 

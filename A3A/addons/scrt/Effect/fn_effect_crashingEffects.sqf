@@ -10,7 +10,7 @@
         _object - vehicle or a prop to apply effects to
 
 */
-#include "..\..\script_component.hpp"
+#include "..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
 params ["_object"];
@@ -77,7 +77,7 @@ if (typeOf _object in (_faction get "vehiclesDropPod") ) then {
 	setAperture 0;
 };
 
-waitUntil { sleep 0.01; getPos _object select 2 < 2 }; ///0.01 because we don't wanna bounce
+waitUntil { sleep 0.01; getPos _object select 2 < 4 }; ///0.01 because we don't wanna bounce
 
 deleteVehicle _ps0;
 deleteVehicle _ps1;

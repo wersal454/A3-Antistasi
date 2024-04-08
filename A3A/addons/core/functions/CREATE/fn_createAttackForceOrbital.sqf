@@ -24,7 +24,7 @@ Return array:
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-params ["_side", "_base", "_target", "_resPool", "_vehCount", "_vehAttackCount", ["_tierMod", 0], ["_troopType", "Normal"], ["_isGuaranteedAirdrop", false]];
+params ["_side", "_base", "_target", "_resPool", "_vehCount", "_vehAttackCount", ["_tierMod", 0], ["_troopType", "Specops"], ["_isGuaranteedAirdrop", false]];
 private _targpos = if (_target isEqualType []) then { _target } else { markerPos _target };
 private _transportRatio = 1 - _vehAttackCount / _vehCount;
 
@@ -42,9 +42,6 @@ private _transportPool = [];
 if (_transportPlanes isNotEqualTo [] && {(_faction get "vehiclesAirborne") isNotEqualTo []}) then {
     _transportPool append ["VEHAIRDROP", 0.45 / count _transportPlanes];
 };
-{ _transportPool append [_x, 2 / count _transportHelis] } forEach _transportHelis;
-{ _transportPool append [_x, 2 * _lhFactor / count _lightHelis] } forEach _lightHelis;
-{ _transportPool append [_x, 0.75 / count _transportPlanes] } forEach _transportPlanes;
 
 private _supportPool = [_side, tierWar+_tierMod] call A3A_fnc_getVehiclesAirSupport;
 
@@ -58,7 +55,7 @@ for "_i" from 1 to _vehCount do {
         case (_isGuaranteedAirdrop || {_vehType == "VEHAIRDROP"}): {
             //TODO: remove this delicious copypasta
             private _transportPlaneType = selectRandom _transportPlanes;
-            private _vehData = [_transportPlaneType, _troopType, _resPool, [], _side, _base, _targPos, true] call A3A_fnc_createAttackVehicle;
+            private _vehData = [_transportPlaneType, _troopType, _resPool, [], _side, _base, _targPos, true] call A3A_fnc_createAttackVehicleOrbital;
             if !(_vehData isEqualType []) exitWith {};          // couldn't create for some reason. Not sure why for air vehicles.
 
             _vehicles pushBack (_vehData#0);
@@ -78,7 +75,7 @@ for "_i" from 1 to _vehCount do {
         };
 
         default {
-            private _vehData = [_vehType, _troopType, _resPool, [], _side, _base, _targPos] call A3A_fnc_createAttackVehicle;
+            private _vehData = [_vehType, _troopType, _resPool, [], _side, _base, _targPos] call A3A_fnc_createAttackVehicleOrbital;
             if !(_vehData isEqualType []) exitWith {};          // couldn't create for some reason. Not sure why for air vehicles.
 
             _vehicles pushBack (_vehData#0);
@@ -98,3 +95,58 @@ for "_i" from 1 to _vehCount do {
 };
 
 [_resourcesSpent, _vehicles, _crewGroups, _cargoGroups];
+
+/* 
+#include "..\..\script_component.hpp"
+FIX_LINE_NUMBERS()
+
+params ["_side", "_base", "_target", "_resPool", "_vehCount", "_vehAttackCount", ["_tierMod", 0], ["_troopType", "Normal"], ["_isGuaranteedAirdrop", false]];
+private _targpos = if (_target isEqualType []) then { _target } else { markerPos _target };
+private _transportRatio = 1 - _vehAttackCount / _vehCount;
+
+private _resourcesSpent = 0;
+private _vehicles = [];
+private _crewGroups = [];
+private _cargoGroups = [];
+
+private _faction = Faction(_side);
+private _transportPod= _faction get "vehiclesDropPod";
+
+private _transportPool = [];
+
+{_transportPool append [_x, count _transportPod] } forEach _transportPod;
+
+private _supportPool = [_side, tierWar+_tierMod] call A3A_fnc_getVehiclesAirSupport;
+
+private _numTransports = 0;
+private _isTransport = _vehAttackCount < _vehCount;            // normal case, first vehicle should be a transport
+
+for "_i" from 1 to _vehCount do {
+    private _vehType = selectRandomWeighted ([_supportPool, _transportPool] select _isTransport);
+
+    switch (true) do {   ;
+        };
+        case (_vehType == "CASDIVE");
+        case (_vehType == "CAS"): {
+            // no reveal because it's a sub-support, delay because it's faster than the helis
+            [_vehType, _side, _resPool, 500, false, _targPos, 0, 60] remoteExec ["A3A_fnc_createSupport", 2];
+        };
+        default {
+            private _vehData = [_vehType, _troopType, _resPool, [], _side, _base, _targPos] call A3A_fnc_createAttackVehicle;
+            if !(_vehData isEqualType []) exitWith {};          // couldn't create for some reason. Not sure why for air vehicles.
+
+            _vehicles pushBack (_vehData#0);
+            _crewGroups pushBack (_vehData#1);
+            if !(isNull (_vehData#2)) then { _cargoGroups pushBack (_vehData#2) };
+            _landPosBlacklist = (_vehData#3);
+
+            private _vehCost = A3A_vehicleResourceCosts getOrDefault [_vehType, 0];
+            private _crewCost = 10 * (count units (_vehData#1) + count units (_vehData#2));
+            _resourcesSpent = _resourcesSpent + _vehCost + _crewCost;
+            sleep 5;
+        };
+    if (_isTransport) then { _numTransports = _numTransports + 1 };
+    _isTransport = _vehAttackCount == 0 or (_numTransports / _i) < _transportRatio;
+};
+
+[_resourcesSpent, _vehicles, _crewGroups, _cargoGroups]; */

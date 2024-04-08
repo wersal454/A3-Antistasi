@@ -245,7 +245,6 @@ class CfgFunctions
             class createAttackForceOrbital {};
             class createAttackVehicle {};
             class createAttackVehicleOrbital {};
-            class createAttackVehicle {};
             class createSDKGarrisons {};
             class createSDKgarrisonsTemp {};
             class createUnit {};
