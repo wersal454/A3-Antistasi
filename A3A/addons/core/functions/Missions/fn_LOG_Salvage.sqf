@@ -14,7 +14,7 @@ private _positionX = getMarkerPos _markerX;
 private _shipType = "Land_UWreck_FishingBoat_F";
 
 //Select possible locations for sunken treasure
-private _firstPos = round (random 100) + 150;
+private _firstPos = round (random 900) + 150;
 private _mrk1Pos = (selectRandom (selectBestPlaces [_positionX, _firstPos,"waterDepth", 5, 20]) select 0) + [0];
 private _mrk2Pos = (selectRandom (selectBestPlaces [_mrk1Pos, 300,"waterDepth", 5, 20]) select 0) + [0];
 private _mrk3Pos = (selectRandom (selectBestPlaces [_mrk2Pos, 300,"waterDepth", 5, 20]) select 0) + [0];
@@ -108,6 +108,8 @@ _vehCrewGroup addVehicle _veh;
 		};
 	};
 };
+
+/// add enemy divers and SVD somewhere
 
 //Disable simulation if we *really* want to
 Debug("Waiting for salvage mission end");
