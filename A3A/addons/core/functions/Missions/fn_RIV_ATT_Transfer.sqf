@@ -54,6 +54,8 @@ private _outOfBounds = _hideoutPosition findIf { (_x < 0) || {_x > worldSize}} !
 private _InvBases = (airportsX + milbases + outposts + seaports + factories + resourcesX) select {sidesX getVariable [_x, sideUnknown] == Invaders};
 private _CloseToOutposts = _InvBases findIf { _hideoutPosition distance2d (getMarkerPos _x) < 1000 || _hideoutPosition inArea _x } != -1;
 
+private _transferConvoySpawnPos = getMarkerPos _CloseToOutposts;
+
 //mitigation of negative terrain gradient
 if(!(_radGrad > -0.25 && _radGrad < 0.25) || {isOnRoad _hideoutPosition || {surfaceIsWater _hideoutPosition || {_outOfBounds || {_isTooCloseToOutposts}}}}) then {
     private _radiusX = 100;
@@ -288,7 +290,7 @@ if (dateToNumber date < _dateLimitNum) then {
 
     [_patrolVehGroup, _hideoutPosition, 250] call bis_fnc_taskPatrol;
 
-    _nul = [_hideoutPosition, _lootContainer, _isDifficult] spawn {
+    /* _nul = [_hideoutPosition, _lootContainer, _isDifficult] spawn {
         params ["_hideoutPosition", "_lootContainer", "_isDifficult"];
 
         sleep (random [120, 240, 360]);
@@ -308,36 +310,112 @@ if (dateToNumber date < _dateLimitNum) then {
         }; 
 
         terminate _thisScript;
-    };
+    }; */
+
+    private _route = [_transferConvoySpawnPos, _hideoutPosition] call A3A_fnc_findPath;
 
     sleep 5; 
     _lootContainer allowDamage true;
 
-    _vehicletransfer = if (_isDifficult) then { selectRandom ((_faction get "vehiclesCargoTrucks") + (A3A_faction_riv get "vehiclesRivalsAPCs") + 
+    private _vehicletransfer = if (_isDifficult) then { selectRandom ((_faction get "vehiclesCargoTrucks") + (A3A_faction_riv get "vehiclesRivalsAPCs") + 
     (A3A_faction_riv get "vehiclesRivalsTanks"));
     } esle {
        selectRandom ((_faction get "vehiclesCargoTrucks") + (A3A_faction_riv get "vehiclesRivalsLightArmed"));
     }; ///check if vehicle is cargo truck or vehicle to transfer, if cargo truck create or move loot crate to truck.
-    _escortvehicle = if (_isDifficult) then {
+
+    private _escortvehicle = if (_isDifficult) then {
         selectRandom ((_faction get "vehiclesLightAPCs") + (_faction get "vehiclesAPCs") + (_faction get "vehiclesIFVs") + (_faction get "vehiclesLightArmed") + 
         (_faction get "vehiclesTrucks"));
     } else {
         selectRandom ((_faction get "vehiclesLightArmed") + (_faction get "vehiclesTrucks") + (_faction get "vehiclesMilitiaLightArmed") + 
         (_faction get "vehiclesMilitiaCars") + (_faction get "vehiclesMilitiaAPCs") + (_faction get "vehiclesMilitiaTrucks"));
-    }; //check if vehicle is truck, ifyes create a group and move in
-    _convoylead = if (_isDifficult) then {
+    }; //check if vehicle is truck, if yes create a group and move in
+
+    private _convoylead = if (_isDifficult) then {
         selectRandom ((_faction get "vehiclesLightArmed") + (_faction get "vehiclesTrucks"));
     } else {
         selectRandom ((_faction get "vehiclesLightArmed") + (_faction get "vehiclesTrucks") + (_faction get "vehiclesMilitiaLightArmed") + 
         (_faction get "vehiclesMilitiaCars") + (_faction get "vehiclesMilitiaTrucks") + (_faction get "vehiclesLightUnarmed"));
     };
     
+    private _vehiclesX = [];
+    private _markNames = [];
+    private _fnc_spawnConvoyVehicle = {
+        params ["_vehType", "_markName",""];
+        ServerDebug_1("Spawning vehicle type %1", _vehType);
+
+        // Find location down route
+        _pathState = [_route, [20, 0] select (count _pathState == 0), _pathState] call A3A_fnc_findPosOnRoute;
+        while {true} do {
+            // make sure there are no other vehicles within 10m
+            if (count (ASLtoAGL (_pathState#0) nearEntities 10) == 0) exitWith {};
+            _pathState = [_route, 10, _pathState] call A3A_fnc_findPosOnRoute;
+        };
+
+        private _veh = createVehicle [_vehType, ASLtoAGL (_pathState#0) vectorAdd [0,0,0.5]];               // Give it a little air
+        private _vecUp = (_pathState#1) vectorCrossProduct [0,0,1] vectorCrossProduct (_pathState#1);       // correct pitch angle
+        _veh setVectorDirAndUp [_pathState#1, _vecUp];
+        _veh allowDamage false;
+
+        private _group = [_sideX, _veh] call A3A_fnc_createVehicleCrew;
+        { [_x, nil, nil, _resPool] call A3A_fnc_NATOinit; _x allowDamage false; _x disableAI "MINEDETECTION" } forEach (units _group);
+        _soldiers append (units _group);
+        (driver _veh) stop true;
+        deleteWaypoint [_group, 0];													// groups often start with a bogus waypoint
+
+        [_veh, _sideX, _resPool] call A3A_fnc_AIVEHinit;
+        if (_vehType in FactionGet(all,"vehiclesArmor")) then { _veh allowCrewInImmobile true };			// move this to AIVEHinit at some point?
+        private _return = [_veh, _lootContainer] call A3A_Logistics_fnc_canLoad;
+        if !(_return isEqualType 0 && _vehType in FactionGet(all,"vehiclesCargoTrucks")) then {
+            _lootContainer setPos [getPos _veh select 0, getPos _veh select 1, (getPos _veh select 2) + 5];
+            _return remoteExec ["A3A_Logistics_fnc_load", 2];
+        };
+        if (_vehType in FactionGet(all,"vehiclesMilitiaTrucks") || _vehType in FactionGet(all,"vehiclesMilitiaTrucks") || _vehType in FactionGet(all,"vehiclesMilitiaTrucks") || _vehType in FactionGet(all,"vehiclesMilitiaCars") || 
+        _vehType in FactionGet(all,"vehiclesLightUnarmed")) then {
+            private _typeGroup = [_typeVehEsc, _sideX] call A3A_fnc_cargoSeats;
+            private _groupEsc = [_posSpawn, _sideX, _typeGroup] call A3A_fnc_spawnGroup;				// Unit limit?
+            {[_x, nil, nil, _resPool] call A3A_fnc_NATOinit;_x assignAsCargo _veh;_x moveInCargo _veh;} forEach units _groupEsc;
+        };
+        _vehiclesX pushBack _veh;
+        _markNames pushBack _markName;
+        _veh;
+    };
+        
+    private _convoyVehicles = [];
+
+    private _vehEscort = [_escortvehicle, "Escort vehicle"] call _fnc_spawnConvoyVehicle;
+    _convoyVehicles pushBack _vehEscort;
+    // Objective vehicle
+    sleep 2;
+    private _objText = if (_difficult) then {localize "STR_marker_convoy_objective_space"} else {localize "STR_marker_convoy_objective"};
+    private _vehObj = [_vehicletransfer, _objText] call _fnc_spawnConvoyVehicle;
+    _convoyVehicles pushBack _vehObj;
+    sleep 1;
+
+    private _vehLead = [_convoylead, "Convoy Lead"] call _fnc_spawnConvoyVehicle;
+    _convoyVehicles pushBack _vehLead;
+    _vehicles append _convoyVehicles;
+
+
+    _route = _route apply { _x select 0 };			// reduce to position array
+    if (_route isEqualTo []) then { _route = [_posOrigin, _posDest] };
+
+    _route = _route select [_pathState#2, count _route];        // remove navpoints that we already passed while spawning
+    // This array is used to share remaining convoy vehicles between threads
+    reverse _convoyVehicles;
+    reverse _markNames;
+    {
+        (driver _x) stop false;
+        [_x, _route, _convoyVehicles, 30, _x == _vehObj] spawn A3A_fnc_vehicleConvoyTravel;
+	    [_x, _markNames#_forEachIndex, false] spawn A3A_fnc_inmuneConvoy;			// Disabled the stuck-vehicle hacks
+        sleep 1;
+    } forEach _convoyVehicles;
 };
 
 
 waitUntil {
 	sleep 1;
-	dateToNumber date > _dateLimitNum || {(!isNil "_lootContainer" && (!alive _lootContainer || _lootContainer inArea [getMarkerPos respawnTeamPlayer, 50, 50, 0, false]))}
+	dateToNumber date > _dateLimitNum || {(!isNil "_vehObj" && (!alive _vehObj || _vehObj inArea [getMarkerPos respawnTeamPlayer, 50, 50, 0, false]))}
 };
 
 switch(true) do {
@@ -345,8 +423,8 @@ switch(true) do {
         Info("Time is out, cancelling task.");
         [_taskId, "RIV_ATT", "CANCELED"] call A3A_fnc_taskSetState;
     };
-    case (!isNil "_lootContainer" && {(!alive _lootContainer || {_lootContainer inArea [getMarkerPos respawnTeamPlayer, 50, 50, 0, false]})}): {
-        Info("Hideout cache destroyed or stolen, success.");
+    case (!isNil "_vehObj" && {(!alive _vehObj || {_vehObj inArea [getMarkerPos respawnTeamPlayer, 50, 50, 0, false]})}): {
+        Info("Transfer vehicle destroyed or stolen, success.");
         [_taskId, "RIV_ATT", "SUCCEEDED"] call A3A_fnc_taskSetState;
         [0, 1500] remoteExec ["A3A_fnc_resourcesFIA",2];
         { 
