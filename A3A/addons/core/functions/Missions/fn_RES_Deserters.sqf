@@ -7,7 +7,7 @@ params ["_markerX"];
 if (!isServer and hasInterface) exitWith{};
 
 private _effects = [];
-private _POWs = [];
+private _Deserters = [];
 private _vehicles = [];
 private _groups = [];
 private _props = [];
@@ -17,24 +17,8 @@ private _faction = Faction(_sideX);
 private _difficultX = random 10 < tierWar;
 private _positionX = getMarkerPos _markerX;
 
-private _infantrySquadArray = [
-    selectRandom ([_faction, "groupsTierMedium"] call SCRT_fnc_unit_flattenTier),
-    selectRandom ([_faction, "groupsTierSquads"] call SCRT_fnc_unit_flattenTier)
-] select _difficultX;
 
-private _patrolGroup1 = [_shorePosition, _sideX, _infantrySquadArray] call A3A_fnc_spawnGroup;
-{ 
-    [_x] call A3A_fnc_NATOinit;
-} forEach units _patrolGroup1;
-
-[_patrolGroup1, _shorePosition, 100] call bis_fnc_taskPatrol;
-
-private _patrolGroup2 = [_shorePosition, _sideX, _infantrySquadArray] call A3A_fnc_spawnGroup;
-{ 
-    [_x] call A3A_fnc_NATOinit;
-} forEach units _patrolGroup2;
-
-private _POWs = [];
+private _Deserters = [];
 
 private _limit = if (_difficultX) then {
 	45 call SCRT_fnc_misc_getTimeLimit
@@ -74,11 +58,83 @@ if (count _potentials > 0) then {
 	};
 };
 
-private _grpPOW = createGroup teamPlayer;
+private _escortvehicle 
+
+waitUntil {
+    sleep 1;
+    (call SCRT_fnc_misc_getRebelPlayers) inAreaArray [_posHouse, distanceSPWN1, distanceSPWN1] isNotEqualTo [] || {dateToNumber date > _dateLimitNum}
+};
+
+private _infantrySquadArray = [
+    selectRandom ([_faction, "groupsTierMedium"] call SCRT_fnc_unit_flattenTier),
+    selectRandom ([_faction, "groupsTierSquads"] call SCRT_fnc_unit_flattenTier)
+] select _difficultX;
+
+private _vehiclePatrol = "";
+
+private _stolenVehicle = "";
+
+private _roll = round random 100;
+if (_roll >= 50) then {
+	_vehiclePatrolType = ((_faction get "vehiclesLightArmed") + (_faction get "vehiclesMilitiaLightArmed") + (_faction get "vehiclesMilitiaAPCs") + 
+	(_faction get "vehiclesMilitiaTrucks"));
+	_stolenVehicleType = if (_difficultX) then {
+        selectRandom ((_faction get "vehiclesLightAPCs") +(_faction get "vehiclesLightArmed") + 
+        (_faction get "vehiclesTrucks"));
+    } else {
+        selectRandom ((_faction get "vehiclesLightArmed") + (_faction get "vehiclesTrucks") + (_faction get "vehiclesMilitiaLightArmed") + 
+        (_faction get "vehiclesMilitiaCars") + (_faction get "vehiclesMilitiaAPCs") + (_faction get "vehiclesMilitiaTrucks"));
+	}; 
+};
+
+private _nearbyPos = [player, 1, 150, 3, 0, 20, 0] call BIS_fnc_findSafePos;
+
+private _patrolGroup1 = [_nearbyPos, _sideX, _infantrySquadArray] call A3A_fnc_spawnGroup;
+
+private _Patrolveh = createVehicle [_vehiclePatrolType, _nearbyPos, [], 0, "NONE"];
+[_Patrolveh, _sideX] call A3A_fnc_AIVEHinit;
+
+private _stolenVehicle = createVehicle [_stolenVehicleType, _posHouse, [], 0, "NONE"];
+/* [_stolenVehicle, teamPlayer] call A3A_fnc_AIVEHinit;
+private _stolenVehgroup = group driver _StolenVehGroup; */ ///not sure how to transfer command to player, so for now vehicle will stay empty
+
+private _patrolGroup2 = [];
+if (_difficultX) then {
+	private _nearbyPos = [player, 1, 150, 3, 0, 20, 0] call BIS_fnc_findSafePos;
+	_patrolGroup2 = [_nearbyPos, _sideX, _infantrySquadArray] call A3A_fnc_spawnGroup;
+	_soldersPatrol append units _patrolGroup2;
+	{ 
+    	[_x] call A3A_fnc_NATOinit;
+	} forEach units _patrolGroup1;
+};
+_soldersPatrol append units _patrolGroup1;
+private _patrolVehgroup = group driver _Patrolveh;
+_soldersPatrol append units _patrolVehgroup;
+{ 
+    [_x] call A3A_fnc_NATOinit;
+} forEach units _patrolGroup1;
+
+waitUntil {
+    sleep 1;
+    (call SCRT_fnc_misc_getRebelPlayers) inAreaArray [_posHouse, 300, 300] isNotEqualTo [] || {dateToNumber date > _dateLimitNum}
+};
+
+[_patrolGroup1, _posHouse, 15] call bis_fnc_taskPatrol;
+[_patrolVehgroup, _posHouse, 15] call bis_fnc_taskPatrol;
+[_patrolGroup1, _posHouse, 15] call bis_fnc_taskPatrol;
+if (_difficultX) then {
+	[_patrolGroup1, _posHouse, 15] call bis_fnc_taskPatrol;
+};
+private _grpDeserters = createGroup teamPlayer;
 
 for "_i" from 0 to _countX do {
-	private _unit = [_grpPOW, FactionGet(reb,"unitUnarmed"), (_posHouse select _i), [], 0, "NONE"] call A3A_fnc_createUnit;
-	[_unit, selectRandom (A3A_faction_reb get "faces"), selectRandom (A3A_faction_reb get "voices")] call A3A_fnc_setIdentity;
+	if (_sideX == Occupants) then {
+		private _unit = [_grpDeserters, FactionGet(occ,"unitTraitor"), (_posHouse select _i), [], 0, "NONE"] call A3A_fnc_createUnit;
+		[_unit, selectRandom (A3A_faction_occ get "faces"), selectRandom (A3A_faction_occ get "voices")] call A3A_fnc_setIdentity;
+	} else {
+		private _unit = [_grpDeserters, FactionGet(inv,"unitTraitor"), (_posHouse select _i), [], 0, "NONE"] call A3A_fnc_createUnit;
+		[_unit, selectRandom (A3A_faction_inv get "faces"), selectRandom (A3A_faction_inv get "voices")] call A3A_fnc_setIdentity;
+	};
 	_unit allowDamage false;
 	_unit setCaptive true;
 	_unit disableAI "MOVE";
@@ -88,52 +144,62 @@ for "_i" from 0 to _countX do {
 	_unit setBehaviour "CARELESS";
 	_unit allowFleeing 0;
 	//_unit disableAI "ANIM";
-	removeAllWeapons _unit;
-	removeAllAssignedItems _unit;
+	//removeAllWeapons _unit;
+	//removeAllAssignedItems _unit;
 	sleep 1;
 	//if (alive _unit) then {_unit playMove "UnaErcPoslechVelitele1";};
-	_POWS pushBack _unit;
+	_Deserters pushBack _unit;
 	[_unit,"prisonerX"] remoteExec ["A3A_fnc_flagaction",[teamPlayer,civilian],_unit];
-	[_unit] call A3A_fnc_reDress;
+	if (_sideX == Occupants) then {
+		[_unit] call A3A_fnc_reDressOcc;
+	} else {
+		[_unit] call A3A_fnc_reDressInv;
+	};
 };
 
 sleep 5;
 
-{_x allowDamage true} forEach _POWS;
+{_x allowDamage true} forEach _Deserters;
 
-waitUntil {sleep 1; {alive _x} count _POWs == 0 or {{(alive _x) and (_x distance getMarkerPos respawnTeamPlayer < 50)} count _POWs > 0 or {dateToNumber date > _dateLimitNum}}};
+waitUntil {sleep 1; {alive _x} count _Deserters == 0 or {{(alive _x) and (_x distance getMarkerPos respawnTeamPlayer < 50)} count _Deserters > 0 or {dateToNumber date > _dateLimitNum}}};
 
 if (dateToNumber date > _dateLimitNum) then {
 	if (spawner getVariable _markerX == 2) then {
 		{
-			if (group _x == _grpPOW) then {
+			if (group _x == _grpDeserters) then {
 				_x setDamage 1;
 			};
-		} forEach _POWS;
+		} forEach _Deserters;
 	} else {
 		{
-		if (group _x == _grpPOW) then
+		if (group _x == _grpDeserters) then
 			{
-			_x setCaptive false;
-			_x enableAI "MOVE";
-			_x doMove _positionX;
+			_unit enableAI "MOVE";
+			_unit enableAI "AUTOTARGET";
+			_unit enableAI "TARGET";
+			_unit setUnitPos "UP";
+			_unit setBehaviour "AWARE";
 			};
-		} forEach _POWS;
+		} forEach _Deserters;
 	};
+	if ( or _soldersPatrol == _solderPatrol/2) then {
+		private _reveal = [_posHouse , _sideX] call A3A_fnc_calculateSupportCallReveal;
+        [_posHouse, 4, ["QRF"], _sideX, _reveal] remoteExec ["A3A_fnc_createSupport", 2];
+	};//sending QRF if thing didn't go well for patrol group
 };
 
-waitUntil {sleep 1; {alive _x} count _POWs == 0 or {{(alive _x) and (_x distance getMarkerPos respawnTeamPlayer < 50)} count _POWs > 0}};
+waitUntil {sleep 1; {alive _x} count _Deserters == 0 or {{(alive _x) and (_x distance getMarkerPos respawnTeamPlayer < 50)} count _Deserters > 0}};
 
 private _bonus = if (_difficultX) then {2} else {1};
 
-if ({alive _x} count _POWs == 0) then {
+if ({alive _x} count _Deserters == 0) then {
 	[_taskId, "RES", "FAILED"] call A3A_fnc_taskSetState;
-	{[_x,false] remoteExec ["setCaptive",0,_x]; _x setCaptive false} forEach _POWs;
+	{[_x,false] remoteExec ["setCaptive",0,_x]; _x setCaptive false} forEach _Deserters;
 	[-10*_bonus,theBoss] call A3A_fnc_addScorePlayer;
 } else {
 	sleep 5;
 	[_taskId, "RES", "SUCCEEDED"] call A3A_fnc_taskSetState;
-	_countX = {(alive _x) and (_x distance getMarkerPos respawnTeamPlayer < 150)} count _POWs;
+	_countX = {(alive _x) and (_x distance getMarkerPos respawnTeamPlayer < 150)} count _Deserters;
 	_hr = 2 * (_countX);
 	_resourcesFIA = 100 * _countX*_bonus;
 	[_hr,_resourcesFIA] remoteExec ["A3A_fnc_resourcesFIA",2];
@@ -149,7 +215,7 @@ if ({alive _x} count _POWs == 0) then {
 	[_bonusAmount,theBoss] call A3A_fnc_addScorePlayer;
     [(_bonusAmount*10),theBoss, true] call A3A_fnc_addMoneyPlayer;
 
-	{[_x] join _grpPOW; [_x] orderGetin false} forEach _POWs;
+	{[_x] join _grpDeserters; [_x] orderGetin false} forEach _Deserters;
 };
 
 sleep 60;
@@ -165,9 +231,9 @@ private _weaponsX = [];
 		_items = _items + (items _unit) + (primaryWeaponItems _unit) + (assignedItems _unit) + (secondaryWeaponItems _unit);
 	};
 	deleteVehicle _unit;
-} forEach _POWs;
+} forEach _Deserters;
 
-deleteGroup _grpPOW;
+deleteGroup _grpDeserters;
 
 {boxX addWeaponCargoGlobal [_x,1]} forEach _weaponsX;
 {boxX addMagazineCargoGlobal [_x,1]} forEach _ammunition;
