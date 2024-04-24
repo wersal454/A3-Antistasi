@@ -1,7 +1,7 @@
 params ["_markerX"];
 
 //Mission: Conquer the outpost
-if (!isServer and hasInterface) exitWith{};
+if (isServer and hasInterface) exitWith{};
 
 private _difficultX = if (random 10 < tierWar) then {true} else {false};
 private _positionX = getMarkerPos _markerX;

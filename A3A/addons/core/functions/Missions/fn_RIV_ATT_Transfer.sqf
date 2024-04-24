@@ -317,11 +317,10 @@ if (dateToNumber date < _dateLimitNum) then {
     sleep 5; 
     _lootContainer allowDamage true;
 
-    private _vehicletransfer = if (_isDifficult) then { selectRandom ((_faction get "vehiclesCargoTrucks") + (A3A_faction_riv get "vehiclesRivalsAPCs") + 
-    (A3A_faction_riv get "vehiclesRivalsTanks"));
-    } esle {
-       selectRandom ((_faction get "vehiclesCargoTrucks") + (A3A_faction_riv get "vehiclesRivalsLightArmed"));
-    }; ///check if vehicle is cargo truck or vehicle to transfer, if cargo truck create or move loot crate to truck.
+    private _vehicletransfer = if (_isDifficult) then { selectRandom ((_faction get "vehiclesCargoTrucks") + (A3A_faction_riv get "vehiclesRivalsAPCs") + (A3A_faction_riv get "vehiclesRivalsTanks"));
+        } else {
+            selectRandom ((_faction get "vehiclesCargoTrucks") + (A3A_faction_riv get "vehiclesRivalsLightArmed"));
+        }; ///check if vehicle is cargo truck or vehicle to transfer, if cargo truck create or move loot crate to truck.
 
     private _escortvehicle = if (_isDifficult) then {
         selectRandom ((_faction get "vehiclesLightAPCs") + (_faction get "vehiclesAPCs") + (_faction get "vehiclesIFVs") + (_faction get "vehiclesLightArmed") + 

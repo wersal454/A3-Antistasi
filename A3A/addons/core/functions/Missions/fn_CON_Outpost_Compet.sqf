@@ -14,64 +14,36 @@ private _limit = if (_difficultX) then {
 _limit params ["_dateLimitNum", "_displayTime"];
 
 private _markerSide = sidesX getVariable [_markerX, sideUnknown];
+private _oppositeside = objNull;
+if (_markerSide == Occupants) then {
+	_oppositeside = Invaders;
+} else {
+	_oppositeside = Occupants;
+};
 
 private _nameDest = [_markerX] call A3A_fnc_localizar;
 private _textX = "";
 private _taskName = "";
 
-private _specOpsArray = if (_difficult) then {selectRandom (_faction get "groupSpecOpsRandom")} else {selectRandom ([_faction, "groupsTierSquads"] call SCRT_fnc_unit_flattenTier)};
-
-params ["_mrkDest", "_side", "_vehCount", "_reveal"];
-
-
-if ((_side == Occupants && areOccupantsDefeated) || {(_side == Invaders && areInvadersDefeated)}) exitWith {
-    ServerInfo_1("%1 faction was defeated earlier, aborting single attack.", str _side);
+if ((_oppositeside == Occupants && areOccupantsDefeated) || {(_oppositeside == Invaders && areInvadersDefeated)}) exitWith {
+	[[_markerX],"A3A_fnc_CON_Outpost"] remoteExec ["A3A_fnc_scheduler",2];
 };
 
-private _targPos = markerPos _mrkDest;
+private _delay = round random 5;
+private _targPos = markerPos _markerX;
 
-ServerInfo_1("Starting attack with parameters %1", _this);
-
-private _airbase = [_side, markerPos _mrkDest] call A3A_fnc_availableBasesAir;
+private _airbase = [_oppositeside, markerPos _markerX] call A3A_fnc_availableBasesAir;
+private _vehCount = (round random 2) + 2;
 
 //params ["_side", "_airbase", "_target", "_resPool", "_vehCount", "_delay", "_modifiers", "_attackType", "_reveal"];
-private _data = [_side, _airbase, _mrkDest, "defence", _vehCount, 0, [], "CounterAttack", _reveal] call A3A_fnc_createAttackForceMixed;
-_data params ["", "_vehicles", "_crewGroups", "_cargoGroups"];
+private _data = [_oppositeside, _airbase, _targPos, "attack", _vehCount, _delay, ["specops"]] call A3A_fnc_createAttackForceMixed;
+_data params ["_resources", "_vehicles", "_crewGroups", "_cargoGroups"];
 
 // Prepare despawn conditions
 private _endTime = time + 2700;
 private _victory = false;
 private _soldiers = [];
 { _soldiers append units _x } forEach _cargoGroups;
-
-while {true} do
-{
-    private _markerSide = sidesX getVariable _mrkDest;
-    if(_markerSide == _side) exitWith {
-        ServerInfo_1("Small attack to %1 captured the marker, starting despawn routines", _mrkDest);
-        _victory = true;
-    };
-
-    private _curSoldiers = { !fleeing _x and _x call A3A_fnc_canFight } count _soldiers;
-    if (_curSoldiers < count _soldiers * 0.25) exitWith {
-        ServerInfo_1("Small attack to %1 has been defeated, starting despawn routines", _mrkDest);
-    };
-    if(_endTime < time) exitWith {
-        ServerInfo_1("Small attack to %1 timed out, starting despawn routines", _mrkDest);
-    };
-
-    // Attempt to flip marker
-    [_mrkDest, _markerSide] remoteExec ["A3A_fnc_zoneCheck", 2];
-    sleep 30;
-};
-
-{ [_x] spawn A3A_fnc_VEHDespawner } forEach _vehicles;
-{ [_x] spawn A3A_fnc_enemyReturnToBase } forEach _crewGroups;
-{
-    [_x, [nil, _mrkDest] select _victory] spawn A3A_fnc_enemyReturnToBase;
-    sleep 10;
-} forEach _cargoGroups;
-
 
 switch (true) do {
 	case (_markerX in resourcesX): {
@@ -92,7 +64,35 @@ private _taskId = "CON" + str A3A_taskCount;
 [[teamPlayer,civilian],_taskId,[_textX,_taskName,_markerX],_positionX,false,0,true,"Target",true] call BIS_fnc_taskCreate;
 [_taskId, "CON", "CREATED"] remoteExecCall ["A3A_fnc_taskUpdate", 2];
 
-waitUntil {sleep 1; dateToNumber date > _dateLimitNum or {sidesX getVariable [_markerX,sideUnknown] == teamPlayer}};
+waitUntil {sleep 1; dateToNumber date > _dateLimitNum or {sidesX getVariable [_markerX,sideUnknown] == teamPlayer} || {sidesX getVariable [_markerX,sideUnknown] == _oppositeside}};
+
+while {true} do
+{
+    private _markerSide = sidesX getVariable _markerX;
+    if(_markerSide == _oppositeside) exitWith {
+        //diag_log ("Attack to %1 captured the marker, starting despawn routines", _mrkDest);
+        _victory = true;
+    };
+
+    private _curSoldiers = { !fleeing _x and _x call A3A_fnc_canFight } count _soldiers;
+    if (_curSoldiers < count _soldiers * 0.25) exitWith {
+        //diag_log ("Small attack to %1 has been defeated, starting despawn routines", _mrkDest);
+    };
+    if(_endTime < time) exitWith {
+       // diag_log ("Small attack to %1 timed out, starting despawn routines", _mrkDest);
+    };
+
+    // Attempt to flip marker
+    [_mrkDest, _markerSide] remoteExec ["A3A_fnc_zoneCheck", 2];
+    sleep 30;
+};
+
+{ [_x] spawn A3A_fnc_VEHDespawner } forEach _vehicles;
+{ [_x] spawn A3A_fnc_enemyReturnToBase } forEach _crewGroups;
+{
+    [_x, [nil, _mrkDest] select _victory] spawn A3A_fnc_enemyReturnToBase;
+    sleep 10;
+} forEach _cargoGroups;
 
 // add a check if all players are dead, in the area of a marker
 // Or add a check if possible to determite whenver other faction managed to capture marker
@@ -116,20 +116,20 @@ if (dateToNumber date > _dateLimitNum) then {
 		[1800, _markerSide] remoteExec ["A3A_fnc_timingCA",2];
 		{ 
 			[450, _x] call A3A_fnc_addMoneyPlayer;
-			[20, _x] call A3A_fnc_addScorePlayer;
+			[30, _x] call A3A_fnc_addScorePlayer;
 		} forEach (call SCRT_fnc_misc_getRebelPlayers);
-		[20, theBoss] call A3A_fnc_addScorePlayer;
-        [200,theBoss, true] call A3A_fnc_addMoneyPlayer;
+		[30, theBoss] call A3A_fnc_addScorePlayer;
+        [300,theBoss, true] call A3A_fnc_addMoneyPlayer;
 	} else {
 		[0,600] remoteExec ["A3A_fnc_resourcesFIA",2];
 		[-20,0,_positionX] remoteExec ["A3A_fnc_citySupportChange",2];
 		[1200, _markerSide] remoteExec ["A3A_fnc_timingCA",2];
 		{ 
 			[250, _x] call A3A_fnc_addMoneyPlayer;
-			[10, _x] call A3A_fnc_addScorePlayer;
+			[20, _x] call A3A_fnc_addScorePlayer;
 		} forEach (call SCRT_fnc_misc_getRebelPlayers);
-		[10, theBoss] call A3A_fnc_addScorePlayer;
-        [100, theBoss, true] call A3A_fnc_addMoneyPlayer;
+		[20, theBoss] call A3A_fnc_addScorePlayer;
+        [200, theBoss, true] call A3A_fnc_addMoneyPlayer;
 	};
 };
 

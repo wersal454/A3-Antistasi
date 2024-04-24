@@ -21,6 +21,8 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 //       Vehicles       //
 //////////////////////////
 
+["vehiclesSDV", ["O_SDV_01_F"]] call _fnc_saveToTemplate;
+
 ["ammobox", "O_T_supplyCrate_F"] call _fnc_saveToTemplate;     
 ["surrenderCrate", "Box_T_East_Wps_F"] call _fnc_saveToTemplate; 
 ["equipmentBox", "Box_T_CSAT_Equip_F"] call _fnc_saveToTemplate; 

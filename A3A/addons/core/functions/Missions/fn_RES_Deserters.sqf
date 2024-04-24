@@ -58,7 +58,7 @@ if (count _potentials > 0) then {
 	};
 };
 
-private _escortvehicle 
+private _escortvehicle ;
 
 waitUntil {
     sleep 1;
@@ -182,7 +182,7 @@ if (dateToNumber date > _dateLimitNum) then {
 			};
 		} forEach _Deserters;
 	};
-	if ( or _soldersPatrol == _solderPatrol/2) then {
+	if (_soldersPatrol == _solderPatrol/2) then {
 		private _reveal = [_posHouse , _sideX] call A3A_fnc_calculateSupportCallReveal;
         [_posHouse, 4, ["QRF"], _sideX, _reveal] remoteExec ["A3A_fnc_createSupport", 2];
 	};//sending QRF if thing didn't go well for patrol group

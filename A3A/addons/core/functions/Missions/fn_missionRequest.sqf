@@ -99,7 +99,12 @@ switch (_type) do {
 			if (_site in milAdministrationsX) then {
 				[[_site],"A3A_fnc_CON_MilAdmin"] remoteExec ["A3A_fnc_scheduler",2]
 			} else {
-				[[_site],"A3A_fnc_CON_Outpost"] remoteExec ["A3A_fnc_scheduler",2];
+				private _roll = round random 100;
+				if (_roll >= 75) then {
+					[[_site],"A3A_fnc_CON_Outpost"] remoteExec ["A3A_fnc_scheduler",2];
+				} else {
+					[[_site],"A3A_fnc_CON_Outpost_Compet"] remoteExec ["A3A_fnc_scheduler",2];
+				};
 			};
 		};
 	};
@@ -140,7 +145,7 @@ switch (_type) do {
 			private _site = selectRandom _possibleMarkers;
 			switch (true) do {
 				case (_site in airportsX): {
-					if (random 10 < 6) then {
+					if (random 10 < 5) then {
 						[[_site],"A3A_fnc_DES_Vehicle"] remoteExec ["A3A_fnc_scheduler",2];
 					} else {
 						[[_site],"A3A_fnc_DES_Heli"] remoteExec ["A3A_fnc_scheduler",2];
@@ -264,7 +269,6 @@ switch (_type) do {
 					[[0,0,0], [0,0,0]]
 				] call BIS_fnc_findSafePos;
 			};
-
 			switch (true) do {
 				case (_shipwreckPosition isNotEqualTo [0,0,0]): {
 					[[_site],"A3A_fnc_RES_Shipwreck"] remoteExec ["A3A_fnc_scheduler",2];
@@ -279,11 +283,32 @@ switch (_type) do {
 					if ([_site] call _checkRivalsTaskPossibility) then {
 						[[_site],"A3A_fnc_RIV_RES_Prisoners"] remoteExec ["A3A_fnc_scheduler",2];
 					} else {
-						[[_site],"A3A_fnc_RES_Prisoners"] remoteExec ["A3A_fnc_scheduler",2];
+						if (tierWar >= 5) then {
+							private _roll = round random 100;
+							if(_roll < 99) then {
+								[[_site],"A3A_fnc_RES_Deserters"] remoteExec ["A3A_fnc_scheduler",2];
+							} else {
+								[[_site],"A3A_fnc_RES_Prisoners"] remoteExec ["A3A_fnc_scheduler",2];
+							};
+						} else {
+							[[_site],"A3A_fnc_RES_Prisoners"] remoteExec ["A3A_fnc_scheduler",2];
+						};
 					};
 				};
 			};
-			if (_site in citiesX) then {[[_site],"A3A_fnc_RES_Refugees"] remoteExec ["A3A_fnc_scheduler",2]} else {[[_site],"A3A_fnc_RES_Prisoners"] remoteExec ["A3A_fnc_scheduler",2]};
+			if (_site in citiesX) then {
+				[[_site],"A3A_fnc_RES_Refugees"] remoteExec ["A3A_fnc_scheduler",2]
+			} else {
+				if (tierWar > 5) then {
+					if(_roll < 50) then {
+						[[_site],"A3A_fnc_RES_Deserters"] remoteExec ["A3A_fnc_scheduler",2];
+					} else {
+						[[_site],"A3A_fnc_RES_Prisoners"] remoteExec ["A3A_fnc_scheduler",2];
+					};
+				} else {
+					[[_site],"A3A_fnc_RES_Prisoners"] remoteExec ["A3A_fnc_scheduler",2];
+				};
+			};
 		};
 	};
 
