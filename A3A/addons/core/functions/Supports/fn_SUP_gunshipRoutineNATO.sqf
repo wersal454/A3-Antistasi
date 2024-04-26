@@ -1,15 +1,10 @@
-params ["_sleepTime", "_timerIndex", "_airport", "_supportPos", "_supportName"];
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-while {_sleepTime > 0} do
-{
-    sleep 1;
-    _sleepTime = _sleepTime - 1;
-    if((spawner getVariable _airport) != 2) exitWith {};
-};
+params ["_suppData", "_resPool", "_airport", "_sleepTime", "_reveal"];
+_suppData params ["_supportName", "_side", "_suppType", "_suppCenter", "_suppRadius", "_suppTarget"];
 
-private _gunshipData = [Occupants, _airport, _timerIndex, "B_T_VTOL_01_armed_F", FactionGet(occ, "pilot"), _supportPos] call A3A_fnc_SUP_gunshipSpawn;
+private _gunshipData = [Occupants, _airport, _supportName, selectRandom (A3A_faction_occ get "vehiclesPlanesGunship"), _suppTarget, _resPool, _suppCenter, (A3A_faction_occ get "unitPilot")] call A3A_fnc_SUP_gunshipSpawn;
 _gunshipData params ["_gunship", "_strikeGroup"];
 
 //Prepare crew units and spawn them in
@@ -18,59 +13,48 @@ private _crew = objNull;
 private _mainGunner = objNull;
 private _heavyGunner = objNull;
 
-for "_i" from 1 to 2 do
-{
-    _crew = [_strikeGroup, FactionGet(occ, "pilot"), getPos _gunship] call A3A_fnc_createUnit;
-    if(_i == 1) then
-    {
+for "_i" from 1 to 2 do {
+    _crew = [_strikeGroup, FactionGet(occ, "unitPilot"), getPos _gunship] call A3A_fnc_createUnit;
+    if(_i == 1) then {
         _crew moveInTurret [_gunship, [1]];
         _heavyGunner = _crew;
-    }
-    else
-    {
+    } else {
         _crew moveInTurret [_gunship, [2]];
         _mainGunner = _crew;
     };
 };
 
-_gunship addEventHandler
-[
-    "Fired",
-    {
-        params ["_gunship", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
+_gunship addEventHandler ["Fired", {
+    params ["_gunship", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
 
-        private _mainTarget = _gunship getVariable ["currentTargetMainGunner", objNull];
-        private _heavyTarget = _gunship getVariable ["currentTargetHeavyGunner", objNull];
-        private _target = [];
+    private _mainTarget = _gunship getVariable ["currentTargetMainGunner", objNull];
+    private _heavyTarget = _gunship getVariable ["currentTargetHeavyGunner", objNull];
+    private _target = [];
 
-        if(_weapon == "autocannon_40mm_VTOL_01") then
-        {
-            if(isNull _mainTarget) exitWith {};
-            _target = getPosASL _mainTarget;
-            _target = (_target vectorAdd [0,0,15]) apply {_x + (random 10) - 5};
-        };
-        if(_weapon == "gatling_20mm_VTOL_01") then
-        {
-            if(isNull _heavyTarget) exitWith {};
-            _target = getPosASL _heavyTarget;
-            _target = (_target vectorAdd [0,0,35]) apply {_x + (random 25) - 12.5};
-        };
-        if(_weapon == "cannon_105mm_VTOL_01") then
-        {
-            if(isNull _heavyTarget) exitWith {};
-            _target = getPosASL _heavyTarget;
-            _target = (_target vectorAdd [0,0,10]) apply {_x + (random 2) - 1};
-            _gunship setWeaponReloadingTime [_gunner, _weapon, 0.3];
-        };
+    if(_weapon == "autocannon_40mm_VTOL_01") then {
+        if(isNull _mainTarget) exitWith {};
+        _target = getPosASL _mainTarget;
+        _target = (_target vectorAdd [0,0,15]) apply {_x + (random 10) - 5};
+    };
+    if(_weapon == "gatling_20mm_VTOL_01") then {
+        if(isNull _heavyTarget) exitWith {};
+        _target = getPosASL _heavyTarget;
+        _target = (_target vectorAdd [0,0,35]) apply {_x + (random 25) - 12.5};
+    };
+    if(_weapon == "cannon_105mm_VTOL_01") then {
+        if(isNull _heavyTarget) exitWith {};
+        _target = getPosASL _heavyTarget;
+        _target = (_target vectorAdd [0,0,10]) apply {_x + (random 2) - 1};
+        _gunship setWeaponReloadingTime [_gunner, _weapon, 0.3];
+    };
 
-        if(count _target == 0) exitWith {};
+    if(count _target == 0) exitWith {};
 
-        private _speed = (speed _projectile)/3.6;
-        private _dir = vectorNormalized (_target vectorDiff (getPosASL _projectile));
-        _projectile setVelocity (_dir vectorMultiply _speed);
-        _projectile setVectorDir _dir;
-    }
-];
+    private _speed = (speed _projectile)/3.6;
+    private _dir = vectorNormalized (_target vectorDiff (getPosASL _projectile));
+    _projectile setVelocity (_dir vectorMultiply _speed);
+    _projectile setVectorDir _dir;
+}];
 
 private _targetList = server getVariable [format ["%1_targets", _supportName], []];
 private _reveal = _targetList select 0 select 1;
@@ -354,7 +338,7 @@ _gunship setVariable ["HE_Ammo", 240];
 _gunship setVariable ["Howitzer_Ammo", 100];
 _gunship setVariable ["Minigun_Ammo", 4000];
 
-//_strikeGroup setCombatMode "YELLOW";
+_strikeGroup setCombatMode "YELLOW";
 
 private _lifeTime = 300;
 

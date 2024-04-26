@@ -53,8 +53,10 @@ private _planesCAS = ["B_Plane_CAS_01_dynamicLoadout_F"];
 private _planesAA = ["B_Plane_CAS_01_dynamicLoadout_F"];
 
 private _planesTransport = [];
+private _gunship = [];
 if (_hasApex) then {
-     _planesTransport pushback "B_T_VTOL_01_infantry_F";
+    _planesTransport pushback "B_T_VTOL_01_infantry_F";
+    _gunship pushback "B_T_VTOL_01_armed_F";
 };
 
 private _transportHelicopters = ["B_Heli_Transport_01_F"];
@@ -150,6 +152,7 @@ if (_hasRF) then {
     _vehiclesHelisLightAttack append ["a3a_Heli_light_03_dynamicLoadout_RF","B_Heli_EC_04_military_RF"];
 };
 
+["vehiclesPlanesGunship", _gunship] call _fnc_saveToTemplate;
 ["vehiclesHelisTransport", _transportHelicopters] call _fnc_saveToTemplate;
 ["vehiclesPolice", _policeVehs] call _fnc_saveToTemplate;
 ["vehiclesHelisLightAttack", _vehiclesHelisLightAttack] call _fnc_saveToTemplate;

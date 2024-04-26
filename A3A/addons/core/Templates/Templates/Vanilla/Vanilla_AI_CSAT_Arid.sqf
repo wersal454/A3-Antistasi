@@ -58,10 +58,11 @@ private _tanks = ["O_MBT_02_cannon_F","O_MBT_02_railgun_F"];
 
 private _planesCAS = ["O_Plane_CAS_02_dynamicLoadout_F"];
 private _planesAA = ["O_Plane_CAS_02_dynamicLoadout_F"];
-
 private _planesTransport = [];
+private _gunship = [];
 if (_hasApex) then {
 	_planesTransport pushback "O_T_VTOL_02_infantry_dynamicLoadout_F";
+    _gunship pushback "O_T_VTOL_02_infantry_dynamicLoadout_F";
 };
 
 private _lightHelicopters = ["O_Heli_Light_02_unarmed_F"];
@@ -145,6 +146,7 @@ if (_hasWs) then {
     _lightAttackHelicopters pushBack "B_ION_Heli_Light_02_dynamicLoadout_lxWS";
 };
 
+["vehiclesPlanesGunship", _gunship] call _fnc_saveToTemplate;
 ["vehiclesPlanesTransport", _planesTransport] call _fnc_saveToTemplate;
 ["vehicleRadar", _radar] call _fnc_saveToTemplate;
 ["vehicleSam", _SAM] call _fnc_saveToTemplate;
