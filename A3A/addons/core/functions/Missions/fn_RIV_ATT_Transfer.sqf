@@ -411,10 +411,9 @@ if (dateToNumber date < _dateLimitNum) then {
     } forEach _convoyVehicles;
 };
 
-
 waitUntil {
 	sleep 1;
-	dateToNumber date > _dateLimitNum || {(!isNil "_vehObj" && (!alive _vehObj || _vehObj inArea [getMarkerPos respawnTeamPlayer, 50, 50, 0, false]))}
+	dateToNumber date > _dateLimitNum || {(!isNil "_lootContainer" && (!alive  _lootContainer || _lootContainer inArea [getMarkerPos respawnTeamPlayer, 50, 50, 0, false]))} ||{(!isNil "_vehObj" && (!alive _vehObj || _vehObj inArea [getMarkerPos respawnTeamPlayer, 50, 50, 0, false]))} //and all rivals are dead?
 };
 
 switch(true) do {
