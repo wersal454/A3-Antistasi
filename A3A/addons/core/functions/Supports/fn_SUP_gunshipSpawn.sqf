@@ -106,7 +106,7 @@ _strikePlane addEventHandler
         _plane setVariable ["Retreat", true];
     };
     nil; //HandleDamage must return Nothing for damage to apply normally.
-}];
+];
 
 _strikeGroup deleteGroupWhenEmpty true;
 

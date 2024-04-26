@@ -1,6 +1,6 @@
-params ["_launcher", "_side", "_supportName"];
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
+params ["_launcher", "_side", "_supportName"];
 sleep (random 90);
 
 private _rounds = 4;

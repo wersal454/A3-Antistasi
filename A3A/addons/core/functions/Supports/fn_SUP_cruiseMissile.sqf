@@ -1,6 +1,4 @@
-params ["_side", "_timerIndex", "_supportName"];
-
-/*  Prepares the orbital strike marker
+/*  Prepares cruise missile marker
 
     Execution on: Server
 
@@ -14,18 +12,14 @@ params ["_side", "_timerIndex", "_supportName"];
     Returns:
         The name of the marker, covering the whole support area
 */
+#include "..\..\script_component.hpp"
+FIX_LINE_NUMBERS()
+params ["_side", "_timerIndex", "_supportName"];
+//private _fileName = "SUP_cruiseMissile";
 
-private _fileName = "SUP_cruiseMissile";
-
-private _spawnPos = [];
-if(_side == Occupants) then
-{
-    _spawnPos = getMarkerPos "NATO_carrier";
-}
-else
-{
-    _spawnPos = getMarkerPos "CSAT_carrier";
-};
+private _spawnMarkers = (milbases + airportsX) select {sidesX getVariable [_x, sideUnknown] != teamPlayer && sidesX getVariable [_x, sideUnknown] == _side};
+private _spawnMarker = selectRandom _spawnMarkers;
+_spawnPos = getMarkerPos _spawnMarkers;
 
 private _coverageMarker = createMarker [format ["%1_coverage", _supportName], _spawnPos];
 _coverageMarker setMarkerShape "ELLIPSE";

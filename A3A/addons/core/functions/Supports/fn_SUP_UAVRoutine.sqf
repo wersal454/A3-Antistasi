@@ -17,7 +17,6 @@ FIX_LINE_NUMBERS()
 
 params ["_suppData", "_resPool", "_airport", "_planeType", "_sleepTime", "_reveal"];
 _suppData params ["_supportName", "_side", "_suppType", "_suppCenter", "_suppRadius", "_suppTarget"];
-// Doesn't actually process targets at the moment, it's just a dummy
 
 //Sleep to simulate preparation time
 sleep _sleepTime;
@@ -62,7 +61,11 @@ private _timeout = time + 1200;
 private _enemySide = [Invaders, Occupants] select (_side == Invaders);
 while {time < _timeout && canMove _uav} do
 {
-    waitUntil { sleep 5; _uav distance2d _suppCenter < 500 };
+    waitUntil { sleep 5; _uav distance2d _suppCenter < 500 || !alive _uav};
+    // check if launcher/crew are intact
+    if !(canFire _uav and gunner _uav call A3A_fnc_canFight || alive _uav) exitWith {
+        Info_1("%1 has been destroyed or disabled, aborting routine", _supportName);
+    };
 
     private _friends = units _side inAreaArray [_suppCenter, 1000, 1000];
     private _friendGroups = allGroups select {(leader _x in _friends) and {isNull objectParent leader _x} };
@@ -82,9 +85,62 @@ while {time < _timeout && canMove _uav} do
         { [_group, [_x, 2]] remoteExec ["reveal", leader _group] } forEach _spottedEnemies;
     } forEach _friendGroups;
 
+    // check if we're past the active time/missiles
+    if (time > _timeout) exitWith {
+        Info_1("%1 has timed out, aborting", _supportName);
+    };
+
+    if (isNull _currentTarget) then
+    { 
+        private _currentTarget = selectRandom (units teamPlayer + units _enemySide) inAreaArray [_suppCenter, 500, 500];
+        //Creates the laser target to mark the target
+        private _laser = createVehicle ["LaserTargetE", (getPos _currentTarget), [], 0, "CAN_COLLIDE"];
+        Info_1("Trying to attack laser to %1", _currentTarget);
+        _laser attachTo [_currentTarget, [0,0,0]];
+
+        //Send the laser target to the launcher
+        _side reportRemoteTarget [_laser, 300];
+        _laser confirmSensorTarget [_side, true];
+        _launcher fireAtTarget [_laser];
+        if !(alive _currentTarget) exitWith {
+            _suppTarget resize 0;
+            Debug_1("%1 skips target, as it is already dead", _supportName);
+            continue;
+        };
+    };
+
+/*     //Target no longer valid
+    if (!canMove _currentTarget or time > _targTimeout) then {
+        Debug_1("%1 target lost or destroyed, returning to idle", _supportName);
+        _suppTarget resize 0;
+        _currentTarget = objNull;
+        _uav doWatch objNull;
+        continue;
+    }; */
+
+/*     // Update acquisition depending on whether path to target is blocked
+    private _dir = _uav getDir _currentTarget;
+    private _intercept = (getPosASL _uav) getPos [250, _dir] vectorAdd [0,0,300];
+    private _isBlocked = terrainIntersectASL [_intercept, getPosASL _currentTarget];
+    _acquisition = _acquisition + ([0.1, -0.1] select _isBlocked);
+    _acquisition = 1 min _acquisition max 0;
+    _uav doWatch _intercept;
+    if (_acquisition < 1) then { sleep 1; continue }; */
+
+    // wait for previous missile to have effect (or not)
+    if (alive (_uav getVariable ["A3A_currentMissile", objNull])) then { sleep 1; continue };
+
+    // Actually fire
+    Debug("Firing at target");
+    _uav reveal [_currentTarget, 4];           // does this do anything?
+    _currentTarget confirmSensorTarget [_side, true];
+    _side reportRemoteTarget [_currentTarget, 300];
+    _uav fireAtTarget [_currentTarget];
+    _missiles = _missiles - 1;
+    _targTimeout = (time + 120);
+    sleep 1;
     sleep 60;
 };
-
 
 _suppData set [4, 0];           // Set activesupport radius to zero, prevents adding further targets
 
