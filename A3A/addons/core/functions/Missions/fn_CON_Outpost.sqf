@@ -1,7 +1,11 @@
 params ["_markerX"];
 
 //Mission: Conquer the outpost
-if (isServer and hasInterface) exitWith{};
+if (!isServer and hasInterface) exitWith{};
+
+if (_markerX in [outposts + resourcesX select {[_x] call A3A_fnc_isFrontline}]) exitWith { ///true
+	[[_markerX],"A3A_fnc_CON_Outpost_Compet"] remoteExec ["A3A_fnc_scheduler",2];
+};
 
 private _difficultX = if (random 10 < tierWar) then {true} else {false};
 private _positionX = getMarkerPos _markerX;

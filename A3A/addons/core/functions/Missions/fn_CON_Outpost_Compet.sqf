@@ -70,32 +70,32 @@ while {true} do
 {
     private _markerSide = sidesX getVariable _markerX;
     if(_markerSide == _oppositeside) exitWith {
-        //diag_log ("Attack to %1 captured the marker, starting despawn routines", _mrkDest);
+        //diag_log ("Attack to %1 captured the marker, starting despawn routines", _markerX);
         _victory = true;
     };
 
     private _curSoldiers = { !fleeing _x and _x call A3A_fnc_canFight } count _soldiers;
     if (_curSoldiers < count _soldiers * 0.25) exitWith {
-        //diag_log ("Small attack to %1 has been defeated, starting despawn routines", _mrkDest);
+        //diag_log ("Small attack to %1 has been defeated, starting despawn routines", _markerX);
     };
     if(_endTime < time) exitWith {
-       // diag_log ("Small attack to %1 timed out, starting despawn routines", _mrkDest);
+       // diag_log ("Small attack to %1 timed out, starting despawn routines", _markerX);
     };
 
     // Attempt to flip marker
-    [_mrkDest, _markerSide] remoteExec ["A3A_fnc_zoneCheck", 2];
+    [_markerX, _markerSide] remoteExec ["A3A_fnc_zoneCheck", 2];
     sleep 30;
 };
 
 { [_x] spawn A3A_fnc_VEHDespawner } forEach _vehicles;
 { [_x] spawn A3A_fnc_enemyReturnToBase } forEach _crewGroups;
 {
-    [_x, [nil, _mrkDest] select _victory] spawn A3A_fnc_enemyReturnToBase;
+    [_x, [nil, _markerX] select _victory] spawn A3A_fnc_enemyReturnToBase;
     sleep 10;
 } forEach _cargoGroups;
 
 // add a check if all players are dead, in the area of a marker
-// Or add a check if possible to determite whenver other faction managed to capture marker
+// Or add a check if possible to determite whenver other faction managed to capture marker, or leave it as is
 if (dateToNumber date > _dateLimitNum) then {
 	[_taskId, "CON", "FAILED"] call A3A_fnc_taskSetState;
 	if (_difficultX) then {

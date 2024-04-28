@@ -39,6 +39,7 @@ class CfgFunctions
             class interrogate {};
             class isBuildingPosition {};
             class landThreatEval {};
+            class liberatedeserter {};
             class liberaterefugee {};
             class liberatePOW {};
             class liberateFlee {};
@@ -522,6 +523,8 @@ class CfgFunctions
             class garrisonDialog {};
             class postmortem {};
             class reDress {};
+            class reDressInv {};
+            class reDressOcc {};
             class reinfPlayer {};
             class spawnHCGroup {};
             class vehiclePrice {};
