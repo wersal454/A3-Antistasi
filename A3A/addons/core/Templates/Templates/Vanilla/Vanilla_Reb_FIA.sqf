@@ -31,11 +31,7 @@ private _vehicleAA = [];
 
 ["vehiclesBoat", ["I_C_Boat_Transport_02_F" , "I_SDV_01_F" , "I_Boat_Armed_01_minigun_F" , "O_Boat_Armed_01_hmg_F"]] call _fnc_saveToTemplate;
 
-
-private _vehiclePlane = [];
-if (_hasApex) then {
-    _vehiclePlane append ["C_Plane_Civil_01_F","C_Plane_Civil_01_racing_F"];
-};
+private _vehiclePlane = ["C_Plane_Civil_01_F","C_Plane_Civil_01_racing_F"];
 
 private _vehiclesCivCar = ["C_Offroad_01_F", "C_Hatchback_01_F", "C_Hatchback_01_sport_F", "C_SUV_01_F"];
 private _CivTruck = ["C_Truck_02_transport_F", "C_Truck_02_covered_F"];
@@ -127,6 +123,7 @@ if (_hasCSLA) then {
     _CivBoat pushback "CSLA_lodka";
 };
 
+["staticMortars", _staticMortars] call _fnc_saveToTemplate;
 ["staticMGs", _staticMG] call _fnc_saveToTemplate;
 ["staticAT", _staticAT] call _fnc_saveToTemplate;
 ["vehiclesCivHeli", _civHelicopters] call _fnc_saveToTemplate;
@@ -781,7 +778,7 @@ if (_hasCSLA) then {
 "GreekHead_A3_05","GreekHead_A3_06","GreekHead_A3_07","GreekHead_A3_08",
 "GreekHead_A3_09","GreekHead_A3_10","GreekHead_A3_11","GreekHead_A3_12","GreekHead_A3_13",
 "GreekHead_A3_14","Ioannou","Mavros","Sturrock"]] call _fnc_saveToTemplate;
-["voices", ["Male01GRE", "Male02GRE", "Male03GRE", "Male04GRE", "Male05GRE", "Male06GRE","Male01GREVR"]] call _fnc_saveToTemplate;
+["voices", ["Male01GRE", "Male02GRE", "Male03GRE", "Male04GRE", "Male05GRE", "Male06GRE"]] call _fnc_saveToTemplate;
 
 #include "Vanilla_Reb_Vehicle_Attributes.sqf"
 

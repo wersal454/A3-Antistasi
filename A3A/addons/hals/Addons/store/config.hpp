@@ -36,6 +36,7 @@ class cfgHALsStore
 		#include "config\aegis.hpp"
 		#include "config\bwa.hpp"
 		#include "config\csa38.hpp"
+		#include "config\csla.hpp"
 		#include "config\cup.hpp"
 		#include "config\cw.hpp"
 		#include "config\empire.hpp"
@@ -120,6 +121,7 @@ class cfgHALsStore
 				"mgCSLA",
 				"launchersCSLA",
 				"magazineslaunchersCSLA",
+				"handgunsCSLA",
 				"magazinesCSLA",
 				"navigationCSLA",
 				"attachmentsCSLA",

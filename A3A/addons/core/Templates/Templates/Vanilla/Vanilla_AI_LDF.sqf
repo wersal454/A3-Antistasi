@@ -55,7 +55,7 @@ private _planesAA = ["B_Plane_CAS_01_dynamicLoadout_F"];
 ["vehiclesPlanesTransport", ["B_T_VTOL_01_infantry_F"]] call _fnc_saveToTemplate;
 
 ["vehiclesHelisLight", ["I_E_Heli_light_03_unarmed_F", "B_Heli_Light_01_F"]] call _fnc_saveToTemplate;
-["vehiclesHelisTransport", ["B_Heli_Transport_01_camo_F"]] call _fnc_saveToTemplate;
+private _vehiclesHelisTransport = ["B_Heli_Transport_01_camo_F"];
 private _vehiclesHelisLightAttack = ["I_E_Heli_light_03_dynamicLoadout_F", "B_Heli_Light_01_armed_F"];
 private _vehiclesHelisAttack = ["B_Heli_Attack_01_F"];
 
@@ -87,10 +87,11 @@ if (_hasLawsOfWar) then {
 };
 if (_hasRF) then {
     _policeVehs append ["a3a_police_Pickup_rf", "B_GEN_Pickup_covered_rf", "a3a_police_Pickup_comms_rf"];
-    _transportHelicopters append ["I_E_Heli_light_03_unarmed_RF","I_E_Heli_EC_01A_military_RF"];
+    _vehiclesHelisTransport append ["I_E_Heli_light_03_unarmed_RF","I_E_Heli_EC_01A_military_RF"];
     _vehiclesHelisLightAttack append ["a3a_LDF_Heli_light_03_dynamicLoadout_RF"];
     _vehiclesHelisAttack append ["a3a_LDF_Heli_EC_02_RF"];
 };
+["vehiclesHelisTransport", _vehiclesHelisTransport] call _fnc_saveToTemplate;
 ["vehiclesHelisLightAttack", _vehiclesHelisLightAttack] call _fnc_saveToTemplate;
 ["vehiclesHelisAttack", _vehiclesHelisAttack] call _fnc_saveToTemplate;
 ["vehiclesPolice", _policeVehs] call _fnc_saveToTemplate;
