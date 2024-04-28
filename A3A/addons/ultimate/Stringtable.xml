@@ -113,5 +113,12 @@
             <Korean>Armor Plates System</Korean>
             <French>Armor Plates System</French>
         </Key>
+        <Key ID="STR_A3AU_init_mods_warning_dis">
+            <Original>Dismemberment</Original>
+            <English>Dismemberment</English>
+            <Russian>Dismemberment</Russian>
+            <Korean>Dismemberment</Korean>
+            <French>Dismemberment</French>
+        </Key>
     </Package>
 </Project>
