@@ -18,10 +18,12 @@ class CfgPatches
 
 #define RANDOM_NUMBER __RAND_UINT8__
 
-class RANDOM_NUMBER
-{
-    number = RANDOM_NUMBER;
-};
+#if __A3_DEBUG__
+	class RANDOM_NUMBER
+	{
+		number = RANDOM_NUMBER;
+	};
+#endif
 
 #if RANDOM_NUMBER > 0
     #define BACKGROUND data\backgrounds\us_army_co.jpg

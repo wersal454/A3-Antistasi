@@ -75,6 +75,13 @@ class planeLoadouts
             bombRacks[] = {"dummy_TankLauncherAmf","GBU12BombLauncherAmf"};
             diveParams[] = {1000, 600, 180, 55, 15, {0,0}};
         };
+        class EAW_A4N
+        {
+            loadout[] = {"EAW_A4N_60Bomb_Mag_P","EAW_A4N_60Bomb_Mag_P"};
+            mainGun = "EAW_A4N_MG";
+            bombRacks[] = {"EAW_A4N_Bomb_Pod1","EAW_A4N_Bomb_Pod2"};
+            diveParams[] = {1000, 300, 100, 55, 15, {0,0}};
+        };
     };
 
     class CAS
@@ -147,6 +154,13 @@ class planeLoadouts
             bombRacks[] = {"weapon_AASMLauncherAmf"};
             diveParams[] = {1000, 600, 180, 55, 15, {0,0}};
         };
+        class EAW_A4N
+        {
+            loadout[] = {"EAW_A4N_60Bomb_Mag_P","EAW_A4N_60Bomb_Mag_P"};
+            mainGun = "EAW_A4N_MG";
+            bombRacks[] = {"EAW_A4N_Bomb_Pod1","EAW_A4N_Bomb_Pod2"};
+            diveParams[] = {1000, 300, 100, 55, 15, {0,0}};
+        };
     };
    
     class AA
@@ -212,6 +226,14 @@ class planeLoadouts
             mainGun = "weapon_30defa554";
             missileLauncher[] = {"weapon_MAGIC2Launcher","weapon_MICAIRLauncher","weapon_MICAEMLauncher"};
             diveParams[] = {1000, 600, 180, 55, 15, {0,0}};
+        };
+        class fow_va_a6m_white
+        {
+            mainGun = "fow_w_type99_cannon_2x";
+        };
+        class fow_va_f6f_c
+        {
+            mainGun = "fow_w_m2_cannon_2x";
         };
     };
 };

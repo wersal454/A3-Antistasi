@@ -19,7 +19,7 @@
 
 params [
     ["_pos", []],
-    ["_distance", 0],
+    ["_distance", hideEnemyMarkersReconPlaneDistance],
     ["_vehicle", objNull]
 ];
 
