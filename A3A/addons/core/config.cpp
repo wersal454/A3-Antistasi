@@ -14,7 +14,10 @@ class CfgPatches {
     };
 };
 
-#include "CfgSounds.hpp"
+#include "CfgSounds.hpp" 
+#include "CfgVehicles.hpp"
+#include "CfgMarkers.hpp"
+#include "CfgWeapons.hpp"
 class A3A {
     #include "Templates.hpp"
     #include "Params.hpp"
@@ -49,14 +52,16 @@ class A3A {
 
 #include "keybinds.hpp"
 
-class CfgMPGameTypes {
-    class ANTI {
+#include "Scripts\MagRepack\MagRepack_config.hpp"
+
+class CfgMPGameTypes 
+{
+    class ANTI 
+    {
         name = "Antistasi";
         shortcut = "ANTI";
         id = 30;
-        picture = QPATHTOFOLDER(Pictures\antistasi_logo_small.paa);
+        picture = QPATHTOFOLDER(Pictures\antistasi_ultimate_logo_small.paa);
         description = "";
     };
 };
-
-#include "CfgMarkers.hpp"

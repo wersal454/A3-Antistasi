@@ -111,7 +111,10 @@ Maintainer: DoomMetal
 #define A3A_Icon_Refuel             "\a3\ui_f\data\igui\cfg\actions\refuel_ca.paa"
 #define A3A_Icon_Light              "\a3\ui_f\data\igui\cfg\actions\ico_cpt_land_on_ca.paa"
 #define A3A_Icon_Gear               "\a3\ui_f\data\igui\cfg\actions\gear_ca.paa"
+#define A3A_Icon_Box                "\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa"
+#define A3A_Icon_HealKit            "a3\missions_f_exp\data\img\lobby\ui_campaign_lobby_background_tablet_button_revive02_ca.paa"
 #define A3A_Icon_Repair             "\a3\ui_f\data\igui\cfg\actions\repair_ca.paa"
+
 
 // Commander picture
 #define A3A_Icon_PlayerCommander    "\A3\Ui_f\data\GUI\Cfg\Ranks\colonel_gs.paa"
@@ -120,3 +123,12 @@ Maintainer: DoomMetal
 
 // Place Holders
 #define A3A_PlaceHolder_NoVehiclePreview   A3A_GUI_QTEXTURE_PATH_OF(placeholder_no_vehicle_preview.paa)
+
+//teamleader placer keys
+#define A3A_Icon_key_alt          A3A_GUI_QTEXTURE_PATH_OF(keys\alt_key_ca.paa)
+#define A3A_Icon_key_c           A3A_GUI_QTEXTURE_PATH_OF(keys\c_key_ca.paa)
+#define A3A_Icon_key_t           A3A_GUI_QTEXTURE_PATH_OF(keys\t_key_ca.paa)
+#define A3A_Icon_key_e        A3A_GUI_QTEXTURE_PATH_OF(keys\e_key_ca.paa)
+#define A3A_Icon_key_r       A3A_GUI_QTEXTURE_PATH_OF(keys\r_key_ca.paa)
+#define A3A_Icon_key_shift        A3A_GUI_QTEXTURE_PATH_OF(keys\shift_key_ca.paa)
+#define A3A_Icon_key_space       A3A_GUI_QTEXTURE_PATH_OF(keys\space_key_ca.paa)

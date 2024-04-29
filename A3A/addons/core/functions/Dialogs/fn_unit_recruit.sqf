@@ -1,39 +1,27 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-private ["_display","_childControl"];
 #ifdef UseDoomGUI
     ERROR("Disabled due to UseDoomGUI Switch.")
 #else
-	_nul = createDialog "unit_recruit";
+	createDialog "unitRecruit";
 #endif
 
 sleep 1;
 disableSerialization;
 
-_display = findDisplay 100;
+private _display = findDisplay 100;
 
-if (str (_display) != "no display") then
-{
-	_ChildControl = _display displayCtrl 104;
-	_ChildControl  ctrlSetTooltip format ["Cost: %1 €",server getVariable FactionGet(reb,"unitRifle")];
-	_ChildControl = _display displayCtrl 105;
-	_ChildControl  ctrlSetTooltip format ["Cost: %1 €",server getVariable FactionGet(reb,"unitMG")];
-	_ChildControl = _display displayCtrl 126;
-	_ChildControl  ctrlSetTooltip format ["Cost: %1 €",server getVariable FactionGet(reb,"unitMedic")];
-	_ChildControl = _display displayCtrl 107;
-	_ChildControl  ctrlSetTooltip format ["Cost: %1 €",server getVariable FactionGet(reb,"unitEng")];
-	_ChildControl = _display displayCtrl 108;
-	_ChildControl  ctrlSetTooltip format ["Cost: %1 €",server getVariable FactionGet(reb,"unitExp")];
-	_ChildControl = _display displayCtrl 109;
-	_ChildControl  ctrlSetTooltip format ["Cost: %1 €",server getVariable FactionGet(reb,"unitGL")];
-	if (A3A_hasIFA) then {_childControl ctrlSetText "Radio Operator"};
-	_ChildControl = _display displayCtrl 110;
-	_ChildControl  ctrlSetTooltip format ["Cost: %1 €",server getVariable FactionGet(reb,"unitSniper")];
-	_ChildControl = _display displayCtrl 111;
-	_ChildControl  ctrlSetTooltip format ["Cost: %1 €",server getVariable FactionGet(reb,"unitLAT")];
-	_ChildControl = _display displayCtrl 112;
-	_ChildControl  ctrlSetTooltip format ["Cost: %1 €",server getVariable FactionGet(reb,"unitAT")];
-	_ChildControl = _display displayCtrl 113;
-	_ChildControl  ctrlSetTooltip format ["Cost: %1 €",server getVariable FactionGet(reb,"unitAA")];
-};
+if (str (_display) == "no display") exitWith {};
+
+private _childControl = _display displayCtrl 104;
+(_display displayCtrl 104) ctrlSetTooltip format [localize "STR_dialog_cost_hire_no_HR",server getVariable FactionGet(reb,"unitRifle"),A3A_faction_civ get "currencySymbol"];
+(_display displayCtrl 105) ctrlSetTooltip format [localize "STR_dialog_cost_hire_no_HR",server getVariable FactionGet(reb,"unitMG"),A3A_faction_civ get "currencySymbol"];
+(_display displayCtrl 126) ctrlSetTooltip format [localize "STR_dialog_cost_hire_no_HR",server getVariable FactionGet(reb,"unitMedic"),A3A_faction_civ get "currencySymbol"];
+(_display displayCtrl 107) ctrlSetTooltip format [localize "STR_dialog_cost_hire_no_HR",server getVariable FactionGet(reb,"unitEng"),A3A_faction_civ get "currencySymbol"];
+(_display displayCtrl 108) ctrlSetTooltip format [localize "STR_dialog_cost_hire_no_HR",server getVariable FactionGet(reb,"unitExp"),A3A_faction_civ get "currencySymbol"];
+(_display displayCtrl 109) ctrlSetTooltip format [localize "STR_dialog_cost_hire_no_HR",server getVariable FactionGet(reb,"unitGL"),A3A_faction_civ get "currencySymbol"];
+(_display displayCtrl 110) ctrlSetTooltip format [localize "STR_dialog_cost_hire_no_HR",server getVariable FactionGet(reb,"unitSniper"),A3A_faction_civ get "currencySymbol"];
+(_display displayCtrl 111) ctrlSetTooltip format [localize "STR_dialog_cost_hire_no_HR",server getVariable FactionGet(reb,"unitLAT"),A3A_faction_civ get "currencySymbol"];
+(_display displayCtrl 112) ctrlSetTooltip format [localize "STR_dialog_cost_hire_no_HR",server getVariable FactionGet(reb,"unitAT"),A3A_faction_civ get "currencySymbol"];
+(_display displayCtrl 113) ctrlSetTooltip format [localize "STR_dialog_cost_hire_no_HR",server getVariable FactionGet(reb,"unitAA"),A3A_faction_civ get "currencySymbol"];

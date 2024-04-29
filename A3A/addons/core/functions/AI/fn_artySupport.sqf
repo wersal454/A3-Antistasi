@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
-if (count hcSelected player == 0) exitWith {["Artillery Support", "You must select an artillery group."] call A3A_fnc_customHint;};
+if (count hcSelected player == 0) exitWith {[localize "STR_A3A_ai_artySupport_header", localize "STR_A3A_ai_artySupport_must_select"] call A3A_fnc_customHint;};
 
 private ["_groups","_artyArray","_artyRoundsArr","_hasAmmunition","_areReady","_hasArtillery","_areAlive","_soldierX","_veh","_typeAmmunition","_typeArty","_positionTel","_artyArrayDef1","_artyRoundsArr1","_piece","_isInRange","_positionTel2","_rounds","_roundsMax","_markerX","_size","_forcedX","_textX","_mrkFinal","_mrkFinal2","_timeX","_eta","_countX","_pos","_ang"];
 
@@ -32,16 +32,12 @@ if ((_veh != _soldierX) and (not(_veh in _artyArray))) then
 #ifdef UseDoomGUI
 	ERROR("Disabled due to UseDoomGUI Switch.")
 #else
-			_nul = createDialog "mortar_type";
+			createDialog "mortarType";
 #endif
 			waitUntil {!dialog or !(isNil "typeAmmunition")};
 			if !(isNil "typeAmmunition") then
 				{
 				_typeAmmunition = typeAmmunition;
-				//typeAmmunition = nil;
-			//	};
-			//if (! isNil "_typeAmmunition") then
-				//{
 				{
 				if (_x select 0 == _typeAmmunition) then
 					{
@@ -63,11 +59,11 @@ if ((_veh != _soldierX) and (not(_veh in _artyArray))) then
 	};
 } forEach _unitsX;
 
-if (!_hasArtillery) exitWith {["Artillery Support", "You must select an artillery group or it is a Mobile Mortar and it's moving"] call A3A_fnc_customHint;};
-if (!_areAlive) exitWith {["Artillery Support", "All elements in this Battery cannot fire or are disabled"] call A3A_fnc_customHint;};
-if ((_hasAmmunition < 2) and (!_areReady)) exitWith {["Artillery Support", "The Battery has no ammo to fire. Reload it on HQ"] call A3A_fnc_customHint;};
-if (!_areReady) exitWith {["Artillery Support", "Selected Battery is busy right now"] call A3A_fnc_customHint;};
-if (_typeAmmunition == "") exitWith {["Artillery Support", "Your current modset doesent support this strike type"] call A3A_fnc_customHint;};
+if (!_hasArtillery) exitWith {[localize "STR_A3A_ai_artySupport_header", localize "STR_A3A_ai_artySupport_must_select_2"] call A3A_fnc_customHint;};
+if (!_areAlive) exitWith {[localize "STR_A3A_ai_artySupport_header", localize "STR_A3A_ai_artySupport_no_capability"] call A3A_fnc_customHint;};
+if ((_hasAmmunition < 2) and (!_areReady)) exitWith {[localize "STR_A3A_ai_artySupport_header", localize "STR_A3A_ai_artySupport_no_ammo"] call A3A_fnc_customHint;};
+if (!_areReady) exitWith {[localize "STR_A3A_ai_artySupport_header", localize "STR_A3A_ai_artySupport_busy"] call A3A_fnc_customHint;};
+if (_typeAmmunition == "") exitWith {[localize "STR_A3A_ai_artySupport_header", localize "STR_A3A_ai_artySupport_modset"] call A3A_fnc_customHint;};
 if (isNil "_typeAmmunition") exitWith {};
 
 hcShowBar false;
@@ -79,7 +75,7 @@ if (_typeAmmunition != "2Rnd_155mm_Mo_LG") then
 #ifdef UseDoomGUI
 	ERROR("Disabled due to UseDoomGUI Switch.")
 #else
-	_nul = createDialog "strike_type";
+	createDialog "strikeType";
 #endif
 	}
 else
@@ -97,7 +93,7 @@ typeArty = nil;
 
 positionTel = [];
 
-["Artillery Support", "Select the position on map where to perform the Artillery strike."] call A3A_fnc_customHint;
+[localize "STR_A3A_ai_artySupport_header", localize "STR_A3A_ai_artySupport_select_pos"] call A3A_fnc_customHint;
 
 if (!visibleMap) then {openMap true};
 onMapSingleClick "positionTel = _pos;";
@@ -123,7 +119,7 @@ for "_i" from 0 to (count _artyArray) - 1 do
 		};
 	};
 
-if (count _artyArrayDef1 == 0) exitWith {["Artillery Support", "The position you marked is out of bounds for that Battery."] call A3A_fnc_customHint;};
+if (count _artyArrayDef1 == 0) exitWith {[localize "STR_A3A_ai_artySupport_header", localize "STR_A3A_ai_artySupport_out_of_bounds"] call A3A_fnc_customHint;};
 
 _mrkFinal = createMarkerLocal [format ["Arty%1", random 100], _positionTel];
 _mrkFinal setMarkerShapeLocal "ICON";
@@ -132,10 +128,10 @@ _mrkFinal setMarkerColorLocal "ColorRed";
 
 if (_typeArty == "BARRAGE") then
 	{
-	_mrkFinal setMarkerTextLocal "Artillery Barrage Begin";
+	_mrkFinal setMarkerTextLocal (localize "STR_markers_arty_barrage_starting_pos");
 	positionTel = [];
 
-	["Artillery Support", "Select the position to finish the barrage."] call A3A_fnc_customHint;
+	[localize "STR_A3A_ai_artySupport_header", localize "STR_A3A_ai_artySupport_second_pos"] call A3A_fnc_customHint;
 
 	if (!visibleMap) then {openMap true};
 	onMapSingleClick "positionTel = _pos;";
@@ -156,7 +152,7 @@ if (_typeArty != "BARRAGE") then
 #ifdef UseDoomGUI
 	ERROR("Disabled due to UseDoomGUI Switch.")
 #else
-		_nul = createDialog "rounds_number";
+		_nul = createDialog "roundsNumber";
 #endif
 		}
 	else
@@ -170,7 +166,7 @@ if ((isNil "roundsX") and (_typeArty != "BARRAGE")) exitWith {deleteMarkerLocal 
 
 if (_typeArty != "BARRAGE") then
 	{
-	_mrkFinal setMarkerTextLocal "Arty Strike";
+	_mrkFinal setMarkerTextLocal (localize "STR_markers_arty_strike");
 	_rounds = roundsX;
 	_roundsMax = _rounds;
 	roundsX = nil;
@@ -192,7 +188,7 @@ if ((not(_markerX in forcedSpawn)) and (_positionTel distance (getMarkerPos _mar
 	publicVariable "forcedSpawn";
 	};
 
-_textX = format ["Requesting fire support on Grid %1. %2 Rounds.", mapGridPosition _positionTel, round _rounds];
+_textX = format [localize "STR_chats_mortar_barrage", mapGridPosition _positionTel, round _rounds];
 [theBoss,"sideChat",_textX] remoteExec ["A3A_fnc_commsMP",[teamPlayer,civilian]];
 
 if (_typeArty == "BARRAGE") then
@@ -201,19 +197,19 @@ if (_typeArty == "BARRAGE") then
 	_mrkFinal2 setMarkerShapeLocal "ICON";
 	_mrkFinal2 setMarkerTypeLocal "hd_destroy";
 	_mrkFinal2 setMarkerColorLocal "ColorRed";
-	_mrkFinal2 setMarkerTextLocal "Artillery Barrage End";
+	_mrkFinal2 setMarkerTextLocal (localize "STR_markers_arty_barrage_ending_pos");
 	_ang = [_positionTel,_positionTel2] call BIS_fnc_dirTo;
 	sleep 5;
 	_eta = (_artyArrayDef1 select 0) getArtilleryETA [_positionTel, ((getArtilleryAmmo [(_artyArrayDef1 select 0)]) select 0)];
 	_timeX = time + _eta;
-	_textX = format ["Acknowledged. Fire mission is inbound. ETA %1 secs for the first impact.",round _eta];
+	_textX = format [localize "STR_chats_mortar_barrage_confirm",round _eta];
 	[petros,"sideChat",_textX]remoteExec ["A3A_fnc_commsMP",[teamPlayer,civilian]];
 	[_timeX] spawn
 		{
 		private ["_timeX"];
 		_timeX = _this select 0;
 		waitUntil {sleep 1; time > _timeX};
-		[petros,"sideChat","Splash. Out"] remoteExec ["A3A_fnc_commsMP",[teamPlayer,civilian]];
+		[petros,"sideChat",localize "STR_chats_splash_out"] remoteExec ["A3A_fnc_commsMP",[teamPlayer,civilian]];
 		};
 	};
 
@@ -225,7 +221,6 @@ for "_i" from 0 to (count _artyArrayDef1) - 1 do
 		{
 		_piece = _artyArrayDef1 select _i;
 		_countX = _artyRoundsArr1 select _i;
-		//hint format ["roundsX que faltan: %1, roundsX que tiene %2",_rounds,_countX];
 		if (_countX >= _rounds) then
 			{
 			if (_typeArty != "BARRAGE") then
@@ -272,25 +267,23 @@ if (_typeArty != "BARRAGE") then
         #define ARTILLERY_ERROR_INFORMATION [_positionTel, ((getArtilleryAmmo [(_artyArrayDef1 select 0)]) select 0)]
         Error_4("Params: %1,%2,%3,%4,%5",_artyArrayDef1 select 0,_positionTel,((getArtilleryAmmo [(_artyArrayDef1 select 0)]) select 0),(_artyArrayDef1 select 0) getArtilleryETA ARTILLERY_ERROR_INFORMATION);
     };
-	_textX = format ["Acknowledged. Fire mission is inbound. %2 Rounds fired. ETA %1 secs.",round _eta,_roundsMax - _rounds];
+	_textX = format [localize "STR_chats_mortar_barrage_confirm",round _eta,_roundsMax - _rounds];
 	[petros,"sideChat",_textX] remoteExec ["A3A_fnc_commsMP",[teamPlayer,civilian]];
 	};
 
 if (_typeArty != "BARRAGE") then
 	{
 	waitUntil {sleep 1; time > _timeX};
-	[petros,"sideChat","Splash. Out."] remoteExec ["A3A_fnc_commsMP",[teamPlayer,civilian]];
+	[petros,"sideChat",localize "STR_chats_splash_out"] remoteExec ["A3A_fnc_commsMP",[teamPlayer,civilian]];
 	};
 sleep 10;
 deleteMarkerLocal _mrkFinal;
 if (_typeArty == "BARRAGE") then {deleteMarkerLocal _mrkFinal2};
 
-if (_forcedX) then
-	{
+if (_forcedX) then {
 	sleep 20;
-	if (_markerX in forcedSpawn) then
-		{
+	if (_markerX in forcedSpawn) then {
 		forcedSpawn = forcedSpawn - [_markerX];
 		publicVariable "forcedSpawn";
-		};
 	};
+};

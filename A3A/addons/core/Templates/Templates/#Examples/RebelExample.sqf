@@ -1,3 +1,10 @@
+private _hasWs = "ws" in A3A_enabledDLC;
+private _hasMarksman = "mark" in A3A_enabledDLC;
+private _hasLawsOfWar = "orange" in A3A_enabledDLC;
+private _hasTanks = "tank" in A3A_enabledDLC;
+private _hasApex = "expansion" in A3A_enabledDLC;
+private _hasContact = "enoch" in A3A_enabledDLC;
+
 ///////////////////////////
 //   Rebel Information   //
 ///////////////////////////
@@ -34,11 +41,34 @@
 ["staticMortarMagHE", ""] call _fnc_saveToTemplate;
 ["staticMortarMagSmoke", ""] call _fnc_saveToTemplate;
 
-["mineAT", ""] call _fnc_saveToTemplate;
-["mineAPERS", ""] call _fnc_saveToTemplate;
+["minesAT", []] call _fnc_saveToTemplate;
+["minesAPERS", []] call _fnc_saveToTemplate;
 
 ["breachingExplosivesAPC", []] call _fnc_saveToTemplate;
 ["breachingExplosivesTank", []] call _fnc_saveToTemplate;
+
+//////////////////////////////////////
+//       Antistasi Plus Stuff       //
+//////////////////////////////////////
+
+["lootCrate", ""] call _fnc_saveToTemplate;
+["rallyPoint", ""] call _fnc_saveToTemplate;
+
+//vehicle class, price, type, unlock condition
+["blackMarketStock", [
+    ["classname", 500000, "AA", {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (milbases + airportsX) > 0}]
+]] call _fnc_saveToTemplate;
+
+//animation sources - camo nets, slat cages, decals etc, digit is probability of appearance
+["animations", [
+    ["vehClass", ["animsource_example_1", 0.25, "animsource_example_2", 0.3]]
+]] call _fnc_saveToTemplate;
+
+//vehicle skins
+["variants", [
+    ["vehClass", ["paint", 1]]
+]] call _fnc_saveToTemplate;
+
 
 //Enter #include "Modset_Reb_Vehicle_Attributes.sqf" here
 
@@ -55,15 +85,14 @@ if (A3A_hasTFARBeta && startWithLongRangeRadio) then {_initialRebelEquipment app
 _initialRebelEquipment append ["Chemlight_blue","Chemlight_green","Chemlight_red","Chemlight_yellow"];
 ["initialRebelEquipment", _initialRebelEquipment] call _fnc_saveToTemplate;
 
-
 private _rebUniforms = [];          //Uniforms given to Normal Rebels
 
 private _dlcUniforms = [];          //Uniforms given if DLCs are enabled, only given to the Arsenal not Rebels
 
-if (allowDLCEnoch) then {_dlcUniforms append [];
+if (_hasContact) then {_dlcUniforms append [];
 };
 
-if (allowDLCExpansion) then {_dlcUniforms append [];
+if (_hasApex) then {_dlcUniforms append [];
 };
 
 ["uniforms", _rebUniforms + _dlcUniforms] call _fnc_saveToTemplate;         //These Items get added to the Arsenal

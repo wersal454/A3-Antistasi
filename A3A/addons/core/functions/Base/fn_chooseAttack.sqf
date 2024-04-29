@@ -57,6 +57,11 @@ if (_targets isEqualTo []) exitWith {
     false;
 };
 
+if ((areInvadersDefeated && _side == Invaders) || {(areOccupantsDefeated && _side == Occupants)}) exitWith {
+    Info_1("Aborting attack by %1 because faction was defeated before.", _side);
+    false;
+};
+
 Debug("Final target choice list:");
 {
     Debug_2("Target: weight %1, %2", (_weights#_forEachIndex) toFixed 3, _x);
@@ -89,7 +94,8 @@ if (sidesX getVariable _originMrk != _side) exitWith {
 
 
 if (_targetMrk in citiesX) exitWith {
-    if (_side == Invaders) then {
+    private _tierWarPunishments = missionNamespace getVariable ["A3U_setting_tierWarPunishments",3];
+    if (_side == Invaders && {(tierWar >= _tierWarPunishments)}) then {
         // Punishment, unsimulated
         Info_2("Starting punishment mission from %1 to %2", _originMrk, _targetMrk);
         [_targetMrk, _originMrk] spawn A3A_fnc_invaderPunish;
@@ -113,6 +119,12 @@ if((spawner getVariable _targetMrk) != 2 || (sidesX getVariable _targetMrk) == t
 {
     // Sending real attack, execute the fight
     private _waves = round (1 + random 1 + _localThreat / 1000);         // TODO: magic number
+
+    //no one actually likes multi-hour defense slog
+    if(_waves > 3) then {
+        _waves = 3;
+    };
+
     Info_3("Starting waved attack with %1 waves from %2 to %3", _waves, _originMrk, _targetMrk);
     [_targetMrk, _originMrk, _waves] spawn A3A_fnc_wavedAttack;
     true;
@@ -145,11 +157,13 @@ else
     private _maxTroops = 12 max round ((0.5 + random 0.5) * ([_targetMrk] call A3A_fnc_garrisonSize));
     private _soldiers = [];
     private _faction = Faction(_side);
+    private _groups = (_faction get "groupsTierMedium") apply {[_x] call SCRT_fnc_unit_getTiered};
+    private _squads = (_faction get "groupsTierSquads") apply {[_x] call SCRT_fnc_unit_getTiered};
+
     while {count _soldiers < _maxTroops} do {
-        _soldiers append selectRandom ((_faction get "groupsSquads") + (_faction get "groupsMedium"));
+        _soldiers append selectRandom (_groups + _squads);
     };
     _soldiers resize _maxTroops;
     [_soldiers, _side, _targetMrk, 0] spawn A3A_fnc_garrisonUpdate;
     true;
 };
-

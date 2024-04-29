@@ -16,6 +16,12 @@
 FIX_LINE_NUMBERS()
 
 params ["_mrkDest", "_side", "_vehCount", "_reveal"];
+
+
+if ((_side == Occupants && areOccupantsDefeated) || {(_side == Invaders && areInvadersDefeated)}) exitWith {
+    ServerInfo_1("%1 faction was defeated earlier, aborting single attack.", str _side);
+};
+
 private _targPos = markerPos _mrkDest;
 
 ServerInfo_1("Starting attack with parameters %1", _this);

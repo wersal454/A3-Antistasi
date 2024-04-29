@@ -28,6 +28,8 @@ Example:
     [] call A3A_fnc_canGoUndercover;
 */
 
+#include "..\..\script_component.hpp"
+
 private _reasons = [];
 
 if (player != player getVariable["owner", player]) exitWith
@@ -42,8 +44,17 @@ if (captive player) exitWith
     [false, "Already undercover"];
 };
 
+private _lowCiv = Faction(civilian) getOrDefault ["attributeLowCiv", false];
+private _civNonHuman = Faction(civilian) getOrDefault ["attributeCivNonHuman", false];
+
 private _roadblocks = controlsX select {isOnRoad(getMarkerPos _x)};
-private _secureBases = airportsX + outposts + seaports + _roadblocks;
+
+if (_lowCiv || {_civNonHuman}) exitWith {
+    [localize "STR_A3A_goUndercover_title", "Undercover not allowed in current civ template."] call A3A_fnc_customHint;
+    [false, "Undercover not allowed in current civ template."];
+};
+
+private _secureBases = airportsX + milbases + outposts + seaports + (controlsX select {isOnRoad(getMarkerPos _x)});
 private _result = [];
 
 if !(isNull (objectParent player)) then

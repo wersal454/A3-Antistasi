@@ -15,11 +15,22 @@
 FIX_LINE_NUMBERS()
 
 params ["_group", "_target"];
-private _groupLeader = leader _group;
+
 private _side = side _group;
 
-if(_side != Occupants and _side != Invaders) exitWith {
+if ((_side isEqualTo Occupants && areOccupantsDefeated) || {(_side isEqualTo Invaders && areInvadersDefeated)}) exitWith {
+    Info_1("%1 faction had been defeated earlier, aborting calling support.", _side);
+};
+
+if(_side != Occupants && {_side != Invaders}) exitWith {
     Error_2("Non-enemy group %1 of side %2 managed to call callForSupport", _group, _side);
+};
+
+private _groupLeader = leader _group;
+private _isRival = _groupLeader getVariable ["isRival", false];
+
+if (_isRival) then {
+    Error("Rivals are not using general supports, aborting.");
 };
 
 //If groupleader is down, dont call support
@@ -28,7 +39,7 @@ if !(_groupLeader call A3A_fnc_canFight) exitWith {};
 if((_group getVariable ["A3A_canCallSupportAt", -1]) > time) exitWith {};
 
 private _timeToCallSupport = (10 + random 5) / A3A_balancePlayerScale;
-_group setVariable ["A3A_canCallSupportAt", time + 5*_timeToCallSupport];
+_group setVariable ["A3A_canCallSupportAt", time + 15*_timeToCallSupport];
 
 ServerDebug_4("Leader of %1 (side %2) is starting to request support against %3 (type %4)", _group, _side, _target, typeof _target);
 

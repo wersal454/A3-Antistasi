@@ -1,7 +1,6 @@
-private _engineerX = _this select 0;
+params ["_engineerX", "_nearX", "_building"];
+
 _engineerX setVariable ["maneuvering",true];
-private _nearX = _this select 1;
-private _building = _this select 2;
 _building setVariable ["assaulted",true];
 _engineerX disableAI "TARGET";
 _engineerX disableAI "AUTOTARGET";
@@ -12,17 +11,15 @@ _engineerX disableAI "AUTOCOMBAT";
 doStop _engineerX;
 _engineerX doMove (getPos _building);
 
-while {true} do
-	{
+while {true} do {
 	if !([_engineerX] call A3A_fnc_canFight) exitWith {};
 	_arrayObjs = lineIntersectsObjs [(eyePos _engineerX),(_engineerX modelToWorld [0,3,0]),objNull,_engineerX,false,32];
 	if (_building in _arrayObjs) exitWith {};
 	if (_engineerX distance _building < 3) exitWith {};
 	sleep 1;
-	};
+};
 
-if !([_engineerX] call A3A_fnc_canFight) exitWith
-	{
+if !([_engineerX] call A3A_fnc_canFight) exitWith {
 	_engineerX enableAI "TARGET";
 	_engineerX enableAI "AUTOTARGET";
 	_engineerX enableAI "SUPPRESSION";
@@ -31,7 +28,7 @@ if !([_engineerX] call A3A_fnc_canFight) exitWith
 	_engineerX enableAI "AUTOCOMBAT";
 	_engineerX call A3A_fnc_recallGroup;
 	_building setVariable ["assaulted",false];
-	};
+};
 
 private _side = side _engineerX;
 _engineerX playActionNow "PutDown";

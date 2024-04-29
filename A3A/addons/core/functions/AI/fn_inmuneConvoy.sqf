@@ -4,7 +4,7 @@ private ["_pos","_side","_newPos","_road"];
 
 params ["_veh", "_text", ["_stuckHacks", true]];
 
-private _convoy = (_text == "Convoy Objective") or (_text == "Mission Vehicle") or (_text == "Supply Box");
+private _convoy = (_text == (localize "STR_marker_convoy_objective")) or (_text == (localize "STR_marker_convoy_objective_space")) or (_text == (localize "STR_marker_mission_vehicle")) or (_text == (localize "STR_marker_supply_box"));
 
 waitUntil {sleep 1; (not(isNull driver _veh)) or _convoy};
 
@@ -33,7 +33,7 @@ while {alive _veh} do
 	_newPos = getPosATL _veh;
 
 	_driverX = driver _veh;
-	if (_stuckHacks and {(_newPos distance _pos < 5) and (_text != "Supply Box") and !(isNull _driverX)}) then
+	if (_stuckHacks and {(_newPos distance _pos < 5) and (_text != (localize "STR_marker_supply_box")) and !(isNull _driverX)}) then
 		{
 		if (_veh isKindOf "Air") then
 			{
@@ -65,13 +65,14 @@ while {alive _veh} do
 						_newPos = _newPos getPos [100,_ang];
 						};
 					_road = [_newPos,100] call BIS_fnc_nearestRoad;
-					if (!isNull _road) then
-						{
+					if (!isNull _road) then {
 						_veh setPos getPos _road;
-						if (!isMultiplayer) then {{ _x hideObject true } foreach (nearestTerrainObjects [position _road,["tree","bush"],15])} else {{[_x,true] remoteExec ["hideObjectGlobal",2]} foreach (nearestTerrainObjects [position _road,["tree","bush"],15])};
-						};
+						{
+							[_x,true] remoteExec ["hideObjectGlobal",2]
+						} foreach (nearestTerrainObjects [position _road,["tree","bush"],15]);
 					};
 				};
 			};
 		};
 	};
+};

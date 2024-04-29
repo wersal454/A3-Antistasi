@@ -38,8 +38,8 @@ class Events {
                 optional = 0;
             };
             class _1 {
-                description = "Is roadblock";
-                types[] = {"BOOL"};
+                description = "Control Type";
+                types[] = {"STRING"};
                 optional = 0;
             };
         };

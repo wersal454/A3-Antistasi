@@ -1,1 +1,1 @@
-_this call A3A_fnc_initClient;
+_this spawn A3A_fnc_initClient;

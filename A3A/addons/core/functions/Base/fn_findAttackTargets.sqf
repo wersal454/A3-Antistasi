@@ -21,7 +21,7 @@ private _possibleStartBases = airportsX select {sidesX getVariable [_x, sideUnkn
 _possibleStartBases pushBack (["NATO_carrier", "CSAT_carrier"] select (_side == Invaders));
 private _airportPositions = _possibleStartBases apply { markerPos _x };
 
-private _possibleTargets = airportsX + outposts + seaports + factories + resourcesX;
+private _possibleTargets = airportsX + outposts + seaports + factories + resourcesX + milbases;
 if (_targetSide == teamPlayer) then {_possibleTargets = _possibleTargets + citiesX};
 _possibleTargets = _possibleTargets select {sidesX getVariable [_x,sideUnknown] == _targetSide};
 
@@ -54,6 +54,7 @@ private _maxThreatDist = distanceForAirAttack + 1000;
         _threat = _threat + call {
             if (_x in controlsX or _x in seaports) exitWith { 50 };
             if (_x in outposts) exitWith { 150 };
+            if (_x in milbases) exitWith { 350 };
             if (_x in airportsX) exitWith { 600 };
             0;
         };
@@ -75,7 +76,7 @@ private _landBases = [];
 {
     if (sidesX getVariable [_x, sideUnknown] != _side) then { continue };
     if ([_x] call A3A_fnc_airportCanAttack) then { _landBases pushBack _x };
-} forEach (airportsX + outposts);
+} forEach (airportsX + outposts + milbases);
 
 
 private _rebelPlayers = allPlayers - (entities "HeadlessClient_F");
@@ -100,6 +101,7 @@ private _finalWeights = [];
             if (_x in outposts) exitWith { [20, 25] select (count (_radioTowers inAreaArray _x) > 0) };
             if (_x == "Synd_HQ") exitWith { 60 };
             if (_x in seaports) exitWith { 20 };
+            if (_x in milbases) exitWith { 40 };
             if (_x in airportsX) exitWith { [60, 90] select (count _possibleStartBases == 1) };        // If down to carrier, more important to take an airfield
             if (_x in factories) exitWith { 15 };
             10;     // resources

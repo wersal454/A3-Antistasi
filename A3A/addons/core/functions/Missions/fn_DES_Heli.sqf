@@ -14,6 +14,12 @@ if (!isServer and hasInterface) exitWith{};
 private _missionOrigin = _this select 0;
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
+
+params ["_missionOrigin"];
+
+//Mission: Destroy the helicopter
+if (!isServer and hasInterface) exitWith{};
+
 private _difficult = if (random 10 < tierWar) then {true} else {false};
 private _bonus = if (_difficult) then {2} else {1};
 private _missionOriginPos = getMarkerPos _missionOrigin;
@@ -32,11 +38,10 @@ while {true} do {
     if ((!surfaceIsWater _posCrashOrigin) and (_posCrashOrigin distance (getMarkerPos respawnTeamPlayer) < 4000) and (_posCrashOrigin distance (getMarkerPos respawnTeamPlayer) > 1000) and _notOutOfBounds) exitWith {};
     _ang = _ang + 1;
     _countX = _countX + 1;
-    if (_countX > 360) then
-        {
+    if (_countX > 360) then {
         _countX = 0;
         _dist = _dist - 500;
-        };
+    };
 };
 
 // selecting Aircraft
@@ -52,7 +57,7 @@ private _isAttackHeli = _typeVehH in ((_faction get "vehiclesHelisAttack") + (_f
 private _flatPos = [_posCrashOrigin, 0, 1000, 0, 0, 0.1] call BIS_fnc_findSafePos;
 private _posCrash = _flatPos findEmptyPosition [0,100,_typeVehH];
 if (count _posCrash == 0) then {_posCrash = _posCrashOrigin};//if no pos use _posCrashOrigin
-if (!isMultiplayer) then {{ _x hideObject true } foreach (nearestTerrainObjects [_posCrash,["tree","bush", "ROCKS"],50])} else {{[_x,true] remoteExec ["hideObjectGlobal",2]} foreach (nearestTerrainObjects [_posCrash,["tree","bush", "ROCKS"],50])};//clears area of trees and bushes
+{[_x,true] remoteExec ["hideObjectGlobal",2]} foreach (nearestTerrainObjects [_posCrash,["tree","bush", "ROCKS"],50]);
 Debug_2("Crash Location: %1, Aircraft: %2", _posCrash, _typeVehH);
 
 //creating array for cleanup
@@ -67,7 +72,7 @@ _heli setDamage 0.8;
 _vehicles append [_heli,_crater];
 
 //creating cover
-private _typeVeh = "Land_BagFence_01_long_green_F"; // ToDo: should be moved to template under mission objects
+private _typeVeh = _faction get "sandbag";
 private _counterLimit = round (random[2,3,4]*_bonus);
 private _counter = 0;
 private _angle = random 360;
@@ -89,16 +94,21 @@ private _taskMrk = createMarker [format ["DES%1", random 100],_posCrashMrk];
 _taskMrk setMarkerShape "ICON";
 
 //finding timelimit for mission
-private _timeLimit = 120;
-private _dateLimit = [date select 0, date select 1, date select 2, date select 3, (date select 4) + _timeLimit];
-private _dateLimitNum = dateToNumber _dateLimit;
+private _limit = if (_difficult) then {
+	60 call SCRT_fnc_misc_getTimeLimit
+} else {
+	120 call SCRT_fnc_misc_getTimeLimit
+};
+_limit params ["_dateLimitNum", "_displayTime"];
 
 //creating mission
 Info("Creating Helicopter Down mission");
 private _location = [_missionOrigin] call A3A_fnc_localizar;
 private _taskId = "DES" + str A3A_taskCount;
-private _text = format ["We have downed a helicopter. There is a good chance to destroy or capture it before it is recovered. Do it before a recovery team from %1 reaches the crash site. MOVE QUICKLY",_location];
-[[teamPlayer,civilian],_taskId,[_text,"Downed Heli",_taskMrk],_posCrashMrk,false,0,true,"Destroy",true] call BIS_fnc_taskCreate;
+[
+    [teamPlayer,civilian],
+    _taskId,
+    [format [localize "STR_A3A_Missions_DES_Heli_task_desc",_faction get "name", _location, _displayTime],localize "STR_A3A_Missions_DES_Heli_task_header",_taskMrk],_posCrashMrk,false,0,true,"Destroy",true] call BIS_fnc_taskCreate;
 [_taskId, "DES", "CREATED"] remoteExecCall ["A3A_fnc_taskUpdate", 2];
 
 ////////////////
@@ -133,7 +143,7 @@ _vehicles pushBack _vehE;
 Debug_2("Crash Location: %1, Lite Vehicle: %2", _posCrash, _typeVeh);
 
 //spawning escort inf
-private _typeGroup = _faction get "groupSentry";
+private _typeGroup = selectRandom ([_faction, "groupsTierSmall"] call SCRT_fnc_unit_flattenTier);
 private _groupX = [_missionOriginPos, _sideX, _typeGroup] call A3A_fnc_spawnGroup;
 {_x assignAsCargo _vehE; _x moveInCargo _vehE; [_x] join _groupVeh; [_x] call A3A_fnc_NATOinit} forEach units _groupX;
 deleteGroup _groupX;
@@ -180,7 +190,7 @@ if (!debug) then {_mrkCrash setMarkerAlphaLocal 0};
 
 //creating guard
 private ["_guard", "_guardWP", "_vehGuard"];
-_typeGroup = selectRandom (_faction get "groupsSquads");
+_typeGroup = selectRandom ([_faction, "groupsTierSquads"] call SCRT_fnc_unit_flattenTier);
 //if not patrol heli
 if !(_typeVehH in (_faction get "vehiclesHelisLight")) then {
     //spawning guard inf
@@ -235,11 +245,11 @@ Debug_3("Waiting until %1 reaches origin or rebel base, gets destroyed, timer ex
 waitUntil
 {
     sleep 1;
-    (not alive _heli) ||
-    {(_vehR distance _heli < 50) ||
-    ((_heli distance (getMarkerPos respawnTeamPlayer)) < 100) &&
+    !alive _heli ||
+    {_vehR distance _heli < 50 ||
+    (_heli distance (getMarkerPos respawnTeamPlayer)) < 100 &&
     isPlayer (driver _heli) ||
-    {(dateToNumber date > _dateLimitNum)}}
+    {dateToNumber date > _dateLimitNum}}
 };
 
 //////////////////////
@@ -351,15 +361,20 @@ if ((not alive _heli) || (_heli distance (getMarkerPos respawnTeamPlayer) < 100)
     };
     [_taskId, "DES", "SUCCEEDED"] call A3A_fnc_taskSetState;
     [0,300*_bonus] remoteExec ["A3A_fnc_resourcesFIA",2];
-    [600*_bonus, _sideX] remoteExec ["A3A_fnc_timingCA",2];
-    {if (_x distance _heli < 500) then {[10*_bonus,_x] call A3A_fnc_playerScoreAdd}} forEach (allPlayers - (entities "HeadlessClient_F"));
-    [10*_bonus,theBoss] call A3A_fnc_playerScoreAdd;
+	[1800*_bonus, _sideX] remoteExec ["A3A_fnc_timingCA",2];
+	{ 
+        [20*_bonus,_x] call A3A_fnc_addScorePlayer;
+        [300*_bonus,_x] call A3A_fnc_addMoneyPlayer;
+    } forEach (call SCRT_fnc_misc_getRebelPlayers);
+	[20*_bonus,theBoss] call A3A_fnc_addScorePlayer;
+    [200*_bonus,theBoss, true] call A3A_fnc_addMoneyPlayer;
+    if (_isAttackHeli) then {[600*_bonus, _sideX] remoteExec ["A3A_fnc_timingCA",2]};
 } else {
     Debug_2("%1 was successfully recovered by %2, mission failed", _heli, _sideX);
     [_taskId, "DES", "FAILED"] call A3A_fnc_taskSetState;
-    [-200, _sideX] remoteExec ["A3A_fnc_timingCA",2];
-    [-10*_bonus,theBoss] call A3A_fnc_playerScoreAdd;
-    if (_isAttackHeli) then {[-200, _sideX] remoteExec ["A3A_fnc_timingCA",2]};
+    [-600*_bonus, _sideX] remoteExec ["A3A_fnc_timingCA",2];
+    [-10*_bonus,theBoss] call A3A_fnc_addScorePlayer;
+    if (_isAttackHeli) then {[-600*_bonus, _sideX] remoteExec ["A3A_fnc_timingCA",2]};
 };
 Info("Downed Heli mission completed");
 ////////////

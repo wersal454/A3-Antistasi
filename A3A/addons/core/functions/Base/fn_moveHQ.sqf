@@ -14,14 +14,13 @@ Public: Yes
 Dependencies:
     <OBJECT> petros
     <OBJECT> theBoss
-    <OBJECT> fireX
     <STRING> respawnTeamPlayer
     <SIDE> teamPlayer
     <NAMESPACE> garrison
     <SIDE> Occupants
     <SIDE> Invaders
     <NAMESPACE> server
-    <Hashmap> A3A_faction_reb
+    <HASHMAP> A3A_faction_reb
 
 Example:
 [] call A3A_fnc_moveHQ;
@@ -39,8 +38,6 @@ petros setBehaviour "AWARE";
 petros enableAI "MOVE";
 petros enableAI "AUTOTARGET";
 
-fireX inflame false;
-
 [respawnTeamPlayer, 0, teamPlayer] call A3A_fnc_setMarkerAlphaForSide;
 [respawnTeamPlayer, 0, civilian] call A3A_fnc_setMarkerAlphaForSide;
 
@@ -53,7 +50,7 @@ if (count _garrison > 0) then
     private _hr = 0;
     if (allUnits findIf {(alive _x) && (!captive _x) && ((side (group _x) == Occupants) || (side (group _x) == Invaders)) && {_x distance2D _posHQ < 500}} != -1) then
     {
-        ["Garrison", "HQ Garrison will stay here and distract the enemy."] call A3A_fnc_customHint;
+        [localize "STR_antistasi_journal_entry_header_commander_5", localize "STR_A3A_Base_moveHq_garrison_1"] call A3A_fnc_customHint;
         //Is there a despawn routine attached to them?
         //Why are they getting refunded if they stay?
     }
@@ -94,7 +91,5 @@ if (count _garrison > 0) then
     } forEach _garrison;
     [_hr,_costs] remoteExec ["A3A_fnc_resourcesFIA",2];
     garrison setVariable ["Synd_HQ",[],true];
-    ["Garrison", format ["Garrison removed<br/><br/>Recovered Money: %1 €<br/>Recovered HR: %2",_costs,_hr]] call A3A_fnc_customHint;
+    [localize "STR_antistasi_journal_entry_header_commander_5", format [localize "STR_A3A_Base_moveHq_garrison_2",_costs,_hr, A3A_faction_civ get "currencySymbol"]] call A3A_fnc_customHint;
 };
-
-sleep 5;

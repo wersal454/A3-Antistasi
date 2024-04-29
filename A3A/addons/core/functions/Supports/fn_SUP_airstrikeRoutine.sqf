@@ -10,7 +10,7 @@ Arguments:
     <STRING> Marker name of source airport
     <STRING> Resource pool of support, "attack" or "defence"
     <STRING> Classname of aircraft to use
-    <STRING> Bomb type to use, "HE", "CLUSTER" or "NAPALM"
+    <STRING> Bomb type to use, "HE", "CLUSTER", "NAPALM" or "CHEMICAL"
     <SCALAR> Amount of information to reveal to rebels, 0-1
 
 */
@@ -42,7 +42,7 @@ _group deleteGroupWhenEmpty true;
 // Should we really have these?
 _plane addEventHandler ["Killed", {
     params ["_plane"];
-    ["TaskSucceeded", ["", "Airstrike Vessel Destroyed"]] remoteExec ["BIS_fnc_showNotification", teamPlayer];
+    ["TaskSucceeded", ["", localize "STR_notifiers_airstrike_vessel_killed"]] remoteExec ["BIS_fnc_showNotification", teamPlayer];
 }];
 
 //["_reveal", "_position", "_side", "_supportType", "_markerType", "_markerLifeTime"]

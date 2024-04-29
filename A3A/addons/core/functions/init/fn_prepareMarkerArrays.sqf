@@ -6,6 +6,7 @@ _allMarker = allMapMarkers;
 _placementMarker = [];
 
 airportsX = [];
+milbases = [];
 spawnPoints = [];
 resourcesX = [];
 factories = [];
@@ -24,13 +25,13 @@ fnc_sortPlacementMarker =
 
   //Calculating linked main marker
   _type = "";
-  switch (_split select 0) do
-  {
+  switch (_split select 0) do {
     case ("airp"): {_type = "airport";};
     case ("outp"): {_type = "outpost";};
     case ("reso"): {_type = "resource";};
     case ("fact"): {_type = "factory";};
     case ("seap"): {_type = "seaport";};
+    case ("milb"): {_type = "milbase";};
   };
 
   _number = parseNumber (_split select 1);
@@ -64,10 +65,11 @@ fnc_sortPlacementMarker =
 {
   _split = _x splitString "_";
   _start = _split select 0;
-  switch (toLower _start) do
+  switch (toLowerANSI _start) do
   {
     //Detect main marker
     case ("airport"): {airportsX pushBack _x;};
+    case ("milbase"): {milbases pushBack _x;};
     case ("spawnpoint"): {spawnPoints pushBack _x;};
     case ("resource"): {resourcesX pushBack _x;};
     case ("factory"): {factories pushBack _x;};
@@ -81,7 +83,6 @@ fnc_sortPlacementMarker =
 
     //Following marker are handled elsewhere
     case ("respawn");
-    case ("dummyupsmonmarker");
     case ("nato");
     case ("csat");
     case ("synd"): {};
@@ -91,6 +92,7 @@ fnc_sortPlacementMarker =
     case ("reso");
     case ("fact");
     case ("outp");
+    case ("milb");
     case ("seap"): {[_placementMarker, _split] call fnc_sortPlacementMarker;};
 
     default
@@ -113,7 +115,7 @@ fnc_sortPlacementMarker =
         Debug_1("Generating additional spawn places for %1", _x);
         [_x, []] call A3A_fnc_initSpawnPlaces;
     };
-} forEach (airportsX + resourcesX + factories + outposts + seaports);
+} forEach (airportsX + resourcesX + factories + outposts + seaports + milbases);
 
 //TEMPORARY FIX TO DETECT SPAWN MARKERS
 {

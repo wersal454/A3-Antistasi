@@ -1,7 +1,7 @@
-_dog = _this select 0;
-_groupX = group _dog;
+params ["_dog"];
 
-_spotted = objNull;
+private _groupX = group _dog;
+private _spotted = objNull;
 
 _dog setVariable ["BIS_fnc_animalBehaviour_disable", true];
 _dog disableAI "FSM";

@@ -2,41 +2,113 @@
 FIX_LINE_NUMBERS()
 if (!isServer and hasInterface) exitWith{};
 
-private ["_pos","_markerX","_vehiclesX","_groups","_soldiers","_busy","_buildings","_pos1","_pos2","_groupX","_countX","_typeVehX","_veh","_unit","_arrayVehAAF","_nVeh","_frontierX","_size","_ang","_mrk","_typeGroup","_flagX","_dog","_typeUnit","_garrison","_sideX","_cfg","_max","_vehicle","_vehCrew","_groupVeh","_roads","_dist","_road","_roadscon","_roadcon","_dirveh","_bunker","_typeGroup"];
-_markerX = _this select 0;
+params ["_markerX"];
 
 //Not sure if that ever happens, but it reduces redundance
 if(spawner getVariable _markerX == 2) exitWith {};
 
-ServerDebug_1("Spawning Airbase %1", _markerX);
+ServerInfo_1("Spawning Airbase %1", _markerX);
 
-_vehiclesX = [];
-_groups = [];
-_soldiers = [];
-private _dogs = [];
+private _vehiclesX = [];
+private _groups = [];
+private _soldiers = [];
+private _props = [];
+private _dogs = []; //dogs are used in fn_location_createPatrols, removing this variable will break spawn
 private _spawnsUsed = [];
 
 _positionX = getMarkerPos (_markerX);
 private _patrolSize = [_markerX] call A3A_fnc_sizeMarker;
-_pos = [];
 
-_size = [_markerX] call A3A_fnc_sizeMarker;
-//_garrison = garrison getVariable _markerX;
+private _size = [_markerX] call A3A_fnc_sizeMarker;
 
-_frontierX = [_markerX] call A3A_fnc_isFrontline;
-_busy = false;		//if (dateToNumber date > server getVariable _markerX) then {false} else {true};
-_nVeh = round (_size/60);
+private _frontierX = [_markerX] call A3A_fnc_isFrontline;
+private _busy = false;		//if (dateToNumber date > server getVariable _markerX) then {false} else {true};
+private _nVeh = round (_size/60);
 
-_sideX = sidesX getVariable [_markerX,sideUnknown];
+private _sideX = sidesX getVariable [_markerX,sideUnknown];
 private _faction = Faction(_sideX);
 
-_max = if (_frontierX) then {2} else {1};
-for "_i" from 1 to _max do
+/////////////////////////////
+// SPAWNING SAM SITE	  //
+////////////////////////////
+
+private _radarType = _faction getOrDefault ["vehicleRadar", ""];
+private _samType = _faction getOrDefault ["vehicleSam", ""];
+
+// In case of array
+if (_radarType isEqualType [] && {_radarType isNotEqualTo []}) then {_radarType = selectRandom _radarType};
+if (_samType isEqualType [] && {_samType isNotEqualTo []}) then {_samType = selectRandom _samType};
+
+// In case of empty array
+if (_samType isEqualType [] && {_samType isEqualTo []}) then {_samType = ""};
+if (_radarType isEqualType [] && {_radarType isEqualTo []}) then {_radarType = ""};
+
+diag_log _radarType;
+diag_log _samType;
+
+if (garrison getVariable [_markerX + "_samDestroyedCD", 0] == 0) then 
 {
+	if (_radarType != "" && {_samType != ""}) then 
+	{
+		private _spawnParameter = [_markerX, "Sam"] call A3A_fnc_findSpawnPosition;
+		if !(_spawnParameter isEqualType []) exitWith {};
+		_spawnsUsed pushBack _spawnParameter#2;
+
+		{
+			private _aaVehicle = nil;
+			isNil {
+				// _aaVehicle = createVehicle [_x, (_spawnParameter select 0), [], 0, "CAN_COLLIDE"];
+				// _aaVehicle setDir (_spawnParameter select 1);
+				_aaVehicle = [_x, _spawnParameter select 0, 25, 10, true] call A3A_fnc_safeVehicleSpawn;
+				_aaVehicle setDir (_spawnParameter select 1);
+			};
+
+			private _aaGroup = [_sideX, _aaVehicle] call A3A_fnc_createVehicleCrew;
+			[_aaVehicle, _sideX] call A3A_fnc_AIVEHinit;
+
+			_soldiers append (units _aaGroup); //not sure if needed
+			_groups pushBack _aaGroup;
+			_vehiclesX pushBack _aaVehicle;
+
+			//radar rotation
+			if(_x isEqualTo _radarType) then {
+				_aaVehicle spawn {
+					while {alive _this} do {
+						{
+							_this lookAt (_this getRelPos [100, _x]);
+							sleep 2.45;
+						} forEach [120, 240, 0];
+					};
+				};
+				_aaVehicle setVehicleRadar 1;
+				_aaVehicle setVehicleReportRemoteTargets true;
+			};
+
+			_aaVehicle setVariable ["A3A_samMarker", _markerX];
+			_aaVehicle addEventHandler ["Killed", { 
+				private _marker = _this#0 getVariable ["A3A_samMarker",""];
+				if (_marker isNotEqualTo "") then {
+					private _varName = _marker + "_samDestroyedCD";
+					private _previousValue = garrison getVariable [_varName, 0];
+					garrison setVariable [_varName, (_previousValue + 1800), true];
+				};
+			}];
+		} forEach [_radarType, _samType];
+	};
+};
+
+/////////////////////////////
+// Self-propelled AA 	  //
+////////////////////////////
+
+private _max = if (_frontierX) then {2} else {1};
+for "_i" from 1 to _max do {
 	private _spawnParameter = [_markerX, "Vehicle"] call A3A_fnc_findSpawnPosition;
 	
 	if !(_spawnParameter isEqualType []) exitWith {};
 	_spawnsUsed pushBack _spawnParameter#2;
+
+	private _veh = nil;
 	isNil {
 		_veh = createVehicle [selectRandom (_faction get "vehiclesAA"), (_spawnParameter select 0), [], 0, "CAN_COLLIDE"];
 		_veh setDir (_spawnParameter select 1);
@@ -49,107 +121,131 @@ for "_i" from 1 to _max do
 	_groups pushBack _groupVeh;
   	[_groupVeh, "Patrol_Area", 25, 100, 250, true, _positionX, false] call A3A_fnc_patrolLoop;
 	_vehiclesX pushBack _veh;
+
 	sleep 1;
+	[(gunner _veh), 300] spawn SCRT_fnc_common_scanHorizon;
 };
 
-if (_frontierX) then
-{
+/////////////////////////////
+// Heavy Patrol Vehicle   //
+////////////////////////////
+if (_frontierX && {random 100 < (20 + tierWar * 3)}) then {
+	private _road = [_positionX] call A3A_fnc_findNearestGoodRoad;
+	if (_road distance2D _positionX > 800) exitWith {};
+
+	private _heavyVehPool =  (_faction get "vehiclesTanks") + (_faction get "vehiclesAPCs") + (_faction get "vehiclesIFVs") + (_faction get "vehiclesLightTanks");
+	private _type = selectRandom _heavyVehPool;
+
+	private _heavyVehicle = [_type, (position _road), 15, 10] call A3A_fnc_safeVehicleSpawn;
+	if (isNull _heavyVehicle) exitWith {};
+
+	private _crewType = [_sideX, _heavyVehicle] call A3A_fnc_crewTypeForVehicle;
+	private _group = createGroup _sideX;
+
+	_group = [_group, _heavyVehicle, _crewType] call A3A_fnc_createVehicleCrew;
+
+	[_heavyVehicle, _sideX] call A3A_fnc_AIVEHinit;
+	{[_x,_markerX] call A3A_fnc_NATOinit} forEach (units _group);
+
+	if (_type in ((_faction get "vehiclesAPCs") + (_faction get "vehiclesIFVs"))) then {
+		sleep 1;
+		private _troopGroup = [(position _road), _sideX, (selectRandom ([_faction, "groupsTierMedium"] call SCRT_fnc_unit_flattenTier))] call A3A_fnc_spawnGroup;
+		{_x assignAsCargo _heavyVehicle;_x moveInCargo _heavyVehicle; _soldiers pushBack _x; [_x] joinSilent _group; [_x,"",false] call A3A_fnc_NATOinit} forEach units _troopGroup;
+		deleteGroup _troopGroup;
+	};
+
+	_soldiers append (units _group);
+	_groups pushBack _group;
+	_vehiclesX pushBack _heavyVehicle;
+};
+
+
+if (_frontierX) then {
 	_roads = _positionX nearRoads _size;
-	if (count _roads != 0) then
-	{
-		_groupX = createGroup _sideX;
+	if (count _roads != 0) then {
+		private _groupX = createGroup _sideX;
 		_groups pushBack _groupX;
-		_dist = 0;
-		_road = objNull;
-		{if ((position _x) distance _positionX > _dist) then {_road = _x;_dist = position _x distance _positionX}} forEach _roads;
-		_roadscon = roadsConnectedto _road;
-		_roadcon = objNull;
-		{if ((position _x) distance _positionX > _dist) then {_roadcon = _x}} forEach _roadscon;
-		_dirveh = [_roadcon, _road] call BIS_fnc_DirTo;
-		_pos = [getPos _road, 7, _dirveh + 270] call BIS_Fnc_relPos;
-		_bunker = "Land_BagBunker_01_small_green_F" createVehicle _pos;
-		_vehiclesX pushBack _bunker;
-		_bunker setDir _dirveh;
-		_pos = getPosATL _bunker;
-		_typeVehX = selectRandom (_faction get "staticAT");
-		_veh = _typeVehX createVehicle _positionX;
-		_vehiclesX pushBack _veh;
-		_veh setDir _dirVeh + 180;
-		_veh setPos _pos;
-		_typeUnit = _faction get "unitStaticCrew";
-		_unit = [_groupX, _typeUnit, _positionX, [], 0, "NONE"] call A3A_fnc_createUnit;
-		_unit moveInGunner _veh;
-		[_unit,_markerX] call A3A_fnc_NATOinit;
-		[_veh, _sideX] call A3A_fnc_AIVEHinit;
-		_soldiers pushBack _unit;
+		private _typeVehX = selectRandom (_faction get "staticAT");
+
+		if (_faction getOrDefault ["noSandbag", false]) then {		
+			private _veh = _typeVehX createVehicle _positionX;
+			_vehiclesX pushBack _veh;
+			_veh setPos _pos;
+			_veh setDir _dirVeh + 180;
+			private _typeUnit = [_faction get "unitTierStaticCrew"] call SCRT_fnc_unit_getTiered;
+			private _unit = [_groupX, _typeUnit, _positionX, [], 0, "NONE"] call A3A_fnc_createUnit;
+			_unit moveInGunner _veh;
+			[_unit,_markerX] call A3A_fnc_NATOinit;
+			[_veh, _sideX] call A3A_fnc_AIVEHinit;
+			_soldiers pushBack _unit;
+		} else {
+			private _bunker = (_faction get "sandbag") createVehicle _pos;
+			_vehiclesX pushBack _bunker;
+			_bunker setDir _dirveh;
+			_pos = getPosATL _bunker;
+			private _veh = _typeVehX createVehicle _positionX;
+			_vehiclesX pushBack _veh;
+			_veh setPos _pos;
+			_veh setDir _dirVeh + 180;
+			private _typeUnit = [_faction get "unitTierStaticCrew"] call SCRT_fnc_unit_getTiered;
+			private _unit = [_groupX, _typeUnit, _positionX, [], 0, "NONE"] call A3A_fnc_createUnit;
+			_unit moveInGunner _veh;
+			[_unit,_markerX] call A3A_fnc_NATOinit;
+			[_veh, _sideX] call A3A_fnc_AIVEHinit;
+			_soldiers pushBack _unit;
+		};
 	};
 };
 
-
-_mrk = createMarkerLocal [format ["%1patrolarea", random 100], _positionX];
+private _mrk = createMarkerLocal [format ["%1patrolarea", random 100], _positionX];
 _mrk setMarkerShapeLocal "RECTANGLE";
 _mrk setMarkerSizeLocal [(distanceSPWN/2),(distanceSPWN/2)];
 _mrk setMarkerTypeLocal "hd_warning";
 _mrk setMarkerColorLocal "ColorRed";
 _mrk setMarkerBrushLocal "DiagGrid";
-_ang = markerDir _markerX;
-_mrk setMarkerDirLocal _ang;
+_mrk setMarkerDirLocal (markerDir _markerX);
 if (!debug) then {_mrk setMarkerAlphaLocal 0};
-_garrison = garrison getVariable [_markerX,[]];
-_garrison = _garrison call A3A_fnc_garrisonReorg;
-_radiusX = count _garrison;
-private _patrol = true;
-if (_radiusX < ([_markerX] call A3A_fnc_garrisonSize)) then
-{
-	_patrol = false;
-}
-else
-{
-		//No patrol if patrol area overlaps with an enemy site
-		_patrol = ((markersX findIf {(getMarkerPos _x inArea _mrk) && {sidesX getVariable [_x, sideUnknown] != _sideX}}) == -1);
-};
-if (_patrol) then
-{
-	_countX = 0;
-	while {_countX < 4} do
-	{
-		_arraygroups = _faction get "groupsSmall";
-		if ([_markerX,false] call A3A_fnc_fogCheck < 0.3) then {_arraygroups = _arraygroups - (_faction get "groupSniper")};
-		_typeGroup = selectRandom _arraygroups;
-		private _spawnPosition = [_positionX, 25, round (_patrolSize / 2), 5, 0, -1, 0] call A3A_fnc_getSafePos;
-		if (_spawnPosition isEqualTo [0,0]) exitWith {
-			ServerDebug("Unable to find spawn position for patrol unit.");
-		};
-		_groupX = [_spawnPosition,_sideX, _typeGroup,false,true] call A3A_fnc_spawnGroup;
-		if !(isNull _groupX) then
-		{
+
+//maybe it's no longer needed after all..?
+private _additionalGarrison = [_sideX, _markerX] call SCRT_fnc_garrison_rollOversizeGarrison;
+if (_additionalGarrison isNotEqualTo []) then {
+	for "_i" from 0 to (count _additionalGarrison) - 1 do {
+		private _groupTypes = _additionalGarrison select _i;
+		private _group = [_positionX, _sideX, _groupTypes, false, true] call A3A_fnc_spawnGroup;
+		if !(isNull _group) then {
 			sleep 1;
-			if ((random 10 < 2.5) and (_typeGroup isNotEqualTo (_faction get "groupSniper"))) then
-			{
-				_dog = [_groupX, "Fin_random_F",_spawnPosition,[],0,"FORM"] call A3A_fnc_createUnit;
-				_dogs pushBack _dog;
-				[_dog] spawn A3A_fnc_guardDog;
-				sleep 1;
-			};
-
-			[_groupX, "Patrol_Area", 25, 150, 300, false, [], false] call A3A_fnc_patrolLoop;
-			_groups pushBack _groupX;
-
-			{[_x,_markerX] call A3A_fnc_NATOinit; _soldiers pushBack _x} forEach units _groupX;
+			[_group, "Patrol_Area", 25, 150, 300, false, [], false] call A3A_fnc_patrolLoop;
+			_groups pushBack _group;
+			{[_x] call A3A_fnc_NATOinit; _soldiers pushBack _x} forEach units _group;
 		};
-		_countX = _countX +1;
 	};
 };
-_countX = 0;
+
+private _garrison = garrison getVariable [_markerX,[]];
+_garrison = _garrison call A3A_fnc_garrisonReorg;
+
+private _radiusX = count _garrison;
+private _patrol = true;
+
+if (_radiusX < ([_markerX] call A3A_fnc_garrisonSize)) then {
+	_patrol = false;
+} else {
+	//No patrol if patrol area overlaps with an enemy site
+	_patrol = ((markersX findIf {(getMarkerPos _x inArea _mrk) && {sidesX getVariable [_x, sideUnknown] != _sideX}}) == -1);
+};
+
+if (_patrol) then {
+	[_markerX, _positionX, _sideX, _faction, 6] call SCRT_fnc_location_createPatrols;
+};
+private _countX = 0;
 
 // Mortar spawning
-_groupX = createGroup _sideX;
+private _groupX = createGroup _sideX;
 _groups pushBack _groupX;
-_typeUnit = _faction get "unitStaticCrew";
+private _typeUnit = [_faction get "unitTierStaticCrew"] call SCRT_fnc_unit_getTiered;
 while {true} do {
 	private _spawnParameter = [_markerX, "Mortar"] call A3A_fnc_findSpawnPosition;
 	if (_spawnParameter isEqualType false) exitWith {};
-//	if ((_spawnParameter select 0) nearObjects ["StaticWeapon", 5] isNotEqualTo []) then { continue };		// hack, already a (support?) mortar on the point
 
 	_spawnsUsed pushBack _spawnParameter#2;
 	_typeVehX = selectRandom (_faction get "staticMortars");
@@ -163,23 +259,32 @@ while {true} do {
 	_soldiers pushBack _unit;
 	_vehiclesX pushBack _veh;
 	sleep 1;
+
+	private _mortarPos = _spawnParameter select 0;
+	{
+		private _relativePosition = [_mortarPos, 4, _x] call BIS_fnc_relPos;
+		private _sandbag = createVehicle [_faction get "sandbagRound", _relativePosition, [], 0, "CAN_COLLIDE"];
+		_sandbag setDir ([_sandbag, _mortarPos] call BIS_fnc_dirTo);
+		_sandbag setVectorUp surfaceNormal position _sandbag;
+		_props pushBack _sandbag;
+	} forEach [0, 90, 180, 270];
 };
 
-_ret = [_markerX,_size,_sideX,_frontierX] call A3A_fnc_milBuildings;
+private _ret = [_markerX,_size,_sideX,_frontierX] call A3A_fnc_milBuildings;
 _groups pushBack (_ret select 0);
 _vehiclesX append (_ret select 1);
 _soldiers append (_ret select 2);
 _spawnsUsed append (_ret select 3);
 {[_x, _sideX] call A3A_fnc_AIVEHinit} forEach (_ret select 1);
 
-if(random 100 < (50 + tierWar * 3)) then
-{
+if(random 100 < (50 + tierWar * 3)) then {
 	_large = (random 100 < (40 + tierWar * 2));
 	[_markerX, _large] spawn A3A_fnc_placeIntel;
 };
 
-if (!_busy) then
-{
+if (!_busy) then {
+	private _pos = nil;
+	private _ang = nil;
 	//Newer system in place
 	private _runwaySpawnLocation = [_markerX] call A3A_fnc_getRunwayTakeoffForAirportMarker;
 	if !(_runwaySpawnLocation isEqualTo []) then
@@ -187,15 +292,13 @@ if (!_busy) then
 		_pos = _runwaySpawnLocation select 0;
 		_ang = _runwaySpawnLocation select 1;
 	};
-	_groupX = createGroup _sideX;
+	private _groupX = createGroup _sideX;
 	_groups pushBack _groupX;
 	_countX = 0;
-	while {_countX < 3} do
-	{
+	while {_countX < 3} do {
 		private _veh = objNull;
 		private _spawnParameter = [_markerX, "Plane"] call A3A_fnc_findSpawnPosition;
-		if(_spawnParameter isEqualType []) then
-		{
+		if(_spawnParameter isEqualType []) then {
 			private _vehPool = (_faction get "vehiclesPlanesCAS") + (_faction get "vehiclesPlanesAA");
 			if(count _vehPool > 0) then
 			{
@@ -208,26 +311,22 @@ if (!_busy) then
 				_vehiclesX pushBack _veh;
 				[_veh, _sideX] call A3A_fnc_AIVEHinit;
 			};
-		}
-		else
-		{
-			if !(_runwaySpawnLocation isEqualTo []) then
-			{
-				_typeVehX = selectRandom (
-                    (_faction get "vehiclesHelisLight")
+		} else {
+			if !(_runwaySpawnLocation isEqualTo []) then {
+				private _airVehTypes = (_faction get "vehiclesHelisLight")
                     + (_faction get "vehiclesHelisTransport")
                     + (_faction get "vehiclesPlanesCAS")
                     + (_faction get "vehiclesPlanesAA")
-                    + (_faction get "vehiclesPlanesTransport")
-                );
-				_veh = createVehicle [_typeVehX, _pos, [],50, "NONE"];
-				_veh setDir (_ang);
-				_pos = [_pos, 50,_ang] call BIS_fnc_relPos;
-				_vehiclesX pushBack _veh;
-				[_veh, _sideX] call A3A_fnc_AIVEHinit;
-			}
-			else
-			{
+                    + (_faction get "vehiclesPlanesTransport");
+				_typeVehX = selectRandom _airVehTypes;
+				if (!isNil "_typeVehX") then {
+					_veh = createVehicle [_typeVehX, _pos, [],50, "NONE"];
+					_veh setDir (_ang);
+					_pos = [_pos, 50,_ang] call BIS_fnc_relPos;
+					_vehiclesX pushBack _veh;
+					[_veh, _sideX] call A3A_fnc_AIVEHinit;
+				};
+			} else {
 				//No places found, neither hangar nor runway
 				_countX = 3;
 			};
@@ -236,8 +335,8 @@ if (!_busy) then
 	};
 };
 
-_typeVehX = _faction get "flag";
-_flagX = createVehicle [_typeVehX, _positionX, [],0, "NONE"];
+private _typeVehX = _faction get "flag";
+private _flagX = createVehicle [_typeVehX, _positionX, [],0, "NONE"];
 _flagX allowDamage false;
 [_flagX,"take"] remoteExec ["A3A_fnc_flagaction",[teamPlayer,civilian],_flagX];
 _vehiclesX pushBack _flagX;
@@ -265,13 +364,13 @@ private _ammoBox = if (garrison getVariable [_markerX + "_lootCD", 0] == 0) then
 
 if (!_busy) then
 {
-	private _vehTypesHeavy = (_faction get "vehiclesAPCs") + (_faction get "vehiclesTanks");
-	for "_i" from 1 to (round (random 2)) do
-	{
+	private _vehTypesHeavy = (_faction get "vehiclesAPCs") + (_faction get "vehiclesLightAPCs") + (_faction get "vehiclesTanks") +(_faction get "vehiclesLightTanks");
+	for "_i" from 1 to (round (random 2)) do {
 		_spawnParameter = [_markerX, "Vehicle"] call A3A_fnc_findSpawnPosition;
 		if (_spawnParameter isEqualType []) then
 		{
 			_spawnsUsed pushBack _spawnParameter#2;
+			private _veh = nil;
 			isNil {
 				_veh = createVehicle [selectRandom _vehTypesHeavy, (_spawnParameter select 0), [], 0, "CAN_COLLIDE"];
 				_veh setDir (_spawnParameter select 1);
@@ -284,16 +383,23 @@ if (!_busy) then
 	};
 };
 
-private _vehTypesLight = (_faction get "vehiclesLightArmed") + (_faction get "vehiclesLightUnarmed") + (_faction get "vehiclesTrucks") + (_faction get "vehiclesAmmoTrucks") + (_faction get "vehiclesRepairTrucks") + (_faction get "vehiclesFuelTrucks") + (_faction get "vehiclesMedical");
+private _vehTypesLight = 
+	(_faction get "vehiclesLightArmed") + 
+	(_faction get "vehiclesLightUnarmed") + 
+	(_faction get "vehiclesTrucks") + 
+	(_faction get "vehiclesAmmoTrucks") + 
+	(_faction get "vehiclesRepairTrucks") + 
+	(_faction get "vehiclesFuelTrucks") + 
+	(_faction get "vehiclesMedical");
 _countX = 0;
 
-while {_countX < _nVeh && {_countX < 3}} do
-{
-	_typeVehX = selectRandom _vehTypesLight;
-	_spawnParameter = [_markerX, "Vehicle"] call A3A_fnc_findSpawnPosition;
+while {_countX < _nVeh && {_countX < 3}} do {
+	private _typeVehX = selectRandom _vehTypesLight;
+	private _spawnParameter = [_markerX, "Vehicle"] call A3A_fnc_findSpawnPosition;
 	if(_spawnParameter isEqualType []) then
 	{
 		_spawnsUsed pushBack _spawnParameter#2;
+		private _veh = nil;
 		isNil {
 			_veh = createVehicle [_typeVehX, (_spawnParameter select 0), [], 0, "CAN_COLLIDE"];
 			_veh setDir (_spawnParameter select 1);
@@ -312,8 +418,8 @@ while {_countX < _nVeh && {_countX < 3}} do
 
 { _x setVariable ["originalPos", getPosATL _x] } forEach _vehiclesX;
 
-_array = [];
-_subArray = [];
+private _array = [];
+private _subArray = [];
 _countX = 0;
 _radiusX = _radiusX -1;
 while {_countX <= _radiusX} do {
@@ -350,6 +456,7 @@ deleteMarker _mrk;
 { if (alive _x) then { deleteVehicle _x } } forEach _soldiers;
 { deleteVehicle _x } forEach _dogs;
 { deleteGroup _x } forEach _groups;
+{ deleteVehicle _x } forEach _props;
 
 {
 	// delete all vehicles that haven't been stolen

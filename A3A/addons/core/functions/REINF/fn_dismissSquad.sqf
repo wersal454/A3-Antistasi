@@ -1,32 +1,27 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
-//if (!isServer) exitWith{};
-private ["_groups","_hr","_resourcesFIA","_wp","_groupX","_veh","_leave"];
 
-_groups = _this select 0;
-_hr = 0;
-_resourcesFIA = 0;
-_leave = false;
+params ["_groups"];
+
+private ["_wp","_groupX","_veh"];
+
+private _hr = 0;
+private _resourcesFIA = 0;
+private _leave = false;
 
 {
-	if ((groupID _x) in ["MineF", "Watch"]
+	if ((groupID _x) in ["MineF", "Watch", "Post", "Road"]
 		|| { isPlayer (leader _x)
 		|| { (units _x) findIf { _x == petros } != -1 }})
 	exitWith { _leave = true; };
 } forEach _groups;
 
-if (_leave) exitWith {["Dismiss Squad", "You cannot dismiss player led, Watchpost, Roadblocks or Minefield building squads."] call A3A_fnc_customHint;};
-
-{
-if (_x getVariable ["esNATO",false]) then {_leave = true};
-} forEach _groups;
-
-if (_leave) exitWith {["Dismiss Squad", "You cannot dismiss NATO groups."] call A3A_fnc_customHint;};
+if (_leave) exitWith {[localize "STR_generic_dismiss_squads", localize "STR_A3A_reinf_dismiss_squad_no_special_squads"] call A3A_fnc_customHint;};
 
 _pos = getMarkerPos respawnTeamPlayer;
 
 {
-	theBoss sideChat format ["%2, I'm sending %1 back to base", _x,name petros];
+	theBoss sideChat format [localize "STR_chats_send_back_to_base", _x,name petros];
 	theBoss hcRemoveGroup _x;
 	_wp = _x addWaypoint [_pos, 0];
 	_wp setWaypointType "MOVE";

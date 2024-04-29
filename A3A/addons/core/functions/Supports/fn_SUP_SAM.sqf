@@ -28,7 +28,8 @@ private _weights = [];
     if (_dist > 8000 or _dist < 1500) then {continue};
     if (sidesX getVariable [_x,sideUnknown] != _side) then {continue};
     if (spawner getVariable _x == 0) then {continue};              // don't need spawn places, so this is fine
-
+    if (garrison getVariable [_x + "_samDestroyedCD", 0] != 0) then {continue}; //means that SAM was previously destroyed and needs to be replenished
+	
     if (_target isEqualType objNull and {!isNull _target}) then {
         private _targDir = _pos getDir _targPos;
         private _intersectPoint = (ATLtoASL _pos) getPos [250, _targDir] vectorAdd [0,0,300];
@@ -37,7 +38,7 @@ private _weights = [];
 
     _airports pushBack _x;
     _weights pushBack (1 / _dist^2);
-} forEach airportsX;
+} forEach (airportsX + milbases);
 
 if (_airports isEqualTo []) exitWith {
     Error_1("No suitable airport found for %1", _supportName); -1;
@@ -54,7 +55,7 @@ _group deleteGroupWhenEmpty true;
 
 
 private _aggro = if(_side == Occupants) then {aggressionOccupants} else {aggressionInvaders};
-if (_delay < 0) then { _delay = (0.5 + random 1) * (350 - 15*tierWar - 1*_aggro) };
+if (_delay < 0) then { _delay = (0.5 + random 1) * (600 - 15*tierWar - 1*_aggro) };
 
 private _targArray = [];
 if (_target isEqualType objNull and {!isNull _target}) then {

@@ -1,6 +1,7 @@
-params ["_victim", "_killer"];
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
+
+params ["_victim", "_killer"];
 
 //Stops the unit from spawning things
 if (_victim getVariable ["spawner",false]) then
@@ -11,11 +12,12 @@ if (_victim getVariable ["spawner",false]) then
 //Gather infos, trigger timed despawn
 private _victimGroup = group _victim;
 private _victimSide = side (group _victim);
+private _isRival = _victim getVariable ["isRival", false];
 [_victim] spawn A3A_fnc_postmortem;
 
 // Deplete resource pools if we haven't paid for this unit in advance
 private _pool = _victim getVariable ["A3A_resPool", "legacy"];
-if (_pool == "legacy") then {
+if (_pool == "legacy" && {!_isRival}) then {
 	[-10, _victimSide, "legacy"] remoteExecCall ["A3A_fnc_addEnemyResources", 2];
 };
 
@@ -28,7 +30,7 @@ if (A3A_hasACE) then
 	};
 };
 
-if (_victimSide == Occupants or _victimSide == Invaders) then {
+if (_victimSide in [Occupants, Invaders]) then {
     [_victim, _victimGroup, _killer] spawn A3A_fnc_AIreactOnKill;
 };
 
@@ -36,7 +38,7 @@ if (side (group _killer) == teamPlayer) then
 {
     if (isPlayer _killer) then
     {
-        [1,_killer] call A3A_fnc_playerScoreAdd;
+        [2,_killer] call A3A_fnc_addScorePlayer;
         if (captive _killer) then
         {
             if (_killer distance _victim < distanceSPWN) then
@@ -55,7 +57,7 @@ if (side (group _killer) == teamPlayer) then
             };
         } forEach (call A3A_fnc_playableUnits);
     };
-	if (count weapons _victim < 1 && !(_victim getVariable ["isAnimal", false])) then
+	if (count weapons _victim < 1 && {!(_victim getVariable ["isAnimal", false])}) then
     {
         //This doesn't trigger for dogs, only for surrendered units
         Debug("aggroEvent | Rebels killed a surrendered unit");
@@ -63,13 +65,21 @@ if (side (group _killer) == teamPlayer) then
 		{
 			[0,-2,getPos _victim] remoteExec ["A3A_fnc_citySupportChange",2];
 		};
-        [_victimSide, 20, 30] remoteExec ["A3A_fnc_addAggression", 2];
+
+        if (!_isRival) then {
+            [_victimSide, 20, 30] remoteExec ["A3A_fnc_addAggression", 2];
+        };
 	}
 	else
 	{
 		[-1,1,getPos _victim] remoteExec ["A3A_fnc_citySupportChange",2];
-        [_victimSide, 0.5, 45] remoteExec ["A3A_fnc_addAggression", 2];
+        if (!_isRival) then {
+            [_victimSide, 0.5, 45] remoteExec ["A3A_fnc_addAggression", 2];
+        };
 	};
+    if (_isRival) then {
+        [random [3,4,5], 30] remoteExec ["SCRT_fnc_rivals_reduceActivity",2];
+    };
 }
 else
 {
@@ -79,7 +89,11 @@ else
 	}
 	else
 	{
-		[0.25,0,getPos _victim] remoteExec ["A3A_fnc_citySupportChange",2];
+        if (!_isRival) then {
+            [0.25,0,getPos _victim] remoteExec ["A3A_fnc_citySupportChange",2];
+        } else {
+            [random [3,4,5], 30] remoteExec ["SCRT_fnc_rivals_reduceActivity",2];
+        };
 	};
 };
 
@@ -92,4 +106,3 @@ if (_victimLocation != "") then
         [_victimLocation,_victimSide] remoteExec ["A3A_fnc_zoneCheck",2]
 	};
 };
-

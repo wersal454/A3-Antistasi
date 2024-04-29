@@ -12,8 +12,6 @@ params
     ["_isAir", false, [false]],
     ["_debugObject", nil]
 ];
-#include "..\..\script_component.hpp"
-FIX_LINE_NUMBERS()
 /*  Simulates the movement of the convoy
 *   Params:
 *     _convoyID : NUMBER; the unique convoy ID
@@ -95,7 +93,7 @@ for "_i" from 1 to (_pointsCount - 1) do
       if(_isDebug) then {_debugObject setPos _currentPos;};
 
       //Search for nearby roadblocks
-      _roadBlocks = outpostsFIA select {(getMarkerPos _x distance _currentPos < 250) && {isOnRoad (getMarkerPos _x)}};
+      _roadBlocks = roadblocksFIA select {(getMarkerPos _x distance _currentPos < 250) && {isOnRoad (getMarkerPos _x)}};
       if(count _roadBlocks > 0) then
       {
         _currentRoadBlock = _roadBlocks select 0;
@@ -114,18 +112,6 @@ for "_i" from 1 to (_pointsCount - 1) do
         };
       };
     };
-
-
-    /*
-    _nearMarker = markersX select {(sidesX getVariable [_x, sideUnknown] != _convoySide) && {getMarkerPos _x distance _currentPos < 150}};
-    if(count _nearMarker > 0) then
-    {
-      if((_nearMarker select 0) distance _currentPos < 75 || !((_nearMarker select 0) in controlsX)) then
-      {
-        //Drove into an enemy position, spawn fight
-      }
-    };
-    */
 
     //Currently only triggered by teamPlayer units!
     if([distanceSPWN * 0.9, 1, _currentPos, teamPlayer] call A3A_fnc_distanceUnits) then

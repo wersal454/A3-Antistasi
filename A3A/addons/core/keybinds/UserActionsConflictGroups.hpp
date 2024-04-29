@@ -5,7 +5,8 @@ class UserActionsConflictsGroups {
             QGVAR(artyMenu),
             QGVAR(infoBar),
             QGVAR(earPlugs),
-            QGVAR(customHintDismiss)
+            QGVAR(customHintDismiss),
+            QGVAR(commanderRebelMenu)
         };
     };
 

@@ -1,3 +1,9 @@
+private _hasWs = "ws" in A3A_enabledDLC;
+private _hasMarksman = "mark" in A3A_enabledDLC;
+private _hasLawsOfWar = "orange" in A3A_enabledDLC;
+private _hasTanks = "tank" in A3A_enabledDLC;
+private _hasApex = "expansion" in A3A_enabledDLC;
+
 //////////////////////////
 //       Vehicles       //
 //////////////////////////    
@@ -6,7 +12,9 @@
 
 ["vehiclesCivIndustrial", []] call _fnc_saveToTemplate;             //this line determines civilian trucks -- Example: ["vehiclesCivIndustrial", ["C_Truck_02_transport_F"]] -- Array, can contain multiple assets
 
-["vehiclesCivHeli", []] call _fnc_saveToTemplate;             //this line determines civilian helis -- Example: ["vehiclesCivHeli", ["C_Heli_Light_01_civil_F"]] -- Array, can contain multiple assets
+["vehiclesCivHeli", []] call _fnc_saveToTemplate;            //this line determines civilian helis -- Example: ["vehiclesCivHeli", ["C_Heli_Light_01_civil_F"]] -- Array, can contain multiple assets
+
+["vehiclesCivPlanes", []] call _fnc_saveToTemplate;          // this line determines civilian planes -- Example: ["vehiclesCivPlanes", ["C_Plane_Civil_01_F"]] -- Array, can contain multiple assets
 
 ["vehiclesCivBoat", []] call _fnc_saveToTemplate;             //this line determines civilian boats -- Example: ["vehiclesCivBoat", ["C_Boat_Civil_01_F"]] -- Array, can contain multiple assets
 
@@ -16,9 +24,16 @@
 
 ["vehiclesCivFuel", []] call _fnc_saveToTemplate;            //this line determines civilian fuel vehicles
 
-/////////////////////
-///  Identities   ///
-/////////////////////
+
+["variants", []] call _fnc_saveToTemplate;                 //this line determines particular paintjob/camo for a vehicle --  Example: ["I_Heli_Transport_02_F", ["Dahoman", 1]] -- Array, can contain multiple assets
+
+["animations", []] call _fnc_saveToTemplate;                //     -- Example: ["vehClass", ["animsourcefromgarage1", 0.3, "animsourcefromgarage2", 0.25, "animsourcefromgarage3", 0.3, "animsourcefromgarage4", 0.3]] -- Array, can contain multiple assets
+
+/////////////////////////////////
+///  Identities and currency  ///
+////////////////////////////////
+
+["currencySymbol", ""] call _fnc_saveToTemplate;
 
 ["faces", []] call _fnc_saveToTemplate;
 
@@ -34,10 +49,10 @@ private _workerUniforms = [];           //Uniforms given to Workers at Factories
 
 private _dlcUniforms = [];          //Uniforms given if DLCs are enabled, only given to the Arsenal not Civilians
 
-if (allowDLCExpansion) then {_dlcUniforms append [];
+if (_hasApex) then {_dlcUniforms append [];
 };
 
-if (allowDLCOrange) then {_dlcUniforms append [];
+if (_hasLawsOfWar) then {_dlcUniforms append [];
 };
 
 ["uniforms", _civUniforms + _pressUniforms + _workerUniforms + _dlcUniforms] call _fnc_saveToTemplate;          //Uniforms given to the Arsenal, Allowed for Undercover and given to Rebel Ai that go Undercover

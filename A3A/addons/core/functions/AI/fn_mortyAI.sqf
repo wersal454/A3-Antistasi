@@ -1,11 +1,12 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
-private ["_morty0","_mortarX","_pos","_typeX","_b0","_b1","_morty1"];
 
-_groupX = _this select 0;
-_morty0 = units _groupX select 0;
-_morty1 = units _groupX select 1;
-_typeX = _this select 1;
+params ["_groupX", "_typeX"];
+
+private ["_mortarX","_pos","_b0","_b1"];
+private _morty0 = units _groupX select 0;
+private _morty1 = units _groupX select 1;
+
 (getArray (configFile/"CfgVehicles"/_typeX/"assembleInfo"/"dissasembleTo")) params ["_b0", "_b1"];
 _morty0 setVariable ["typeOfSoldier", if (_typeX in FactionGet(reb,"staticMGs")) then { "StaticGunner" } else { "StaticMortar" }];
 while {(alive _morty0) and (alive _morty1)} do

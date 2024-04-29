@@ -99,7 +99,7 @@ _straddlePoints = [];
     NavGrid pushBack _newNode;
     _newIndex call A3A_fnc_addToNavCells;
 
-} forEach (airportsX + resourcesX + factories + outposts + seaports + citiesX);
+} forEach (airportsX + milbases + resourcesX + factories + outposts + seaports + citiesX);
 
 /*
 // Test rendering

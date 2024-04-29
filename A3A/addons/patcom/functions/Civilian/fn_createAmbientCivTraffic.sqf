@@ -28,6 +28,12 @@ FIX_LINE_NUMBERS()
 
 params ["_markerX"];
 
+private _lowCiv = Faction(civilian) getOrDefault ["attributeLowCiv", false];
+private _civNonHuman = Faction(civilian) getOrDefault ["attributeCivNonHuman", false]; // if civs are not human, we don't want them drifting in their ford fiestas
+
+if (_lowCiv) exitWith {};
+if (_civNonHuman) exitWith {};
+
 if (_markerX in destroyedSites) exitWith {};
 
 // civ part of cities has a separate spawn state from the garrison
@@ -108,7 +114,7 @@ while {(spawner getVariable _spawnKey != 2) and (_countParked < _numParked)} do 
     _countParked = _countParked + 1;
 };
 
-private _mrkMar = if !(A3A_hasIFA) then {seaSpawn select {getMarkerPos _x inArea _markerX}} else {[]};
+private _mrkMar = seaSpawn select {getMarkerPos _x inArea _markerX};
 if (count _mrkMar > 0) then {
     for "_i" from 0 to (round (random 3)) do {
         if (spawner getVariable _spawnKey != 2) then {
@@ -214,6 +220,10 @@ if ([_markerX,false] call A3A_fnc_fogCheck > 0.2) then {
             sleep 5;
         };
     };
+};
+
+if (spawner getVariable _spawnKey != 2) then {
+    [_markerX] call SCRT_fnc_rivals_trySpawnCarDemo;
 };
 
 waitUntil {sleep 1; (spawner getVariable _spawnKey == 2)};

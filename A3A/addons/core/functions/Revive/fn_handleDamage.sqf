@@ -17,7 +17,6 @@ if (_part == "" && _damage > 0.1) then
 	// this will not work the same with ACE, as damage isn't accumulated
 	if (!isPlayer (leader group _unit) && dam < 1.0) then
 	{
-		//if (_damage > 0.6) then {[_unit,_unit,_injurer] spawn A3A_fnc_chargeWithSmoke};
 		if (_damage > 0.6) then {[_unit,_injurer] spawn A3A_fnc_unitGetToCover};
 	};
 
@@ -32,7 +31,7 @@ if (_part == "" && _damage > 0.1) then
 			private _lastAttackTime = garrison getVariable [_marker + "_lastAttack", -30];
 			if (_lastAttackTime + 30 < serverTime) then {
 				garrison setVariable [_marker + "_lastAttack", serverTime, true];
-				[_marker, side group _injurer, side group _unit] remoteExec ["A3A_fnc_underAttack", 2];
+				[_marker, side group _injurer, side group _unit, false, (_injurer getVariable ["isRival", false])] remoteExec ["A3A_fnc_underAttack", 2];
 			};
 		};
 	};
@@ -40,7 +39,11 @@ if (_part == "" && _damage > 0.1) then
 
 
 // Let ACE medical handle the rest (inc return value) if it's running
-if (A3A_hasACEMedical) exitWith {};
+if (A3A_hasACEMedical) exitWith {
+	if (_unit getVariable ["incapacitated", false]) then {
+		[_unit] call A3A_fnc_askHelp;
+	};
+};
 
 
 private _makeUnconscious =
@@ -108,11 +111,8 @@ if (_part == "") then
 			};
 			if (isPlayer (leader group _unit)) then
 			{
-				if (autoheal) then
-				{
-					if (!isNull (_unit getVariable ["helped",objNull])) exitWith {};
-					[_unit] call A3A_fnc_askHelp;
-				};
+				if (!isNull (_unit getVariable ["helped",objNull])) exitWith {};
+				[_unit] call A3A_fnc_askHelp;
 			};
 		};
 	};

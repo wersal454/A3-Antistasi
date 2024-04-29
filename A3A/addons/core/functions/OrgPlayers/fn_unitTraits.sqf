@@ -1,8 +1,7 @@
 /*
-Author: Barbolani
-Maintainer: DoomMetal, MeltedPixel, Bob-Murphy, Wurzel0701
+Author: Barbolani, DoomMetal, MeltedPixel, Bob-Murphy, Wurzel0701, Socrates
     Sets the units traits (camouflage, medic, engineer) for the selected role of the player
-    THIS FILE DEPENDS ON ONLY THE DEFAULT COMMANDER HAVING A ROLE DESCRIPTION!
+    THIS FUNCTION DEPENDS ON ONLY THE DEFAULT COMMANDER HAVING A ROLE DESCRIPTION!
 
 Arguments:
     <NULL>
@@ -19,36 +18,57 @@ Dependencies:
 Example:
     [] spawn A3A_fnc_unitTraits;
 */
+
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
+
 private _type = typeOf player;
 private _text = "";
-if(roleDescription player == "Default Commander") then
-{
-    //Same values as teamleader
+
+if(roleDescription player isEqualTo "@STR_role_default_commander_role_name" || {roleDescription player isEqualTo "Default Commander"}) then {
     player setUnitTrait ["camouflageCoef",0.8];
     player setUnitTrait ["audibleCoef",0.8];
-    player setUnitTrait ["loadCoef",1.4];
+    player setUnitTrait ["loadCoef",1];
     player setUnitTrait ["medic", true];
-	player setUnitTrait ["engineer", true];
-    _text = "Commander role.<br/><br/>The commander is a lightweight unit with increased camouflage, medical and engineering capabilities.";
-}
-else
-{
-    switch (_type) do
-    {
-    	//cases for greenfor missions
-    	case "I_G_medic_F":  {_text = "Medic role.<br/><br/>Medics do not have any bonus or penalties, but have the ability to use certain medical items for full health restoration."}; //reintroduced - 8th January 2020, Bob Murphy
-    	case "I_G_Soldier_TL_F": {player setUnitTrait ["camouflageCoef",0.8]; player setUnitTrait ["audibleCoef",0.8]; player setUnitTrait ["loadCoef",1.4]; _text = "Teamleader role.<br/><br/>Teamleader are more lightweight units with increased camouflage capabilities."}; //reintroduced - 8th January 2020, Bob Murphy
-    	case "I_G_Soldier_F":  {player setUnitTrait ["UAVHacker",true]; _text = "Rifleman role.<br/><br/>Riflemen do not have any bonus or penalties but can hack drones."}; //reintroduced - 8th January 2020, Bob Murphy
-    	case "I_G_Soldier_GL_F": {player setUnitTrait ["camouflageCoef",1.2]; player setUnitTrait ["loadCoef",0.8]; _text = "Grenadier role.<br/><br/>Grenadiers have a slight bonus on carry capacity, but are easy to spot."}; //reintroduced - 8th January 2020, Bob Murphy
-    	case "I_G_Soldier_AR_F": {player setUnitTrait ["audibleCoef",1.2]; player setUnitTrait ["loadCoef",0.8]; _text = "Autorifleman role.<br/><br/>Autoriflemen have a slight bonus on carry capacity, but make too much noise when they move."}; //reintroduced - 8th January 2020, Bob Murphy
-    	case "I_G_engineer_F":  {_text = "Engineer role.<br/><br/>Engineers do not have any bonus or penalties, but have the ability to use Repair Kits for vehicle repair."}; //reintroduced - 8th January 2020, Bob Murphy
- };
+    player setUnitTrait ["explosiveSpecialist", true];
+    // ACE clears the engineer unitTrait and adds this var at CBA initPost, so we have to do it ourselves; Credit: https://github.com/official-antistasi-community/A3-Antistasi/pull/2978/files
+    if (missionNamespace getVariable ["ace_repair_enabled", false]) then { player setVariable ["ace_isEngineer", true, true] } else { player setUnitTrait ["engineer", true] };
+	player setUnitTrait ["UAVHacker",true];
+    _text = localize "STR_role_default_commander";
+} else {
+    switch (_type) do {
+    	case "I_G_medic_F":  {
+			_text = localize "STR_role_medic"
+		}; 
+    	case "I_G_Soldier_TL_F": {
+			player setUnitTrait ["camouflageCoef",0.8]; 
+			player setUnitTrait ["audibleCoef",0.8]; 
+			player setUnitTrait ["loadCoef",1.4]; 
+			_text = localize "STR_role_teamleader"
+		}; 
+    	case "I_G_Soldier_F":  {
+			player setUnitTrait ["audibleCoef",1.15]; 
+			player setUnitTrait ["camouflageCoef",1.15]; 
+			player setUnitTrait ["loadCoef",0.7]; 
+			_text = localize "STR_role_rifleman"
+		}; 
+    	case "I_G_engineer_F":  {
+			player setUnitTrait ["UAVHacker",true]; 
+			_text = localize "STR_role_engineer"
+		}; 
+    };
 };
 
-if (isMultiPlayer) then
-{
-	sleep 5;
-	["Unit Traits", format ["You have selected %1.",_text]] call A3A_fnc_customHint;
+if (isDiscordRichPresenceActive) then {
+	if(player != theBoss) then {
+		private _roleName = getText (configFile >> "CfgVehicles" >> _type >> "displayName");
+		[["UpdateDetails", _roleName]] call SCRT_fnc_misc_updateRichPresence;
+	} else {
+		[["UpdateDetails", format ["%1 Commander", FactionGet(reb,"name")]]] call SCRT_fnc_misc_updateRichPresence;
+	};
+};
+
+if (_text isNotEqualTo "") then {
+    sleep 5;
+	[localize "STR_role_unit_traits", _text] call A3A_fnc_customHint;
 };

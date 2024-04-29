@@ -790,3 +790,32 @@ class rhsusf_addons_rhsusf_hmmwv_rhsusf_m998_2dr : TRIPLES(ADDON,Nodes,Base)
         };
     };
 };
+
+class rhsgref_addons_rhsgref_a2port_armor_brdm2_BRDM2_HQ_p3d : TRIPLES(ADDON,Nodes,Base)
+{
+    class Nodes
+    {
+        class Node1
+        {
+            offset[] = {0,0,-0.25};
+            seats[] = {};
+        };
+        class Node2
+        {
+            offset[] = {0,0,-0.25};
+            seats[] = {3,6};
+        };
+    };
+};
+
+class rhsafrf_addons_rhs_a2port_car_UAZ_UAZ_p3d : TRIPLES(ADDON,Nodes,Base)
+{
+    class Nodes
+    {
+        class Node1
+        {
+            offset[] = {0, -1.3, -0.45};
+            seats[] = {2,5};
+        };
+    };
+};

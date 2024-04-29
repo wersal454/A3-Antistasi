@@ -1,8 +1,8 @@
+params ["_playerUID", "_varName", "_varValue"];
+
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
-private _playerUID = _this select 0;
-private _varName = _this select 1;
-private _varValue = _this select 2;
+
 private _abort = false;
 
 if (isNil "_playerUID") then {

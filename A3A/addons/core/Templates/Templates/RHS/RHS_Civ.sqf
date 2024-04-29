@@ -1,3 +1,6 @@
+private _hasApex = "expansion" in A3A_enabledDLC;
+private _hasLawsOfWar = "orange" in A3A_enabledDLC;
+
 //////////////////////////////
 //   Civilian Information   //
 //////////////////////////////
@@ -50,13 +53,9 @@
     "C_Van_01_fuel_F", 0.2
     ,"C_Truck_02_fuel_F", 0.1]] call _fnc_saveToTemplate;
 
-/////////////////////
-///  Identities   ///
-/////////////////////
+["vehiclesCivPlanes", ["RHS_AN2", "RHS_AN2_B"]] call _fnc_saveToTemplate;
 
-["faces", ["GreekHead_A3_02", "GreekHead_A3_03", "GreekHead_A3_04", "GreekHead_A3_05", "GreekHead_A3_06",
-"GreekHead_A3_07", "GreekHead_A3_08", "GreekHead_A3_09", "Ioannou", "Barklem", "AfricanHead_02",
-"AsianHead_A3_02", "AsianHead_A3_03", "WhiteHead_05"]] call _fnc_saveToTemplate;
+["vehiclesCivHeli", ["RHS_Mi8amt_civilian", "RHS_Mi8t_civilian"]] call _fnc_saveToTemplate;
 
 //////////////////////////
 //       Loadouts       //
@@ -107,15 +106,12 @@ private _workerUniforms = [
 
 private _dlcUniforms = [];
 
-if (allowDLCExpansion) then {_dlcUniforms append [
-    "U_C_man_sport_1_F",
-    "U_C_man_sport_2_F",
-    "U_C_man_sport_3_F"];
+if (_hasApex) then {
+    _dlcUniforms append ["U_C_man_sport_1_F", "U_C_man_sport_2_F", "U_C_man_sport_3_F"];
 };
 
-if (allowDLCOrange) then {_dlcUniforms append [
-    "U_C_Paramedic_01_F",
-    "U_C_Mechanic_01_F"];
+if (_hasLawsOfWar) then {
+    _dlcUniforms append ["U_C_Paramedic_01_F", "U_C_Mechanic_01_F"];
 };
 
 ["uniforms", _civUniforms + _pressUniforms + _workerUniforms + _dlcUniforms] call _fnc_saveToTemplate;
@@ -152,7 +148,12 @@ _loadoutData set ["pressUniforms", _pressUniforms];
 _loadoutData set ["workerUniforms", _workerUniforms];
 _loadoutData set ["pressVests", ["V_Press_F"]];
 _loadoutData set ["helmets", _civHats];
-_loadoutData set ["pressHelmets", ["H_Cap_press"]];
+private _pressHelmets = if (_hasLawsOfWar) then {
+    ["H_Cap_press", "H_PASGT_basic_blue_press_F", "H_PASGT_neckprot_blue_press_F"];
+} else {
+    ["H_Cap_press"];
+};
+_loadoutData set ["pressHelmets", _pressHelmets];
 
 _loadoutData set ["maps", ["ItemMap"]];
 _loadoutData set ["watches", ["ItemWatch"]];

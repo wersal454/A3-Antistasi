@@ -32,7 +32,7 @@ if (!_captured and count crew _veh > 0) then {
 };
 
 private _vehCost = A3A_vehicleResourceCosts getOrDefault [_type, 0];
-if ((_side == Occupants or _side == Invaders) and _vehCost > 0) then
+if ((_side == Occupants || _side == Invaders) && {_vehCost > 0 && {!(_type in (A3A_faction_riv get "vehiclesRivals"))}}) then
 {
 	if (_veh getVariable ["A3A_resPool", "legacy"] == "legacy") then {
 		// Vehicle not pre-resourced, deplete both pools

@@ -17,9 +17,6 @@ switch (_x) do
 	case "SmokeShellPurple": {_muzzles pushBack "SmokeShellPurpleMuzzle"};
 	case "SmokeShellOrange": {_muzzles pushBack "SmokeShellOrangeMuzzle"};
 
-	case "LIB_NB39": {_muzzles pushBack "LIB_SmokeShellMuzzle"};
-	case "LIB_RDG": {_muzzles pushBack "LIB_SmokeShellMuzzle"};
-
 	case "rhs_mag_an_m8hc": {_muzzles pushBack "Rhsusf_Throw_Smoke_white"};
 	case "rhs_mag_m18_green": {_muzzles pushBack "Rhsusf_Throw_Smoke_green"};
 	case "rhs_mag_m18_red": {_muzzles pushBack "Rhsusf_Throw_Smoke_red"};

@@ -17,12 +17,27 @@ _vehiclesX = [];
 _soldiers = [];
 private _spawnsUsed = [];
 
-_groupX = createGroup _sideX;
-_typeUnit = _faction get "unitStaticCrew";
+private _groupX = createGroup _sideX;
+private _typeUnit = [_faction get "unitTierStaticCrew"] call SCRT_fnc_unit_getTiered;
 
 //New system to place helis, does not care about heli types currently
 private _helicopterTypes = [];
-_helicopterTypes append (_faction get "vehiclesHelisLight");
+switch (true) do {
+    case (_markerX in milbases): {
+        _helicopterTypes append (_faction get "vehiclesHelisTransport");
+        _helicopterTypes append (_faction get "vehiclesHelisLight");
+        _helicopterTypes append (_faction get "vehiclesHelisLightAttack");
+    };
+    case (_markerX in airportsX): {
+        _helicopterTypes append (_faction get "vehiclesHelisTransport");
+        _helicopterTypes append (_faction get "vehiclesHelisLight");
+        _helicopterTypes append (_faction get "vehiclesHelisLightAttack");
+        _helicopterTypes append (_faction get "vehiclesHelisAttack");
+    };
+    default {
+        _helicopterTypes append (_faction get "vehiclesHelisLight");
+    };
+};
 private _count = 1 + round (random 3); //Change these numbers as you want, first number is minimum, max is first plus second number
 while {_count > 0} do
 {
@@ -154,7 +169,7 @@ for "_i" from 0 to (count _buildings) - 1 do
             _zpos = _zpos vectorAdd _zOffset;
             _pos = ASLToATL ([_pos select 0, _pos select 1, _zpos select 2]);
             [_type, _pos, _Tdir] call _fnc_spawnStatic;
-            sleep 0,5;
+            sleep 0.5;
             _Tdir = _dir + 180;
             _zpos = AGLToASL (_building buildingPos 16); //relative South
             _pos = _zpos getPos [-0.2, _Tdir]; //offset
@@ -216,6 +231,90 @@ for "_i" from 0 to (count _buildings) - 1 do
             _pos = ASLToATL ([_pos select 0, _pos select 1, _zpos select 2]);
             [_type, _pos, _dir] call _fnc_spawnStatic;
         };
+		
+        if (_typeB isEqualTo "land_gm_sandbags_02_bunker_high" or {_typeB isEqualTo "land_gm_woodbunker_01_bags"}) exitWith {
+            private _type = selectRandom (_faction get "staticMGs");
+            private _dir = getDir _building;
+            private _zpos = AGLToASL (position _building);
+            private _pos = _zpos getPos [0, _dir];
+            _pos = ASLToATL ([_pos select 0, _pos select 1, _zpos select 2]);
+            private _static = [_type, _pos, _dir] call _fnc_spawnStatic;
+            _static setPos _pos
+        };
+        if (_typeB isEqualTo "Land_HBarrier_01_big_tower_green_F" or {_typeB isEqualTo "Land_HBarrierTower_F"}) exitWith {
+            private _type = selectRandom (_faction get "staticMGs");
+            private _dir = (getDir _building) - 180;
+            private _zpos = AGLToASL (position _building);
+            private _zOffset = [0, 0, 2.25];
+            _zpos = _zpos vectorAdd _zOffset;
+            private _pos = _zpos getPos [1.5, _dir];
+            _pos = ASLToATL ([_pos select 0, _pos select 1, _zpos select 2]);
+            private _static = [_type, _pos, _dir] call _fnc_spawnStatic;
+            _static setPos _pos; 
+        };
+        if (_typeB isEqualTo "Land_Fort_Watchtower_EP1" or {_typeB isEqualTo "Land_Fort_Watchtower" or {_typeB isEqualTo "Land_HBarrier_01_tower_green_F" or {_typeB isEqualTo "Land_BagBunker_Tower_F"}}}) exitWith {
+            private _type = selectRandom (_faction get "staticMGs");
+            private _dir = (getDir _building) - 180;
+            private _zpos = AGLToASL (position _building);
+            private _zOffset = [0, 0, 2.25];
+            _zpos = _zpos vectorAdd _zOffset;
+            private _pos = _zpos getPos [1.5, _dir];
+            _pos = ASLToATL ([_pos select 0, _pos select 1, _zpos select 2]);
+            private _static = [_type, _pos, _dir] call _fnc_spawnStatic;
+            _static setPos _pos; 
+        };
+        if (_typeB in ["Land_BagBunker_Large_F", "Land_fortified_nest_big_EP1", "Land_fortified_nest_big", "Land_BagBunker_01_large_green_F", "Land_vn_bunker_big_01"]) exitWith {
+            private _type = selectRandom (_faction get "staticMGs");
+            private _dir = (getDir _building) - 180;
+            private _zpos = AGLToASL (_building buildingPos 4);
+            private _pos = _zpos getPos [2, _dir];
+            _pos = ASLToATL ([_pos select 0, _pos select 1, _zpos select 2]);
+            private _static = [_type, _pos, _dir] call _fnc_spawnStatic;
+            _static setPos _pos; 
+        };
+        if (_typeB isEqualTo "Land_Bunker_01_big_F") exitWith {
+            private _type = selectRandom (_faction get "staticMGs");
+            private _dir = (getDir _building) - 180;
+            private _zpos = AGLToASL (_building buildingPos 2);
+            private _pos = _zpos getPos [-1, _dir];
+            _pos = ASLToATL ([_pos select 0, _pos select 1, _zpos select 2]);
+            private _static = [_type, _pos, _dir] call _fnc_spawnStatic;
+            _static setPos _pos; 
+            _zpos = AGLToASL (_building buildingPos 5);
+            _pos = _zpos getPos [-1, _dir];
+            _pos = ASLToATL ([_pos select 0, _pos select 1, _zpos select 2]);
+            _static = [_type, _pos, _dir] call _fnc_spawnStatic;
+            _static setPos _pos; 
+        };
+        if (_typeB isEqualTo "Land_Bunker_01_small_F") exitWith {
+            private _type = selectRandom (_faction get "staticMGs");
+            private _dir = (getDir _building) - 180;
+            private _zpos = AGLToASL (_building buildingPos 1);
+            private _pos = _zpos getPos [-1, _dir];
+            _pos = ASLToATL ([_pos select 0, _pos select 1, _zpos select 2]);
+            private _static = [_type, _pos, _dir] call _fnc_spawnStatic;
+            _static setPos _pos; 
+        };
+        if (_typeB isEqualTo "Land_Bunker_01_tall_F") exitWith {
+            private _type = selectRandom (_faction get "staticMGs");
+            private _dir = (getDir _building) - 180;
+            private _zpos = AGLToASL (_building buildingPos 3);
+            private _pos = _zpos getPos [-1.5, _dir];
+            _pos = ASLToATL ([_pos select 0, _pos select 1, _zpos select 2]);
+            private _static = [_type, _pos, _dir] call _fnc_spawnStatic;
+            _static setPos _pos; 
+        };
+        if (_typeB isEqualTo "land_gm_euro_misc_viewplatform_01") exitWith {
+            private _type = selectRandom (_faction get "staticAA");
+            private _dir = (getDir _building) - 180;
+            private _zpos = AGLToASL (position _building);
+            private _zOffset = [0, 0, 5.2];
+            _zpos = _zpos vectorAdd _zOffset;
+            private _pos = _zpos getPos [0.6, _dir];
+            _pos = ASLToATL ([_pos select 0, _pos select 1, _zpos select 2]);
+            private _static = [_type, _pos, _dir] call _fnc_spawnStatic;
+            _static setPos _pos; 
+        };
     };
 };
 
@@ -249,9 +348,48 @@ for "_i" from 0 to (count _buildings) - 1 do
 
     call {
         if (isObjectHidden _building) exitWith {};            // don't put statics on destroyed buildings
-        if     ((_typeB == "Land_vn_b_tower_01")) exitWith
-        {
-            private _type = _faction get "unitGrunt";
+        if (_typeB == "Land_vn_b_tower_01") exitWith {
+            private _type = selectRandom ([_faction, "unitTierGuard"] call SCRT_fnc_unit_flattenTier);
+            private _dir = (getDir _building) - 180;
+            private _zpos = AGLToASL (_building buildingPos 0);
+            private _pos = _zpos getPos [0, _dir];            // zeroes Z value because BIS
+            _pos = ASLToATL ([_pos select 0, _pos select 1, _zpos select 2]);
+            private _unit = [_type, _pos, _dir] call _fnc_spawnStaticUnit;
+        };
+        if (_typeB isEqualTo "Land_GuardTower_01_F" || {_typeB isEqualTo "Land_vn_guardtower_01_f" || {_typeB isEqualTo "Land_MobileRadar_01_radar_F"}}) exitWith {
+            private _type = selectRandom ([_faction, "unitTierTower"] call SCRT_fnc_unit_flattenTier);
+            private _dir = (getDir _building) - 180;
+            private _zpos = AGLToASL (_building buildingPos 2);
+            private _pos = _zpos getPos [0, _dir];            // zeroes Z value because BIS
+            _pos = ASLToATL ([_pos select 0, _pos select 1, _zpos select 2]);
+            private _unit = [_type, _pos, _dir] call _fnc_spawnStaticUnit;
+        };
+        if (_typeB isEqualTo "Land_GuardTower_02_F" || 
+            {_typeB isEqualTo "Land_vn_guardtower_02_f" || 
+            {_typeB isEqualTo "Land_vn_guardtower_03_f" || 
+            {_typeB isEqualTo "Land_vn_guardtower_04_f" ||
+            {_typeB isEqualTo "Land_Vez"
+        }}}}) exitWith {
+            private _type = selectRandom ([_faction, "unitTierGuard"] call SCRT_fnc_unit_flattenTier);
+            private _dir = getDir _building;
+            private _zpos = AGLToASL (_building buildingPos 0);
+            private _pos = _zpos getPos [-0.4, _dir];
+            _pos = ASLToATL ([_pos select 0, _pos select 1, _zpos select 2]);
+            private _unit = [_type, _pos, _dir] call _fnc_spawnStaticUnit;
+        };
+        if (_typeB isEqualTo "Land_GuardHouse_02_F" || {_typeB isEqualTo "Land_GuardHouse_02_grey_F"}) exitWith {
+            private _type = selectRandom ([_faction, "unitTierGuard"] call SCRT_fnc_unit_flattenTier);
+            private _dir = getDir _building;
+            private _zpos = AGLToASL (_building buildingPos 1);
+            private _pos = _zpos getPos [0, _dir];            // zeroes Z value because BIS
+            _pos = ASLToATL ([_pos select 0, _pos select 1, _zpos select 2]);
+            private _unit = [_type, _pos, _dir] call _fnc_spawnStaticUnit;
+        };
+        if (_typeB isEqualTo "Land_GuardBox_01_brown_F" || 
+           {_typeB isEqualTo "Land_GuardBox_01_green_F" || 
+           {_typeB isEqualTo "Land_GuardBox_01_smooth_F"
+        }}) exitWith {
+            private _type = selectRandom ([_faction, "unitTierGuard"] call SCRT_fnc_unit_flattenTier);
             private _dir = (getDir _building) - 180;
             private _zpos = AGLToASL (_building buildingPos 0);
             private _pos = _zpos getPos [0, _dir];            // zeroes Z value because BIS

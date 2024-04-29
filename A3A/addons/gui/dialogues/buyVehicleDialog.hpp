@@ -1,7 +1,8 @@
 class A3A_BuyVehicleDialog : A3A_TabbedDialog
 {
   idd = A3A_IDD_BUYVEHICLEDIALOG;
-  onLoad = "[""onLoad""] spawn A3A_fnc_buyVehicleDialog";
+  onLoad = "['onLoad'] spawn A3A_fnc_buyVehicleDialog";
+  onUnload = "['onUnload'] spawn A3A_fnc_buyVehicleDialog";
 
     class Controls
     {
@@ -15,6 +16,17 @@ class A3A_BuyVehicleDialog : A3A_TabbedDialog
             h = 5 * GRID_H;
         };
 
+        class TipText : A3A_TitlebarText
+        {
+          idc = -1;
+          text = $STR_antistasi_dialogs_war_level_tip;
+          font = A3A_NOTIFICATION_FONT;
+          x = DIALOG_X;
+          y = DIALOG_Y - 1 * GRID_H;
+          w = DIALOG_W * GRID_W;
+          h = 5 * GRID_H;
+        };
+    
         class TabButtons : A3A_ControlsGroupNoScrollbars
         {
             idc = A3A_IDC_MAINDIALOGTABBUTTONS;

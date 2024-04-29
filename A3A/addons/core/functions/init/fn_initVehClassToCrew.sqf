@@ -28,23 +28,24 @@ Example:
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-private _occGroups = FactionGet(occ,"groups");
-private _invGroups = FactionGet(inv,"groups");
-private _rebGroups = FactionGet(reb,"groups");
+
 
 // ⬇ EDIT HERE 👇 TO ADD TEMPLATE LOAD-OUTS ⬇
 private _allVehClassToCrew = [
-
-//  [ FactionGet(all,"vehiclesFixedWing"), [_occGroups get "pilot", _invGroups get "pilot", _rebGroups get "staticCrew", "C_Man_1" ]    ],
-//     ^---A template category or an---^    ^--Gov--^               ^--Invade--^             ^---Rebel---^               ^--Civ--^
-//     ^--array of vehicle classnames--^ ^--------------------Array of load-outs, one loadout for each faction-------------------^
-
 // Vehicles categories at the top have higher priority than bellow.
 // So if "Tank_F" is in both NATOLand and NATOTanks, NATOTanks should be ABOVE NATOLand, as NATOTanks is a specialised child.
+    [FactionGet(all,"vehiclesRivalsArmor"),[FactionGet(occ,"unitCrew"), FactionGet(riv,"unitCrew"), FactionGet(reb,"unitCrew"), "C_Man_1"]],
+    [FactionGet(all,"vehiclesRivalsLight"),[FactionGet(occ,"unitRifle"), FactionGet(riv,"unitRifle"), FactionGet(reb,"unitRifle"), "C_Man_1"]],
+    [FactionGet(all,"vehiclesRivalsStatics"),[FactionGet(occ,"unitRifle"), FactionGet(riv,"unitRifle"), FactionGet(reb,"unitRifle"), "C_Man_1"]],
+    [FactionGet(all,"vehiclesRivals"),[FactionGet(occ,"unitRifle"), FactionGet(riv,"unitRifle"), FactionGet(reb,"unitRifle"), "C_Man_1"]],
+    [FactionGet(all,"vehiclesRivalsHelis"),[FactionGet(occ,"unitRifle"), FactionGet(riv,"unitRifle"), FactionGet(reb,"unitRifle"), "C_Man_1"]],    
+	[FactionGet(riv,"vehiclesRivalsUavs"), ["B_UAV_AI", "O_UAV_AI", "I_UAV_AI", "C_UAV_AI"]],
 
     [FactionGet(all,"vehiclesFixedWing"),[FactionGet(occ,"unitPilot"), FactionGet(inv,"unitPilot"), FactionGet(reb,"unitCrew"), "C_Man_1"]],
     [FactionGet(all,"vehiclesArmor"), [FactionGet(occ,"unitCrew"), FactionGet(inv,"unitCrew"), FactionGet(reb,"unitCrew"), "C_Man_1"]],          // <- vehiclesArmor has nested arrays; therefore, it needs to be flattened. (will change with arty template change)
     [FactionGet(all,"vehiclesHelis"), [FactionGet(occ,"unitPilot"), FactionGet(inv,"unitPilot"), FactionGet(reb,"unitCrew"), "C_Man_1"]],
+    [FactionGet(all,"vehicleRadars"), ["B_UAV_AI", "O_UAV_AI", "I_UAV_AI", "C_UAV_AI"]],
+    [FactionGet(all,"vehicleSams"), ["B_UAV_AI", "O_UAV_AI", "I_UAV_AI", "C_UAV_AI"]],
     [FactionGet(all,"vehiclesUAVs"), ["B_UAV_AI", "O_UAV_AI", "I_UAV_AI", "C_UAV_AI"]],
     [FactionGet(all,"vehiclesMilitia"), [FactionGet(occ,"unitMilitiaGrunt"), FactionGet(inv,"unitMilitiaGrunt"), FactionGet(reb,"unitCrew"), "C_Man_1"]],
     [FactionGet(all, "vehiclesPolice"), [FactionGet(occ,"unitPoliceGrunt"), FactionGet(inv,"unitPoliceGrunt"), FactionGet(reb,"unitCrew"), "C_Man_1"]]       // < vehiclesPolice is a single classname; therefore, it needs to be put into an array.

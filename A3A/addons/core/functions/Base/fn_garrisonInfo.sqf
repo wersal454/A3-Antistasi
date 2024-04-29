@@ -6,7 +6,7 @@ params["_siteX"];
 private _garrison = garrison getVariable [_siteX,[]];
 private _size = [_siteX] call A3A_fnc_sizeMarker;
 private _positionX = getMarkerPos _siteX;
-private _estatic = if (_siteX in outpostsFIA) then {"Technicals"} else {"Mortars"};
+private _estatic = if (_siteX in roadblocksFIA) then {localize "STR_garrison_info_technicals"} else {localize "STR_garrison_info_statics"};
 private _limit = [_siteX] call A3A_fnc_getGarrisonLimit;
 
 //sort garrison into unit types
@@ -28,7 +28,7 @@ private _units = [ [],[],[],[],[],[],[],[],[],[],[] ];
 } forEach _garrison;
 
 _textX = format [
-    "<br/><br/>Garrison units: %1%15<br/><br/>Squad Leaders: %2<br/>%14: %3<br/>Riflemen: %4<br/>Autoriflemen: %5<br/>Medics: %6<br/>Grenadiers: %7<br/>Marksmen: %8<br/>AT Men: %9<br/>AT Missile Men: %10<br />AA Missile Men: %11<br />Other: %12<br/>Static Weap: %13"
+    "<br/><br/>Garrison units: %1%15<br/><br/>Squad Leaders: %2<br/>%14: %3<br/>Riflemen: %4<br/>Autoriflemen: %5<br/>Medics: %6<br/>Grenadiers: %7<br/>Marksmen: %8<br/>AT Men: %9<br/>AT Specialists: %10<br />AA Specialists: %11<br />Other: %12<br/>Static Weap: %13"
     , count _garrison
     , count (_units#0)
     , count (_units#1)

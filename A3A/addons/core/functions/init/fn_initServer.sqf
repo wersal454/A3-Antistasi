@@ -5,6 +5,7 @@ FIX_LINE_NUMBERS()
 logLevel = "LogLevel" call BIS_fnc_getParamValue; publicVariable "logLevel"; //Sets a log level for feedback, 1=Errors, 2=Information, 3=DEBUG
 A3A_logDebugConsole = "A3A_logDebugConsole" call BIS_fnc_getParamValue; publicVariable "A3A_logDebugConsole";
 
+
 Info("Server init started");
 A3A_serverVersion = QUOTE(VERSION); publicVariable "A3A_serverVersion";
 Info_1("Server version: %1", QUOTE(VERSION_FULL));
@@ -18,12 +19,11 @@ if (call A3A_fnc_modBlacklist) exitWith {};
 {
     _x allowDamage false;
     _x hideObjectGlobal true;
-} forEach [boxX, flagX, vehicleBox, fireX, mapX, petros];
+} forEach [boxX, flagX, vehicleBox, mapX, petros];
 
 switch (toLower worldname) do {
 	case "cam_lao_nam": {};
 	case "vn_khe_sanh": {mapX setObjectTextureGlobal [0,"Pictures\Mission\whiteboard.paa"];};
-	case "spe_normandy": {mapX setObjectTextureGlobal [0,"Pictures\Mission\whiteboard.paa"];};
 	default {mapX setObjectTextureGlobal [0,"Pictures\Mission\whiteboard.jpg"];};
 };
 
@@ -69,6 +69,7 @@ Info("Server Initialising PATCOM Variables");
 
 // Wait until we have selected/created save data
 waitUntil {sleep 0.1; !isNil "A3A_saveData"};
+
 A3A_startupState = "starting"; publicVariable "A3A_startupState";
 
 // Use true params list in case we're loading an autosave from a different version
@@ -95,8 +96,9 @@ if (gameMode != 1) then {
     if (gameMode == 3) then {"CSAT_carrier" setMarkerAlpha 0};
     if (gameMode == 4) then {"NATO_carrier" setMarkerAlpha 0};
 };
-bookedSlots = floor ((memberSlots/100) * (playableSlotsNumber teamPlayer)); publicVariable "bookedSlots";
 
+setTimeMultiplier settingsTimeMultiplier;
+Info_1("Time multiplier: %1", timeMultiplier);
 
 // ****************** Load save data or create new *********************************
 
@@ -201,7 +203,7 @@ call A3A_fnc_generateRebelGear;
 call A3A_fnc_createPetros;
 
 // Some of these may already be unhidden but we make sure
-{ _x hideObjectGlobal false } forEach [boxX, flagX, vehicleBox, fireX, mapX, petros];
+{ _x hideObjectGlobal false } forEach [boxX, flagX, vehicleBox, mapX, petros];
 
 
 //HandleDisconnect doesn't get 'owner' param, so we can't use it to handle headless client disconnects.
@@ -217,7 +219,7 @@ addMissionEventHandler ["BuildingChanged", {
         _newBuilding setVariable ["building", _oldBuilding];
 
         // Antenna dead/alive status is handled separately
-        if !(_oldBuilding in antennas || _oldBuilding in antennasDead) then {
+        if !(_oldBuilding in antennas || {_oldBuilding in antennasDead || {_oldBuilding in A3A_destroyedMilAdministrations}}) then {
             destroyedBuildings pushBack _oldBuilding;
         };
     };
@@ -253,6 +255,11 @@ A3A_startupState = "completed"; publicVariable "A3A_startupState";
 [] spawn A3A_fnc_resourcecheck;                     // 10-minute loop
 [] spawn A3A_fnc_aggressionUpdateLoop;              // 1-minute loop
 [] spawn A3A_fnc_garbageCleanerTracker;             // 5-minute loop
+[] spawn SCRT_fnc_rivals_activityUpdateLoop;
+[] spawn SCRT_fnc_rivals_eventLoop;
+if (areRandomEventsEnabled) then {
+    [] spawn SCRT_fnc_encounter_gameEventLoop;
+};
 
 savingServer = false;           // enable saving
 
@@ -279,7 +286,7 @@ savingServer = false;           // enable saving
     while {true} do
     {
         //Sleep if no player is online
-        if (isMultiplayer && (count (allPlayers - (entities "HeadlessClient_F")) == 0)) then
+        if (count (allPlayers - (entities "HeadlessClient_F")) == 0) then
         {
             waitUntil {sleep 10; (count (allPlayers - (entities "HeadlessClient_F")) > 0)};
         };
@@ -330,5 +337,7 @@ if(A3A_hasACE) then
         };
     }] call CBA_fnc_addEventHandler;
 };
+
+call A3U_fnc_initZones;
 
 Info("initServer completed");

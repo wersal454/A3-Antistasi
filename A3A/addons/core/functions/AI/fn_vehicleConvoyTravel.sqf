@@ -12,7 +12,6 @@ Parameters:
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 params ["_vehicle", "_route", "_convoy", "_maxSpeed", ["_critical", false]];
-private _filename = "fn_vehicleConvoyTravel";
 
 // Handle some broken input errors
 private _error = call {

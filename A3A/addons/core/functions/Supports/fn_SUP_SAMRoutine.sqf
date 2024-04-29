@@ -81,8 +81,10 @@ while {true} do
     if (alive (_launcher getVariable ["A3A_currentMissile", objNull])) then { sleep 1; continue };
 
     // Actually fire
-    Debug("Firing at target");
+     Debug("Firing at target");
     _launcher reveal [_targetObj, 4];           // does this do anything?
+    _targetObj confirmSensorTarget [_side, true];
+    _side reportRemoteTarget [_targetObj, 300];
     _launcher fireAtTarget [_targetObj];
     [_reveal, getPosATL _targetObj, _side, "SAM", _targetObj, 60] spawn A3A_fnc_showInterceptedSupportCall;
     _missiles = _missiles - 1;

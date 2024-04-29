@@ -161,7 +161,7 @@ switch (_mode) do
         // Find closest marker to the clicked position
         _params params ["_clickedPosition"];
         private _clickedWorldPosition = _fastTravelMap ctrlMapScreenToWorld _clickedPosition;
-        private _locations = airportsX + resourcesX + factories + outposts + seaports + citiesX + ["Synd_HQ"];
+        private _locations = airportsX + resourcesX + milbases + factories + outposts + seaports + citiesX + ["Synd_HQ"];
         private _selectedMarker = [_locations, _clickedWorldPosition] call BIS_fnc_nearestPosition;
         Debug_1("Selected marker: %1", _selectedMarker);
 

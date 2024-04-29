@@ -32,7 +32,14 @@ private _newGameCtrl = _display displayCtrl A3A_IDC_SETUP_NEWGAMECHECKBOX;
 private _copyGameCtrl = _display displayCtrl A3A_IDC_SETUP_COPYGAMECHECKBOX;
 private _oldParamsCtrl = _display displayCtrl A3A_IDC_SETUP_OLDPARAMSCHECKBOX;
 
-private _saveBoxColumns = [["gameID", "ID", 0, 9], ["mapStr", "Map", 9, 25], ["name", "Name", 25, 45], ["verStr", "Version", 70, 12], ["timeStr", "Time", 82, 15], ["fileStr", "File", 97, 9]];
+private _saveBoxColumns = [
+    ["gameID", "ID", 0, 9],
+    ["mapStr", localize "STR_antistasi_setup_dialog_table_map", 9, 25],
+    ["name", localize "STR_antistasi_setup_dialog_table_name", 25, 45],
+    ["verStr", localize "STR_antistasi_setup_dialog_table_version", 70, 12],
+    ["timeStr", localize "STR_antistasi_setup_dialog_table_time", 82, 15],
+    ["fileStr", localize "STR_antistasi_setup_dialog_table_file", 97, 9]
+];
 
 switch (_mode) do
 {
@@ -69,8 +76,6 @@ switch (_mode) do
         _startCtrl ctrlEnable (_sameMap or _newGame);
         _copyGameCtrl ctrlShow _newGame;
         _oldParamsCtrl ctrlShow _newGame;
-        (_display displayCtrl A3A_IDC_SETUP_NAMESPACECHECKBOX) ctrlshow _newGame;
-        (_display displayCtrl A3A_IDC_SETUP_NAMESPACETEXT) ctrlshow _newGame;
         (_display displayCtrl A3A_IDC_SETUP_COPYGAMETEXT) ctrlShow _newGame;
         (_display displayCtrl A3A_IDC_SETUP_OLDPARAMSTEXT) ctrlShow _newGame;
         (_display displayCtrl A3A_IDC_SETUP_HQPOSBUTTON) ctrlShow (_newGame && !cbChecked _copyGameCtrl);
@@ -81,7 +86,8 @@ switch (_mode) do
         if ((cbChecked _newGameCtrl and !cbChecked _copyGameCtrl) or !_sameMap) then { _factions = [[], [], []] };
         if (_factions isNotEqualTo (_display getVariable "savedFactions")) then {
             _display setVariable ["savedFactions", _factions];
-            ["fillFactions", [true]] call A3A_fnc_setupFactionsTab;
+            ["fillFactions"] call A3A_fnc_setupFactionsTab;
+            ["fillContent"] call A3A_fnc_setupContentTab;
         };
 
         // If it's not a new game or load params or copy game is checked, load params
@@ -122,8 +128,27 @@ switch (_mode) do
         if (_mpos#0 > (ctrlPosition _listBoxCtrl # 2) - 2*GRID_W) exitWith {};      // ignore scroll-bar region
         private _rowIndex = floor (_mpos#1 / (4*GRID_H));
         if (_rowIndex >= count A3A_setup_saveData) exitWith {};                      // ignore clicks below saves
-        if (_rowIndex == _listboxCtrl getVariable "rowIndex") exitWith {};          // ignore if already selected 
+        if (_rowIndex == _listboxCtrl getVariable "rowIndex") exitWith {};          // ignore if already selected
         ["selectSave", [_rowIndex]] call A3A_fnc_setupLoadgameTab;
+    };
+
+    case ("saveListDoubleClick"):
+    {
+        if (_params#1 != 0) exitWith {};                                            // ignore non-LMB clicks
+        private _mpos = ctrlMousePosition _listBoxCtrl;
+        if (_mpos#0 > (ctrlPosition _listBoxCtrl # 2) - 2*GRID_W) exitWith {};      // ignore scroll-bar region
+        private _rowIndex = floor (_mpos#1 / (4*GRID_H));
+        if (_rowIndex >= count A3A_setup_saveData) exitWith {};                      // ignore clicks below saves
+        if (cbChecked _newGameCtrl) exitWith {};                                    // ignore new game clicks
+
+        private _saveData = if (_rowIndex == -1) then {
+            createHashMapFromArray [["map", ""]];
+        } else {
+            A3A_setup_saveData select _rowIndex;
+        };
+        if (!(worldName == _saveData get "map")) exitWith {};
+
+        ["startGame"] call A3A_fnc_setupLoadgameTab;
     };
 
     case ("selectSave"):
@@ -148,7 +173,7 @@ switch (_mode) do
             _saveData set ["startType", "new"];
             _saveData set ["name", ctrlText (_display displayCtrl A3A_IDC_SETUP_NAMEEDITBOX)];
             _saveData set ["startPos", markerPos "Synd_HQ"];
-            _confirmText = "Create new game with ";
+            _confirmText = localize "STR_antistasi_dialogs_setup_confirm_start_create";
         } else {
             private _oldSave = A3A_setup_saveData select (_listboxCtrl getVariable "rowIndex");
             _saveData set ["gameID", _oldSave get "gameID"];
@@ -156,27 +181,28 @@ switch (_mode) do
             if (cbChecked _copyGameCtrl) then {
                 _saveData set ["startType", "copy"];
                 _saveData set ["name", ctrlText (_display displayCtrl A3A_IDC_SETUP_NAMEEDITBOX)];
-                _confirmText = format ["Copy game with ID %1, ", _oldSave get "gameID"];
+                _confirmText = format [localize "STR_antistasi_dialogs_setup_confirm_start_copy", _oldSave get "gameID"];
             } else {
                 _saveData set ["startType", "load"];
                 _saveData set ["name", _oldSave getOrDefault ["name", ""]];
-                _confirmText = format ["Load game with ID %1, ", _oldSave get "gameID"];
+                _confirmText = format [localize "STR_antistasi_dialogs_setup_confirm_start_load", _oldSave get "gameID"];
             };
         };
         if (_saveData get "name" != "") then {
-            _confirmText = _confirmText + format ["name ""%1"", ", _saveData get "name"];
+            _confirmText = _confirmText + format [localize "STR_antistasi_dialogs_setup_confirm_game_name", _saveData get "name"];
         };
-        _saveData set ["useNewNamespace", cbChecked (_display displayCtrl A3A_IDC_SETUP_NAMESPACECHECKBOX)];
+        _saveData set ["useNewNamespace", true];
 
         // Factions tab: [factions, addonvics, DLC]
-        private _factionData = ["getFactions"] call A3A_fnc_setupFactionsTab;
-        _saveData set ["factions", _factionData#0];
-        _saveData set ["addonVics", _factionData#1];
-        _saveData set ["DLC", _factionData#2];
+        private _factions = ["getFactions"] call A3A_fnc_setupFactionsTab;
+        private _contentData = ["getContent"] call A3A_fnc_setupContentTab;
+        _saveData set ["factions", _factions];
+        _saveData set ["addonVics", _contentData#0];
+        _saveData set ["DLC", _contentData#1];
 
-        private _occName = getText (A3A_SETUP_CONFIGFILE/"A3A"/"Templates"/_factionData#0#0/"name");
-        private _invName = getText (A3A_SETUP_CONFIGFILE/"A3A"/"Templates"/_factionData#0#1/"name");
-        _confirmText = _confirmText + endl + format ["%1 occupants and %2 invaders?", _occName, _invName];
+        private _occName = getText (A3A_SETUP_CONFIGFILE/"A3A"/"Templates"/_factions#0/"name");
+        private _invName = getText (A3A_SETUP_CONFIGFILE/"A3A"/"Templates"/_factions#1/"name");
+        _confirmText = _confirmText + endl + format [localize "STR_antistasi_dialogs_setup_confirm_occ_inv", _occName, _invName];
 
         // Params tab: Array of [name, value]
         private _paramsData = ["getParams"] call A3A_fnc_setupParamsTab;
@@ -232,7 +258,7 @@ switch (_mode) do
         if (_index == -1) exitWith {};
 
         private _saveData = A3A_setup_saveData select _index;
-        private _str = format ["Really delete game with ID %1 on %2?", _saveData get "gameID", _saveData get "mapStr"];
+        private _str = format [localize "STR_antistasi_dialogs_setup_confirm_delete", _saveData get "gameID", _saveData get "mapStr"];
         _display setVariable ["confirmData", [_str, A3A_fnc_setupLoadgameTab, "deleteGameConfirmed"]];
         createDialog "A3A_SetupConfirmDialog";
     };

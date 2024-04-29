@@ -2,33 +2,39 @@
 #define ACTION(type) ACTIONINTERNAL(QGVAR(type))
 class CfgUserActions {
     class GVAR(battleMenu) {
-        displayName = "Battle menu";
-        tooltip = "Open Antistasis battle menu";
+        displayName = $STR_A3A_keyActions_battleMenu_title;
+        tooltip = $STR_A3A_keyActions_battleMenu_desc;
         onActivate = ACTION(battleMenu);
     };
 
     class GVAR(artyMenu) {
-        displayName = "Artillery menu";
-        tooltip = "Open Antistasis artillery support menu (commander only)";
+        displayName = $STR_A3A_keyActions_artyMenu_title;
+        tooltip = $STR_A3A_keyActions_artyMenu_desc;
         onActivate = ACTION(artyMenu);
     };
 
     class GVAR(infoBar) {
-        displayName = "Toggle info bar";
-        tooltip = "Toggle visibility of Antistasis information bar at the top of the screen";
+        displayName = $STR_A3A_keyActions_infoBar_title;
+        tooltip = $STR_A3A_keyActions_infoBar_desc;
         onActivate = ACTION(infoBar);
     };
 
     class GVAR(earPlugs) {
-        displayName = "Toggle ear plugs";
-        tooltip = "Toggle use of ear plugs (no effect when using ace)";
+        displayName = $STR_A3A_keyActions_earPlugs_title;
+        tooltip = $STR_A3A_keyActions_earPlugs_desc;
         onActivate = ACTION(earPlugs);
     };
 
     class GVAR(customHintDismiss) {
-        displayName = "Dismiss Previous Hint";
-        tooltip = "Clears the last hint notification.";
+        displayName = $STR_A3A_keyActions_customHintDismiss_title;
+        tooltip = $STR_A3A_keyActions_customHintDismiss_desc;
         onActivate = ACTION(customHintDismiss);
+    };
+
+    class GVAR(commanderRebelMenu) {
+        displayName = $STR_A3A_keyActions_commMenu_title;
+        tooltip = $STR_A3A_keyActions_commMenu_desc;
+        onActivate = ACTION(commanderRebelMenu);
     };
 };
 #undef ACTION

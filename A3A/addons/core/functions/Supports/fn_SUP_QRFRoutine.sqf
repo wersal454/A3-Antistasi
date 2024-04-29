@@ -19,17 +19,25 @@ Arguments:
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-params ["_supportName", "_side", "_resPool", "_sleepTime", "_targPos", "_base", "_isAir", "_vehCount", "_attackCount", "_estResources"];
+params ["_supportName", "_side", "_resPool", "_sleepTime", "_targPos", "_base", "_qrfType", "_vehCount", "_attackCount", "_estResources"];
 
 sleep _sleepTime;
 
 // Now spawn the actual QRF
 ServerDebug_3("%1 attempting to create force with %2 transport and %3 attack vehicles", _supportName, _vehCount-_attackCount, _attackCount);
-private _data = if (_isAir) then {
-    [_side, _base, _targPos, _resPool, _vehCount, _attackCount] call A3A_fnc_createAttackForceAir;
-} else {
-    [_side, _base, _targPos, _resPool, _vehCount, _attackCount] call A3A_fnc_createAttackForceLand;
+
+private _data = switch (_qrfType) do {
+    case "LAND": {
+        [_side, _base, _targPos, _resPool, _vehCount, _attackCount] call A3A_fnc_createAttackForceLand;
+    };
+    case "AIR": {
+        [_side, _base, _targPos, _resPool, _vehCount, _attackCount] call A3A_fnc_createAttackForceAir;
+    };
+    case "VEHAIRDROP": {
+        [_side, _base, _targPos, _resPool, _vehCount, _attackCount, 0, "Normal", true] call A3A_fnc_createAttackForceAir;
+    };
 };
+
 _data params ["_resources", "_vehicles", "_crewGroups", "_cargoGroups"];
 ServerInfo_1("Spawn performed: Vehicles %1", _vehicles apply { typeOf _x });
 
@@ -38,7 +46,7 @@ ServerInfo_1("Spawn performed: Vehicles %1", _vehicles apply { typeOf _x });
 
 // Find nearest garrison marker and use that as attempted capture/garrison target if close
 private _nearMrk = call {
-    private _potentials = outposts + airportsX + resourcesX + factories + seaports;
+    private _potentials = outposts + airportsX + resourcesX + factories + seaports + milbases;
     private _nearMrk = [_potentials, _targPos] call BIS_fnc_nearestPosition;       // might be nil
     [nil, _nearMrk] select (markerPos _nearMrk distance2d _targPos < 500);
 };

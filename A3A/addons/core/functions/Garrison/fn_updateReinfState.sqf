@@ -40,17 +40,17 @@ if(_loser != teamPlayer) then
     }
     else
     {
-        //Remove marker form occupants
-        _index = reinforceMarkerInvader findIf {(_x select 1) == _marker};
-        reinforceMarkerInvader deleteAt _index;
-        canReinforceInvader = canReinforceInvader - [_marker];
+        //Remove marker form invaders
+        _index = reinforceMarkerInvaders findIf {(_x select 1) == _marker};
+        reinforceMarkerInvaders deleteAt _index;
+        canReinforceInvaders = canReinforceInvaders - [_marker];
     };
 };
 
 if(_owner != teamPlayer) then
 {
-    private _reinfMarker = if(_owner == Occupants) then {reinforceMarkerOccupants} else {reinforceMarkerInvader};
-    private _canReinf = if(_owner == Occupants) then {canReinforceOccupants} else {canReinforceInvader};
+    private _reinfMarker = if(_owner == Occupants) then {reinforceMarkerOccupants} else {reinforceMarkerInvaders};
+    private _canReinf = if(_owner == Occupants) then {canReinforceOccupants} else {canReinforceInvaders};
 
     private _isAirport = _marker in airportsX;
     private _index = _reinfMarker findIf {(_x select 1) == _marker};
@@ -83,9 +83,10 @@ if(_owner != teamPlayer) then
     };
 
     private _isOutpost = _marker in outposts;
+    private _isMilbase = _marker in milbases;
 
     //If units are not depleted, let the outpost send units
-    if((_isAirport && _ratio > 0.4) || {_isOutpost && _ratio > 0.8}) then
+    if((_isAirport && _ratio > 0.4) || {_isOutpost && _ratio > 0.8 || {_isMilbase && _ratio > 0.6}}) then
     {
         _canReinf pushBackUnique _marker;
     }

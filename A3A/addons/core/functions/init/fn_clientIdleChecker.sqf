@@ -38,7 +38,7 @@ while {true} do {
         player setVariable ["isAFK", true, [2, clientOwner]];
         [] spawn A3A_fnc_statistics;
         if (player == theBoss) then {
-            ["Client idle checker", "You are now considered AFK. You may lose commander if an election is triggered"] call A3A_fnc_customHint;
+            [localize "STR_A3A_clientIdleChecker_header", localize "STR_A3A_clientIdleChecker_desc"] call A3A_fnc_customHint;
         };
     };
 };

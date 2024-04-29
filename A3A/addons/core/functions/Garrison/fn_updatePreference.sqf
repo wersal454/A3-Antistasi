@@ -44,6 +44,34 @@ for "_i" from (tierPreference + 1) to tierWar do
     garrison setVariable ["Airport_statics", (airportStaticsTiers select _index), true];
   };
 
+  if(_i in milbaseUpdateTiers) then
+  {
+    _preference = garrison getVariable ["MilitaryBase_preference", []];
+    //Update vehicle types
+    [_preference] call A3A_fnc_updateVehicles;
+
+    //Add new vehicles
+    _index = milbaseUpdateTiers findIf {_x == _i};
+    if(_index % 2 == 0) then
+    {
+      _preference pushBack ["LAND_LIGHT", -1, "SQUAD"];
+      _preference pushBack ["LAND_APC", -1, "SQUAD"];
+    }
+    else
+    {
+      _preference pushBack ["LAND_APC", -1, "SQUAD"];
+      _preference pushBack ["LAND_TANK", -1, "EMPTY"];
+    };
+
+    if(true || debug) then
+    {
+      Debug("MilitaryBase_preference hit level %1", tierWar);
+      DebugArray("MilitaryBase_preference",_preference);
+    };
+    garrison setVariable ["MilitaryBase_preference", _preference, true];
+    garrison setVariable ["MilitaryBase_statics", (milbaseStaticsTiers select _index), true];
+  };
+
   if(_i in outpostUpdateTiers) then
   {
     _preference = garrison getVariable ["Outpost_preference", []];

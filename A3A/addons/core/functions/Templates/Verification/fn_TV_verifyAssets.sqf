@@ -223,14 +223,24 @@ private _fnc_handleUniqueCases = { //handles unique name cases that the stored v
     switch _entry do {
         //string
         case "name";
+        case "nameLeader";
         case "spawnMarkerName";
         case "flag";
         case "flagTexture";
+        case "currencySymbol";
         case "flagMarkerType": _fnc_validateString;
 
         //vehicle class name
         case "ammobox";
         case "surrenderCrate";
+        case "lootCrate";
+        case "rallyPoint";
+        case "smallBunker";
+        case "sandbag";
+        case "sandbagRound";
+        case "vehicleFuelTank";
+        case "vehicleFuelDrum";
+        case "reviveKitBox";
         case "equipmentBox": _fnc_validateSingleClass;
 
         //array of vehicle class names
@@ -240,9 +250,8 @@ private _fnc_handleUniqueCases = { //handles unique name cases that the stored v
         case "uavsPortable": _fnc_validateArrayOfClasses;
 
         //magazine class
-        case "mineAT";
-        case "mineAPERS";
         case "mortarMagazineHE";
+        case "howitzerMagazineHE";
         case "mortarMagazineSmoke": _fnc_validateMagazine;
 
         //array of magazine class names
@@ -298,8 +307,22 @@ private _fnc_handleUniqueCases = { //handles unique name cases that the stored v
         case "milVoices";
         case "sfFaces";
         case "milFaces";
-        case "sfVoices";
         case "polFaces";
+        case "eliteFaces";
+        case "eliteVoices";
+        case "handGrenadeAmmo";
+        case "mortarAmmo";
+        case "animations";
+        case "variants";
+        case "flares";
+        case "minesAT";
+        case "minesAPERS";
+        case "blackMarketStock";
+        case "eliteInsignia";
+        case "polInsignia";
+        case "milInsignia";
+        case "sfInsignia";
+        case "insignia";
         case "faces": {continue};
         default { Info("Entry: "+(str _entry)+" is lacking validation") };
     };
@@ -321,7 +344,7 @@ private _invalidReasons = [];
         case ("vehicles" in _entry): _fnc_validateArrayOfClasses;
         case ("vehicle" in _entry): _fnc_validateSingleClass;
         case ("static" in _entry): {
-            if (_side in [west, east]) then _fnc_validateArrayOfClasses else _fnc_validateSingleClass;
+            if (_side in [west, east, resistance]) then _fnc_validateArrayOfClasses else _fnc_validateSingleClass;
         };
         default _fnc_handleUniqueCases;
     };

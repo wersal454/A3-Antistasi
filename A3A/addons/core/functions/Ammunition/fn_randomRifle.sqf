@@ -49,7 +49,9 @@ if ("GrenadeLaunchers" in _categories && {"Rifles" in _categories} ) then {
     private _glmuzzle = getArray (_config >> "muzzles") select 1;		// guaranteed by category
     _glmuzzle = configName (_config >> _glmuzzle);                      // bad-case fix. compatibleMagazines is case-sensitive as of 2.12
     private _glmag = compatibleMagazines [_weapon, _glmuzzle] select 0;
-    _unit addMagazines [_glmag, 5];
+	if (!isNil "_glmag") then {
+		_unit addMagazines [_glmag, 5];
+	};
 };
 
 private _magazine = compatibleMagazines _weapon select 0;

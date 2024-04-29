@@ -43,14 +43,3 @@ if (_type isEqualTo "legacy") exitWith {
 };
 
 Error_1("Called with unknown type: %1", _type);
-
-/*
-private _varName = call {
-    if (_type == "defence") exitWith { ["A3A_resourcesDefenceOcc", "A3A_resourcesDefenceInv"] select (_side == Invaders) };
-    if (_type == "attack") exitWith { ["A3A_resourcesAttackOcc", "A3A_resourcesAttackInv"] select (_side == Invaders) };
-};
-
-if (isNil "_varName") exitWith {};
-
-isNil { missionNamespace setVariable [_varName, (missionNamespace getVariable _varName) + _count, true] };
-*/

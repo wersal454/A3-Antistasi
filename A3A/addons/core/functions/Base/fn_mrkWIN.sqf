@@ -21,24 +21,30 @@ Example:
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-params ["_target","_caller","_actionID","_argument"];
+params ["_flagX","_caller","_actionID","_argument"];
 
 if (_caller isNotEqualTo player) exitWith {
     // These can only get called if someone updates the functionality and forgets to update this.
     ServerError("Flag action mrkWIN must be locally called");
-    systemChat "Error, flag action must be local.";
 };
-private _flagX = _target;
 
-private _markerX = [airportsX + resourcesX + factories + outposts + seaports, getPosATL _flagX] call BIS_fnc_nearestPosition;
+private _markerX = [airportsX + resourcesX + factories + outposts + seaports + milbases, getPosATL _flagX] call BIS_fnc_nearestPosition;
+
+// private _hideEnemyMarkers = missionNamespace getVariable ["A3U_setting_hideEnemyMarkers",false];
+
+if (hideEnemyMarkers) then {
+    "Dum"+_markerX setMarkerAlpha 1;
+};
+
 private _markerPos = getMarkerPos _markerX;
 private _outpostGridSquare = ((_markerPos#0 toFixed 0) call A3A_fnc_pad_3Digits) + ((_markerPos#1 toFixed 0) call A3A_fnc_pad_3Digits);  // NB: Check if this is the right order for pos-> grid square
 
 if (sidesX getVariable [_markerX,sideUnknown] == teamPlayer) exitWith {};
 
 if !(player call A3A_fnc_canFight) exitWith { ServerError("Action somehow used by dead or unconscious player?") };
-if (captive player) exitWith {["Capture", "You cannot Capture the Flag while Undercover."] call A3A_fnc_customHint;};
-if ((_markerX in airportsX) and (tierWar < 3)) exitWith {["Capture", "You cannot capture Airports until you reach War Level 3."] call A3A_fnc_customHint;};
+if (captive player) exitWith {[localize "STR_A3A_Base_mrkWin_header", localize "STR_A3A_Base_mrkWin_noundercover"] call SCRT_fnc_misc_deniedHint;};
+if ((_markerX in airportsX) and {tierWar < 3}) exitWith {[localize "STR_A3A_Base_mrkWin_header", localize "STR_A3A_Base_mrkWin_noairpwl3"] call SCRT_fnc_misc_deniedHint;};
+if ((_markerX in milbases) and {tierWar < 3}) exitWith {[localize "STR_A3A_Base_mrkWin_header", localize "STR_A3A_Base_mrkWin_nomilwl3"] call SCRT_fnc_misc_deniedHint;};
 
 // This damn ineffective multiplayer lock will be fixed with a future library addition. Not worth the effort to fix At the Moment. - C.Serafin
 //Check if the flag is locked
@@ -47,7 +53,7 @@ if(_flagCaptureETA > serverTime) exitWith
 {
     private _timeSpan = [_flagCaptureETA - serverTime] call A3A_fnc_secondsToTimeSpan;
     private _secondsLeftString = [_timeSpan,0,0,false,1] call A3A_fnc_timeSpan_format;  // Only print most significant quantity.
-    ["Capture", "Flag pole being used, wait "+_secondsLeftString+"."] call A3A_fnc_customHint;
+    [localize "STR_A3A_Base_mrkWin_header", format [localize "STR_A3A_Base_mrkWin_flagpole_used", _secondsLeftString]] call SCRT_fnc_misc_deniedHint;
 };
 //Lock the flag
 _flagX setVariable ["A3A_flagCaptureETA", serverTime + 10, true];
@@ -77,12 +83,7 @@ private _enemyValue = 0;
 if (_enemyValue > 2*_rebelValue) exitWith
 {
     ServerInfo_4("Outpost at %1 (%2): Flag capture cancelled due to enemy value (%3) greater than 2*rebel value (%4)", _outpostGridSquare, _markerX, _enemyValue, _rebelValue);
-    if (difficultyOption "mapContentEnemy" == 1) then {
-        ["Capture", "The enemy still lurks about. Check your map and clear the area."] call A3A_fnc_customHint;
-    } else {
-        // Remove map quote due to immersive difficulty.
-        ["Capture", "The enemy still lurks about. Hunt them down and clear the area."] call A3A_fnc_customHint;
-    }
+    [localize "STR_A3A_Base_mrkWin_header", localize "STR_A3A_Base_mrkWin_nearenemy"] call SCRT_fnc_misc_deniedHint;
 };
 
 
@@ -90,18 +91,18 @@ A3A_isPlayerCapturingFlag = true;
 player playMove "MountSide";
 
 private _cancellationToken = [false];
-private _cancelActionID = player addAction ["Abort Outpost Capture",
+private _cancelActionID = player addAction [localize "STR_A3A_Base_mrkWin_abort",
 {
     params ["_target","_caller","_actionID","_cancellationToken"];
     _cancellationToken set [0, true];
     A3A_isPlayerCapturingFlag = nil;
     player switchMove "";
     player removeAction _actionID;
-    ["Capture", "Aborted Outpost Capture"] call A3A_fnc_customHint;
+    [localize "STR_A3A_Base_mrkWin_header", localize "STR_A3A_Base_mrkWin_abort_2"] call A3A_fnc_customHint;
 
 }, _cancellationToken];
 // returnflag Icon should be 1.5 tiems bigger than takeflag icon. 2 * 1.5 = 3
-player setUserActionText [_cancelActionID,"Aborted Outpost Capture","<img size='3' image='\A3\ui_f\data\igui\cfg\actions\returnflag_ca.paa'/>"];
+player setUserActionText [_cancelActionID, localize "STR_A3A_Base_mrkWin_abort","<img size='3' image='\A3\ui_f\data\igui\cfg\actions\returnflag_ca.paa'/>"];
 
 // Capturing
 sleep 8;
@@ -116,7 +117,8 @@ player playMove "";
 {
     if (isPlayer _x) then
     {
-        [5,_x] remoteExec ["A3A_fnc_playerScoreAdd",_x];
+        [round (2 * tierWar),_x] remoteExec ["A3A_fnc_addScorePlayer",_x];
+        [round (100 * tierWar),_x] remoteExec ["A3A_fnc_addMoneyPlayer",_x];
         if (captive _x) then
         {
             [_x,false] remoteExec ["setCaptive",_x];

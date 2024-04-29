@@ -14,44 +14,53 @@ private _modHR = false;
 private _response = "";
 private _fleeSide = _sideX;
 
-if (_recruiting) then {
-	_playerX globalChat "How about joining the good guys?";
+private _unitPrefix = _unit getVariable "unitPrefix";
 
-	private _chance = 0;
-	if (_sideX == Occupants) then
-    {
-		if ("militia_" in (_unit getVariable "unitType")) then { _chance = 60;}
-		else { _chance = 20;};
-	}
-	else
-    {
-		if ("militia_" in (_unit getVariable "unitType")) then { _chance = 60;}
-		else { _chance = 40;};
+if (_recruiting) then {
+	_playerX globalChat localize "STR_recruit_text";
+
+	private _chance = switch (true) do {
+		case ("militia" isEqualTo _unitPrefix): {
+			60;
+		};
+		case (_sideX == Occupants): {
+			40;
+		};
+		case (_sideX == Invaders): {
+			20;
+		};
+		default {
+			0;
+		};
 	};
+
 	if (_interrogated) then { _chance = _chance / 2 };
 
 	if (random 100 < _chance) then
     {
-        _modAggro = [1, 30];
-		_response = "Why not? It can't be any worse.";
+		_modAggro = [1, 30];
+		_response = localize "STR_recruit_success_text";
 		_modHR = true;
 		_fleeSide = teamPlayer;
 	}
 	else
     {
-		_response =  "Screw you!";
+		_response =  localize "STR_recruit_fail_text";
 		_modAggro = [0, 0];
 	};
 }
 else {
-	_playerX globalChat "Go back to your base and tell your comrades we are not enemies. We just want to live in peace";
+	_playerX globalChat localize "STR_release_request_text";
 	_response = selectRandom [
-		"Okay, thank you. I owe you my life",
-		"Thank you. I swear you won't regret it!",
-		"Thank you, I won't forget this!"
+		localize "STR_release_response_one_text",
+		localize "STR_release_response_two_text",
+		localize "STR_release_response_three_text"
 	];
 
     _modAggro = [-3, 30];
+
+	[player, _sideX] call SCRT_fnc_common_givePrisonerReleasePaycheck;
+	[5,player] call A3A_fnc_addScorePlayer;
 };
 
 

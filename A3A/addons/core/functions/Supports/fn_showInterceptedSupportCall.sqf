@@ -29,76 +29,91 @@ private _sideName = if(_side == Occupants) then {FactionGet(occ,"name")} else {F
 if (_reveal <= 0.5) then
 {
     //Side and call is reveal
-    _text = format ["%1 is executing an unknown support now", _sideName];
+    _text = format [localize "STR_notifiers_SUP_execute_unknown", _sideName];
 }
 else
 {
-    switch (toupper _supportType) do
+    switch (toUpperANSI _supportType) do
     {
         case ("QRFLAND"):
         {
-            _text = format ["A %1 land QRF just arrived", _sideName];
-            _markerText = "Land QRF";
+            _text = format [localize "STR_notifiers_SUP_execute_QRF", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_QRF_marker";
         };
         case ("QRFAIR"):
         {
-            _text = format ["A %1 air QRF just arrived", _sideName];
-            _markerText = "Air QRF";
+            _text = format [localize "STR_notifiers_SUP_execute_QRFAir", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_QRFAir_marker";
+        };
+        case ("QRFVEHAIRDROP"): 
+        {
+            _text = format [localize "STR_notifiers_SUP_execute_QRFAirdrop", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_QRFAirdrop_marker";
         };
         case ("AIRSTRIKE"):
         {
-            _text = format ["%1 is about to execute an airstrike", _sideName];
-            _markerText = "Airstrike";
+            _text = format [localize "STR_notifiers_SUP_execute_airstrike", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_airstrike_marker";
         };
         case ("ARTILLERY"):
         {
-            _text = format ["A %1 artillery piece has opened fire", _sideName];
-            _markerText = "Artillery strike";
+            _text = format [localize "STR_notifiers_SUP_execute_artillery", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_artillery_marker";
         };
         case ("MORTAR"):
         {
-            _text = format ["A %1 mortar has opened fire", _sideName];
-            _markerText = "Mortar strike";
+            _text = format [localize "STR_notifiers_SUP_execute_mortar", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_mortar_marker";
+        };
+        case ("HOWITZER"):
+        {
+            _text = format [localize "STR_notifiers_SUP_execute_howitzer", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_howitzer_marker";
         };
         case ("ORBITALSTRIKE"):
         {
-            _text = format ["A %1 satellite has fired the orbital strike", _sideName];
-            _markerText = "Orbital strike";
+            _text = format [localize "STR_notifiers_SUP_execute_orbitalStrike", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_orbitalStrike_marker";
         };
         case ("CRUISEMISSILE"):
         {
-            _text = format ["%1 cruise missile launched", _sideName];
-            _markerText = "Cruise missile";
+            _text = format [localize "STR_notifiers_SUP_execute_cruise_missile", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_cruise_missile_marker";
         };
         case ("SAM"):
         {
-            _text = format ["%1 SAM launcher is acquiring a target", _sideName];
-            _markerText = "SAM target";
+            _text = format [localize "STR_notifiers_SUP_execute_SAM", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_SAM_marker";
         };
         case ("CARPETBOMBS"):
         {
-            _text = format ["%1 bomber is carrying out a carpet bombing", _sideName];
-            _markerText = "Carpet bombing";
+            _text = format [localize "STR_notifiers_SUP_execute_carpet_bombing", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_carpet_bombing_marker";
         };
         case ("ASF"):
         {
-            _text = format ["%1 fighter started chasing a target", _sideName];
-            _markerText = "Air superiority target";
+            _text = format [localize "STR_notifiers_SUP_execute_ASF", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_ASF_target";
         };
         case ("CAS"):
         {
-            _text = format ["A %1 CAS bomber is acquiring a target", _sideName];
-            _markerText = "CAS target";
+            _text = format [localize "STR_notifiers_SUP_execute_CAS", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_CAS_marker";
+        };
+        case ("CASDIVE"):
+        {
+            _text = format [localize "STR_notifiers_SUP_execute_CAS", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_CAS_marker";
         };
         case ("GUNSHIP"):
         {
-            _text = format ["A %1 heavy gunship started circling the area", _sideName];
-            _markerText = "Gunship";
+            _text = format [localize "STR_notifiers_SUP_execute_gunship", _sideName];
+            _markerText = localize "STR_notifiers_SUP_execute_gunship_marker";
         };
         default
         {
-            _text = format ["%1 is executing %2 support now", _sideName, _supportType];
-            _markerText = format ["%1 support", _supportType];
+            _text = format [localize "STR_notifiers_SUP_execute_generic", _sideName, _supportType];
+            _markerText = format [localize "STR_notifiers_SUP_execute_generic_marker", _supportType];
         };
     };
 

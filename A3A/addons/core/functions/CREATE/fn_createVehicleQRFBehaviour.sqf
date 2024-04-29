@@ -18,7 +18,7 @@
 
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
-params ["_vehicle", "_crewGroup", "_cargoGroup", "_posDestination", "_markerOrigin", "_landPosBlacklist"];
+params ["_vehicle", "_crewGroup", "_cargoGroup", "_posDestination", "_markerOrigin", "_landPosBlacklist", ["_isAirdrop", false], "_resPool"];
 
 
 private _vehType = typeof _vehicle;
@@ -55,6 +55,11 @@ if (_vehicle isKindOf "Air") then
         //Attack helicopter
         [_vehicle, _crewGroup, _posDestination] spawn A3A_fnc_attackHeli;
     };
+    if (_vehType in FactionGet(all,"vehiclesTransportAir") && {!(_vehicle isKindOf "Helicopter") && {_isAirdrop}}) exitWith 
+    {
+        //Dropship with para units and airdrop veh
+        [_vehicle, _cargoGroup, _posDestination, _markerOrigin, _resPool] spawn SCRT_fnc_common_paradropVehicle;
+    };
     if (_vehType in FactionGet(all,"vehiclesTransportAir")) exitWith
     {
         //Dropship with para units
@@ -72,11 +77,13 @@ if (_vehicle isKindOf "Air") then
 else            // ground vehicle
 {
     private _typeName = call {
-        if (_vehType in FactionGet(all,"vehiclesTanks")) exitWith {"Tank"};
-        if (_vehType in FactionGet(all,"vehiclesAA")) exitWith {"AA"};
-        if (_vehType in FactionGet(all,"vehiclesArmor"))  exitWith {"APC"};
-        if (_vehType in FactionGet(all,"vehiclesTrucks")) exitWith {"Truck"};
-        "MRAP";
+        if (_vehType in FactionGet(all,"vehiclesTanks")) exitWith {localize "STR_qrf_marker_tank"};
+        if (_vehType in FactionGet(all,"vehiclesLightTanks")) exitWith {localize "STR_qrf_marker_light_tank"};
+        if (_vehType in FactionGet(all,"vehiclesLightAPCs")) exitWith {localize "STR_qrf_marker_light_apc"};
+        if (_vehType in FactionGet(all,"vehiclesAA")) exitWith {localize "STR_qrf_marker_aa"};
+        if (_vehType in FactionGet(all,"vehiclesArmor"))  exitWith {localize "STR_qrf_marker_apc"};
+        if (_vehType in FactionGet(all,"vehiclesTrucks")) exitWith {localize "STR_qrf_marker_truck"};
+        localize "STR_qrf_marker_mrap";
     };
 
     if (isNull _cargoGroup) exitWith

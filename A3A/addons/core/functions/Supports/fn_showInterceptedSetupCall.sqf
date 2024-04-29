@@ -30,75 +30,87 @@ private _sideName = Faction(_side) get "name";
 if (_reveal <= 0.5) then
 {
     //Side and setup is revealed
-    _text = format ["%1 is setting up an unknown support", _sideName];
+    _text = format [localize "STR_notifiers_SUP_setup_unknown2", _sideName];
 }
 else
 {
-    switch (toupper _supportType) do
+    switch (toUpperANSI _supportType) do
     {
         case ("MAJORATTACK"):
         {
-            _text = format ["%1 just sent a major attack wave", _sideName];
+            _text = format [localize "STR_notifiers_SUP_setup_wavedAttack", _sideName];
         };
         case ("COUNTERATTACK"):
         {
-            _text = format ["%1 just sent a counterattack force", _sideName];
+            _text = format [localize "STR_notifiers_SUP_setup_counterAttack", _sideName];
         };
         case ("QRFAIR"):
         {
-            _text = format ["%1 just sent an airborne QRF", _sideName];
+            _text = format [localize "STR_notifiers_SUP_setup_QRFAir", _sideName];
         };
         case ("QRFLAND"):
         {
-            _text = format ["%1 just sent a land QRF", _sideName];
+            _text = format [localize "STR_notifiers_SUP_setup_QRFLand", _sideName];
+        };
+        case ("QRFVEHAIRDROP"): 
+        {
+            _text = format [localize "STR_notifiers_SUP_setup_QRFVehAirdrop", _sideName];
         };
         case ("AIRSTRIKE"):
         {
-            _text = format ["%1 is preparing an airstrike", _sideName];
+            _text = format [localize "STR_notifiers_SUP_setup_airstrike", _sideName];
         };
         case ("MORTAR"):
         {
-            _text = format ["%1 is setting up a mortar position", _sideName];
+            _text = format [localize "STR_notifiers_SUP_setup_mortar", _sideName];
+        };
+        case ("HOWITZER"):
+        {
+            _text = format [localize "STR_notifiers_SUP_setup_howitzer", _sideName];
         };
         case ("ARTILLERY"):
         {
-            _text = format ["%1 is preparing an artillery position", _sideName];
+            _text = format [localize "STR_notifiers_SUP_setup_artillery", _sideName];
         };
         case ("ORBITALSTRIKE"):
         {
-            _text = format ["A %1 satellite is preparing an orbital strike", _sideName];
+            _text = format [localize "STR_notifiers_SUP_setup_orbitalStrike", _sideName];
         };
         case ("CRUISEMISSILE"):
         {
-            _text = format ["A %1 cruiser is readying a cruise missile", _sideName];
+            _text = format [localize "STR_notifiers_SUP_setup_cruise_missile", _sideName];
         };
         case ("SAM"):
         {
-            _text = format ["%1 is setting up a SAM launcher", _sideName];
+            _text = format [localize "STR_notifiers_SUP_setup_SAM", _sideName];
         };
         case ("CARPETBOMBS"):
         {
-            _text = format ["A %1 heavy bomber is on the way", _sideName];
+            _text = format [localize "STR_notifiers_SUP_setup_carpeting", _sideName];
         };
         case ("ASF"):
         {
-            _text = format ["%1 is readying an air superiority fighter", _sideName];
+            _text = format [localize "STR_notifiers_SUP_setup_ASF", _sideName];
         };
         case ("CAS"):
         {
-            _text = format ["%1 is readying a CAS bomber", _sideName];
+            _text = format [localize "STR_notifiers_SUP_setup_CAS", _sideName];
+        };
+        case ("CASDIVE"):
+        {
+            _text = format [localize "STR_notifiers_SUP_setup_CAS", _sideName];
         };
         case ("GUNSHIP"):
         {
-            _text = format ["%1 is loading up a heavy gunship", _sideName];
+            _text = format [localize "STR_notifiers_SUP_setup_gunship", _sideName];
         };
         case ("UAV"):
         {
-            _text = format ["%1 is sending a spotting UAV", _sideName];
+            _text = format [localize "STR_notifiers_SUP_setup_UAV", _sideName];
         };
         default
         {
-            _text = format ["%1 is setting up %2 support", _sideName, _supportType];
+            _text = format [localize "STR_notifiers_SUP_setup_unknown", _sideName, _supportType];
         };
     };
 };
@@ -109,13 +121,13 @@ private _timeStr = if(_setupTime < 60) then { "&lt;1" } else { str round (_setup
 
 if(_reveal >= 0.8) then
 {
-    if(toupper _supportType in ["QRFLAND", "QRFAIR", "COUNTERATTACK", "MAJORATTACK"]) then
+    if(toupper _supportType in ["QRFLAND", "QRFAIR", "COUNTERATTACK", "MAJORATTACK", "QRFVEHAIRDROP"]) then
     {
-        _text = format ["%1. Estimated arrival in %2 minutes", _text, _timeStr];
+        _text = format [localize "STR_notifiers_SUP_QRF_setup_arrival", _text, _timeStr];
     }
     else
     {
-        _text = format ["%1. Estimated setup: %2 minutes", _text, _timeStr];
+        _text = format [localize "STR_notifiers_SUP_setup_generic_arrival", _text, _timeStr];
     };
 };
 

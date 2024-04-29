@@ -122,7 +122,7 @@ SA_Simulate_Towing_Speed = {
 
 SA_Simulate_Towing = {
 
-	params ["_vehicle","_vehicleHitchModelPos","_cargo","_cargoHitchModelPos","_ropeLength"];
+	params ["_vehicle","_vehicleHitchModelPos","_cargo","_cargoHitchModelPos","_ropeLength", ["_isNewTowing", false]];
 
 	private ["_lastCargoHitchPosition","_lastCargoVectorDir","_cargoLength","_maxDistanceToCargo","_lastMovedCargoPosition","_cargoHitchPoints"];
 	private ["_vehicleHitchPosition","_cargoHitchPosition","_newCargoHitchPosition","_cargoVector","_movedCargoVector","_attachedObjects","_currentCargo"];
@@ -174,8 +174,10 @@ SA_Simulate_Towing = {
 
 	_doExit = false;
 
-	// Start vehicle speed simulation
-	[_vehicle] spawn SA_Simulate_Towing_Speed;
+	if (!_isNewTowing) then {
+		// Start vehicle speed simulation
+		[_vehicle] spawn SA_Simulate_Towing_Speed;
+	};
 
 	while {!_doExit} do {
 
@@ -333,60 +335,69 @@ SA_Get_Hitch_Points = {
 	_frontCorner2 = _cornerPoints select 3;
 	_rearHitchPoint = ((_rearCorner vectorDiff _rearCorner2) vectorMultiply 0.5) vectorAdd  _rearCorner2;
 	_frontHitchPoint = ((_frontCorner vectorDiff _frontCorner2) vectorMultiply 0.5) vectorAdd  _frontCorner2;
-	//_sideLeftPoint = ((_frontCorner vectorDiff _rearCorner) vectorMultiply 0.5) vectorAdd  _frontCorner;
-	//_sideRightPoint = ((_frontCorner2 vectorDiff _rearCorner2) vectorMultiply 0.5) vectorAdd  _frontCorner2;
+
 	[_frontHitchPoint,_rearHitchPoint];
 };
 
 SA_Attach_Tow_Ropes = {
 	params ["_cargo","_player"];
 	_vehicle = _player getVariable ["SA_Tow_Ropes_Vehicle", objNull];
-	if(!isNull _vehicle) then {
-		if(local _vehicle) then {
-			private ["_towRopes","_vehicleHitch","_cargoHitch","_objDistance","_ropeLength"];
-			_towRopes = _vehicle getVariable ["SA_Tow_Ropes",[]];
-			if(count _towRopes == 1) then {
+	if(isNull _vehicle) exitWith {};
 
-				/*
-				private ["_cargoHitchPoints","_distanceToFrontHitch","_distanceToRearHitch","_isRearCargoHitch"];
-				_cargoHitchPoints = [_cargo] call SA_Get_Hitch_Points;
-				_distanceToFrontHitch = player distance (_cargo modelToWorld (_cargoHitchPoints select 0));
-				_distanceToRearHitch = player distance (_cargo modelToWorld (_cargoHitchPoints select 1));
-				if( _distanceToFrontHitch < _distanceToRearHitch ) then {
-					_cargoHitch = _cargoHitchPoints select 0;
-					_isRearCargoHitch = false;
-				} else {
-					_cargoHitch = _cargoHitchPoints select 1;
-					_isRearCargoHitch = true;
-				};
-				*/
+	if(local _vehicle) then {
+		private ["_towRopes","_vehicleHitch","_cargoHitch","_objDistance","_ropeLength"];
+		_towRopes = _vehicle getVariable ["SA_Tow_Ropes",[]];
+		if(count _towRopes == 1) then {
 
-				_cargoHitch = ([_cargo] call SA_Get_Hitch_Points) select 0;
+			_cargoHitch = ([_cargo] call SA_Get_Hitch_Points) select 0;
 
-				_vehicleHitch = ([_vehicle] call SA_Get_Hitch_Points) select 1;
-				_ropeLength = (ropeLength (_towRopes select 0));
-				_objDistance = ((_vehicle modelToWorld _vehicleHitch) distance (_cargo modelToWorld _cargoHitch));
-				if( _objDistance > _ropeLength ) then {
-					[["The tow ropes are too short. Move vehicle closer.", false],"SA_Hint",_player] call SA_RemoteExec;
-				} else {
-					[_vehicle,_player] call SA_Drop_Tow_Ropes;
-					_helper = "Land_Can_V2_F" createVehicle position _cargo;
-					_helper attachTo [_cargo, _cargoHitch];
-					_helper setVariable ["SA_Cargo",_cargo,true];
-					hideObject _helper;
-					[[_helper],"SA_Hide_Object_Global"] call SA_RemoteExecServer;
-					[_helper, [0,0,0], [0,0,-1]] ropeAttachTo (_towRopes select 0);
-					[_vehicle,_vehicleHitch,_cargo,_cargoHitch,_ropeLength] spawn SA_Simulate_Towing;
-
-					// capture empty vehicles when attached
-					if (count crew _cargo == 0) then {
-						[_cargo, side group _player, true] remoteExec ["A3A_fnc_vehKilledOrCaptured", 2];
-					};
-				};
+			_vehicleHitch = ([_vehicle] call SA_Get_Hitch_Points) select 1;
+			_ropeLength = (ropeLength (_towRopes select 0));
+			_objDistance = ((_vehicle modelToWorld _vehicleHitch) distance (_cargo modelToWorld _cargoHitch));
+			if( _objDistance > _ropeLength ) exitWith {
+				[[(localize "STR_antistasi_actions_short_tow_ropes_hint"), false],"SA_Hint",_player] call SA_RemoteExec;
 			};
-		} else {
-			[_this,"SA_Attach_Tow_Ropes",_vehicle,true] call SA_RemoteExec;
+
+			[_vehicle,_player] call SA_Drop_Tow_Ropes;
+			
+			if (newCarTowing && 
+				{(_cargo call A3A_Logistics_fnc_getCargo) isEqualTo [] && 
+				{toLowerANSI getText(configFile >> "CfgVehicles" >> typeOf _cargo >> "simulation") isEqualTo "carx" && 
+				{toLowerANSI getText(configFile >> "CfgVehicles" >> typeOf _vehicle >> "simulation") in ["carx", "tankx"]}}}
+			) then {
+				_cargo setTowParent _vehicle;
+				private _driver = driver _cargo;
+				moveOut _driver;
+				if (isPlayer _driver) then {
+					[localize "STR_antistasi_actions_towing_hint_header", localize "STR_antistasi_actions_driver_towing_notification_hint"] remoteExec ["A3A_fnc_customHint", _driver];
+				};
+				[_cargo, true] remoteExec ["lockDriver", _cargo];
+				[_cargo, _cargoHitch, [0,0,-1]] ropeAttachTo (_towRopes select 0);
+				[_vehicle, _vehicleHitch, _cargo, _cargoHitch, _ropeLength, true] spawn SA_Simulate_Towing;
+
+				_vehicle addEventHandler ["RopeBreak", {
+					params ["_vehicle", "_rope", "_cargo"];
+					[_cargo, false] remoteExec ["lockDriver", _cargo];
+					_cargo removeEventHandler ["RopeBreak", _thisEventHandler];
+				}];
+			} else {
+				_helper = "Land_Can_V2_F" createVehicle position _cargo;
+				
+				_helper attachTo [_cargo, _cargoHitch];
+				_helper setVariable ["SA_Cargo",_cargo,true];
+				hideObject _helper;
+				[[_helper],"SA_Hide_Object_Global"] call SA_RemoteExecServer;
+				[_helper, [0,0,0], [0,0,-1]] ropeAttachTo (_towRopes select 0);
+				[_vehicle,_vehicleHitch,_cargo,_cargoHitch,_ropeLength] spawn SA_Simulate_Towing;
+			};
+
+			// capture empty vehicles when attached
+			if (count crew _cargo == 0) then {
+				[_cargo, side group _player, true] remoteExec ["A3A_fnc_vehKilledOrCaptured", 2];
+			};
 		};
+	} else {
+		[_this,"SA_Attach_Tow_Ropes",_vehicle,true] call SA_RemoteExec;
 	};
 };
 
@@ -410,16 +421,24 @@ SA_Take_Tow_Ropes = {
 SA_Pickup_Tow_Ropes = {
 	params ["_vehicle","_player"];
 	if(local _vehicle) then {
-		private ["_attachedObj","_helper"];
 		{
-			_attachedObj = _x;
+			private _attachedObj = _x;
+
+			if (newCarTowing && {toLowerANSI getText(configFile >> "CfgVehicles" >> typeOf _attachedObj >> "simulation") isEqualTo "carx"}) then {
+				_attachedObj lockDriver false;
+				_attachedObj setTowParent objNull;
+				_attachedObj disableBrakes false;
+			};
+
 			{
 				_attachedObj ropeDetach _x;
 			} forEach (_vehicle getVariable ["SA_Tow_Ropes",[]]);
 			detach _attachedObj;
-			deleteVehicle _attachedObj;
+			if (typeOf _attachedObj isEqualTo "Land_Can_V2_F") then {
+				deleteVehicle _attachedObj;
+			};
 		} forEach ropeAttachedObjects _vehicle;
-		_helper = "Land_Can_V2_F" createVehicle position _player;
+		private _helper = "Land_Can_V2_F" createVehicle position _player;
 		{
 			[_helper, [0, 0, 0], [0,0,-1]] ropeAttachTo _x;
 			_helper attachTo [_player, [-0.1, 0.1, 0.15], "Pelvis"];
@@ -480,17 +499,8 @@ SA_Attach_Tow_Ropes_Action = {
 
 		if!(missionNamespace getVariable ["SA_TOW_LOCKED_VEHICLES_ENABLED",false]) then {
 			if( locked _cargo > 1 ) then {
-				["Cannot attach tow ropes to locked vehicle",false] call SA_Hint;
+				[(localize "STR_antistasi_actions_cannot_attach_tow_ropes_hint"),false] call SA_Hint;
 				_canBeTowed = false;
-			};
-		};
-
-		if!(missionNamespace getVariable ["SA_TOW_IN_EXILE_SAFEZONE_ENABLED",false]) then {
-			if(!isNil "ExilePlayerInSafezone") then {
-				if( ExilePlayerInSafezone ) then {
-					["Cannot attach tow ropes in safe zone",false] call SA_Hint;
-					_canBeTowed = false;
-				};
 			};
 		};
 
@@ -526,17 +536,8 @@ SA_Take_Tow_Ropes_Action = {
 
 		if!(missionNamespace getVariable ["SA_TOW_LOCKED_VEHICLES_ENABLED",false]) then {
 			if( locked _vehicle > 1 ) then {
-				["Cannot take tow ropes from locked vehicle",false] call SA_Hint;
+				[(localize "STR_antistasi_actions_cannot_take_tow_ropes_hint"),false] call SA_Hint;
 				_canTakeTowRopes = false;
-			};
-		};
-
-		if!(missionNamespace getVariable ["SA_TOW_IN_EXILE_SAFEZONE_ENABLED",false]) then {
-			if(!isNil "ExilePlayerInSafezone") then {
-				if( ExilePlayerInSafezone ) then {
-					["Cannot take tow ropes in safe zone",false] call SA_Hint;
-					_canTakeTowRopes = false;
-				};
 			};
 		};
 
@@ -572,17 +573,8 @@ SA_Put_Away_Tow_Ropes_Action = {
 
 		if!(missionNamespace getVariable ["SA_TOW_LOCKED_VEHICLES_ENABLED",false]) then {
 			if( locked _vehicle > 1 ) then {
-				["Cannot put away tow ropes in locked vehicle",false] call SA_Hint;
+				[(localize "STR_antistasi_actions_cannot_put_away_tow_ropes_hint"),false] call SA_Hint;
 				_canPutAwayTowRopes = false;
-			};
-		};
-
-		if!(missionNamespace getVariable ["SA_TOW_IN_EXILE_SAFEZONE_ENABLED",false]) then {
-			if(!isNil "ExilePlayerInSafezone") then {
-				if( ExilePlayerInSafezone ) then {
-					["Cannot put away tow ropes in safe zone",false] call SA_Hint;
-					_canPutAwayTowRopes = false;
-				};
 			};
 		};
 
@@ -637,17 +629,8 @@ SA_Pickup_Tow_Ropes_Action = {
 
 		if!(missionNamespace getVariable ["SA_TOW_LOCKED_VEHICLES_ENABLED",false]) then {
 			if( locked _vehicle > 1 ) then {
-				["Cannot pick up tow ropes from locked vehicle",false] call SA_Hint;
+				[(localize "STR_antistasi_actions_cannot_pickup_tow_ropes_hint"),false] call SA_Hint;
 				_canPickupTowRopes = false;
-			};
-		};
-
-		if!(missionNamespace getVariable ["SA_TOW_IN_EXILE_SAFEZONE_ENABLED",false]) then {
-			if(!isNil "ExilePlayerInSafezone") then {
-				if( ExilePlayerInSafezone ) then {
-					["Cannot pick up tow ropes in safe zone",false] call SA_Hint;
-					_canPickupTowRopes = false;
-				};
 			};
 		};
 
@@ -703,7 +686,7 @@ SA_Is_Supported_Cargo = {
 		{
 			if (_vehicle isKindOf (_x select 0)) then {
 				if (_cargo isKindOf (_x select 2)) then {
-					if ( (toUpper (_x select 1)) == "CAN_TOW" ) then {
+					if ( (toUpperANSI (_x select 1)) == "CAN_TOW" ) then {
 						_canTow = true;
 					} else {
 						_canTow = false;
@@ -717,15 +700,7 @@ SA_Is_Supported_Cargo = {
 
 SA_Hint = {
     params ["_msg",["_isSuccess",true]];
-    if (!isNil "ExileClient_gui_notification_event_addNotification") then {
-		if (_isSuccess) then {
-			["Success", [_msg]] call ExileClient_gui_notification_event_addNotification;
-		} else {
-			["Whoops", [_msg]] call ExileClient_gui_notification_event_addNotification;
-		};
-    } else {
-		["Advanced Towing", _msg] call A3A_fnc_customHint;
-    };
+    [(localize "STR_antistasi_actions_towing_hint_header"), _msg] call A3A_fnc_customHint;
 };
 
 SA_Hide_Object_Global = {
@@ -742,31 +717,29 @@ SA_Set_Owner = {
 
 SA_Add_Player_Tow_Actions = {
 
-	player addAction ["Deploy Tow Ropes", {
+	player addAction [(localize "STR_antistasi_actions_deploy_tow_ropes"), {
 		[] call SA_Take_Tow_Ropes_Action;
 	}, nil, 0, false, true, "", "call SA_Take_Tow_Ropes_Action_Check"];
 
-	player addAction ["Put Away Tow Ropes", {
+	player addAction [(localize "STR_antistasi_actions_put_away_tow_ropes"), {
 		[] call SA_Put_Away_Tow_Ropes_Action;
 	}, nil, 0, false, true, "", "call SA_Put_Away_Tow_Ropes_Action_Check"];
 
-	player addAction ["Attach To Tow Ropes", {
+	player addAction [(localize "STR_antistasi_actions_attach_tow_ropes"), {
 		[] call SA_Attach_Tow_Ropes_Action;
 	}, nil, 0, false, true, "", "call SA_Attach_Tow_Ropes_Action_Check"];
 
-	player addAction ["Drop Tow Ropes", {
+	player addAction [(localize "STR_antistasi_actions_drop_tow_ropes"), {
 		[] call SA_Drop_Tow_Ropes_Action;
 	}, nil, 0, false, true, "", "call SA_Drop_Tow_Ropes_Action_Check"];
 
-	player addAction ["Pickup Tow Ropes", {
+	player addAction [(localize "STR_antistasi_actions_pickup_tow_ropes"), {
 		[] call SA_Pickup_Tow_Ropes_Action;
 	}, nil, 0, false, true, "", "call SA_Pickup_Tow_Ropes_Action_Check"];
 
-	if (isMultiplayer) then {
-		player addEventHandler ["Respawn",{
-			player setVariable ["SA_Tow_Actions_Loaded",false];
-		}];
-	};
+	player addEventHandler ["Respawn",{
+		player setVariable ["SA_Tow_Actions_Loaded",false];
+	}];
 };
 
 SA_Find_Nearby_Tow_Vehicles = {
@@ -809,27 +782,19 @@ if (hasInterface) then {
 
 SA_RemoteExec = {
 	params ["_params","_functionName","_target",["_isCall",false]];
-	if (!isNil "ExileClient_system_network_send") then {
-		["AdvancedTowingRemoteExecClient",[_params,_functionName,_target,_isCall]] call ExileClient_system_network_send;
+	if (_isCall) then {
+		_params remoteExecCall [_functionName, _target];
 	} else {
-		if (_isCall) then {
-			_params remoteExecCall [_functionName, _target];
-		} else {
-			_params remoteExec [_functionName, _target];
-		};
+		_params remoteExec [_functionName, _target];
 	};
 };
 
 SA_RemoteExecServer = {
 	params ["_params","_functionName",["_isCall",false]];
-	if (!isNil "ExileClient_system_network_send") then {
-		["AdvancedTowingRemoteExecServer",[_params,_functionName,_isCall]] call ExileClient_system_network_send;
+	if (_isCall) then {
+		_params remoteExecCall [_functionName, 2];
 	} else {
-		if (_isCall) then {
-			_params remoteExecCall [_functionName, 2];
-		} else {
-			_params remoteExec [_functionName, 2];
-		};
+		_params remoteExec [_functionName, 2];
 	};
 };
 

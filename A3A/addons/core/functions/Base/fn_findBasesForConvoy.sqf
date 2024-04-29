@@ -1,4 +1,4 @@
-params ["_mrkDest", ["_possibleBases", airportsX + outposts]];
+params ["_mrkDest", ["_possibleBases", airportsX + outposts + milbases]];
 
 private _posDest = getMarkerPos _mrkDest;
 private _side = sidesX getVariable [_mrkDest,sideUnknown];

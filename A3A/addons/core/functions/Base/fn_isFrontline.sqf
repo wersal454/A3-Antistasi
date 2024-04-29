@@ -1,14 +1,14 @@
-private ["_markerX","_isFrontier","_positionX","_mrkENY"];
+params ["_markerX"];
 
-_markerX = _this select 0;
-_isFrontier = false;
+private ["_positionX","_mrkENY"];
 
-_sideX = sidesX getVariable [_markerX,sideUnknown];
-_mrkENY = (airportsX + outposts + seaports) select {sidesX getVariable [_x,sideUnknown] != _sideX};
+private _isFrontier = false;
+private _sideX = sidesX getVariable [_markerX,sideUnknown];
+private _mrkENY = (airportsX + outposts + seaports + milbases) select {sidesX getVariable [_x,sideUnknown] != _sideX};
 
-if (count _mrkENY > 0) then
-	{
-	_positionX = getMarkerPos _markerX;
-	{if (_positionX distance (getMarkerPos _x) < distanceSPWN) exitWith {_isFrontier = true}} forEach _mrkENY;
-	};
+if (count _mrkENY > 0) then {
+	private _positionX = getMarkerPos _markerX;
+	_isFrontier = _mrkENY findIf {_positionX distance (getMarkerPos _x) < distanceSPWN} != -1;
+};
+
 _isFrontier

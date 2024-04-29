@@ -3,7 +3,7 @@
 
 // Pre-generate antenna -> base mappings to save scanning
 private _sideX = side group player;
-private _bases = outposts + airportsx + seaports;
+private _bases = outposts + airportsx + seaports + milbases;
 private _antennaBases = createHashMap;
 {
     private _base = [_bases, _x] call BIS_fnc_nearestPosition;
@@ -15,7 +15,7 @@ private _fnc_setInterference = {
     player setVariable ["tf_receivingDistanceMultiplicator", _recInterference];
     player setVariable ["tf_sendingDistanceMultiplicator", _sendInterference];
 
-    if(A3A_hasACRE) then 
+    if(A3A_hasACRE) then
     {
         if(_recInterference == 1 && _sendInterference == 1) exitWith
         {

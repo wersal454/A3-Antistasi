@@ -13,7 +13,17 @@ Arguments:
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
+private _lowCiv = Faction(civilian) getOrDefault ["attributeLowCiv", false];
+private _civNonHuman = Faction(civilian) getOrDefault ["attributeCivNonHuman", false];
+
+if (_lowCiv) exitWith {};
+// if (_civNonHuman) exitWith {};
+
 if (!isServer) exitWith { Error("Server-only function miscalled") };
+
+if (areInvadersDefeated) exitWith {
+    Info("Invaders had been defeated earlier, aborting punishment.");
+};
 
 params ["_mrkDest", "_mrkOrigin", "_delay"];
 
@@ -29,7 +39,7 @@ private _size = [_mrkDest] call A3A_fnc_sizeMarker;
 
 private _nameDest = [_mrkDest] call A3A_fnc_localizar;
 private _taskId = "invaderPunish" + str A3A_taskCount;
-[[teamPlayer,civilian,Occupants],_taskId,[format ["%2 is attacking critical positions within %1! Defend the city at all costs",_nameDest,FactionGet(inv,"name")],format ["%1 Punishment",FactionGet(inv,"name")],_mrkDest],_posDest,false,0,true,"Defend",true] call BIS_fnc_taskCreate;
+[[teamPlayer,civilian,Occupants],_taskId,[format [localize "STR_invaderPunish_desc",_nameDest,FactionGet(inv,"name")],format [localize "STR_invaderPunish_task",FactionGet(inv,"name")],_mrkDest],_posDest,false,0,true,"Defend",true] call BIS_fnc_taskCreate;
 [_taskId, "invaderPunish", "CREATED"] remoteExecCall ["A3A_fnc_taskUpdate", 2];
 
 
@@ -86,7 +96,7 @@ while {count _civilians < _numCiv} do
 
 
 // Termination conditions
-private _missionExpireTime = time + 3600;
+private _missionExpireTime = time + 2400;
 private _missionMinTime = time + 600;
 private _soldiers = [];
 { _soldiers append units _x } forEach _cargoGroups;
@@ -115,8 +125,13 @@ if (({_x call A3A_fnc_canFight} count _soldiers < count _soldiers / 3) or (time 
     [_posDest, 30, 3000] call _fnc_adjustNearCities;
 
     [Occupants, -10, 90] remoteExec ["A3A_fnc_addAggression",2];
-    {if (isPlayer _x) then {[10,_x] call A3A_fnc_playerScoreAdd}} forEach ([500,0,_posDest,teamPlayer] call A3A_fnc_distanceUnits);
-    [10,theBoss] call A3A_fnc_playerScoreAdd;
+    {
+        [round (7*tierWar), _x] call A3A_fnc_addScorePlayer;
+        [round (75*tierWar), _x] call A3A_fnc_addMoneyPlayer;
+    } forEach (call SCRT_fnc_misc_getRebelPlayers);
+
+    [10,theBoss] call A3A_fnc_addScorePlayer;
+    [round (100*((tierWar/3) max 1)), theBoss, true] call A3A_fnc_addMoneyPlayer;
 } else {
     Info_1("Rebels lost a punishment attack against %1", _mrkDest);
     [_taskId, "invaderPunish", "FAILED"] call A3A_fnc_taskSetState;

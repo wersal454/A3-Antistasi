@@ -22,7 +22,9 @@
     "vn_b_wheeled_m54_01_airport", 0.2
     ,"vn_c_car_04_01", 1]] call _fnc_saveToTemplate;
 
-["vehiclesCivHeli", []] call _fnc_saveToTemplate;
+["vehiclesCivPlanes", ["vn_o_air_mi2_01_02", "vn_o_air_mi2_01_01"]] call _fnc_saveToTemplate;
+
+["vehiclesCivHeli", ["vn_b_air_uh1d_04_09"]] call _fnc_saveToTemplate;
 
 ["vehiclesCivBoat", [
     "vn_c_boat_02_02", 1
@@ -61,6 +63,7 @@
 /////////////////////
 
 ["faces", ["AsianHead_A3_01","AsianHead_A3_02","AsianHead_A3_03","AsianHead_A3_04","AsianHead_A3_05","AsianHead_A3_06","AsianHead_A3_07"]] call _fnc_saveToTemplate;
+["currencySymbol", "đ"] call _fnc_saveToTemplate;
 
 //////////////////////////
 //       Loadouts       //

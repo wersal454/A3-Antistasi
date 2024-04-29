@@ -119,7 +119,7 @@ class rhsafrf_addons_rhs_heavyweapons_ZU23_rhs_zu23 : TRIPLES(ADDON,Cargo,Base)
 {
     offset[] = {0,0,1.88};
     rotation[] = {0,1,0};
-    size = 7;
+    size = 2;
     recoil = 250;
     isWeapon = 1;
     blackList[] = {"\rhsusf\addons\rhsusf_HEMTT_A4\M977A4_wd","\rhsusf\addons\rhsusf_hemtt_a4\M977A4_WD_APK","\rhsusf\addons\rhsusf_hemtt_a4\M977A4_WD_APK_M2"};

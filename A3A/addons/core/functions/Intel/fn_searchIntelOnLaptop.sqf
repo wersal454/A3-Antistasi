@@ -23,9 +23,17 @@ if(_isTrap) exitWith
     _intel remoteExecCall ["removeAllActions", 0];
     _intel setObjectTextureGlobal [0, QPATHTOFOLDER(Pictures\Intel\laptop_die.paa)];
     {
-        [petros,"hint","The screen says:<br/><br/>Prepare to die!", "Search Intel"] remoteExec ["A3A_fnc_commsMP",_x];
+        [petros,"hint",(localize "STR_intel_laptop_prepare_to_die_hint_description"), (localize "STR_intel_search_intel_header")] remoteExec ["A3A_fnc_commsMP",_x];
     } forEach ([50,0,_intel,teamPlayer] call A3A_fnc_distanceUnits);
-    sleep (2 + (random 3));
+
+    private _timeOut = time + 2 + (random 3);
+	waitUntil {_timeOut < time};
+
+    playSound3D ["x\A3A\addons\core\Sounds\Misc\BombCountdown.ogg", _bomb, false, getPosASL _bomb, 2.5, 1, 50];
+    
+    private _timeOut = time + 2;
+	waitUntil {_timeOut < time};
+
     private _bombPos = getPosWorld _bomb;
     deleteVehicle _bomb;
     _bomb = "DemoCharge_Remote_Ammo_Scripted" createVehicle [0,0,0];
@@ -36,7 +44,7 @@ if(_isTrap) exitWith
 
 private _marker = _intel getVariable "marker";
 private _side = _intel getVariable "side";
-private _isAirport = (_marker in airportsX);
+private _isHardOutpost = (_marker in airportsX || {_marker in milbases});
 
 //Hack laptop to get intel
 private _pointsPerSecond = 25;
@@ -67,7 +75,7 @@ private _neededPoints = 1000 + random 1000;
 } forEach ([200, 0, _intel, teamPlayer] call A3A_fnc_distanceUnits);
 
 private _noAttackChance = 0.2;
-if(_isAirport) then
+if(_isHardOutpost) then
 {
     _noAttackChance = 0;
 }
@@ -79,7 +87,7 @@ else
     };
 };
 private _largeAttackChance = 0.2;
-if(_isAirport) then
+if(_isHardOutpost) then
 {
     _largeAttackChance = 0.4;
 }
@@ -116,7 +124,7 @@ while {_pointSum <= _neededPoints} do
     {
         _pointSum = 0;
         {
-            [petros,"hint","No one in range of the intel, reseting download!", "Search Intel"] remoteExec ["A3A_fnc_commsMP",_x]
+            [petros,"hint", (localize "STR_intel_laptop_no_range_description"), (localize "STR_intel_search_intel_header")] remoteExec ["A3A_fnc_commsMP",_x]
         } forEach ([50,0,_intel,teamPlayer] call A3A_fnc_distanceUnits);
     };
 
@@ -138,43 +146,43 @@ while {_pointSum <= _neededPoints} do
             {
                 case ("Err_Sml_01"):
                 {
-                    _errorText = "Data Fragment Error. File {002451%12-215502%} has to be confirmed manually!";
-                    _actionText = "Confirm file";
+                    _errorText = localize "STR_intel_laptop_err1_text";
+                    _actionText = localize "STR_intel_laptop_err1_action";
                     _penalty = 0; //150 + random 100;
                     _picturePath = "error1";
                 };
                 case ("Err_Sml_02"):
                 {
-                    _errorText = "404 Error on server. URL incorrect. Skip URL?";
-                    _actionText = "Skip URL";
+                    _errorText = localize "STR_intel_laptop_err2_text";
+                    _actionText = localize "STR_intel_laptop_err2_action";
                     _penalty = 0; //150 + random 50;
                     _picturePath = "error2";
                 };
                 case ("Err_Sml_03"):
                 {
-                    _errorText = "Windows needs an update. Update now and lose all data?";
-                    _actionText = "Stop windows update";
+                    _errorText = localize "STR_intel_laptop_err3_text";
+                    _actionText = localize "STR_intel_laptop_err3_action";
                     _penalty = 0; //200 + random 150;
                     _picturePath = "error3";
                 };
                 case ("Err_Med_01"):
                 {
-                    _errorText = "Download port closed on server. Manual reroute required!";
-                    _actionText = "Reroute download";
+                    _errorText = localize "STR_intel_laptop_err4_text";
+                    _actionText = localize "STR_intel_laptop_err4_action";
                     _penalty = 0;// 250 + random 150;
                     _picturePath = "error4";
                 };
                 case ("Err_Med_02"):
                 {
-                    _errorText = "Error in NetworkAdapter. Hardware not responding. Restart now?";
-                    _actionText = "Restart NetworkAdapter";
+                    _errorText = localize "STR_intel_laptop_err5_text";
+                    _actionText = localize "STR_intel_laptop_err5_action";
                     _penalty = 0; //350 + random 100;
                     _picturePath = "error5";
                 };
                 case ("Err_Lar_01"):
                 {
-                    _errorText = "Critical Error in network infrastructur. Server returned ErrorCode: CRITICAL_ARMA_PROCESS_DIED";
-                    _actionText = "Restart server process";
+                     _errorText = localize "STR_intel_laptop_err6_text";
+                    _actionText = localize "STR_intel_laptop_err6_action";
                     _penalty = 0;// 600 + random 250;
                     _picturePath = "error6";
                 };
@@ -232,7 +240,7 @@ while {_pointSum <= _neededPoints} do
             _pointSum = _pointSum + (_pointsPerSecond * _timeDiff);
         };
         {
-            [petros,"hintS", format ["Download at %1%2",((round ((_pointSum/_neededPoints) * 10000))/ 100), "%"], "Search Intel"] remoteExec ["A3A_fnc_commsMP",_x]
+            [petros,"hintS", format [(localize "STR_intel_laptop_download_progress"),((round ((_pointSum/_neededPoints) * 10000))/ 100), "%"], (localize "STR_intel_search_intel_header")] remoteExec ["A3A_fnc_commsMP",_x]
         } forEach _playerList;
     };
 };
@@ -244,11 +252,12 @@ if(_pointSum >= _neededPoints) then
     _intel setObjectTextureGlobal [0,  QPATHTOFOLDER(Pictures\Intel\laptop_complete.paa)];
     ["Large", _side] remoteExec ["A3A_fnc_selectIntel", 2];
     {
-        [petros,"hint","You managed to download the intel!", "Search Intel"] remoteExec ["A3A_fnc_commsMP",_x];
-        [10,_x] call A3A_fnc_playerScoreAdd;
+        [petros,"hint",(localize "STR_intel_laptop_success"), (localize "STR_intel_search_intel_header")] remoteExec ["A3A_fnc_commsMP",_x];
+        [10,_x] call A3A_fnc_addScorePlayer;
+        [250,_x] call A3A_fnc_addMoneyPlayer;
     } forEach ([50,0,_intel,teamPlayer] call A3A_fnc_distanceUnits);
-    [5, theBoss] call A3A_fnc_playerScoreAdd;
-
+    [5, theBoss] call A3A_fnc_addScorePlayer;
+    [100,theBoss, true] call A3A_fnc_addMoneyPlayer;
 }
 else
 {

@@ -30,9 +30,13 @@ if ((count _loaded) isEqualTo 1) then {_lastLoaded = true};
 if !(
     ((gunner _cargo) isEqualTo _cargo)
     or ((gunner _cargo) isEqualTo objNull)
-) exitWith {[localize "STR_A3A_logi_title", localize "STR_A3A_logi_unload_no_mounted"] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner]};
+) exitWith {
+    [localize "STR_A3A_Logistics_header", localize "STR_A3A_Logistics_unload_nostatic"] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner]
+};
 
-if (_vehicle getVariable ["LoadingCargo", false]) exitWith {[localize "STR_A3A_logi_title",localize "STR_A3A_logi_unload_no_already"] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner]};
+if (_vehicle getVariable ["LoadingCargo", false]) exitWith {
+    [localize "STR_A3A_Logistics_header", localize "STR_A3A_Logistics_unload_already"] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner]
+};
 _vehicle setVariable ["LoadingCargo",true,true];
 
 //object string for jip
@@ -82,6 +86,11 @@ if ((_node#0) isEqualType []) then {
     [_vehicle , _node] call _updateList;
 };
 
+private _isLootcrate = (typeOf _cargo) isEqualTo (A3A_faction_reb get "lootCrate");
+if (_isLootcrate) then {
+    _cargo allowDamage false;
+};
+_vehicle animateDoor ["Door_rear", 1];
 //detach cargo
 private _keepUnloading = false;
 if !(_cargo isEqualTo objNull) then {//cargo not deleted
@@ -108,7 +117,7 @@ if !(_cargo isEqualTo objNull) then {//cargo not deleted
     } else {
         private _prevTime = time;
         while {(_location#1) > _yEnd} do {
-            uiSleep 0.1;
+            uiSleep 0.01;
             if (isNull _cargo || isNull _vehicle) exitWith {};//vehicle or cargo deleted
             _location = _location vectorAdd [0,_prevTime-time,0];
             _cargo attachto [_vehicle,_location];
@@ -128,11 +137,24 @@ if (isNull _cargo || isNull _vehicle) exitWith {};//vehicle or cargo deleted
 [_cargo, false] remoteExec ["A3A_Logistics_fnc_toggleLock", 0, "A3A_Logistics_toggleLock" + _objStringCargo];
 [_vehicle, false, _seats] remoteExec ["A3A_Logistics_fnc_toggleLock", 0, "A3A_Logistics_toggleLock" + _objStringVehicle];
 
+if (_isLootcrate) then {
+    _nil = [_cargo] spawn {
+        params["_cargo"];
+        if (!isNil "_cargo" && {alive _cargo}) then {
+            private _timeOut = time + 10;
+            waitUntil {_timeOut < time};
+            _cargo allowDamage true;
+        };
+        terminate _thisScript;
+    };
+};
+
 //update list
 _loaded deleteAt 0;
 _vehicle setVariable ["Cargo", _loaded, true];
 [_vehicle] call A3A_Logistics_fnc_refreshVehicleLoad; //refresh list in case theres more on the list but no actuall cargo loaded
 
 _vehicle setVariable ["LoadingCargo",nil,true];
+_vehicle animateDoor ["Door_rear", 0];
 if (_keepUnloading and !_lastLoaded) then {[_vehicle] spawn A3A_Logistics_fnc_unload};//if you tried to unload a null obj unload next on list
 nil

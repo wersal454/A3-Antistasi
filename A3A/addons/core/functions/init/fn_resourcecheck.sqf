@@ -4,23 +4,33 @@ if (!isServer) exitWith {
     Error("Server-only function miscalled");
 };
 
-while {true} do
-{
-	// what's wrong with sleep 600, really?
-	//sleep 600;//600
+//declaring variables outside of the loop increases performance
+private _resAdd = nil;
+private _hrAdd = nil;
+private _popReb = nil;
+private _popGov = nil;
+private _popKilled = nil;
+private _popTotal = nil;
+private _suppBoost = nil;
+private _resBoost = nil;
+
+private _rivalsTaskChance = 5;
+private _traderTaskChance = 5;
+
+while {true} do {
 	nextTick = time + 600;
 	waitUntil {sleep 15; time >= nextTick};
     waitUntil {sleep 10; A3A_activePlayerCount > 0};
 
-	private _resAdd = 25;//0
-	private _hrAdd = 0;//0
-	private _popReb = 0;
-	private _popGov = 0;
-	private _popKilled = 0;
-	private _popTotal = 0;
+	_resAdd = 25;
+	_hrAdd = 0;
+	_popReb = 0;
+	_popGov = 0;
+	_popKilled = 0;
+	_popTotal = 0;
 
-	private _suppBoost = 0.5 * (1+ ({sidesX getVariable [_x,sideUnknown] == teamPlayer} count seaports));
-	private _resBoost = 1 + (0.25*({(sidesX getVariable [_x,sideUnknown] == teamPlayer) and !(_x in destroyedSites)} count factories));
+	_suppBoost = 0.5 * (1+ ({sidesX getVariable [_x,sideUnknown] == teamPlayer} count seaports));
+	_resBoost = 1 + (0.25*({(sidesX getVariable [_x,sideUnknown] == teamPlayer) and !(_x in destroyedSites)} count factories));
 
 	{
 		private _city = _x;
@@ -56,22 +66,25 @@ while {true} do
 		_resAdd = _resAdd + _resAddCity;
 		_hrAdd = _hrAdd + _hrAddCity;
 
-
-		// revuelta civil!!
-		if ((_supportGov < _supportReb) and (sidesX getVariable [_city,sideUnknown] == Occupants)) then
-		{
-			["TaskSucceeded", ["", format ["%1 joined %2",_city,FactionGet(reb,"name")]]] remoteExec ["BIS_fnc_showNotification",teamPlayer];
+		if (_supportGov < _supportReb && {sidesX getVariable [_city,sideUnknown] == Occupants}) then {
+			["TaskSucceeded", ["", format [localize "STR_notifiers_city_joined",_city,FactionGet(reb,"name")]]] remoteExec ["BIS_fnc_showNotification",teamPlayer];
 			sidesX setVariable [_city,teamPlayer,true];
 			[Occupants, 10, 60] remoteExec ["A3A_fnc_addAggression",2];
 			garrison setVariable [_city,[],true];
 			[_city] call A3A_fnc_mrkUpdate;
+
+			private _closestAdminMarker = [milAdministrationsX, _city] call BIS_fnc_nearestPosition;
+			if ((getMarkerPos _closestAdminMarker) distance2D (getMarkerPos _city) < 800) then {
+				private _milAdministration = [A3A_milAdministrations, _closestAdminMarker] call BIS_fnc_nearestPosition;
+				[_milAdministration, "SILENT"] call SCRT_fnc_location_removeMilAdmin;
+			};
+
 			sleep 5;
 			{_nul = [_city,_x] spawn A3A_fnc_deleteControls} forEach controlsX;
 			[] call A3A_fnc_tierCheck;
 		};
-		if ((_supportGov > _supportReb) and (sidesX getVariable [_city,sideUnknown] == teamPlayer)) then
-		{
-			["TaskFailed", ["", format ["%1 joined %2",_city,FactionGet(occ,"name")]]] remoteExec ["BIS_fnc_showNotification",teamPlayer];
+		if (_supportGov > _supportReb && {sidesX getVariable [_city,sideUnknown] == teamPlayer}) then {
+			["TaskFailed", ["", format [localize "STR_notifiers_city_joined",_city,FactionGet(occ,"name")]]] remoteExec ["BIS_fnc_showNotification",teamPlayer];
 			sidesX setVariable [_city,Occupants,true];
 			[Occupants, -10, 45] remoteExec ["A3A_fnc_addAggression",2];
 			garrison setVariable [_city,[],true];
@@ -85,25 +98,43 @@ while {true} do
 		isNil { ["ended", true] call A3A_fnc_writebackSaveVar };
 		["destroyedSites",false,true] remoteExec ["BIS_fnc_endMission"];
 	};
-	if ((_popReb > _popGov) and ({sidesX getVariable [_x,sideUnknown] == teamPlayer} count airportsX == count airportsX)) then {
+
+	if ((_popReb > _popGov) and {({sidesX getVariable [_x,sideUnknown] == teamPlayer} count (airportsX + milbases)) == count (airportsX + milbases)}) then {
 		isNil { ["ended", true] call A3A_fnc_writebackSaveVar };
 		["end1",true,true,true,true] remoteExec ["BIS_fnc_endMission",0];
 	};
 
 	{
-		if ((sidesX getVariable [_x,sideUnknown] == teamPlayer) and !(_x in destroyedSites)) then
+		if (sidesX getVariable [_x,sideUnknown] == teamPlayer and {!(_x in destroyedSites)}) then
 		{
 			_resAdd = _resAdd + (300 * _resBoost);
 		};
 	} forEach resourcesX;
+
+	_resAdd = [_resAdd] call SCRT_fnc_common_rebelSalary;
 
 	_hrAdd = ceil _hrAdd;
 	_resAdd = ceil _resAdd;
 	server setVariable ["hr", _hrAdd + (server getVariable "hr"), true];
 	server setVariable ["resourcesFIA", _resAdd + (server getVariable "resourcesFIA"), true];
 
-	bombRuns = bombRuns + 0.25 * ({sidesX getVariable [_x,sideUnknown] == teamPlayer} count airportsX);
+	private _rebAirportsQuantity = {sidesX getVariable [_x,sideUnknown] == teamPlayer} count airportsX;
+	bombRuns = bombRuns + 0.25 * _rebAirportsQuantity;
 	publicVariable "bombRuns";
+
+	if (bombRuns > (_rebAirportsQuantity * 2)) then {
+		bombRuns = _rebAirportsQuantity * 2;
+	};
+
+	if(tierWar > 2) then {
+        supportPoints = supportPoints + 1;
+    };
+
+    if(supportPoints > maxSupportPoints) then {
+        supportPoints = maxSupportPoints;
+    };
+
+	publicVariable "supportPoints";
 
 	// Regular income of finite starting weapons
 	private _equipMul = A3A_balancePlayerScale / 30;		// difficulty scaled. Hmm.
@@ -116,9 +147,9 @@ while {true} do
 		[_arsenalTab, _class, _count] call jn_fnc_arsenal_addItem;
 	} forEach (A3A_faction_reb get "initialRebelEquipment");
 
-	private _textX = format ["<t size='0.6' color='#C1C0BB'>Taxes Income.<br/> <t size='0.5' color='#C1C0BB'><br/>Manpower: +%1<br/>Money: +%2 €", _hrAdd, _resAdd];
+	private _textX = format [localize "STR_comms_mp_taxes_income", _hrAdd, _resAdd, A3A_faction_civ get "currencySymbol"];
 	private _textArsenal = [] call A3A_fnc_arsenalManage;
-	if (_textArsenal != "") then {_textX = format ["%1<br/>Arsenal Updated<br/><br/>%2", _textX, _textArsenal]};
+	if (_textArsenal != "") then {_textX = format [localize "STR_comms_mp_arsenal_updated", _textX, _textArsenal]};
 	[petros, "taxRep", _textX] remoteExec ["A3A_fnc_commsMP", [teamPlayer, civilian]];
 
 	[] call A3A_fnc_generateRebelGear;
@@ -133,11 +164,11 @@ while {true} do
         _x set [4, 0.5 max _r min 1.0];
     } forEach A3A_supportMarkerTypes;
 */
-	if (isMultiplayer) then
-	{
-		[] spawn A3A_fnc_promotePlayer;
-		[] call A3A_fnc_assignBossIfNone;
-	};
+	[] spawn A3A_fnc_promotePlayer;
+	[] call A3A_fnc_assignBossIfNone;
+
+	// Clear out plank objects that haven't been constructed and have exceeded the timeout
+	call A3A_fnc_processBuildingTimeouts;
 
 	// Decrease HQ knowledge values, old ones faster than current
 	if (A3A_curHQInfoOcc < 1) then { A3A_curHQInfoOcc = 0 max (A3A_curHQInfoOcc - 0.01) };
@@ -151,50 +182,73 @@ while {true} do
 	//[[],"A3A_fnc_reinforcementsAI"] call A3A_fnc_scheduler;
 	[] spawn A3A_fnc_reinforcementsAI;
 	{
-	_veh = _x;
-	if ((_veh isKindOf "StaticWeapon") and ({isPlayer _x} count crew _veh == 0) and (alive _veh)) then
-		{
-		_veh setDamage 0;
-		[_veh,1] remoteExec ["setVehicleAmmo",_veh];
+		_veh = _x;
+		if ((_veh isKindOf "StaticWeapon") and {{isPlayer _x} count crew _veh == 0 and {alive _veh}}) then {
+			_veh setDamage 0;
+			[_veh,1] remoteExec ["setVehicleAmmo",_veh];
 		};
 	} forEach vehicles;
 	sleep 3;
     _numWreckedAntennas = count antennasDead;
 	//Probability of spawning a mission in.
-    _shouldSpawnRepairThisTick = round(random 100) < 20;
-    if ((_numWreckedAntennas > 0) && _shouldSpawnRepairThisTick && !("REP" in A3A_activeTasks)) then
-		{
+    _shouldSpawnRepairThisTick = round(random 100) < 15;
+    if (_numWreckedAntennas > 0 && {_shouldSpawnRepairThisTick && {!("REP" in A3A_activeTasks)}}) then {
 		_potentials = [];
 		{
-		_markerX = [markersX, _x] call BIS_fnc_nearestPosition;
-		if ((sidesX getVariable [_markerX,sideUnknown] == Occupants) and (spawner getVariable _markerX == 2)) exitWith
-			{
-			_potentials pushBack [_markerX,_x];
+			if (!isNil "_x" && {!isNull _x}) then {
+				_markerX = [markersX, _x] call BIS_fnc_nearestPosition;
+				if (sidesX getVariable [_markerX,sideUnknown] == Occupants and {spawner getVariable _markerX == 2}) exitWith {
+					_potentials pushBack [_markerX,_x];
+				};
 			};
 		} forEach antennasDead;
-		if (count _potentials > 0) then
-			{
+		if (count _potentials > 0) then {
 			_potential = selectRandom _potentials;
 			[[_potential select 0,_potential select 1],"A3A_fnc_REP_Antenna"] call A3A_fnc_scheduler;
-			};
-		}
-	else
-		{
+		};
+	} else {
 		_changingX = false;
 		{
-		_chance = 5;
-		if ((_x in resourcesX) and (sidesX getVariable [_x,sideUnknown] == Invaders)) then {_chance = 20};
-		if (random 100 < _chance) then
-			{
-			_changingX = true;
-			destroyedSites = destroyedSites - [_x];
-			_nameX = [_x] call A3A_fnc_localizar;
-			["TaskSucceeded", ["", format ["%1 Rebuilt",_nameX]]] remoteExec ["BIS_fnc_showNotification",[teamPlayer,civilian]];
-			sleep 2;
+			_chance = 5;
+			if (_x in resourcesX and {sidesX getVariable [_x,sideUnknown] == Invaders}) then {
+				_chance = 20
 			};
-		} forEach (destroyedSites - citiesX) select {sidesX getVariable [_x,sideUnknown] != teamPlayer};
+			if (random 100 < _chance) then {
+				_changingX = true;
+				destroyedSites = destroyedSites - [_x];
+				_nameX = [_x] call A3A_fnc_localizar;
+				["TaskSucceeded", ["", format [localize "STR_notifiers_city_rebuilt",_nameX]]] remoteExec ["BIS_fnc_showNotification",[teamPlayer,civilian]];
+				sleep 2;
+			};
+		} forEach ((destroyedSites - citiesX) select {sidesX getVariable [_x,sideUnknown] != teamPlayer});
 		if (_changingX) then {publicVariable "destroyedSites"};
-		};
-
+	};
 	sleep 4;
+
+	if (areRivalsEnabled && tierWar > 3 && !areRivalsDiscovered && !isRivalsDiscoveryQuestAssigned) then {
+		Info_1("Rivals roll: %1", _rivalsTaskChance);
+		if (random 100 < _rivalsTaskChance) then {
+			Info("Assigning Rivals Discovery Task...");
+			[] call SCRT_fnc_rivals_prepareQuest;
+		} else {
+			_rivalsTaskChance = [
+				_rivalsTaskChance + 5,
+				_rivalsTaskChance + 10
+			] select (sunOrMoon < 1);
+		};
+	};
+
+	if (tierWar > 2 && !isTraderQuestCompleted && !isTraderQuestAssigned) then {
+		Info_1("Arms Dealer roll: %1", _traderTaskChance);
+		if (random 100 < _traderTaskChance) then {
+			Info("Assigning Arms Dealer Task...");
+			[] remoteExec ["SCRT_fnc_trader_prepareTraderQuest", 2];
+		} else {
+			_traderTaskChance = _traderTaskChance + 2;
+		};
+	};
+
+	if (areRivalsDiscovered && {!areRivalsDefeated}) then{
+		[random [5,7,10]] call SCRT_fnc_rivals_addProgressToRivalsLocationReveal;
+	};
 };

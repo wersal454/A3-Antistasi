@@ -25,6 +25,4 @@ License: MIT License
 FIX_LINE_NUMBERS()
 params ["_unit"];
 
-haveRadio
-|| {_unit call A3A_fnc_hasARadio}
-|| {A3A_hasIFA && {(units group _unit) findIf {(_x getVariable "unitType") isEqualTo FactionGet(reb,"unitGL")} > -1}}
+haveRadio || {_unit call A3A_fnc_hasARadio}

@@ -38,7 +38,7 @@ _group deleteGroupWhenEmpty true;
 
 _plane addEventHandler ["Killed", {
     params ["_plane"];
-    ["TaskSucceeded", ["", "Fighter Destroyed"]] remoteExec ["BIS_fnc_showNotification", teamPlayer];
+    ["TaskSucceeded", ["", localize "STR_notifiers_fighter_killed"]] remoteExec ["BIS_fnc_showNotification", teamPlayer];
 }];
 
 

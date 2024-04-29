@@ -19,7 +19,7 @@ switch (_key) do {
         ERROR("Disabled due to UseDoomGUI Switch.")
     #else
         closeDialog 0;
-        createDialog "radio_comm";
+        createDialog "radioComm";
     #endif
         [] spawn { sleep 1; GVAR(keys_battleMenu) = false; };
     };
@@ -59,15 +59,30 @@ switch (_key) do {
         if (!A3A_hasACEHearing) then {
             if (soundVolume <= 0.5) then {
                 0.5 fadeSound 1;
-                ["Ear Plugs", "You've taken out your ear plugs.", true] call A3A_fnc_customHint;
+                [localize "STR_A3A_keyActions_ear_plugs_header", localize "STR_A3A_keyActions_ear_plugs_off", true] call A3A_fnc_customHint;
             } else {
                 0.5 fadeSound 0.1;
-                ["Ear Plugs", "You've inserted your ear plugs.", true] call A3A_fnc_customHint;
+                [localize "STR_A3A_keyActions_ear_plugs_header", localize "STR_A3A_keyActions_ear_plugs_on", true] call A3A_fnc_customHint;
             };
         };
     };
 
-    Default {
+    case QGVAR(commanderRebelMenu): {
+        if (player getVariable ["incapacitated",false]) exitWith {
+            if (isMenuOpen) then {
+                closeDialog 0;closeDialog 0;
+            };
+        };
+        if (player getVariable ["owner",player] != player) exitWith {
+            if (isMenuOpen) then {
+                closeDialog 0;closeDialog 0;
+            };
+        };
+
+        [] call SCRT_fnc_ui_toggleCommanderMenu;
+    };
+
+    default {
         Error_1("Key action not registered: %1", _key)
     };
 };

@@ -13,6 +13,7 @@
     Public: No
     Dependencies:
         <ARRAY> airportsX
+        <ARRAY> Milbases
         <ARRAY> resourcesX
         <ARRAY> factories
         <ARRAY> outposts
@@ -119,7 +120,7 @@ private _outpostIconData = [];
     };
 
     _outpostIconData pushBack [_name, _pos, _type, _icon, _color, _fadedColor];
-} forEach airportsX + resourcesX + factories + outposts + seaports + citiesX + outpostsFIA + ["Synd_HQ"];
+} forEach airportsX + resourcesX + factories + outposts + seaports + citiesX + milbases + hmgpostsFIA + atpostsFIA + aapostsFIA + roadblocksFIA + watchpostsFIA + ["Synd_HQ"];
 
 // TODO UI-update: add warning symbol for outposts under attack/enemies near
 

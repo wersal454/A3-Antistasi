@@ -1,4 +1,3 @@
-
 params ["_unit", "_helped", "_enemy"];
 
 if !(_unit call A3A_fnc_canFight) exitWith {false};

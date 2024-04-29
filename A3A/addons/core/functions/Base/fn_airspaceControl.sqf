@@ -45,6 +45,10 @@ else
 private _outpostDetectionRange = [300, 500, 750] select _airType;
 private _outpostDetectionHeight = [150, 250, 500] select _airType;
 
+//Select height and range for milbases, numbers are values for [CIV_HELI, MIL_HELI, JET]
+private _milbaseDetectionRange = [450, 600, 1000] select _airType;
+private _milbaseDetectionHeight = [350, 350, 1500] select _airType;
+
 //Select height and range for outposts, numbers are values for [CIV_HELI, MIL_HELI, JET]
 private _airportDetectionRange = [500, 750, 1500] select _airType;
 private _airportDetectionHeight = [500, 500, 2500] select _airType;
@@ -53,6 +57,10 @@ private _airportDetectionHeight = [500, 500, 2500] select _airType;
 private _outpostWarningRange = 500;
 private _outpostWarningHeight = 250;
 
+//Selecting height and distance warning for milbases
+private _milbaseWarningRange = 600;
+private _milbaseWarningHeight = 350;
+
 //Selecting height and distance warning for airports
 private _airportWarningRange = 750;
 private _airportWarningHeight = 750;
@@ -60,6 +68,8 @@ private _airportWarningHeight = 750;
 //Initialize needed variables
 private _inWarningRangeOutpost = [];
 private _inDetectionRangeOutpost = [];
+private _inWarningRangeMilbase = [];
+private _inDetectionRangeMilbase = [];
 private _inWarningRangeAirport = [];
 private _inDetectionRangeAirport = [];
 private _vehicleIsUndercover = false;
@@ -146,7 +156,8 @@ while {!(isNull _vehicle) && {alive _vehicle && {count (crew _vehicle) != 0}}} d
 
     //Get all enemy airports and outposts to not search that much options
     private _enemyAirports = airportsX select {sidesX getVariable [_x, sideUnknown] != teamPlayer};
-    private _enemyOutposts = outposts select {sidesX getVariable [_x, sideUnknown] != teamPlayer};
+    private _enemyOutposts = (outposts + seaports) select {sidesX getVariable [_x, sideUnknown] != teamPlayer};
+    private _enemyMilbases = milbases select {sidesX getVariable [_x, sideUnknown] != teamPlayer};
 
     //Check vehicles undercover status
     if(_vehicleIsUndercover && {_vehicle getVariable ["NoFlyZoneDetected", ""] == ""}) then
@@ -167,11 +178,18 @@ while {!(isNull _vehicle) && {alive _vehicle && {count (crew _vehicle) != 0}}} d
         private _newOutposts = _outpostsInWarningRange - _inWarningRangeOutpost;
         _inWarningRangeOutpost = _outpostsInWarningRange;
 
+        //Check for nearby milbases
+        private _milbasesInWarningRange = [_enemyMilbases, _vehPos, _milbaseWarningRange, _milbaseWarningHeight] call _fn_getMarkersInRange;
+
+        //NewMilbases will contain all milbases of which the warning zone has just been entered
+        private _newMilbases = _milbasesInWarningRange - _inWarningRangeMilbase;
+        _inWarningRangeMilbase = _milbasesInWarningRange;
+
         {
             //Assuming you only get a single one each second, need to split it otherwise
-            private _warningText = format ["Unidentified helicopter<br/><br/>You are closing in on the airspace of %1.<br/><br/> Change your course or we will take defensive actions!", [_x] call A3A_fnc_localizar];
-            ["Undercover", _warningText] remoteExec ["A3A_fnc_customHint", (crew _vehicle)];
-        } forEach (_newAirports + _newOutposts);
+            private _warningText = format [localize "STR_A3A_base_airspace_control_warning", [_x] call A3A_fnc_localizar];
+            [localize "STR_info_bar_undercover_break_title", _warningText] remoteExec ["A3A_fnc_customHint", (crew _vehicle)];
+        } forEach (_newAirports + _newOutposts + _newMilbases);
 
         //Check if the aircraft got to close to any airport in which warning zone it already is
         {
@@ -191,6 +209,17 @@ while {!(isNull _vehicle) && {alive _vehicle && {count (crew _vehicle) != 0}}} d
                 };
             } forEach _inWarningRangeOutpost;
         };
+
+        //Check if the aircraft got to close to any milbase in which warning zone it already is
+        if(_vehicleIsUndercover) then
+        {
+            {
+                if([_vehicle, _vehPos, AGLToASL (getMarkerPos _x), _milbaseDetectionRange, _milbaseDetectionHeight] call _fn_checkNoFlyZone) exitWith
+                {
+                    _vehicleIsUndercover = false;
+                };
+            } forEach _inWarningRangeMilbase;
+        };
     }
     else
     {
@@ -198,34 +227,43 @@ while {!(isNull _vehicle) && {alive _vehicle && {count (crew _vehicle) != 0}}} d
 
         //Check for nearby airports
         private _airportsInRange = [_enemyAirports, _vehPos, _airportDetectionRange, _airportDetectionHeight] call _fn_getMarkersInRange;
+        private _milbasesInRange = [_enemyMilbases, _vehPos, _milbaseDetectionRange, _milbaseDetectionHeight] call _fn_getMarkersInRange;
 
         //newAirports will contain all airports which just detected the aircraft
         private _newAirports = _airportsInRange - _inDetectionRangeAirport;
         _inDetectionRangeAirport = _airportsInRange;
 
-        if(count _newAirports > 0) then
-        {
-            //Vehicle detected by another airport (or multiple, lucky in that case)
-            [_vehicle, _newAirports select 0] call _fn_sendSupport;
-            _supportCallAt = time + 300;
-        }
-        else
-        {
-            //No airport near, to save performance we only check outpost if they would be able to send support
-            if(time > _supportCallAt) then
-            {
-                //Check for nearby outposts
-                private _outpostsInRange = [_enemyOutposts, _vehPos, _outpostDetectionRange, _outpostDetectionHeight] call _fn_getMarkersInRange;
+        private _newMilbases = _milbasesInRange - _inDetectionRangeMilbase;
+        _inDetectionRangeMilbase = _milbasesInRange;
 
-                //Same as above
-                private _newOutposts = _outpostsInRange - _inDetectionRangeOutpost;
-                _inDetectionRangeOutpost = _outpostsInRange;
-
-                if(count _newOutposts > 0) then
+        switch (true) do {
+            case (count _newAirports > 0): {
+                //Vehicle detected by another airport (or multiple, lucky in that case)
+                [_vehicle, _newAirports select 0] call _fn_sendSupport;
+                _supportCallAt = time + 300;
+            };
+            case (count _newAirports > 0): {
+                //Vehicle detected by another milbase (or multiple, lucky in that case)
+                [_vehicle, _newMilbases select 0] call _fn_sendSupport;
+                _supportCallAt = time + 450;
+            };
+            default {
+                //No airport near, to save performance we only check outpost if they would be able to send support
+                if(time > _supportCallAt) then
                 {
-                    //Vehicle detected by another outpost, call support if possible
-                    [_vehicle, _newOutposts select 0] call _fn_sendSupport;
-                    _supportCallAt = time + 300;
+                    //Check for nearby outposts
+                    private _outpostsInRange = [_enemyOutposts, _vehPos, _outpostDetectionRange, _outpostDetectionHeight] call _fn_getMarkersInRange;
+
+                    //Same as above
+                    private _newOutposts = _outpostsInRange - _inDetectionRangeOutpost;
+                    _inDetectionRangeOutpost = _outpostsInRange;
+
+                    if(count _newOutposts > 0) then
+                    {
+                        //Vehicle detected by another outpost, call support if possible
+                        [_vehicle, _newOutposts select 0] call _fn_sendSupport;
+                        _supportCallAt = time + 300;
+                    };
                 };
             };
         };

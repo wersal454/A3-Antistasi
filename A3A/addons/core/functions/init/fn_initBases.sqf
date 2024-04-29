@@ -5,6 +5,8 @@ Info("InitBases started");
 
 // This is called pre-setup so that the map looks vaguely plausible
 
+// private _hideEnemyMarkers = missionNamespace getVariable ["A3U_setting_hideEnemyMarkers",false];
+
 private _fnc_initMarkerList =
 {
 	params ["_mrkCSAT", "_markers", "_mrkType", "_mrkText", ["_useSideName", false]];
@@ -15,14 +17,35 @@ private _fnc_initMarkerList =
 		private _mrkD = createMarkerLocal [format ["Dum%1", _x], _pos];
 		_mrkD setMarkerShapeLocal "ICON";
 
-        if (_x in airportsX) then {
-            _mrkD setMarkerTypeLocal (["flag_NATO", "flag_CSAT"] select _isInvader);
-            _mrkD setMarkerColorLocal "Default";
-        } else {
-            _mrkD setMarkerTypeLocal _mrkType;
-            _mrkD setMarkerColorLocal ([colorOccupants, colorInvaders] select _isInvader);
+        switch (true) do 
+        {
+            case (_x in airportsX): 
+            {
+                _mrkD setMarkerTypeLocal (["flag_NATO", "flag_CSAT"] select _isInvader);
+                _mrkD setMarkerColorLocal "Default";
+            };
+            case (_x in milbases): 
+            {
+                _mrkD setMarkerTypeLocal (["b_hq", "o_hq"] select _isInvader);
+                _mrkD setMarkerColorLocal ([colorOccupants, colorInvaders] select _isInvader);
+            };
+            case (_x in seaports): 
+            {
+                _mrkD setMarkerTypeLocal (["b_naval", "o_naval"] select _isInvader);
+                _mrkD setMarkerColorLocal ([colorOccupants, colorInvaders] select _isInvader);
+            };
+            default 
+            {
+                _mrkD setMarkerTypeLocal _mrkType;
+                _mrkD setMarkerColorLocal ([colorOccupants, colorInvaders] select _isInvader);
+            };
         };
-        _mrkD setMarkerText format [_mrkText, ["Occupant", "Invader"] select _isInvader];
+
+        // if (hideEnemyMarkers && {!(_x in airportsX)}) then {
+        //     _mrkD setMarkerAlpha 0;
+        // };
+
+        _mrkD setMarkerText format [_mrkText, [localize "STR_A3A_initBases_occ", localize "STR_A3A_initBases_inv"] select _isInvader];
 
         // arguable whether this should be done here? could be delayed until game start
         sidesX setVariable [_x, [Occupants, Invaders] select _isInvader, true];
@@ -48,10 +71,16 @@ private _controlsNATO = controlsX - _controlsCSAT;
 
 private _roadblockPositions = controlsX apply { markerPos _x };
 
-[_mrkCSAT, airportsX, "flag_NATO", "%1 Airbase", true] call _fnc_initMarkerList;
-[_mrkCSAT, resourcesX, "loc_rock", "Resources"] call _fnc_initMarkerList;
-[_mrkCSAT, factories, "u_installation", "Factory"] call _fnc_initMarkerList;
-[_mrkCSAT, outposts, "loc_bunker", "%1 Outpost", true] call _fnc_initMarkerList;
-[_mrkCSAT, seaports, "b_naval", "Sea Port"] call _fnc_initMarkerList;
+[_mrkCSAT, airportsX, "flag_NATO", localize "STR_airbase", true] call _fnc_initMarkerList;
+[_mrkCSAT, resourcesX, "loc_rock", localize "STR_resources"] call _fnc_initMarkerList;
+[_mrkCSAT, factories, "u_installation", localize "STR_factory"] call _fnc_initMarkerList;
+[_mrkCSAT, outposts, "loc_bunker", localize "STR_outpost", true] call _fnc_initMarkerList;
+[_mrkCSAT, milbases, "b_hq", localize "STR_milbase", true] call _fnc_initMarkerList;
+
+private _portName = [
+    localize "STR_port_sea",
+    localize "STR_port_river"
+] select (toLowerANSI worldName in ["enoch", "vn_khe_sanh", "esseker", "sefrouramal"]);
+[_mrkCSAT, seaports, "b_naval", _portName] call _fnc_initMarkerList;
 
 Info("InitBases completed");

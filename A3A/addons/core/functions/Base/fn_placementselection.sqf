@@ -4,10 +4,10 @@ scriptName "fn_placementSelection.sqf";
 private _disabledPlayerDamage = false;
 
 player allowDamage false;
-format ["%1 is Dead",name petros] hintC format ["%1 has been killed. You lost part of your assets and need to select a new HQ position far from the enemies.",name petros];
+format [localize "STR_hints_new_game_petros_dead_header",name petros] hintC format [localize "STR_hints_new_game_petros_dead_text",name petros];
 
 hintC_arr_EH = findDisplay 72 displayAddEventHandler ["unload",{
-	0 = _this spawn {
+	_nul = _this spawn {
 		_this select 0 displayRemoveEventHandler ["unload", hintC_arr_EH];
 		hintSilent "";
 	};
@@ -47,24 +47,24 @@ while {_positionIsInvalid} do {
 	_markerX = [_markersX,_positionClicked] call BIS_fnc_nearestPosition;
 
 	if (getMarkerPos _markerX distance _positionClicked < 500) then {
-		["HQ Position", "Place selected is very close to enemy zones.<br/><br/> Please select another position."] call A3A_fnc_customHint;
+		[localize "STR_A3A_Base_placementselection_header", localize "STR_A3A_Base_placementselection_too_close_enemy_zones"] call SCRT_fnc_misc_deniedHint;
 		_positionIsInvalid = true;
 	};
 
 	if (!_positionIsInvalid && {surfaceIsWater _positionClicked}) then {
-		["HQ Position", "Selected position cannot be in water."] call A3A_fnc_customHint;
+		[localize "STR_A3A_Base_placementselection_header", localize "STR_A3A_Base_placementselection_not_water"] call SCRT_fnc_misc_deniedHint;
 		_positionIsInvalid = true;
 	};
 
 	if (!_positionIsInvalid && (_positionClicked findIf { (_x < 0) || (_x > worldSize)} != -1)) then {
-		["HQ Position", "Selected position cannot be outside the map."] call A3A_fnc_customHint;
+		[localize "STR_A3A_Base_placementselection_header", localize "STR_A3A_Base_placementselection_oob"] call SCRT_fnc_misc_deniedHint;
 		_positionIsInvalid = true;
 	};
 
 	if (!_positionIsInvalid) then {
 		//Invalid if enemies nearby
 		_positionIsInvalid = (allUnits findIf {(side _x == Occupants || side _x == Invaders) && {_x distance _positionClicked < 500}}) > -1;
-		if (_positionIsInvalid) then {["HQ Position", "There are enemies in the surroundings of that area, please select another."] call A3A_fnc_customHint;};
+		if (_positionIsInvalid) then {[localize "STR_A3A_Base_placementselection_header", localize "STR_A3A_Base_placementselection_enemies"] call SCRT_fnc_misc_deniedHint;};
 	};
 	sleep 0.1;
 };

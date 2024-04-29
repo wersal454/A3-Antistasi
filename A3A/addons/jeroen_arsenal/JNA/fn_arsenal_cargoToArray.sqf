@@ -64,7 +64,7 @@ _unloadContainer = {
 
 	//weapons and attachmetns
 	_attItems = weaponsItemsCargo _container_sub;
-	// [["arifle_TRG21_GL_F","","","optic_DMS",["ammo"],""]]
+	// [["arifle_TRG21_GL_F","","","optic_dms",["ammo"],""]]
 	{
 		{
 			private["_index","_item","_amount"];

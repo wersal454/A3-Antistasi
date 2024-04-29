@@ -1,9 +1,11 @@
 if (!isServer) exitWith {};
-if (count hcArray == 0) exitWith {[petros,"hint","No Headless Client Detected","AI Load Information"] remoteExec ["A3A_fnc_commsMP",remoteExecutedOwner]};
-_textX = "";
+if (count hcArray == 0) exitWith {
+	[petros,"hint",localize "STR_A3A_Base_AI_Load_Information_no_hc",localize "STR_A3A_Base_AI_Load_Information"] remoteExec ["A3A_fnc_commsMP",remoteExecutedOwner]
+};
 
-for "_i" from 0 to (count hcArray) - 1 do
-	{
+private _textX = "";
+
+for "_i" from 0 to (count hcArray) - 1 do {
 	_textX = format ["%1HC %2 AI<br/><br/>",_textX, _i];
 	_west = 0;
 	_east = 0;
@@ -24,6 +26,7 @@ for "_i" from 0 to (count hcArray) - 1 do
 			};
 		};
 	} forEach allUnits select {alive _x};
-	_textX = format ["%1Reb: %2<br/>Occ:%3<br/>Inv:%4<br/>Civ:%5<br/>TOTAL:%6<br/><br/>",_textX,_indep,_west,_east,_civ,_total];
-	};
-[petros, "hint", _textX, "AI Load Information"] remoteExec ["A3A_fnc_commsMP",remoteExecutedOwner];
+	_textX = format [localize "STR_A3A_Base_AI_Info_String",_textX,_indep,_west,_east,_civ,_total];
+};
+
+[petros, "hint", _textX, localize "STR_A3A_Base_AI_Load_Information"] remoteExec ["A3A_fnc_commsMP",remoteExecutedOwner];

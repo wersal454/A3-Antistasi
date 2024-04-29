@@ -84,7 +84,7 @@ private _baseCategory = switch (_itemType select 1) do
         default {"Unknown"};
     };
 
-if (_baseCategory != "") then { _categories pushBack _baseCategory};
+if (_baseCategory isNotEqualTo "") then { _categories pushBack _baseCategory};
 
 private _aggregateCategory = switch (_itemType select 0) do {
     case "Weapon": {"Weapons"};
@@ -95,15 +95,15 @@ private _aggregateCategory = switch (_itemType select 0) do {
     default {""};
 };
 
-if (_aggregateCategory != "") then {
+if (_aggregateCategory isNotEqualTo "") then {
     _categories pushBack _aggregateCategory;
 };
 
-if (_aggregateCategory == "Explosives") then {
+if (_aggregateCategory isEqualTo "Explosives") then {
     _categories pushBack "Magazines";         //Every explosive is a magazine.
     // Charge detection. Not great, detects everything with vanilla time/remote trigger placement
     // except the CUP satchel charge which somehow dodges the "Mine" part
-    if (_baseCategory == "Mine") then {
+    if (_baseCategory isEqualTo "Mine") then {
         private _magcfg = configFile >> "CfgMagazines" >> _classname;
         private _ammocfg = configFile / "CfgAmmo" / getText (_magcfg / "ammo");
         if (getText (_ammoCfg / "mineTrigger") == "remotetrigger") then { _categories pushBack "ExplosiveCharges" };
@@ -111,7 +111,7 @@ if (_aggregateCategory == "Explosives") then {
 };
 
 call {
-    if (_baseCategory == "Rifles") exitWith {
+    if (_baseCategory isEqualTo "Rifles") exitWith {
         private _config = configfile >> "CfgWeapons" >> _className;
         private _muzzles = getArray (_config >> "muzzles");
         // workaround for RHS having an extra muzzle for "SAFE"
@@ -120,26 +120,26 @@ call {
         };
     };
 
-    if (_basecategory == "Vests") exitWith {
+    if (_basecategory isEqualTo "Vests") exitWith {
         if (getNumber (configfile >> "CfgWeapons" >> _className >> "ItemInfo" >> "HitpointsProtectionInfo" >> "Chest" >> "armor") > 5) then {
             _categories pushBack "ArmoredVests";
         };
     };
 
-    if (_basecategory == "Headgear") exitWith {
+    if (_basecategory isEqualTo "Headgear") exitWith {
         if (getNumber (configfile >> "CfgWeapons" >> _className >> "ItemInfo" >> "HitpointsProtectionInfo" >> "Head" >> "armor") > 0) then {
             _categories pushBack "ArmoredHeadgear";
         };
     };
 
-    if (_basecategory == "Backpacks") exitWith {
+    if (_basecategory isEqualTo "Backpacks") exitWith {
         // 160 = assault pack. Just a way to limit which backpacks friendly AI are using.
         if (getNumber (configFile >> "CfgVehicles" >> _className >> "maximumLoad") >= 160) then {
             _categories pushBack "BackpacksCargo";
         };
     };
 
-    if (_basecategory == "Optics") exitWith {
+    if (_basecategory isEqualTo "Optics") exitWith {
         if (getNumber (configFile >> "CfgWeapons" >> _className >> "ace_scopeAdjust_verticalIncrement") > 0) exitWith { _categories pushBack "OpticsLong" };
         if !(isClass (configFile >> "CfgWeapons" >> _className >> "ItemInfo" >> "OpticsModes")) exitWith {};
         private _configs = "true" configClasses (configFile >> "CfgWeapons" >> _className >> "ItemInfo" >> "OpticsModes");
@@ -154,17 +154,17 @@ call {
         _categories pushBack _rangeCat;
     };
 
-    if (_baseCategory == "RocketLaunchers") exitWith {
+    if (_baseCategory isEqualTo "RocketLaunchers") exitWith {
         _categories pushBack "AT";
         private _config = configFile >> "CfgWeapons" >> _classname; 
-        if (getNumber (_config >> "rhs_disposable") == 1 or {getArray (_config >> "magazines") # 0 == "CBA_fakeLauncherMagazine"}) then {
+        if (getNumber (_config >> "rhs_disposable") isEqualTo 1 or {getArray (_config >> "magazines") # 0 == "CBA_fakeLauncherMagazine"}) then {
             // Need to consider scope 1 stuff in case it ends up in arsenal, or this function is used on equipped/dropped items
             if (getNumber (_config >> "scope") == 1) then { _categories set [0, "UsedLaunchers"] };
             _categories pushBack "Disposable";
         };
     };
 
-    if (_baseCategory == "MissileLaunchers") exitWith {
+    if (_baseCategory isEqualTo "MissileLaunchers") exitWith {
         private _config = configFile >> "CfgWeapons" >> _classname; 
         private _mainmag = getArray (_config >> "Magazines") # 0;
         if (getNumber (_config >> "rhs_disposable") == 1 or _mainmag == "CBA_fakeLauncherMagazine") then {
@@ -190,12 +190,12 @@ call {
         };
     };
 
-    if (_baseCategory == "NVGs") exitWith {
+    if (_baseCategory isEqualTo "NVGs") exitWith {
         private _thermal = getArray (configFile >> "CfgWeapons" >> _classname >> "thermalMode");
         if (_thermal isNotEqualTo []) then { _categories pushBack "NVGThermal" };
     };
 
-    if (_baseCategory == "PointerAttachments") exitWith {
+    if (_baseCategory isEqualTo "PointerAttachments") exitWith {
         private _isLight = isClass(configfile >> "CfgWeapons" >> _classname >> "ItemInfo" >> "FlashLight" >> "Attenuation");
         _categories pushBack (["LaserAttachments", "LightAttachments"] select _isLight);
     };

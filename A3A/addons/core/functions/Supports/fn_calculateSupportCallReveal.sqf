@@ -13,6 +13,7 @@ Environment: Unscheduled
 Public: Yes
 Dependencies:
     <ARRAY> airportsX
+    <ARRAY> milbases
     <NAMESPACE> sidesX
     <SIDE> teamPlayer
     <ARRAY> antennas
@@ -59,7 +60,7 @@ if(sidesX getVariable [_nearestAirport, sideUnknown] == teamPlayer) then
 
 //If nearest antenna is owned by rebels increase chance, if near increase even more
 private _nearestAntenna = [antennas, _position] call BIS_fnc_nearestPosition;
-private _antennaMarker = [outposts + airportsX, _position] call BIS_fnc_nearestPosition;
+private _antennaMarker = [outposts + airportsX + milbases, _position] call BIS_fnc_nearestPosition;
 if(sidesX getVariable [_antennaMarker, sideUnknown] == teamPlayer) then
 {
     _hardValue = _hardValue + 10;

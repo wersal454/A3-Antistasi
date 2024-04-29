@@ -181,32 +181,3 @@ _patrolMarker setMarkerSizeLocal _patrolMarkerSize;
 {
   [_x, "Patrol_Area", 25, 150, 300, false, [], false] call A3A_fnc_patrolLoop;
 } forEach _patrolGroups;
-
-/*
-waitUntil {sleep 5; (spawner getVariable _marker == 2)};
-
-[_marker] call A3A_fnc_freeSpawnPositions;
-
-deleteMarker _patrolMarker;
-
-{
-	if (alive _x) then
-	{
-		deleteVehicle _x;
-	};
-} forEach _allSoldiers;
-
-{
-	deleteGroup _x
-} forEach _allGroups;
-
-{
-	if (!(_x in staticsToSave)) then
-	{
-		if ((!([distanceSPWN, 1, _x, teamPlayer] call A3A_fnc_distanceUnits))) then
-		{
-			deleteVehicle _x;
-		};
-	};
-} forEach _allVehicles;
-*/

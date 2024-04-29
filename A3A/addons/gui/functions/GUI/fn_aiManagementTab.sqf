@@ -188,14 +188,6 @@ switch (_mode) do
 
     case ("autoHealButtonClicked"):
     {
-        // This one needs some more shit to work, see unstable branch
-        /* private _display = findDisplay A3A_IDD_MAINDIALOG;
-        private _aiListBox = _display displayCtrl A3A_IDC_AILISTBOX;
-        private _units = [];
-        {
-            _units pushBack (objectFromNetId (_aiListBox lbData _x));
-        } forEach lbSelection _aiListBox;
-        [_units] call A3A_fnc_autoHealFnc; */
     };
 
     default

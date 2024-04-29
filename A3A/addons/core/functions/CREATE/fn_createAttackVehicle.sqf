@@ -21,7 +21,7 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-params ["_vehicleType", "_troopType", "_resPool", "_landPosBlacklist", "_side", "_markerOrigin", "_posDestination"];
+params ["_vehicleType", "_troopType", "_resPool", "_landPosBlacklist", "_side", "_markerOrigin", "_posDestination", ["_isAirdrop", false]];
 
 private _faction = Faction(_side);
 private _vehicle = [_markerOrigin, _vehicleType] call A3A_fnc_spawnVehicleAtMarker;
@@ -42,10 +42,11 @@ if (_expectedCargo >= 2 and !_isAttackHeli) then
 {
     //Vehicle is able to transport units
     private _groupType = call {
+        if (_isAirdrop) exitWith { selectRandom ([_faction get "groupsTierAirborne"] call SCRT_fnc_unit_getTiered) };
         if (_troopType == "Normal") exitWith { [_vehicleType, _side] call A3A_fnc_cargoSeats };
-        if (_troopType == "Specops") exitWith { _faction get "groupSpecOps" };
-        if (_troopType == "Air") exitWith { _faction get "groupAA" };
-        if (_troopType == "Tank") exitWith { _faction get "groupAT" };
+        if (_troopType == "Specops") exitWith { selectRandom (_faction get "groupSpecOpsRandom") };
+        if (_troopType == "Air") exitWith { [_faction get "groupTierAA"] call SCRT_fnc_unit_getTiered };
+        if (_troopType == "Tank") exitWith { [_faction get "groupTierAT"] call SCRT_fnc_unit_getTiered };
     };
 
     // Find turret paths that count as cargo seats
@@ -58,7 +59,7 @@ if (_expectedCargo >= 2 and !_isAttackHeli) then
         } forEach ("true" configClasses (_config >> "Turrets"));
     };
     private _cargoTurrets = [];
-    if !(_vehicleType in ["LIB_C47_Skytrain", "LIB_C47_RAF"]) then {
+    if !(_vehicleType in ["LIB_C47_Skytrain", "LIB_C47_RAF", "LIB_Li2", "A3U_LIB_C47_German"]) then {
         [configFile >> "CfgVehicles" >> _vehicleType] call _fnc_addCargoTurrets;
     };
 
@@ -77,7 +78,7 @@ if (_expectedCargo >= 2 and !_isAttackHeli) then
     } forEach units _cargoGroup;
 };
 
-_landPosBlacklist = [_vehicle, _crewGroup, _cargoGroup, _posDestination, _markerOrigin, _landPosBlacklist] call A3A_fnc_createVehicleQRFBehaviour;
+_landPosBlacklist = [_vehicle, _crewGroup, _cargoGroup, _posDestination, _markerOrigin, _landPosBlacklist, _isAirdrop, _resPool] call A3A_fnc_createVehicleQRFBehaviour;
 ServerDebug_5("Spawn Performed: Created vehicle %1 with %2 crew (%3) and %4 cargo (%5)", typeof _vehicle, count units _crewGroup, _crewGroup, count units _cargoGroup, _cargoGroup);
 
 [_vehicle, _crewGroup, _cargoGroup, _landPosBlacklist];

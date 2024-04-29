@@ -50,9 +50,7 @@ if (count _mortarsX == 1) then
 	_mortarsX append ((units _groupX) select {_x getVariable ["typeOfSoldier",""] == "StaticBase"});
 	if (count _mortarsX > 1) then
 		{
-        //Never happens, the two previous conditions exclude each other
-		//_mortarsX spawn A3A_fnc_mortarDrill;
-		_mortarsX spawn A3A_fnc_staticMGDrill;//no olvides borrar la otra función si esto funciona
+		_mortarsX spawn A3A_fnc_staticMGDrill;
 		}
 	else
 		{
@@ -212,19 +210,17 @@ while {true} do
 							{
 							[_x,_nearX] call A3A_fnc_suppressingFire;
 							} forEach _baseOfFire select {(_x getVariable ["typeOfSoldier",""] == "MGMan") or (_x getVariable ["typeOfSoldier",""] == "StaticGunner")};
+
 							if (sunOrMoon < 1) then
 								{
-								if !(haveNV) then
-									{
-									if (A3A_hasIFA) then
-										{
-										if (([_LeaderX] call A3A_fnc_canFight) and ((_LeaderX getVariable "unitType") in FactionGet(all,"SquadLeaders"))) then {[_LeaderX,_nearX] call A3A_fnc_useFlares}
-										}
-									else
-										{
-										{
-										[_x,_nearX] call A3A_fnc_suppressingFire;
-										} forEach _baseOfFire select {(_x getVariable ["typeOfSoldier",""] == "Normal") and (count (getArray (configfile >> "CfgWeapons" >> primaryWeapon _x >> "muzzles")) == 2)};
+									private _noNvgIndex = (units _groupX) findIf {hmd _x == "" || {getArray (configFile >> "CfgWeapons" >> (hmd _x) >> "visionMode") isEqualTo ["Normal","Normal"]}};	
+									if (_noNvgIndex != -1) then {
+										if (([_LeaderX] call A3A_fnc_canFight) and (primaryWeapon _LeaderX in allGrenadeLaunchers)) then {
+											[_LeaderX,_nearX] call A3A_fnc_useFlares
+										} else {
+											{
+												[_x,_nearX] call A3A_fnc_suppressingFire;
+											} forEach _baseOfFire select {(_x getVariable ["typeOfSoldier",""] == "Normal") and (count (getArray (configfile >> "CfgWeapons" >> primaryWeapon _x >> "muzzles")) == 2)};
 										};
 									};
 								};

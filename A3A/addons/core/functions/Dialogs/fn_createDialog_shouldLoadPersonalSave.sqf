@@ -1,10 +1,21 @@
-private _saveString = ["Antistasi has a custom save system similar to other CTIs.<br/><br/>",
-    "To Save: Your commander needs to go to the <t color='#f0d498'>Map Board</t>, scroll-select <t color='#f0d498'>""Game Options""</t> and click on the <t color='#f0d498'>""Persistent Save""</t> button.<br/><br/>"] joinString "";
-_saveString = if (autoSave) then { [_saveString,"Current parameters are configured to auto-save every <t color='#f0d498'>",(autoSaveInterval/60) toFixed 0," minutes</t>."] joinString "" }
-    else { [_saveString,"Auto-save is currently disabled"] joinString "" };
+private _saveString = [
+    localize "STR_A3A_Dialogs_create_dialog_save_personal_save_1",
+    localize "STR_A3A_Dialogs_create_dialog_save_personal_save_2"
+] joinString "";
+_saveString = if (autoSave) then { 
+    [
+        _saveString,
+        localize "STR_A3A_Dialogs_create_dialog_save_personal_save_3",
+        (autoSaveInterval/60) toFixed 0,
+        " ",
+        localize "STR_A3A_Dialogs_create_dialog_save_personal_save_4"
+    ] joinString "" 
+} else { 
+    [_saveString,localize "STR_A3A_Dialogs_create_dialog_save_personal_save_5"] joinString "" 
+};
 
-["W A R N I N G ", _saveString] call A3A_fnc_customHint;
+[localize "STR_A3A_Dialogs_create_dialog_save_personal_save_header", _saveString] call A3A_fnc_customHint;
 
-[true] call A3A_fnc_loadPreviousSession;
+[getPlayerUID player, player] remoteExecCall ["A3A_fnc_loadPlayer", 2];
 
 [] spawn A3A_fnc_credits;

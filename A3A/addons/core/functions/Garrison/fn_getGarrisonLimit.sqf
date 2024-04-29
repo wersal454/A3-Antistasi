@@ -38,6 +38,9 @@ private _limit = switch (true) do {
     case (_marker in airportsX): {
         round (A3A_rebelGarrisonLimit * 1.5)
     };
+    case (_marker in milbases): {
+        round (A3A_rebelGarrisonLimit * 1.25)
+    };
     case (_marker in factories || {_marker in resourcesX}): {
         round (A3A_rebelGarrisonLimit * 0.5)
     };

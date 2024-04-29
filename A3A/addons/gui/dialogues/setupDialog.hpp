@@ -2,8 +2,8 @@
 class A3A_SetupDialog : A3A_TabbedDialog
 {
     idd = A3A_IDD_SETUPDIALOG;
-    onLoad = "['onLoad'] spawn A3A_fnc_setupDialog";
-    onUnload = "['onUnload'] call A3A_fnc_setupDialog";
+    onLoad = "['on'] call SCRT_fnc_ui_toggleMenuBlur;['onLoad'] spawn A3A_fnc_setupDialog";
+    onUnload = "['off'] call SCRT_fnc_ui_toggleMenuBlur;['onUnload'] call A3A_fnc_setupDialog";
 
     class Controls
     {
@@ -49,12 +49,23 @@ class A3A_SetupDialog : A3A_TabbedDialog
                     h = 5 * GRID_H;
                 };
 
+                class ContentTabButton : A3A_Button
+                {
+                    idc = A3A_IDC_SETUP_CONTENTTABBUTTON;
+                    text = $STR_antistasi_dialogs_setup_content_tab_button;
+                    onButtonClick = "['switchTab', ['content']] call A3A_fnc_setupDialog;";
+                    x = 60 * GRID_W;
+                    y = 0;
+                    w = 30 * GRID_W;
+                    h = 5 * GRID_H;
+                };
+
                 class ParamsTabButton : A3A_Button
                 {
                     idc = A3A_IDC_SETUP_PARAMSTABBUTTON;
                     text = $STR_antistasi_dialogs_setup_params_tab_button;
                     onButtonClick = "['switchTab', ['params']] call A3A_fnc_setupDialog;";
-                    x = 60 * GRID_W;
+                    x = 90 * GRID_W;
                     y = 0;
                     w = 30 * GRID_W;
                     h = 5 * GRID_H;
@@ -102,6 +113,7 @@ class A3A_SetupDialog : A3A_TabbedDialog
                 {
                     idc = A3A_IDC_SETUP_SAVESLISTBOX;
                     onMouseButtonUp = "['saveListClick', _this] call A3A_fnc_setupLoadgameTab";
+                    onMouseButtonDblClick = "['saveListDoubleClick', _this] call A3A_fnc_setupLoadgameTab";
                     x = 4 * GRID_W;
                     y = 12 * GRID_H;
                     w = 118 * GRID_W;
@@ -193,28 +205,12 @@ class A3A_SetupDialog : A3A_TabbedDialog
                     w = 26 * GRID_W;
                     h = 4 * GRID_H;
                 };
-                class NewNamespaceCheck: A3A_Checkbox {
-                    idc = A3A_IDC_SETUP_NAMESPACECHECKBOX;
-                    onCheckedChanged = "['newNamespaceCheck'] call A3A_fnc_setupLoadgameTab";
-                    x = 126 * GRID_W;
-                    y = 30 * GRID_H;
-                    w = 4 * GRID_W;
-                    h = 4 * GRID_H;
-                };
-                class NewNamespaceText: A3A_text {
-                    idc = A3A_IDC_SETUP_NAMESPACETEXT;
-                    text = $STR_antistasi_dialogs_setup_use_new_namespace;
-                    x = 130 * GRID_W;
-                    y = 30 * GRID_H;
-                    w = 26 * GRID_W;
-                    h = 4 * GRID_H;
-                };
                 class SetHQPosButton: A3A_Button {
                     idc = A3A_IDC_SETUP_HQPOSBUTTON;
                     text = $STR_antistasi_dialogs_setup_set_hq_position;
                     onButtonClick = "['setHQPos'] call A3A_fnc_setupLoadgameTab";
                     x = 126 * GRID_W;
-                    y = 36 * GRID_H;
+                    y = 30 * GRID_H;
                     w = 30 * GRID_W;
                     h = 6 * GRID_H;
                 };
@@ -282,23 +278,17 @@ class A3A_SetupDialog : A3A_TabbedDialog
                     h = 20 * GRID_H;
                 };
 
-                class AddonVicsLabel: A3A_SectionLabelRight {
+                class RivalsLabel: A3A_SectionLabelRight {
                     idc = -1;
-                    text = $STR_antistasi_dialogs_setup_addonvics;
+                    text = $STR_antistasi_dialogs_setup_rivals;
                     x = 4 * GRID_W;
                     y = 56 * GRID_H;
                     w = 34 * GRID_W;
                     h = 4 * GRID_H;
                 };
-                class AddonVicsBackground: A3A_Background {
-                    idc = -1;
-                    x = 4 * GRID_W;
-                    y = 60 * GRID_H;
-                    w = 34 * GRID_W;
-                    h = 36 * GRID_H;
-                };
-                class AddonVicsBox: A3A_ControlsGroup {
-                    idc = A3A_IDC_SETUP_ADDONVICSBOX;
+                class RivalsListBox: A3A_Listbox_Small {
+                    idc = A3A_IDC_SETUP_RIVALSLISTBOX;
+                    onLBSelChanged = "['factionSelected', _this] call A3A_fnc_setupFactionsTab";
                     x = 4 * GRID_W;
                     y = 60 * GRID_H;
                     w = 34 * GRID_W;
@@ -341,7 +331,7 @@ class A3A_SetupDialog : A3A_TabbedDialog
 
                 class SwitchEnemyCheck: A3A_Checkbox {
                     idc = A3A_IDC_SETUP_SWITCHENEMYCHECK;
-                    onCheckedChanged = "['fillFactions', [false]] call A3A_fnc_setupFactionsTab";
+                    onCheckedChanged = "['fillFactions'] call A3A_fnc_setupFactionsTab";
                     x = 124 * GRID_W;
                     y = 4 * GRID_H;
                     w = 4 * GRID_W;
@@ -357,7 +347,7 @@ class A3A_SetupDialog : A3A_TabbedDialog
                 };
                 class AnyEnemyCheck: A3A_Checkbox {
                     idc = A3A_IDC_SETUP_ANYENEMYCHECK;
-                    onCheckedChanged = "['fillFactions', [false]] call A3A_fnc_setupFactionsTab";
+                    onCheckedChanged = "['fillFactions'] call A3A_fnc_setupFactionsTab";
                     x = 124 * GRID_W;
                     y = 10 * GRID_H;
                     w = 4 * GRID_W;
@@ -373,7 +363,7 @@ class A3A_SetupDialog : A3A_TabbedDialog
                 };
                 class IgnoreCamoCheck: A3A_Checkbox {
                     idc = A3A_IDC_SETUP_IGNORECAMOCHECK;
-                    onCheckedChanged = "['fillFactions', [false]] call A3A_fnc_setupFactionsTab";
+                    onCheckedChanged = "['fillFactions'] call A3A_fnc_setupFactionsTab";
                     x = 124 * GRID_W;
                     y = 16 * GRID_H;
                     w = 4 * GRID_W;
@@ -389,7 +379,7 @@ class A3A_SetupDialog : A3A_TabbedDialog
                 };
                 class ShowMissingCheck: A3A_Checkbox {
                     idc = A3A_IDC_SETUP_SHOWMISSINGCHECK;
-                    onCheckedChanged = "['fillFactions', [false]] call A3A_fnc_setupFactionsTab";
+                    onCheckedChanged = "['fillFactions'] call A3A_fnc_setupFactionsTab";
                     x = 124 * GRID_W;
                     y = 22 * GRID_H;
                     w = 4 * GRID_W;
@@ -403,28 +393,60 @@ class A3A_SetupDialog : A3A_TabbedDialog
                     w = 28 * GRID_W;
                     h = 4 * GRID_H;
                 };
+            };
+        };
 
+        class ContentTab : A3A_DefaultControlsGroup
+        {
+            idc = A3A_IDC_SETUP_CONTENTTAB;
+            show = false;
+
+            class Controls
+            {
                 class DLCLabel: A3A_SectionLabelRight {
                     idc = -1;
                     text = $STR_antistasi_dialogs_setup_dlc;
-                    x = 124 * GRID_W;
-                    y = 30 * GRID_H;
-                    w = 32 * GRID_W;
+                    x = 4 * GRID_W;
+                    y = 4 * GRID_H;
+                    w = 34 * GRID_W;
                     h = 4 * GRID_H;
                 };
                 class DLCBackground: A3A_Background {
                     idc = -1;
-                    x = 124 * GRID_W;
-                    y = 34 * GRID_H;
-                    w = 32 * GRID_W;
-                    h = 62 * GRID_H;
+                    x = 4 * GRID_W;
+                    y = 8 * GRID_H;
+                    w = 34 * GRID_W;
+                    h = 48 * GRID_H;
                 };
                 class DLCBox: A3A_ControlsGroup {
                     idc = A3A_IDC_SETUP_DLCBOX;
-                    x = 124 * GRID_W;
-                    y = 34 * GRID_H;
-                    w = 32 * GRID_W;
-                    h = 62 * GRID_H;
+                    x = 4 * GRID_W;
+                    y = 8 * GRID_H;
+                    w = 34 * GRID_W;
+                    h = 48 * GRID_H;
+                };
+
+                class AddonVicsLabel: A3A_SectionLabelRight {
+                    idc = -1;
+                    text = $STR_antistasi_dialogs_setup_addonvics;
+                    x = 4 * GRID_W;
+                    y = 56 * GRID_H;
+                    w = 34 * GRID_W;
+                    h = 4 * GRID_H;
+                };
+                class AddonVicsBackground: A3A_Background {
+                    idc = -1;
+                    x = 4 * GRID_W;
+                    y = 60 * GRID_H;
+                    w = 34 * GRID_W;
+                    h = 36 * GRID_H;
+                };
+                class AddonVicsBox: A3A_ControlsGroup {
+                    idc = A3A_IDC_SETUP_ADDONVICSBOX;
+                    x = 4 * GRID_W;
+                    y = 60 * GRID_H;
+                    w = 34 * GRID_W;
+                    h = 36 * GRID_H;
                 };
             };
         };

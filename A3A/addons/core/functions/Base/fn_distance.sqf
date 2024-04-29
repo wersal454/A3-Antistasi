@@ -13,10 +13,10 @@ Environment: Scheduled
 Public: No
 Dependencies:
     Occupants, Invaders, teamPlayer, markersX, forcedSpawn, spawner,
-    controlsX, airportsX, resourcesX, factories, outposts, seports,
-    A3A_fnc_createAICities, A3A_fnc_createCIV, A3A_fnc_createAIcontrols,
+    controlsX, airportsX, milbases, resourcesX, factories, outposts, seports,
+    A3A_fnc_createAICities, A3A_fnc_createAIcontrols,
     A3A_fnc_createAIAirplane, A3A_fnc_createAIresources, A3A_fnc_createAIOutposts,
-    A3A_fnc_createFIAOutposts2, A3A_fnc_createSDKGarrisons
+    A3A_fnc_createSDKGarrisons
 
 Example: [] spawn A3A_fnc_distance;
 */
@@ -138,6 +138,16 @@ private _processOccupantMarker = {
                 {
                     [[_marker], "A3A_fnc_createAIOutposts"] call A3A_fnc_scheduler;
                 };
+
+                case(_marker in milbases): 
+                {
+                    [[_marker],"A3A_fnc_createAIMilbase"] call A3A_fnc_scheduler;
+                };
+
+                case (_marker in milAdministrationsX):
+                {
+                    [[_marker], "A3A_fnc_createAIMilAdmin"] call A3A_fnc_scheduler;
+                };
             };
         };
     };
@@ -221,16 +231,24 @@ private _processFIAMarker = {
             spawner setVariable [_marker, ENABLED, true];
 
             // run spawn procedures
-            switch (true)
-            do
-            {
-                case (_marker in outpostsFIA):
-                {
-                    [[_marker], "A3A_fnc_createFIAOutposts2"] call A3A_fnc_scheduler;
+            switch (true) do {
+                case (_marker in watchpostsFIA): {
+                    [[_marker],"SCRT_fnc_outpost_createWatchpostDistance"] call A3A_fnc_scheduler;
+                };
+                case (_marker in roadblocksFIA): {
+                    [[_marker],"SCRT_fnc_outpost_createRoadblockDistance"] call A3A_fnc_scheduler;
+                };
+                case (_marker in aapostsFIA): {
+                    [[_marker],"SCRT_fnc_outpost_createAaDistance"] call A3A_fnc_scheduler;
+                };
+                case (_marker in atpostsFIA): {
+                    [[_marker],"SCRT_fnc_outpost_createAtDistance"] call A3A_fnc_scheduler;
+                };
+                case (_marker in hmgpostsFIA): {
+                    [[_marker],"SCRT_fnc_outpost_createHmgDistance"] call A3A_fnc_scheduler;
                 };
 
-                case !(_marker in controlsX):
-                {
+                case !(_marker in controlsX): {
                     [[_marker], "A3A_fnc_createSDKGarrisons"] call A3A_fnc_scheduler;
                 };
             };
@@ -338,6 +356,11 @@ private _processInvaderMarker = {
                 {
                     [[_marker], "A3A_fnc_createAIOutposts"] call A3A_fnc_scheduler;
                 };
+
+                case(_marker in milbases): 
+                {
+                    [[_marker],"A3A_fnc_createAIMilbase"] call A3A_fnc_scheduler;
+                };
             };
         };
     };
@@ -378,6 +401,7 @@ private _processCityCivMarker = {
             {
                 [[_marker], "A3A_fnc_createAmbientCiv"] call A3A_fnc_scheduler;
                 [[_marker], "A3A_fnc_createAmbientCivTraffic"] call A3A_fnc_scheduler;
+                [[_marker], "SCRT_fnc_rivals_trySpawnWanderingGroup"] call A3A_fnc_scheduler;
             };
         };
     };
@@ -397,7 +421,7 @@ waitUntil { sleep 0.1; if !(isnil "theBoss") exitWith { true }; false };
 
 /* ------------------------------ endless cycle ----------------------------- */
 
-private _time = 1 / count (markersX);
+private _time = 1 / count ((markersX + milAdministrationsX));
 private _counter = 0;
 private _teamplayer = [];
 private _occupants = [];
@@ -453,5 +477,5 @@ do
 
         if (_marker in citiesX) then { call _processCityCivMarker };
 
-    } forEach markersX;
+    } forEach (markersX + milAdministrationsX);
 };

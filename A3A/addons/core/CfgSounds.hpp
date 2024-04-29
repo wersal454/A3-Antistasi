@@ -57,6 +57,49 @@ class CfgSounds
         titles[] = {};
     };
 
+    class LootSuccess
+    {
+        name = "LootSuccess";
+        sound[] = {EQPATHTOFOLDER(core,Sounds\Misc\LootSuccess.ogg), 1, 1, 100};
+        titles[] = { 1, "" };
+    };
+
+    class BombCountdown
+    {
+        name = "BombCountdown";
+        sound[] = {EQPATHTOFOLDER(core,Sounds\Misc\BombCountdown.ogg), 1, 1, 100};
+        titles[] = { 1, "" };
+    };
+
+    class RadioIntercept
+    {
+        name = "RadioIntercept";
+        sound[] = {EQPATHTOFOLDER(core,Sounds\Misc\RadioIntercept.ogg), 1, 1, 100};
+        titles[] = { 1, "" };
+    };
+
+
+    class Typing
+    {
+        name = "Typing";
+        sound[] = {EQPATHTOFOLDER(core,Sounds\Misc\Typing.ogg), 1, 1, 100};
+        titles[] = { 1, "" };
+    };
+
+    class A3AP_UiSuccess 
+    {
+        name = "A3AP_UiSuccess";
+        sound[] = {"\a3\3DEN\Data\Sound\CfgSound\notificationDefault",1,1};
+        titles[] = {};
+    };
+
+    class A3AP_UiFailure 
+    {
+        name = "A3AP_UiFailure";
+        sound[] = {"\a3\3DEN\Data\Sound\CfgSound\notificationWarning",1,1};
+        titles[] = {};
+    };
+
     class A3A_Audio_Civ_Song1
     {
       name = "A3A_Audio_Civ_Song1";

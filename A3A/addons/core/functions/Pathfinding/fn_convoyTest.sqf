@@ -5,7 +5,7 @@ if(!canSuspend) exitWith
 
 if(isDedicated) exitWith {};
 
-if(isMultiplayer && {!isServer} && {!(call BIS_fnc_admin > 0)}) exitWith
+if(!isServer && {!(call BIS_fnc_admin > 0)}) exitWith
 {
     ["Convoy Test", "Only server admins can execute the convoy test!"] call A3A_fnc_customHint;
 };

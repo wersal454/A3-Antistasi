@@ -65,7 +65,7 @@ _isItemBino = {
 
 //name that needed to be loaded
 _saveName = _this;
-_saveData = profilenamespace getvariable ["bis_fnc_saveInventory_data",[]];
+_saveData = profileNamespace getvariable ["bis_fnc_saveInventory_data",[]];
 _inventory = [];
 {
 	if(_x isEqualType "STRING" && {_x == _saveName})exitWith{
@@ -151,7 +151,7 @@ removebackpack player;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  ADD
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-_isMember = [player] call A3A_fnc_isMember;
+_isMember = player call A3A_fnc_isMember;
 _availableItems = [jna_dataList, _arrayPlaced] call _addArrays;
 _itemCounts =+ _availableItems;
 // reduce available items by guest limits for non-members

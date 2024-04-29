@@ -82,11 +82,12 @@ else
 
 if(_result) then
 {
-  outpostsFIA = outpostsFIA - [_roadblockMarker]; publicVariable "outpostsFIA";
-  markersX = markersX - [_roadblockMarker]; publicVariable "markersX";
+  roadblocksFIA = roadblocksFIA - [_roadblockMarker]; publicVariable "roadblocksFIA";
+  markersX deleteAt (markersX find _roadblockMarker);
+  publicVariable "markersX";
   sidesX setVariable [_roadblockMarker, nil, true];
   [5, -5, (getMarkerPos _roadblockMarker)] remoteExec ["A3A_fnc_citySupportChange",2];
-  ["TaskFailed", ["", "Roadblock Lost"]] remoteExec ["BIS_fnc_showNotification", 2];
+  ["TaskFailed", ["", localize "STR_notifiers_roadblock_lost"]] remoteExec ["BIS_fnc_showNotification", 2];
 };
 
 _result;

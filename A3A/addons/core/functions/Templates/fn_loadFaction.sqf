@@ -49,26 +49,26 @@ private _allLoadouts = createHashMap;
 _dataStore set ["loadouts", _allLoadouts];
 
 private _fnc_saveUnitToTemplate = {
-	params ["_typeName", "_loadouts", ["_traits", []]];
-	private _unitDefinition = [_loadouts, _traits];
+	params ["_typeName", "_loadouts", ["_traits", []], ["_unitProperties", []]];
+	private _unitDefinition = [_loadouts, _traits, _unitProperties];
 	_allLoadouts set [_typeName, _unitDefinition];
 };
 
 private _fnc_generateAndSaveUnitToTemplate = {
-	params ["_name", "_template", "_loadoutData", ["_traits", []]];
+	params ["_name", "_template", "_loadoutData", ["_traits", []], ["_unitProperties", []]];
 	private _loadouts = [];
 	for "_i" from 1 to 5 do {
 		_loadouts pushBack ([_template, _loadoutData] call A3A_fnc_loadout_builder);
 	};
-	[_name, _loadouts, _traits] call _fnc_saveUnitToTemplate;
+	[_name, _loadouts, _traits, _unitProperties] call _fnc_saveUnitToTemplate;
 };
 
 private _fnc_generateAndSaveUnitsToTemplate = {
 	params ["_prefix", "_unitTemplates", "_loadoutData"];
 	{
-		_x params ["_name", "_template", ["_traits", []]];
+		_x params ["_name", "_template", ["_traits", []], ["_unitProperties", []]];
 		private _finalName = format ["%1_%2", _prefix, _name];
-		[_finalName, _template, _loadoutData, _traits] call _fnc_generateAndSaveUnitToTemplate;
+		[_finalName, _template, _loadoutData, _traits, _unitProperties] call _fnc_generateAndSaveUnitToTemplate;
 	} forEach _unitTemplates;
 };
 

@@ -48,7 +48,7 @@ if (vehicle leader _group != leader _group) exitWith
     if (vehicle leader _group isKindOf "Air") then {
         _marker = [_group, airportsX + ["CSAT_carrier", "NATO_carrier"]] call _fnc_nearestBase;
     } else {
-        _marker = [_group, airportsX + outposts] call _fnc_nearestBase;
+        _marker = [_group, airportsX + outposts + milbases] call _fnc_nearestBase;
     };
     if (isNil "_marker") exitWith {};       // just carry on
 
@@ -70,7 +70,7 @@ if (_marker != "") then {
 if (_marker != "") exitWith { [_group, _marker] call A3A_fnc_enemyGarrison };
 
 // Foot troops can retreat to any unspawned friendly location
-_marker = [_group, outposts + airportsX + resourcesX + factories + seaports] call _fnc_nearestBase;
+_marker = [_group, outposts + airportsX + milbases + resourcesX + factories + seaports] call _fnc_nearestBase;
 if (isNil "_marker") exitWith {
     ServerDebug_1("Group %1 surrendering due to no retreat locations", _group);
     { _x spawn A3A_fnc_surrenderAction } forEach units _group;

@@ -1,62 +1,58 @@
-//Mission: Logistics for ammunition
-if (!isServer and hasInterface) exitWith{};
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-private ["_pos","_truckX","_truckCreated","_groupX","_groupX1","_mrk"];
+params ["_markerX"];
 
-_markerX = _this select 0;
+if (!isServer and hasInterface) exitWith{};
 
-_difficultX = if (random 10 < tierWar) then {true} else {false};
-_leave = false;
-_contactX = objNull;
-_groupContact = grpNull;
-_tsk = "";
-_positionX = getMarkerPos _markerX;
-_sideX = if (sidesX getVariable [_markerX,sideUnknown] == Occupants) then {Occupants} else {Invaders};
+private _difficultX = if (random 10 < tierWar) then {true} else {false};
+private _positionX = getMarkerPos _markerX;
+private _sideX = if (sidesX getVariable [_markerX,sideUnknown] == Occupants) then {Occupants} else {Invaders};
 private _faction = Faction(_sideX);
-_timeLimit = if (_difficultX) then {30} else {60};
-if (A3A_hasIFA) then {_timeLimit = _timeLimit * 2};
-_dateLimit = [date select 0, date select 1, date select 2, date select 3, (date select 4) + _timeLimit];
-_dateLimitNum = dateToNumber _dateLimit;
-_dateLimit = numberToDate [date select 0, _dateLimitNum];//converts datenumber back to date array so that time formats correctly
-_displayTime = [_dateLimit] call A3A_fnc_dateToTimeString;//Converts the time portion of the date array to a string for clarity in hints
+private _limit = if (_difficultX) then {
+	30 call SCRT_fnc_misc_getTimeLimit
+} else {
+	60 call SCRT_fnc_misc_getTimeLimit
+};
+_limit params ["_dateLimitNum", "_displayTime"];
 
-_nameDest = [_markerX] call A3A_fnc_localizar;
-_typeVehX = selectRandom (_faction get "vehiclesAmmoTrucks");
-_size = [_markerX] call A3A_fnc_sizeMarker;
+private _nameDest = [_markerX] call A3A_fnc_localizar;
+private _typeVehX = selectRandom (_faction get "vehiclesAmmoTrucks");
+private _size = [_markerX] call A3A_fnc_sizeMarker;
 
-_road = [_positionX] call A3A_fnc_findNearestGoodRoad;
-_pos = position _road;
+private _road = [_positionX] call A3A_fnc_findNearestGoodRoad;
+private _pos = position _road;
 _pos = _pos findEmptyPosition [1,60,_typeVehX];
 if (count _pos == 0) then {_pos = position _road};
 
 private _taskId = "LOG" + str A3A_taskCount;
-[[teamPlayer,civilian],_taskId,[format ["We've spotted an Ammotruck in an %1. Go there and destroy or steal it before %2.",_nameDest,_displayTime],"Steal or Destroy Ammotruck",_markerX],_pos,false,0,true,"rearm",true] call BIS_fnc_taskCreate;
+[[teamPlayer,civilian],_taskId,[format [localize "STR_A3A_Missions_LOG_Ammo_task_desc",_nameDest,_displayTime],localize "STR_A3A_Missions_LOG_Ammo_task_header",_markerX],_pos,false,0,true,"rearm",true] call BIS_fnc_taskCreate;
 [_taskId, "LOG", "CREATED"] remoteExecCall ["A3A_fnc_taskUpdate", 2];
 
-_truckCreated = false;
-waitUntil {sleep 1;(dateToNumber date > _dateLimitNum) or ((spawner getVariable _markerX != 2) and !(sidesX getVariable [_markerX,sideUnknown] == teamPlayer))};
-_bonus = if (_difficultX) then {2} else {1};
-if ((spawner getVariable _markerX != 2) and !(sidesX getVariable [_markerX,sideUnknown] == teamPlayer)) then
-	{
-	//sleep 10;
+waitUntil {sleep 1;(dateToNumber date > _dateLimitNum) or {(spawner getVariable _markerX != 2 and !(sidesX getVariable [_markerX,sideUnknown] == teamPlayer))}};
+private _bonus = if (_difficultX) then {2} else {1};
+private _truckX = objNull;
+private _groupX = nil;
+private _groupX1 = nil;
 
-	_truckX = _typeVehX createVehicle _pos;
+if ((spawner getVariable _markerX != 2) and !(sidesX getVariable [_markerX,sideUnknown] == teamPlayer)) then {
+	private _truckX = _typeVehX createVehicle _pos;
 	_truckX setDir (getDir _road);
-	_truckCreated = true;
 	[_truckX] spawn A3A_fnc_fillLootCrate;
 	[_truckX, _sideX] call A3A_fnc_AIVEHinit;
 
-	_mrk = createMarkerLocal [format ["%1patrolarea", floor random 100], _pos];
+	private _mrk = createMarkerLocal [format ["%1patrolarea", floor random 100], _pos];
 	_mrk setMarkerShapeLocal "RECTANGLE";
 	_mrk setMarkerSizeLocal [20,20];
 	_mrk setMarkerTypeLocal "hd_warning";
 	_mrk setMarkerColorLocal "ColorRed";
 	_mrk setMarkerBrushLocal "DiagGrid";
 	if (!debug) then {_mrk setMarkerAlphaLocal 0};
-	_typeGroup = if (_difficultX) then {selectRandom (_faction get "groupsSquads")} else {_faction get "groupSentry"};
-	//_cfg = if (_sideX == Occupants) then {cfgNATOInf} else {cfgCSATInf};
+	private _typeGroup = if (_difficultX) then {
+		selectRandom ([_faction, "groupsTierSquads"] call SCRT_fnc_unit_flattenTier)
+	} else {
+		selectRandom ([_faction, "groupsTierSmall"] call SCRT_fnc_unit_flattenTier)
+	};
 	_groupX = [_pos,_sideX, _typeGroup] call A3A_fnc_spawnGroup;
 	sleep 1;
 	if (random 10 < 33) then
@@ -80,47 +76,33 @@ if ((spawner getVariable _markerX != 2) and !(sidesX getVariable [_markerX,sideU
 		(_truckX distanceSqr posHQ) < 10000;
 	};
 
-	_truckX setVariable ["ammoTruckLocation", _nameDest];
-	_truckX addEventHandler ["GetIn", {
-		params ["_vehicle", "_role", "_unit", "_turret"];
-
-		private _owningSide = (_vehicle getVariable "originalSide");		// set by AIVEHinit
-
-		if (_unit getVariable ["spawner",false]) then {
-			["TaskFailed", ["", format ["Ammotruck Stolen in an %1",(_vehicle getVariable ["ammoTruckLocation", ""])]]] remoteExec ["BIS_fnc_showNotification",_owningSide];
-		};
-
-		_truckX removeEventHandler ["GetIn", _thisEventHandler];
-	}];
-
 	waitUntil {sleep 3; (not alive _truckX) or (dateToNumber date > _dateLimitNum) or (call _fnc_truckReturnedToBase)};
 
-	if (dateToNumber date > _dateLimitNum) then
-		{
+	if (dateToNumber date > _dateLimitNum) then {
 		[_taskId, "LOG", "FAILED"] call A3A_fnc_taskSetState;
-		[-200, _sideX] remoteExec ["A3A_fnc_timingCA",2];
-		[-10, theBoss] call A3A_fnc_playerScoreAdd;
-		};
-	if ((not alive _truckX) or (call _fnc_truckReturnedToBase)) then
-		{
+		[-1200*_bonus, _sideX] remoteExec ["A3A_fnc_timingCA",2];
+		[-10*_bonus,theBoss] call A3A_fnc_addScorePlayer;
+	};
+	if (!alive _truckX or {(call _fnc_truckReturnedToBase)}) then {
 
 			[_taskId, "LOG", "SUCCEEDED"] call A3A_fnc_taskSetState;
 			[0,300*_bonus] remoteExec ["A3A_fnc_resourcesFIA",2];
-			[400*_bonus, _sideX] remoteExec ["A3A_fnc_timingCA",2];
-			{if (_x distance _truckX < 500) then {[10*_bonus,_x] call A3A_fnc_playerScoreAdd}} forEach (allPlayers - (entities "HeadlessClient_F"));
-			[10*_bonus,theBoss] call A3A_fnc_playerScoreAdd;
+			[1200*_bonus, _sideX] remoteExec ["A3A_fnc_timingCA",2];
+			{
+				[15 * _bonus,_x] call A3A_fnc_addScorePlayer;
+    			[300 * _bonus,_x] call A3A_fnc_addMoneyPlayer;
+			} forEach (call SCRT_fnc_misc_getRebelPlayers);
+			[5,theBoss] call A3A_fnc_addScorePlayer;
+			[200,theBoss, true] call A3A_fnc_addMoneyPlayer;
 		};
-	}
-else
-	{
+} else {
 	[_taskId, "LOG", "FAILED"] call A3A_fnc_taskSetState;
-	[-200, _sideX] remoteExec ["A3A_fnc_timingCA",2];
-	[-10, theBoss] call A3A_fnc_playerScoreAdd;
-	};
+	[-1200*_bonus, _sideX] remoteExec ["A3A_fnc_timingCA",2];
+	[-10*_bonus,theBoss] call A3A_fnc_addScorePlayer;
+};
 
 [_taskId, "LOG", 1200] spawn A3A_fnc_taskDelete;
-if (_truckCreated) then
-{
+if (!isNull _truckX) then {
 	// TODO: Head off to nearby base
 	[_groupX] spawn A3A_fnc_groupDespawner;
 	[_groupX1] spawn A3A_fnc_groupDespawner;

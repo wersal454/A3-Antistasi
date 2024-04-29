@@ -47,11 +47,22 @@ if (_grpIdx == -1) then {
 };
 
 // create surrender box
-private _surrenderCrateType = FactionGet(reb,"surrenderCrate");
+private _surrenderCrateType = if (_unit getVariable ["isRival", false]) then {
+	A3A_faction_riv get "surrenderCrate"
+} else {
+	(Faction(_unitSide)) get "surrenderCrate"
+};
 private _boxX = _surrenderCrateType createVehicle position _unit;
 _boxX allowDamage false;
-[_boxX] call A3A_fnc_initObject;
+clearMagazineCargoGlobal _boxX;
+clearWeaponCargoGlobal _boxX;
+clearItemCargoGlobal _boxX;
+clearBackpackCargoGlobal _boxX;
 
+if (_unit getVariable ["hasLaptop", false] && {!(_unit getVariable ["hasLaptopSpawned", false])}) then {
+	[_unit] call SCRT_fnc_rivals_createLaptop;
+	_unit setVariable ["hasLaptopSpawned", true, true]; //not sure if it should be broadcasted
+};
 
 // move all unit's equipment except uniform into the surrender crate
 private _loadout = getUnitLoadout _unit;
@@ -99,5 +110,8 @@ _unit addEventHandler ["HandleDamage", {
 	nil;
 }];
 
-// Add release/recruit/interrogate options
-[_unit,"captureX"] remoteExec ["A3A_fnc_flagaction",[teamPlayer,civilian],_unit];
+if (_unit getVariable ["isRival", false]) then {
+	[_unit,"captureRivals"] remoteExec ["A3A_fnc_flagaction",[teamPlayer,civilian],_unit];
+} else {
+	[_unit,"captureX"] remoteExec ["A3A_fnc_flagaction",[teamPlayer,civilian],_unit];
+};

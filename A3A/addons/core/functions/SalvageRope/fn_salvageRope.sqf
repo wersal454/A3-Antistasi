@@ -78,12 +78,12 @@ A3A_SR_stowRope = {
 
 A3A_SR_LoadSalvage = {
     params ["_vehicle", "_cargo"];
-    ["Loading cargo"] remoteExec ["systemChat"];
+    [(localize "STR_antistasi_schat_loading_cargo")] remoteExec ["systemChat"];
     _return = [_vehicle, _cargo] call A3A_Logistics_fnc_canLoad;
     if (_return isEqualType 0) exitWith {
         private _cargoName = getText (configFile >> "CfgVehicles" >> typeOf _object >> "displayName");
         private _vehicleName = getText (configFile >> "CfgVehicles" >> typeOf _vehicle >> "displayName");
-        [localize "STR_A3A_logi_title", format [localize "STR_A3A_logi_salvagerope_nospace", _vehicleName, _cargoName]] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner];
+        [localize "STR_A3A_Logistics_header", format [localize "STR_A3A_Logistics_tryLoad_not_enough_space", _vehicleName, _cargoName]] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner];
     };
     _return spawn A3A_Logistics_fnc_load;
 };
@@ -133,23 +133,21 @@ A3A_SR_attachRope = {
 
 //adding of actions
 A3A_SR_addplayerWinchActions = {
-    player addAction ["Deploy Winch", {
+    player addAction [(localize "STR_antistasi_actions_deploy_winch"), {
         [player] call A3A_SR_DeployWinch;
     }, nil, 0, false, true, "", "call A3A_SR_canDeployWinch"];
 
-    player addAction ["Stow Winch", {
+    player addAction [(localize "STR_antistasi_actions_stow_winch"), {
         [player] call A3A_SR_stowRope;
     }, nil, 0, false, true, "", "call A3A_SR_canStow"];
 
-    player addAction ["Attach Rope", {
+    player addAction [(localize "STR_antistasi_actions_attach_winch"), {
         [player] call A3A_SR_attachRope;
     }, nil, 0, false, true, "", "call A3A_SR_canAttach"];
 
-    if (isMultiplayer) then {
-        player addEventHandler ["Respawn",{
-            player setVariable ["SalvageRopeAction",false];
-        }];
-    };
+    player addEventHandler ["Respawn",{
+        player setVariable ["SalvageRopeAction",false];
+    }];
 };
 
 [] spawn {

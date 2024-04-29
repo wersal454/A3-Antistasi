@@ -62,8 +62,8 @@ if (isNil {_display getVariable "validFactions"}) then
     };
 
     // prep the valid factions for current modset
-    private _factions = [[], [], [], []];
-    private _factTypeHM = createHashMapFromArray [["Occ", 0], ["Inv", 1], ["Reb", 2], ["Civ", 3]];
+    private _factions = [[], [], [], [], []];
+    private _factTypeHM = createHashMapFromArray [["Occ", 0], ["Inv", 1], ["Reb", 2], ["Civ", 3], ["Riv", 4]];
     {
         if (getText (_x/"side") == "") then { continue };
         private _factIndex = _factTypeHM get getText (_x/"side");
@@ -72,47 +72,6 @@ if (isNil {_display getVariable "validFactions"}) then
 
     _factions = _factions apply { [_x] call _fnc_prioritySort };
     _display setVariable ["validFactions", _factions];
-
-    // Fill the addon vics
-    private _addonTable = _display displayCtrl A3A_IDC_SETUP_ADDONVICSBOX;
-    private _checkCtrls = [];
-    {
-        private _textCtrl = _display ctrlCreate ["A3A_Text_Small", -1, _addonTable];
-        _textCtrl ctrlSetPosition [GRID_W*4, count _checkCtrls*GRID_H*4, GRID_W*28, GRID_H*4];
-        _textCtrl ctrlCommit 0;
-        if !(_x call _fnc_factionLoaded) then { _textCtrl ctrlSetTextColor A3A_COLOR_TEXT_DARKER_SQF };
-        _textCtrl ctrlSetText getText (_x/"displayName");
-        _textCtrl ctrlSetTooltip getText (_x/"description");
-
-        private _checkCtrl = _display ctrlCreate ["A3A_Checkbox", -1, _addonTable];
-        _checkCtrl ctrlSetPosition [0, count _checkCtrls*GRID_H*4, GRID_W*4, GRID_H*4];
-        _checkCtrl ctrlCommit 0;
-        _checkCtrl ctrlEnable (_x call _fnc_factionLoaded);				// disable if requirement failed
-        _checkCtrl setVariable ["name", configName _x];
-        _checkCtrls pushBack _checkCtrl;
-
-    } forEach ("true" configClasses (A3A_SETUP_CONFIGFILE/"A3A"/"AddonVics"));
-    _addonTable setVariable ["checkCtrls", _checkCtrls];
-
-    // Fill the DLC
-    // Fetch these automatically but remove DLC without equipment and vehicles
-    //private _loadedDLC = getLoadedModsInfo select {_x#3 and !(_x#1 in ["A3","curator","argo","tacops"])};
-    private _dlcTable = _display displayCtrl A3A_IDC_SETUP_DLCBOX;
-    _checkCtrls = [];
-    {
-        private _textCtrl = _display ctrlCreate ["A3A_Text_Small", -1, _dlcTable];
-        _textCtrl ctrlSetPosition [GRID_W*4, count _checkCtrls*GRID_H*4, GRID_W*28, GRID_H*4];
-        _textCtrl ctrlCommit 0;
-        _textCtrl ctrlSetText _x#0;
-
-        private _checkCtrl = _display ctrlCreate ["A3A_Checkbox", -1, _dlcTable];
-        _checkCtrl ctrlSetPosition [0, count _checkCtrls*GRID_H*4, GRID_W*4, GRID_H*4];
-        _checkCtrl ctrlCommit 0;
-        _checkCtrl setVariable ["name", _x#1];
-        _checkCtrls pushBack _checkCtrl;
-
-    } forEach A3A_setup_loadedDLC;
-    _dlcTable setVariable ["checkCtrls", _checkCtrls];
 };
 
 switch (_mode) do
@@ -132,8 +91,6 @@ switch (_mode) do
 
     case ("fillFactions"):
     {
-        _params params ["_isSaveChange"];
-
         private _fnc_fillListBox = {
             params ["_listboxIDC", "_factions", "_selected"];
             Debug_1("fillListBox called with %1 selected", _selected);
@@ -147,10 +104,12 @@ switch (_mode) do
                     _listBox lbSetPicture [_index, getText(_x/"flagTexture")];
                     _listBox lbSetPictureRight [_index, getText(_x/"logo")];
                     _listBox lbSetData [_index, configName _x];
+                    _listBox lbSetTooltip [_index, getText(_x/"description")];
                     if (_selected == configName _x) then { _listBox lbSetCurSel (lbSize _listBox - 1) };
                 } else {
                     _listBox lbSetPicture [_index, "a3\data_f\flags\flag_white_dmg_co.paa"];
                     _listBox lbSetPictureColor [_index, [1,1,1,0.3]];
+                    _listBox lbSetTooltip [_index, format[localize "STR_A3AP_setupFactionsTab_noLoaded", (getArray(_x/"requiredAddons")) joinString ", "]];
                     _listBox lbSetColor [_index, A3A_COLOR_TEXT_DARKER_SQF];
                     _listBox lbSetSelectColor [_index, A3A_COLOR_TEXT_DARKER_SQF];
                 };
@@ -167,10 +126,10 @@ switch (_mode) do
         _factions = _factions apply { _x select { _x call _fnc_factionLoaded } };
 
         if (cbChecked (_display displayCtrl A3A_IDC_SETUP_SWITCHENEMYCHECK)) then {
-            _factions = [_factions#1, _factions#0, _factions#2, _factions#3];
+            _factions = [_factions#1, _factions#0, _factions#2, _factions#3, _factions#4];
         };
         if (cbChecked (_display displayCtrl A3A_IDC_SETUP_ANYENEMYCHECK)) then {
-            _factions = [_factions#0 + _factions#1, _factions#1 + _factions#0, _factions#2, _factions#3];
+            _factions = [_factions#0 + _factions#1, _factions#1 + _factions#0, _factions#2, _factions#3, _factions#4];
         };
 
         // Add saved factions if valid
@@ -197,54 +156,23 @@ switch (_mode) do
             { _x append _missingFactions#_forEachIndex } forEach _factions;
         };
 
-        if (_savedFactions isEqualTo []) then { _savedFactions = ["", "", "", ""] };
+        if (_savedFactions isEqualTo []) then { _savedFactions = ["", "", "", "", ""] };
         [A3A_IDC_SETUP_OCCUPANTSLISTBOX, _factions#0, _savedFactions#0] call _fnc_fillListBox;
         [A3A_IDC_SETUP_INVADERSLISTBOX, _factions#1, _savedFactions#1] call _fnc_fillListBox;
         [A3A_IDC_SETUP_REBELSLISTBOX, _factions#2, _savedFactions#2] call _fnc_fillListBox;
         [A3A_IDC_SETUP_CIVILIANSLISTBOX, _factions#3, _savedFactions#3] call _fnc_fillListBox;
-
-        if !(_isSaveChange) exitWith {};        // Don't reset dlc/addons on checkbox changes
-
-        // Should now set the addonvics & DLC tickboxes according to the save data
-        private _addonCtrls = (_display displayCtrl A3A_IDC_SETUP_ADDONVICSBOX) getVariable "checkCtrls";
-        private _dlcCtrls = (_display displayCtrl A3A_IDC_SETUP_DLCBOX) getVariable "checkCtrls";
-        { _x cbSetChecked false } forEach _addonCtrls + _dlcCtrls;
-
-        {
-            private _addon = _x;
-            private _index = _addonCtrls findIf { _x getVariable "name" == _addon };
-            if (_index == -1) then { Error_1("Addon vics template %1 not found", _x); continue };
-            if !(ctrlEnabled (_addonCtrls#_index)) then { Error_1("Addon vics template %1 not loaded", _x); continue };
-            (_addonCtrls#_index) cbSetChecked true;
-        } forEach _savedAddons;
-
-        {
-            private _dlc = _x;
-            private _index = _dlcCtrls findIf { _x getVariable "name" == _dlc };
-            if (_index == -1) then { Error_1("DLC %1 not loaded", _x); continue };
-            (_dlcCtrls#_index) cbSetChecked true;
-        } forEach _savedDLC;
+        [A3A_IDC_SETUP_RIVALSLISTBOX, _factions#4, _savedFactions#4] call _fnc_fillListBox;
     };
 
 
     case ("getFactions"):
     {
-        private _factions = [A3A_IDC_SETUP_OCCUPANTSLISTBOX, A3A_IDC_SETUP_INVADERSLISTBOX, A3A_IDC_SETUP_REBELSLISTBOX, A3A_IDC_SETUP_CIVILIANSLISTBOX] apply {
+        private _factions = [A3A_IDC_SETUP_OCCUPANTSLISTBOX, A3A_IDC_SETUP_INVADERSLISTBOX, A3A_IDC_SETUP_REBELSLISTBOX, A3A_IDC_SETUP_CIVILIANSLISTBOX, A3A_IDC_SETUP_RIVALSLISTBOX] apply {
             private _factCtrl = _display displayCtrl _x;
             _factCtrl lbData lbCurSel _factCtrl;
         };
 
-        private _addons = [];
-        {
-            if (cbChecked _x) then { _addons pushBack (_x getVariable "name") };
-        } forEach ((_display displayCtrl A3A_IDC_SETUP_ADDONVICSBOX) getVariable "checkCtrls");
-
-        private _dlc = [];
-        {
-            if (cbChecked _x) then { _dlc pushBack (_x getVariable "name") };
-        } forEach ((_display displayCtrl A3A_IDC_SETUP_DLCBOX) getVariable "checkCtrls");
-
-        [_factions, _addons, _dlc];
+        _factions;
     };
 
     default {

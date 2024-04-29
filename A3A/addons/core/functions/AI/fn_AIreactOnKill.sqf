@@ -15,8 +15,6 @@ Environment: Scheduled
 Public: Yes
 Dependencies:
     <ARRAY> allMachineGuns
-    <BOOL> haveNV
-    <BOOL> hasIFA
     <HashMap> A3A_faction_all
 
 Example:
@@ -45,7 +43,11 @@ if(count _activeGroupMembers == 0) exitWith {};
 
 //Call help if possible
 if(_group getVariable ["A3A_canCallSupportAt", -1] < time) then {
-    [_group, _killer] spawn A3A_fnc_callForSupport;
+    if (radiomanSupport isEqualTo false) then { // use radioman
+        [_group, _killer] spawn A3A_fnc_callForSupportInfantry;
+    } else { // use SL
+        [_group, _killer] spawn A3A_fnc_callForSupport;
+    };
 };
 
 // Call for Local battery support.
@@ -62,23 +64,49 @@ if (!fleeing leader _group and random 1 < 0.5) then
 if (_group getVariable ["A3A_reactingToKill", false]) exitWith {};      // don't spam this loop
 _group setVariable ["A3A_reactingToKill", true];
 
+
 {
     if !(_x call A3A_fnc_canFight) then { continue };
     private _enemy = _x findNearestEnemy _x;
 
     call {
         if (fleeing _x && {!isNull _enemy && (_x distance _enemy < 50) && (vehicle _x == _x)} ) exitWith {
-            [_x] spawn A3A_fnc_surrenderAction;
+            private _fleeChance = switch (true) do {
+                case (_x getVariable ["isRival", false]): {
+                    random 25
+                };
+                case (side _x == Occupants): {
+                    sqrt aggressionOccupants * 2
+                };
+                default {
+                    sqrt aggressionInvaders * 2
+                };
+            };
+
+            if (_fleeChance < 8) then {
+                _fleeChance = 8;
+            } else {
+                if (_fleeChance > 25) then {
+                    _fleeChance = 25;
+                };
+            };
+
+            if ((random 100) < _fleeChance) then {
+                [_x] spawn SCRT_fnc_common_panicFlee;
+            } else {
+                [_x] spawn A3A_fnc_surrenderAction;
+            };
         };
         if (_x getVariable ["helping", false]) exitWith {};
         if (!isNull _enemy && (primaryWeapon _x in allMachineGuns)) exitWith {
             if (random 100 < 40) then { [_x,_enemy] spawn A3A_fnc_suppressingFire };
         };
-        if (sunOrMoon == 1 || haveNV) exitWith {
-            if (random 100 < 40) then { [_x,_x,_enemy] spawn A3A_fnc_chargeWithSmoke };
+        private _noNvgIndex = (units _group) findIf {hmd _x == "" || {getArray (configFile >> "CfgWeapons" >> (hmd _x) >> "visionMode") isEqualTo ["Normal","Normal"]}};
+        if (sunOrMoon == 1 || _noNvgIndex == -1) exitWith {
+            if (random 100 < 35) then { [_x,_x,_enemy] spawn A3A_fnc_chargeWithSmoke };
         };
         if (primaryWeapon _x in allGrenadeLaunchers) exitWith {
-            [_x,_enemy] spawn A3A_fnc_useFlares;
+            [_x, side (group _x), _enemy] spawn A3A_fnc_useFlares;
         };
 	};
     sleep (1 + random 1);

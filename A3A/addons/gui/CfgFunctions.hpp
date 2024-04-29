@@ -9,6 +9,8 @@ class CfgFunctions {
             class arsenalLimitsDialog {};
             class buyVehicleDialog {};
             class buyVehicleTabs {};
+            class blackMarketDialog {};
+            class blackMarketTabs {};
             class commanderTab {};
             class configColorToArray {};
             class constructTab {};
@@ -29,6 +31,8 @@ class CfgFunctions {
             class recruitDialog {};
             class recruitSquadDialog {};
             class requestMissionDialog {};
+            class setUpPlacerHints {};
+            class teamLeaderRTSPlacerDialog {};
         };
         class SetupGUI {
             file = QPATHTOFOLDER(functions\SetupGUI);
@@ -36,6 +40,7 @@ class CfgFunctions {
             class setupFactionsTab {};
             class setupLoadgameTab {};
             class setupParamsTab {};
+            class setupContentTab {};
             class setupConfirmDialog {};
             class setupHQPosDialog {};
         };

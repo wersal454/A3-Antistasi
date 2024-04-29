@@ -24,7 +24,22 @@ bigAttackInProgress = true; publicVariable "bigAttackInProgress";
 forcedSpawn pushBack "Synd_HQ"; publicVariable "forcedSpawn";
 
 private _taskId = "DEF_HQ" + str A3A_taskCount;
-[[teamPlayer,civilian],_taskId,[format ["The enemy has sent SpecOps to find %1. Stop them, or move the HQ before they get here.",name petros],format ["Defend %1",name petros],respawnTeamPlayer],_targPos,true,10,true,"Defend",true] call BIS_fnc_taskCreate;
+[
+    [teamPlayer,civilian],
+    _taskId,
+    [
+        localize "STR_tasks_attackHq_desc",
+        localize "STR_tasks_attackHq_header",
+        respawnTeamPlayer
+    ],
+    _targPos,
+    true,
+    10,
+    true,
+    "Defend",
+    true
+] call BIS_fnc_taskCreate;
+
 [_taskId, "DEF_HQ", "CREATED"] remoteExecCall ["A3A_fnc_taskUpdate", 2];
 
 
@@ -92,9 +107,11 @@ if (!alive _origPetros) then {
     [_taskId, "DEF_HQ", "SUCCEEDED"] call A3A_fnc_taskSetState;
     if (_targPos distance markerPos respawnTeamPlayer < 500) then {			// assume we fought it out?
         [_side, 10, 60] remoteExec ["A3A_fnc_addAggression",2];
-        // This is bullshit really
-        {if (isPlayer _x) then {[10,_x] call A3A_fnc_playerScoreAdd}} forEach ([500,0,_targPos,teamPlayer] call A3A_fnc_distanceUnits);
     };
+    {
+        [round (5*tierWar), _x] call A3A_fnc_addScorePlayer;
+        [round (150*tierWar), _x] call A3A_fnc_addMoneyPlayer;
+    } forEach (call SCRT_fnc_misc_getRebelPlayers);
 };
 
 bigAttackInProgress = false; publicVariable "bigAttackInProgress";

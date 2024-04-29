@@ -1,5 +1,5 @@
-cutText ["You decided to rest for some time","BLACK",5];
+cutText [localize "STR_params_rest","BLACK",5];
 sleep 10;
 skiptime 8;
 forceWeatherChange;
-cutText ["Time to go","BLACK IN",10];
+cutText [localize "STR_params_time_to_go","BLACK IN",10];

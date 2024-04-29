@@ -1,19 +1,25 @@
+#define AMOUNT 250
+
 private ["_resourcesPlayer","_pointsXJ","_target"];
 _resourcesPlayer = player getVariable "moneyX";
-if (_resourcesPlayer < 100) exitWith {["Donate Money", "You have less than 100 € to donate."] call A3A_fnc_customHint;};
+if (_resourcesPlayer < AMOUNT) exitWith {
+	[localize "STR_A3A_OrgPlayers_donateMoney_header", format [localize "STR_A3A_OrgPlayers_donateMoney_less250", A3A_faction_civ get "currencySymbol"]] call SCRT_fnc_misc_deniedHint;
+};
 
-if (count _this == 0) exitWith
-	{
-	[0,100] remoteExec ["A3A_fnc_resourcesFIA",2];
+if (count _this == 0) exitWith {
+	[0,AMOUNT] remoteExec ["A3A_fnc_resourcesFIA",2];
 	_pointsXJ = (player getVariable "score") + 1;
 	player setVariable ["score",_pointsXJ,true];
-	[-100] call A3A_fnc_resourcesPlayer;
-	["Donate Money", "You have donated 100 € to the cause. This will raise your status among our forces."] call A3A_fnc_customHint;
-	};
-_target = cursortarget;
+	[-AMOUNT] call A3A_fnc_resourcesPlayer;
+	[localize "STR_A3A_OrgPlayers_donateMoney_header", format [localize "STR_A3A_OrgPlayers_donateMoney_success", A3A_faction_civ get "currencySymbol"]] call A3A_fnc_customHint;
+};
+_target = cursorTarget;
 
-if (!isPlayer _target) exitWith {["Donate Money", "You must be looking to a player in order to give him money."] call A3A_fnc_customHint;};
+if (!isPlayer _target) exitWith {
+	[localize "STR_A3A_OrgPlayers_donateMoney_header",localize "STR_A3A_OrgPlayers_donateMoney_no_player"] call SCRT_fnc_misc_deniedHint;
+};
 
-[-100] call A3A_fnc_resourcesPlayer;
-[100] remoteExec ["A3A_fnc_resourcesPlayer", _target];
-["Donate Money", format ["You have donated 100 € to %1.", name _target]] call A3A_fnc_customHint;
+[-AMOUNT] call A3A_fnc_resourcesPlayer;
+[AMOUNT] remoteExec ["A3A_fnc_resourcesPlayer", _target];
+
+[localize "STR_A3A_OrgPlayers_donateMoney_header", format [localize "STR_A3A_OrgPlayers_donateMoney_player", name _target, A3A_faction_civ get "currencySymbol"]] call A3A_fnc_customHint;

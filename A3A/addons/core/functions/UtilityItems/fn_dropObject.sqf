@@ -17,7 +17,7 @@ Example:
 */
 
 player addAction [
-    "Drop object",
+    localize "STR_A3A_dropObject",
     {
         [nil, false] call A3A_fnc_carryItem;
     },

@@ -14,4 +14,16 @@ class RadioIntercepted
     priority = 10;
     //Sound played when notification pops up
     sound = "taskSucceeded";
-}
+};
+
+class RivalsActivityDetected
+{
+    title = "%1";
+    iconPicture = "\A3\ui_f\data\igui\cfg\simpleTasks\types\rifle_ca.paa";
+    description = "%2";
+    color[] = {1,1,1,1};
+    duration = 5;
+    priority = 10;
+    sound = "RadioIntercept";
+    soundClose = "defaultNotificationClose";
+};

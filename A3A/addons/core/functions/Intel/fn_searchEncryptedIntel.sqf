@@ -78,7 +78,7 @@ while {_pointSum <= _neededPoints} do {
     {
         _pointSum = 0;
         {
-            [petros,"hint","No one in range of the intel, need to start from scratch", "Search Intel"] remoteExec ["A3A_fnc_commsMP",_x]
+            [petros,"hint",localize "STR_hints_intel_no_one_in_range", localize "STR_intel_search_intel_header"] remoteExec ["A3A_fnc_commsMP",_x]
         } forEach ([50,0,_intel,teamPlayer] call A3A_fnc_distanceUnits);
     };
 
@@ -94,23 +94,23 @@ while {_pointSum <= _neededPoints} do {
             private _actionTime = 1;
             switch (_error) do {
                 case 1: {
-                    _errorText = "Reference to unknown loaction, need to locate location to continue decifering";
-                    _actionText = "Locate location";
+                    _errorText = localize "STR_intel_decrypt_err1_text";
+                    _actionText = localize "STR_intel_decrypt_err1_action";
                     _actionTime = 3;
                 };
                 case 2: {
-                    _errorText = "Ilegible text encountered, need to decifer meaning from context";
-                    _actionText = "Decifer meaning";
+                    _errorText = localize "STR_intel_decrypt_err2_text";
+                    _actionText = localize "STR_intel_decrypt_err2_action";
                     _actionTime = 5;
                 };
                 case 3: {
-                    _errorText = "Unkown codename encountered, need to decifer the codename reference";
-                    _actionText = "Decifer codename";
+                    _errorText = localize "STR_intel_decrypt_err3_text";
+                    _actionText = localize "STR_intel_decrypt_err3_action";
                     _actionTime = 10;
                 };
                 case 4: {
-                    _errorText = "Section of texts meaning hidden behind a riddle, have to solve it to continue";
-                    _actionText = "Solve riddle";
+                    _errorText = localize "STR_intel_decrypt_err4_text";
+                    _actionText = localize "STR_intel_decrypt_err4_action";
                     _actionTime = 15;
                 }
             };
@@ -141,15 +141,15 @@ while {_pointSum <= _neededPoints} do {
     if (_actionNeeded) then {
         //if action needed hint to nearby players
         [
-            "Search Intel"
+            localize "STR_intel_search_intel_header"
             , _errorText
         ] remoteExec ["A3A_fnc_customHint", (_intel nearEntities ["CAManBase", 25]) select {isPlayer _x}];
     } else {
         //else tick up pointsum and notify nearby players of progress
         _pointSum = _pointSum + (_pointsPerSecond * _timeDiff);
         [
-            "Search Intel"
-            , "Decryption progress at "+ str (round (_pointSum/_neededPoints * 100) min 100) + "%"
+            localize "STR_intel_search_intel_header", 
+            format [localize "STR_intel_decrypt_progress", str (round (_pointSum/_neededPoints * 100) min 100)]
         ] remoteExec ["A3A_fnc_customHint", (_intel nearEntities ["CAManBase", 25]) select {isPlayer _x}];
     };
 };
@@ -157,10 +157,12 @@ while {_pointSum <= _neededPoints} do {
 if (_pointSum >= _neededPoints) then {
     ["Large", _side] remoteExec ["A3A_fnc_selectIntel", 2];
     {
-        ["Search Intel", "You managed to decipher the intel!"] call A3A_fnc_customHint;
-        [10,_x] call A3A_fnc_playerScoreAdd;
+        [localize "STR_intel_search_intel_header", localize "STR_intel_decrypt_success"] call A3A_fnc_customHint;
+        [10,_x] call A3A_fnc_addScorePlayer;
+        [200,_x] call A3A_fnc_addMoneyPlayer;
     } forEach ([50,0,_intel,teamPlayer] call A3A_fnc_distanceUnits);
-    [5, theBoss] call A3A_fnc_playerScoreAdd;
+    [5, theBoss] call A3A_fnc_addScorePlayer;
+    [100, theBoss, true] call A3A_fnc_addMoneyPlayer;
 } else {
     _intel remoteExecCall ["removeAllActions", 0, _intel];
     [_intel, "Intel_Large"] remoteExec ["A3A_fnc_flagaction",0, _intel];

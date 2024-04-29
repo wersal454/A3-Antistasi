@@ -4,10 +4,10 @@ if (!isServer) exitWith {
     Error("Miscalled server-only function");
 };
 
-if (savingServer) exitWith {["Save Game", "Server data save is still in progress..."] remoteExecCall ["A3A_fnc_customHint",theBoss]};
+if (savingServer) exitWith {[localize "STR_A3A_save_persisent_save", localize "STR_A3A_save_save_game_desc"] remoteExecCall ["A3A_fnc_customHint",theBoss]};
 savingServer = true;
 Info("Starting persistent save");
-["Persistent Save","Starting persistent save..."] remoteExecCall ["A3A_fnc_customHint",0,false];
+[localize "STR_A3A_save_persisent_save",localize "STR_A3A_save_save_game_starting"] remoteExecCall ["A3A_fnc_customHint",0,false];
 
 // Set next autosave time, so that we won't run another shortly after a manual save
 autoSaveTime = time + autoSaveInterval;
@@ -38,10 +38,10 @@ private _namespace = [profileNamespace, missionProfileNamespace] select _saveToN
 
 
 // Move this campaign to the end of the save list
-private _saveList = [_namespace getVariable "antistasiSavedGames"] param [0, [], [[]]];
+private _saveList = [_namespace getVariable "antistasiPlus2SavedGames"] param [0, [], [[]]];
 _saveList deleteAt (_saveList findIf { _x select 0 == _campaignID });
 _saveList pushBack [_campaignID, worldName, "Greenfor"];
-_namespace setVariable ["antistasiSavedGames", _saveList];
+_namespace setVariable ["antistasiPlus2SavedGames", _saveList];
 
 // Update the legacy campaign ID for backwards compatibility
 if (!_saveToNewNamespace) then { _namespace setVariable ["ss_campaignID", _campaignID] };
@@ -75,18 +75,16 @@ private _antennasDeadPositions = [];
 { _antennasDeadPositions pushBack getPos _x; } forEach antennasDead;
 ["antennas", _antennasDeadPositions] call A3A_fnc_setStatVariable;
 //["mrkNATO", (markersX - controlsX) select {sidesX getVariable [_x,sideUnknown] == Occupants}] call A3A_fnc_setStatVariable;
-["mrkSDK", (markersX - controlsX - outpostsFIA) select {sidesX getVariable [_x,sideUnknown] == teamPlayer}] call A3A_fnc_setStatVariable;
+["mrkSDK", (markersX - controlsX -  watchpostsFIA - roadblocksFIA - aapostsFIA - atpostsFIA - hmgpostsFIA) select {sidesX getVariable [_x,sideUnknown] == teamPlayer}] call A3A_fnc_setStatVariable;
 ["mrkCSAT", (markersX - controlsX) select {sidesX getVariable [_x,sideUnknown] == Invaders}] call A3A_fnc_setStatVariable;
-["posHQ", [getMarkerPos respawnTeamPlayer,getPos fireX,[getDir boxX,getPos boxX],[getDir mapX,getPos mapX],getPos flagX,[getDir vehicleBox,getPos vehicleBox]]] call A3A_fnc_setStatVariable;
+["posHQ", [getMarkerPos respawnTeamPlayer,[getDir boxX,getPos boxX],[getDir mapX,getPos mapX],getPos flagX,[getDir vehicleBox,getPos vehicleBox]]] call A3A_fnc_setStatVariable;
 ["dateX", date] call A3A_fnc_setStatVariable;
 ["skillFIA", skillFIA] call A3A_fnc_setStatVariable;
 ["destroyedSites", destroyedSites] call A3A_fnc_setStatVariable;
 ["distanceSPWN", distanceSPWN] call A3A_fnc_setStatVariable;		// backwards compatibility
-["civPerc", globalCivilianMax] call A3A_fnc_setStatVariable;		// backwards compatibility
 ["chopForest", chopForest] call A3A_fnc_setStatVariable;
-["maxUnits", 140] call A3A_fnc_setStatVariable;				        // backwards compatibility
 ["nextTick", nextTick - time] call A3A_fnc_setStatVariable;
-["weather",[fogParams,rain]] call A3A_fnc_setStatVariable;
+["weather",[fogParams,overcast]] call A3A_fnc_setStatVariable; //rrobably should be rain
 private _destroyedPositions = destroyedBuildings apply { getPosATL _x };
 ["destroyedBuildings",_destroyedPositions] call A3A_fnc_setStatVariable;
 
@@ -94,17 +92,37 @@ private _destroyedPositions = destroyedBuildings apply { getPosATL _x };
 ["aggressionOccupants", [aggressionLevelOccupants, aggressionStackOccupants]] call A3A_fnc_setStatVariable;
 ["aggressionInvaders", [aggressionLevelInvaders, aggressionStackInvaders]] call A3A_fnc_setStatVariable;
 
-private ["_hrBackground","_resourcesBackground","_veh","_typeVehX","_weaponsX","_ammunition","_items","_backpcks","_containers","_arrayEst","_posVeh","_dierVeh","_prestigeOPFOR","_prestigeBLUFOR","_city","_dataX","_markersX","_garrison","_arrayMrkMF","_arrayOutpostsFIA","_positionOutpost","_typeMine","_posMine","_detected","_typesX","_exists","_friendX"];
+//Antistasi Plus variables
+["supportPoints", supportPoints] call A3A_fnc_setStatVariable;
+["areOccupantsDefeated", areOccupantsDefeated] call A3A_fnc_setStatVariable;
+["areInvadersDefeated", areInvadersDefeated] call A3A_fnc_setStatVariable;
+["isTraderQuestCompleted", isTraderQuestCompleted] call A3A_fnc_setStatVariable;
+["traderDiscount", traderDiscount] call A3A_fnc_setStatVariable;
+["traderPosition", traderPosition] call A3A_fnc_setStatVariable;
+["rebelLoadouts", rebelLoadouts] call A3A_fnc_setStatVariable;
+["randomizeRebelLoadoutUniforms", randomizeRebelLoadoutUniforms] call A3A_fnc_setStatVariable;
+["areRivalsDefeated", areRivalsDefeated] call A3A_fnc_setStatVariable;
+["areRivalsDiscovered", areRivalsDiscovered] call A3A_fnc_setStatVariable;
+["rivalsLocationsMap", rivalsLocationsMap] call A3A_fnc_setStatVariable;
+["rivalsExcludedLocations", rivalsExcludedLocations] call A3A_fnc_setStatVariable;
+["nextRivalsLocationReveal", nextRivalsLocationReveal] call A3A_fnc_setStatVariable;
+["inactivityRivals", [inactivityLevelRivals, inactivityStackRivals]] call A3A_fnc_setStatVariable;
+["isRivalsDiscoveryQuestAssigned", isRivalsDiscoveryQuestAssigned] call A3A_fnc_setStatVariable;
+
+private _milAdminPositions = [];
+{ _milAdminPositions pushBack getPos _x; } forEach A3A_destroyedMilAdministrations;
+["destroyedMilAdmins", _milAdminPositions] call A3A_fnc_setStatVariable;
+
+
+private ["_hrBackground","_resourcesBackground","_veh","_typeVehX","_weaponsX","_ammunition","_items","_backpcks","_containers","_arrayEst","_posVeh","_dierVeh","_prestigeOPFOR","_prestigeBLUFOR","_city","_dataX","_markersX","_garrison","_arrayMrkMF","_positionOutpost","_typeMine","_posMine","_detected","_typesX","_exists","_friendX"];
 
 _hrBackground = (server getVariable "hr") + ({(alive _x) and (not isPlayer _x) and (_x getVariable ["spawner",false]) and ((group _x in (hcAllGroups theBoss) or (isPlayer (leader _x))) and (side group _x == teamPlayer))} count allUnits);
 _resourcesBackground = server getVariable "resourcesFIA";
-_vehInGarage = [];
-_vehInGarage = _vehInGarage + vehInGarage;
 {
 	_friendX = _x;
 	if ((_friendX getVariable ["spawner",false]) and (side group _friendX == teamPlayer))then {
 		if ((alive _friendX) and (!isPlayer _friendX)) then {
-			if (((isPlayer leader _friendX) and (!isMultiplayer)) or (group _friendX in (hcAllGroups theBoss)) and (not((group _friendX) getVariable ["esNATO",false]))) then {
+			if (group _friendX in (hcAllGroups theBoss)) then {
 				_resourcesBackground = _resourcesBackground + (server getVariable [(_friendX getVariable "unitType"),0]) / 2;
 				_backpck = backpack _friendX;
 				if (_backpck != "") then {
@@ -116,7 +134,7 @@ _vehInGarage = _vehInGarage + vehInGarage;
 					_typeVehX = typeOf _veh;
 					if (not(_veh in staticsToSave)) then {
 						if ((_veh isKindOf "StaticWeapon") or (driver _veh == _friendX)) then {
-							if ((group _friendX in (hcAllGroups theBoss)) or (!isMultiplayer)) then {
+							if (group _friendX in (hcAllGroups theBoss)) then {
 								_resourcesBackground = _resourcesBackground + ([_typeVehX] call A3A_fnc_vehiclePrice);
 								if (count attachedObjects _veh != 0) then {{_resourcesBackground = _resourcesBackground + ([typeOf _x] call A3A_fnc_vehiclePrice)} forEach attachedObjects _veh};
 							};
@@ -128,10 +146,20 @@ _vehInGarage = _vehInGarage + vehInGarage;
 	};
 } forEach allUnits;
 
+private _lootCrateClass = FactionGet(reb,"lootCrate");
+private _lootCratePrice = [_lootCrateClass] call A3A_fnc_vehiclePrice;
+
+{
+	_resourcesBackground = _resourcesBackground + _lootCratePrice;
+} forEach (allMissionObjects _lootCrateClass);
+
+if (!isNil "isRallyPointPlaced" && {isRallyPointPlaced}) then {
+	private _rallyPointCost = [FactionGet(reb,"lootCrate")] call A3A_fnc_vehiclePrice;
+	_resourcesBackground = _resourcesBackground + round(_rallyPointCost/1.3);
+};
 
 ["resourcesFIA", _resourcesBackground] call A3A_fnc_setStatVariable;
 ["hr", _hrBackground] call A3A_fnc_setStatVariable;
-["vehInGarage", _vehInGarage] call A3A_fnc_setStatVariable;
 ["HR_Garage", [] call HR_GRG_fnc_getSaveData] call A3A_fnc_setStatVariable;
 
 _arrayEst = [];
@@ -149,15 +177,48 @@ _arrayEst = [];
 
 	_arrayEst pushBack [typeof _x, getPosWorld _x, vectorUp _x, vectorDir _x, [_x] call HR_GRG_fnc_getState];
 
-} forEach (vehicles inAreaArray [markerPos respawnTeamPlayer, 50, 50] select { alive _x });
+} forEach (vehicles inAreaArray [markerPos respawnTeamPlayer, 100, 100] select { alive _x });
 
 
-_sites = markersX select {sidesX getVariable [_x,sideUnknown] == teamPlayer};
 {
 	if ((alive _x) and !(surfaceIsWater position _x) and (isNull attachedTo _x)) then {
 		_arrayEst pushBack [typeOf _x,getPosWorld _x,vectorUp _x, vectorDir _x];
 	};
 } forEach staticsToSave;
+
+private _rebMarkers = (airportsX + outposts + seaports + factories + resourcesX + milbases) select { sidesX getVariable _x == teamPlayer };
+// ^ Update to include plus related stuff
+_rebMarkers append outpostsFIA; _rebMarkers pushBack "Synd_HQ";
+{
+	// Ignore if outside mission distance (temporary)
+	if (!alive _x or (_x distance2d markerPos "Synd_HQ" > distanceMission)) then { continue };
+
+	// Ignore if not within a rebel marker
+	private _building = _x;
+	private _indexes = _rebMarkers inAreaArrayIndexes [getPosATL _x, 500, 500];
+	if (-1 == _indexes findIf { _building inArea _rebMarkers#_x } ) then { continue };
+
+	_arrayEst pushBack [typeOf _x,getPosWorld _x,vectorUp _x, vectorDir _x];
+} forEach A3A_buildingsToSave;
+
+["staticsX", _arrayEst] call A3A_fnc_setStatVariable;
+
+private _excessiveConstructions = maxConstructions - (count constructionsToSave);
+if(_excessiveConstructions < 0) then {
+	private _top = abs _excessiveConstructions;
+	for "_i" from 0 to _top do {
+		constructionsToSave deleteAt _i;
+	};
+};
+
+_arrayConstructions = [];
+{
+	_positionX = position _x;
+	if ((alive _x) and !(surfaceIsWater _positionX) and !(isNull _x)) then {
+		_arrayConstructions pushBack [typeOf _x,getPosWorld _x,vectorUp _x, vectorDir _x];
+	};
+} forEach constructionsToSave;
+["constructionsX", _arrayConstructions] call A3A_fnc_setStatVariable;
 
 ["staticsX", _arrayEst] call A3A_fnc_setStatVariable;
 [] call A3A_fnc_arsenalManage;
@@ -179,12 +240,18 @@ _prestigeBLUFOR = [];
 ["prestigeOPFOR", _prestigeOPFOR] call A3A_fnc_setStatVariable;
 ["prestigeBLUFOR", _prestigeBLUFOR] call A3A_fnc_setStatVariable;
 
-_markersX = markersX - outpostsFIA - controlsX;
+_markersX = markersX - controlsX - watchpostsFIA - roadblocksFIA - aapostsFIA - atpostsFIA - hmgpostsFIA;
 _garrison = [];
 _wurzelGarrison = [];
 
 {
-	_garrison pushBack [_x,garrison getVariable [_x,[]],garrison getVariable [_x + "_lootCD", 0]];
+	_garrison pushBack [
+		_x,
+		garrison getVariable [_x,[]],
+		garrison getVariable [_x + "_lootCD", 0],
+		garrison getVariable [_x + "_powCD", 0],
+		garrison getVariable [_x + "_samDestroyedCD", 0]
+	];
 	_wurzelGarrison pushBack [
 		_x,
 		garrison getVariable [format ["%1_garrison",_x], []],
@@ -193,7 +260,7 @@ _wurzelGarrison = [];
 	];
 } forEach _markersX;
 
-["garrison",_garrison] call A3A_fnc_setStatVariable;
+["garrison", _garrison] call A3A_fnc_setStatVariable;
 ["wurzelGarrison", _wurzelGarrison] call A3A_fnc_setStatVariable;
 ["usesWurzelGarrison", true] call A3A_fnc_setStatVariable;
 
@@ -220,14 +287,62 @@ private _mineChance = 500 / (500 max count allMines);
 
 ["minesX", _arrayMines] call A3A_fnc_setStatVariable;
 
-_arrayOutpostsFIA = [];
+private _arrayWatchpostsFIA = [];
 
 {
 	_positionOutpost = getMarkerPos _x;
-	_arrayOutpostsFIA pushBack [_positionOutpost,garrison getVariable [_x,[]]];
-} forEach outpostsFIA;
+	_arrayWatchpostsFIA pushBack [_positionOutpost,garrison getVariable [_x,[]]];
+} forEach watchpostsFIA;
 
-["outpostsFIA", _arrayOutpostsFIA] call A3A_fnc_setStatVariable;
+["watchpostsFIA", _arrayWatchpostsFIA] call A3A_fnc_setStatVariable;
+
+private _arrayRoadblocksFIA = [];
+
+{
+	_positionOutpost = getMarkerPos _x;
+	_arrayRoadblocksFIA pushBack [_positionOutpost,garrison getVariable [_x,[]]];
+} forEach roadblocksFIA;
+
+["roadblocksFIA", _arrayRoadblocksFIA] call A3A_fnc_setStatVariable;
+
+private _arrayAAPostsFIA = [];
+
+{
+	_positionOutpost = getMarkerPos _x;
+	_arrayAAPostsFIA pushBack [
+		_positionOutpost,
+		garrison getVariable [_x,[]],
+		staticPositions getVariable [_x,[]]
+	];
+} forEach aapostsFIA;
+
+["aapostsFIA", _arrayAAPostsFIA] call A3A_fnc_setStatVariable;
+
+private _arrayATPostsFIA = [];
+
+{
+	_positionOutpost = getMarkerPos _x;
+	_arrayATPostsFIA pushBack [
+		_positionOutpost,
+		garrison getVariable [_x,[]],
+		staticPositions getVariable [_x,[]]
+	];
+} forEach atpostsFIA;
+
+["atpostsFIA", _arrayATPostsFIA] call A3A_fnc_setStatVariable;
+
+private _arrayHMGPostsFIA = [];
+
+{
+	_positionOutpost = getMarkerPos _x;
+	_arrayHMGPostsFIA pushBack [
+		_positionOutpost,
+		garrison getVariable [_x,[]],
+		staticPositions getVariable [_x,[]]
+	];
+} forEach hmgpostsFIA;
+
+["hmgpostsFIA", _arrayHMGPostsFIA] call A3A_fnc_setStatVariable;
 
 if (!isDedicated) then {
 	// Not currently used by loadServer due to timing bugs
@@ -237,7 +352,7 @@ if (!isDedicated) then {
 		private _index = A3A_tasksData findIf { (_x#1) isEqualTo _type and (_x#2) isEqualTo "CREATED" };
 		if (_index != -1) then { _typesX pushBackUnique _type };
 
-	} forEach ["AS","CON","DES","LOG","RES","CONVOY","DEF_HQ","rebelAttack","invaderPunish"];
+	} forEach ["AS","CON","DES","LOG","RES","TRADER","RIV_ENC","CONVOY","DEF_HQ","rebelAttack","invaderPunish"];
 
 	["tasks",_typesX] call A3A_fnc_setStatVariable;
 };
@@ -314,27 +429,11 @@ _resDefInv = _resDefInv / A3A_balancePlayerScale;
 // HQ knowledge
 ["HQKnowledge", [A3A_curHQInfoOcc, A3A_curHQInfoInv, A3A_oldHQInfoOcc, A3A_oldHQInfoInv]] call A3A_fnc_setStatVariable;
 
-// these are obsolete? idlebases is only used short-term now, idleassets is dead
-/*
-_dataX = [];
-{
-	_dataX pushBack [_x,server getVariable _x];
-} forEach airportsX + outposts;
-
-["idlebases",_dataX] call A3A_fnc_setStatVariable;
-
-_dataX = [];
-{
-	_dataX pushBack [_x,timer getVariable _x];
-} forEach (FactionGet(all,"vehiclesArmor") + FactionGet(all,"vehiclesFixedWing") + FactionGet(all,"vehiclesHelisTransport") + FactionGet(all,"vehiclesHelisAttack") + FactionGet(occ,"staticAT") + FactionGet(occ,"staticAA") + FactionGet(inv,"staticAT") + FactionGet(inv,"staticAA") + FactionGet(occ,"vehiclesGunBoats") + FactionGet(inv,"vehiclesGunBoats"));
-
-["idleassets",_dataX] call A3A_fnc_setStatVariable;
-*/
 
 _dataX = [];
 {
 	_dataX pushBack [_x,killZones getVariable [_x,[]]];
-} forEach airportsX + outposts;
+} forEach airportsX + outposts + milbases;
 
 ["killZones",_dataX] call A3A_fnc_setStatVariable;
 
@@ -362,6 +461,14 @@ _fuelAmountleftArray = [];
 if (_saveToNewNamespace) then { saveMissionProfileNamespace } else { saveProfileNamespace };
 
 savingServer = false;
-_saveHintText = ["<t size='1.5'>",FactionGet(reb,"name")," Assets:<br/><t color='#f0d498'>HR: ",_hrBackground toFixed 0,"<br/>Money: ",_resourcesBackground toFixed 0," €</t></t><br/><br/>Further infomation is provided in <t color='#f0d498'>Map Screen > Game Options > Persistent Save-game</t>."] joinString "";
-["Persistent Save",_saveHintText] remoteExecCall ["A3A_fnc_customHint",0,false];
+_saveHintText = [
+	"<t size='1.5'>",FactionGet(reb,"name"),
+	" Assets:<br/><t color='#f0d498'>HR: ",
+	_hrBackground toFixed 0,
+	"<br/>Money: ",
+	_resourcesBackground toFixed 0,
+	A3A_faction_civ get "currencySymbol",
+	"</t></t><br/><br/>"
+] joinString "";
+[localize "STR_A3A_save_persisent_save",_saveHintText] remoteExecCall ["A3A_fnc_customHint",0,false];
 Info("Persistent Save Completed");

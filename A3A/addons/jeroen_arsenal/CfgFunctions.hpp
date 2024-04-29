@@ -1,5 +1,26 @@
 class CfgFunctions {
 	class JN {
+		class Common {
+			file = QPATHTOFOLDER(Common);
+			class common_addActionSelect {};
+			class common_addActionCancel {};
+			class common_updateActionCancel {};
+			class common_removeActionCancel {};
+			class common_getActionCanceled {};
+		};
+
+		class Common_Vehicle {
+			file = QPATHTOFOLDER(Common\vehicle);
+			class common_vehicle_getSeatNames {};
+			class common_vehicle_getVehicleType {};
+		};
+
+		class Common_Array {
+			file = QPATHTOFOLDER(Common\array);
+			class common_array_add {};
+			class common_array_remove {};
+		};
+
 		class JNA {
 			file = QPATHTOFOLDER(JNA);
 			class arsenal {};
@@ -19,59 +40,6 @@ class CfgFunctions {
 			class arsenal_requestClose {};
 			class vehicleArsenal {};
 
-		};
-		class JND {
-			file = QPATHTOFOLDER(JND);
-			class debugv2 {postinit = 1;};
-		};
-
-		class JNG {
-			file = QPATHTOFOLDER(JNG);
-			class garage {};
-			class garage_addVehicle {};
-			class garage_init {};
-			class garage_releaseVehicle {};
-			class garage_removeVehicle {};
-			class garage_requestOpen {};
-			class garage_requestClose {};
-			class garage_requestVehicle {};
-			class garage_getVehicleIndex {};
-			class garage_getVehicleData {};
-			class garage_garageVehicle {};
-			class garage_canGarageVehicle {};
-		};
-
-		class JNL {
-			file = QPATHTOFOLDER(JNL);
-			class logistics_init {};
-			class logistics_load {};
-			class logistics_unLoad {};
-			class logistics_addAction {};
-			class logistics_removeAction {};
-		};
-
-		class JNL_Actions {
-			file = QPATHTOFOLDER(JNL\Actions);
-			class logistics_addActionGetInWeapon {};
-			class logistics_addActionLoad {};
-			class logistics_addActionUnload {};
-			class logistics_addEventGetOutWeapon {};
-			class logistics_removeActionGetInWeapon {};
-			class logistics_removeActionLoad {};
-			class logistics_removeActionUnload {};
-			class logistics_removeEventGetOutWeapon {};
-		};
-
-		class JNL_Functions {
-			file = QPATHTOFOLDER(JNL\Functions);
-			class logistics_addOrRemoveObjectMass {};
-			class logistics_canLoad {};
-			class logistics_classHasCargo {};
-			class logistics_getCargo {};
-			class logistics_getCargoOffsetAndDir {};
-			class logistics_getCargoType {};
-			class logistics_getNodes {};
-			class logistics_lockSeats {};
 		};
 	};
 };

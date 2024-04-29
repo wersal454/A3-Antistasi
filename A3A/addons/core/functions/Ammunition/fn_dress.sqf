@@ -1,14 +1,13 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
-private _unit = _this select 0;
+
+params ["_unit"];
+
 private _loadoutOverride = param [1];
-private _team = side group _unit;
-private _unitLoadoutNumber = if (!isNil "_loadoutOverride") then {_loadoutOverride} else {_unit getVariable ["pvpPlayerUnitNumber", 0]};
 
-_loadout = switch _team do {
-
+_loadout = switch (side group _unit) do {
 	case teamPlayer: {
-		if (toLower worldName isEqualTo "enoch") then {
+		if (toLowerANSI worldName isEqualTo "enoch") then {
 			[[],[],[],[selectRandom (FactionGet(civ,"uniforms") + FactionGet(reb,"uniforms")), []],[],[],"H_Hat_Tinfoil_F","",[],
 			[(selectRandom unlockedmaps),"","",(selectRandom unlockedCompasses),(selectRandom unlockedwatches),""]];
 		} else {
@@ -16,7 +15,7 @@ _loadout = switch _team do {
 			[(selectRandom unlockedmaps),"","",(selectRandom unlockedCompasses),(selectRandom unlockedwatches),""]];
 		};
 	};
-
+	
 	default {
 		[];
 	};

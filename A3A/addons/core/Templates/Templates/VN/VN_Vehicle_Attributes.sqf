@@ -18,5 +18,4 @@
     ["vn_o_air_mig19_cap", ["cost", 200]],
     ["vn_b_air_f100d_at", ["cost", 150]],
     ["vn_b_air_f100d_cap", ["cost", 200]]
-
 ]] call _fnc_saveToTemplate;

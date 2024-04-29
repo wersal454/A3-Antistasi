@@ -9,25 +9,35 @@
 **/
 
 if (!arsenalInit) exitWith {};
+
+if (isMenuOpen) then {
+	[] call SCRT_fnc_ui_toggleCommanderMenu;
+	private _display = findDisplay 60000;
+	if (str (_display) != "no display") then {
+		_display closeDisplay 1;
+	};
+
+	private _loadoutMenuDisplay = findDisplay 120000;
+	if (str (_loadoutMenuDisplay) != "no display") then {
+		_loadoutMenuDisplay closeDisplay 1;
+	};
+
+	['off'] call SCRT_fnc_ui_toggleMenuBlur;
+
+	uiNamespace setVariable ["isLoadoutArsenal", true];
+};
+
 //start loading screen
 ["jn_fnc_arsenal", "Loading Nutz™ Arsenal"] call bis_fnc_startloadingscreen;
 [] spawn {
 uisleep 10;
 private _ids = missionnamespace getvariable ["BIS_fnc_startLoadingScreen_ids",[]];
   if("jn_fnc_arsenal" in _ids)then{
-	private _display =  uiNamespace getVariable ["arsanalDisplay","No display"];
+	private _display =  uiNamespace getVariable ["arsenalDisplay","No display"];
 	titleText["ERROR DURING LOADING ARSENAL", "PLAIN"];
 	_display closedisplay 2;
 	["jn_fnc_arsenal"] call BIS_fnc_endLoadingScreen;
   };
-
-  //TODO this is a temp fix for rhs because it freezes the loading screen if no primaryWeapon was equiped. This will be fix in rhs 0.4.9
-if("bis_fnc_arsenal" in _ids)then{
-	private _display =  uiNamespace getVariable ["arsanalDisplay","No display"];
-	titleText["Non Fatal Error, RHS?", "PLAIN"];
-	diag_log "JNA: Non Fatal Error, RHS?";
-	["bis_fnc_arsenal"] call BIS_fnc_endLoadingScreen;
-};
 };
 
 //save proper ammo because BIS arsenal rearms it, and I will over write it back again

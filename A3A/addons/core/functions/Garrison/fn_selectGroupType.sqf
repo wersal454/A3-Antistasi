@@ -18,10 +18,10 @@ private _faction = Faction(_side);
 if(_preference == "Empty") exitWith {[]};
 
 //If tank, select AT team
-if(_vehicle in OccAndInv("vehiclesTanks")) exitWith {_faction get "groupAT"};
+if(_vehicle in OccAndInv("vehiclesTanks")) exitWith {[_faction get "groupTierAT"] call SCRT_fnc_unit_getTiered};
 
 //If AA-tank, select AA team
-if(_vehicle in OccAndInv("vehiclesAA")) exitWith {_faction get "groupAA"};
+if(_vehicle in OccAndInv("vehiclesAA")) exitWith {[_faction get "groupTierAA"] call SCRT_fnc_unit_getTiered};
 
 _result = "";
 //If no vehicle return preference
@@ -57,7 +57,7 @@ else
 
 if(_result != "EMPTY") exitWith
 {
-    if(_result == "SQUAD") then {selectRandom (_faction get "groupsSquads")} else {selectRandom (_faction get "groupsMedium")};
+    if(_result == "SQUAD") then {selectRandom ([_faction, "groupsTierSquads"] call SCRT_fnc_unit_flattenTier)} else {selectRandom ([_faction, "groupsTierMedium"] call SCRT_fnc_unit_flattenTier)};
 };
 
 [];

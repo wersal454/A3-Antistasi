@@ -1,13 +1,14 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 if (!isServer) exitWith {};
-private ["_typeX","_sideX","_markerX","_modeX","_garrison","_subType"];
+
 //ModeX: -1 to remove 1 unbit (killed EHs etc). 1 add 1 single classname / object. 2 adds a hole array and admits classnames or objects
 params ["_typeX", "_sideX", "_markerX", "_modeX"];
+
 if (isNil "_typeX") exitWith {};
 if (_typeX isEqualType []) then {
 	if ((_typeX select 0) isEqualType objNull) then {
-		_subType = [];
+		private _subType = [];
 		{
 		    _subType pushBack (_x getVariable "unitType");
 		} forEach _typeX;
@@ -35,19 +36,15 @@ if ((_sideX == Occupants) and (!(sidesX getVariable [_markerX,sideUnknown] == Oc
 if ((_sideX == Invaders) and (!(sidesX getVariable [_markerX,sideUnknown] == Invaders))) exitWith {garrisonIsChanging = false};
 if ((_sideX == teamPlayer) and (!(sidesX getVariable [_markerX,sideUnknown] == teamPlayer))) exitWith {garrisonIsChanging = false};
 
-_garrison = [];
+private _garrison = [];
 _garrison = _garrison + (garrison getVariable [_markerX,[]]);
-if (_modeX == -1) then
-	{
-	for "_i" from 0 to (count _garrison -1) do
-		{
+if (_modeX == -1) then {
+	for "_i" from 0 to (count _garrison -1) do {
 		if (_typeX == (_garrison select _i)) exitWith {_garrison deleteAt _i};
-		};
-	}
-else
-	{
-	if (_modeX == 1) then {_garrison pushBack _typeX} else {_garrison append _typeX};
 	};
+} else {
+	if (_modeX == 1) then {_garrison pushBack _typeX} else {_garrison append _typeX};
+};
 if (isNil "_garrison") exitWith {garrisonIsChanging = false};
 garrison setVariable [_markerX,_garrison,true];
 if (_sideX == teamPlayer) then {[_markerX] call A3A_fnc_mrkUpdate};

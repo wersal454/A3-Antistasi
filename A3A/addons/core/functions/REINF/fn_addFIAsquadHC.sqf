@@ -2,22 +2,37 @@
 FIX_LINE_NUMBERS()
 params ["_typeGroup", ["_withBackpck", ""]];
 
-if (player != theBoss) exitWith {["Recruit Squad", "Only the Commander has access to this function."] call A3A_fnc_customHint;};
-if (markerAlpha respawnTeamPlayer == 0) exitWith {["Recruit Squad", "You cannot recruit a new squad while you are moving your HQ."] call A3A_fnc_customHint;};
-if (!([player] call A3A_fnc_hasRadio)) exitWith {if !(A3A_hasIFA) then {["Recruit Squad", "You need a radio in your inventory to be able to give orders to other squads."] call A3A_fnc_customHint;} else {["Recruit Squad", "You need a Radio Man in your group to be able to give orders to other squads"] call A3A_fnc_customHint;}};
-if ([getPosATL petros] call A3A_fnc_enemyNearCheck) exitWith {["Recruit Squad", "You cannot recruit squads with enemies near your HQ."] call A3A_fnc_customHint;};
+if (player != theBoss) exitWith {[localize "STR_A3A_reinf_addFIASquadHC_header", localize "STR_generic_commander_only"] call SCRT_fnc_misc_deniedHint;};
+if (markerAlpha respawnTeamPlayer == 0) exitWith {[localize "STR_A3A_reinf_addFIASquadHC_header", localize "STR_A3A_reinf_addFIASquadHC_error_moveHq"] call SCRT_fnc_misc_deniedHint;};
+if (!([player] call A3A_fnc_hasRadio)) exitWith {[localize "STR_A3A_reinf_addFIASquadHC_header", localize "STR_A3A_reinf_addFIASquadHC_error_radio"] call SCRT_fnc_misc_deniedHint;};
+if ([getPosATL petros] call A3A_fnc_enemyNearCheck) exitWith {[localize "STR_A3A_reinf_addFIASquadHC_header", localize "STR_A3A_reinf_addFIASquadHC_error_enemynear"] call SCRT_fnc_misc_deniedHint;};
 
-private _maxGroups = [6,10] select (player call A3A_fnc_isMember);
-if (count hcAllGroups player >= _maxGroups) exitWith {
-    ["Recruit Squad", "You have too many high command squads active. Disband or garrison some to recruit more."] call A3A_fnc_customHint;
+if (count hcAllGroups player >= ([6,10] select (player call A3A_fnc_isMember))) exitWith {
+    [localize "STR_A3A_reinf_addFIASquadHC_header", localize "STR_A3A_reinf_addFIASquadHC_error_too_many_hc"] call A3A_fnc_customHint;
 };
 
 private _exit = false;
-if (_typeGroup isEqualType "") then {
-	if (_typeGroup == "") then {_exit = true; ["Recruit Squad", "The group or vehicle type you requested is not supported in your modset."] call A3A_fnc_customHint;};
-	if (A3A_hasIFA and ((_typeGroup in FactionGet(reb,"staticMortars")) or (_typeGroup in FactionGet(reb,"staticMGs"))) and !debug) then {_exit = true; ["Recruit Squad", "The group or vehicle type you requested is not supported in your modset."] call A3A_fnc_customHint;};
+if (_typeGroup isEqualType "" && {_typeGroup isEqualTo ""}) then {
+	_exit = true; 
+    [localize "STR_A3A_reinf_addFIASquadHC_header", localize "STR_A3A_reinf_addFIASquadHC_error_not_supported"] call A3A_fnc_customHint;
 };
 if (_exit) exitWith {};
+
+if (tierWar < 3 && {_typeGroup isEqualTo (FactionGet(reb,"groupAT"))}) exitWith {
+	[localize "STR_A3A_reinf_addFIASquadHC_header", localize "STR_A3A_reinf_addFIASquadHC_error_AT_restr"] call SCRT_fnc_misc_deniedHint;
+};
+
+if (tierWar < 2 && {_typeGroup in (FactionGet(reb,"staticMGs") + FactionGet(reb,"vehiclesLightArmed"))}) exitWith {
+	[localize "STR_A3A_reinf_addFIASquadHC_header", localize "STR_A3A_reinf_addFIASquadHC_error_MG_restr"] call SCRT_fnc_misc_deniedHint;
+};
+
+if (tierWar < 4 && {_typeGroup in (FactionGet(reb,"staticAT") + FactionGet(reb,"staticAA") + FactionGet(reb,"vehiclesAT") + FactionGet(reb,"vehiclesAA") + [FactionGet(reb,"groupSquadSupp")])}) exitWith {
+	[localize "STR_A3A_reinf_addFIASquadHC_header", localize "STR_A3A_reinf_addFIASquadHC_error_ATAA_restr"] call SCRT_fnc_misc_deniedHint;
+};
+
+if (tierWar < 5 && {_typeGroup in (A3A_faction_reb get 'staticMortars')}) exitWith {
+	[localize "STR_A3A_reinf_addFIASquadHC_header", localize "STR_A3A_reinf_addFIASquadHC_error_mortar_restr"] call SCRT_fnc_misc_deniedHint;
+};
 
 private _isInfantry = false;
 private _typeVehX = "";
@@ -47,11 +62,9 @@ if (_typeGroup isEqualType []) then {
 	if ((_typeGroup in FactionGet(reb,"staticMortars")) or (_typeGroup in FactionGet(reb,"staticMGs"))) exitWith { _isInfantry = true };
 };
 
-if ((_withBackpck != "") and A3A_hasIFA) exitWith {["Recruit Squad", "Your current modset doesn't support packing/unpacking static weapons."] call A3A_fnc_customHint;};
+if (_hr < _costHR) then {_exit = true; [localize "STR_A3A_reinf_addFIASquadHC_header", format [localize "STR_A3A_reinf_addFIASquadHC_error_not_enough_hr",_costHR]] call SCRT_fnc_misc_deniedHint;};
 
-if (_hr < _costHR) then {_exit = true; ["Recruit Squad", format ["You do not have enough HR for this request (%1 required).",_costHR]] call A3A_fnc_customHint;};
-
-if (_resourcesFIA < _costs) then {_exit = true; ["Recruit Squad", format ["You do not have enough money for this request (%1 € required).",_costs]] call A3A_fnc_customHint;};
+if (_resourcesFIA < _costs) then {_exit = true; [localize "STR_A3A_reinf_addFIASquadHC_header", format [localize "STR_A3A_reinf_addFIASquadHC_error_not_enough_money",_costs, A3A_faction_civ get "currencySymbol"]] call SCRT_fnc_misc_deniedHint;};
 
 if (_exit) exitWith {};
 
@@ -71,9 +84,11 @@ private _idFormat = switch true do {
     case (_typeGroup isEqualTo (FactionGet(reb,"groupAT"))): {"AT-"};
     case (_typeGroup isEqualTo (FactionGet(reb,"groupSniper"))): {"Snpr-"};
     case (_typeGroup isEqualTo (FactionGet(reb,"groupSentry"))): {"Stry-"};
+    case (_typeGroup isEqualTo (FactionGet(reb,"groupCrew"))): {"Crew-"};
     case (_typeGroup in (FactionGet(reb,"staticMortars"))): {"Mort-"};
     case (_typeGroup in (FactionGet(reb,"staticMGs"))): {"MG-"};
     case (_typeGroup in (FactionGet(reb,"vehiclesAT"))): {"M.AT-"};
+    case (_typeGroup in (FactionGet(reb,"vehiclesLightArmed"))): {"M.MG-"};
     case (_typeGroup in (FactionGet(reb,"staticAA"))): {"M.AA-"};
     default {
         switch _withBackpck do {
@@ -122,24 +137,25 @@ if (!_isInfantry) exitWith { [_vehType, _fnc_placed, _fnc_placeCheck, [_formatX,
 
 private _vehCost = [_vehType] call A3A_fnc_vehiclePrice;
 if (_isInfantry and (_costs + _vehCost) > server getVariable "resourcesFIA") exitWith {
-    ["Recruit Squad", format ["No money left to buy a transport vehicle (%1 € required), creating barefoot squad.",_vehCost]] call A3A_fnc_customHint;
+    [localize "STR_A3A_reinf_addFIASquadHC_header", format [localize "STR_A3A_reinf_addFIASquadHC_error_not_enough_money_barefoot",_vehCost, A3A_faction_civ get "currencySymbol"]] call A3A_fnc_customHint;
     [_formatX, _idFormat, _special, objNull] spawn A3A_fnc_spawnHCGroup;
 };
 
 #ifdef UseDoomGUI
     ERROR("Disabled due to UseDoomGUI Switch.")
 #else
-    createDialog "veh_query";
+    createDialog "vehQuery";
 #endif
+
 sleep 1;
 disableSerialization;
 private _display = findDisplay 100;
 
 if (str (_display) != "no display") then {
 	private _ChildControl = _display displayCtrl 104;
-	_ChildControl  ctrlSetTooltip format ["Buy a vehicle for this squad for %1 €.", _vehCost];
+	_ChildControl  ctrlSetTooltip format [localize "STR_dialog_fia_squad_hc_buy_veh", _vehCost, A3A_faction_civ get "currencySymbol"];
 	_ChildControl = _display displayCtrl 105;
-	_ChildControl  ctrlSetTooltip "Barefoot Infantry";
+	_ChildControl  ctrlSetTooltip localize "STR_dialog_fia_squad_hc_barefoot";
 };
 
 waitUntil {(!dialog) or (!isNil "vehQuery")};

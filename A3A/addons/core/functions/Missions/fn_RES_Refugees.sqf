@@ -1,55 +1,56 @@
+params ["_markerX"];
+
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 //Mission: Rescue the refugees
 if (!isServer and hasInterface) exitWith{};
-private ["_markerX","_difficultX","_leave","_contactX","_groupContact","_tsk","_posHQ","_citiesX","_city","_radiusX","_positionX","_houseX","_posHouse","_nameDest","_timeLimit","_dateLimit","_dateLimitNum","_pos","_countX"];
 
-_markerX = _this select 0;
+private _difficultX = random 10 < tierWar;
+private _positionX = getMarkerPos _markerX;
+private _POWs = [];
 
-_difficultX = if (random 10 < tierWar) then {true} else {false};
-_leave = false;
-_contactX = objNull;
-_groupContact = grpNull;
-_tsk = "";
-_positionX = getMarkerPos _markerX;
-
-_POWs = [];
-
-_radiusX = [_markerX] call A3A_fnc_sizeMarker;
+private _radiusX = [_markerX] call A3A_fnc_sizeMarker;
 //_houses = nearestObjects [_positionX, ["house"], _radiusX];
-_houses = (nearestObjects [_positionX, ["house"], _radiusX]) select {!((typeOf _x) in A3A_buildingBlacklist)};
-_posHouse = [];
-_houseX = _houses select 0;
-while {count _posHouse < 3} do
-	{
+private _houses = (nearestObjects [_positionX, ["house"], _radiusX]) select {!((typeOf _x) in A3A_buildingBlacklist)};
+private _posHouse = [];
+private _houseX = _houses select 0;
+while {count _posHouse < 3} do {
 	_houseX = selectRandom _houses;
 	_posHouse = _houseX buildingPos -1;
 	if (count _posHouse < 3) then {_houses = _houses - [_houseX]};
-	};
+};
 
+private _nameDest = [_markerX] call A3A_fnc_localizar;
+private _limit = if (_difficultX) then {
+	30 call SCRT_fnc_misc_getTimeLimit
+} else {
+	60 call SCRT_fnc_misc_getTimeLimit
+};
+_limit params ["_dateLimitNum", "_displayTime"];
 
-_nameDest = [_markerX] call A3A_fnc_localizar;
-_timeLimit = if (_difficultX) then {30} else {60};
-if (A3A_hasIFA) then {_timeLimit = _timeLimit * 2};
-
-_dateLimit = [date select 0, date select 1, date select 2, date select 3, (date select 4) + _timeLimit];
-
-_dateLimitNum = dateToNumber _dateLimit;
-_dateLimit = numberToDate [date select 0, _dateLimitNum];//converts datenumber back to date array so that time formats correctly
-_displayTime = [_dateLimit] call A3A_fnc_dateToTimeString;//Converts the time portion of the date array to a string for clarity in hints
-
-_sideX = if (sidesX getVariable [_markerX,sideUnknown] == Occupants) then {Occupants} else {Invaders};
+private _sideX = if (sidesX getVariable [_markerX,sideUnknown] == Occupants) then {Occupants} else {Invaders};
 private _faction = Faction(_sideX);
-_textX = if (_sideX == Occupants) then {format ["A group of smugglers have been arrested in %1 and they are about to be sent to prison. Go there and free them in order to make them join our cause. Do this before %2",_nameDest,_displayTime]} else {format ["A group of %3 supportes are hidden in %1 awaiting for evacuation. We have to find them before %2 does it. If not, there will be a certain death for them. Bring them back to HQ",_nameDest,FactionGet(inv,"name"),FactionGet(reb,"name")]};
-_posTsk = if (_sideX == Occupants) then {(position _houseX) getPos [random 100, random 360]} else {position _houseX};
+
+private _text = nil;
+private _header = nil;
+private _posTsk = nil;
+
+if (_sideX == Occupants) then {
+	_text = format [localize "STR_A3A_Missions_RES_Refugees_task_desc_1",FactionGet(reb, "name"), _nameDest,_displayTime];
+	_header = format [localize "STR_A3A_Missions_RES_Refugees_task_header_1",FactionGet(reb, "name")];
+	_posTsk = (position _houseX) getPos [random 100, random 360];
+} else {
+	_text = format [localize "STR_A3A_Missions_RES_Refugees_task_desc_2",_nameDest, _faction get "name",_displayTime];
+	_header = localize "STR_A3A_Missions_RES_Refugees_task_header_2";
+	_posTsk = position _houseX;
+};
 
 private _taskId = "RES" + str A3A_taskCount;
-[[teamPlayer,civilian],_taskId,[_textX,"Refugees Evac",_nameDest],_posTsk,false,0,true,"run",true] call BIS_fnc_taskCreate;
+[[teamPlayer,civilian],_taskId,[_text,_header,_nameDest],_posTsk,false,0,true,"run",true] call BIS_fnc_taskCreate;
 [_taskId, "RES", "CREATED"] remoteExecCall ["A3A_fnc_taskUpdate", 2];
 
 _groupPOW = createGroup teamPlayer;
-for "_i" from 1 to (((count _posHouse) - 1) min 15) do
-	{
+for "_i" from 1 to (((count _posHouse) - 1) min 6) do {
 	_unit = [_groupPOW, FactionGet(reb,"unitUnarmed"), _posHouse select _i, [], 0, "NONE"] call A3A_fnc_createUnit;
 	[_unit, selectRandom (A3A_faction_reb get "faces"), selectRandom (A3A_faction_reb get "voices")] call A3A_fnc_setIdentity;
 	_unit allowdamage false;
@@ -64,22 +65,21 @@ for "_i" from 1 to (((count _posHouse) - 1) min 15) do
 	if (_sideX == Occupants) then {_unit setCaptive true};
 	[_unit] call A3A_fnc_reDress;
 	sleep 0.5;
-	};
+};
 
 sleep 5;
 
 {_x allowDamage true} forEach _POWs;
 
 sleep 30;
-_groupX = grpNull;
-_veh = objNull;
-_groupX1 = grpNull;
-if (_sideX == Invaders) then
-{
+private _groupX = grpNull;
+private _veh = objNull;
+private _groupX1 = grpNull;
+if (_sideX == Invaders) then {
 	[_houseX, _difficultX] spawn
 	{
 		params ["_house", "_isDifficult"];
-		if (_isDifficult) then {sleep 300} else {sleep 300 + (random 1800)};
+		if (_isDifficult) then {sleep 300} else {sleep (300 + random 1800)};
 		if !(_taskId call BIS_fnc_taskCompleted) then
 		{
 			// Needs rework
@@ -87,9 +87,7 @@ if (_sideX == Invaders) then
             //[getPos _house, 4, ["QRF"], Invaders, _reveal] remoteExec ["A3A_fnc_createSupport", 2];
 		};
 	};
-}
-else
-	{
+} else {
 	_posVeh = [];
 	_dirVeh = 0;
 	_roads = [];
@@ -122,7 +120,7 @@ else
 	_nul = [_veh, Occupants] call A3A_fnc_AIVEHinit;
 	if ((random 100 < aggressionOccupants) or (_difficultX)) then
 		{
-		_groupX = [getPos _houseX,Occupants,  selectRandom (_faction get "groupsSquads")] call A3A_fnc_spawnGroup;
+		_groupX = [getPos _houseX,Occupants, selectRandom ([_faction, "groupsTierSquads"] call SCRT_fnc_unit_flattenTier)] call A3A_fnc_spawnGroup;
 		sleep 1;
 		}
 	else
@@ -140,15 +138,13 @@ else
 	
 	{[_x,""] call A3A_fnc_NATOinit} forEach units _groupX;
 	_groupX1 = [_houseX buildingExit 0, Occupants, _faction get "groupPolice"] call A3A_fnc_spawnGroup;
-	};
+};
 
-_bonus = if (_difficultX) then {2} else {1};
+private _bonus = if (_difficultX) then {2} else {1};
 
-if (_sideX == Occupants) then
-	{
+if (_sideX == Occupants) then {
 	waitUntil {sleep 1; ({alive _x} count _POWs == 0) or ({(alive _x) and (_x distance getMarkerPos respawnTeamPlayer < 50)} count _POWs > 0) or (dateToNumber date > _dateLimitNum)};
-	if ({(alive _x) and (_x distance getMarkerPos respawnTeamPlayer < 50)} count _POWs > 0) then
-		{
+	if ({(alive _x) and (_x distance getMarkerPos respawnTeamPlayer < 50)} count _POWs > 0) then {
 		sleep 5;
 		[_taskId, "RES", "SUCCEEDED"] call A3A_fnc_taskSetState;
 		_countX = {(alive _x) and (_x distance getMarkerPos respawnTeamPlayer < 150)} count _POWs;
@@ -156,36 +152,41 @@ if (_sideX == Occupants) then
 		_resourcesFIA = 100 * _countX;
 		[_hr,_resourcesFIA*_bonus] remoteExec ["A3A_fnc_resourcesFIA",2];
 		[Occupants, -10, 60] remoteExec ["A3A_fnc_addAggression",2];
-		{if (_x distance getMarkerPos respawnTeamPlayer < 500) then {[_countX*_bonus,_x] call A3A_fnc_playerScoreAdd}} forEach (allPlayers - (entities "HeadlessClient_F"));
-		[round (_countX*_bonus/2),theBoss] call A3A_fnc_playerScoreAdd;
+		{
+			[_countX*_bonus, _x] call A3A_fnc_addScorePlayer;
+			[_countX*_bonus*10,_x] call A3A_fnc_addMoneyPlayer;
+		} forEach (call SCRT_fnc_misc_getRebelPlayers);
+
+		private _bonusAmount = round (_countX*_bonus/2);
+		[_bonusAmount,theBoss] call A3A_fnc_addScorePlayer;
+		[(_bonusAmount*10),theBoss, true] call A3A_fnc_addMoneyPlayer;
 		{[_x] join _groupPOW; [_x] orderGetin false} forEach _POWs;
-		}
-	else
-		{
+	} else {
 		[_taskId, "RES", "FAILED"] call A3A_fnc_taskSetState;
-		[-10*_bonus,theBoss] call A3A_fnc_playerScoreAdd;
-		};
-	}
-else
-	{
+		[-10*_bonus,theBoss] call A3A_fnc_addScorePlayer;
+	};
+} else {
 	waitUntil {sleep 1; ({alive _x} count _POWs == 0) or ({(alive _x) and (_x distance getMarkerPos respawnTeamPlayer < 50)} count _POWs > 0)};
-	if ({alive _x} count _POWs == 0) then
-		{
+	if ({alive _x} count _POWs == 0) then {
 		[_taskId, "RES", "FAILED"] call A3A_fnc_taskSetState;
-		[-10*_bonus,theBoss] call A3A_fnc_playerScoreAdd;
-		}
-	else
-		{
+		[-10*_bonus,theBoss] call A3A_fnc_addScorePlayer;
+	} else {
 		[_taskId, "RES", "SUCCEEDED"] call A3A_fnc_taskSetState;
 		_countX = {(alive _x) and (_x distance getMarkerPos respawnTeamPlayer < 150)} count _POWs;
 		_hr = _countX;
 		_resourcesFIA = 100 * _countX;
 		[_hr,_resourcesFIA*_bonus] remoteExec ["A3A_fnc_resourcesFIA",2];
-		{if (_x distance getMarkerPos respawnTeamPlayer < 500) then {[_countX*_bonus,_x] call A3A_fnc_playerScoreAdd}} forEach (allPlayers - (entities "HeadlessClient_F"));
-		[round (_countX*_bonus/2),theBoss] call A3A_fnc_playerScoreAdd;
+		{
+			[_countX*_bonus, _x] call A3A_fnc_addScorePlayer;
+			[_countX*_bonus*10,_x] call A3A_fnc_addMoneyPlayer;
+		} forEach (call SCRT_fnc_misc_getRebelPlayers);
+
+		private _bonusAmount = round (_countX*_bonus/2);
+		[_bonusAmount,theBoss] call A3A_fnc_addScorePlayer;
+		[(_bonusAmount*10),theBoss, true] call A3A_fnc_addMoneyPlayer;
 		{[_x] join _groupPOW; [_x] orderGetin false} forEach _POWs;
-		};
 	};
+};
 
 sleep 60;
 _items = [];

@@ -31,7 +31,7 @@ private _nearPoints = _navPoints inAreaArray [_pos, 75, 75];
 if (_nearPoints isEqualTo []) then {
     _nearPoints = _navPoints inAreaArray [_pos, 150, 150];
     if (_nearPoints isEqualTo []) then {
-        _nearPoints = _navPoints inAreaArray [_pos, 300, 300];
+        _nearPoints = _navPoints inAreaArray [_pos, 350, 350];
     };
 };
 

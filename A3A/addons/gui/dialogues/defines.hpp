@@ -215,7 +215,7 @@ Maintainer: DoomMetal
 #define A3A_DEFAULT_FONT "RobotoCondensed"
 #define A3A_BUTTON_FONT "PuristaLight"
 #define A3A_TITLEBAR_FONT "PuristaMedium"
-
+#define A3A_NOTIFICATION_FONT "PuristaSemiBold"
 
 //////////////
 // TEXTURES //

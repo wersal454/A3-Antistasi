@@ -23,30 +23,29 @@ Example:
 private _result = [false];
 if (player != theBoss) then
 {
-    ["Move HQ", "Only our Commander has access to this function."] call A3A_fnc_customHint;
-    _result pushBack "Commander only";
+    [localize "STR_antistasi_journal_entry_header_commander_5", localize "STR_generic_commander_only"] call A3A_fnc_customHint;
+    _result pushBack (localize "STR_A3A_Base_canMoveHq_only_comm");
 };
 
 if ((count weaponCargo boxX >0) or (count magazineCargo boxX >0) or (count itemCargo boxX >0) or (count backpackCargo boxX >0)) then
 {
     if(count _result == 1) then
     {
-        ["Move HQ", "You must first empty your Arsenal inventory in order to move the HQ."] call A3A_fnc_customHint;
+        [localize "STR_antistasi_journal_entry_header_commander_5", localize "STR_A3A_Base_canMoveHq_arsenal_empty"] call A3A_fnc_customHint;
     };
-    _result pushBack "Arsenal inventory must be empty";
+    _result pushBack (localize "STR_A3A_Base_canMoveHq_arsenal_empty_2");
 };
 
 if !(isNull attachedTo petros) then
 {
     if(count _result == 1) then
     {
-        ["Move HQ", "Put Petros down before you move the HQ!"] call A3A_fnc_customHint;
+        [localize "STR_antistasi_journal_entry_header_commander_5", localize "STR_A3A_Base_canMoveHq_arsenal_petros_picked"] call A3A_fnc_customHint;
     };
-    _result pushBack "Petros currently picked up";
+    _result pushBack (localize "STR_A3A_Base_canMoveHq_arsenal_petros_picked_2");
 };
 
-if(count _result != 1) exitWith
-{
+if(count _result != 1) exitWith {
     _result;
 };
 

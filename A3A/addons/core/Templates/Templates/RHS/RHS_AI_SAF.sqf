@@ -31,6 +31,8 @@
 ["vehiclesIFVs", []] call _fnc_saveToTemplate;
 ["vehiclesTanks", ["rhssaf_army_o_t72s", "rhssaf_army_o_t72s", "rhs_t72be_tv", "rhs_t72be_tv", "rhs_t72bb_tv", "rhs_t72bb_tv"]] call _fnc_saveToTemplate;
 ["vehiclesAA", ["rhs_zsu234_aa"]] call _fnc_saveToTemplate;
+["vehiclesAirborne", ["rhsgref_cdf_btr60", "rhsgref_cdf_btr70", "rhsgref_cdf_btr80", "rhsgref_BRDM2_HQ", "rhsgref_BRDM2"]] call _fnc_saveToTemplate;
+["vehiclesLightTanks",  ["rhs_bmp1d_vmf", "rhs_bmp1k_vmf", "rhs_bmp1p_vmf", "rhs_bmp2e_vmf"]] call _fnc_saveToTemplate;
 
 ["vehiclesTransportBoats", ["O_G_Boat_Transport_01_F"]] call _fnc_saveToTemplate;
 ["vehiclesGunBoats", ["rhsusf_mkvsoc"]] call _fnc_saveToTemplate;
@@ -59,13 +61,19 @@
 ["vehiclesMilitiaLightArmed", ["rhs_tigr_sts_3camo_vmf", "rhs_tigr_sts_vmf"]] call _fnc_saveToTemplate;
 ["vehiclesMilitiaTrucks", ["rhs_zil131_vmf", "RHS_Ural_VMF_01", "RHS_Ural_Open_VMF_01", "rhs_zil131_open_vmf", "rhs_zil131_flatbed_vmf"]] call _fnc_saveToTemplate;
 ["vehiclesMilitiaCars", ["rhs_uaz_vmf", "rhs_uaz_open_vmf", "rhs_tigr_m_vmf", "rhs_tigr_m_3camo_vmf"]] call _fnc_saveToTemplate;
-
+["vehiclesMilitiaAPCs", ["rhsgref_cdf_btr60", "rhsgref_BRDM2_HQ"]] call _fnc_saveToTemplate;
 ["vehiclesPolice", ["rhs_tigr_vmf", "rhs_uaz_open_vmf"]] call _fnc_saveToTemplate;
 
 ["staticMGs", ["rhs_KORD_high_MSV"]] call _fnc_saveToTemplate;
 ["staticAT", ["rhs_Kornet_9M133_2_msv"]] call _fnc_saveToTemplate;
 ["staticAA", ["rhs_Igla_AA_pod_msv", "RHS_ZU23_MSV"]] call _fnc_saveToTemplate;
 ["staticMortars", ["rhs_2b14_82mm_msv"]] call _fnc_saveToTemplate;
+["staticHowitzers", ["rhs_D30_msv"]] call _fnc_saveToTemplate;
+
+["vehicleRadar", ""] call _fnc_saveToTemplate;
+["vehicleSam", ""] call _fnc_saveToTemplate;
+
+["howitzerMagazineHE", "rhs_mag_3of56_10"] call _fnc_saveToTemplate;
 
 ["mortarMagazineHE", "rhs_mag_3vo18_10"] call _fnc_saveToTemplate;
 ["mortarMagazineSmoke", "rhs_mag_d832du_10"] call _fnc_saveToTemplate;
@@ -133,6 +141,14 @@ _loadoutData set ["NVGs", ["rhs_1PN138"]];
 _loadoutData set ["binoculars", ["Binocular"]];
 _loadoutData set ["rangefinders", ["rhs_pdu4"]];
 
+_loadoutData set ["traitorUniforms", ["rhssaf_uniform_m10_digital_summer"]];
+_loadoutData set ["traitorVests", ["rhs_6b23_6sh92", "rhs_6b23_6sh92_radio"]];
+_loadoutData set ["traitorHats", ["rhssaf_beret_red"]];
+
+_loadoutData set ["officerUniforms", ["rhssaf_uniform_m10_digital_summer"]];
+_loadoutData set ["officerVests", ["rhs_6b23_6sh92_radio"]];
+_loadoutData set ["officerHats", ["rhssaf_beret_green"]];
+
 _loadoutData set ["uniforms", []];
 _loadoutData set ["vests", []];
 _loadoutData set ["slVests", []];
@@ -180,6 +196,9 @@ _loadoutData set ["items_sniper_extras", _mmItems];
 _loadoutData set ["items_police_extras", []];
 _loadoutData set ["items_crew_extras", []];
 _loadoutData set ["items_unarmed_extras", []];
+
+_loadoutData set ["glasses", []];
+_loadoutData set ["goggles", []];
 
 //TODO - ACE overrides for misc essentials, medical and engineer gear
 
@@ -258,6 +277,67 @@ _sfLoadoutData set ["sniperRifles", [
 ]];
 _sfLoadoutData set ["sidearms", [
 ["rhsusf_weap_glock17g4", "rhsusf_acc_omega9k", "acc_flashlight_pistol", "", ["rhsusf_mag_17Rnd_9x19_JHP", "rhsusf_mag_17Rnd_9x19_FMJ"], [], ""]
+]];
+
+/////////////////////////////////
+//    Elite Loadout Data    //
+/////////////////////////////////
+private _eliteLoadoutData = _loadoutData call _fnc_copyLoadoutData; // touch and shit breaks
+_eliteLoadoutData set ["uniforms", ["rhssaf_uniform_m10_digital_summer"]];
+_eliteLoadoutData set ["vests", ["rhs_6b23_6sh92", "rhs_6b23_rifleman"]];
+_eliteLoadoutData set ["slVests", ["rhs_6b23_6sh92_headset_mapcase"]];
+_eliteLoadoutData set ["glVests", ["rhs_6b23_6sh92_vog"]];
+_eliteLoadoutData set ["backpacks", ["rhs_assault_umbts", "rhssaf_alice_md2camo", "rhs_assault_umbts_engineer_empty"]];
+_eliteLoadoutData set ["helmets", ["rhssaf_helmet_m97_woodland", "rhssaf_helmet_m97_woodland_black_ess", "rhssaf_helmet_m97_woodland_black_ess_bare","rhssaf_helmet_m97_olive_nocamo"]];
+_eliteLoadoutData set ["binoculars", ["Laserdesignator_03"]];
+
+_eliteLoadoutData set ["slRifles", [
+["rhs_weap_g36kv", "rhsusf_acc_SFMB556", "rhs_acc_perst1ik_ris", "rhsusf_acc_compm4", ["rhssaf_30rnd_556x45_EPR_G36", "rhssaf_30rnd_556x45_Tracers_G36"], [], ""],
+["rhs_weap_g36kv", "rhsusf_acc_SFMB556", "rhs_acc_perst1ik_ris", "rhs_acc_rakursPM", ["rhssaf_30rnd_556x45_EPR_G36", "rhssaf_30rnd_556x45_Tracers_G36"], [], ""],
+["rhs_weap_m21a_pr", "rhsusf_acc_SFMB556", "rhs_acc_perst1ik", "rhsusf_acc_compm4", ["rhsgref_30rnd_556x45_m21", "rhsgref_30rnd_556x45_m21_t"], [], ""],
+["rhs_weap_m21a_pr", "rhsusf_acc_SFMB556", "rhs_acc_perst1ik", "rhsusf_acc_eotech_xps3", ["rhsgref_30rnd_556x45_m21", "rhsgref_30rnd_556x45_m21_t"], [], ""],
+["rhs_weap_m21a_pr_pbg40", "", "", "rhsusf_acc_compm4", ["rhsgref_30rnd_556x45_m21", "rhsgref_30rnd_556x45_m21_t"], ["rhs_VOG25", "rhs_VOG25", "rhs_VOG25P", "rhs_VG40OP_white"], ""],
+["rhs_weap_m21a_pr_pbg40", "", "", "rhs_acc_rakursPM", ["rhsgref_30rnd_556x45_m21", "rhsgref_30rnd_556x45_m21_t"], ["rhs_VOG25", "rhs_VOG25", "rhs_VOG25P", "rhs_VG40OP_white"], ""]
+]];
+_eliteLoadoutData set ["rifles", [
+["rhs_weap_g36kv", "rhsusf_acc_SFMB556", "rhs_acc_perst1ik_ris", "rhs_acc_rakursPM", ["rhssaf_30rnd_556x45_EPR_G36", "rhssaf_30rnd_556x45_Tracers_G36"], [], ""],
+["rhs_weap_g36kv", "rhsusf_acc_SFMB556", "rhs_acc_perst1ik_ris", "rhsusf_acc_eotech_xps3", ["rhssaf_30rnd_556x45_EPR_G36", "rhssaf_30rnd_556x45_Tracers_G36"], [], ""],
+["rhs_weap_g36kv", "rhsusf_acc_SFMB556", "rhs_acc_perst1ik_ris", "rhsusf_acc_compm4", ["rhssaf_30rnd_556x45_EPR_G36", "rhssaf_30rnd_556x45_Tracers_G36"], [], ""],
+["rhs_weap_m21a_pr", "rhsusf_acc_SFMB556", "rhs_acc_perst1ik", "rhs_acc_1p87", ["rhsgref_30rnd_556x45_m21", "rhsgref_30rnd_556x45_m21_t"], [], ""],
+["rhs_weap_m21a_pr", "rhsusf_acc_SFMB556", "rhs_acc_perst1ik", "rhs_acc_rakursPM", ["rhsgref_30rnd_556x45_m21", "rhsgref_30rnd_556x45_m21_t"], [], ""]
+]];
+_eliteLoadoutData set ["carbines", [
+["rhs_weap_m21s_pr", "rhsusf_acc_SFMB556", "rhs_acc_2dpZenit", "rhs_acc_1p87", ["rhsgref_30rnd_556x45_m21", "rhsgref_30rnd_556x45_m21_t"], [], ""],
+["rhs_weap_m21s_pr", "rhsusf_acc_SFMB556", "rhs_acc_2dpZenit", "rhs_acc_ekp8_18", ["rhsgref_30rnd_556x45_m21", "rhsgref_30rnd_556x45_m21_t"], [], ""],
+["rhs_weap_m21s", "rhsusf_acc_SFMB556", "rhs_acc_2dpZenit", "rhs_acc_pkas", ["rhsgref_30rnd_556x45_m21", "rhsgref_30rnd_556x45_m21_t"], [], ""],
+["rhs_weap_m21s", "rhsusf_acc_SFMB556", "rhs_acc_2dpZenit", "rhs_acc_ekp8_02", ["rhsgref_30rnd_556x45_m21", "rhsgref_30rnd_556x45_m21_t"], [], ""],
+["rhs_weap_g36c", "rhsusf_acc_SFMB556", "rhs_acc_2dpZenit_ris", "rhsusf_acc_eotech_xps3", ["rhssaf_30rnd_556x45_EPR_G36", "rhssaf_30rnd_556x45_Tracers_G36"], [], ""],
+["rhs_weap_g36c", "rhsusf_acc_SFMB556", "rhs_acc_2dpZenit_ris", "rhs_acc_ekp8_18", ["rhssaf_30rnd_556x45_EPR_G36", "rhssaf_30rnd_556x45_Tracers_G36"], [], ""]
+]];
+_eliteLoadoutData set ["grenadeLaunchers", [
+
+["rhs_weap_g36kv_ag36", "", "", "rhs_acc_rakursPM", ["rhssaf_30rnd_556x45_EPR_G36", "rhssaf_30rnd_556x45_Tracers_G36"], ["rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M433_HEDP", "rhs_mag_m714_White"], ""],
+["rhs_weap_g36kv_ag36", "", "", "rhs_acc_ekp8_18", ["rhssaf_30rnd_556x45_EPR_G36", "rhssaf_30rnd_556x45_Tracers_G36"], ["rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M433_HEDP", "rhs_mag_m714_White"], ""],
+["rhs_weap_m70b3n_pbg40", "rhs_acc_dtk1l", "", "rhs_acc_1p63", ["rhssaf_30Rnd_762x39mm_M67", "rhssaf_30Rnd_762x39mm_M78_tracer"], ["rhs_VOG25", "rhs_VOG25", "rhs_VOG25P", "rhs_VG40OP_white"], ""],
+["rhs_weap_m70b3n_pbg40", "rhs_acc_dtk1l", "", "rhs_acc_pkas", ["rhssaf_30Rnd_762x39mm_M67", "rhssaf_30Rnd_762x39mm_M78_tracer"], ["rhs_VOG25", "rhs_VOG25", "rhs_VOG25P", "rhs_VG40OP_white"], ""],
+["rhs_weap_m21a_pbg40", "rhsusf_acc_SFMB556", "", "rhs_acc_pkas", ["rhsgref_30rnd_556x45_m21", "rhsgref_30rnd_556x45_m21_t"], ["rhs_VOG25", "rhs_VOG25", "rhs_VOG25P", "rhs_VG40OP_white"], ""],
+["rhs_weap_m21a_pbg40", "rhsusf_acc_SFMB556", "", "rhs_acc_1p63", ["rhsgref_30rnd_556x45_m21", "rhsgref_30rnd_556x45_m21_t"], ["rhs_VOG25", "rhs_VOG25", "rhs_VOG25P", "rhs_VG40OP_white"], ""]
+]];
+_eliteLoadoutData set ["SMGs", ["rhs_weap_scorpion"]];
+_eliteLoadoutData set ["machineGuns", [
+["rhs_weap_m84", "", "", "",["rhs_100Rnd_762x54mmR", "rhs_100Rnd_762x54mmR_green"], [], ""],
+["rhs_weap_minimi_para_railed", "", "", "rhsusf_acc_eotech_xps3",["rhsusf_200rnd_556x45_mixed_box", "rhsusf_200Rnd_556x45_box"], [], "rhsusf_acc_saw_bipod"],
+["rhs_weap_minimi_para_railed", "", "", "rhsusf_acc_compm4",["rhsusf_200rnd_556x45_mixed_box", "rhsusf_200Rnd_556x45_box"], [], "rhsusf_acc_saw_bipod"],
+["rhs_weap_minimi_para_railed", "", "", "",["rhsusf_200Rnd_556x45_box", "rhsusf_200rnd_556x45_mixed_box"], [], "rhsusf_acc_saw_bipod"]
+]];
+_eliteLoadoutData set ["marksmanRifles", [
+["rhs_weap_m76", "", "", "rhs_acc_pso1m21", ["rhsgref_10Rnd_792x57_m76", "rhssaf_10Rnd_792x57_m76_tracer"], [], ""],
+["rhs_weap_svdp", "", "", "rhs_acc_pso1m21", ["rhs_10Rnd_762x54mmR_7N1"], [], ""],
+["rhs_weap_svdp_wd", "", "", "rhs_acc_pso1m2", ["rhs_10Rnd_762x54mmR_7N1"], [], ""]
+]];
+_eliteLoadoutData set ["sniperRifles", [
+["rhs_weap_XM2010", "", "", "rhsusf_acc_LEUPOLDMK4_2", [], [], "rhsusf_acc_harris_bipod"],
+["rhs_weap_XM2010", "", "", "rhsusf_acc_premier", [], [], "rhsusf_acc_harris_bipod"]
 ]];
 
 /////////////////////////////////
@@ -379,12 +459,18 @@ private _crewLoadoutData = _militaryLoadoutData call _fnc_copyLoadoutData; // to
 _crewLoadoutData set ["uniforms", ["rhs_uniform_afghanka_grey"]];
 _crewLoadoutData set ["vests", ["rhsgref_otv_khaki"]];
 _crewLoadoutData set ["helmets", ["rhssaf_helmet_m97_olive_nocamo"]];
-
+_crewLoadoutData set ["carbines", [
+["rhs_weap_aks74u", "rhs_acc_pgs64_74u", "", "", ["rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_AK_green"], [], ""],
+["rhs_weap_aks74un", "rhs_acc_pgs64_74un", "", "rhs_acc_ekp1", ["rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_AK_green"], [], ""]
+]];	
 private _pilotLoadoutData = _militaryLoadoutData call _fnc_copyLoadoutData;
 _pilotLoadoutData set ["uniforms", ["rhssaf_uniform_mig29_pilot"]];
 _pilotLoadoutData set ["vests", ["rhsgref_chestrig"]];
 _pilotLoadoutData set ["helmets", ["rhs_zsh7a_mike_alt", "rhs_zsh7a_mike", "rhs_zsh7a_mike_green", "rhs_zsh7a_mike_green_alt"]];
-
+_pilotLoadoutData set ["carbines", [
+["rhs_weap_aks74u", "rhs_acc_pgs64_74u", "", "", ["rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_AK_green"], [], ""],
+["rhs_weap_aks74un", "rhs_acc_pgs64_74un", "", "rhs_acc_ekp1", ["rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_AK_green"], [], ""]
+]];	
 /////////////////////////////////
 //    Unit Type Definitions    //
 /////////////////////////////////
@@ -427,6 +513,33 @@ private _riflemanTemplate = {
 
     ["rifles"] call _fnc_setPrimary;
     ["primary", 4] call _fnc_addMagazines;
+
+    ["sidearms"] call _fnc_setHandgun;
+    ["handgun", 2] call _fnc_addMagazines;
+
+    ["items_medical_standard"] call _fnc_addItemSet;
+    ["items_rifleman_extras"] call _fnc_addItemSet;
+    ["items_miscEssentials"] call _fnc_addItemSet;
+    ["antiInfantryGrenades", 2] call _fnc_addItem;
+    ["smokeGrenades", 2] call _fnc_addItem;
+
+    ["maps"] call _fnc_addMap;
+    ["watches"] call _fnc_addWatch;
+    ["compasses"] call _fnc_addCompass;
+    ["radios"] call _fnc_addRadio;
+    ["NVGs"] call _fnc_addNVGs;
+};
+
+private _radiomanTemplate = {
+    ["helmets"] call _fnc_setHelmet;
+    [selectRandomWeighted [[], 2, "glasses", 0.75, "goggles", 0.5]] call _fnc_setFacewear;
+    ["vests"] call _fnc_setVest;
+    ["uniforms"] call _fnc_setUniform;
+    ["longRangeRadios"] call _fnc_setBackpack;
+
+
+    [selectRandom ["rifles", "carbines"]] call _fnc_setPrimary;
+    ["primary", 6] call _fnc_addMagazines;
 
     ["sidearms"] call _fnc_setHandgun;
     ["handgun", 2] call _fnc_addMagazines;
@@ -780,9 +893,44 @@ private _unarmedTemplate = {
 };
 
 private _traitorTemplate = {
-    call _unarmedTemplate;
+    ["traitorHats"] call _fnc_setHelmet;
+    [selectRandomWeighted [[], 1.25, "glasses", 0.75]] call _fnc_setFacewear;
+    ["traitorVests"] call _fnc_setVest;
+    ["traitorUniforms"] call _fnc_setUniform;
+
     ["sidearms"] call _fnc_setHandgun;
     ["handgun", 2] call _fnc_addMagazines;
+
+    ["items_medical_basic"] call _fnc_addItemSet;
+    ["items_unarmed_extras"] call _fnc_addItemSet;
+    ["items_miscEssentials"] call _fnc_addItemSet;
+
+    ["maps"] call _fnc_addMap;
+    ["watches"] call _fnc_addWatch;
+    ["compasses"] call _fnc_addCompass;
+    ["radios"] call _fnc_addRadio;
+};
+
+private _officerTemplate = {
+    ["officerHats"] call _fnc_setHelmet;
+    [selectRandomWeighted [[], 1.25, "glasses", 0.75]] call _fnc_setFacewear;
+    ["officerVests"] call _fnc_setVest;
+    ["officerUniforms"] call _fnc_setUniform;
+
+    [["SMGs", "carbines"] call _fnc_fallback] call _fnc_setPrimary;
+    ["primary", 3] call _fnc_addMagazines;
+    
+    ["sidearms"] call _fnc_setHandgun;
+    ["handgun", 2] call _fnc_addMagazines;
+
+    ["items_medical_basic"] call _fnc_addItemSet;
+    ["items_unarmed_extras"] call _fnc_addItemSet;
+    ["items_miscEssentials"] call _fnc_addItemSet;
+
+    ["maps"] call _fnc_addMap;
+    ["watches"] call _fnc_addWatch;
+    ["compasses"] call _fnc_addCompass;
+    ["radios"] call _fnc_addRadio;
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -795,19 +943,21 @@ private _traitorTemplate = {
 /////////////////////////////
 private _prefix = "SF";
 private _unitTypes = [
-    ["SquadLeader", _squadLeaderTemplate],
-    ["Rifleman", _riflemanTemplate],
-    ["Medic", _medicTemplate, [["medic", true]]],
-    ["Engineer", _engineerTemplate, [["engineer", true]]],
-    ["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true]]],
-    ["Grenadier", _grenadierTemplate],
-    ["LAT", _latTemplate],
-    ["AT", _atTemplate],
-    ["AA", _aaTemplate],
-    ["MachineGunner", _machineGunnerTemplate],
-    ["Marksman", _marksmanTemplate],
-    ["Sniper", _sniperTemplate]
+	["SquadLeader", _squadLeaderTemplate, [], [_prefix]],
+	["Rifleman", _riflemanTemplate, [], [_prefix]],
+	["Radioman", _radiomanTemplate, [], [_prefix]],
+	["Medic", _medicTemplate, [["medic", true]], [_prefix]],
+	["Engineer", _engineerTemplate, [["engineer", true]], [_prefix]],
+	["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true]], [_prefix]],
+	["Grenadier", _grenadierTemplate, [], [_prefix]],
+	["LAT", _latTemplate, [], [_prefix]],
+	["AT", _atTemplate, [], [_prefix]],
+	["AA", _aaTemplate, [], [_prefix]],
+	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
+	["Marksman", _marksmanTemplate, [], [_prefix]],
+	["Sniper", _sniperTemplate, [], [_prefix]]
 ];
+
 
 [_prefix, _unitTypes, _sfLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
 
@@ -824,18 +974,19 @@ private _unitTypes = [
 ///////////////////////
 private _prefix = "military";
 private _unitTypes = [
-    ["SquadLeader", _squadLeaderTemplate],
-    ["Rifleman", _riflemanTemplate],
-    ["Medic", _medicTemplate, [["medic", true]]],
-    ["Engineer", _engineerTemplate, [["engineer", true]]],
-    ["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true]]],
-    ["Grenadier", _grenadierTemplate],
-    ["LAT", _latTemplate],
-    ["AT", _atTemplate],
-    ["AA", _aaTemplate],
-    ["MachineGunner", _machineGunnerTemplate],
-    ["Marksman", _marksmanTemplate],
-    ["Sniper", _sniperTemplate]
+	["SquadLeader", _squadLeaderTemplate, [], [_prefix]],
+	["Rifleman", _riflemanTemplate, [], [_prefix]],
+	["Radioman", _radiomanTemplate, [], [_prefix]],
+	["Medic", _medicTemplate, [["medic", true]], [_prefix]],
+	["Engineer", _engineerTemplate, [["engineer", true]], [_prefix]],
+	["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true]], [_prefix]],
+	["Grenadier", _grenadierTemplate, [], [_prefix]],
+	["LAT", _latTemplate, [], [_prefix]],
+	["AT", _atTemplate, [], [_prefix]],
+	["AA", _aaTemplate, [], [_prefix]],
+	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
+	["Marksman", _marksmanTemplate, [], [_prefix]],
+	["Sniper", _sniperTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _militaryLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
@@ -845,8 +996,8 @@ private _unitTypes = [
 ////////////////////////
 private _prefix = "police";
 private _unitTypes = [
-    ["SquadLeader", _policeTemplate],
-    ["Standard", _policeTemplate]
+	["SquadLeader", _policeTemplate, [], [_prefix]],
+	["Standard", _policeTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _policeLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
@@ -856,21 +1007,44 @@ private _unitTypes = [
 ////////////////////////
 private _prefix = "militia";
 private _unitTypes = [
-    ["SquadLeader", _squadLeaderTemplate],
-    ["Rifleman", _riflemanTemplate],
-    ["Medic", _medicTemplate, [["medic", true]]],
-    ["Engineer", _engineerTemplate, [["engineer", true]]],
-    ["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true]]],
-    ["Grenadier", _grenadierTemplate],
-    ["LAT", _latTemplate],
-    ["AT", _atTemplate],
-    ["AA", _aaTemplate],
-    ["MachineGunner", _machineGunnerTemplate],
-    ["Marksman", _marksmanTemplate],
-    ["Sniper", _sniperTemplate]
+	["SquadLeader", _squadLeaderTemplate, [], [_prefix]],
+	["Rifleman", _riflemanTemplate, [], [_prefix]],
+	["Radioman", _radiomanTemplate, [], [_prefix]],
+	["Medic", _medicTemplate, [["medic", true]], [_prefix]],
+	["Engineer", _engineerTemplate, [["engineer", true]], [_prefix]],
+	["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true]], [_prefix]],
+	["Grenadier", _grenadierTemplate, [], [_prefix]],
+	["LAT", _latTemplate, [], [_prefix]],
+	["AT", _atTemplate, [], [_prefix]],
+	["AA", _aaTemplate, [], [_prefix]],
+	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
+	["Marksman", _marksmanTemplate, [], [_prefix]],
+	["Sniper", _sniperTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _militiaLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
+
+///////////////////////
+//  Elite Units   //
+///////////////////////
+private _prefix = "elite";
+private _unitTypes = [
+	["SquadLeader", _squadLeaderTemplate, [], [_prefix]],
+	["Rifleman", _riflemanTemplate, [], [_prefix]],
+	["Radioman", _radiomanTemplate, [], [_prefix]],
+	["Medic", _medicTemplate, [["medic", true]], [_prefix]],
+	["Engineer", _engineerTemplate, [["engineer", true]], [_prefix]],
+	["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true]], [_prefix]],
+	["Grenadier", _grenadierTemplate, [], [_prefix]],
+	["LAT", _latTemplate, [], [_prefix]],
+	["AT", _atTemplate, [], [_prefix]],
+	["AA", _aaTemplate, [], [_prefix]],
+	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
+	["Marksman", _marksmanTemplate, [], [_prefix]],
+	["Sniper", _sniperTemplate, [], [_prefix]]
+];
+
+[_prefix, _unitTypes, _eliteLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
 
 //////////////////////
 //    Misc Units    //

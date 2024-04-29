@@ -1,12 +1,10 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
-//params [["_pos0", [0,0,0], [[]], 3], ["_pos1", [0,0,0], [[]], 3]];
-private ["_thing0","_typeX","_error","_pos0","_pos1"];
 
-_thing0 = _this select 0;
-_typeX = _this select 1;//false : tierra, misma altura, true: aire, 300 metros más arriba
-_error = false;
-_pos0 = [];
+params ["_thing0", "_typeX"];
+
+private _error = false;
+private _pos0 = [];
 if (_thing0 isEqualType []) then
 	{
 	if ((_thing0 select 2) < 3) then
@@ -33,7 +31,7 @@ if (_error) exitWith {
     Error_1("Unknown height:%1.",_thing0);
 	};
 
-_pos1 = [(_pos0 select 0) + 300,_pos0 select 1,_pos0 select 2];
+private _pos1 = [(_pos0 select 0) + 300,_pos0 select 1,_pos0 select 2];
 if (_typeX) then {_pos1 = [(_pos0 select 0) + 300,_pos0 select 1,(_pos0 select 2)+300]};
 private _MaxViewDistance = 10000;
 private _ViewDistanceDecayRate = 120;

@@ -28,7 +28,9 @@ private _aggroValue = if(_side == Occupants) then {aggressionOccupants} else {ag
 private _weightHE = if (_side == Occupants) then {2} else {1};             // occupants less likely to use the wide-area stuff
 private _weightCluster = 0 max ((tierWar - 5) / 10 + _aggroValue / 200);           // 1 at max warlevel and aggro
 private _weightNapalm = if (napalmEnabled) then {_weightCluster} else {0};
-private _bombType = selectRandomWeighted ["HE", _weightHE, "CLUSTER", _weightCluster, "NAPALM", _weightNapalm];
+private _weightChemical = if (_side == Invaders) then {_weightCluster} else {0};
+
+private _bombType = selectRandomWeighted ["HE", _weightHE, "CLUSTER", _weightCluster, "NAPALM", _weightNapalm, "CHEMICAL", _weightChemical];
 
 private _planeType = selectRandom (Faction(_side) get "vehiclesPlanesCAS");
 if (_delay < 0) then { _delay = (0.5 + random 1) * (300 - 15*tierWar - 1*_aggroValue) };

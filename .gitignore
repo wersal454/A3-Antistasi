@@ -1,12 +1,11 @@
 .vscode/
 .github/
 .idea/
-build
 *.biprivatekey
 *.log
 *.pbo
 *.pbo.bak
-*.bat
+*.png
 AntistasiBuilder.cfg
 
 #Ignore mission files that have been copied to A3-Antistasi
@@ -18,13 +17,19 @@ A3-Antistasi/ak.jpg
 A3-Antistasi/Navigation/
 A3-Antistasi/Pictures/Mission/
 
-#Ignore packaged missions
-PreparedMissions/
-
-#Ignore test templates
-Map-Templates/Antistasi-TEST-**
-
+#Keys
+Antistasi-Plus.biprivatekey
+Antistasi-Ultimate.biprivatekey
 
 #Ignore Python bytecode files and bytecode-cache folder
 __pycache__/
+build/
+release/
+dev/
+Tools/TownGenerator/output.txt
+Tools/csvparser/output/*.txt
+Tools/csvparser/csv/*.csv
+Tools/csvparser/xlsx2csv/*.xlsx
+Tools/csvparser/xlsx2csv/*.csv
 *.py[cod]
+Tools/ValidationResults.txt

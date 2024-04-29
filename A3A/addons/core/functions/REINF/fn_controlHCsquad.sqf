@@ -1,13 +1,13 @@
-if (player != theBoss) exitWith {["Control Squad", "Only Commander has the ability to control HC units."] call A3A_fnc_customHint;};
-if (captive player) exitWith {["Control Squad", "You cannot control squads while undercover."] call A3A_fnc_customHint;};
-if (!isNil "A3A_FFPun_Jailed" && {(getPlayerUID player) in A3A_FFPun_Jailed}) exitWith {["Control Squad", "Nope. Not happening."] call A3A_fnc_customHint;};
+params ["_groups"];
 
-_groups = _this select 0;
+if (player != theBoss) exitWith {[localize "STR_A3A_reinf_control_squad", localize "STR_A3A_reinf_control_squad_only_commander"] call A3A_fnc_customHint;};
+if (captive player) exitWith {[localize "STR_A3A_reinf_control_squad", localize "STR_A3A_reinf_control_squad_no_undercover"] call A3A_fnc_customHint;};
+if (!isNil "A3A_FFPun_Jailed" && {(getPlayerUID player) in A3A_FFPun_Jailed}) exitWith {[localize "STR_A3A_reinf_control_squad", localize "STR_A3A_reinf_control_squad_punishment"] call A3A_fnc_customHint;};
 
 _groupX = _groups select 0;
 _unit = leader _groupX;
 
-if !([_unit] call A3A_fnc_canFight) exitWith {["Control Squad", "You cannot control an unconscious or dead unit."] call A3A_fnc_customHint;};
+if !([_unit] call A3A_fnc_canFight) exitWith {[localize "STR_A3A_reinf_control_squad", localize "STR_A3A_reinf_control_no_dead"] call A3A_fnc_customHint;};
 
 while {(count (waypoints _groupX)) > 0} do
  {
@@ -27,41 +27,42 @@ hcShowBar false;
 hcShowBar true;
 
 _unit setVariable ["owner",player,true];
-_eh1 = player addEventHandler ["HandleDamage",
-	{
+_eh1 = player addEventHandler ["HandleDamage", {
 	_unit = _this select 0;
 	_unit removeEventHandler ["HandleDamage",_thisEventHandler];
 	//removeAllActions _unit;
 	selectPlayer _unit;
 	(units group player) joinsilent group player;
 	group player selectLeader player;
-	["Control Squad", "Returned to original Unit as it received damage."] call A3A_fnc_customHint;
+	[localize "STR_A3A_reinf_control_squad", localize "STR_A3A_reinf_control_return_damage_1"] call A3A_fnc_customHint;
 	nil;
-	}];
-_eh2 = _unit addEventHandler ["HandleDamage",
-	{
+}];
+_eh2 = _unit addEventHandler ["HandleDamage", {
 	_unit = _this select 0;
 	_unit removeEventHandler ["HandleDamage",_thisEventHandler];
 	removeAllActions _unit;
 	selectPlayer (_unit getVariable "owner");
 	(units group player) joinsilent group player;
 	group player selectLeader player;
-	["Control Squad", "Returned to original Unit as controlled AI received damage."] call A3A_fnc_customHint;
+	[localize "STR_A3A_reinf_control_squad", localize "STR_A3A_reinf_control_return_damage_2"] call A3A_fnc_customHint;
 	nil;
-	}];
+}];
 selectPlayer _unit;
 
-_timeX = 180;
+_timeX = aiControlTime;
 
-_unit addAction ["Return Control to AI",{selectPlayer (player getVariable ["owner",player])}];
+_unit addAction [localize "STR_antistasi_actions_return_control_to_ai",{selectPlayer (player getVariable ["owner",player])}];
 
-waitUntil {sleep 1;["Control Squad", format ["Time to return control to AI: %1.", _timeX]] call A3A_fnc_customHint; _timeX = _timeX - 1; (_timeX < 0) or (isPlayer theBoss)};
+waitUntil {sleep 1;
+	[localize "STR_A3A_reinf_control_squad", format [localize "STR_control_unit_time_to_return_to_original_body", _timeX]] call A3A_fnc_customHint; 
+	_timeX = _timeX - 1; 
+	_timeX < 0 or {isPlayer theBoss}
+};
 
 removeAllActions _unit;
 if (!isPlayer (_unit getVariable ["owner",_unit])) then {selectPlayer (_unit getVariable ["owner",_unit])};
-//_unit setVariable ["owner",nil,true];
 _unit removeEventHandler ["HandleDamage",_eh2];
 player removeEventHandler ["HandleDamage",_eh1];
 (units group theBoss) joinsilent group theBoss;
 group theBoss selectLeader theBoss;
-["Control Squad", ""] call A3A_fnc_customHint;
+[localize "STR_A3A_reinf_control_squad", ""] call A3A_fnc_customHint;

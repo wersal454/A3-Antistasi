@@ -1,6 +1,6 @@
 /*
 Maintainer: John Jordan
-    Generates list of outposts and airports within land support distance of nav index. Cached.
+    Generates list of outposts, milbases and airports within land support distance of nav index. Cached.
 
 Scope: Server or HC
 Environment: Any
@@ -10,7 +10,7 @@ Arguments:
 
 Return Value:
     <ARRAY<
-        <STRING> Marker name of outpost/airport within land support distance
+        <STRING> Marker name of outpost/airport/milbase within land support distance
         <SCALAR> Nav distance between markers
     >
 */
@@ -28,7 +28,7 @@ if (isNil "A3A_landSupportMarkers") then {
         if (_nIndex == -1) then { continue };
 		private _npos = NavGrid#_nIndex#0;
 		A3A_outpostAirportXYI pushBack [_npos#0, _npos#1, markersX find _x];
-	} forEach outposts + airportsX;
+	} forEach outposts + airportsX + milbases;
 };
 
 private _key = (["s", "l"] select _lowAir) + str _navIndex;

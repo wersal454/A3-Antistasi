@@ -197,12 +197,12 @@ switch (_mode) do
         _occupantsFlag ctrlSetText NATOFlagTexture;
         _occupantsAggroText ctrlSetText ([aggressionLevelOccupants] call A3A_fnc_getAggroLevelString);
         _aggressionStr = localize "STR_antistasi_dialogs_generic_aggression";
-        _occupantsFlag ctrlSetToolTip (nameOccupants + " " + _aggressionStr);
-        _occupantsAggroText ctrlSetTooltip (nameOccupants + " " + _aggressionStr);
+        _occupantsFlag ctrlSetToolTip (A3A_faction_occ get "name" + " " + _aggressionStr);
+        _occupantsAggroText ctrlSetTooltip (A3A_faction_occ get "name" + " " + _aggressionStr);
         _invadersFlag ctrlSetText CSATFlagTexture;
         _invadersAggroText ctrlSetText ([aggressionLevelInvaders] call A3A_fnc_getAggroLevelString);
-        _invadersFlag ctrlSetToolTip (nameInvaders + " " + _aggressionStr);
-        _invadersAggroText ctrlSetTooltip (nameInvaders + " " + _aggressionStr);
+        _invadersFlag ctrlSetToolTip (A3A_faction_inv get "name" + " " + _aggressionStr);
+        _invadersAggroText ctrlSetTooltip (A3A_faction_inv + " " + _aggressionStr);
 
         // Get location data
         private _controlledCities = {sidesX getVariable [_x, sideUnknown] == teamPlayer} count citiesX;
@@ -211,6 +211,8 @@ switch (_mode) do
         private _totalOutposts = count outposts;
         private _controlledAirbases = {sidesX getVariable [_x, sideUnknown] == teamPlayer} count airportsX;
         private _totalAirbases = count airportsX;
+        // private _controlledMilbases = {sidesX getVariable [_x, sideUnknown] == teamPlayer} count milbases;
+        // private _totalMilbases = count milbases;
         private _controlledResources = {sidesX getVariable [_x, sideUnknown] == teamPlayer} count resourcesX;
         private _totalResources = count resourcesX;
         private _controlledFactories = {sidesX getVariable [_x, sideUnknown] == teamPlayer} count factories;
@@ -561,7 +563,7 @@ switch (_mode) do
         // Find closest marker to the clicked position
         _params params ["_clickedPosition"];
         private _clickedWorldPosition = _garrisonMap ctrlMapScreenToWorld _clickedPosition;
-        private _garrisonableLocations = airportsX + resourcesX + factories + outposts + seaports + citiesX + outpostsFIA + ["Synd_HQ"];
+        private _garrisonableLocations = airportsX + resourcesX + factories + outposts + milbases + seaports + citiesX + hmgpostsFIA + atpostsFIA + aapostsFIA + roadblocksFIA + watchpostsFIA + ["Synd_HQ"];
         private _selectedMarker = [_garrisonableLocations, _clickedWorldPosition] call BIS_fnc_nearestPosition;
         Debug_1("Selected marker: %1", _selectedMarker);
 

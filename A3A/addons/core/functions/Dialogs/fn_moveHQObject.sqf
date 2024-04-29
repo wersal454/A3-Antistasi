@@ -1,23 +1,32 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
-private ["_thingX","_playerX","_id","_isStatic","_sites","_markerX","_size","_positionX"];
 
-_thingX = _this select 0;
-_playerX = _this select 1;
-_id = _this select 2;
-_isStatic = (_thingX isKindOf "StaticWeapon");
+params ["_thingX", "_playerX", "_id"];
 
-if (!_isStatic && player != theBoss) exitWith {["Move HQ", "Only Player Commander is allowed to move HQ assets."] call A3A_fnc_customHint;};
-if (!(isNull attachedTo _thingX)) exitWith {["Move HQ", "The asset you want to move is being moved by another player."] call A3A_fnc_customHint;};
-if (vehicle _playerX != _playerX) exitWith {["Move HQ", "You cannot move HQ assets while in a vehicle."] call A3A_fnc_customHint;};
 
-if (([_playerX] call A3A_fnc_countAttachedObjects) > 0) exitWith {["Move HQ", "You have other things attached, you cannot move this."] call A3A_fnc_customHint;};
+private _isStatic = (_thingX isKindOf "StaticWeapon");
 
-_sites = markersX select {sidesX getVariable [_x,sideUnknown] == teamPlayer};
-_markerX = [_sites,_playerX] call BIS_fnc_nearestPosition;
-_size = [_markerX] call A3A_fnc_sizeMarker;
-_positionX = getMarkerPos _markerX;
-if (_playerX distance2D _positionX > _size) exitWith {["Move HQ", "This asset needs to be closer to it relative zone center to be able to be moved."] call A3A_fnc_customHint;};
+if (!_isStatic && {player != theBoss}) exitWith {
+	[localize "STR_A3A_Dialogs_moveHQObject_header", localize "STR_A3A_Dialogs_moveHQObject_error_only_comm"] call SCRT_fnc_misc_deniedHint;
+};
+if (!(isNull attachedTo _thingX)) exitWith {
+	[localize "STR_A3A_Dialogs_moveHQObject_header", localize "STR_A3A_Dialogs_moveHQObject_error_already_moved"] call SCRT_fnc_misc_deniedHint;
+};
+if (vehicle _playerX != _playerX) exitWith {
+	[localize "STR_A3A_Dialogs_moveHQObject_header", localize "STR_A3A_Dialogs_moveHQObject_error_veh"] call SCRT_fnc_misc_deniedHint;
+};
+if (([_playerX] call A3A_fnc_countAttachedObjects) > 0) exitWith {
+	[localize "STR_A3A_Dialogs_moveHQObject_header", localize "STR_A3A_Dialogs_moveHQObject_error_already_attached"] call SCRT_fnc_misc_deniedHint;
+};
+
+private _sites = markersX select {sidesX getVariable [_x,sideUnknown] == teamPlayer};
+private _markerX = [_sites,_playerX] call BIS_fnc_nearestPosition;
+private _size = [_markerX] call A3A_fnc_sizeMarker;
+private _positionX = getMarkerPos _markerX;
+
+if (_playerX distance2D _positionX > (_size + 5)) exitWith {
+	[localize "STR_A3A_Dialogs_moveHQObject_header", localize "STR_A3A_Dialogs_moveHQObject_error_closer_center"] call A3A_fnc_customHint;
+};
 
 if (captive _playerX) then { _playerX setCaptive false };
 
@@ -70,8 +79,6 @@ private _fnc_placeObject = {
 		_thingX setPosASL (_intersects select 0 select 0);
 	};
 
-	// _thingX setPosATL [getPosATL _thingX select 0,getPosATL _thingX select 1,0.1];
-
 	if (_thingX isKindOf "StaticWeapon") then { _thingX lock false };
 
 	_thingX setVariable ["objectBeingMoved", false];
@@ -79,7 +86,7 @@ private _fnc_placeObject = {
 	[_thingX, _thingX getVariable "A3A_originalMass"] remoteExecCall ["setMass", _thingX];
 };
 
-private _actionX = _playerX addAction ["Drop Here", {
+private _actionX = _playerX addAction [localize "STR_antistasi_actions_drop_here", {
 	(_this select 3) params ["_thingX", "_fnc_placeObject"];
 
 	[_thingX, player, (_this select 2)] call _fnc_placeObject;
@@ -95,8 +102,13 @@ waitUntil {sleep 1;
 };
 
 [_thingX, _playerX, _actionX] call _fnc_placeObject;
-if !(_isStatic) then { _thingX addAction ["Move this asset", A3A_fnc_moveHQObject,nil,0,false,true,"","(_this == theBoss)"] };
 
-if (vehicle _playerX != _playerX) exitWith {["Move HQ", "You cannot move HQ assets while in a vehicle."] call A3A_fnc_customHint;};
+if !(_isStatic) then { _thingX addAction [localize "STR_antistasi_actions_move_this_asset", A3A_fnc_moveHQObject,nil,0,false,true,"","(_this == theBoss)"] };
 
-if  (_playerX distance2D _positionX > _size) exitWith {["Move HQ", "This asset cannot be moved more far away for its zone center."] call A3A_fnc_customHint;};
+if (vehicle _playerX != _playerX) exitWith {
+	[localize "STR_A3A_Dialogs_moveHQObject_header", localize "STR_A3A_Dialogs_moveHQObject_error_veh"] call SCRT_fnc_misc_deniedHint;
+};
+
+if  (_playerX distance2D _positionX > (_size - 3)) exitWith {
+	[localize "STR_A3A_Dialogs_moveHQObject_header", localize "STR_A3A_Dialogs_moveHQObject_error_far_center"] call SCRT_fnc_misc_deniedHint;
+};

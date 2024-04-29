@@ -1,14 +1,12 @@
-_unit = _this select 0;
-_truckX = _this select 1;
+params ["_unit", "_truckX"];
 
 if ((isPlayer _unit) or (player != leader group player)) exitWith {};
 if !([_unit] call A3A_fnc_canFight) exitWith {};
-//_helping = _unit getVariable "helping";
-if (_unit getVariable ["helping",false]) exitWith {_unit groupChat "I cannot rearm right now. I'm healing a comrade"};
+if (_unit getVariable ["helping",false]) exitWith {_unit groupChat localize "STR_chats_autoloot_rearm_heal_in_progress"};
 _rearming = _unit getVariable "rearming";
-if (_rearming) exitWith {_unit groupChat "I am currently rearming. Cancelling."; _unit setVariable ["rearming",false]};
-if (_unit == gunner _truckX) exitWith {_unit groupChat "I cannot rearm right now. I'm manning this gun"};
-if (!canMove _truckX) exitWith {_unit groupChat "It is useless to load my vehicle, as it needs repairs"};
+if (_rearming) exitWith {_unit groupChat localize "STR_chats_autoloot_rearm_in_progress"; _unit setVariable ["rearming",false]};
+if (_unit == gunner _truckX) exitWith {_unit groupChat localize "STR_chats_autoloot_rearm_gun_manning"};
+if (!canMove _truckX) exitWith {_unit groupChat localize "STR_chats_autoloot_load_vehicle"};
 
 _objectsX = [];
 _hasBox = false;
@@ -16,7 +14,7 @@ _weaponX = "";
 _weaponsX = [];
 _bigTimeOut = time + 120;
 _objectsX = nearestObjects [_unit, ["WeaponHolderSimulated", "GroundWeaponHolder", "WeaponHolder"], 50];
-if (count _objectsX == 0) exitWith {_unit groupChat "I see no corpses here to loot"};
+if (count _objectsX == 0) exitWith {_unit groupChat localize "STR_chats_autoloot_no_bodies"};
 
 _target = objNull;
 _distanceX = 51;
@@ -31,7 +29,6 @@ if (_unit distance _objectX < _distanceX) then
 			{
 			_potential = _weaponsX select _i;
 			_basePossible = [_potential] call BIS_fnc_baseWeapon;
-			//if ((not(_basePossible in unlockedWeapons)) and ((_basePossible in allRifles) or (_basePossible in allSniperRifles) or (_basePossible in allMachineGuns) or (_potential in allMissileLaunchers) or (_potential in allRocketLaunchers))) then
 			if ((_basePossible in allRifles) or (_basePossible in allSniperRifles) or (_basePossible in allMachineGuns) or (_potential in allMissileLaunchers) or (_potential in allRocketLaunchers)) then
 				{
 				_target = _objectX;
@@ -43,10 +40,10 @@ if (_unit distance _objectX < _distanceX) then
 	};
 } forEach _objectsX;
 
-if (isNull _target) exitWith {_unit groupChat "There is nothing to loot"};
+if (isNull _target) exitWith {_unit groupChat localize "STR_chats_autoloot_no_loot"};
 _target setVariable ["busy",true];
 _unit setVariable ["rearming",true];
-_unit groupChat "Starting looting";
+_unit groupChat localize "STR_chats_autoloot_start_looting";
 
 _originalLoadout = getUnitLoadout _unit;
 
@@ -56,15 +53,9 @@ removeVest _unit;
 removeAllItemsWithMagazines _unit;
 {_unit removeWeaponGlobal _x} forEach weapons _unit;
 removeHeadgear _unit;
-//_Pweapon = primaryWeapon _unit;
-//_Sweapon = secondaryWeapon _unit;
 
 _unit action ["GetOut",_truckX];
 [_unit] orderGetin false;
-//sleep 3;
-
-//if (_Pweapon != "") then {_unit action ["DropWeapon",_truckX,_Pweapon]; sleep 3};
-//if (_Sweapon != "") then {_unit action ["DropWeapon",_truckX,_Sweapon]};
 
 _continuar = true;
 
@@ -176,12 +167,10 @@ while {_continuar and ([_unit] call A3A_fnc_canFight) and (_unit getVariable "re
 		};
 	} forEach _objectsX;
 	};
-if (!_continuar) then
-	{
-	_unit groupChat "No more weapons to loot"
-	};
-//if (primaryWeapon _unit == "") then {_unit action ["TakeWeapon",_truckX,_Pweapon]; sleep 3};
-//if ((secondaryWeapon _unit == "") and (_Sweapon != "")) then {_unit action ["TakeWeapon",_truckX,_Sweapon]};
+if (!_continuar) then {
+	_unit groupChat localize "STR_chats_autoloot_no_more_weapons";
+};
+
 _unit doFollow player;
 _unit setVariable ["rearming",false];
 _unit setUnitLoadout _originalLoadout;

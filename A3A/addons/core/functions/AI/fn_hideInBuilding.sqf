@@ -34,8 +34,7 @@ _x disableAI "AUTOCOMBAT";
 _x doMove _pos;
 [_x,_pos] spawn
 	{
-	private _unit = _this select 0;
-	private _pos = _this select 1;
+	params ["_unit", "_pos"];
 	_timeOut = time + 60;
 	waitUntil {sleep 1; (_unit distance _pos < 1.5) or !(alive _unit) or (time > _timeOut) or !(_unit getVariable ["maneuvering",false])};
 	_unit enableAI "TARGET";

@@ -1,24 +1,26 @@
-private ["_pool","_veh","_typeVehX"];
+private _veh = cursorObject;
 
-_veh = cursorObject;
+if (isNull _veh) exitWith {
+    [localize "STR_A3A_Base_unlockVehicle_header", localize "STR_HR_GRG_Feedback_addVehicle_Null"] call SCRT_fnc_misc_deniedHint;
+};
 
-if (isNull _veh) exitWith {["Unlock Vehicle", "You are not looking at a vehicle."] call A3A_fnc_customHint;};
+if (!alive _veh) exitWith {[localize "STR_A3A_Base_unlockVehicle_header", "You cannot unlock/lock destroyed."] call SCRT_fnc_misc_deniedHint;};
 
-if (!alive _veh) exitWith {["Unlock Vehicle", "You cannot unlock/lock destroyed."] call A3A_fnc_customHint;};
+if (_veh isKindOf "Man") exitWith {[localize "STR_A3A_Base_unlockVehicle_header", format [localize "STR_A3A_Base_unlockVehicle_cantunlock",name _veh]] call SCRT_fnc_misc_deniedHint;};
 
-if (_veh isKindOf "Man") exitWith {["Unlock Vehicle", format ["Sorry you cannot unlock %1.",name _veh]] call A3A_fnc_customHint;};
-
-if (not(_veh isKindOf "AllVehicles")) exitWith {["Unlock Vehicle", "The vehicle you are looking at cannot be used."] call A3A_fnc_customHint;};
+if (not(_veh isKindOf "AllVehicles")) exitWith {[localize "STR_A3A_Base_unlockVehicle_header", localize "STR_A3A_Base_unlockVehicle_noallveh"] call SCRT_fnc_misc_deniedHint;};
 _ownerX = _veh getVariable "ownerX";
 
-if (isNil "_ownerX") exitWith {["Unlock Vehicle", "The vehicle you are looking does not belong to anyone."] call A3A_fnc_customHint;};
+if (isNil "_ownerX") exitWith {[localize "STR_A3A_Base_unlockVehicle_header", localize "STR_A3A_Base_unlockVehicle_noowner"] call SCRT_fnc_misc_deniedHint;};
 
-if (_ownerX != getPlayerUID player) exitWith {["Unlock Vehicle", "You cannot unlock/lock vehicles which you do not own."] call A3A_fnc_customHint;};
+if (_ownerX != getPlayerUID player) exitWith {[localize "STR_A3A_Base_unlockVehicle_header", localize "STR_A3A_Base_unlockVehicle_wrongowner"] call SCRT_fnc_misc_deniedHint;};
 
 if (isNil { _veh getVariable "A3A_locked"} ) then {
     _veh setVariable ["A3A_locked",true,true];
-    ["Unlock Vehicle", "Vehicle locked."] call A3A_fnc_customHint;
+    [localize "STR_A3A_Base_unlockVehicle_header", localize "STR_A3A_Base_unlockVehicle_lock_success"] call A3A_fnc_customHint;
 } else {
     _veh setVariable ["A3A_locked",nil,true];
-    ["Unlock Vehicle", "Vehicle unlocked."] call A3A_fnc_customHint;	
+    [localize "STR_A3A_Base_unlockVehicle_header", localize "STR_A3A_Base_unlockVehicle_unlock_success"] call A3A_fnc_customHint;	
 };
+
+playSound "A3AP_UiSuccess";

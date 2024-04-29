@@ -20,15 +20,15 @@ private _positionTel = positionTel;
 private _nearX = [markersX,_positionTel] call BIS_fnc_nearestPosition;
 
 if (_positionTel distance2D (getMarkerPos _nearX) > 50) exitWith {
-    [localize "STR_A3A_garrison_header", format [localize "STR_A3A_garrison_fail_not_markerzone",FactionGet(reb,"name")]] call A3A_fnc_customHint;
+    [localize "STR_A3A_garrison_header", format [localize "STR_A3A_garrison_fail_not_markerzone",FactionGet(reb,"name")]] call SCRT_fnc_misc_deniedHint;
 };
 
 if (!(sidesX getVariable [_nearX,sideUnknown] == teamPlayer)) exitWith {
-    [localize "STR_A3A_garrison_header", format [localize "STR_A3A_garrison_fail_not_teamplayer",FactionGet(reb,"name")]] call A3A_fnc_customHint;
+    [localize "STR_A3A_garrison_header", format [localize "STR_A3A_garrison_fail_not_teamplayer",FactionGet(reb,"name")]] call SCRT_fnc_misc_deniedHint;
 };
 
-if (_nearX in outpostsFIA and {!isOnRoad getMarkerPos _nearX}) exitWith {
-    [localize "STR_A3A_garrison_header", localize "STR_A3A_garrison_fail_wrong_type"] call A3A_fnc_customHint;
+if (_nearX in watchpostsFIA) exitWith {
+    [localize "STR_A3A_garrison_header", localize "STR_A3A_garrison_fail_wrong_type"] call SCRT_fnc_misc_deniedHint;
 };
 
 private _groupX = grpNull;
@@ -48,11 +48,11 @@ private _alreadyInGarrison = false;
     if !(isNil "_garrisondIn") then {_alreadyInGarrison = true};
 } forEach _unitsX;
 if _alreadyInGarrison exitWith {
-    [localize "STR_A3A_garrison_header", localize "STR_A3A_garrison_fail_already_in_garrison"] call A3A_fnc_customHint
+    [localize "STR_A3A_garrison_header", localize "STR_A3A_garrison_fail_already_in_garrison"] call SCRT_fnc_misc_deniedHint
 };
 
-if (groupID _groupX == "MineF" or groupID _groupX == "Post" or (isPlayer(leader _groupX))) exitWith {
-    [localize "STR_A3A_garrison_header", localize "STR_A3A_garrison_fail_no_specific_squads"] call A3A_fnc_customHint;
+if ((groupID _groupX in ["MineF", "Watch", "Post", "Road"]) or {(isPlayer(leader _groupX))}) exitWith {
+    [localize "STR_garrison_garrison_header", localize "STR_garrison_error_no_specific_squads"] call SCRT_fnc_misc_deniedHint;
 };
 
 {
@@ -60,14 +60,14 @@ if (groupID _groupX == "MineF" or groupID _groupX == "Post" or (isPlayer(leader 
 } forEach _unitsX;
 
 if (_earlyEscape) exitWith {
-    [localize "STR_A3A_garrison_header", localize "STR_A3A_garrison_fail_dead_units"] call A3A_fnc_customHint;
+    [localize "STR_A3A_garrison_header", localize "STR_A3A_garrison_fail_dead_units"] call SCRT_fnc_misc_deniedHint;
 };
 
-private _bannedTypes = FactionGet(civ, "unitMan") + 
-    FactionGet(civ, "unitPress") + 
-    FactionGet(civ, "unitWorker") + 
-    FactionGet(reb,"unitCrew") + 
-    FactionGet(reb,"unitUnarmed") + 
+private _bannedTypes = FactionGet(civ, "unitMan") +
+    FactionGet(civ, "unitPress") +
+    FactionGet(civ, "unitWorker") +
+    FactionGet(reb,"unitCrew") +
+    FactionGet(reb,"unitUnarmed") +
     FactionGet(reb,"unitPetros");
 
 {
@@ -75,7 +75,7 @@ private _bannedTypes = FactionGet(civ, "unitMan") +
     if (_unitType in _bannedTypes) exitWith {_earlyEscape = true};
 } forEach _unitsX;
 if (_earlyEscape) exitWith {
-    [localize "STR_A3A_garrison_header", localize "STR_A3A_garrison_fail_no_specific_units"] call A3A_fnc_customHint;
+    [localize "STR_A3A_garrison_header", localize "STR_A3A_garrison_fail_no_specific_units"] call SCRT_fnc_misc_deniedHint;
 };
 
 private _limit = [_nearX] call A3A_fnc_getGarrisonLimit;

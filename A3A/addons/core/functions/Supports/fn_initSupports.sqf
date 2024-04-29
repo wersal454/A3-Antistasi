@@ -36,14 +36,18 @@ private _initData = [
     ["AIRSTRIKE",       "AREA", 0.5, 0.1, 150,   0,  "", "vehiclesPlanesCAS"],           // balanced against carpetBombs (50/50 at tier 10), total will be 0.5
     ["ARTILLERY",       "AREA", 0.5, 0.9, 150,  85,  "", "vehiclesArtillery"],           // balanced against mortars (50/50 at tier 10), total will be 0.5/0.9
     ["MORTAR",          "AREA", 0.5, 0.9, 100,  50,  "", "staticMortars"],
+    ["HOWITZER",        "AREA", 0.5, 0.9, 125,  65,  "", "staticHowitzers"],
     ["ASF",           "TARGET", 1.0, 0.4,   0, 100,  "", "vehiclesPlanesAA"],            // balanced against SAMs (if available), 66/33 weighting
     ["CAS",           "TARGET", 1.0, 0.4,   0, 100,  "", "vehiclesPlanesCAS"],
+    ["CASDIVE",       "TARGET", 0.8, 0.3,   0, 100,  "", "vehiclesPlanesCAS"],
     ["QRFLAND",       "TROOPS", 1.0, 1.4,   0,   0,  "", ""],
     ["QRFAIR",        "TROOPS", 0.5, 0.1,   0,   0,  "", ""],
+    ["QRFVEHAIRDROP", "TROOPS", 0.3, 0.1,   0,   0,  "", "vehiclesPlanesTransport"],
     ["CARPETBOMBS",     "AREA", 0.5, 0.1, 200,   0, "u", ""],                            // balanced against airstrikes
     ["SAM",           "TARGET", 1.0, 1.0,   0, 100, "u", ""],                             // balanced against ASF
     ["ORBITALSTRIKE",   "AREA", 0.2, 0.0, 300,   0, "f", ""]
-//    ["GUNSHIP",    ["AREA",   0.2,  50,   0]],                 // uh. Does AREA work for this? Only lasts 5 minutes so maybe...
+//  ["UAV",           "TARGET", 1.0, 0.4,   0, 80,  "", "uavsAttack"],
+//  ["GUNSHIP",    ["AREA",   0.2,  50,   0]],                 // uh. Does AREA work for this? Only lasts 5 minutes so maybe...
 ];
 
 // Generate support type hashmap for a faction, suppType -> [baseType, weight, effRadius, strikepower]
@@ -77,9 +81,11 @@ A3A_supportMarkerTypes = [];     // format [markerName, markerType, hasRadio, de
 
 // Build arrays of markers that have defence bonuses
 { A3A_supportMarkerTypes pushBack [_x, "Airport", false, 1.0] } forEach airportsX;
+{ A3A_supportMarkerTypes pushBack [_x, "Airport", false, 1.0] } forEach airportsX;
+{ A3A_supportMarkerTypes pushBack [_x, "MilitaryBase", false, 0.8] } forEach milbases;
+{ A3A_supportMarkerTypes pushBack [_x, "MilitaryBase", false, 0.8] } forEach milbases;
 { A3A_supportMarkerTypes pushBack [_x, "Seaport", false, 0.6] } forEach seaports;
 { A3A_supportMarkerTypes pushBack [_x, "Outpost", false, 0.6] } forEach outposts;
-{ A3A_supportMarkerTypes pushBack [_x, "Resource", false, 0.4] } forEach resourcesX;
 { A3A_supportMarkerTypes pushBack [_x, "Factory", false, 0.5] } forEach factories;
 { A3A_supportMarkerTypes pushBack [_x, "Town", false, 0.3] } forEach citiesX;
 {

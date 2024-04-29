@@ -20,25 +20,48 @@ if (!alive _unit) exitWith {};
 if (_unit getVariable ["interrogated", false]) exitWith {};
 _unit setVariable ["interrogated", true, true];
 
-_player globalChat "You imperialist! Tell me what you know!";
+_player globalChat (selectRandom [
+        localize "STR_interrogate_phrase1_text",
+        localize "STR_interrogate_phrase2_text",
+        localize "STR_interrogate_phrase3_text"
+]);
 private _side = side (group _unit);
 private _chance = 120 - ([aggressionOccupants, aggressionInvaders] select (_side == Invaders));
 
-sleep 5;
 
-if (random 100 < _chance) then
-{
-    if((_unit getVariable "unitType") in FactionGet(all,"SquadLeaders")) then
-    {
-        _unit globalChat "Okay, I'll tell you what I know";
-        ["Medium", _side] remoteExec ["A3A_fnc_selectIntel", 2];
-    }
-    else
-    {
-        _unit globalChat "I don't know anything. Maybe my squad leader does.";
+sleep 4;
+
+if (random 100 < _chance) then {
+
+    if (hideEnemyMarkers) then {
+        [1, "An interrogated soldier gave us some intel about zone locations."] call A3U_fnc_revealRandomZones;// To-Do: Localize
+    }; // Since bases can be revealed without "intel", don't see any negative to this. Adds a somewhat consistent way to gain zone locations
+
+    if(_unit getVariable ["hasIntel", false]) then {
+        _unit globalChat (selectRandom [
+            localize "STR_interrogation_success_phrase1_text",
+            localize "STR_interrogation_success_phrase2_text",
+            localize "STR_interrogation_success_phrase3_text"
+        ]);
+        
+        _unit setVariable ["hasIntel", false, true];
+
+        if (_unit getVariable ["isRival", false]) then {
+            [] remoteExecCall ["SCRT_fnc_rivals_selectIntel", 2];
+        } else {
+            ["Small", _side] remoteExec ["A3A_fnc_selectIntel", 2];
+        };
+    } else {
+        _unit globalChat (selectRandom [
+            localize "STR_interrogation_fail_noknowledge_phrase1_text",
+            localize "STR_interrogation_fail_noknowledge_phrase2_text",
+            localize "STR_interrogation_fail_noknowledge_phrase3_text"
+        ]);
     };
-}
-else
-{
-    _unit globalChat "Screw you, I am not telling anything!";
+} else {
+	_unit globalChat (selectRandom [
+        localize "STR_interrogation_fail_refuse_phrase1_text",
+        localize "STR_interrogation_fail_refuse_phrase2_text",
+        localize "STR_interrogation_fail_refuse_phrase3_text"
+    ]);
 };

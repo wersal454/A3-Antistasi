@@ -18,7 +18,3 @@ if (getText (configfile >> "CfgVehicles" >> _x >> "editorSubcategory") isEqualTo
 {
 allUnknown deleteAt (allUnknown find _x);
 } forEach invaderStaticWeapon + occupantStaticWeapon + rebelStaticWeapon;
-
-///////////////////////////////////
-//      Civilian Vehicles       ///
-///////////////////////////////////

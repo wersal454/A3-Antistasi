@@ -1,8 +1,14 @@
 params ["_unit", "_playerX"];
 
+if (!alive _unit) exitWith {
+    [_unit,"remove"] remoteExec ["A3A_fnc_flagaction",[teamPlayer,civilian],_unit];
+};
+
+[_unit,"remove"] remoteExec ["A3A_fnc_flagaction",[teamPlayer,civilian],_unit];
+
 if (captive _playerX) then { _playerX setCaptive false };
 
-_playerX globalChat "You are free. Come with us!";
+_playerX globalChat (localize "STR_chats_loot_flee_player");
 _unit setDir (getDir _playerX);
 _playerX playMove "MountSide";
 sleep 5;
@@ -15,10 +21,10 @@ if (_timeout < 0) exitWith {};
 
 [_unit,"remove"] remoteExec ["A3A_fnc_flagaction",[teamPlayer,civilian],_unit];
 
-_unit globalChat "Thank you. I owe you my life!";
+_unit globalChat (localize "STR_chats_loot_flee_response");
 _unit enableAI "MOVE";
 _unit enableAI "AUTOTARGET";
 _unit enableAI "TARGET";
 _unit enableAI "ANIM";
-[_unit] spawn A3A_fnc_FIAInit;
+[_unit, true] spawn A3A_fnc_FIAInit;
 if (captive _unit) then { _unit setCaptive false };

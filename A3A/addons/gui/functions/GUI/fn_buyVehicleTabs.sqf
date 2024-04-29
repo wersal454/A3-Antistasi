@@ -26,13 +26,16 @@ Example:
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-params[["_tab","_vehicles"], ["_params",[]]];
+params[
+    ["_tab","_vehicles"],
+    ["_params",[]]
+];
 
 private _display = findDisplay A3A_IDD_BUYVEHICLEDIALOG;
 
 if (_tab isEqualTo "vehicles") then 
 {
-    _params params ["_tab", "_selectedTab", "_arrayOfClasses"];
+    _params params ["_tab", "_selectedTab", "_category"];
     Debug("BuyVehicleTab starting...");
 
     // Setup Object render
@@ -40,18 +43,7 @@ if (_tab isEqualTo "vehicles") then
     _objPreview ctrlShow false;
 
     // Add stuff to the buyable vehicles list
-    private _buyableVehiclesList = [];
-
-    {
-        private _vehiclePrice = [_x] call A3A_fnc_vehiclePrice;
-        if(_tab isEqualTo A3A_IDC_BUYREBVEHICLEMAIN || _tab isEqualTo A3A_IDC_BUYSTATICMAIN) then {
-            _buyableVehiclesList pushBack [_x, _vehiclePrice, false];
-        } else {
-            // civ vehicle
-            _buyableVehiclesList pushBack [_x, _vehiclePrice, true];
-        };
-    } forEach _arrayOfClasses;
-
+    private _buyableVehiclesList = [_category] call SCRT_fnc_ui_populateVehicleBox;
     private _vehiclesControlsGroup = _display displayCtrl _selectedTab;
 
     private _added = 0;
@@ -360,6 +352,22 @@ if  (_tab in ["other"]) then
         _button ctrlSetTooltip format [localize "STR_antistasi_dialogs_buy_item_tooltip", _displayName, _price, "€"];
         _button setVariable ["className", _className];
         _button setVariable ["model", _model];
+
+        switch (true) do {
+            case (_className isEqualTo (A3A_faction_reb get "lootCrate")): {
+                _button ctrlAddEventHandler ["ButtonClick", {
+                    closeDialog 2; 
+                    [] call SCRT_fnc_loot_createLootCrate;
+                }];
+            };
+            default {
+                _button ctrlAddEventHandler ["ButtonClick", { 
+                    closeDialog 2; 
+                    [player, _this#0 getVariable "className"] call A3A_fnc_buyItem 
+                }];
+            };
+        };
+
         _button ctrlAddEventHandler ["ButtonClick", { closeDialog 2; [player, _this#0 getVariable "className"] call A3A_fnc_buyItem }];
         _button ctrlCommit 0;
 
@@ -423,6 +431,9 @@ if  (_tab in ["other"]) then
         private _itemPic = _display ctrlCreate ["A3A_PictureStroke", -1, _itemControlsGroup];
         _itemPic ctrlSetPosition [1 * GRID_W, 1 * GRID_H, 3 * GRID_W, 3 * GRID_H];
         private _iconPath = switch (_iconType) do {
+            case "light": { A3A_Icon_Light };
+            case "revivebox": { A3A_Icon_HealKit };
+            case "lootbox": { A3A_Icon_Box };
             case "gear": { A3A_Icon_Gear };
             case "heal": { A3A_Icon_Heal };
             case "refuel": { A3A_Icon_Refuel }; 
@@ -436,9 +447,6 @@ if  (_tab in ["other"]) then
             private _refuelCount = if (A3A_hasACE) then {getNumber (_configClass >> "ace_refuel_fuelCargo")} else {getNumber (_configClass >> "transportFuel")};
             _itemPic ctrlSetTooltip format [localize "STR_antistasi_dialogs_buy_vehicle_refuel_tooltip", _displayName, _refuelCount];
         };
-        if (_className isEqualTo (A3A_faction_reb get 'surrenderCrate')) then {
-            _itemPic ctrlSetTooltip format [localize "STR_antistasi_dialogs_buy_vehicle_loot_tooltip", _displayName, getNumber(_configClass >> "maximumLoad")];
-        };
         if (_className in [(A3A_faction_reb get 'vehicleMedicalBox')#0, (A3A_faction_reb get 'vehicleHealthStation')#0]) then {
             _itemPic ctrlSetTooltip localize "STR_antistasi_dialogs_buy_vehicle_med_tooltip";
         };
@@ -447,6 +455,14 @@ if  (_tab in ["other"]) then
         };
         if (_className isEqualTo (FactionGet(reb,"vehicleRepairStation")#0)) then {
             _itemPic ctrlSetTooltip localize "STR_antistasi_dialogs_buy_vehicle_repair_tooltip";
+        };
+        if (_className isEqualTo (A3A_faction_reb get 'lootCrate')) then
+        {
+            _itemPic ctrlSetTooltip localize "STR_antistasi_dialogs_buy_vehicle_loot_tooltip";
+        };
+        if (_className isEqualTo (A3A_faction_reb get 'vehicleLightSource')) then
+        {
+            _itemPic ctrlSetTooltip localize "STR_antistasi_dialogs_buy_vehicle_light_tooltip";
         };
         _itemPic ctrlCommit 0;
 

@@ -12,7 +12,6 @@
 		_group - Existing group to add units to, or side to create group on [GROUP/SIDE]
 		_vehicle - Vehicle to create crew for [OBJECT]
 		_unitType - Type of unit to create [STRING]
-		_fillCargoTurrets - Optional, default false. True to fill turrets marked as cargo [BOOL]
 
     Returns:
 		_group - Group with crew members [GROUP]
@@ -21,7 +20,9 @@
 		[west, _myVehicle, FactionGet(occ,"crew")] call A3A_fnc_createVehicleCrew;
 */
 
-params ["_group", "_vehicle", "_unitType", ["_fillCargoTurrets", false]];
+params ["_group", "_vehicle", "_unitType"];
+
+private _isHeli = _vehicle isKindOf "Helicopter";
 
 private _newGroup = false;
 if (_group isEqualType sideUnknown) then {
@@ -57,7 +58,7 @@ private _fnc_addCrewToTurrets = {
 		[_turretConfig, _turretPath] call _fnc_addCrewToTurrets;
 
 		if (getNumber (_turretConfig >> "hasGunner") == 0 || getNumber (_turretConfig >> "dontCreateAI") != 0) then { continue };
-		if (!_fillCargoTurrets and getNumber (_turretConfig >> "showAsCargo") > 0) then { continue };
+		if (!_isHeli && {getNumber (_turretConfig >> "showAsCargo") > 0}) then { continue };
 		if (isNull (_vehicle turretUnit _turretPath)) then {
 			private _gunner = [_group, _unitType, getPos _vehicle, [], 10] call A3A_fnc_createUnit;
 			_gunner assignAsTurret [_vehicle, _turretPath];

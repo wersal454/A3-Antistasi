@@ -2,7 +2,7 @@
 FIX_LINE_NUMBERS()
 // Do not localise timeSpan, it is broadcast to all connected clients.
 private _timeSinceLastGC = [[serverTime-A3A_lastGarbageCleanTime] call A3A_fnc_secondsToTimeSpan,0,0,false,2] call A3A_fnc_timeSpan_format;
-["Garbage Cleaner","Please wait for GC to finish.<br/>Last GC was " + _timeSinceLastGC + " ago."] remoteExec ["A3A_fnc_customHint", 0];
+[localize "STR_antistasi_dialogs_open_clean_garbage_title", format [localize "STR_antistasi_dialogs_open_clean_garbage_exit", _timeSinceLastGC]] remoteExec ["A3A_fnc_customHint", 0];
 Info("Cleaning garbage...");
 
 private _rebelSpawners = units teamPlayer select { _x getVariable ["spawner",false] };
@@ -13,18 +13,40 @@ private _fnc_distCheck = {
 	if (_rebelSpawners inAreaArray [getPosATL _object, _dist, _dist] isEqualTo []) then { deleteVehicle _object };
 };
 
+// Cleanup constructed buildings
+private _rebMarkers = (airportsX + outposts + seaports + factories + resourcesX + milbases) select { sidesX getVariable _x == teamPlayer };
+// ^ Add extra plus related stuff
+_rebMarkers append outpostsFIA; _rebMarkers pushBack "Synd_HQ";
+
+A3A_buildingsToSave = A3A_buildingsToSave select {
+	// Keep if there are rebel spawners within 500m
+	if (_rebelSpawners inAreaArray [getPosATL _x, 500, 500] isNotEqualTo []) then { continueWith true };
+
+	// Delete if outside mission distance (temporary)
+	if (_x distance2d markerPos "Synd_HQ" > distanceMission) then { deleteVehicle _x; continueWith false };
+
+	// Delete if not within a rebel marker
+	private _building = _x;
+	private _indexes = _rebMarkers inAreaArrayIndexes [getPosATL _x, 500, 500];
+	if (-1 != _indexes findIf { _building inArea _rebMarkers#_x } ) then { continueWith true };
+	deleteVehicle _x; false;
+};
 
 { deleteVehicle _x } forEach allDead;
 { deleteVehicle _x } forEach (allMissionObjects "WeaponHolder");
 { deleteVehicle _x } forEach (allMissionObjects "WeaponHolderSimulated");
-{ if (isNull attachedTo _x) then { [_x, 500] call _fnc_distCheck } } forEach (allMissionObjects FactionGet(reb,"surrenderCrate"));// Surrender boxes
+{ [_x, 500] call _fnc_distCheck } forEach (allMissionObjects FactionGet(occ,"surrenderCrate"));// Surrender boxes NATO
+{ [_x, 500] call _fnc_distCheck } forEach (allMissionObjects FactionGet(inv,"surrenderCrate"));// Surrender boxes CSAT
+{ [_x, 500] call _fnc_distCheck } forEach (allMissionObjects FactionGet(riv,"surrenderCrate"));// Surrender boxes Rivals
 { deleteVehicle _x } forEach (allMissionObjects "Leaflet_05_F");				// Drone drop leaflets
 { deleteVehicle _x } forEach (allMissionObjects "Ejection_Seat_Base_F");		// All vanilla ejection seats
+{ deleteVehicle _x } forEach (allMissionObjects "Land_Pallet_F");		// Pallets from Supplies mission
 
+private _lootCrateType = FactionGet(reb, "lootCrate");
 // Cleanup rebel vehicles
 {
 	// Locked check is a hack for roadblock vehicles
-	if !(_x isKindOf "StaticWeapon" or unitIsUAV _x or locked _x > 1) then { [_x, 500] call _fnc_distCheck };
+	if !(_x isKindOf "StaticWeapon" or {(typeOf _x) isEqualTo _lootCrateType or {unitIsUAV _x or {locked _x > 1}}}) then { [_x, 500] call _fnc_distCheck };
 } forEach (vehicles select {_x getVariable ["ownerSide", sideUnknown] == teamPlayer});
 
 if (A3A_hasACE) then {
@@ -32,6 +54,7 @@ if (A3A_hasACE) then {
 	{ deleteVehicle _x } forEach (allMissionObjects "UserTexture1m_F");						// ACE spraycan tags
 	{ deleteVehicle _x } forEach (allMissionObjects "ace_cookoff_Turret_MBT_01");			//MBT turret wrecks
 	{ deleteVehicle _x } forEach (allMissionObjects "ace_cookoff_Turret_MBT_02");
+	{ [_x, 200] call _fnc_distCheck } forEach (allMissionObjects "ACE_Grave");
 	{ [_x, 200] call _fnc_distCheck } forEach (allMissionObjects "ACE_envelope_big");		// ACE trench objects
 	{ [_x, 200] call _fnc_distCheck } forEach (allMissionObjects "ACE_envelope_small");
 };
@@ -57,6 +80,6 @@ if (isClass (configFile/"CfgPatches"/"rhsgref_main")) then {//ToDo: these should
 };
 
 // Do not localise timeSpan, it is broadcast to all connected clients.
-["Garbage Cleaner","Garbage Deleted.<br/>Last GC was " + _timeSinceLastGC + " ago."] remoteExec ["A3A_fnc_customHint", 0];
+[localize "STR_antistasi_dialogs_open_clean_garbage_title", format [localize "STR_antistasi_dialogs_open_clean_garbage_success", _timeSinceLastGC]] remoteExec ["A3A_fnc_customHint", 0];
 missionNamespace setVariable ["A3A_lastGarbageCleanTime",serverTime,true];
 Info("Garbage clean completed");

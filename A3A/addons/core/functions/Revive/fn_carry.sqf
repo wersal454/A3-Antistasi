@@ -1,29 +1,46 @@
-private ["_carrierX","_carryX","_timeOut","_action"];
-_carryX = _this select 0;
-_carrierX = _this select 1;
+params ["_carry", "_carrier"];
 
-//if (_carryX getVariable ["carryX",false]) exitWith {hint "This soldier is being carried and you cannot help him"};
-if (!alive _carryX) exitWith {["Carry/Drag", format ["%1 is dead.",name _carryX]] call A3A_fnc_customHint;};
-if !(_carryX getVariable ["incapacitated",false]) exitWith {["Carry/Drag", format ["%1 no longer needs your help.",name _carryX]] call A3A_fnc_customHint;};
-if !(isNull attachedTo _carryX) exitWith {["Carry/Drag", format ["%1 is being carried or transported and you cannot carry him.",name _carryX]] call A3A_fnc_customHint;};
-if (captive _carrierX) then {_carrierX setCaptive false};
-_carrierX playMoveNow "AcinPknlMstpSrasWrflDnon";
-[_carryX,"AinjPpneMrunSnonWnonDb"] remoteExec ["switchMove",_carryX];
-//_carryX setVariable ["carryX",true,true];
-_carryX setVariable ["helped",_carrierX,true];
-[_carryX,"remove"] remoteExec ["A3A_fnc_flagaction",0,_carryX];
-_carryX attachTo [_carrierX, [0,1.1,0.092]];
-_carryX setDir 180;
+if (!alive _carry) exitWith {
+	[localize  "STR_A3A_revive_carry_header", format [localize "STR_A3A_revive_carry_dead",name _carry]] call A3A_fnc_customHint;
+};
+
+if !(_carry getVariable ["incapacitated",false]) exitWith {
+	[localize  "STR_A3A_revive_carry_header", format [localize "STR_A3A_revive_no_longer_need_help",name _carry]] call A3A_fnc_customHint;
+};
+
+if !(isNull attachedTo _carry) exitWith {
+	[localize  "STR_A3A_revive_carry_header", format [localize "STR_A3A_revive_transported",name _carry]] call A3A_fnc_customHint;
+};
+
+if (captive _carrier) then {
+	_carrier setCaptive false
+};
+
+_carrier playMoveNow "AcinPknlMstpSrasWrflDnon";
+[_carry,"AinjPpneMrunSnonWnonDb"] remoteExec ["switchMove",_carry];
+_carry setVariable ["helped",_carrier,true];
+[_carry,"remove"] remoteExec ["A3A_fnc_flagaction",0,_carry];
+_carry attachTo [_carrier, [0,1.1,0.092]];
+_carry setDir 180;
 _timeOut = time + 60;
-_action = _carrierX addAction [format ["Release %1",name _carryX], {{detach _x} forEach (attachedObjects player)},nil,0,false,true,"","(isPlayer _this) and (_this == _this getVariable ['owner',objNull])"];
+_action = _carrier addAction [format [(localize "STR_antistasi_actions_release_carry"),name _carry], {{detach _x} forEach (attachedObjects player)},nil,0,false,true,"","(isPlayer _this) and (_this == _this getVariable ['owner',objNull])"];
 
-waitUntil {sleep 0.5; (!alive _carryX) or !([_carrierX] call A3A_fnc_canFight) or !(_carryX getVariable ["incapacitated",false]) or ({!isNull _x} count attachedObjects _carrierX == 0) or (time > _timeOut) or (vehicle _carrierX != _carrierX)};
+waitUntil {
+	sleep 0.5; 
+	(!alive _carry) or 
+	!([_carrier] call A3A_fnc_canFight) or 
+	!(_carry getVariable ["incapacitated",false]) or 
+	({!isNull _x} count attachedObjects _carrier == 0) or 
+	(time > _timeOut) or 
+	(vehicle _carrier != _carrier)
+};
 
-_carrierX removeAction _action;
-if (count attachedObjects _carrierX != 0) then {detach _carryX};
-_carrierX playMove "amovpknlmstpsraswrfldnon";
-[_carryX,"UnconsciousReviveDefault"] remoteExec ["switchMove",_carryX];
-//_carryX setVariable ["carryX",false,true];
-[_carryX,"heal1"] remoteExec ["A3A_fnc_flagaction",0,_carryX];
+[] call SCRT_fnc_misc_updateRichPresence;
+
+_carrier removeAction _action;
+if (count attachedObjects _carrier != 0) then {detach _carry};
+_carrier playMove "amovpknlmstpsraswrfldnon";
+[_carry,"UnconsciousReviveDefault"] remoteExec ["switchMove",_carry];
+[_carry,"heal1"] remoteExec ["A3A_fnc_flagaction",0,_carry];
 sleep 5;
-_carryX setVariable ["helped",objNull,true];
+_carry setVariable ["helped",objNull,true];

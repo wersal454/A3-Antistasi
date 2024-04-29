@@ -2,54 +2,59 @@
 FIX_LINE_NUMBERS()
 if (!isServer and hasInterface) exitWith{};
 
-private ["_markerX","_groups","_soldiers","_positionX","_num","_dataX","_prestigeOPFOR","_prestigeBLUFOR","_isAAF","_params","_frontierX","_array","_countX","_groupX","_dog","_grp","_sideX"];
-_markerX = _this select 0;
+params ["_markerX"];
 
-_groups = [];
-_soldiers = [];
+private _groups = [];
+private _soldiers = [];
 private _dogs = [];
 
-_positionX = getMarkerPos (_markerX);
+private _positionX = getMarkerPos _markerX;
 
-_num = [_markerX] call A3A_fnc_sizeMarker;
+private _num = [_markerX] call A3A_fnc_sizeMarker;
 private _patrolSize = _num;
-_sideX = sidesX getVariable [_markerX,sideUnknown];
+
+private _sideX = sidesX getVariable [_markerX,sideUnknown];
 private _faction = Faction(_sideX);
-if ((markersX - controlsX) findIf {(getMarkerPos _x inArea _markerX) and (sidesX getVariable [_x,sideUnknown] != _sideX)} != -1) exitWith {};
+
+if ((markersX - controlsX - milAdministrationsX) findIf {(getMarkerPos _x inArea _markerX) and (sidesX getVariable [_x,sideUnknown] != _sideX)} != -1) exitWith {};
 _num = round (_num / 100);
 
-ServerDebug_1("Spawning City Patrol in %1", _markerX);
+ServerInfo_1("Spawning City Patrol in %1", _markerX);
 
-_dataX = server getVariable _markerX;
-//_prestigeOPFOR = _dataX select 3;
-//_prestigeBLUFOR = _dataX select 4;
-_prestigeOPFOR = _dataX select 2;
-_prestigeBLUFOR = _dataX select 3;
-_isAAF = true;
-if (_markerX in destroyedSites) then
-	{
+private _dataX = server getVariable _markerX;
+private _prestigeOPFOR = _dataX select 2;
+private _prestigeBLUFOR = _dataX select 3;
+
+private _isAAF = true;
+private _params = nil;
+if (_markerX in destroyedSites) then {
 	_isAAF = false;
 	_params = [_positionX,Invaders, selectRandom (_faction get "groupSpecOpsRandom")];
-	}
-else
-	{
+} else {
 	_num = round (_num * (_prestigeOPFOR + _prestigeBLUFOR)/100);
-	_frontierX = [_markerX] call A3A_fnc_isFrontline;
-	if (_frontierX) then
-		{
+	private _frontierX = [_markerX] call A3A_fnc_isFrontline;
+	if (_frontierX) then {
 		_num = _num * 2;
-		_params = [_positionX, Occupants, _faction get "groupSentry"];
-		}
-	else
-		{
+		_params = [_positionX, Occupants, (selectRandom ([_faction, "groupsTierSmall"] call SCRT_fnc_unit_flattenTier))];
+	} else {
 		_params = [_positionX, Occupants, _faction get "groupPolice"];
-		};
 	};
+};
 if (_num < 1) then {_num = 1};
 
-_countX = 0;
-
+private _countX = 0;
+private _groupX = nil;
 private _roadPositions = (_positionX nearRoads round(_patrolSize / 2));
+
+private _civNonHuman = Faction(civilian) getOrDefault ["attributeCivNonHuman", false];
+
+if (_civNonHuman && {(selectRandom [1,2,3]) isEqualTo 2}) exitWith {
+	["locationSpawned", [_markerX, "City", true]] call EFUNC(Events,triggerEvent);
+
+	waitUntil {sleep 1;(spawner getVariable _markerX == 2)};
+
+	["locationSpawned", [_markerX, "City", false]] call EFUNC(Events,triggerEvent);
+};
 
 while {(spawner getVariable _markerX != 2) and (_countX < _num)} do {
 	private _spawnPosition = [];
@@ -61,7 +66,7 @@ while {(spawner getVariable _markerX != 2) and (_countX < _num)} do {
 		_spawnPosition = _positionX;
 	};
 
-	private _groupX = [_spawnPosition, (_params # 1), (_params # 2)] call A3A_fnc_spawnGroup;
+	_groupX = [_spawnPosition, (_params # 1), (_params # 2)] call A3A_fnc_spawnGroup;
 
 	// Forced non-spawner for performance and consistency with other garrison patrols
 	{

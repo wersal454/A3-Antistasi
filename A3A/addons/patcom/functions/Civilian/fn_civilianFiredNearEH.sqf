@@ -54,7 +54,7 @@ private _anim = "ApanPercMstpSnonWnonDnon_ApanPknlMstpSnonWnonDnon";
 };
 
 // Set random chance to play scream/panic sound.
-if (random 1 > 0.3) then {
+if (random 1 > 0.35) then {
     // Get a list of tracks from the Civilian Fear tracks hashmap
     private _tracks = A3A_Civilian_Amb_Tracks get "Fear";
     if (count _tracks > 0) then {

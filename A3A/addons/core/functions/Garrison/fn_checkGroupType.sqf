@@ -19,10 +19,18 @@ private _occGroupData = FactionGet(occ, "groups");
 private _invGroupData = FactionGet(occ, "groups");
 
 //Tanks are always combined with an AT team
-if(_vehicle == "LAND_TANK") exitWith {_group == FactionGet(occ,"groupAT") || _group == FactionGet(inv,"groupAT")};
+if(_vehicle == "LAND_TANK") exitWith {
+  private _occGroup = [(FactionGet(occ,"groupTierAT"))] call SCRT_fnc_unit_getTiered;
+  private _invGroup = [(FactionGet(inv,"groupTierAT"))] call SCRT_fnc_unit_getTiered;
+  _group == _occGroup || {_group == _invGroup}
+};
 
 //AA is always combined with an AA team
-if(_vehicle == "LAND_AIR") exitWith {_group == FactionGet(occ,"groupAA") || _group == FactionGet(inv,"groupAA")};
+if(_vehicle == "LAND_AIR") exitWith {
+  private _occGroup = [(FactionGet(occ,"groupTierAA"))] call SCRT_fnc_unit_getTiered;
+  private _invGroup = [(FactionGet(inv,"groupTierAA"))] call SCRT_fnc_unit_getTiered;
+  _group == _occGroup || {_group == _invGroup}
+};
 
 //Check group size to determine
 if(_preference == "SQUAD") then

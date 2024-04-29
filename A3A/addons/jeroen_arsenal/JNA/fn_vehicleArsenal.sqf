@@ -6,7 +6,7 @@
     fuctions:
     ["Preload"] call jn_fnc_arsenal;
     	preloads the arsenal like the default arsenal but it doesnt have "BIS_fnc_endLoadingScreen" so you dont have errors
-    ["customInit", "arsanalDisplay"] call jn_fnc_arsenal;
+    ["customInit", "arsenalDisplay"] call jn_fnc_arsenal;
     	overwrites all functions in the arsenal with JNA ones.
 */
 
@@ -132,31 +132,34 @@ switch _mode do {
 
 	///////////////////////////////////////////////////////////////////////////////////////////
 	case "CustomInit":{
-		_display = _this select 0;
-		_veh = vehicle player;
+		params ["_display"];
+		private _objectSelected = uiNamespace getVariable "jn_object_selected";
 
-		diag_log ["CustomInit VehicleArsenal",_display];
+		missionnamespace setVariable ["bis_fnc_arsenal_center",_objectSelected];
 
 		//save crap in array
-		jnva_loadout = ((vehicle player) call jn_fnc_arsenal_cargoToArray);
+		jnva_loadout = (_objectSelected call jn_fnc_arsenal_cargoToArray);
 		jnva_loadout_mass = ["getMass"] call jn_fnc_vehicleArsenal;
-       	clearMagazineCargoGlobal _veh;
-        clearItemCargoGlobal _veh;
-        clearweaponCargoGlobal _veh;
-        clearbackpackCargoGlobal _veh;
+       	clearMagazineCargoGlobal _objectSelected;
+        clearItemCargoGlobal _objectSelected;
+        clearweaponCargoGlobal _objectSelected;
+        clearbackpackCargoGlobal _objectSelected;
 
 		["customGUI",[_display]] call jn_fnc_vehicleArsenal;
 		["customEvents",[_display]] call jn_fnc_vehicleArsenal;
 		["ColorTabs",[_display]] call jn_fnc_vehicleArsenal;
 
-		['showMessage',[_display,"Vehicle inventory"]] call jn_fnc_arsenal;
+		['showMessage',[_display,(localize "STR_JNA_ACT_VEHICLE_INVENTORY")]] call jn_fnc_arsenal;
 		["jn_fnc_arsenal"] call BIS_fnc_endLoadingScreen;
 	};
 
 	///////////////////////////////////////////////////////////////////////////////////////////
 	case "getMass":{
 		_massTotal = 0;
-		_loadout = ((vehicle player) call jn_fnc_arsenal_cargoToArray);
+
+		private _objectSelected = uiNamespace getVariable "jn_object_selected";
+		
+		_loadout = (_objectSelected call jn_fnc_arsenal_cargoToArray);
 		{
 			_index = _forEachIndex;
 			{
@@ -269,8 +272,8 @@ switch _mode do {
 		_ctrlButtonRandom = _display displayctrl IDC_RSCDISPLAYARSENAL_CONTROLSBAR_BUTTONRANDOM;
 		_ctrlButtonRandom ctrlRemoveAllEventHandlers "buttonclick";
 		_ctrlButtonRandom ctrladdeventhandler ["buttonclick",{["Unload",[ctrlparent (_this select 0)]] call jn_fnc_vehicleArsenal;}];
-		_ctrlButtonRandom ctrlSetText "Unload";
-		_ctrlButtonRandom ctrlSetTooltip "Move items from car to arsenal";
+		_ctrlButtonRandom ctrlSetText localize "STR_JNA_ACT_MOVE_FROM_VEHICLE_TO_ARSENAL_BUTTON";
+		_ctrlButtonRandom ctrlSetTooltip localize "STR_JNA_ACT_MOVE_FROM_VEHICLE_TO_ARSENAL";
 
 		_ctrlButtonExport = _display displayctrl IDC_RSCDISPLAYARSENAL_CONTROLSBAR_BUTTONEXPORT;
 		_ctrlButtonExport ctrlRemoveAllEventHandlers "buttonclick";
@@ -330,23 +333,6 @@ switch _mode do {
 	///////////////////////////////////////////////////////////////////////////////////////////
 	case "ColorTabs":{
 		_display = _this select 0;
-/* 
-		// everything here is wrong
-		{
-			_ctrlTab = _display displayctrl (IDC_RSCDISPLAYARSENAL_TAB + _forEachIndex);
-
-			_color = if(_x isEqualTo [])then{
-				[1,1,1,1];
-			}else{
-				[1,0.3,0.3,1];
-			};
-			_ctrlTab ctrlSetTextColor _color;
-			_ctrlTab ctrlSetActiveColor _color;
-			_ctrlTab ctrlSetTextColorSecondary _color;
-			_ctrlTab ctrlSetBackgroundColor _color;
-			_ctrlTab ctrlSetForegroundColor _color;
-		} forEach jnva_loadout;
-*/
 	};
 
 	///////////////////////////////////////////////////////////////////////////////////////////
@@ -355,10 +341,13 @@ switch _mode do {
 		_index = _this select 1;
 		_ctrlList = ctrlnull;
 		jnca_tab_selected = _index;
-		_veh  = vehicle player;
+		
+		private _objectSelected = uiNamespace getVariable "jn_object_selected";
+
 		_isSelectedLeft = _index in [IDCS_LEFT];
 		_listSelected = [IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG,IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL] select _isSelectedLeft;
 
+		//add items to list that are in the vehicle
 		_inventory = if(_index == IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG) then {
 
 			// Find compatible magazines for all primary weapons in vehicle
@@ -366,7 +355,6 @@ switch _mode do {
 			private _usableMagazines = [];
 			{
 				private _weapons = jnva_loadout select _x;
-				
 				{
 					_usableMagazines append ((compatibleMagazines (_x select 0)) apply {toLower _x});
 				} forEach _weapons;
@@ -378,42 +366,85 @@ switch _mode do {
 			_usableMagazines =_usableMagazines arrayIntersect _usableMagazines;
 
 			// Add compatible vehicle magazines for 3CB-style ammunition systems
-			private _cfgVehicle = configFile >> "cfgVehicles" >> typeof _veh;
+			private _cfgVehicle = configFile >> "cfgVehicles" >> typeof _objectSelected;
 			private _vehMagTypes = _cfgVehicle call A3A_fnc_allMagazines;
 			{ _usableMagazines pushBackUnique toLower _x } forEach _vehMagTypes;
 
-			// Get magazine counts from arsenal that are compatible
-			private _magsArsenal = [];
-			private _magsVehicle = [];
+
+			//loop all magazines and find usable
+			//First, search mags in Arsenal
+			_magazines = [];
 			{
-				if !(toLower (_x select 0) in _usableMagazines) then { continue };
-				_magsArsenal pushBack _x;
-				_magsVehicle pushBack [_x select 0, 0];
+				_itemAvailable = _x select 0;
+				_amountAvailable = _x select 1;
+
+				if(_itemAvailable in _usableMagazines)then{
+					_magazines set [count _magazines,[_itemAvailable, _amountAvailable]];
+				};
 			} forEach (jna_dataList select IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL);
 			
-			// Then add compatible mags from the vehicle cargo
+			//Then add mags in the car, but say we have none available - we'll add available number later
 			{
-				if !(toLower (_x select 0) in _usableMagazines) then { continue };
-				// Use addToArray to avoid duplicating the type if they're already in the arsenal
-				_magsArsenal = [_magsArsenal, [_x select 0, 0]] call jn_fnc_arsenal_addToArray;
-				_magsVehicle = [_magsVehicle, _x] call jn_fnc_arsenal_addToArray;
-			} forEach (jnva_loadout select IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL);
+				_itemAvailable = _x select 0;
 
-			jnva_loadout set [IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG, _magsVehicle];
-			_magsArsenal;
-		}
-		else {
-			private _items = jna_dataList select _index;
-			// Add entries from vehicle with zero count
-			{
-				_items = [_items, [_x select 0, 0]] call jn_fnc_arsenal_addToArray;
-			} forEach (jnva_loadout select _index);
-			_items;
+				if(_itemAvailable in _usableMagazines)then{
+					//Use addToArray to avoid duplicating the type if they're already in the arsenal
+					_magazines = [_magazines, [_itemAvailable,0]] call jn_fnc_arsenal_addToArray
+				};
+			} forEach (jnva_loadout select IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL);
+			//return
+			_magazines;
+		}else{
+			(jna_dataList select _index);
 		};
 
 		//update list
 		["CreateList",[_display,_index,_inventory,_listSelected]] call jn_fnc_vehicleArsenal;
 		["updateItemInfo",[ _display,_ctrlList,_index]] call jn_fnc_arsenal;
+
+
+		//add items to list that are in the vehicle
+		if(_index == IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG)then{
+			_items = jnva_loadout select IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL;
+
+			_itemsUnique = [];
+			{
+				_itemsUnique pushBackUnique (_x select 0);
+			}foreach _items;
+
+			_itemsUnique2 = [];
+			{
+				_weapons = jnva_loadout select _x;
+				{
+					_weapon = _x select 0;
+					{
+
+						if(_x in _itemsUnique)then{
+							_itemsUnique2 pushBackUnique _x;
+							["UpdateItemAdd",[_index,_x,0]] call jn_fnc_arsenal;
+						}
+					} forEach (getarray (configfile >> "cfgweapons" >> _weapon >> "magazines"));
+				} forEach _weapons;
+			}forEach [
+				IDC_RSCDISPLAYARSENAL_TAB_PRIMARYWEAPON,
+				IDC_RSCDISPLAYARSENAL_TAB_SECONDARYWEAPON,
+				IDC_RSCDISPLAYARSENAL_TAB_HANDGUN
+			];
+			
+			private _magazineItemsInTab = [];
+			{
+				_item = _x;
+				_amount = [_items, _item] call jn_fnc_arsenal_itemCount;
+				_magazineItemsInTab	= [_magazineItemsInTab, [_item,_amount]] call jn_fnc_arsenal_addToArray;
+			} forEach _itemsUnique2;
+			jnva_loadout set [_index,_magazineItemsInTab];
+
+		}else{
+			{
+				_item = _x select 0;
+				["UpdateItemAdd",[_index,_item,0]] call jn_fnc_arsenal;
+			} forEach (jnva_loadout select _index);
+		};
 
 		{
 			_idc = _x;
@@ -439,7 +470,6 @@ switch _mode do {
 			_ctrlList = _display displayctrl (IDC_RSCDISPLAYARSENAL_LIST + _list);
 
 			if (_active) then {
-
 				_ctrlLineTab = _display displayctrl ([IDC_RSCDISPLAYARSENAL_LINETABRIGHT,IDC_RSCDISPLAYARSENAL_LINETABLEFT] select _isLeft);
 
 				_ctrlLineTab ctrlsetfade 0;
@@ -524,10 +554,10 @@ switch _mode do {
 		_index = _this select 2;
 		_center = (missionnamespace getvariable ["BIS_fnc_arsenal_center",player]);
 		_type = (ctrltype _ctrlList == 102);
-		_veh = vehicle player;
 
+		private _objectSelected = uiNamespace getVariable "jn_object_selected";
 
-		_maximumLoad = getNumber(configfile >> "CfgVehicles" >> (typeOf _veh) >> "maximumLoad");
+		_maximumLoad = getNumber(configfile >> "CfgVehicles" >> (typeOf _objectSelected) >> "maximumLoad");
 
 		_ctrlLoadCargo = _display displayctrl IDC_RSCDISPLAYARSENAL_LOADCARGO;
 		_load = _maximumLoad * (1 - progressposition _ctrlLoadCargo);
@@ -547,7 +577,7 @@ switch _mode do {
 			_grayout = false;
 
 			_min = [_index, _item] call _minItemsMember;
-			if ((_amount <= _min) AND (_amount != -1) AND (_amount !=0) AND !([player] call A3A_fnc_isMember)) then{_grayout = true};
+			if ((_amount <= _min) AND (_amount != -1) AND (_amount !=0) AND !(player call A3A_fnc_isMember)) then{_grayout = true};
 
 			_isIncompatible = _ctrlList lnbvalue [_r,1];
 			_mass = _ctrlList lbvalue (_r * _columns);
@@ -594,7 +624,8 @@ switch _mode do {
 		_display = _this select 0;
 		_add = _this select 1;
 
-		_veh = vehicle player;
+		private _objectSelected = uiNamespace getVariable "jn_object_selected";
+
 		_index = jnca_tab_selected;
 
 		if(_index == IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG)then{_index = IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL};
@@ -612,11 +643,9 @@ switch _mode do {
 		_load = 0;
 		_items = [];
 
-		_container = vehicle player;
-
 		_ctrlLoadCargo = _display displayctrl IDC_RSCDISPLAYARSENAL_LOADCARGO;
 		//save old weight
-		_max = getNumber(configfile >> "CfgVehicles" >> (typeOf _veh) >> "maximumLoad");
+		_max = getNumber(configfile >> "CfgVehicles" >> (typeOf _objectSelected) >> "maximumLoad");
 
 		_amountOld = parseNumber (_ctrlList lnbtext [_lbcursel,2]);
 		//remove or add
@@ -645,18 +674,17 @@ switch _mode do {
 
 				//non-member limits
 				_min = [_index, _item] call _minItemsMember;
-				if((_amount <= _min) AND (_amount != -1) AND !([player] call A3A_fnc_isMember)) exitWith{
-					['showMessage',[_display,"We are low on this item, only members may use it"]] call jn_fnc_arsenal;
+				if((_amount <= _min) AND (_amount != -1) AND !(player call A3A_fnc_isMember)) exitWith{
+					['showMessage',[_display,(localize "STR_JNA_ACT_ONLY_MEMBERS")]] call jn_fnc_arsenal;
 				};
 
 				//magazines are handeld by bullet count
 				if(_index in [IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG,IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL])then{
 					//check if full mag can be optaind
-					_count = _count * getNumber (configfile >> "CfgMagazines" >> _item >> "count");
-				};
-
-				if(_amount != -1) then {
-					_count = _count min _amount;
+					_count = getNumber (configfile >> "CfgMagazines" >> _item >> "count");
+					if(_amount != -1)then{
+						if(_amount<_count)then{_count = _amount};
+					};
 				};
 
 				if(_count > 0)then{
@@ -830,12 +858,14 @@ switch _mode do {
 
 	///////////////////////////////////////////////////////////////////////////////////////////
 	case "Unload":{
-		_display = _this select 0;
+		params ["_display"];
+
+		private _objectSelected = uiNamespace getVariable "jn_object_selected";
 
 		jnva_loadout_mass = 0;
-		diag_log jnva_loadout;
         jnva_loadout remoteExecCall ["jn_fnc_arsenal_addItem",2];
-       	jnva_loadout = ((vehicle player) call jn_fnc_arsenal_cargoToArray);
+
+       	jnva_loadout = (_objectSelected call jn_fnc_arsenal_cargoToArray);
        	diag_log jnva_loadout;
 
        	_list = missionnamespace getVariable ["jnca_tab_selected",-1];
@@ -848,7 +878,7 @@ switch _mode do {
 	///////////////////////////////////////////////////////////////////////////////////////////
 	case "Close": {
 		jnva_loadout_mass = nil;
-		_veh = vehicle player;
+		private _objectSelected = uiNamespace getVariable "jn_object_selected";
 		jnca_tab_selected = nil;
 		//weapons
 		{
@@ -856,7 +886,7 @@ switch _mode do {
 			{
 				_item = _x select 0;
 				_amount = _x select 1;
-				_veh addWeaponCargoGlobal [_item,_amount];
+				_objectSelected addWeaponCargoGlobal [_item,_amount];
 			} forEach _list;
 		} forEach [
 			IDC_RSCDISPLAYARSENAL_TAB_PRIMARYWEAPON,
@@ -870,7 +900,7 @@ switch _mode do {
 			{
 				_item = _x select 0;
 				_amount = _x select 1;
-				_veh addItemCargoGlobal [_item,_amount];
+				_objectSelected addItemCargoGlobal [_item,_amount];
 			} forEach _list;
 		} forEach [
 			IDC_RSCDISPLAYARSENAL_TAB_UNIFORM,
@@ -900,7 +930,7 @@ switch _mode do {
 				_count = getNumber (configfile >> "CfgMagazines" >> _item >> "count");
 
 				while{_amount>0}do{
-					_veh addMagazineAmmoCargo [_item,1,_amount];
+					_objectSelected addMagazineAmmoCargo [_item,1,_amount];
 					_amount = _amount - _count;
 				};
 			} forEach _list;
@@ -916,7 +946,7 @@ switch _mode do {
 			{
 				_item = _x select 0;
 				_amount = _x select 1;
-				_veh addBackpackCargoGlobal [_item,_amount];
+				_objectSelected addBackpackCargoGlobal [_item,_amount];
 			} forEach _list;
 		} forEach [
 			IDC_RSCDISPLAYARSENAL_TAB_BACKPACK

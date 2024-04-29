@@ -59,7 +59,7 @@ private _detainee = _varspace getVariable ["player",objNull];
             };
             if (!isNull _admin) then {
                 if (_admin isEqualTo _detainee) exitWith { [_UID,"forgive"] call A3A_fnc_punishment_release; };  // The admin cannot use the self forgive scroll-action when attached to the surf-board.
-                ["FF Notification", [_name," has been found guilty of FF (3+ Strikes).<br/><br/>If you believe this is a mistake, you can forgive him with the corresponding scroll-menu action."] joinString ""] remoteExecCall ["A3A_fnc_customHint",_admin,false];
+                [localize "STR_A3A_punishment_FF_header", [_name,localize "STR_A3A_punishment_guilty"] joinString ""] remoteExecCall ["A3A_fnc_customHint",_admin,false];
                 [_UID,[missionNamespace,"A3A_FFPun",_UID,"offenceTotal",0] call A3A_fnc_getNestedObject,_name] remoteExecCall ["A3A_fnc_punishment_addActionForgive",_admin,false];
             };
             _lastAdmin = _admin;
@@ -73,7 +73,7 @@ private _detainee = _varspace getVariable ["player",objNull];
     if (_disconnected) then {
         _playerStats = format["Player: %1 [%2], _timeTotal: %3", _name, _UID, str _timeTotal];
         Info_1("DISCONNECTED/DIED WHILE PUNISHED | %1", _playerStats);
-        systemChat format["FF: %1 disconnected/died while being punished.",_name];
+        systemChat format[localize "STR_antistasi_schat_disconnect_ff", _name];
         [_UID,"remove"] call A3A_fnc_punishment_oceanGulag;
     } else {
         [_UID,["punishment_warden_manual","punishment_warden"] select (_sentenceEndTime_old isEqualTo _sentenceEndTime)] call A3A_fnc_punishment_release;

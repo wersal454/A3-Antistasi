@@ -22,7 +22,7 @@ License: MIT License
 params ["_unit"];
 
 private _items = assignedItems _unit;
-private _radioPosition = _items findIf { _x == "ItemRadio" || {"tf_" in _x} || {"TFAR_" in _x} || {"item_radio" in _x} };
+private _radioPosition = _items findIf { _x == "ItemRadio" || {"tf_" in _x || {"TFAR_" in _x || {"item_radio" in _x}}}};
 
 if (_radioPosition > -1) then {
 	_items # _radioPosition;

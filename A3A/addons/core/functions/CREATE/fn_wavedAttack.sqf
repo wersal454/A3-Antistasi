@@ -33,11 +33,11 @@ private _nameDest = [_mrkDest] call A3A_fnc_localizar;
 private _nameEnemy = _faction get "name";
 private _taskId = "wavedAttack" + str A3A_taskCount;
 if (_targside == teamPlayer) then {
-    private _taskStr = format ["%1 is attacking our garrison at %2. Stop them if you can, or live to fight another day.", _nameEnemy, _nameDest];
-    [true,_taskId,[_taskStr,format ["%1 Attack",_nameEnemy],_mrkDest],markerPos _mrkDest,false,0,true,"Defend",true] call BIS_fnc_taskCreate;
+    private _taskStr = format [localize "STR_wavedattack_desc", _nameEnemy, _nameDest];
+    [true,_taskId,[_taskStr,format [localize "STR_wavedattack_task",_nameEnemy],_mrkDest],markerPos _mrkDest,false,0,true,"Defend",true] call BIS_fnc_taskCreate;
     [_taskId, "rebelAttack", "CREATED"] remoteExecCall ["A3A_fnc_taskUpdate", 2];
 } else {
-    private _text = format ["%1 is attacking the %2 garrison at %3.", _nameEnemy, Faction(_targside) get "name", _nameDest];
+    private _text = format [localize "STR_notifiers_wavedattack", _nameEnemy, Faction(_targside) get "name", _nameDest];
     ["RadioIntercepted", [_text]] remoteExec ["BIS_fnc_showNotification", 0];
 };
 
@@ -72,7 +72,7 @@ while {_wave <= _maxWaves and !_victory} do
         {
             _x params ["_supportName", "_suppSide", "_suppType", "_suppCenter", "_suppRadius", "_suppTarget"];
             if (_suppSide != _side or _suppCenter distance2d _targpos > _suppRadius) then { continue };
-            if (_suppType in ["UAV", "CAS", "ASF"]) then { _airSupports pushBack _suppType };
+            if (_suppType in ["UAV", "CAS", "CASDIVE", "ASF"]) then { _airSupports pushBack _suppType };
         } forEach A3A_activeSupports;
 
         // Not ideal because it might have a dead gunner. Might need some proper vehicleCanFight function
@@ -104,6 +104,7 @@ while {_wave <= _maxWaves and !_victory} do
         private _possibles = ["AH", 1];
         if !("UAV" in _airSupports) then { _possibles append ["UAV", 1] };
         if !("CAS" in _airSupports) then { _possibles append ["CAS", 0.6] };
+	if !("CASDIVE" in _airSupports) then { _possibles append ["CASDIVE", 0.4] };
         if !("ASF" in _airSupports) then { _possibles append ["ASF", 0.3] };
 
         private _support = selectRandomWeighted _possibles;
@@ -178,15 +179,20 @@ while {_wave <= _maxWaves and !_victory} do
 if (_victory) then {
     if (_targSide != teamPlayer) exitWith {};
     [_taskId, "rebelAttack", "FAILED"] call A3A_fnc_taskSetState;
-    if (_targside == teamPlayer) then { [-10,theBoss] call A3A_fnc_playerScoreAdd };
+    if (_targside == teamPlayer) then {  
+        [-(round (5*tierWar)), theBoss] call A3A_fnc_addScorePlayer; 
+    };
 } else {
     [_mrkDest, _mrkOrigin] call A3A_fnc_minefieldAAF;
 
     if (_targSide != teamPlayer) exitWith {};
     [_taskId, "rebelAttack", "SUCCEEDED"] call A3A_fnc_taskSetState;
-    private _nearRebels = [500, 0, markerPos _mrkDest, teamPlayer] call A3A_fnc_distanceUnits;
-    { if (isPlayer _x) then { [10, _x] call A3A_fnc_playerScoreAdd } } forEach _nearRebels;
-    [10, theBoss] call A3A_fnc_playerScoreAdd;
+    {
+        [round (10*tierWar), _x] call A3A_fnc_addScorePlayer;
+        [round (110*tierWar), _x] call A3A_fnc_addMoneyPlayer;
+    } forEach (call SCRT_fnc_misc_getRebelPlayers);
+    [10, theBoss] call A3A_fnc_addScorePlayer;
+    [100, theBoss, true] call A3A_fnc_addMoneyPlayer;
 };
 [_taskId, "rebelAttack", 30] spawn A3A_fnc_taskDelete;
 

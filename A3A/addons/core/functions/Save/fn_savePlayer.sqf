@@ -77,6 +77,6 @@ if (_globalSave) then
 };
 _playerHM set ["moneyX", _totalMoney];
 
-Info_3("Saved player %1: %2 rank, %3 money", _playerId, _rankPlayer, _totalMoney toFixed 0);
+Info_4("Saved player %1: %2 rank, %3 money, %4 score", _playerId, _rankPlayer, _totalMoney toFixed 0, _scorePlayer);
 
 true;

@@ -1,47 +1,61 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
-if (!(isNil "placingVehicle") && {placingVehicle}) exitWith {["Add Vehicle", "Unable to buy vehicle, you are already placing something."] call A3A_fnc_customHint;};
-if (player != player getVariable ["owner",player]) exitWith {["Add Vehicle", "You cannot buy vehicles while you are controlling AI."] call A3A_fnc_customHint;};
-if ([getPosATL player] call A3A_fnc_enemyNearCheck) exitWith {["Add Vehicle", "You cannot buy vehicles with enemies nearby."] call A3A_fnc_customHint;};
+params [
+	["_typeVehX", "", [""]]
+];
 
-
-private _typeVehX = _this select 0;
-if (_typeVehX == "") exitWith {["Add Vehicle", "The vehicle you requested is not supported in your current modset."] call A3A_fnc_customHint;};
+if (_typeVehX isEqualTo "") exitWith {[localize "STR_A3A_addFiaVeh_header", localize "STR_A3AP_error_empty_generic"] call A3A_fnc_customHint;};
+if (!(isNil "HR_GRG_placing") && {HR_GRG_placing}) exitWith {[localize "STR_A3A_addFiaVeh_header", localize "STR_A3AP_error_already_placing_generic"] call A3A_fnc_customHint;};
+if (player != player getVariable ["owner",player]) exitWith {[localize "STR_A3A_addFiaVeh_header", localize "STR_A3AP_error_aicontrol_generic"] call A3A_fnc_customHint;};
+if ([getPosATL player] call A3A_fnc_enemyNearCheck) exitWith {[localize "STR_A3A_addFiaVeh_header", localize "STR_A3AP_error_enemynear_generic"] call A3A_fnc_customHint;};
 
 private _cost = [_typeVehX] call A3A_fnc_vehiclePrice;
-
 private _resourcesFIA = 0;
-if (!isMultiPlayer) then {_resourcesFIA = server getVariable "resourcesFIA"} else
-	{
-	if (player != theBoss) then
-		{
+
+if (player != theBoss) then {
+	_resourcesFIA = player getVariable "moneyX";
+} else {
+	private _factionMoney = server getVariable "resourcesFIA";
+	if (_cost <= _factionMoney) then {
+		_resourcesFIA = _factionMoney;
+	} else {
 		_resourcesFIA = player getVariable "moneyX";
-		}
-	else
-		{
-		_resourcesFIA = server getVariable "resourcesFIA";
-		};
 	};
+};
 
-if (_resourcesFIA < _cost) exitWith {["Add Vehicle", format ["You do not have enough money for this vehicle: %1 € required.",_cost]] call A3A_fnc_customHint;};
+if (_resourcesFIA < _cost) exitWith {
+	[localize "STR_A3A_addFiaVeh_header", format [localize "STR_A3AP_error_veh_not_enough_money_generic", _cost, A3A_faction_civ get "currencySymbol"]] call A3A_fnc_customHint;
+};
+
 private _nearestMarker = [markersX select {sidesX getVariable [_x,sideUnknown] == teamPlayer},player] call BIS_fnc_nearestPosition;
-if !(player inArea _nearestMarker) exitWith {["Add Vehicle", "You need to be close to the flag to be able to purchase a vehicle."] call A3A_fnc_customHint;};
 
-private _extraMessage =	format ["Buying vehicle for $%1.", _cost];
-
+private _extraMessage =	format [localize "STR_veh_callback_select_veh_generic", _cost,  A3A_faction_civ get "currencySymbol"];
 private _fnc_placed = {
 	params ["_vehicle", "_cost"];
 	if (isNull _vehicle) exitWith {};
-	if (player == theBoss) then {
+	private _factionMoney = server getVariable "resourcesFIA";
+
+	if (player == theBoss && {_cost <= _factionMoney}) then {
 		[0,(-1 * _cost)] remoteExec ["A3A_fnc_resourcesFIA",2];
-	} else {
+	}
+	else {
 		[-1 * _cost] call A3A_fnc_resourcesPlayer;
 		_vehicle setVariable ["ownerX",getPlayerUID player,true];
+		playSound "A3AP_UiSuccess";
 	};
-	_vehicle setFuel random [0.10, 0.175, 0.25];
+
+	player reveal _vehicle;
+	petros directSay "SentGenBaseUnlockVehicle";
+
+	if (!HR_GRG_hasFuelSource) then { 
+		_vehicle setFuel random [0.10, 0.25, 0.35];
+	}; 
+
 	[_vehicle, teamPlayer] call A3A_fnc_AIVehInit;
+
 	if (_vehicle isKindOf "StaticWeapon") then {
-		staticsToSave pushBack _vehicle; publicVariable "staticsToSave";
+		staticsToSave pushBack _vehicle; 
+		publicVariable "staticsToSave";
 	};
 };
 

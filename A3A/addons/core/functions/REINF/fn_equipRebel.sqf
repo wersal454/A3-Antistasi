@@ -15,9 +15,46 @@ Environment:
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-params ["_unit", "_recruitType"];
+params ["_unit", "_recruitType", ["_forceClass", ""]];
 
 call A3A_fnc_fetchRebelGear;        // Send current version of rebelGear from server if we're out of date
+
+// TODO: add types unitAA and unitAT(name?) when UI is ready
+private _unitType = if (_forceClass != "") then {_forceClass} else {_unit getVariable "unitType"};
+private _customLoadout = rebelLoadouts get _unitType;
+
+if (!isNil "_customLoadout") exitWith {
+    private _goggles = goggles _unit;
+	if (randomizeRebelLoadoutUniforms) then {
+		_unit setUnitLoadout _customLoadout;
+
+		_unit forceAddUniform (selectRandom (A3A_faction_reb get "uniforms"));
+		{_unit addItemToUniform _x} forEach (uniformItems _unit);
+
+		private _headgear = headgear _unit;
+
+		//if it isn't a helmet - randomize
+		if !(_headgear in allArmoredHeadgear) then {
+			_unit addHeadgear (selectRandom (A3A_faction_reb get "headgear"));
+		};
+	} else {
+		_unit setUnitLoadout _customLoadout;
+	};
+
+    if (goggles _unit != _goggles && {randomizeRebelLoadoutUniforms}) then {
+        removeGoggles _unit;
+        _unit addGoggles _goggles;
+    };
+
+    _unit linkItem (selectRandom (A3A_faction_reb get "compasses"));
+	_unit linkItem (selectRandom (A3A_faction_reb get "maps"));
+	_unit linkItem (selectRandom (A3A_faction_reb get "watches"));
+	if (haveRadio) then {_unit linkItem (selectRandom (A3A_faction_reb get "radios"))};
+
+	if (( _unit getVariable "unitType") isEqualTo FactionGet(reb,"unitExp")) then {
+		_unit enableAIFeature ["MINEDETECTION", true]; //This should prevent them from Stepping on the Mines as an "Expert" (It helps, they still step on them)
+	};
+};
 
 private _fnc_addSecondaryAndMags = {
     params ["_unit", "_weapon", "_totalMagWeight"];
@@ -72,10 +109,7 @@ if (_smokes isNotEqualTo []) then { _unit addMagazines [selectRandomWeighted _sm
 private _grenades = A3A_rebelGear get "Grenades";
 if (_grenades isNotEqualTo []) then { _unit addMagazines [selectRandomWeighted _grenades, 1] };
 
-// TODO: add types unitAA and unitAT(name?) when UI is ready
-private _unitType = _unit getVariable "unitType";
-switch (true) do
-{
+switch (true) do {
     case (_unitType isEqualTo FactionGet(reb,"unitSniper")): {
         [_unit, "SniperRifles", 50] call A3A_fnc_randomRifle;
     };
@@ -134,10 +168,18 @@ switch (true) do
 
         private _launcher = selectRandomWeighted (A3A_rebelGear get "RocketLaunchers");
         if !(isNil "_launcher") then { [_unit, _launcher, 100] call _fnc_addSecondaryAndMags };
+    };
+    case (_unitType isEqualTo FactionGet(reb,"unitAT")): {
+        [_unit, "Rifles", 40] call A3A_fnc_randomRifle;
 
-//		if (A3A_hasIFA) then {
-//			[_unit, "LIB_PTRD", 100] call _addSecondaryAndMags;
-//		};
+        private _launcher = selectRandomWeighted (A3A_rebelGear get "MissileLaunchersAT");
+        if !(isNil "_launcher") then { [_unit, _launcher, 100] call _fnc_addSecondaryAndMags };
+    };
+    case (_unitType isEqualTo FactionGet(reb,"unitAA")): {
+        [_unit, "Rifles", 40] call A3A_fnc_randomRifle;
+
+        private _launcher = selectRandomWeighted (A3A_rebelGear get "MissileLaunchersAA");
+        if !(isNil "_launcher") then { [_unit, _launcher, 100] call _fnc_addSecondaryAndMags };
     };
     case (_unitType isEqualTo FactionGet(reb,"unitAT")): {
         [_unit, "Rifles", 40] call A3A_fnc_randomRifle;

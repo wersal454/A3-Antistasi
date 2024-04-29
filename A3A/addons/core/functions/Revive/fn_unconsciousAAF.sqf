@@ -8,7 +8,7 @@ private _group = group _unit;
 private _side = side _group;
 
 // This is... quite weird
-if ({if ((isPlayer _x) and (_x distance _unit < distanceSPWN2)) exitWith {1}} count allUnits != 0) then
+if ({if ((isPlayer _x) and {_x distance _unit < distanceSPWN2}) exitWith {1}} count allUnits != 0) then
 {
 	_playerNear = true;
 	[_unit,"heal"] remoteExec ["A3A_fnc_flagaction",0,_unit];
@@ -38,7 +38,7 @@ _unit stop false;
 if (_playerNear) then
 {
 	[_unit,"remove"] remoteExec ["A3A_fnc_flagaction",0,_unit];
-    if((_unit getVariable "unitType") in FactionGet(all,"SquadLeaders")) then
+    if((_unit getVariable "unitType") in FactionGet(all,"SquadLeaders") && {!(_unit getVariable ["canBeInterrogated", false]) && {!(_unit getVariable ["isRival", false])}}) then
     {
         _unit spawn
         {
@@ -55,7 +55,7 @@ if (time >= _bleedOutTime) exitWith
 	{
 		if (isPlayer _injurer) then
 		{
-			[1,_injurer] call A3A_fnc_playerScoreAdd;
+			[2,_injurer] call A3A_fnc_addScorePlayer;
 		};
 		[-1,1,getPos _unit] remoteExec ["A3A_fnc_citySupportChange",2];
 	};

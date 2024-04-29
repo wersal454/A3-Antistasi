@@ -36,7 +36,7 @@ _strikePlane addEventHandler
     "Killed",
     {
         params ["_strikePlane"];
-        ["TaskSucceeded", ["", "Gunship Destroyed"]] remoteExec ["BIS_fnc_showNotification", teamPlayer];
+        ["TaskSucceeded", ["", localize "STR_notifiers_gunship_killed"]] remoteExec ["BIS_fnc_showNotification", teamPlayer];
         private _timerArray = _strikePlane getVariable "TimerArray";
         private _timerIndex = _strikePlane getVariable "TimerIndex";
         _timerArray set [_timerIndex, (_timerArray select _timerIndex) + 3600];
@@ -97,7 +97,7 @@ _strikePlane addEventHandler
                     else
                     {
                         //Vehicle is outside of radius, call in other support
-                        [group driver _plane, ["CAS", "MISSILE", "CANNON", "CARPETBOMB", "MORTAR"], _vehicle] spawn A3A_fnc_callForSupport;
+                        [group driver _plane, ["CAS", "CASDIVE", "MISSILE", "CANNON", "CARPETBOMB", "MORTAR", "HOWITZER"], _vehicle] spawn A3A_fnc_callForSupport;
                     };
                 };
             };

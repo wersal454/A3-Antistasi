@@ -1334,19 +1334,6 @@ class A3A_MainDialog : A3A_TabbedDialog
                     onSliderPosChanged = "[""civLimitSliderChanged""] spawn A3A_fnc_adminTab";
                 };
 
-                class CivLimitEditBox : A3A_Edit
-                {
-                    idc = A3A_IDC_CIVLIMITEDITBOX;
-                    style = ST_RIGHT;
-                    text = "0";
-                    sizeEx = GUI_TEXT_SIZE_MEDIUM;
-                    x = 140 * GRID_W;
-                    y = 16 * GRID_H;
-                    w = 12 * GRID_W;
-                    h = 4 * GRID_H;
-                    onChar = "[""civLimitEditBoxChanged""] spawn A3A_fnc_adminTab";
-                };
-
                 class SpawnDistanceLabel : A3A_Text
                 {
                     idc = -1;
@@ -1379,40 +1366,6 @@ class A3A_MainDialog : A3A_TabbedDialog
                     w = 12 * GRID_W;
                     h = 4 * GRID_H;
                     onChar = "[""spawnDistanceEditBoxChanged""] spawn A3A_fnc_adminTab";
-                };
-
-                class AiLimiterLabel : A3A_Text
-                {
-                    idc = -1;
-                    text = $STR_antistasi_dialogs_main_admin_ai_limiter_label;
-                    sizeEx = GUI_TEXT_SIZE_MEDIUM;
-                    x = 74 * GRID_W;
-                    y = 28 * GRID_H;
-                    w = 24 * GRID_W;
-                    h = 4 * GRID_H;
-                };
-
-                class AiLimiterSlider : A3A_Slider
-                {
-                    idc = A3A_IDC_AILIMITERSLIDER;
-                    x = 98 * GRID_W;
-                    y = 28 * GRID_H;
-                    w = 40 * GRID_W;
-                    h = 4 * GRID_H;
-                    onSliderPosChanged = "[""aiLimiterSliderChanged""] spawn A3A_fnc_adminTab";
-                };
-
-                class AiLimiterEditBox : A3A_Edit
-                {
-                    idc = A3A_IDC_AILIMITEREDITBOX;
-                    style = ST_RIGHT;
-                    text = "0";
-                    sizeEx = GUI_TEXT_SIZE_MEDIUM;
-                    x = 140 * GRID_W;
-                    y = 28 * GRID_H;
-                    w = 12 * GRID_W;
-                    h = 4 * GRID_H;
-                    onChar = "[""aiLimiterEditBoxChanged""] spawn A3A_fnc_adminTab";
                 };
 
                 class AiSectionWarningBackground : A3A_Background
@@ -1516,17 +1469,6 @@ class A3A_MainDialog : A3A_TabbedDialog
                     text = $STR_antistasi_dialogs_main_admin_tp_flag_button;
                     onButtonClick = "flagX setPos (player modelToWorld [0,2,0]);";
                     x = 74 * GRID_W;
-                    y = 80 * GRID_H;
-                    w = 16 * GRID_H;
-                    h = 12 * GRID_H;
-                };
-
-                class TpTentButton : A3A_Button
-                {
-                    idc = -1;
-                    text = $STR_antistasi_dialogs_main_admin_tp_tent_button;
-                    onButtonClick = "fireX setPos (player modelToWorld [0,2,0]);";
-                    x = 103 * GRID_W;
                     y = 80 * GRID_H;
                     w = 16 * GRID_H;
                     h = 12 * GRID_H;

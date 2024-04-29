@@ -12,12 +12,14 @@ class CfgFunctions {
             file = QPATHTOFOLDER(Public);
             class addLoadAction {};
             class getVehCapacity {};
+            class getCargo {};
             class isLoadable {};
         };
 
         class Private {
             file = QPATHTOFOLDER(Private);
             class addAction {};
+            class removeAction {};
             class addOrRemoveObjectMass {};
             class addWeaponAction {};
             class canLoad {};

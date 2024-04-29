@@ -34,10 +34,19 @@ if !("noclear" in _flags) then {
     clearBackpackCargoGlobal _object;
 };
 
-// Double loot crate max load if we're running with no unlocks
-if ("loot" in _flags and minWeaps == -1) then {
-    [_object, (maxLoad _object) * 2] remoteExecCall ["setMaxLoad", 2];      // setMaxLoad is server-execution
+if ("revivekit" in _flags) then {
+    _object addItemCargoGlobal ["A3AP_SelfReviveKit", 3];
 };
+
+// Double loot crate max load if we're running with no unlocks
+if ("loot" in _flags) then {
+    [_object] remoteExec ["SCRT_fnc_loot_addActionLoot", [teamPlayer, civilian], _object];
+
+    if (minWeaps == -1) then {
+        [_object, (maxLoad _object) * 2] remoteExecCall ["setMaxLoad", 2];      // setMaxLoad is server-execution
+    };
+};
+
 
 _object setVariable ["A3A_canGarage", true, true];
 _object setVariable ["A3A_itemPrice", _price, true];

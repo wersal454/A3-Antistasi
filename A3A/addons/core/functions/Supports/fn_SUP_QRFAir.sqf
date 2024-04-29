@@ -43,7 +43,7 @@ if (_delay < 0) then { _delay = (0.5 + random 1) * (300 - 15*tierWar - 1*_aggro)
 //[_airbase, 5+_delay/60] call A3A_fnc_addTimeForIdle;
 
 // kinda epic but whatever
-[[_suppName, _side, _resPool, _delay, _targPos, _airbase, true, _vehCount, _attackCount, _estResources], "A3A_fnc_SUP_QRFRoutine"] call A3A_fnc_scheduler;
+[[_suppName, _side, _resPool, _delay, _targPos, _airbase, "AIR", _vehCount, _attackCount, _estResources], "A3A_fnc_SUP_QRFRoutine"] call A3A_fnc_scheduler;
 
 private _approxTime = _delay + (markerPos _airbase distance2D _targPos) / (200 / 3.6);      // estimated travel time
 [_reveal, _side, "QRFAIR", _targPos, _approxTime] spawn A3A_fnc_showInterceptedSetupCall;

@@ -34,7 +34,7 @@ switch (_mode) do
         // Check for member / commander
         if !(([player] call A3A_fnc_isMember) or (not(isPlayer theBoss))) exitWith
         {
-            ["Mission Request", "Only Player Commander has access to this function."] call A3A_fnc_customHint; // TODO UI-update: Stringtable this
+            [localize "STR_mission_request_header", localize "STR_generic_commander_only"] call A3A_fnc_customHint; // TODO UI-update: Stringtable this
             closeDialog 2;
         };
 

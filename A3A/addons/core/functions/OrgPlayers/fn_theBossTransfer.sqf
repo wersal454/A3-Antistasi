@@ -21,8 +21,9 @@ if (isNull _newBoss) exitWith {
 	[_silent] spawn {
 		params ["_silent"];
 		sleep 5;
-		private _textX = format ["The commander has resigned. There is no eligible commander."];
-		if (!_silent) then {[petros,"hint",_textX, "New Commander"] remoteExec ["A3A_fnc_commsMP", 0]};
+		if (!_silent) then {
+			[petros,"hint", localize "STR_hints_commander_transfer_no_comm", localize "STR_hints_commander_transfer_header"] remoteExec ["A3A_fnc_commsMP", 0]
+		};
 		[] remoteExec ["A3A_fnc_statistics",[teamPlayer,civilian]];
 	};
 };
@@ -58,7 +59,8 @@ Debug_1("New boss %1 set.", name theBoss);
 [_silent] spawn {
 	params ["_silent"];
 	sleep 5;
-	private _textX = format ["%1 is the new commander of our forces. Greet them!", name theBoss];
-	if (!_silent) then {[petros,"hint",_textX, "New Commander"] remoteExec ["A3A_fnc_commsMP", 0]};
+	if (!_silent) then {
+		[petros,"hint", format [localize "STR_hints_commander_transfer_new_comm", name theBoss], localize "STR_hints_commander_transfer_header"] remoteExec ["A3A_fnc_commsMP", 0]
+	};
 	[] remoteExec ["A3A_fnc_statistics",[teamPlayer,civilian]];
 };

@@ -6,7 +6,11 @@ private _faction = Faction(_side);
 private _lowAir = _faction getOrDefault ["attributeLowAir", false];
 private _posDest = getMarkerPos _mrkDest;
 private _posOrigin = getMarkerPos _mrkOrigin;
-private _groupType = selectRandom (_faction get (if (_numTroops == 4) then {"groupsMedium"} else {"groupsSquads"}));
+private _groupType = if (_numTroops == 4) then {
+	selectRandom ([_faction, "groupsTierMedium"] call SCRT_fnc_unit_flattenTier)
+} else {
+	selectRandom ([_faction, "groupsTierSquads"] call SCRT_fnc_unit_flattenTier)
+};
 
 private _isLand = if (_lowAir) then { true } else {						// land markers guaranteed by reinforcementsAI for low air
 	private _targNavIndex = _mrkDest call A3A_fnc_getMarkerNavPoint;
@@ -142,7 +146,7 @@ if (count _units == 0 || time > _timeout || _side != (sidesX getVariable _mrkDes
 	[_cargoGroup] spawn A3A_fnc_enemyReturnToBase;
 
 	// TODO: Only care about actual pathfinding (timeout) for killzones maybe?
-	if (_isLand and _side == (sidesX getVariable _mrkOrigin)) then {
+	if (_isLand and {_side == (sidesX getVariable _mrkOrigin)}) then {
 		private _killzones = killZones getVariable [_mrkOrigin,[]];
 		_killzones pushBack _mrkDest;
 		killZones setVariable [_mrkOrigin,_killzones,true];

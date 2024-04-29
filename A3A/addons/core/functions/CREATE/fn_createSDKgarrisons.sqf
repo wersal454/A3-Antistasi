@@ -2,28 +2,27 @@ if (!isServer and hasInterface) exitWith{};
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-private ["_markerX","_vehiclesX","_groups","_soldiers","_positionX","_staticsX","_garrison"];
+params ["_markerX"];
 
-_markerX = _this select 0;
+private ["_vehiclesX","_groups","_soldiers","_positionX","_staticsX","_garrison"];
 
-_vehiclesX = [];
-_groups = [];
-_soldiers = [];
-_civs = [];
+private _vehiclesX = [];
+private _groups = [];
+private _soldiers = [];
+private _civs = [];
 _positionX = getMarkerPos (_markerX);
 
-if (_markerX != "Synd_HQ") then
-{
-	if (!(_markerX in citiesX)) then
-	{
+private _civNonHuman = Faction(civilian) getOrDefault ["attributeCivNonHuman", false];
+
+if (_markerX != "Synd_HQ" && {!(_markerX in milAdministrationsX)}) then {
+	if (!(_markerX in citiesX)) then {
 		private _veh = createVehicle [FactionGet(reb,"flag"), _positionX, [],0, "NONE"];
 		_veh setFlagTexture FactionGet(reb,"flagTexture");
 		_veh allowDamage false;
 		_vehiclesX pushBack _veh;
 		[_veh,"SDKFlag"] remoteExec ["A3A_fnc_flagaction",0,_veh];
 
-		if (_markerX in seaports) then
-		{
+		if (_markerX in seaports) then {
 			[_veh,"seaport"] remoteExec ["A3A_fnc_flagaction",[teamPlayer,civilian],_veh];
 		};
 	};
@@ -38,9 +37,9 @@ if (_markerX != "Synd_HQ") then
 };
 
 private _size = [_markerX] call A3A_fnc_sizeMarker;
-_staticsX = staticsToSave select {_x distance2D _positionX < _size};
+private _staticsX = staticsToSave select {_x distance2D _positionX < _size};
 
-_garrison = [];
+private _garrison = [];
 _garrison = _garrison + (garrison getVariable [_markerX,[]]);
 
 // Don't create these unless required
@@ -49,8 +48,7 @@ private _groupMortars = grpNull;
 
 // Create the purchased mortars
 private _typeCrew = FactionGet(reb,"unitCrew");
-if (_typeCrew in _garrison) then
-{
+if (_typeCrew in _garrison) then {
 	_groupMortars = createGroup teamPlayer;
 	{
 		private _unit = [_groupMortars, _typeCrew, _positionX, [], 0, "NONE"] call A3A_fnc_createUnit;
@@ -65,7 +63,7 @@ if (_typeCrew in _garrison) then
 		[_veh, teamPlayer] call A3A_fnc_AIVEHinit;
 		_soldiers pushBack _unit;
 	} forEach (_garrison select {_x == _typeCrew});
-	_garrison = _garrison - [_typeCrew];
+	_garrison deleteAt (_garrison find _typeCrew);;
 };
 
 // Move riflemen into saved static weapons in area
@@ -74,16 +72,13 @@ if (_typeCrew in _garrison) then
 	private _index = _garrison findIf {_x isEqualTo FactionGet(reb,"unitRifle")};
 	if (_index == -1) exitWith {};
 	private _unit = objNull;
-	if (typeOf _x in FactionGet(all,"staticMortars")) then
-	{
+	if (typeOf _x in FactionGet(all,"staticMortars")) then {
 		if (isNull _groupMortars) then { _groupMortars = createGroup teamPlayer };
 		_unit = [_groupMortars, (_garrison select _index), _positionX, [], 0, "NONE"] call A3A_fnc_createUnit;
 		_unit moveInGunner _x;
 
 		[_groupMortars] call A3A_fnc_artilleryAdd;
-	}
-	else
-	{
+	} else {
 		if (isNull _groupStatics) then { _groupStatics = createGroup teamPlayer };
 		_unit = [_groupStatics, (_garrison select _index), _positionX, [], 0, "NONE"] call A3A_fnc_createUnit;
 		_unit moveInGunner _x;
@@ -102,10 +97,8 @@ private _countUnits = 0;
 private _countGroup = 8;
 private _groupX = grpNull;
 
-while {(spawner getVariable _markerX != 2) and (_countUnits < _totalUnits)} do
-{
-	if (_countGroup == 8) then
-	{
+while {(spawner getVariable _markerX != 2) and (_countUnits < _totalUnits)} do {
+	if (_countGroup == 8) then {
 		_groupX = createGroup teamPlayer;
 		_groups pushBack _groupX;
 		_countGroup = 0;

@@ -23,7 +23,7 @@ private _timeLeft = 30;
 private _timerResetTimeOut = 0;
 while {alive player} do {
 	private _pos = getPos player select [0,2];
-	private _limit = if (vehicle player isKindOf "Plane") then {3000} else {0};
+	private _limit = if (vehicle player isKindOf "Plane") then {10000} else {0};
 
 	private _outOfBounds = _pos findIf { (_x < -_limit) || (_x > worldSize + _limit)} != -1;
 	private _atHQ = (player distance2D getMarkerPos respawnTeamPlayer) < 200;
@@ -31,7 +31,7 @@ while {alive player} do {
 		if (_timeLeft isEqualTo 0) then {player call BIS_fnc_neutralizeUnit} else {
 			_timerResetTimeOut = 60;
 			_timeLeft = _timeLeft -1;
-			["Out of bounds", format ["Return to the AO before your blown up, you have %1 seconds.", _timeLeft]] call A3A_fnc_customHint;
+			[localize "STR_A3A_punishment_oob_header", format [localize "STR_A3A_punishment_oob", _timeLeft]] call A3A_fnc_customHint;
 		};
 	} else {
 		if (_timerResetTimeOut == 0) then {

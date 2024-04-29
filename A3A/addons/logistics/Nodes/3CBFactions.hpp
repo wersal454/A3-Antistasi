@@ -719,3 +719,69 @@ class UK3CB_Factions_addons_UK3CB_Factions_Vehicles_wheeled_UK3CB_Factions_Vehic
         };
     };
 };
+
+
+class UK3CB_Factions_addons_UK3CB_Factions_Vehicles_wheeled_UK3CB_Factions_Vehicles_lada_uk3cb_lada_p3d : TRIPLES(ADDON,Nodes,Base)
+{
+    canLoadWeapon = 0;
+    class Nodes
+    {
+        class Node1
+        {
+            offset[] = {0,0.25,0.11};
+            seats[] = {};
+        };
+        class Node2
+        {
+            offset[] = {0,-0.25,0.11};
+            seats[] = {};
+        };
+    };
+};
+
+class UK3CB_Factions_addons_UK3CB_Factions_Vehicles_wheeled_UK3CB_Factions_Vehicles_suv_uk3cb_suv_p3d : TRIPLES(ADDON,Nodes,Base)
+{
+    class Nodes
+    {
+        class Node1
+        {
+            offset[] = {0,-1.4,0.34};
+            seats[] = {};
+        };
+        class Node2
+        {
+            offset[] = {0,-2,0.34};
+            seats[] = {};
+        };
+    };
+};
+
+class UK3CB_Factions_addons_UK3CB_Factions_Vehicles_wheeled_UK3CB_Factions_Vehicles_hilux_uk3cb_hilux_pkm_p3d : TRIPLES(ADDON,Nodes,Base)
+{
+    class Nodes
+    {
+        class Node1
+        {
+            offset[] = {-0.05,-1.9,-1.134};
+            seats[] = {};
+        };
+    };
+};
+
+
+class UK3CB_Factions_addons_UK3CB_Factions_Vehicles_apc_UK3CB_Factions_Vehicles_mtlb_uk3cb_mtlb_pkt_p3d : TRIPLES(ADDON,Nodes,Base)
+{
+    class Nodes
+    {
+        class Node1
+        {
+            offset[] = {-0.10,-1.6,-0.58};
+            seats[] = {};
+        };
+        class Node2 
+        {
+            offset[] = {-0.10,-2.4,-0.58};
+            seats[] = {};
+        };
+    };
+};

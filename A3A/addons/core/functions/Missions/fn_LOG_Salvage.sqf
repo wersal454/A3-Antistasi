@@ -1,14 +1,14 @@
-//Mission: Logistics for Salvage
-private _fileName = "fn_LOG_Salvage";
-if (!isServer and hasInterface) exitWith {};
-
-params ["_markerX"];
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
+
+params ["_markerX"];
+
+//Mission: Logistics for Salvage
+if (!isServer and hasInterface) exitWith {};
+
 Info("Creating Salvage mission");
 
 private _positionX = getMarkerPos _markerX;
-
 
 //Sunken ship that was carrying the box to spawn in
 private _shipType = "Land_UWreck_FishingBoat_F";
@@ -39,17 +39,17 @@ private _faction = Faction(_sideX);
 //Type of salvage crate to spawn
 private _boxType = _faction get "equipmentBox";
 
-//Set time limit on mission
-private _timeLimit = if (_difficultX) then {30} else {60};
-private _dateLimit = [date select 0, date select 1, date select 2, date select 3, (date select 4) + _timeLimit];
-private _dateLimitNum = dateToNumber _dateLimit;
-_dateLimit = numberToDate [date select 0, _dateLimitNum];//converts datenumber back to date array so that time formats correctly
-private _displayTime = [_dateLimit] call A3A_fnc_dateToTimeString;//Converts the time portion of the date array to a string for clarity in hints
+private _limit = if (_difficultX) then {
+	30 call SCRT_fnc_misc_getTimeLimit
+} else {
+	60 call SCRT_fnc_misc_getTimeLimit
+};
+_limit params ["_dateLimitNum", "_displayTime"];
 
 //Name of seaport marker
 private _nameDest = [_markerX] call A3A_fnc_localizar;
-private _title = "Salvage supplies";
-private _text = format ["A supply shipment was sunk outside of %1. Go there and recover the supplies before %2. You will need to get a hold of a boat with a winch to recover the shipment, check beaches for civilian boats you can commandeer.", _nameDest, _displayTime];
+private _title = localize "STR_A3A_Missions_LOG_Salvage_task_header";
+private _text = format [localize "STR_A3A_Missions_LOG_Salvage_task_desc", _nameDest, _displayTime];
 private _taskId = "LOG" + str A3A_taskCount;
 [[teamPlayer, civilian], _taskId, [ _text, _title, [_mrk1, _mrk2, _mrk3]], _positionX, false, 0, true, "rearm", true] call BIS_fnc_taskCreate;
 [_taskId, "LOG", "CREATED"] remoteExecCall ["A3A_fnc_taskUpdate", 2];
@@ -60,7 +60,6 @@ private _taskId = "LOG" + str A3A_taskCount;
 Debug("Mission created, waiting for players to get near");
 waitUntil {sleep 1;(dateToNumber date > _dateLimitNum) or ((spawner getVariable _markerX != 2) and !(sidesX getVariable [_markerX,sideUnknown] == teamPlayer))};
 Debug("players in spawning range, starting spawning");
-
 
 private _boxPos = selectRandom [_mrk1Pos, _mrk2Pos, _mrk3Pos];
 private _shipPos = _boxPos vectorAdd [4, -5, 2];
@@ -76,12 +75,13 @@ private _crateContents = selectRandom [
 	[_box, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
 _crateContents call A3A_fnc_fillLootCrate;
+[_box] remoteExec ["SCRT_fnc_common_addActionMove", [teamPlayer, civilian], _box];
 Debug("Box spawned");
 
 //Create boat and initialise crew members
 Debug("Spawning patrol boat and crew");
 private _typeVeh = if (_difficultX) then { selectRandom (_faction get "vehiclesGunBoats") } else { selectRandom (_faction get "vehiclesTransportBoats") };
-private _typeGroup = if _difficultX then {selectRandom (_faction get "groupsSquads")} else {selectRandom (_faction get "groupsMedium")};
+private _typeGroup = if _difficultX then {selectRandom ([_faction, "groupsTierSquads"] call SCRT_fnc_unit_flattenTier)} else {selectRandom ([_faction, "groupsTierMedium"] call SCRT_fnc_unit_flattenTier)};
 private _boatSpawnLocation = selectRandom [_mrk1Pos, _mrk2Pos, _mrk3Pos];
 
 private _veh = createVehicle [_typeVeh, _boatSpawnLocation, [], 0, "NONE"];
@@ -111,26 +111,30 @@ _vehCrewGroup addVehicle _veh;
 
 //Disable simulation if we *really* want to
 Debug("Waiting for salvage mission end");
-waitUntil {sleep 1; (dateToNumber date > _dateLimitNum) or ((_box distance2D posHQ) < 100)};
+waitUntil {sleep 1; dateToNumber date > _dateLimitNum or {(_box distance2D posHQ) < 100}};
 
 private _timeout = false;
 if (dateToNumber date > _dateLimitNum) then {
 	_timeout = true;
-	waitUntil {sleep 1; ((_box distance2D posHQ) < 100) || allPlayers inAreaArray [getPos _box, 50, 50] isEqualTo [] || isNull _box};
+	waitUntil {sleep 1; (_box distance2D posHQ) < 100 || {allPlayers inAreaArray [getPos _box, 50, 50] isEqualTo [] || {isNull _box}}};
 };
 
 private _bonus = if (_difficultX) then {2} else {1};
 
 if (_timeout && alive _box) then {
 	[_taskId, "LOG", "FAILED"] call A3A_fnc_taskSetState;
-	[-10*_bonus,theBoss] call A3A_fnc_playerScoreAdd;
+	[-10*_bonus,theBoss] call A3A_fnc_addScorePlayer;
     Info("Mission Failed");
 	deleteVehicle _box;
 } else {
 	[_taskId, "LOG", "SUCCEEDED"] call A3A_fnc_taskSetState;
 	[0,300*_bonus] remoteExec ["A3A_fnc_resourcesFIA",2];
-	{if (_x distance _box < 500) then {[10*_bonus,_x] call A3A_fnc_playerScoreAdd}} forEach (allPlayers - (entities "HeadlessClient_F"));
-	[5*_bonus,theBoss] call A3A_fnc_playerScoreAdd;
+	{ 
+		[30,_x] call A3A_fnc_addScorePlayer;
+    	[300 * _bonus,_x] call A3A_fnc_addMoneyPlayer;
+	} forEach (call SCRT_fnc_misc_getRebelPlayers);
+	[10*_bonus,theBoss] call A3A_fnc_addScorePlayer;
+    [100*_bonus,theBoss, true] call A3A_fnc_addMoneyPlayer;
     Info("Mission Succeeded");
 };
 
@@ -139,7 +143,6 @@ Debug("set delete task timer");
 
 deleteMarker _mrk1;
 deleteMarker _mrk2;
-deleteMarker _mrk3;
 deleteVehicle _ship;
 
 [_vehCrewGroup] spawn A3A_fnc_groupDespawner;

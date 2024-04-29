@@ -26,10 +26,10 @@
 //       Vehicles       //
 //////////////////////////
 
-["vehiclesBasic", ["SPE_FFI_OpelBlitz_Open"]] call _fnc_saveToTemplate;
-["vehiclesLightUnarmed", ["LIB_Kfz1_sernyt","LIB_Kfz1_Hood_sernyt"]] call _fnc_saveToTemplate;
-["vehiclesLightArmed", ["SPE_US_M3_Halftrack","LIB_Kfz1_MG42_sernyt"]] call _fnc_saveToTemplate;
-["vehiclesTruck", ["SPE_US_M3_Halftrack_Unarmed"]] call _fnc_saveToTemplate;
+["vehiclesBasic", ["LIB_Kfz1_sernyt"]] call _fnc_saveToTemplate;
+["vehiclesLightUnarmed", ["LIB_Kfz1_Hood_sernyt","LIB_UK_Willys_MB_Hood"]] call _fnc_saveToTemplate;
+["vehiclesLightArmed", ["LIB_UK_Willys_MB_M1919","LIB_Kfz1_MG42_sernyt"]] call _fnc_saveToTemplate;
+["vehiclesTruck", ["LIB_US6_Open"]] call _fnc_saveToTemplate;
 ["vehiclesAT", []] call _fnc_saveToTemplate;
 ["vehiclesAA", ["SPE_OpelBlitz_Flak38"]] call _fnc_saveToTemplate;
 
@@ -39,7 +39,7 @@
 ["vehiclesHeli", []] call _fnc_saveToTemplate;
 
 ["vehiclesCivCar", ["LIB_GazM1","LIB_GazM1_dirty"]] call _fnc_saveToTemplate;
-["vehiclesCivTruck", ["SPE_FFI_OpelBlitz"]] call _fnc_saveToTemplate;
+["vehiclesCivTruck", ["LIB_Zis5v"]] call _fnc_saveToTemplate;
 ["vehiclesCivHeli", []] call _fnc_saveToTemplate;
 ["vehiclesCivBoat", ["B_Boat_Transport_01_F"]] call _fnc_saveToTemplate;
 ["vehiclesCivPlane", []] call _fnc_saveToTemplate;
@@ -64,6 +64,26 @@
 ["vehicleHealthStation", ["", 75]] call _fnc_saveToTemplate;
 ["vehicleRepairStation", ["", 5000]] call _fnc_saveToTemplate;
 
+//////////////////////////////////////
+//       Antistasi Plus Stuff       //
+//////////////////////////////////////
+
+["blackMarketStock", [
+    ["LIB_Flakvierling_38", 3000, "STATICAT", {tierWar > 3}],
+    ["LIB_leFH18", 8000, "STATICMG", {tierWar > 3}],
+
+    ["LIB_Kfz1_Hood_camo", 2050, "CAR", {true}],
+
+    ["LIB_SdKfz_7", 6000, "APC", {true}],
+
+    ["LIB_PzKpfwVI_B", 40000, "TANK", {tierWar > 7 && {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (milbases + airportsX) > 0}}],
+  
+    ["LIB_SdKfz_7_AA", 10000, "AA", {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (milbases + airportsX) > 0}],
+
+    ["LIB_P39", 30000, "PLANE", {tierWar > 5 && {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count airportsX > 0}}],
+    ["LIB_Pe2", 40000, "PLANE", {tierWar > 7 && {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count airportsX > 0}}]
+]] call _fnc_saveToTemplate;
+
 ///////////////////////////
 //  Rebel Starting Gear  //
 ///////////////////////////
@@ -80,15 +100,13 @@ private _initialRebelEquipment = [
     "SPE_Binocular_US"
 ];
 
-if (A3A_hasTFAR) then {_initialRebelEquipment append ["tf_microdagr", "tf_anprc154"]};
+// if (A3A_hasTFAR) then {_initialRebelEquipment append ["TFAR_SCR536"]};
 if (A3A_hasTFAR && startWithLongRangeRadio) then {
     _initialRebelEquipment pushBack "B_SPE_GER_Radio";
-    _initialRebelEquipment pushBack "tf_anprc155_coyote";
 };
-if (A3A_hasTFARBeta) then {_initialRebelEquipment append ["TFAR_microdagr", "TFAR_anprc154"]};
+// if (A3A_hasTFARBeta) then {_initialRebelEquipment append ["TFAR_SCR536"]};
 if (A3A_hasTFARBeta && startWithLongRangeRadio) then {
-    _initialRebelEquipment pushBack "TFAR_anprc155";
-    _initialRebelEquipment pushBack "TFAR_anprc155_coyote";
+    _initialRebelEquipment pushBack "B_LIB_GER_Radio";
 };
 
 ["initialRebelEquipment", _initialRebelEquipment] call _fnc_saveToTemplate;

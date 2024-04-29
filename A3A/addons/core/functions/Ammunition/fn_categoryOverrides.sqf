@@ -33,6 +33,25 @@ private _categoryOverrideTable = [
 ["rhs_weap_mg42", ["MachineGuns","Weapons"]],
 ["rhs_weap_Izh18", ["Shotguns","Weapons"]],
 
+["sgun_M4_F", ["Shotguns","Weapons"]],
+["sgun_Mp153_black_F", ["Shotguns","Weapons"]],
+["sgun_Mp153_classic_F", ["Shotguns","Weapons"]],
+["sgun_KSG_F", ["Shotguns","Weapons"]],
+
+["sgun_aa40_lxWS", ["Shotguns","Weapons"]],
+["sgun_aa40_snake_lxWS", ["Shotguns","Weapons"]],
+["sgun_aa40_tan_lxWS", ["Shotguns","Weapons"]],
+
+["glaunch_GLX_lxWS", ["GrenadeLaunchers","Weapons"]],
+["glaunch_GLX_hex_lxWS", ["GrenadeLaunchers","Weapons"]],
+["glaunch_GLX_ghex_lxWS", ["GrenadeLaunchers","Weapons"]],
+["glaunch_GLX_snake_lxWS", ["GrenadeLaunchers","Weapons"]],
+["glaunch_GLX_camo_lxWS", ["GrenadeLaunchers","Weapons"]],
+["glaunch_GLX_tan_lxWS", ["GrenadeLaunchers","Weapons"]],
+
+["GL_M32_F", ["GrenadeLaunchers","Weapons"]],
+["GL_XM25_F", ["GrenadeLaunchers","Weapons"]],
+
 ["rhs_weap_M320", ["GrenadeLaunchers","Weapons"]],
 ["rhs_weap_m27iar", ["MachineGuns","Weapons"]],
 ["rhs_weap_m27iar_grip", ["MachineGuns","Weapons"]],
@@ -60,6 +79,30 @@ private _categoryOverrideTable = [
 ["UK3CB_M79", ["GrenadeLaunchers","Weapons"]],
 ["UK3CB_BAF_AT4_CS_AT_Launcher", ["RocketLaunchers","Weapons","AT"]],
 ["UK3CB_BAF_AT4_CS_AP_Launcher", ["RocketLaunchers","Weapons","AT"]],
+
+["CUP_launch_M72A6_Special", ["RocketLaunchers","Weapons","AT"]],
+["CUP_launch_RPG18", ["RocketLaunchers","Weapons","AT"]],
+["CUP_launch_M136", ["RocketLaunchers","Weapons","AT"]],
+["CUP_launch_RShG2", ["RocketLaunchers","Weapons","AT"]],
+["CUP_launch_RPG26", ["RocketLaunchers","Weapons","AT"]],
+["CUP_launch_M72A6", ["RocketLaunchers","Weapons","AT"]],
+["CUP_launch_BF3", ["RocketLaunchers","Weapons","AT"]],
+["CUP_launch_HCPF3", ["RocketLaunchers","Weapons","AT"]],
+["CUP_launch_PzF3", ["RocketLaunchers","Weapons","AT"]],
+["CUP_launch_RPG7V", ["RocketLaunchers","Weapons","AT"]],
+["CUP_launch_MAAWS", ["RocketLaunchers","Weapons","AT"]],
+["CUP_launch_Mk153Mod0", ["RocketLaunchers","Weapons","AT"]],
+["CUP_launch_Mk153Mod0_blk", ["RocketLaunchers","Weapons","AT"]],
+["CUP_launch_APILAS", ["RocketLaunchers","Weapons","AT"]],
+
+["CUP_launch_Metis", ["MissileLaunchers","Weapons","AT"]],
+["CUP_launch_M47", ["MissileLaunchers","Weapons","AT"]],
+["CUP_launch_NLAW", ["MissileLaunchers","Weapons","AT"]],
+["CUP_launch_Javelin", ["MissileLaunchers","Weapons","AT"]],
+
+["CUP_launch_9K32Strela", ["MissileLaunchers","Weapons","AA"]],
+["CUP_launch_Igla", ["MissileLaunchers","Weapons","AA"]],
+["CUP_launch_FIM92Stinger", ["MissileLaunchers","Weapons","AA"]],
 
 ["launch_NLAW_F", ["MissileLaunchers","Weapons","AT"]],
 ["hgun_PDW2000_F", ["SMGs","Weapons"]],
@@ -230,6 +273,8 @@ private _categoryOverrideTable = [
 ["CUP_launch_Javelin", ["MissileLaunchers","Weapons"]],
 */
 
+["ChemicalDetector_01_watch_F", ["Unknown","Items"]],
+
 ["CUP_item_Money", ["Unknown","Items"]],
 ["CUP_item_Kostey_photos", ["Unknown","Items"]],
 ["CUP_item_Kostey_map_case", ["Unknown","Items"]],
@@ -246,10 +291,10 @@ private _categoryOverrideTable = [
 ["ACE_HuntIR_monitor", ["Gadgets","Items"]],
 ["ACE_microDAGR", ["Gadgets","Items"]],
 ["ACE_DAGR", ["Gadgets","Items"]],
+["rhsusf_Rhino", ["Unknown", "Items"]],    //Just a Headmount not NVG
+["ace_dragon_super", ["MissileLaunchers","Weapons","AT"]],
+["ace_dragon_sight", ["Binoculars","Items"]],
 
-["LIB_PTRD", ["Unknown", "Weapons"]],
-["LIB_M2_Flamethrower", ["Unknown", "Weapons"]],			// don't want these two being chosen randomly by AIs
-["LIB_Bagpipes", ["Unknown","Weapons"]],					// wat
 ["ACE_SatchelCharge_Remote_Mag_Throwable", ["Unknown", "Explosives", "Items"]],
 ["ACE_DemoCharge_Remote_Mag_Throwable", ["Unknown", "Explosives", "Items"]],
 //Flashlights
@@ -257,6 +302,8 @@ private _categoryOverrideTable = [
 ["vn_mx991_red", ["Unknown","Weapons"]],
 ["vn_fkb1_red", ["Unknown","Weapons"]],
 ["vn_fkb1", ["Unknown","Weapons"]],
+["ACE_SatchelCharge_Remote_Mag_Throwable", ["Unknown", "Explosives", "Items"]],
+["ACE_DemoCharge_Remote_Mag_Throwable", ["Unknown", "Explosives", "Items"]],
 ["ACE_Flashlight_Maglite_ML300L", ["Unknown","Weapons"]],
 
 ["vn_default_helmetbase_09", ["Unknown","Headgear"]],	//Goat Hat
@@ -306,72 +353,6 @@ private _categoryOverrideTable = [
 ["vn_l2a1_01", ["MachineGuns","Weapons"]],
 ["vn_f1_smg", ["SMGs","Weapons"]],
 
-//Unsung
-["Uns_HMG", ["Unknown","Weapons"]],
-["uns_m127a1_flare", ["Unknown","Weapons"]], // flare launcher secondary
-["uns_ithaca37", ["Shotguns","Weapons"]],
-["uns_ithaca37_grip", ["Shotguns","Weapons"]],
-["uns_m1897", ["Shotguns","Weapons"]],
-["uns_m1897riot", ["Shotguns","Weapons"]],
-["uns_model12", ["Shotguns","Weapons"]],
-["uns_baikal", ["Shotguns","Weapons"]],
-["uns_baikal_sawnoff", ["Shotguns","Weapons"]],
-["uns_m870", ["Shotguns","Weapons"]],
-["uns_m870_mk1", ["Shotguns","Weapons"]],
-["uns_M16A1_HBAR", ["MachineGuns","Weapons"]],
-["uns_M63a_drum", ["MachineGuns","Weapons"]],
-["uns_M63a_LMG", ["MachineGuns","Weapons"]],
-["uns_m63asupport", ["MachineGuns","Weapons"]],
-["uns_akms_drum", ["MachineGuns","Weapons"]],
-["uns_akmsf_drum", ["MachineGuns","Weapons"]],
-["uns_akm_drum", ["MachineGuns","Weapons"]],
-["uns_m79", ["GrenadeLaunchers","Weapons"]],
-["uns_ex41", ["GrenadeLaunchers","Weapons"]],
-["uns_STG_44", ["Rifles","Weapons"]],
-["uns_akmsf", ["Rifles","Weapons"]],
-["uns_akms", ["Rifles","Weapons"]],
-["uns_akm", ["Rifles","Weapons"]],
-["uns_ak47_52", ["Rifles","Weapons"]],
-["uns_ak47_49", ["Rifles","Weapons"]],
-["uns_sa58vf", ["Rifles","Weapons"]],
-["uns_sa58v", ["Rifles","Weapons"]],
-["uns_sa58p_camo", ["Rifles","Weapons"]],
-["uns_sa58p", ["Rifles","Weapons"]],
-["uns_type56", ["Rifles","Weapons"]],
-["uns_aks47f", ["Rifles","Weapons"]],
-["uns_aks47", ["Rifles","Weapons"]],
-["uns_ak47", ["Rifles","Weapons"]],
-["uns_m1carbine", ["Rifles","Weapons"]],
-["uns_m1carbine_pouch", ["Rifles","Weapons"]],
-["uns_m1carbine_gl", ["Rifles","Weapons","GrenadeLaunchers"]],
-["uns_m1carbine_pouch_gl", ["Rifles","Weapons","GrenadeLaunchers"]],
-["uns_m2carbine", ["Rifles","Weapons"]],
-["uns_m2carbine_shorty", ["Rifles","Weapons"]],
-["uns_m2carbine_gl", ["Rifles","Weapons","GrenadeLaunchers"]],
-["uns_m3carbine", ["Rifles","Weapons"]],
-["uns_m1garand", ["Rifles","Weapons"]],
-["uns_m1garand_gl", ["Rifles","Weapons","GrenadeLaunchers"]],
-["uns_m14", ["Rifles","Weapons"]],
-["uns_l1a1", ["Rifles","Weapons"]],
-["uns_l1a1_enfield", ["Rifles","Weapons"]],
-["uns_l1a1_blk", ["Rifles","Weapons"]],
-["uns_l2a1", ["Rifles","Weapons"]],
-["uns_l2a1_shorty", ["Rifles","Weapons"]],
-["uns_l1a1gl", ["Rifles","Weapons","GrenadeLaunchers"]],
-["uns_sks", ["Rifles","Weapons"]],
-["uns_mas36", ["Rifles","Weapons"]],
-["uns_mas36_gl", ["Rifles","Weapons","GrenadeLaunchers"]],
-["uns_mas36short", ["Rifles","Weapons"]],
-["uns_mas36short_gl", ["Rifles","Weapons","GrenadeLaunchers"]],
-["uns_type99", ["Rifles","Weapons"]],
-["uns_type99_gl", ["Rifles","Weapons","GrenadeLaunchers"]],
-["uns_mas4956", ["Rifles","Weapons"]],
-["uns_mas4956_gl", ["Rifles","Weapons","GrenadeLaunchers"]],
-["uns_m72", ["RocketLaunchers","Weapons","AT","Disposable"]],
-["uns_m72used", ["UsedLaunchers","Weapons"]],
-
-//ACRE Radios
-//Using Gadgets instead of Radios to prevent future issues as they don't use the Radio Slot
 ["ACRE_PRC148", ["Gadgets","items"]],
 ["ACRE_PRC152", ["Gadgets","items"]],
 ["ACRE_PRC343", ["Gadgets","items"]],
@@ -382,17 +363,6 @@ private _categoryOverrideTable = [
 ["ACRE_VHF30108", ["Gadgets","items"]],
 ["ACRE_VHF30108MAST", ["Gadgets","items"]],
 ["ACRE_PRC117F", ["Gadgets","items"]],
-
-["LIB_M2_Tripod", ["StaticWeaponParts","Items"]],
-["LIB_Laffete_Tripod", ["StaticWeaponParts","Items"]],
-["LIB_BM37_Tripod", ["StaticWeaponParts","Items"]],
-["LIB_BM37_Barrel", ["StaticWeaponParts","Items"]],
-["LIB_GrWr34_Tripod", ["StaticWeaponParts","Items"]],
-["LIB_GrWr34_Tripod_g", ["StaticWeaponParts","Items"]],
-["LIB_GrWr34_Barrel", ["StaticWeaponParts","Items"]],
-["LIB_GrWr34_Barrel_g", ["StaticWeaponParts","Items"]],
-["LIB_M2_60_Tripod", ["StaticWeaponParts","Items"]],
-["LIB_M2_60_Barrel", ["StaticWeaponParts","Items"]],
 
 //GM wrong listed stuff
 ["gm_m72a3_oli", ["RocketLaunchers","Weapons","AT","Disposable"]],
@@ -420,7 +390,7 @@ private _categoryOverrideTable = [
 
 //SPE
 
-["SPE_Lafette_Tripod", ["StaticWeaponParts","Items"]],
+["SPE_Laffete_Tripod", ["StaticWeaponParts","Items"]],
 ["SPE_M1_81_Barrel", ["StaticWeaponParts","Items"]],
 ["SPE_MLE_27_31_Barrel", ["StaticWeaponParts","Items"]],
 ["SPE_M1_81_Stand", ["StaticWeaponParts","Items"]],
@@ -434,7 +404,9 @@ private _categoryOverrideTable = [
 ["SPE_K98_Late_GW", ["Rifles","Weapons","GrenadeLaunchers"]],
 ["SPE_M1903A3_Springfield_M1_GL", ["Rifles","Weapons","GrenadeLaunchers"]],
 ["SPE_M1_Carbine_M8", ["Rifles","Weapons","GrenadeLaunchers"]],
-["SPE_M1_Garand_M7", ["Rifles","Weapons","GrenadeLaunchers"]] ];
+["SPE_M1_Garand_M7", ["Rifles","Weapons","GrenadeLaunchers"]]
+
+];
 
 //Create a local namespace.
 A3A_categoryOverrides = false call A3A_fnc_createNamespace;

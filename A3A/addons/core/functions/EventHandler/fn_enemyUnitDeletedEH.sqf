@@ -20,6 +20,9 @@ params ["_unit"];
 // Everything here should already be handled if unit was killed
 if (!alive _unit) exitWith {};
 
+// Rivals are not handled by faction resources
+if ((_unit getVariable ["isRival", false])) exitWith {};
+
 private _pool = _unit getVariable ["A3A_resPool", "legacy"];
 private _side = _unit getVariable ["originalSide", sideUnknown];
 if (_side != Occupants and _side != Invaders) then {

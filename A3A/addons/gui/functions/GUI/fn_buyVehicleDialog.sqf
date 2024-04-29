@@ -22,12 +22,15 @@ Example:
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-params[["_mode","onLoad"], ["_params",[]]];
+params[
+    ["_mode","onLoad"], 
+    ["_params",[]]
+];
 
 switch (_mode) do
 {
     case ("switchTab"):
-    {
+    {       
         private _display = findDisplay A3A_IDD_BUYVEHICLEDIALOG;
         private _selectedTab = _params select 0;
 
@@ -36,14 +39,17 @@ switch (_mode) do
         private _selectedTabIDC = -1;
         switch (_selectedTab) do 
         {
-            case ("civilian"):
-            {_selectedTabIDC = A3A_IDC_BUYCIVVEHICLEMAIN;};
-            case("rebel"):
-            {_selectedTabIDC = A3A_IDC_BUYREBVEHICLEMAIN;};
-            case ("static"):
-            {_selectedTabIDC = A3A_IDC_BUYSTATICMAIN;};
-            case("other"):
-            {_selectedTabIDC = A3A_IDC_BUYOTHERMAIN;};
+            case ("civilian"): {
+                _selectedTabIDC = A3A_IDC_BUYCIVVEHICLEMAIN;
+            };
+            case("rebel"): {
+                _selectedTabIDC = A3A_IDC_BUYREBVEHICLEMAIN;};
+            case ("static"): {
+                _selectedTabIDC = A3A_IDC_BUYSTATICMAIN;
+            };
+            case("other"): {
+                _selectedTabIDC = A3A_IDC_BUYOTHERMAIN;
+            };
         };
 
         if (_selectedTabIDC == -1) exitWith {
@@ -74,40 +80,21 @@ switch (_mode) do
 
     case ("onLoad"):
     {
-        private _civilianVehicles = 
-        (A3A_faction_reb get 'vehiclesCivCar') +
-        (A3A_faction_reb get 'vehiclesCivTruck') +
-        (A3A_faction_reb get 'vehiclesCivHeli') +
-        (A3A_faction_reb get 'vehiclesCivPlane') +
-        (A3A_faction_reb get 'vehiclesCivBoat');
-
-        private _militaryVehicles = 
-        (A3A_faction_reb get 'vehiclesBasic') +
-        (A3A_faction_reb get 'vehiclesLightUnarmed') +
-        (A3A_faction_reb get 'vehiclesTruck') +
-        (A3A_faction_reb get 'vehiclesLightArmed') +
-        (A3A_faction_reb get 'vehiclesMedical') +
-        (A3A_faction_reb get 'vehiclesAT') +
-        (A3A_faction_reb get 'vehiclesAA') +
-        (A3A_faction_reb get 'vehiclesBoat') +
-        (A3A_faction_reb get 'vehiclesPlane');
-
-        private _statics = 
-        (A3A_faction_reb get 'staticMGs') +
-        (A3A_faction_reb get 'staticMortars') +
-        (A3A_faction_reb get 'staticAT') +
-        (A3A_faction_reb get 'staticAA');
-
-        ["vehicles", [A3A_IDC_BUYCIVVEHICLEMAIN, A3A_IDC_CIVVEHICLESGROUP, _civilianVehicles]] call A3A_fnc_buyVehicleTabs;
-        ["vehicles", [A3A_IDC_BUYREBVEHICLEMAIN, A3A_IDC_REBVEHICLESGROUP, _militaryVehicles]] call A3A_fnc_buyVehicleTabs;
-        ["vehicles", [A3A_IDC_BUYSTATICMAIN, A3A_IDC_STATICSGROUP, _statics]] call A3A_fnc_buyVehicleTabs;
+        ['on'] call SCRT_fnc_ui_toggleMenuBlur;
+        ["vehicles", [A3A_IDC_BUYCIVVEHICLEMAIN, A3A_IDC_CIVVEHICLESGROUP, "civilian"]] call A3A_fnc_buyVehicleTabs;
+        ["vehicles", [A3A_IDC_BUYREBVEHICLEMAIN, A3A_IDC_REBVEHICLESGROUP, "military"]] call A3A_fnc_buyVehicleTabs;
+        ["vehicles", [A3A_IDC_BUYSTATICMAIN, A3A_IDC_STATICSGROUP, "static"]] call A3A_fnc_buyVehicleTabs;
         ["other"] call A3A_fnc_buyVehicleTabs;
 
         // show the vehicle tab so that user don't freak out
         private _display = findDisplay A3A_IDD_BUYVEHICLEDIALOG;
         private _selectedTabCtrl = _display displayCtrl A3A_IDC_BUYCIVVEHICLEMAIN;
         _selectedTabCtrl ctrlShow true;
+    };
 
+    case ("onUnload"): 
+    {
+        ['off'] call SCRT_fnc_ui_toggleMenuBlur;
     };
 
     default

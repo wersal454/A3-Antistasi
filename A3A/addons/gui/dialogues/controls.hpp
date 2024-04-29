@@ -47,7 +47,7 @@ class A3A_Text : A3A_CtrlDefault
     h = 4 * GRID_H;
     text = "";
     font = "RobotoCondensed";
-    SizeEx = GUI_TEXT_SIZE_MEDIUM;
+    SizeEx = GUI_TEXT_SIZE_SMALL;
     shadow = 0;
     fixedWidth = 0;
     linespacing = 1;
@@ -82,7 +82,7 @@ class A3A_Edit : A3A_Text
 class A3A_TitlebarText : A3A_Text
 {
     font = A3A_TITLEBAR_FONT;
-    sizeEx = GUI_TEXT_SIZE_LARGE;
+    sizeEx = GUI_TEXT_SIZE_MEDIUM;
     colorText[] = A3A_COLOR_TITLEBAR_TEXT;
 };
 

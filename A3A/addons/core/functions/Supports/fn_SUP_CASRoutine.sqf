@@ -38,7 +38,7 @@ _group setBehaviourStrong "CARELESS";
 
 _plane addEventHandler ["Killed", {
     params ["_plane"];
-    ["TaskSucceeded", ["", "CAS Plane Destroyed"]] remoteExec ["BIS_fnc_showNotification", teamPlayer];
+    ["TaskSucceeded", ["", localize "STR_notifiers_cas_killed"]] remoteExec ["BIS_fnc_showNotification", teamPlayer];
 }];
 
 // should we be passing the timeout around here? Or have separate timeouts for bomb & CAS?

@@ -39,18 +39,30 @@ private _count = objNull;
 	};
 } forEach _magazines;
 
+// private _originalWeaponsWithSimilarWeapons = [_weapons] call SCRT_fnc_arsenal_getSimilarWeapons;
+// if (!isNil "_originalWeaponsWithSimilarWeapons" && {count _originalWeaponsWithSimilarWeapons > 0}) then {
+	// _weapons = _originalWeaponsWithSimilarWeapons;
+// };
+
+[] call SCRT_fnc_trader_removeUnlockedItemsFromStock;
+
 private _allExceptNVs = _weapons + _explosives + _backpacks + _items + _optics + _helmets + _vests + _magazine;
+
+[] call SCRT_fnc_common_fixCupRhsLaunchers;
 
 {
 	call {
 		if (_x select 1 < minWeaps) exitWith {};
 		private _item = _x select 0;
+		if (_item isEqualTo "A3AP_SelfReviveKit") exitWith {};
 
 		private _categories = _item call A3A_fnc_equipmentClassToCategories;
 		if ("MissileLaunchers" in _categories && {allowGuidedLaunchers == 0}) exitWith {};
 		if ("Explosives" in _categories && {allowUnlockedExplosives == 0}) exitWith {};
 		if ("Backpacks" in _categories && {_item in allBackpacksTool}) exitWith {};			// should be UAV & static backpacks
 		if ("StaticWeaponParts" in _categories) exitWith {};
+
+		if (_item in A3U_forbiddenItems && {getNumber (configFile >> "A3U" >> "forbiddenItems" >> _item >> "unlimited") isEqualTo 0}) exitWith {};
 
 		_item call A3A_fnc_unlockEquipment;
 
@@ -97,7 +109,6 @@ _sortedNVs sort true;		// sort by count, ascending
 
 while {_totalNV >= minWeaps} do {
 	private _nvToUnlock = (_sortedNVs deleteAt (count _sortedNVs - 1)) select 1;
-	haveNV = true; publicVariable "haveNV";
 	[_nvToUnlock] call A3A_fnc_unlockEquipment;
 	_updated = format ["%1%2<br/>",_updated,getText (configFile >> "CfgWeapons" >> _nvToUnlock >> "displayName")];
 	_totalNV =_totalNV - minWeaps;		// arguably wrong but doesn't matter in practice

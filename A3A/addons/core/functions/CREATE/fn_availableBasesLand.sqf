@@ -73,7 +73,7 @@ private _weights = [];
 
     _freeBases pushBack _x;
     _weights pushBack (1 / _navDist^2);
-} forEach (outposts + airportsX);
+} forEach (outposts + airportsX + milbases);
 
 if (_returnAll) exitWith { [_freeBases, _weights] };
 _freeBases selectRandomWeighted _weights;

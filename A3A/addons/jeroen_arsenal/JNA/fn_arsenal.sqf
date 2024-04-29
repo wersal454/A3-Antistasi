@@ -6,7 +6,7 @@
     fuctions:
     ["Preload"] call jn_fnc_arsenal;
     	preloads the arsenal like the default arsenal but it doesnt have "BIS_fnc_endLoadingScreen" so you dont have errors
-    ["customInit", "arsanalDisplay"] call jn_fnc_arsenal;
+    ["customInit", "arsenalDisplay"] call jn_fnc_arsenal;
     	overwrites all functions in the arsenal with JNA ones.
 */
 
@@ -119,6 +119,13 @@ FIX_LINE_NUMBERS()
 #define SORT_DEFAULT 0
 #define SORT_AMOUNT 1
 #define SORT_ALPHABETICAL 2
+#define SORT_COLOR 3
+
+#define FORBIDDEN_ITEM_COLOR [0.6901, 0, 0.1254, 0.8]
+#define LIMITED_ITEM_COLOR [1, 1, 0, 0.8]
+#define INITIAL_EQUIPMENT_COLOR [0.854,0.854,0.854,0.8]
+#define INCOMPATIBLE_ITEM_COLOR [1,1,1,0.25]
+#define DEFAULT_COLOR [1,1,1,1]
 
 disableserialization;
 
@@ -140,8 +147,6 @@ private _minItemsMember = {
 
 _mode = [_this,0,"Open",[displaynull,""]] call bis_fnc_param;
 _this = [_this,1,[]] call bis_fnc_param;
-//if!(_mode in ["draw3D","ListCurSel"])then{diag_log ("jna call "+_mode);};
-//commented by Barbolani to avoid rpt flood
 
 switch _mode do {
 
@@ -222,14 +227,12 @@ switch _mode do {
 		//--- Magazines - Put and Throw
 		_magazinesThrowPut = [];
 		{
-			private ["_weapons","_tab","_magazines"];
-			_weapon = _x select 0;
-			_tab = _x select 1;
-			_magazines = [];
+			private _weapon = _x select 0;
+			private _tab = _x select 1;
+			private _magazines = [];
 			{
 				{
-					private ["_mag"];
-					_mag = _x;
+					private _mag = _x;
 					if ({_x == _mag} count _magazines == 0) then {
 						private ["_cfgMag"];
 						_magazines set [count _magazines,_mag];
@@ -367,8 +370,8 @@ switch _mode do {
 
 		_ctrlButtonImport = _display displayctrl IDC_RSCDISPLAYARSENAL_CONTROLSBAR_BUTTONIMPORT;
 		_ctrlButtonImport ctrlRemoveAllEventHandlers "buttonclick";
-		_ctrlButtonImport ctrlSetText "Default gear";
-		_ctrlButtonImport ctrlSetTooltip "Add default items like radio and medical supplies";
+		_ctrlButtonImport ctrlSetText localize "STR_JNA_ACT_DEF_GEAR_BUTTON";
+		_ctrlButtonImport ctrlSetTooltip localize "STR_JNA_ACT_DEF_GEAR";
 		_ctrlButtonImport ctrladdeventhandler ["buttonclick",{["buttonDefaultGear",[ctrlparent (_this select 0)]] call jn_fnc_arsenal;}];
 
 		_ctrlButtonSave = _display displayctrl IDC_RSCDISPLAYARSENAL_CONTROLSBAR_BUTTONSAVE;
@@ -378,8 +381,8 @@ switch _mode do {
 		_ctrlButtonRandom = _display displayctrl IDC_RSCDISPLAYARSENAL_CONTROLSBAR_BUTTONRANDOM;
 		_ctrlButtonRandom ctrlRemoveAllEventHandlers "buttonclick";
 		_ctrlButtonRandom ctrladdeventhandler ["buttonclick",{["buttonInvToJNA",[ctrlparent (_this select 0)]] call jn_fnc_arsenal;}];
-		_ctrlButtonRandom ctrlSetText "To crate";
-		_ctrlButtonRandom ctrlSetTooltip "Move items from crate inventory to arsenal";
+		_ctrlButtonRandom ctrlSetText localize "STR_JNA_ACT_MOVE_FROM_CRATE_TO_ARSENAL_BUTTON";
+		_ctrlButtonRandom ctrlSetTooltip localize "STR_JNA_ACT_MOVE_FROM_CRATE_TO_ARSENAL";
 
 		_ctrlArrowLeft = _display displayctrl IDC_RSCDISPLAYARSENAL_ARROWLEFT;
 		_ctrlArrowLeft ctrlRemoveAllEventHandlers "buttonclick";
@@ -439,12 +442,14 @@ switch _mode do {
       };
 
 
-			private _sortByAmountIndex =  _ctrlSort lbadd "Sort by amount";
-      private _sortDefaultIndex = _ctrlSort lbadd "Default";
+	  private _sortByAmountIndex =  _ctrlSort lbadd (localize "STR_JNA_SORT_BY_AMOUNT");
+      private _sortDefaultIndex = _ctrlSort lbadd (localize "STR_JNA_SORT_DEFAULT");
+	  private _sortColorIndex = _ctrlSort lbadd (localize "STR_JNA_SORT_COLOR");
 
       _ctrlSort lbSetValue [0, SORT_ALPHABETICAL];
       _ctrlSort lbSetValue [_sortByAmountIndex, SORT_AMOUNT];
       _ctrlSort lbSetValue [_sortDefaultIndex, SORT_DEFAULT];
+	  _ctrlSort lbSetValue [_sortColorIndex, SORT_COLOR];
 
       lbSortByValue _ctrlSort;
 
@@ -465,12 +470,6 @@ switch _mode do {
 
     private _itemCount = lbSize _ctrlList;
 
-    //diag_log format ["Name: %1, Value: %2, Data: %3", _ctrlSort lbText _selectedIndex, _ctrlSort lbValue _selectedIndex, _ctrlSort lbData _selectedIndex];
-    //diag_log format ["Number of items: %1", _itemCount];
-
-    //for "_i" from 0 to (_itemCount - 1) do {
-    //  diag_log format ["Item: %1 has value %2", _ctrlList lbText _i, _ctrlList lbValue _i];
-    //};
 
     private _sortType = _ctrlSort lbValue _selectedIndex;
 
@@ -527,11 +526,61 @@ switch _mode do {
           lbSortByValue _ctrlList;
         };
       };
+	  case SORT_COLOR: {
+			private _displayNameArray = [];
+			private _dataArray = [];
+			
+			private _tempArr = [];
+
+			//Iterate in reverse order to avoid a lot of array resizes in _dataArray;
+			for "_i" from (_itemCount - 1) to 0 step -1 do {
+				private _dataStr = if _type then{_ctrlList lnbdata [_i,0]}else{_ctrlList lbdata _i};
+
+				if (_dataStr != "") then {
+					private _data = call compile _dataStr;
+					private _item = _data select 0;
+					private _displayName = _data select 2;
+
+					private _color = (if _type then {_ctrlList lnbColor [_i, 1]} else {_ctrlList lbColor _i}) apply {_x toFixed 1};
+					private _sortValue = switch (true) do {
+						case (_color isEqualTo (INCOMPATIBLE_ITEM_COLOR apply {_x toFixed 1})): {
+							0
+						};
+						case (_color isEqualTo (FORBIDDEN_ITEM_COLOR apply {_x toFixed 1})): {
+							2
+						};
+						case (_color isEqualTo (LIMITED_ITEM_COLOR apply {_x toFixed 1})): {
+							4
+						};
+						case (_color isEqualTo (INITIAL_EQUIPMENT_COLOR apply {_x toFixed 1})): {
+							8
+						};
+						default {
+							16
+						};
+					};
+
+					_displayNameArray pushBack [_displayName, _sortValue];
+					_dataArray set [_i, _data];
+				};
+			};
+
+			_displayNameArray = ([_displayNameArray, [], {_x select 1}, "DESCEND"] call BIS_fnc_sortBy) apply {_x select 0};
+
+			for "_i" from 0 to (_itemCount - 1) do {
+				private _data = _dataArray select _i;
+				if (!isNil "_data") then {
+					private _displayName = _data select 2;
+					_ctrlList lbSetValue [_i, _displayNameArray find _displayName];
+				};
+			};
+
+			lbSortByValue _ctrlList;
+        };
+      };
       case SORT_DEFAULT: {
         lbSort _ctrlList;
       };
-  };
-
   };
 
 	///////////////////////////////////////////////////////////////////////////////////////////
@@ -583,7 +632,7 @@ switch _mode do {
 			} forEach ((missionNamespace getVariable "jna_containerCargo_init") select _foreachindex);
 		} forEach [uniformContainer player,vestContainer player,backpackContainer player];
 
-		//replace magazines with partial filled, just like it was before entering the box, entering the arsanal refilles all ammo
+		//replace magazines with partial filled, just like it was before entering the box, entering the arsenal refilles all ammo
 		// Do this after setUnitLoadout, because that fills magazines when you have >1 with the same bullet count (BIS bug)
 		_mags = missionNamespace getVariable "jna_magazines_init";//get ammo list from before arsenal started
 		{
@@ -759,8 +808,6 @@ switch _mode do {
 			IDC_RSCDISPLAYARSENAL_FRAMERIGHT,
 			IDC_RSCDISPLAYARSENAL_BACKGROUNDRIGHT
 		];
-
-		//["updateItemInfo",[_display,_ctrlList, _index]] call jn_fnc_arsenal;
 	};
 
 	///////////////////////////////////////////////////////////////////////////////////////////
@@ -1149,12 +1196,11 @@ switch _mode do {
 		params ["_index","_item","_amount",["_updateDataList",false]];
 
 		//update datalist
-		if(_updateDataList)then
-		{
+		if(_updateDataList) then {
 			jna_dataList set [_index, [jna_dataList select _index, [_item, _amount]] call jn_fnc_arsenal_addToArray];
 		};
 
-		private _display =  uiNamespace getVariable ["arsanalDisplay","No display"];
+		private _display =  uiNamespace getVariable ["arsenalDisplay","No display"];
 
 		if (typeName _display == "STRING") exitWith {};
 		if(str _display isEqualTo "No display")exitWith{};
@@ -1168,7 +1214,7 @@ switch _mode do {
 		};
 
 		private _indexList = _index;
-		if(UINamespace getVariable ["jn_type","arsenal"] isEqualTo "vehicleArsenal")then{
+		if(UINamespace getVariable ["jn_type","arsenal"] isEqualTo "containerArsenal")then{
 			_indexList = [IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG,IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL] select (_index in [IDCS_LEFT]);
 		};
 
@@ -1215,7 +1261,7 @@ switch _mode do {
 			jna_dataList set [_index, [jna_dataList select _index, [_item, _amount]] call jn_fnc_arsenal_removeFromArray];
 		};
 
-		private _display =  uiNamespace getVariable ["arsanalDisplay","No display"];
+		private _display =  uiNamespace getVariable ["arsenalDisplay","No display"];
 
 		if (typeName _display == "STRING") exitWith {};
 		if(str _display isEqualTo "No display")exitWith{};
@@ -1229,7 +1275,7 @@ switch _mode do {
 
 		//when used by vehicleArsenal;
 		_indexList = _index;
-		if(UINamespace getVariable ["jn_type","arsenal"] isEqualTo "vehicleArsenal")then{
+		if(UINamespace getVariable ["jn_type","arsenal"] isEqualTo "containerArsenal")then{
 			_indexList = [IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG,IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL] select (_index in [IDCS_LEFT]);
 		};
 
@@ -1350,8 +1396,6 @@ switch _mode do {
 			};
 
 		};
-
-		//["UpdateItemGui",[_display,_index,_lbAdd]] call jn_fnc_arsenal;
 	};
 
 	///////////////////////////////////////////////////////////////////////////////////////////
@@ -1406,19 +1450,54 @@ switch _mode do {
 		// Except in the vehicle arsenal, where this function is used for the right items too
 		_grayout = false;
 		_min = [_index, _item] call _minItemsMember;
-		if ((_amount <= _min) AND (_amount != -1) AND !([player] call A3A_fnc_isMember)) then{_grayout = true};
+		_initialEquipment = FactionGet(reb,"initialRebelEquipment");
+		if (_amount <= _min && {_amount != -1 && {!([player] call A3A_fnc_isMember)}}) then{_grayout = true};
 
-		_color = [1,1,1,1];
-		if(_grayout)then{
-			_color = [1,1,0,0.60];
-			if _type then{
-				_ctrlList lnbSetColor [[_l,1], _color];
-				_ctrlList lnbSetColor [[_l,2], _color];
-			}else{
-				_ctrlList lbSetColor [_l, _color];
+		//grayout attachments
+		private _isIncompatible = if (_index in [
+			IDC_RSCDISPLAYARSENAL_TAB_ITEMOPTIC,
+			IDC_RSCDISPLAYARSENAL_TAB_ITEMACC,
+			IDC_RSCDISPLAYARSENAL_TAB_ITEMMUZZLE,
+			IDC_RSCDISPLAYARSENAL_TAB_ITEMBIPOD
+		]) then {
+			_weapon = switch true do {
+				case (ctrlenabled (_display displayctrl (IDC_RSCDISPLAYARSENAL_LIST + IDC_RSCDISPLAYARSENAL_TAB_PRIMARYWEAPON))): {primaryweapon player};
+				case (ctrlenabled (_display displayctrl (IDC_RSCDISPLAYARSENAL_LIST + IDC_RSCDISPLAYARSENAL_TAB_SECONDARYWEAPON))): {secondaryweapon player};
+				case (ctrlenabled (_display displayctrl (IDC_RSCDISPLAYARSENAL_LIST + IDC_RSCDISPLAYARSENAL_TAB_HANDGUN))): {handgunweapon player};
+				default {""};
+			};
+			_compatibleItems = _weapon call bis_fnc_compatibleItems;
+
+			!({_x == _item} count _compatibleItems > 0 || _item isEqualTo "")
+		} else {
+			false
+		};
+
+		private _color = switch (true) do {
+			case (_isIncompatible): {
+				INCOMPATIBLE_ITEM_COLOR;
+			};
+			case (_grayout): {
+				FORBIDDEN_ITEM_COLOR;
+			};
+			case (605 in getArray (configfile >> "CfgWeapons" >> _item >>"ItemInfo" >> "allowedSlots") && {!(_item in allArmoredHeadgear)});
+			case (_item in _initialEquipment): {
+				INITIAL_EQUIPMENT_COLOR;
+			};
+			case (_amount <= _min && {_amount != -1}): {
+				LIMITED_ITEM_COLOR;
+			};
+			default {
+				DEFAULT_COLOR;
 			};
 		};
 
+		if _type then {
+			_ctrlList lnbSetColor [[_l,1], _color];
+			_ctrlList lnbSetColor [[_l,2], _color];
+		} else {
+			_ctrlList lbSetColor [_l, _color];
+		};
 
 		//ammmo icon for weapons
 		_ammo_logo = getText(configfile >> "RscDisplayArsenal" >> "Controls" >> "TabCargoMag" >> "text");
@@ -1479,41 +1558,41 @@ switch _mode do {
 
 				_strAmount = switch true do {
 					case (_amount == 0): {
-						"Looks like I am the only one using this today"
+						localize "STR_A3AP_arsenal_scarcity_0"
 					};
 					case (_amount > 50): {
-						"More than enough for a whole army"
+						localize "STR_A3AP_arsenal_scarcity_1"
 					};
 					case (_amount > 10): {
-						"Many of these left"
+						localize "STR_A3AP_arsenal_scarcity_2"
 					};
 					case (_amount > 3): {
-						"Some of these left"
+						localize "STR_A3AP_arsenal_scarcity_3"
 					};
 					case (_amount > 1): {
-						"If I want one I need to take it before some one else does"
+						localize "STR_A3AP_arsenal_scarcity_4"
 					};
 					case (_amount == 1): {
-						"The last one in the box"
+						localize "STR_A3AP_arsenal_scarcity_5"
 					};
 					case (_amount == -1): {//TODO marker for changed entry
-						"More than enough for a whole army"
+						localize "STR_A3AP_arsenal_scarcity_1"
 					};
 					default{""};
 				};
 
 				_strAmmo = switch true do {
 					case (_colorMult == 0): {
-						", but there is no ammo for it"
+						localize "STR_A3AP_arsenal_scarcity_ammo_0"
 					};
 					case (_colorMult > 0.9): {
-						", and there is enough ammo for it"
+						localize "STR_A3AP_arsenal_scarcity_ammo_1"
 					};
 					case (_colorMult > 0.2): {
-						", and there is still some ammo for it"
+						localize "STR_A3AP_arsenal_scarcity_ammo_2"
 					};
 					case (_colorMult > 0): {
-						", but there are only a few shots for it"
+						localize "STR_A3AP_arsenal_scarcity_ammo_3"
 					};
 					default{""};
 				};
@@ -1596,8 +1675,8 @@ switch _mode do {
 
 		//check if weapon is unlocked
 		private _min = [_index, _item] call _minItemsMember;
-		if ((_amount <= _min) AND (_amount != -1) AND (_item !="") AND !([player] call A3A_fnc_isMember) AND !_type) exitWith{
-			['showMessage',[_display,"We are low on this item, only members may use it"]] call jn_fnc_arsenal;
+		if ((_amount <= _min) AND (_amount != -1) AND (_item !="") AND !(player call A3A_fnc_isMember) AND !_type) exitWith{
+			['showMessage',[_display,localize "STR_JNA_ACT_ONLY_MEMBERS"]] call jn_fnc_arsenal;
 
 			//reset _cursel
 			if(missionnamespace getvariable ["jna_reselect_item",true])then{//prefent loop when unavalable item was worn and a other unavalable item was selected
@@ -2057,10 +2136,10 @@ switch _mode do {
 			case IDC_RSCDISPLAYARSENAL_TAB_BACKPACK: {
 				backpack _center
 			};
-			default {0};
+			default {""};
 		};
 
-		_maximumLoad = getnumber (configfile >> "CfgVehicles" >> _supply >> "maximumLoad");
+		_maximumLoad = 1 max getNumber (configFile >> "CfgVehicles" >> _supply >> "maximumLoad");
 
 		_ctrlLoadCargo = _display displayctrl IDC_RSCDISPLAYARSENAL_LOADCARGO;
 		_load = _maximumLoad * (1 - progressposition _ctrlLoadCargo);
@@ -2080,7 +2159,7 @@ switch _mode do {
 			_grayout = false;
 
 			_min = [_index, _item] call _minItemsMember;
-			if ((_amount <= _min) AND (_amount != -1) AND (_amount !=0) AND !([player] call A3A_fnc_isMember)) then{_grayout = true};
+			if ((_amount <= _min) AND (_amount != -1) AND (_amount !=0) AND !(player call A3A_fnc_isMember)) then{_grayout = true};
 
 			_isIncompatible = _ctrlList lnbvalue [_r,1];
 			_mass = _ctrlList lbvalue (_r * _columns);
@@ -2138,8 +2217,8 @@ switch _mode do {
 
 			if (_add > 0) then {//add
 				_min = [_index, _item] call _minItemsMember;
-				if((_amount <= _min) AND (_amount != -1) AND !([player] call A3A_fnc_isMember)) exitWith{
-					['showMessage',[_display,"We are low on this item, only members may use it"]] call jn_fnc_arsenal;
+				if((_amount <= _min) AND (_amount != -1) AND !(player call A3A_fnc_isMember)) exitWith{
+					['showMessage',[_display, localize "STR_JNA_ACT_ONLY_MEMBERS"]] call jn_fnc_arsenal;
 				};
 				if(_index in [IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG,IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL])then{//magazines are handeld by bullet count
 					//check if full mag can be optaind
@@ -2738,7 +2817,7 @@ switch _mode do {
 			};
 		};
 
-		if(player getUnitTrait "Engineer")then {
+		if(player call A3A_fnc_isEngineer) then {
 					_itemsBackpack pushback ["ToolKit",1];
 					if(A3A_hasACE) then {
 						_itemsbackpack pushback ["ACE_Clacker",1];
@@ -2861,7 +2940,7 @@ switch _mode do {
 			//--- Save
 			[
 				_center,
-				[profilenamespace,ctrltext _ctrlTemplateName],
+				[profileNamespace,ctrltext _ctrlTemplateName],
 				[
 					_center getvariable ["BIS_fnc_arsenal_face",face _center],
 					speaker _center,
@@ -2904,7 +2983,7 @@ switch _mode do {
 		_ctrlTemplateValue = _display displayctrl IDC_RSCDISPLAYARSENAL_TEMPLATE_VALUENAME;
 		_cursel = lnbcurselrow _ctrlTemplateValue;
 		_name = _ctrlTemplateValue lnbtext [_cursel,0];
-		[_center,[profilenamespace,_name],nil,true] call bis_fnc_saveInventory;
+		[_center,[profileNamespace,_name],nil,true] call bis_fnc_saveInventory;
 		['showTemplates',[_display]] call jn_fnc_arsenal;
 		_ctrlTemplateValue lnbsetcurselrow (_cursel max (lbsize _ctrlTemplateValue - 1));
 
@@ -2916,7 +2995,7 @@ switch _mode do {
 
 		_ctrlTemplateValue = _display displayctrl IDC_RSCDISPLAYARSENAL_TEMPLATE_VALUENAME;
 		lnbclear _ctrlTemplateValue;
-		_data = profilenamespace getvariable ["bis_fnc_saveInventory_data",[]];
+		_data = profileNamespace getvariable ["bis_fnc_saveInventory_data",[]];
 		_center = (missionnamespace getvariable ["BIS_fnc_arsenal_center",player]);
 
 		for "_i" from 0 to (count _data - 1) step 2 do {

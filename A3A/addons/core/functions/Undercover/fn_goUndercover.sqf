@@ -54,6 +54,8 @@ if(!(_result select 0)) exitWith
     };
 };
 
+if (_result select 0 isEqualTo false) exitWith {["Undercover", _result select 1] call A3A_fnc_customHint};
+
 private _layer = ["A3A_infoCenter"] call BIS_fnc_rscLayer;
 ["Undercover ON", 0, 0, 4, 0, 0, _layer] spawn bis_fnc_dynamicText;
 
@@ -69,8 +71,10 @@ if (player == leader group player) then
     } forEach units group player;
 };
 
-private _roadblocks = controlsX select {isOnRoad(getMarkerPos _x)};
-private _secureBases = airportsX + outposts + seaports + _roadblocks;
+private _secureBases = (
+    (airportsX + outposts + seaports + milbases + (controlsX select {isOnRoad(getMarkerPos _x)})) select {sidesX getVariable [_x, sideUnknown] != teamPlayer}
+) + (milAdministrationsX select {sidesX getVariable [_x,sideUnknown] == Occupants});
+
 private _lastBaseInside = "";
 private _reason = "";
 ["Undercover", [""]] call EFUNC(Events,triggerEvent);
@@ -187,13 +191,28 @@ while {_reason == ""} do
         {
             _reason = "Airport";
         };
+        if ("outpost" in _base || _onDetectionMarker) exitWith
+        {
+            _reason = "Outpost";
+        };
+        if ("seaport" in _base || _onDetectionMarker) exitWith
+        {
+            _reason = "Seaport";
+        };
+        if ("milbase" in _base || _onDetectionMarker) exitWith
+        {
+            _reason = "Milbase";
+        };
 
         private _aggro = if (_baseSide == Occupants) then {aggressionOccupants + (tierWar * 10)} else {aggressionInvaders + (tierWar * 10)};
         if (random 100 < _aggro) exitWith
         {
-            _reason = ["Outpost", "Roadblock"] select (_base in _roadblocks);
+            private _roadblocks = controlsX select {isOnRoad(getMarkerPos _x)};
+            if (_base in _roadblocks || _onDetectionMarker) then {
+                _reason = "Roadblock";
+            };
         };
-        _lastBaseInside = _base;            // Don't check this base again once we passed the check
+        _lastBaseInside = _base; // Don't check this base again once we passed the check
     };
 };
 
@@ -278,11 +297,13 @@ switch (_reason) do
     {
         ["Undercover", "You left your vehicle and you are still on the Wanted List!"] call A3A_fnc_customHint;
     };
-    case "Airport"; case "Roadblock"; case "Outpost":
+    case "Airport"; case "Roadblock"; case "Outpost"; case "Seaport"; case "Milbase":
     {
         private _text = switch (_reason) do {
             case "Airport": {"You have trespassed on an enemy airbase!"};
-            case "Outpost": {"An enemy outpost or seaport has detected you!"};
+            case "Outpost": {"An enemy outpost has detected you!"};
+            case "Milbase": {"An enemy military base has detected you!"};
+            case "Seaport": {"An enemy seaport has detected you!"};
             case "Roadblock": {"An enemy roadblock has detected you!"};
         };
         ["Undercover", _text] call A3A_fnc_customHint;

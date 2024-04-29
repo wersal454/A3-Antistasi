@@ -15,7 +15,7 @@ private _intelSize = if (_isLarge) then {"large"} else {"medium"};
 ServerDebug_2("Spawning %2 intel on marker %1", _marker, _intelSize);
 
 //Catch invalid cases
-if(!(_marker  in airportsX || {_marker in outposts})) exitWith
+if(!(_marker in airportsX || {_marker in outposts || {_marker in milbases}})) exitWith
 {
     Error_1("Marker %1 is not suited to have intel!", _marker);
 };
@@ -27,37 +27,58 @@ private _radius = sqrt ((_size select 0) * (_size select 0) + (_size select 1) *
 
 private _listStaticTower = ["Land_Cargo_Tower_V1_F","Land_Cargo_Tower_V1_No1_F","Land_Cargo_Tower_V1_No2_F","Land_Cargo_Tower_V1_No3_F","Land_Cargo_Tower_V1_No4_F","Land_Cargo_Tower_V1_No5_F","Land_Cargo_Tower_V1_No6_F","Land_Cargo_Tower_V1_No7_F","Land_Cargo_Tower_V2_F", "Land_Cargo_Tower_V3_F"];
 private _listStaticHQ = ["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V2_F", "Land_Cargo_HQ_V3_F"];
-private _listEnochRadar = ["Land_Radar_01_HQ_F"];
+private _listEnochRadar = ["Land_Radar_01_HQ_F", "Land_vn_radar_01_hq_f"];
 private _listvnbarracks06f = ["Land_vn_barracks_06_f"];
 private _listvncontroltower01F = ["Land_vn_controltower_01_f"];
 private _listControlTower02F = ["Land_ControlTower_02_F"];
 private _listvnslum = ["Land_vn_slum_03_01_f","Land_vn_slum_03_f"];
+private _listGuardhouse = ["Land_GuardHouse_02_F", "Land_GuardHouse_02_grey_F"];
+private _listBarracks = ["Land_i_Barracks_V1_F", "Land_i_Barracks_V2_F", "Land_u_Barracks_V2_F", "Land_Barracks_01_dilapidated_F", "Land_Barracks_01_grey_F", "Land_Barracks_01_camo_F"];
+private _listBarracksLivonia = ["Land_Barracks_06_F"];
+private _listBarracksGmEastern = ["land_gm_euro_barracks_02_win", "land_gm_euro_barracks_02"];
+private _listBarracksGmWestern = ["land_gm_euro_barracks_01_win", "land_gm_euro_barracks_01"];
 
-private _allBuildings = nearestObjects [getMarkerPos _marker, _listStaticHQ + _listStaticTower + _listEnochRadar + _listvnbarracks06f + _listvncontroltower01F + _listControlTower02F, _radius, true];
+private _searchArray = _listvnslum
+	+ _listStaticTower
+    + _listvnbarracks06f
+    + _listvncontroltower01F
+    + _listControlTower02F
+    + _listBarracks
+    + _listStaticHQ
+    + _listEnochRadar
+    + _listGuardhouse
+    + _listBarracksLivonia
+    + _listBarracksGmEastern
+    + _listBarracksGmWestern;
 
-if(count _allBuildings == 0) exitWith
-{
+private _allBuildings = nearestObjects [getMarkerPos _marker, _searchArray, _radius, true];
+
+if(count _allBuildings == 0) exitWith {
 	ServerInfo_1("No suitable buildings found on marker %1", _marker);
 };
 
 private _building = selectRandom _allBuildings;
-
 private _buildingType = typeOf _building;
 
 //Placing the intel desk
 private _spawnParameters = switch (true) do {
 	case (_buildingType in _listStaticTower): {[_building buildingPos 9, -90]};
-	case (_buildingType in _listStaticHQ): {[_building buildingPos 1, -180]};
-	case (_buildingType in _listEnochRadar): {[_building buildingPos 24, -90]};
-	case (_buildingType in _listvnbarracks06f): {[_building buildingPos 7, 0]};
-	case (_buildingType in _listvncontroltower01F): {[_building buildingPos 13, -0.5]};
-	case (_buildingType in _listControlTower02F): {[_building buildingPos 6, -0.3]};
-	case (_buildingType in _listvnslum): {
-		private _zpos = _building buildingPos 21;
-		private _pos = _zpos getPos [0.5, (getDir _building) + 110]; //first 0 added distance, secodn 0 moving direction
-		_pos set[2, _zpos #2];
-		[_pos, 0]
-	}; //0 is table rotation
+    case (_buildingType in _listBarracksGmEastern): {[_building buildingPos 8, 0]};
+    case (_buildingType in _listBarracksGmWestern): {[_building buildingPos 8, 0]};
+    case (_buildingType in _listBarracksLivonia): {[_building buildingPos 7, 0]};
+    case (_buildingType in _listBarracks): {[_building buildingPos 2, -180]};
+    case (_buildingType in _listGuardhouse): {[_building buildingPos 3, -180]};
+    case (_buildingType in _listEnochRadar): {[_building buildingPos 6, -90]};
+    case (_buildingType in _listStaticHQ): {[_building buildingPos 1, -180]};
+    case (_buildingType in _listvnbarracks06f): {[_building buildingPos 7, 0]};
+    case (_buildingType in _listvncontroltower01F): {[_building buildingPos 13, -0.5]};
+    case (_buildingType in _listControlTower02F): {[_building buildingPos 6, -0.3]};
+    case (_buildingType in _listvnslum): {
+        private _zpos = _building buildingPos 21;
+        private _pos = _zpos getPos [0.5, (getDir _building) + 110]; //first 0 added distance, secodn 0 moving direction
+        _pos set[2, _zpos #2];
+        [_pos, 0]
+    }; //0 is table rotation
 };
 if (_spawnParameters isEqualType true) exitWith { Error_1("No spawn parameters for building %1", typeOf _building) };
 
@@ -95,7 +116,7 @@ private _intelSize = switch (true) do {
 };
 [_intel, _intelSize] remoteExec ["A3A_fnc_flagaction",[teamPlayer,civilian],_intel];
 
-if (_isLarge && _isComputer) then {
+if (_isLarge && {_isComputer}) then {
 	//Place light on laptop
 	private _light = "#lightpoint" createVehicle (getPos _intel);
 	_light setLightBrightness 1.0;
@@ -114,10 +135,10 @@ if (_isLarge && _isComputer) then {
 		_intel setVariable ["trapBomb", _bomb, true];
 		[
 			_bomb,
-			"Disarm bomb",
-			"\Orange\Addons\ui_f_orange\Data\CfgVehicleIcons\iconExplosiveUXO_ca.paa",
-			"\Orange\Addons\ui_f_orange\Data\CfgVehicleIcons\iconExplosiveUXO_ca.paa",
-			"(_this distance _target < 3) and (_this getUnitTrait 'engineer')",
+			localize "STR_antistasi_actions_bomb_disarm",
+			"a3\ui_f\data\igui\cfg\holdactions\holdaction_unbind_ca.paa",
+			"a3\ui_f\data\igui\cfg\holdactions\holdaction_unbind_ca.paa",
+			"(_this distance _target < 3) and (_this call A3A_fnc_isEngineer)",
 			"_caller distance _target < 3",
 			{},
 			{},
@@ -160,7 +181,7 @@ private _ehId = _building addEventHandler ["Killed", {
 
 _nil = [_marker, _desk, _intel, _building, _ehId] spawn {
 	params ["_marker", "_desk", "_intel", "_building", "_ehId"];
-	waitUntil{sleep 10; (spawner getVariable _marker == 2)};
+	waitUntil {sleep 10; (spawner getVariable _marker == 2)};
 	deleteVehicle _desk;
 	if(!isNil "_intel") then {
 		_bomb = _intel getVariable ["trapBomb", objNull];
@@ -168,6 +189,6 @@ _nil = [_marker, _desk, _intel, _building, _ehId] spawn {
 		deleteVehicle _intel;
 	};
 
-	_building removeEventHandler ["Killed",_ehId];
+	_building removeEventHandler ["Killed", _ehId];
 	terminate _thisScript;
 };

@@ -27,6 +27,7 @@ private _fnc_canHelp = {
     and (_medic == _target getVariable ["helped",objNull])			// is assigned helper
     and (isNull attachedTo _target)									// target not dragged or loaded into vehicle
     and !(_medicX getVariable ["cancelRevive",false])				// revive not cancelled (due to medic damage?)
+    and !(_unit getVariable ["A3A_blockRevive",false])
 };
 
 private _fnc_doHeal = {
@@ -37,6 +38,26 @@ private _fnc_doHeal = {
         [_target,_medic] call A3A_fnc_actionRevive;
     } else {
         _medic action ["HealSoldier",_unit];
+        sleep 10; true;
+    };
+    if (_cured && _medic != _target && _isPlayerGroup) then {
+        _medic groupChat format ["You are ready %1",name _target];
+    };
+    _medic stop false;
+    _target stop false;
+    _target doFollow leader _target;
+    _medic doFollow leader _medic;
+    _cured;
+};
+
+private _fnc_doAceHeal = {
+    params ["_medic", "_target"];
+    _medic stop true;
+    _target stop true;
+    private _cured = if !(_target call ACE_medical_ai_fnc_isInjured) then {
+        [_medic, _target] call ACE_medical_ai_fnc_healingLogic;
+        true;
+    } else {
         sleep 10; true;
     };
     if (_cured && _medic != _target && _isPlayerGroup) then {
@@ -74,13 +95,15 @@ if (_medicX != _unit) then
     private _enemy = _medicX findNearestEnemy _unit;
     if ((_unit getVariable ["incapacitated", false]) and (!isNull _enemy)) then
     {
-        [_medicX,_unit,_enemy] call A3A_fnc_chargeWithSmoke;
+        if (random 100 < 35) then {
+            [_medicX,_unit,_enemy] call A3A_fnc_chargeWithSmoke;
+        };
 
         // Get some smoke/suppression help from nearby AI squadmates.
         private _nearFriends = units _medicX select { (_x != _medicX) and (_x call A3A_fnc_canFight) and (_x distance _unit < 50) and !(_x getVariable ["helping",false]) and (!isPlayer _x) };
         {
             if (random 100 > 40) then { continue };
-            if (random 100 > 60) then {
+            if (random 100 > 65) then {
                 [selectRandom _nearFriends, _unit, _enemy] spawn A3A_fnc_chargeWithSmoke;
             } else {
                 [selectRandom _nearFriends, _enemy] spawn A3A_fnc_suppressingFire;
@@ -122,13 +145,19 @@ if (_medicX != _unit) then
     Debug_1("Medic %1 healing target", _medicX);
 
     if ([_medicX, _unit] call _fnc_canHelp) then {
-        _cured = [_medicX, _unit] call _fnc_doHeal;
+        if (A3A_hasAce) then {
+            _cured = [_medicX, _unit] call _fnc_doAceHeal;
+        } else {
+            _cured = [_medicX, _unit] call _fnc_doHeal;
+        };
     };
 }
 else
 {
     // Self-heal + smoke stuff
-    [_medicX,_medicX] call A3A_fnc_chargeWithSmoke;
+    if (random 100 < 35) then {
+        [_medicX,_medicX] call A3A_fnc_chargeWithSmoke;
+    };
     if ([_medicX] call A3A_fnc_canFight) then
     {
         _medicX action ["HealSoldierSelf",_medicX];

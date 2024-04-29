@@ -1,6 +1,3 @@
-params ["_unit", ["_marker", ""], "_isSpawner", "_resPool"];
-#include "..\..\script_component.hpp"
-FIX_LINE_NUMBERS()
 /*  Inits the given unit with all needed data, flags and weapons
 *   Params:
 *       _unit : OBJECT : The unit that needs to be initialized
@@ -11,6 +8,10 @@ FIX_LINE_NUMBERS()
 *       Nothing
 */
 
+params ["_unit", ["_marker", ""], "_isSpawner", "_resPool"];
+#include "..\..\script_component.hpp"
+FIX_LINE_NUMBERS()
+
 //TODO we may want to rename that file to AIinit or something
 if ((isNil "_unit") || (isNull _unit)) exitWith
 {
@@ -19,11 +20,13 @@ if ((isNil "_unit") || (isNull _unit)) exitWith
 
 private _type = _unit getVariable "unitType";
 private _side = side (group _unit);
+private _isRival = _unit getVariable ["isRival", false];
+private _unitPrefix = _unit getVariable ["unitPrefix", ""];
 private _faction = Faction(_side);
 _unit setVariable ["originalSide", _side];          // used for delete handler, which is local
 
 if (isNil "_type") then {
-    Error_2("Unit does not have a type assigned: %1, vehicle: %2", typeOf _unit, typeOf vehicle _unit);
+    Warning_2("Unit does not have a type assigned: %1, vehicle: %2", typeOf _unit, typeOf vehicle _unit);
     _type = typeOf _unit;
 };
 
@@ -75,6 +78,9 @@ else
 	// Don't even spawn if ejected, because they often end up miles away from the real action
 	if (_veh isKindOf "Plane") exitWith {};
 
+    // Rivals are insurgency units that have no intention to capture points
+    if (_isRival) exitWith {};
+
     // Everyone else is a spawner
 	_unit setVariable ["spawner",true,true]
 };
@@ -88,161 +94,177 @@ _unit addEventHandler ["Deleted", A3A_fnc_enemyUnitDeletedEH];
 //Calculates the skill of the given unit
 //private _skill = (0.15 * skillMult) + (0.04 * difficultyCoef) + (0.02 * tierWar);
 private _skill = (0.1 * A3A_enemySkillMul) + (0.07 * (1 max A3A_activePlayerCount^0.5)) + (0.01 * tierWar);
-private _regularFaces = (_faction get "faces");
-private _regularVoices = (_faction get "voices");
-private ["_face", "_voice"];
+private _regularFaces = nil;
+private _regularVoices = nil;
+private _regularInsignia = nil;
+private _face = nil;
+private _voice = nil;
+private _insignia = nil;
+
+if (_isRival) then {
+    _regularFaces = A3A_faction_riv get "faces";
+    _regularVoices = A3A_faction_riv get "voices";
+    _regularInsignia = A3A_faction_riv get "insignia";
+} else {
+    _regularFaces = _faction get "faces";
+    _regularVoices = _faction get "voices";
+    _regularInsignia = _faction get "insignia";
+};
 
 switch (true) do {
-case ("militia_" in (_unit getVariable "unitType")):
-    {
-    _skill = _skill * 0.7;
-    _face = selectRandom (_faction getOrDefault ["milFaces", _regularFaces]);
-    _voice = selectRandom (_faction getOrDefault ["milVoices", _regularVoices]);
+    case (_isRival): {
+        _skill = _skill * 0.85;
+        _face = selectRandom (A3A_faction_riv get "faces");
+        _voice = selectRandom (A3A_faction_riv get "voices");
     };
-case ("police" in (_unit getVariable "unitType")):
-    {
-    _skill = _skill * 0.5;
-    _face = selectRandom (_faction getOrDefault ["polFaces", _regularFaces]);
-    _voice = selectRandom (_faction getOrDefault ["polVoices", _regularVoices]);
+    case (_unitPrefix isEqualTo "militia"): {
+        _skill = _skill * 0.7;
+        _face = selectRandom (_faction getOrDefault ["milFaces", _regularFaces]);
+        _voice = selectRandom (_faction getOrDefault ["milVoices", _regularVoices]);
+        _insignia = selectRandom (_faction getOrDefault ["milInsignia", _regularInsignia]);
     };
-case ("SF" in (_unit getVariable "unitType")):
-    {
-    _skill = _skill * 1.2;
-    _face = selectRandom (_faction getOrDefault ["sfFaces", _regularFaces]);
-    _voice = selectRandom (_faction getOrDefault ["sfVoices", _regularVoices]);
+    case (_unitPrefix isEqualTo "police"): {
+        _skill = _skill * 0.5;
+        _face = selectRandom (_faction getOrDefault ["polFaces", _regularFaces]);
+        _voice = selectRandom (_faction getOrDefault ["polVoices", _regularVoices]);
+        _insignia = selectRandom (_faction getOrDefault ["polInsignia", _regularInsignia]);
     };
-case ("Traitor" in (_unit getVariable "unitType")):
-    {
-    _face = selectRandom (A3A_faction_reb  get "faces");
-    _voice = "NoVoice";
+    case (_unitPrefix isEqualTo "elite"): {
+        _skill = _skill * 1.1;
+        _face = selectRandom (_faction getOrDefault ["eliteFaces", _regularFaces]);
+        _voice = selectRandom (_faction getOrDefault ["eliteVoices", _regularVoices]);
+        _insignia = selectRandom (_faction getOrDefault ["eliteInsignia", _regularInsignia]);
     };
-default {
-    _face = selectRandom _regularFaces;
-    _voice = selectRandom _regularVoices;
+    case (_unitPrefix isEqualTo "SF"): {
+        _skill = _skill * 1.2;
+        _face = selectRandom (_faction getOrDefault ["sfFaces", _regularFaces]);
+        _voice = selectRandom (_faction getOrDefault ["sfVoices", _regularVoices]);
+        _insignia = selectRandom (_faction getOrDefault ["sfInsignia", _regularInsignia]);
+    };
+    case ("Traitor" in _type): {
+        _face = selectRandom (A3A_faction_reb get "faces");
+        _voice = "NoVoice";
+    };
+    default {
+        _face = selectRandom _regularFaces;
+        _voice = selectRandom _regularVoices;
+        _insignia = selectRandom _regularInsignia;
     };
 };
-[_unit, _face, _voice] call A3A_fnc_setIdentity;
+[_unit, _face, _voice, (random [0.9, 1, 1.1])] call A3A_fnc_setIdentity;
 _unit setSkill _skill;
+if (!isNil "_insignia" && {_insignia isNotEqualTo ""}) then {
+   [_unit, _insignia] call BIS_fnc_setUnitInsignia;
+};
 
-//Adjusts squadleaders with improved skill and adds intel action
-if (_type in FactionGet(all,"SquadLeaders")) then
-{
+//Adjusts squadleaders with improved skill
+if (_type in FactionGet(all,"SquadLeaders")) then {
     _unit setskill ["courage",_skill + 0.2];
     _unit setskill ["commanding",_skill + 0.2];
-    private _hasIntel = ((random 100) < 80);
-    _unit setVariable ["hasIntel", _hasIntel, true];
-    _unit setVariable ["side", _side, true];
-    [_unit, "Intel_Small"] remoteExec ["A3A_fnc_flagaction",[teamPlayer,civilian], _unit];
+
+    [_unit, 10] call SCRT_fnc_common_addRandomMoneyMagazine;
+    [_unit, _type, _isRival] call SCRT_fnc_common_selectAndApplyLeaderIntel;
+};
+
+private _decimalAccurancyCap = aiAccuracyCeiling / 100;
+if((_unit skill "aimingAccuracy") > _decimalAccurancyCap) then {
+    _unit setSkill ["aimingAccuracy", _decimalAccurancyCap];
+    _unit setSkill ["aimingShake", _decimalAccurancyCap];
+    _unit setSkill ["aimingSpeed", _decimalAccurancyCap];
 };
 
 //Sets NVGs, lights, lasers, radios and spotting skills for the night
 private _hmd = hmd _unit;
-if !(A3A_hasIFA) then
-{
-    if (sunOrMoon < 1) then
-    {
-        if (!("SF_" in (_unit getVariable "unitType")) and (_unit != leader (group _unit))) then
-            {
-                if (_hmd != "") then
-                {
-                    if ((random 5 > tierWar) and (!haveNV)) then
-                    {
-                        _unit unassignItem _hmd;
-                        _unit removeItem _hmd;
-                        _hmd = "";
-                    };
+if (sunOrMoon < 1) then {
+    if (_unitPrefix isNotEqualTo "SF" && {_unit != leader (group _unit)}) then {
+        if (tierWar < 4) then {
+            if (_hmd != "") then {
+                _unit unassignItem _hmd;
+                _unit removeItem _hmd;
+                _hmd = "";
+            };
+        } else {
+            if (_hmd != "" && {((10 - tierWar) > random 10)}) then {
+                _unit unassignItem _hmd;
+                _unit removeItem _hmd;
+                _hmd = "";
+            };
+        }
+    } else {
+        private _arr = (allNVGs arrayIntersect (items _unit));
+        if (_arr isNotEqualTo [] || {_hmd != ""}) then {
+            if ((10 - tierWar) > random 10 && {_unit != leader (group _unit)}) then {
+                if (_hmd == "") then {
+                    _hmd = _arr select 0;
+                    _unit removeItem _hmd;
+                } else {
+                    _unit unassignItem _hmd;
+                    _unit removeItem _hmd;
                 };
-            }
-        else
-        {
-            private _arr = (allNVGs arrayIntersect (items _unit));
-            if (!(_arr isEqualTo []) or (_hmd != "")) then
-            {
-                if ((random 5 > tierWar) and (!haveNV) and (_unit != leader (group _unit))) then
-                {
-                    if (_hmd == "") then
-                    {
-                        _hmd = _arr select 0;
-                        _unit removeItem _hmd;
-                    }
-                    else
-                    {
-                        _unit unassignItem _hmd;
-                        _unit removeItem _hmd;
+                _hmd = "";
+            } else {
+                if(tierWar < 3) then {
+                    switch (true) do {
+                        case (_arr isNotEqualTo []): {
+                            _hmd = _arr select 0;
+                            _unit removeItem _hmd;
+                        };
+                        case (_hmd != ""): {
+                            _unit unassignItem _hmd;
+                            _unit removeItem _hmd;
+                        };
                     };
                     _hmd = "";
-                }
-                else
-                {
+                } else {
                     _unit assignItem _hmd;
                 };
             };
         };
-        private _weaponItems = primaryWeaponItems _unit;
-        if (_hmd != "") then
-        {
-            if (_weaponItems findIf {_x in allLaserAttachments} != -1) then
-            {
-                _unit action ["IRLaserOn", _unit];
-                _unit enableIRLasers true;
-            };
-        }
-        else
-        {
-            private _pointers = _weaponItems arrayIntersect allLaserAttachments;
-            if !(_pointers isEqualTo []) then
-            {
-                _unit removePrimaryWeaponItem (_pointers select 0);
-            };
-            private _lamp = "";
-            private _lamps = _weaponItems arrayIntersect allLightAttachments;
-            if (_lamps isEqualTo []) then
-            {
-                private _compatibleLamps = ((primaryWeapon _unit) call BIS_fnc_compatibleItems) arrayIntersect allLightAttachments;
-                if !(_compatibleLamps isEqualTo []) then
-                {
-                    _lamp = selectRandom _compatibleLamps;
-                    _unit addPrimaryWeaponItem _lamp;
-                    _unit assignItem _lamp;
-                };
-            }
-            else
-            {
-                _lamp = _lamps select 0;
-            };
-            if (_lamp != "") then
-            {
-                _unit enableGunLights "AUTO";
-            };
-            //Reduce their magical night-time spotting powers.
-            _unit setskill ["spotDistance", _skill * 0.7];
-            _unit setskill ["spotTime", _skill * 0.5];
+    };
+    private _weaponItems = primaryWeaponItems _unit;
+    if (_hmd != "") then {
+        if (_weaponItems findIf {_x in allLaserAttachments} != -1) then {
+            _unit action ["IRLaserOn", _unit];
+            _unit enableIRLasers true;
         };
-    }
-    else
-    {
-        if !("SF_" in (_unit getVariable "unitType")) then
+    } else {
+        private _pointers = _weaponItems arrayIntersect allLaserAttachments;
+        if (_pointers isNotEqualTo []) then {
+            _unit removePrimaryWeaponItem (_pointers select 0);
+        };
+        private _lamp = "";
+        private _lamps = _weaponItems arrayIntersect allLightAttachments;
+        if (_lamps isEqualTo []) then {
+            private _compatibleLamps = ((primaryWeapon _unit) call BIS_fnc_compatibleItems) arrayIntersect allLightAttachments;
+            if !(_compatibleLamps isEqualTo []) then
             {
-                if (_hmd != "") then
-                {
-                    _unit unassignItem _hmd;
-                    _unit removeItem _hmd;
-                };
-            }
-        else
-        {
-            private _arr = (allNVGs arrayIntersect (items _unit));
-            if (count _arr > 0) then
-            {
-                _hmd = _arr select 0;
-                _unit removeItem _hmd;
+                _lamp = selectRandom _compatibleLamps;
+                _unit addPrimaryWeaponItem _lamp;
+                _unit assignItem _lamp;
             };
+        } else {
+            _lamp = _lamps select 0;
+        };
+        if (_lamp != "") then {
+            _unit enableGunLights "AUTO";
+        };
+        //Reduce their magical night-time spotting powers.
+        _unit setskill ["spotDistance", _skill * 0.7];
+        _unit setskill ["spotTime", _skill * 0.5];
+    };
+} else {
+    if (_unitPrefix isNotEqualTo "SF") then {
+        if (_hmd != "") then {
+            _unit unassignItem _hmd;
+            _unit removeItem _hmd;
+        };
+    } else {
+        private _arr = (allNVGs arrayIntersect (items _unit));
+        if (count _arr > 0) then {
+            _hmd = _arr select 0;
+            _unit removeItem _hmd;
         };
     };
-}
-else
-{
-    _unit unlinkItem (_unit call A3A_fnc_getRadio);
 };
 
 //Reveals all air vehicles to the unit, if it is either gunner of a vehicle or equipped with a launcher

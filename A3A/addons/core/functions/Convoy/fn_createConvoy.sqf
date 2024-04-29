@@ -1,6 +1,6 @@
-params
-
-[
+#include "..\..\script_component.hpp"
+FIX_LINE_NUMBERS()
+params [
     ["_convoyID", -1 , [1]],
     ["_units", [], [[]]],
     ["_origin", [0,0,0], [[]]],
@@ -9,8 +9,6 @@ params
     ["_convoyType", "PATROL", [""]],
     ["_convoySide", sideEnemy, [sideEnemy]]
 ];
-#include "..\..\script_component.hpp"
-FIX_LINE_NUMBERS()
 /*  Creates a convoy for simulated movement
 *   Params:
 *     _convoyID: NUMBER; the unique convoy ID
@@ -96,14 +94,14 @@ if(_convoySide == Occupants) then
     private _convoyArray = server getVariable ["convoyMarker_Occupants", []];
     _convoyArray pushBack _convoyMarker;
     server setVariable ["convoyMarker_Occupants", _convoyArray, true];
-    _convoyMarker setMarkerText (format ["[GPS-%3] %1 %2 Convoy", FactionGet(occ,"name"), _convoyType, _convoyID]);
+    _convoyMarker setMarkerText (format [localize "STR_markers_convoy_tracker", A3A_faction_occ get "name", _convoyType, _convoyID, "GPS"]);
 }
 else
 {
     private _convoyArray = server getVariable ["convoyMarker_Invaders", []];
     _convoyArray pushBack _convoyMarker;
     server setVariable ["convoyMarker_Invaders", _convoyArray, true];
-    _convoyMarker setMarkerText (format ["[GPS-%3] %1 %2 Convoy", FactionGet(inv,"name"), _convoyType, _convoyID]);
+    _convoyMarker setMarkerText (format [localize "STR_markers_convoy_tracker", A3A_faction_inv get "name", _convoyType, _convoyID, "GLONASS"]);
 };
 
 Info_5("CreateConvoy[%1]: Created convoy with %2 m/s and a total of %3 waypoints, marker is %4%5", _convoyID, _velocity, count _route, _markerPrefix, _markerType);

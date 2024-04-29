@@ -1,9 +1,26 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
-_resourcesFIA = server getVariable "resourcesFIA";
-if (_resourcesFIA < 100) exitWith {["Money Grab", "FIA has not enough resources to grab."] call A3A_fnc_customHint;};
-server setvariable ["resourcesFIA",_resourcesFIA - 100, true];
-[-2,theBoss] call A3A_fnc_playerScoreAdd;
-[100] call A3A_fnc_resourcesPlayer;
+#define MONEY_AMOUNT 500
 
-["Money Grab", format ["You grabbed 100 € from the %1 Money Pool.<br/><br/>This will affect your prestige and status among %1 forces.",FactionGet(reb,"name")]] call A3A_fnc_customHint;
+private _resourcesFIA = server getVariable "resourcesFIA";
+if (_resourcesFIA < MONEY_AMOUNT) exitWith {
+    [
+        localize "STR_notifiers_fail_type",
+        format [localize "STR_notifiers_boss_steal_header", A3A_faction_reb get "name"],
+        parseText format [localize "STR_notifiers_boss_steal_fail", A3A_faction_reb get "name"],
+        30
+    ] spawn SCRT_fnc_ui_showMessage;
+};
+
+private _ratingLoss = round (MONEY_AMOUNT / 100);
+
+server setvariable ["resourcesFIA", _resourcesFIA - MONEY_AMOUNT, true];
+[-_ratingLoss,theBoss] call A3A_fnc_addScorePlayer;
+[MONEY_AMOUNT] call A3A_fnc_resourcesPlayer;
+
+[
+    localize "STR_notifiers_success_type",
+    format [localize "STR_notifiers_boss_steal_header", A3A_faction_reb get "name"],
+    parseText format [localize "STR_notifiers_boss_steal_success", str MONEY_AMOUNT, A3A_faction_reb get "name", A3A_faction_civ get "currencySymbol"],
+    15
+] spawn SCRT_fnc_ui_showMessage;

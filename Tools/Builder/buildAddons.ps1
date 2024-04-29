@@ -23,12 +23,12 @@ if (Test-Path "..\build") {
     Remove-Item -Path "..\build" -Recurse -Force
 }
 New-Item -Path "..\build" -ItemType Directory -Force > $null
-New-Item -Path "..\build\A3A" -ItemType Directory -Force > $null
-New-Item -Path "..\build\A3A\addons" -ItemType Directory -Force > $null
-New-Item -Path "..\build\A3A\Keys" -ItemType Directory -Force > $null
+New-Item -Path "..\build\A3A-Plus" -ItemType Directory -Force > $null
+New-Item -Path "..\build\A3A-Plus\addons" -ItemType Directory -Force > $null
+New-Item -Path "..\build\A3A-Plus\Keys" -ItemType Directory -Force > $null
 
 $addonLocation = "." # We are here already
-$addonOutLocation = "$PSScriptRoot\..\..\build\A3A"
+$addonOutLocation = "$PSScriptRoot\..\..\build\A3A-Plus"
 $addonsOutLocation = "$addonOutLocation\addons"
 
 "`nBuild addons..."
@@ -69,11 +69,13 @@ Pop-Location
 
 "`nCreate key..."
 $keyName = switch ($WorkshopID) {
-    "2867537125" {"antistasi"}
-    "2729074499" {"antistasi_dev1"}
-    "2873632521" {"antistasi_dev2"}
-    Default {"a3a"}
+    "2912941775" {"Antistasi-Plus"}
+    "2913672477" {"Antistasi-Plus-Dev"}
+    Default {"a3a-plus"}
 }
+
+$keyName = "$keyName-$version"
+
 Push-Location
 Set-Location "$PSScriptRoot\..\..\build"
 

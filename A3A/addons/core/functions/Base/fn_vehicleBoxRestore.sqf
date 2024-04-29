@@ -53,6 +53,10 @@ private _rebelPlayers = allUnits select {side _x in [teamPlayer, civilian] && {_
     _x setDamage 0;
     _x setVariable ["incapacitated",false,true];
     _x setVariable ["compromised", 0, true];
+    _x setVariable ["carryUndercoverBreak", false, true];
+    if !(A3A_hasACEMedical) then {
+        [true] remoteExecCall ["A3A_fnc_selfReviveReset", 0];
+    };
 } forEach _rebelPlayers;
 
 private _hqVehicles = (vehicles inAreaArray [_posHQ, 150, 150]) select {
@@ -81,7 +85,7 @@ if (HR_GRG_hasRepairSource) then {
 if (HR_GRG_hasFuelSource) then {
     {
         [_x] remoteExecCall ["HR_GRG_fnc_refuelVehicleFromSources", 2];
-        sleep 0.5; // delay to reduce broadcast spam
+        sleep 0.1; // delay to reduce broadcast spam
     } forEach _hqVehicles;
 };
 
@@ -109,5 +113,6 @@ private _finalString = format [_finalStringVariant, _finalAdditiveString];
 ["vehicleBoxRestore", [_posHQ]] call EFUNC(Events,triggerEvent);
 [localize "STR_A3A_base_vehicleBoxRestore_restoration_title", _finalString] call A3A_fnc_customHint;
 
+[] remoteExec ["SCRT_fnc_common_updateArsenal", 2];
 
 nil

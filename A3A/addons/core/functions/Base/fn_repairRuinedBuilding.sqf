@@ -30,7 +30,7 @@ if (_target isKindOf "Ruins") then {
 //Haven't located the matching building - abort!
 if (isNull _buildingToRepair || isNull _ruins) exitWith {false;};
 
-_buildingToRepair setDammage 0;
+_buildingToRepair setDamage 0;
 
 deleteVehicle _ruins;
 
