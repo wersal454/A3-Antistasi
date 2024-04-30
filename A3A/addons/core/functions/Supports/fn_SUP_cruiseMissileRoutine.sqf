@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
-params ["_launcher", "_side", "_supportName"];
+params ["_suppData", "_launcher", "_group", "_delay", "_reveal"];
 sleep (random 90);
 
 private _rounds = 4;
@@ -63,6 +63,12 @@ while {_onlineTime > 0} do
         _side reportRemoteTarget [_laser, 300];
         _laser confirmSensorTarget [_side, true];
         _launcher fireAtTarget [_laser, "weapon_vls_01"];
+
+        _launcher setWeaponReloadingTime [gunner _launcher, "weapon_vls_01", 2];
+        _launcher loadMagazine [-1, "weapon_vls_01", "ammo_Missile_Cruise_01_Cluster"];
+        _launcher fireAtTarget [_laser, "weapon_vls_01"];
+
+        _launcher setWeaponReloadingTime [gunner _launcher, "weapon_vls_01", 30];
 
         _rounds = _rounds - 1;
     };

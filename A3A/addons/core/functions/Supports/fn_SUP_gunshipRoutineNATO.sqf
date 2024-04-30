@@ -61,13 +61,13 @@ private _reveal = _targetList select 0 select 1;
 
 private _supportMarker = format ["%1_coverage", _supportName];
 
-private _textMarker = createMarker [format ["%1_text", _supportName], _supportPos];
+private _textMarker = createMarker [format ["%1_text", _supportName], _suppCenter];
 _textMarker setMarkerShape "ICON";
 _textMarker setMarkerType "mil_dot";
 _textMarker setMarkerText "Gunship";
 _textMarker setMarkerColor colorOccupants;
 _textMarker setMarkerAlpha 0;
-[_reveal, _supportPos, Occupants, "GUNSHIP", format ["%1_coverage", _supportName], _textMarker] spawn A3A_fnc_showInterceptedSupportCall;
+[_reveal, _suppCenter, Occupants, "GUNSHIP", format ["%1_coverage", _supportName], _textMarker] spawn A3A_fnc_showInterceptedSupportCall;
 
 waitUntil
 {
@@ -350,7 +350,7 @@ while {_lifeTime > 0} do
         isNull (_gunship getVariable ["currentTargetHeavyGunner", objNull])
     ) then
     {
-        private _targets = _supportPos nearEntities [["Man", "LandVehicle", "Helicopter"], 400];
+        private _targets = _suppCenter nearEntities [["Man", "LandVehicle", "Helicopter"], 400];
         _targets = _targets select
         {
             if(_x isKindOf "Man") then

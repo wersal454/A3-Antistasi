@@ -112,13 +112,13 @@ private _reveal = _targetList select 0 select 1;
 private _supportMarker = format ["%1_coverage", _supportName];
 private _supportPos = getMarkerPos _supportMarker;
 
-private _textMarker = createMarker [format ["%1_text", _supportName], _supportPos];
+private _textMarker = createMarker [format ["%1_text", _supportName], _suppCenter];
 _textMarker setMarkerShape "ICON";
 _textMarker setMarkerType "mil_dot";
 _textMarker setMarkerText "Gunship";
-_textMarker setMarkerColor colorInvaders;
+_textMarker setMarkerColor colorOccupants;
 _textMarker setMarkerAlpha 0;
-[_reveal, _supportPos, Invaders, "GUNSHIP", format ["%1_coverage", _supportName], _textMarker] spawn A3A_fnc_showInterceptedSupportCall;
+[_reveal, _suppCenter, Invaders, "GUNSHIP", format ["%1_coverage", _supportName], _textMarker] spawn A3A_fnc_showInterceptedSupportCall;
 
 waitUntil
 {
@@ -282,7 +282,7 @@ _gunship setVariable ["HE_Ammo", 250];
 _gunship setVariable ["Rockets", 76];
 
 private _supportMarker = format ["%1_coverage", _supportName];
-private _supportPos = getMarkerPos _supportMarker;
+private _suppCenter = getMarkerPos _supportMarker;
 
 _strikeGroup setCombatMode "YELLOW";
 
@@ -291,7 +291,7 @@ while {_lifeTime > 0} do
 {
     if !(_gunship getVariable ["CurrentlyFiring", false]) then
     {
-        private _targets = _supportPos nearEntities [["Man", "LandVehicle", "Helicopter"], 250];
+        private _targets = _suppCenter nearEntities [["Man", "LandVehicle", "Helicopter"], 250];
         _targets = _targets select
         {
             if(_x isKindOf "Man") then

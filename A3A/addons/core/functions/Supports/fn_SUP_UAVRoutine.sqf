@@ -20,13 +20,19 @@ _suppData params ["_supportName", "_side", "_suppType", "_suppCenter", "_suppRad
 
 //Sleep to simulate preparation time
 sleep _sleepTime;
-
+private _currentTarget = objNull;
+private _laser = objNull;
 private _spawnPos = markerPos _airport vectorAdd [0,0,300];
 private _uav = createVehicle [_planeType, _spawnPos, [], 0, "FLY"];
 [_side, _uav] call A3A_fnc_createVehicleCrew;
 _groupVeh = group driver _uav;
 { [_x, nil, false, _resPool] call A3A_fnc_NATOinit } forEach (crew _uav);           // arguable
 [_uav, _side, _resPool] call A3A_fnc_AIVEHinit;
+
+_uav addEventHandler ["Fired", {
+    params ["_uav", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
+    _uav setVariable ["A3A_currentMissile", _projectile];
+}];
 
 #if __A3_DEBUG__
 		_uav spawn {
@@ -61,7 +67,7 @@ private _timeout = time + 1200;
 private _enemySide = [Invaders, Occupants] select (_side == Invaders);
 while {time < _timeout && canMove _uav} do
 {
-    waitUntil { sleep 5; _uav distance2d _suppCenter < 500 || !alive _uav};
+    waitUntil { sleep 5; _uav distance2d _suppCenter < 750 || !alive _uav};
     // check if launcher/crew are intact
     if !(canFire _uav and gunner _uav call A3A_fnc_canFight || alive _uav) exitWith {
         Info_1("%1 has been destroyed or disabled, aborting routine", _supportName);
@@ -72,6 +78,10 @@ while {time < _timeout && canMove _uav} do
 
     // Choose four random enemies to spot
     private _allEnemies = (units teamPlayer + units _enemySide) inAreaArray [_suppCenter, 500, 500];
+    diag_log _allEnemies;
+    diag_log _allEnemies;
+    diag_log _allEnemies;
+    diag_log _allEnemies;
     private _spottedEnemies = [];
     for "_i" from 0 to 3 do {
         if (count _allEnemies == 0) exitWith {};
@@ -91,17 +101,26 @@ while {time < _timeout && canMove _uav} do
     };
 
     if (isNull _currentTarget) then
-    { 
-        private _currentTarget = selectRandom (units teamPlayer + units _enemySide) inAreaArray [_suppCenter, 500, 500];
+    {
+        diag_log _spottedEnemies;
+        diag_log _spottedEnemies;
+        diag_log _spottedEnemies;
+        diag_log _spottedEnemies;
+        private _currentTarget = selectRandom _spottedEnemies;
+        diag_log _currentTarget;
+        diag_log _currentTarget;
+        diag_log _currentTarget;
+        diag_log _currentTarget;
         //Creates the laser target to mark the target
-        private _laser = createVehicle ["LaserTargetE", (getPos _currentTarget), [], 0, "CAN_COLLIDE"];
+        _laser = createVehicle ["LaserTargetE", (getPos _currentTarget), [], 0, "CAN_COLLIDE"];
         Info_1("Trying to attack laser to %1", _currentTarget);
         _laser attachTo [_currentTarget, [0,0,0]];
+        _uav doWatch _laser;
 
         //Send the laser target to the launcher
         _side reportRemoteTarget [_laser, 300];
         _laser confirmSensorTarget [_side, true];
-        _launcher fireAtTarget [_laser];
+        _uav fireAtTarget [_currentTarget];
         if !(alive _currentTarget) exitWith {
             _suppTarget resize 0;
             Debug_1("%1 skips target, as it is already dead", _supportName);
@@ -135,9 +154,8 @@ while {time < _timeout && canMove _uav} do
     _uav reveal [_currentTarget, 4];           // does this do anything?
     _currentTarget confirmSensorTarget [_side, true];
     _side reportRemoteTarget [_currentTarget, 300];
-    _uav fireAtTarget [_currentTarget];
-    _missiles = _missiles - 1;
-    _targTimeout = (time + 120);
+    _uav fireAtTarget [_laser];
+    //_targTimeout = (time + 120);
     sleep 1;
     sleep 60;
 };

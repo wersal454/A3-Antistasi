@@ -12,7 +12,6 @@ _strikePlane setDir _startDir;
 
 //Put it in the sky
 _strikePlane setPosATL (_spawnPos vectorAdd [0, 0, 1000]);
-
 //Hide the hovering airplane from players view
 _strikePlane setVelocityModelSpace [0, 150, 0];
 
@@ -66,38 +65,26 @@ _strikePlane addEventHandler ["IncomingMissile", {
     };
 }];
 
-_strikePlane addEventHandler
-[
-    "HandleDamage",
-    {
-        params ["_plane", "_selection", "_damage", "_vehicle", "_projectile"];
-        //Check if bullet, we dont care about missiles, as these are handled above
-        if(_projectile isKindOf "BulletCore") then
-        {
-            //Plane is getting hit by bullets, check if fired by unit or vehicle
-            if(!(isNull (objectParent _vehicle)) || (_vehicle isKindOf "AllVehicles")) then
-            {
-                //Getting hit by a vehicle
-                private _supportName = _plane getVariable "supportName";
-                private _vehicle = if(_vehicle isKindOf "AllVehicles") then {_vehicle} else {objectParent _vehicle};
-                if(_vehicle isKindOf "Air") then
-                {
-                    //Vehicle is a plane or attack heli (or a lucky chopper), retreat, as no AA weapons on board
-                    [group driver _plane, ["ASF", "SAM"], _vehicle] spawn A3A_fnc_callForSupport;
-                    _plane setVariable ["Retreat", true];
-                }
-                else
-                {
-                    if((getPos _vehicle) inArea (format ["%1_coverage", _supportName])) then
-                    {
-                        //Vehicle is a ground based AA, add to attack list
-                        [_supportName, [_vehicle, 3], 0] spawn A3A_fnc_addSupportTarget;
-                    }
-                    else
-                    {
-                        //Vehicle is outside of radius, call in other support
-                        [group driver _plane, ["CAS", "CASDIVE", "MISSILE", "CANNON", "CARPETBOMB", "MORTAR", "HOWITZER"], _vehicle] spawn A3A_fnc_callForSupport;
-                    };
+_strikePlane addEventHandler ["HandleDamage", {
+    params ["_plane", "_selection", "_damage", "_vehicle", "_projectile"];
+    //Check if bullet, we dont care about missiles, as these are handled above
+    if(_projectile isKindOf "BulletCore") then {
+        //Plane is getting hit by bullets, check if fired by unit or vehicle
+        if(!(isNull (objectParent _vehicle)) || (_vehicle isKindOf "AllVehicles")) then {
+            //Getting hit by a vehicle
+            private _supportName = _plane getVariable "supportName";
+            private _vehicle = if(_vehicle isKindOf "AllVehicles") then {_vehicle} else {objectParent _vehicle};
+            if(_vehicle isKindOf "Air") then {
+                //Vehicle is a plane or attack heli (or a lucky chopper), retreat, as no AA weapons on board
+                [group driver _plane, ["ASF", "SAM"], _vehicle] spawn A3A_fnc_callForSupport;
+                _plane setVariable ["Retreat", true];
+            } else {
+                if((getPos _vehicle) inArea (format ["%1_coverage", _supportName])) then {
+                    //Vehicle is a ground based AA, add to attack list
+                    [_supportName, [_vehicle, 3], 0] spawn A3A_fnc_addSupportTarget;
+                } else {
+                    //Vehicle is outside of radius, call in other support
+                    [group driver _plane, ["CAS", "CASDIVE", "MISSILE", "CANNON", "CARPETBOMB", "MORTAR", "HOWITZER"], _vehicle] spawn A3A_fnc_callForSupport;
                 };
             };
         };
@@ -106,7 +93,7 @@ _strikePlane addEventHandler
         _plane setVariable ["Retreat", true];
     };
     nil; //HandleDamage must return Nothing for damage to apply normally.
-];
+}];
 
 _strikeGroup deleteGroupWhenEmpty true;
 
@@ -115,28 +102,21 @@ private _distance = _strikePlane distance2D _supportPos;
 private _angle = asin (1500/_distance);
 private _lenght = cos (_angle) * _distance;
 Debug_3("Distance %1 Length %2 Angle %3", _distance, _lenght, _angle);
-
 private _height = (ATLToASL _supportPos) select 2;
 _height = _height + 500;
-
 //Sets minimal height in relation to ground
 _strikePlane flyInHeight 500;
-
 private _entryPos = _spawnPos getPos [_lenght, _startDir + _angle];
 Debug_1("Entry Pos: %1", _entryPos);
 _entryPos set [2, _height];
-
 private _entryPoint = _strikeGroup addWaypoint [_entryPos, 0, 1];
 _entryPoint setWaypointType "MOVE";
 _entryPoint setWaypointSpeed "FULL";
 _entryPoint setWaypointStatements ["true", "(vehicle this) setVariable ['InArea', true];"];
-
 private _loiterWP = _strikeGroup addWaypoint [_supportPos, 0, 2];
 _loiterWP setWaypointType "LOITER";
 _loiterWP setWaypointLoiterType "CIRCLE_L";
 _loiterWP setWaypointSpeed "NORMAL";
-_loiterWP setWaypointLoiterRadius 1500;
-
+_loiterWP setWaypointLoiterRadius 1200;
 _strikePlane setDir (_startDir + _angle);
-
 [_strikePlane, _strikeGroup];
