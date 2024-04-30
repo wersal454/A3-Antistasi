@@ -1599,6 +1599,10 @@
                 <Korean>MRAP</Korean>
                 <French>MRAP</French>
             </Key>
+            <Key ID="STR_qrf_marker_heli">
+                <Original>HELI</Original>
+                <Russian>Вертолёт</Russian>
+            </Key>
             <Key ID="STR_qrf_marker_apc">
                 <Original>APC</Original>
                 <Russian>БТР</Russian>
@@ -1746,6 +1750,10 @@
                 <Korean>포병 표적</Korean>
                 <French>Cible d'artillerie</French>
             </Key>
+            <Key ID="STR_marker_logistics_heli">
+                <Original>Logistics helicopter</Original>
+                <Russian>Вертолёт логистики</Russian>
+            </Key>
             <Key ID="STR_marker_qrf">
                 <Original>Quick Reaction Force</Original>
                 <Russian>Силы быстрого реагирования</Russian>
@@ -1822,6 +1830,10 @@
                 <Chinesesimp>军火商</Chinesesimp>
                 <Korean>암거래상</Korean>
                 <French>Marchand d'armes</French>
+            </Key>
+            <Key ID="STR_marker_civ_convoy">
+                <Original>Civillian convoy</Original>
+                <Russian>Конвой гражданских</Russian>
             </Key>
             <Key ID="STR_marker_convoy_objective">
                 <Original>Convoy Objective</Original>

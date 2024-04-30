@@ -34,6 +34,15 @@ private _crewGroup = [_side, _vehicle, nil, _isAttackHeli] call A3A_fnc_createVe
 {
     [_x, nil, nil, _resPool] call A3A_fnc_NATOinit
 } forEach (units _crewGroup);
+if ((driver _vehicle) == objNull) then {
+    private _unitType = [side _crewGroup, _vehicle] call A3A_fnc_crewTypeForVehicle;
+    private _driver = [_crewGroup, _unitType, getPos _vehicle, [], 10] call A3A_fnc_createUnit;
+    _driver assignAsDriver _vehicle;
+    [_driver] orderGetIn true;
+    _driver moveInDriver _vehicle;
+    [_driver] join _crewGroup;
+    [_driver] call A3A_fnc_NATOinit;
+};
 [_vehicle, _side, _resPool] call A3A_fnc_AIVEHinit;
 
 private _cargoGroup = grpNull;
@@ -75,6 +84,12 @@ if (_expectedCargo >= 2 and !_isAttackHeli) then
             _x moveInCargo _vehicle;
         };
         [_x, nil, nil, _resPool] call A3A_fnc_NATOinit;
+    } forEach units _cargoGroup;
+    {
+        private _index = _vehicle getCargoIndex _x;
+        if (_index == -1) then {
+            deleteVehicle _x;
+        };
     } forEach units _cargoGroup;
 };
 

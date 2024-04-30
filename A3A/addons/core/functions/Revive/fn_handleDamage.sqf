@@ -52,6 +52,11 @@ private _makeUnconscious =
 	{
 		moveOut _unit;
 	};
+	if (leader _unit == player && _unit == player) then {
+		{
+			unassignVehicle _x;
+		} forEach units group _unit;
+	};
 	if (isPlayer _unit) then {_unit allowDamage false};
 	private _fromside = if (!isNull _injurer) then {side group _injurer} else {sideUnknown};
 	[_unit,_fromside] spawn A3A_fnc_unconscious;

@@ -48,6 +48,14 @@ if (getNumber (_config >> "hasDriver") > 0 && isNull driver _vehicle) then {
 	_driver moveInDriver _vehicle;
 };
 
+if ((driver _vehicle) == objNull) then {
+   private _driver = [_group, _unitType, getPos _vehicle, [], 10] call A3A_fnc_createUnit;
+    _driver assignAsDriver _vehicle;
+    //[_driver] orderGetIn true;
+    _driver moveInDriver _vehicle;
+    [_driver] join _group;
+};
+
 private _fnc_addCrewToTurrets = {
 	params ["_config", ["_path", []]];
 	private _turrets = "true" configClasses (_config >> "Turrets");

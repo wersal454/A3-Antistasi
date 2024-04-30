@@ -113,7 +113,7 @@ if (_isRival) then {
 
 switch (true) do {
     case (_isRival): {
-        _skill = _skill * 0.85;
+        _skill = _skill * 0.9;
         _face = selectRandom (A3A_faction_riv get "faces");
         _voice = selectRandom (A3A_faction_riv get "voices");
     };

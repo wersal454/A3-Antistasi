@@ -216,7 +216,6 @@ if (_hasCSLA) then {
 ["vehiclesLightArmed", _armedVehicles] call _fnc_saveToTemplate;
 ["vehiclesLightTanks",  _lightTanks] call _fnc_saveToTemplate;
 ["vehiclesAirborne", _airborneVehicles] call _fnc_saveToTemplate;
-["vehiclesMilitiaAPCs", _militiaAPCs] call _fnc_saveToTemplate;
 ["vehiclesAA", _aa] call _fnc_saveToTemplate;
 ["vehiclesCargoTrucks", _cargoTrucks] call _fnc_saveToTemplate;
 ["vehiclesTanks", _tanks] call _fnc_saveToTemplate;
