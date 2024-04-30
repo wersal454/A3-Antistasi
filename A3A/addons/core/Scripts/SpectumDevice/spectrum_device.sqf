@@ -1,5 +1,5 @@
 /*  
-	script by [STELS]BendeR
+	script by [STELS]BendeR https://steamcommunity.com/sharedfiles/filedetails/?id=2214415193&searchtext=spectrum+device
 	Adopted and modified by wersal
 	//v1.3
 	//-scan moved to separate script sa_ewar.sqf, small fixes, added jamm v1.0, antennas reworked
@@ -284,7 +284,7 @@ _g=[] spawn {
 	private _frequency=0;
 	private _signal_str=0;
 	private _controllers=[];
-	{
+	/* {
 		_frequency=_x select 1;
 		if (_frequency==-1) then {
 			_frequency=round(random (sa_freq_min*10))/10+sa_freq_min;
@@ -304,7 +304,7 @@ _g=[] spawn {
 			};
 			_generated_sa_beacons pushBackUnique [(_x select 0),_frequency,_signal_str];
 		};
-	} forEach sa_beacons;
+	} forEach sa_beacons; */
 	
 	while{true} do {
 #ifndef	SA_DISABLE_UAV_DETECT
