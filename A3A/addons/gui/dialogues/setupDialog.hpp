@@ -408,45 +408,45 @@ class A3A_SetupDialog : A3A_TabbedDialog
                     text = $STR_antistasi_dialogs_setup_dlc;
                     x = 4 * GRID_W;
                     y = 4 * GRID_H;
-                    w = 34 * GRID_W;
+                    w = 48 * GRID_W;
                     h = 4 * GRID_H;
                 };
                 class DLCBackground: A3A_Background {
                     idc = -1;
                     x = 4 * GRID_W;
                     y = 8 * GRID_H;
-                    w = 34 * GRID_W;
-                    h = 48 * GRID_H;
+                    w = 48 * GRID_W;
+                    h = 88 * GRID_H;
                 };
                 class DLCBox: A3A_ControlsGroup {
                     idc = A3A_IDC_SETUP_DLCBOX;
                     x = 4 * GRID_W;
                     y = 8 * GRID_H;
-                    w = 34 * GRID_W;
-                    h = 48 * GRID_H;
+                    w = 48 * GRID_W;
+                    h = 88 * GRID_H;
                 };
 
                 class AddonVicsLabel: A3A_SectionLabelRight {
                     idc = -1;
                     text = $STR_antistasi_dialogs_setup_addonvics;
-                    x = 4 * GRID_W;
-                    y = 56 * GRID_H;
-                    w = 34 * GRID_W;
+                    x = 58 * GRID_W;
+                    y = 4 * GRID_H;
+                    w = 48 * GRID_W;
                     h = 4 * GRID_H;
                 };
                 class AddonVicsBackground: A3A_Background {
                     idc = -1;
-                    x = 4 * GRID_W;
-                    y = 60 * GRID_H;
-                    w = 34 * GRID_W;
-                    h = 36 * GRID_H;
+                    x = 58 * GRID_W;
+                    y = 8 * GRID_H;
+                    w = 48 * GRID_W;
+                    h = 88 * GRID_H;
                 };
                 class AddonVicsBox: A3A_ControlsGroup {
                     idc = A3A_IDC_SETUP_ADDONVICSBOX;
-                    x = 4 * GRID_W;
-                    y = 60 * GRID_H;
-                    w = 34 * GRID_W;
-                    h = 36 * GRID_H;
+                    x = 58 * GRID_W;
+                    y = 8 * GRID_H;
+                    w = 48 * GRID_W;
+                    h = 88 * GRID_H;
                 };
             };
         };

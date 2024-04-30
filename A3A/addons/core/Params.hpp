@@ -202,7 +202,14 @@ class Params
         title = $STR_A3AU_hide_enemy_markers_recon_plane_distance;
         values[] = {100, 300, 500, 1000, 1500, 2000};
         texts[] = {"100", "300", "500", "1000", "1500", "2000"};
-        default = 2;
+        default = 500;
+    };
+    class totalVictory
+    {
+        title = $STR_A3AU_total_victory;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
     };
     class staminaEnabled
     {

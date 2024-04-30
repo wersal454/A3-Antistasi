@@ -73,7 +73,7 @@ private _artillery = ["B_MBT_01_arty_F","B_MBT_01_mlrs_F"];
 ["magazines", createHashMapFromArray [
     ["B_MBT_01_arty_F",["32Rnd_155mm_Mo_shells", "2Rnd_155mm_Mo_Cluster", "6Rnd_155mm_Mo_mine"]],
     ["B_MBT_01_mlrs_F",["12Rnd_230mm_rockets", "12Rnd_230mm_rockets_cluster"]],
-    ["APC_Wheeled_01_mortar_base_lxWS", "64Rnd_60mm_Mo_Shells_lxWS"]
+    ["APC_Wheeled_01_mortar_base_lxWS", ["64Rnd_60mm_Mo_Shells_lxWS"]]
 ]] call _fnc_saveToTemplate;
 
 ["uavsAttack", ["B_UAV_02_dynamicLoadout_F", "B_UAV_05_F", "B_T_UAV_03_dynamicLoadout_F"]] call _fnc_saveToTemplate;
@@ -139,7 +139,7 @@ if (_hasWs) then {
     _militiaAPCs pushBack "APC_Wheeled_01_command_base_lxWS";
     _artillery pushBack "APC_Wheeled_01_mortar_base_lxWS";
     _helisLight pushback "B_D_Heli_Light_01_lxWS";
-    _helisLightAttack pushback "B_D_Heli_Light_01_dynamicLoadout_lxWS";
+    _vehiclesHelisLightAttack pushback "B_D_Heli_Light_01_dynamicLoadout_lxWS";
     _helisAttack pushback "B_D_Heli_Attack_01_dynamicLoadout_lxWS";
     _transportHelicopters pushback "B_D_Heli_Transport_01_lxWS";
 };

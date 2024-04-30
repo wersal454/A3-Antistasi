@@ -101,7 +101,7 @@ if (_hasJets) then {
 	_planesCAS pushback "B_Plane_Fighter_01_F";
 	_planesAA pushback "B_Plane_Fighter_01_Stealth_F";
 	_radar pushback "B_Radar_System_01_F";
-	_SAM pushback ["B_SAM_System_03_F","B_SAM_System_02_F","B_SAM_System_01_F","B_AAA_System_01_F"];
+	_SAM append ["B_SAM_System_03_F","B_SAM_System_02_F","B_SAM_System_01_F","B_AAA_System_01_F"];
 	_howitzers pushBack "B_Ship_Gun_01_F";
 };
 ["howitzerMagazineHE", "magazine_ShipCannon_120mm_HE_shells_x32","magazine_ShipCannon_120mm_HE_cluster_shells_x2"] call _fnc_saveToTemplate;

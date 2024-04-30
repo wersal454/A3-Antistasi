@@ -27,9 +27,9 @@ private _vehiclesLightArmed = ["I_C_Offroad_02_LMG_F", "I_G_Offroad_01_armed_F"]
 private _vehiclesAT = ["I_G_Offroad_01_AT_F", "I_C_Offroad_02_AT_F"];
 private _vehicleAA = [];
 
-["vehiclesBoat", ["I_C_Boat_Transport_02_F"]] call _fnc_saveToTemplate;
+["vehiclesBoat", ["I_C_Boat_Transport_02_F" , "I_SDV_01_F" , "I_Boat_Armed_01_minigun_F" , "O_Boat_Armed_01_hmg_F"]] call _fnc_saveToTemplate;
 
-["vehiclesPlane", ["I_C_Plane_Civil_01_F"]] call _fnc_saveToTemplate;
+["vehiclesPlane", ["C_Plane_Civil_01_F","C_Plane_Civil_01_racing_F"]] call _fnc_saveToTemplate;
 
 private _vehiclesCivCar = ["C_Offroad_01_F", "C_Hatchback_01_F", "C_Hatchback_01_sport_F", "C_Offroad_02_unarmed_F", "C_SUV_01_F"];
 ["vehiclesCivTruck", ["C_Truck_02_transport_F", "C_Van_01_transport_F", "C_Van_02_transport_F", "C_Van_02_vehicle_F"]] call _fnc_saveToTemplate;
@@ -324,7 +324,7 @@ if (_hasRF) then {
 };
 ["uniforms", _rebUniforms + _dlcUniforms] call _fnc_saveToTemplate;
 
-private _rebUniforms = [
+private _headgear = [
     "H_Booniehat_khk_hs",
     "H_Booniehat_khk",
     "H_Booniehat_tan",
@@ -437,7 +437,7 @@ if (_hasLawsOfWar) then {
     ];
 };
 
-["headgear", _dlcheadgear] call _fnc_saveToTemplate;
+["headgear", _headgear + _dlcheadgear] call _fnc_saveToTemplate;
 
 /////////////////////
 ///  Identities   ///
@@ -456,7 +456,7 @@ _loadoutData set ["watches", ["ItemWatch"]];
 _loadoutData set ["compasses", ["ItemCompass"]];
 _loadoutData set ["binoculars", ["Binocular"]];
 
-_loadoutData set ["uniforms", _rebUniforms];
+_loadoutData set ["uniforms", _rebUniforms + _dlcUniforms];
 
 _loadoutData set ["glasses", ["G_Shades_Black", "G_Shades_Blue", "G_Shades_Green", "G_Shades_Red", "G_Aviator", "G_Spectacles", "G_Spectacles_Tinted", "G_Sport_BlackWhite", "G_Sport_Blackyellow", "G_Sport_Greenblack", "G_Sport_Checkered", "G_Sport_Red", "G_Squares", "G_Squares_Tinted"]];
 _loadoutData set ["goggles", ["G_Lowprofile"]];

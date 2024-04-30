@@ -72,6 +72,7 @@ private _unitEh = _unit addEventHandler ["HandleDamage", {
 }];
 
 selectPlayer _unit;
+// group player selectLeader _unit; ///control should remain in player hands
 //otherwise unit will lose his identity
 [_unit, _face, _speaker] call A3A_fnc_setIdentity;
 
