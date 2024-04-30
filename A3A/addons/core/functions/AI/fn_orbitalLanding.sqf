@@ -18,6 +18,30 @@ _landpos = _positionX getPos [_dist,random 360];
 
 } forEach units _groupX;
 
+private _podseats = 0;
+
+_podseats = [typeOf _pod, true] call BIS_fnc_crewCount;
+
+private _groupcount = count (units _groupX);
+
+if (_podseats >= _groupcount) then {
+	{
+		_x assignAsCargo _pod;
+		_x moveInCargo _pod;
+	} forEach units _groupX;
+};
+
+private _wp2 = _groupX addWaypoint [(position (leader _groupX)), 0];
+_wp2 setWaypointType "MOVE";
+_wp2 setWaypointStatements ["true", "if !(local this) exitWith {}; (group this) spawn A3A_fnc_attackDrillAI"];
+_wp2 = _groupX addWaypoint [_positionX, 1];
+_wp2 setWaypointType "MOVE";
+_wp2 setWaypointStatements ["true","if !(local this) exitWith {}; {if (side _x != side this) then {this reveal [_x,4]}} forEach allUnits"];
+_wp2 = _groupX addWaypoint [_positionX, 2];
+_wp2 setWaypointType "SAD";
+
+{_x setBehaviour "AWARE";} forEach units _Pod;
+
 _pod allowDamage false;
 
 _pod lock 2;
@@ -26,7 +50,7 @@ _pod setPos [(_landpos select 0),(_landpos select 1), 3000];
 _pod setVelocity [0,0,-150];
 [_pod] call SCRT_fnc_effect_orbitalDropEffect;
 /* _pod setVelocity [0,0,-1]; */
-_bomb ="ammo_Missile_Cruise_01" createVehicle [(getPos _pod select 0),(getPos _pod  select 1),0]; //bomb should be "smaller"
+_bomb ="Sh_155mm_AMOS" createVehicle [(getPos _pod select 0),(getPos _pod  select 1),0]; //bomb doesn't go off, sad
 sleep 0.2;
 _pod setPos [(getPos _pod select 0),(getPos _pod  select 1),1];
 
@@ -43,11 +67,35 @@ _pod animateDoor ['door_R', 1];
 _pod animateDoor ["Door_rear_source", 1, true];
 [_pod] call A3A_fnc_smokeCoverAuto;
 
+diag_log _groupcount;
+diag_log _groupcount;
+diag_log _groupcount;
+if (_podseats >= _groupcount) then {
+private _second = false;
 {
-	unassignVehicle _x;
- 	moveOut _x;
-}forEach units _groupX;
-
+  if (_second) then {
+    _x action ["Eject", _pod];
+    unassignVehicle _x;
+    _second = false;
+  } else {
+    _second = true;
+    _x leaveVehicle _pod;
+  };
+  private _second = true;
+} forEach units _groupX;
+};
+sleep 2;
+private _SafeMovePos = [];
+if (_podseats < _groupcount) then {
+	{
+		diag_log 123456;
+		diag_log 123456;
+		diag_log 123456;
+		_SafeMovePos = [getPos _pod, 1, 3, 3, 1, 20, 0] call BIS_fnc_findSafePos;
+		_x setPos _SafeMovePos;
+		sleep 0.02;
+	} forEach units _groupX;
+};
 
 /* private _dist = objNull;
 private _landingpositions = [];
@@ -93,7 +141,6 @@ if (_podseats == 0) then {
 	};
 }forEach _pods;
 
-
 ///here we should split groups and put them inside pods(if possible)
 private _groups = [];
 {
@@ -117,7 +164,6 @@ private _i = 0;
 	};
 	_i = _i + 1;
 }forEach _pods;
-
 
 ////should probabaly use dummes to launch, just like in crashsite mission
 private _i = 0;
@@ -147,20 +193,6 @@ _wp setWaypointBehaviour "CARELESS";
 _wp setWaypointSpeed "FULL";
 _wp setWaypointCompletionRadius 3; */
 
-
-
 /* waitUntil {sleep 1; (not alive _veh) or ((count assignedCargo _veh == 0) and (([_veh] call A3A_fnc_countAttachedObjects) == 0))};
 
 */
-
-
-private _wp2 = _groupX addWaypoint [(position (leader _groupX)), 0];
-_wp2 setWaypointType "MOVE";
-_wp2 setWaypointStatements ["true", "if !(local this) exitWith {}; (group this) spawn A3A_fnc_attackDrillAI"];
-_wp2 = _groupX addWaypoint [_positionX, 1];
-_wp2 setWaypointType "MOVE";
-_wp2 setWaypointStatements ["true","if !(local this) exitWith {}; {if (side _x != side this) then {this reveal [_x,4]}} forEach allUnits"];
-_wp2 = _groupX addWaypoint [_positionX, 2];
-_wp2 setWaypointType "SAD";
-
-{_x setBehaviour "CARELESS";} forEach units _Pod;

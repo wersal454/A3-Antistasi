@@ -49,7 +49,7 @@ _ps0 attachTo [_object, [0, 0, 1]];
 _ps1 attachTo [_object, [0, 0, 1]];
 _ps2 attachTo [_object, [0, 0, 1]];
 
-setAperture 5;
+//setAperture 5;
 waitUntil {sleep 0.1; getPos _object select 2 < 2500};
 playSound3D [QPATHTOFOLDER(Sounds\Misc\Sonic.ogg), _object, false, getPosASL _object, 5, 1, 7000];
 
@@ -70,7 +70,7 @@ player spawn {
 
 sleep 0.5;
 
-setAperture 0;
+//setAperture 0;
 
 waitUntil { sleep 0.01; getPos _object select 2 < 7 }; ///0.01 because we don't wanna bounce
 
