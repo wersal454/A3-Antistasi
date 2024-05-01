@@ -44,7 +44,7 @@ if (_airports isEqualTo []) exitWith {
 };
 
 private _airport = _airports selectRandomWeighted _weights;
-private _launcherType = ["B_SAM_System_03_F", "O_SAM_System_04_F"] select (_side == Invaders);
+private _launcherType = ["B_Ship_MRLS_01_F", "B_Ship_MRLS_01_F"] select (_side == Invaders);
 private _launcher = [_launcherType, markerPos _airport, 50, 5, true] call A3A_fnc_safeVehicleSpawn;
 
 private _group = [_side, _launcher] call A3A_fnc_createVehicleCrew;
