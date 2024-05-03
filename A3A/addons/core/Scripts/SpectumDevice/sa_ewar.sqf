@@ -122,8 +122,18 @@ sa_jamm={
 			if(_chance>=(random 1)) then {
 				_unit=_x select 0 select 0;
 				[_unit] remoteExec ["fnc_sa_local_add_to_jamm_list",[0,-2] select isDedicated];
-				if!(typeof _unit in sa_ins_list) then {
-					group _unit spawn 
+				if!(typeof _unit in sa_ins_list) then { ///change it or simply delete it
+					
+					{
+						_unit deleteVehicleCrew _x;
+					} forEach crew _unit;
+					
+					_unit setHit ["motor",1,true, objNull, objNull, true]
+					//object setHit [part, damage, useEffects, killer, instigator, breakRotor]
+					///damage turret instead of deleting gunner (for UGV(or leave it as is))
+
+					_unit deleteVehicleCrew gunner _unit;
+					/* group _unit spawn 
 					{
 						[_this, (currentWaypoint _this)] setWaypointPosition [getPosASL ((units _this) select 0), -1];
 						sleep 0.1;
@@ -131,7 +141,7 @@ sa_jamm={
 						{
 							deleteWaypoint [_this, _i];
 						};
-					};
+					}; */
 				}
 				else {
 					if(!isAutonomous _unit) then {
