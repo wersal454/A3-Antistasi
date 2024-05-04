@@ -112,6 +112,8 @@ private _firedEH = _plane addEventHandler ["Fired", {
                 sleep (0.05 + (_plane getVariable "mainGunReload"));
                 //Debug_2("Firing followup %1 burst with mode %2", _weapon, _mode); 
                 (driver _plane) forceWeaponFire [_weapon, _mode];
+                (gunner _plane) forceWeaponFire [_weapon, _mode];
+                (commander _plane) forceWeaponFire [_weapon, _mode];
             };
         };
     };
@@ -139,6 +141,8 @@ private _firedEH = _plane addEventHandler ["Fired", {
                 sleep (0.1 + (_plane getVariable "rocketReload"));
                 //Debug_2("Firing followup %1 burst with mode %2", _weapon, _mode); 
                 (driver _plane) forceWeaponFire [_weapon, _mode];
+                (gunner _plane) forceWeaponFire [_weapon, _mode];
+                (commander _plane) forceWeaponFire [_weapon, _mode];
             };
         };
     };

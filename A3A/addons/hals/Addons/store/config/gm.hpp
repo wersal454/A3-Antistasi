@@ -230,7 +230,7 @@
 
 		class opticsgm
 		{
-			displayName = "GM Optics";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_gm", localize "STR_A3AU_sights"]);
 			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 
 			class gm_pso1_gry {

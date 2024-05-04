@@ -137,7 +137,6 @@ if (_hasWs) then {
 
 //If GM cdlc + extra AAF mod
 
-private _hasAAFGM = ["gmx_aaf_m113a2dk_wdl"] call A3U_fnc_hasAddon;
 if (isClass (configFile >> "cfgVehicles" >> "gmx_aaf_m113a2dk_wdl") && _hasGM) then {
     _staticMG pushBack "gmx_aaf_mg3_aatripod";
     _staticAT pushBack "gmx_aaf_milan_launcher_tripod";

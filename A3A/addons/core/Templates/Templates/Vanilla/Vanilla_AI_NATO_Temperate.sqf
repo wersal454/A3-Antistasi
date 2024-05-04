@@ -69,7 +69,7 @@ private _artillery = ["B_T_MBT_01_arty_F","B_T_MBT_01_mlrs_F"];
 ["magazines", createHashMapFromArray [
     ["B_T_MBT_01_arty_F",["32Rnd_155mm_Mo_shells", "2Rnd_155mm_Mo_Cluster", "6Rnd_155mm_Mo_mine"]],
     ["B_T_MBT_01_mlrs_F",["12Rnd_230mm_rockets", "12Rnd_230mm_rockets_cluster"]],
-    ["APC_Wheeled_01_mortar_base_lxWS",["64Rnd_60mm_Mo_Shells_lxWS"]]
+    ["APC_Wheeled_01_mortar_base_lxWS",["64Rnd_60mm_Mo_guided_lxWS"]]
 ]] call _fnc_saveToTemplate;
 
 ["uavsAttack", ["B_T_UAV_03_dynamicLoadout_F", "B_UAV_05_F", "B_UAV_02_dynamicLoadout_F"]] call _fnc_saveToTemplate;
