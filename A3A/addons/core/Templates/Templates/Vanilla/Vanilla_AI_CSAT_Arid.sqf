@@ -64,6 +64,8 @@ private _planesAA = ["O_Plane_CAS_02_dynamicLoadout_F"];
 private _planesTransport = [];
 if (_hasApex) then {
 	_planesTransport pushback "O_T_VTOL_02_infantry_dynamicLoadout_F";
+    _planesCAS pushback "O_T_VTOL_02_infantry_dynamicLoadout_F";
+    _planesAA pushback "O_T_VTOL_02_infantry_dynamicLoadout_F";
 };
 
 private _lightHelicopters = ["O_Heli_Light_02_unarmed_F"];
@@ -183,9 +185,9 @@ if (_hasWs) then {
 ["variants", [
     ["Land_Pod_Heli_Transport_04_covered_F", ["Black",1]],
     ["I_Truck_02_MRL_F", ["Opfor", 1]],
-    ["O_Heli_Transport_04_bench_F", ["Black", 0.4, "Opfor", 0.6]],
-    ["O_Heli_Transport_04_covered_F", ["Black", 0.4, "Opfor", 0.6]],
-    ["O_Heli_Attack_02_dynamicLoadout_F", ["Black", 0.4, "Opfor", 0.6]],
+    ["O_Heli_Transport_04_bench_F", ["Black", 0.3, "Opfor", 0.7]],
+    ["O_Heli_Transport_04_covered_F", ["Black", 0.3, "Opfor", 0.7]],
+    ["O_Heli_Attack_02_dynamicLoadout_F", ["Black", 0.3, "Opfor", 0.7]],
     ["O_LSV_02_armed_F", ["Black", 0.3, "Arid",0.7]],
     ["O_LSV_02_unarmed_F", ["Black", 0.3, "Arid",0.7]],
     ["O_LSV_02_AT_F", ["Black", 0.3, "Arid",0.7]],

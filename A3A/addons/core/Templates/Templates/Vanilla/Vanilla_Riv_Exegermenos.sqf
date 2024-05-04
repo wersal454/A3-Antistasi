@@ -54,7 +54,7 @@ private _lightUnarmedVehicles = [];
 private _apc = [];
 private _tanks = [];
 private _helis = ["B_Heli_Light_01_F","I_Heli_light_03_unarmed_F"];
-private _uav = [];
+private _uav = ["O_UAV_01_F"];
 private _trucks = ["O_G_Van_01_transport_F"];
 
 if (_hasApex) then {
@@ -1191,7 +1191,7 @@ private _saboteurTemplate = {
 		[selectRandomWeighted [[], 1.5, "facewear", 1]] call _fnc_setFacewear;
 	};
 	[selectRandom ["vests", "heavyVests"]] call _fnc_setVest;
-	[["heavyUniforms", "uniforms"]] call _fnc_setUniform;
+	[["heavyUniforms", "uniforms"] call _fnc_fallback] call _fnc_setUniform;
 	["backpacks"] call _fnc_setBackpack;
 
 	["grenadeLaunchers"] call _fnc_setPrimary;
@@ -1228,7 +1228,7 @@ private _explosivesExpertTemplate = {
 		[selectRandomWeighted [[], 1.5, "facewear", 1]] call _fnc_setFacewear;
 	};
 	["heavyVests"] call _fnc_setVest;
-	[["heavyUniforms", "uniforms"]] call _fnc_setUniform;
+	[["heavyUniforms", "uniforms"] call _fnc_fallback] call _fnc_setUniform;
 	["backpacks"] call _fnc_setBackpack;
 
 	[selectRandom ["rifles", "carbines"]] call _fnc_setPrimary;

@@ -1599,6 +1599,10 @@
                 <Korean>MRAP</Korean>
                 <French>MRAP</French>
             </Key>
+            <Key ID="STR_qrf_marker_heli">
+                <Original>HELI</Original>
+                <Russian>Вертолёт</Russian>
+            </Key>
             <Key ID="STR_qrf_marker_apc">
                 <Original>APC</Original>
                 <Russian>БТР</Russian>
@@ -1622,10 +1626,26 @@
             </Key>
             <Key ID="STR_qrf_marker_light_apc">
                 <Original>Light APC</Original>
-                <Russian>лёгкий бронетранспортёр</Russian>
+                <Russian>лёгкий БТР</Russian>
                 <Chinesesimp>轻型装甲运兵车</Chinesesimp>
                 <Korean>경장갑차</Korean>
                 <French>APC léger</French>
+            </Key>
+            <Key ID="STR_qrf_marker_artillery">
+                <Original>Artillery</Original>
+                <Russian>артиллерия</Russian>
+            </Key>
+            <Key ID="STR_qrf_marker_ifv">
+                <Original>IFV</Original>
+                <Russian>БМП</Russian>
+            </Key>
+            <Key ID="STR_qrf_marker_airborne">
+                <Original>Airborne</Original>
+                <Russian>воздушно-десантная техника</Russian>
+            </Key>
+            <Key ID="STR_qrf_marker_ugv">
+                <Original>UGV</Original>
+                <Russian>БПА</Russian>
             </Key>
             <Key ID="STR_qrf_marker_aa">
                 <Original>AA</Original>
@@ -1746,6 +1766,10 @@
                 <Korean>포병 표적</Korean>
                 <French>Cible d'artillerie</French>
             </Key>
+            <Key ID="STR_marker_logistics_heli">
+                <Original>Logistics helicopter</Original>
+                <Russian>Вертолёт логистики</Russian>
+            </Key>
             <Key ID="STR_marker_qrf">
                 <Original>Quick Reaction Force</Original>
                 <Russian>Силы быстрого реагирования</Russian>
@@ -1822,6 +1846,10 @@
                 <Chinesesimp>军火商</Chinesesimp>
                 <Korean>암거래상</Korean>
                 <French>Marchand d'armes</French>
+            </Key>
+            <Key ID="STR_marker_civ_convoy">
+                <Original>Civillian convoy</Original>
+                <Russian>Конвой гражданских</Russian>
             </Key>
             <Key ID="STR_marker_convoy_objective">
                 <Original>Convoy Objective</Original>

@@ -135,7 +135,6 @@ if (_hasWs) then {
 
 //If GM cdlc + extra AAF mod
 
-private _hasAAFGM = ["gmx_aaf_m113a2dk_wdl"] call A3U_fnc_hasAddon;
 if (isClass (configFile >> "cfgVehicles" >> "gmx_aaf_m113a2dk_wdl") && _hasGM) then {
     _staticMG pushBack "gmx_aaf_mg3_aatripod";
     _staticAT pushBack "gmx_aaf_milan_launcher_tripod";
@@ -214,7 +213,6 @@ if (_hasCSLA) then {
 ["vehiclesLightArmed", _armedVehicles] call _fnc_saveToTemplate;
 ["vehiclesLightTanks",  _lightTanks] call _fnc_saveToTemplate;
 ["vehiclesAirborne", _airborneVehicles] call _fnc_saveToTemplate;
-["vehiclesMilitiaAPCs", _militiaAPCs] call _fnc_saveToTemplate;
 ["vehiclesAA", _aa] call _fnc_saveToTemplate;
 ["vehiclesCargoTrucks", _cargoTrucks] call _fnc_saveToTemplate;
 ["vehiclesTanks", _tanks] call _fnc_saveToTemplate;

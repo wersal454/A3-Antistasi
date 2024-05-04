@@ -29,10 +29,12 @@ class CfgFunctions
             class enemyGarrison {};
             class enemyReturnToBase {};
             class fastrope {};
+            class fastropeVTOL {};
             class findSafeRoadToUnload {};
             class fleeToSide {};
             class guardDog {};
             class hasRadio {};
+            class HeliDoors {};
             class help {};
             class hideInBuilding {};
             class inmuneConvoy {};
