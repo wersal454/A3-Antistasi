@@ -58,6 +58,10 @@ _uav addEventHandler ["Fired", {
 _wp = _groupVeh addWayPoint [_suppCenter, 0];
 _wp setWaypointBehaviour "AWARE";
 _wp setWaypointType "SAD";
+/* _wp setWaypointType "LOITER";
+_wp setWaypointLoiterType "CIRCLE_L";
+_wp setWaypointSpeed "NORMAL";
+_wp setWaypointLoiterRadius 1200; */
 _groupVeh setCurrentWaypoint _wp;
 _uav flyInHeight 500;           // maybe not necessary if we lock the waypoint
 _groupVeh lockWP true;          // prevent exiting the SAD waypoint
@@ -120,7 +124,8 @@ while {time < _timeout && canMove _uav} do
         //Send the laser target to the launcher
         _side reportRemoteTarget [_laser, 300];
         _laser confirmSensorTarget [_side, true];
-        _uav fireAtTarget [_currentTarget];
+        _uav reveal [_laser, 4]; 
+        _uav fireAtTarget [_laser, currentMuzzle (gunner _uav)];
         if !(alive _currentTarget) exitWith {
             _suppTarget resize 0;
             Debug_1("%1 skips target, as it is already dead", _supportName);
