@@ -41,7 +41,7 @@ if (_airports isEqualTo []) exitWith {
 };
 
 private _airport = _airports selectRandomWeighted _weights;
-private _launcherType = "B_Ship_MRLS_01_F";
+private _launcherType =["B_Ship_MRLS_01_F", "B_Ship_MRLS_01_F"] select (_side == Invaders);
 private _launcher = [_launcherType, markerPos _airport, 50, 5, true] call A3A_fnc_safeVehicleSpawn;
 
 private _group = [_side, _launcher] call A3A_fnc_createVehicleCrew;
@@ -59,11 +59,11 @@ if (_target isEqualType objNull and {!isNull _target}) then {
 };
 
 // name, side, suppType, center, radius, [target, targpos]
-private _suppData = [_supportName, _side, "MISSILE", _targPos, 8000, _targArray];
+private _suppData = [_supportName, _side, "CRUISEMISSILE", _targPos, 8000, _targArray];
 A3A_activeSupports pushBack _suppData;
 [_suppData, _launcher, _group, _delay, _reveal] spawn A3A_fnc_SUP_cruiseMissileRoutine; 
 
-[_reveal, _side, "MISSILE", _targPos, _delay] spawn A3A_fnc_showInterceptedSetupCall;
+[_reveal, _side, "CRUISEMISSILE", _targPos, _delay] spawn A3A_fnc_showInterceptedSetupCall;
 // Vehicle cost + extra support cost for balance
 //(A3A_vehicleResourceCosts get _launcherType) + 100;
 200;
