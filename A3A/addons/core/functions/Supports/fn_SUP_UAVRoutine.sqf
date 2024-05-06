@@ -28,6 +28,7 @@ private _uav = createVehicle [_planeType, _spawnPos, [], 0, "FLY"];
 _groupVeh = group driver _uav;
 { [_x, nil, false, _resPool] call A3A_fnc_NATOinit } forEach (crew _uav);           // arguable
 [_uav, _side, _resPool] call A3A_fnc_AIVEHinit;
+private _gunner = gunner _uav;
 
 _uav addEventHandler ["Fired", {
     params ["_uav", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
@@ -69,6 +70,99 @@ _groupVeh lockWP true;          // prevent exiting the SAD waypoint
 // do we just run for 20mins and then RTB?
 private _timeout = time + 1200;
 private _enemySide = [Invaders, Occupants] select (_side == Invaders);
+_uav addEventHandler
+[
+    "Fired",
+    {
+        params ["_uav", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
+
+        private _target = _uav getVariable ["currentTarget", objNull]; //what target?
+        if(_target isEqualTo objNull) exitWith {};//what?
+
+        if(_target isEqualType objNull) then
+        {
+            _target = getPosASL _target;
+        };
+
+        /* if(_weapon == "rockets_Skyfire") then ///something else or remove completly
+        {}; */
+        _target = _target apply {_x + (random 50) - 25};
+        [_projectile, _target] spawn
+        {
+            params ["_projectile", "_target"];
+            sleep 0.25;
+            private _speed = (speed _projectile)/3.6;
+            while {!(isNull _projectile) && {alive _projectile}} do
+            {
+                sleep 0.25;
+                private _dir = vectorNormalized (_target vectorDiff (getPosASL _projectile));
+                _projectile setVelocity (_dir vectorMultiply _speed);
+                _projectile setVectorDir _dir;
+            };
+        };
+        
+    }
+];
+{
+    private _fnc_executeFireOrder =
+    {
+        Debug_1("Fireorder %1 recieved", _this);
+        params ["_gunner", "_target", "_gunshots", "_belt", "_rocketShots"];
+        private _gunship = vehicle _gunner;
+        private _steps = _gunshots max _rocketShots;
+
+        //Calculate used ammo
+        private _rocketsLeft = _gunship getVariable ["Rockets", 0];
+        _rocketsLeft = _rocketsLeft - _rocketShots;
+        if(_rocketsLeft <= 0) then {_gunship setVariable ["OutOfAmmo", true]};
+        _gunship setVariable ["Rockets", _rocketsLeft];
+
+        private _HEUsed = {_x} count _belt;
+        private _APUsed = 3 - _HEUsed;
+
+        private _APLeft = _gunship getVariable ["AP_Ammo", 0];
+        _APLeft = _APLeft - ((_APUsed/3) * _gunshots);
+        _gunship setVariable ["AP_Ammo", _APLeft];
+
+        private _HELeft = _gunship getVariable ["HE_Ammo", 0];
+        _HELeft = _HELeft - ((_HEUsed/3) * _gunshots);
+        _gunship setVariable ["HE_Ammo", _HELeft];
+
+        if(_HELeft <= 0 || _APLeft <= 0) then
+        {
+            _gunship setVariable ["OutOfAmmo", true];
+        };
+
+        _gunship setVariable ["currentTarget", _target];
+
+        _gunner reveal [_target, 3];
+        _gunner doTarget _target;
+        _gunner doWatch _target;
+
+        //Simulate targeting time (cause the fucking AI does not targets for real)
+        sleep 0.3;
+
+        for "_i" from 1 to _steps do
+        {
+            if(_gunshots > 0) then
+            {
+                private _muzzle = if(_belt select ((_i - 1) % 3)) then {"HE"} else {"AP"};
+                _gunner forceWeaponFire [_muzzle, "close"];
+                _gunshots = _gunshots - 1;
+            };
+            if(_rocketShots > 0) then
+            {
+                _gunner forceWeaponFire ["rockets_Skyfire", "Burst"];
+                _rocketShots = _rocketShots - 1;
+            };
+            sleep 0.1;
+        };
+
+        _gunner doTarget objNull;
+        _gunner doWatch objNull;
+        _gunship setVariable ["currentTarget", nil];
+    };
+};
 while {time < _timeout && canMove _uav} do
 {
     waitUntil { sleep 5; _uav distance2d _suppCenter < 750 || !alive _uav};
@@ -118,6 +212,7 @@ while {time < _timeout && canMove _uav} do
         //Creates the laser target to mark the target
         _laser = createVehicle ["LaserTargetE", (getPos _currentTarget), [], 0, "CAN_COLLIDE"];
         Info_1("Trying to attack laser to %1", _currentTarget);
+        _uav setVariable ["currentTarget", _currentTarget];
         _laser attachTo [_currentTarget, [0,0,0]];
         _uav doWatch _laser;
 
@@ -127,6 +222,9 @@ while {time < _timeout && canMove _uav} do
         _uav reveal [_laser, 4]; 
         _uav fireAtTarget [_laser, currentMuzzle (gunner _uav)];
         if !(alive _currentTarget) exitWith {
+            _uav doTarget objNull; /// _gunner
+            _uav doWatch objNull; /// _gunner
+            _uav setVariable ["currentTarget", nil];
             _suppTarget resize 0;
             Debug_1("%1 skips target, as it is already dead", _supportName);
             continue;

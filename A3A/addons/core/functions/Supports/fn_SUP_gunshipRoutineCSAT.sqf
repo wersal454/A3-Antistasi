@@ -28,7 +28,7 @@ _gunship addEventHandler
         params ["_gunship", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
 
         private _target = _gunship getVariable ["currentTarget", objNull];
-        if(_target isEqualTo objNull) exitWith {};
+        if(_target isEqualTo objNull) exitWith {}; //what?
 
         if(_target isEqualType objNull) then
         {
