@@ -91,35 +91,33 @@ private _convoyobj = [];
 private _cargoSpace = objNull;
 private _cargospaceResized = objNull;
 private _cargo = objNull;
-private _fnc_fillcargo = {
-	params ["_vehObj","_civVehicles"];
-	private _vehdriver = driver _vehObj;
-	private _vehObjgroup = group _vehdriver;
-    if (civTraffic isEqualTo 2) then {
-	    _cargoSpace = [_civVehicles, true] call BIS_fnc_crewCount;
+/* private _fnc_fillcargo = {
+    params ["_vehObj", "_civVehicles"];
+    private _vehdriver = driver _vehObj;
+    private _vehObjgroup = group _vehdriver;
+
+    if (civTraffic >= 2 ) then {
+        
+        _cargoSpace = [_civVehicles, true] call BIS_fnc_crewCount;
         _cargoSpace = _cargoSpace - 1;
-	    //_vehObj setVehicleLock "LOCKED";
-	    /* while {_cargoSpace != 1} do { ///driver already exists
-            
-        }; */
-        for _i from 1 to _cargoSpace do {
-            _cargo = [_vehObjgroup, FactionGet(civ,"unitMan"), getPos _vehObj, [], 10] call A3A_fnc_createUnit;
-            _cargo moveInAny _vehObj; 
+
+        for "_i" from 1 to _cargoSpace do {
+            private _cargo = [_vehObjgroup, FactionGet(civ, "unitMan"), getPos _vehObj, [], 10] call A3A_fnc_createUnit;
+
+            _cargo assignAsCargoIndex [_vehObj, _i];  
             _cargo disableAI "MOVE";
-		    /* _cargoSpace = _cargoSpace - 1; //round random [1,3,5]; 
-		    if (_cargoSpace < 1) then{
-			    _cargospace = 1;
-		    }; */
-            group _cargo deleteGroupWhenEmpty true;
+
+            _cargo moveInCargo [_vehObj, _i];
+            group _cargo setVariable ["deleteGroupWhenEmpty", true];
         };
-	};
-};
+    };
+}; */
 
 for '_i' from round random 3 to 5 do
 {
     private _civVehicles = selectRandomWeighted ((_faction get "vehiclesCivCar") + (_faction get "vehiclesCivIndustrial") + (_faction get "vehiclesCivFuel"));
 	private _vehObj = [_civVehicles, "civillian"] call _fnc_spawnConvoyVehicle;
-	[_vehObj,_civVehicles] call _fnc_fillcargo;
+	//[_vehObj,_civVehicles] call _fnc_fillcargo;
 	_convoyobj pushBack _vehObj;
 	_convoy pushBack _civVehicles;
 };
@@ -134,7 +132,7 @@ private _text = (localize "STR_marker_civ_convoy");
     sleep 2;
 } forEach _convoyobj;
 
-[_convoyobj select 0, localize "STR_marker_civ_convoy", false] spawn A3A_fnc_inmuneConvoy;			// Disabled the stuck-vehicle hacks
+[_convoyobj select 0, localize "STR_marker_civ_convoy", true] spawn A3A_fnc_inmuneConvoy;			// Disabled the stuck-vehicle hacks
 
 private _civGroups = [];
 
