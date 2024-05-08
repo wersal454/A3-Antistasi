@@ -35,6 +35,26 @@ class CfgFunctions
             class emission {};
             class fillMapAnomalies {};
         };
+        class D37Dome
+        {
+            file = QPATHTOFOLDER(functions\D37-Dome);
+            class guidanceLaws {};
+            class handleDome {};
+            class handleTargets {};
+            class initShells {};
+            class pickTarget {};
+            class postInitEH {postInit	= 1;};
+            class watchQuality {};
+        };
+        class D37cram
+        {
+            file = QPATHTOFOLDER(functions\D37_cram);
+            class handleCRAM {};
+            class handleCRAMinit {};
+            class handleCuratorPlacement {};
+            class pickTargetCRAM {};
+            class postInit {postInit = 1;};
+        };
         class Utility
         {
             file = QPATHTOFOLDER(functions\Utility);
