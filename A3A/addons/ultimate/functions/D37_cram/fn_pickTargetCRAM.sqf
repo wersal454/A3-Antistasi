@@ -1,13 +1,17 @@
-private _entities = param[0];
-private _unit = param[1];
-private _tgtLogic = param[2];
+private _entities 	= param[0];
+private _unit 		= param[1];
+private _tgtLogic 	= param[2];
 
 //Pick one
 private _target = objNull;
 private _wep = currentWeapon _unit;
 _p = -1;
 _lastP = _p;
-_first = true;
+
+if(_tgtLogic == 2) then {
+	_lastP = 100000;
+};
+
 _g = 9.81;
 {
 	switch (_tgtLogic) do {
@@ -18,14 +22,13 @@ _g = 9.81;
 		//Distance/Speed bias + direction
 		case 1: {
 			_vel = velocity _x;
-			_dist = _unit distance _x;
+			_dist = _unit distance2d _x;
 			_aimQuality = _unit aimedAtTarget [_x, _wep];
-			_p = abs((_dist / _distance) -(_vel select 2)/100 + _aimQuality*2);
+			_p = abs((_dist / 3000) -(_vel select 2)/100 + _aimQuality*2);
 
-			if(_p > _lastP or _first) then {
+			if(_p >= _lastP) then {
 				_target = _x;
 				_lastP = _p;
-				_first = false;
 			};
 		};
 		//Threat bias
@@ -47,10 +50,9 @@ _g = 9.81;
 			_nPos = [_spaceX, _spaceY, 0];
 			_p = (_unit distance2d _nPos) + (_t * 8);
 
-			if(_p < _lastP or {_first}) then {
+			if(_p <= _lastP) then {
 				_target = _x;
 				_lastP = _p;
-				_first = false;
 			};
 		};
 		default {_target = objNull;};

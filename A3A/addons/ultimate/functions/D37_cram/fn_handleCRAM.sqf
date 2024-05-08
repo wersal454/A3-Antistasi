@@ -1,21 +1,18 @@
-_unit       = param[0];
-_distance   = param[1, 2800];
-_tgtLogic 	= param[2, 0];
-_typeArray 	= param[3, ["ShellBase","RocketBase","MissileBase","SubmunitionBase"]];
-_ignored	= param[4, ["ammo_Missile_rim116"]];
+_unit = param[0];
 
 if(!isServer) exitWith {};
+if(is3DEN) exitWith {};
 
-if(_unit getVariable ["init",false]) exitWith {};
-_unit setVariable ["init", true];
+private _isInitialized = (_unit getVariable ["cramInit", false]);
+if(_isInitialized) exitWith {};
+_unit setVariable ["cramInit", true, true];
 
-//_unit setVehicleRadar 1;
-_unit setVariable ["alarmEnabled", true];
 //Toggle incoming alarm
+_unit setVariable ["alarmEnabled", true, true];
 _unit addAction ["Toggle alarm", {
 	params ["_target", "_caller", "_actionId", "_arguments"];
 	_state = !(_target getVariable ["alarmEnabled", true]);
-	_target setVariable ["alarmEnabled", _state];
+	_target setVariable ["alarmEnabled", _state, true];
 
 	_out = "";
 	if(_state) then {
@@ -30,7 +27,7 @@ _unit addAction ["Toggle alarm", {
 }, nil, 9, false, false, "", "!(_this in _target)", 10];
 
 //Change logic
-_unit setVariable ["_tgtLogic", _tgtLogic];
+_unit setVariable ["_tgtLogic", 1, true];
 _unit addAction ["Change targeting mode", {
 	params ["_target", "_caller", "_actionId", "_arguments"];
 	_tgtLogic = _target getVariable ["_tgtLogic", 0];
@@ -57,10 +54,9 @@ _unit addAction ["Change targeting mode", {
 	_id = owner _caller;
 	["Logic changed to: " + _out] remoteExec ["hint", _id];
 
-	_target setVariable	["_tgtLogic", _tgtLogic];
+	_target setVariable	["_tgtLogic", _tgtLogic, true];
 }, nil, 10, false, false, "", "!(_this in _target)", 10];
 
-//Makes it better... I think
 {
 	_x setSkill 1;
 }foreach crew _unit;
@@ -68,25 +64,26 @@ _unit addAction ["Change targeting mode", {
 //Performance optimizations
 _emptyLoops = 0;
 _delay = 0.1;
+_unit setVehicleRadar 1;
+_wep = currentweapon _unit;
 
 //Main loop
-_loops = ((count _typeArray) - 1);
 while {alive _unit} do {
-	_tgtLogic = _unit getVariable ["_tgtLogic", 0];
-
-	_entities = [];
-	for "_i" from 0 to _loops do {
-		_near = _unit nearObjects [_typeArray select _i, _distance];
-		_entities append _near;
+	//[2675fa44080# 80: tracer_red.p3d,"air","unknown",["activeradar","datalink"]]
+	_list = getSensorTargets _unit;
+	_list = _list select {
+		typeOf (_x # 0) == "CRAM_Fake_PlaneTGT";
 	};
+	_entities = [];
+	{
+		_entities pushback (_x # 0);
+	}foreach _list;
+	_entities = _entities select {(getPosATL _x # 2) > 10};
+	_list = _entities;
 
-	_entities = _entities select {!(typeOf _x in _ignored)};
-	//_entities = _entities select {alive _x};
-	
-	if(count _entities > 0) then {
-		_emptyLoops = 0;
+	if(count _list > 0) then {
 		_delay = 0.05;
-
+		_emptyLoops = 0;
 		if(_unit getVariable ["alarmEnabled",false]) then {
 			if (!(_unit getVariable ["alarmplaying",false])) then {
 				_unit setVariable ["alarmplaying",true,true];
@@ -98,59 +95,31 @@ while {alive _unit} do {
 			};
 		};
 
-		//Init all the entities
-		//Maximum priority, avoids overlapping
-		isNil {[_entities] call A3U_fnc_initshells;};
-		_target = [_entities, _unit, _tgtLogic] call A3U_fnc_pickTargetCRAM;
-
+		_tgtLogic = _unit getVariable ["_tgtLogic", 1];
+		_target = [_list, _unit, _tgtLogic] call A3U_fnc_pickTargetCRAM;
 		if(!isNull _target) then {
-			_target allowdamage false;
-
-			//No model?
-			_fake = "CRAM_Fake_PlaneTGT" createVehicle [0,0,100];
-			_fake allowdamage false;
-			_fake attachTo [_target, [0,5,0]];	
-			_unit reveal _fake; 
-
-			//Clean up for safety
-			_fake spawn {
-				sleep 30;
-				if(!isNull _this) then {	
-					detach _this;
-					deletevehicle _this;
+			_time = time;
+			_unit doTarget _target;
+			_shell = attachedTo _target;
+			
+			waitUntil{_unit aimedAtTarget [_target, _wep] > 0.25 or (time - _time) > 0.85};
+			for "_i" from 1 to 100 do {
+				if(!alive _shell) exitWith {};
+				if((_i % 20) == 0) then {
+					_unit doTarget _target;
 				};
+				
+				[_unit, _wep, [0]] call BIS_fnc_fire;
+				sleep 0.01;
 			};
-
-			if(!isNull _fake) then {
-				_wep = currentweapon _unit;
-				_unit doTarget _fake;
-				_time = time;
-				waitUntil{_unit aimedAtTarget [_fake, _wep] > 0.2 or (time - _time) > 2};
-
-				for "_i" from 1 to 100 do {
-					if(!alive _target) exitWith {};
-					if(isNull _fake) exitWith {};
-					//Every 20 steps in case the AI goes dumb
-					if((_i % 20) == 0) then {
-						_unit doTarget _fake;
-					};
-
-					if(_unit aimedAtTarget [_fake, _wep] > 0.2) then {
-						[_unit, _wep, [0]] call BIS_fnc_fire;
-					};					
-					
-					sleep 0.001; //75 rounds per second
-				};
-
-				detach _fake;
-				deletevehicle _fake;
-			};
+		} else {
+			_unit doTarget objNull;
 		};
 	} else {
 		//Lowers the amount of checks per second when nothing is found
 		_delay = 0.1;
 		_emptyLoops = (_emptyLoops + 1);
-		if(_emptyLoops == 100) then {
+		if(_emptyLoops == 50) then {
 			_delay = 0.5;
 			_unit doTarget objNull;
 		};

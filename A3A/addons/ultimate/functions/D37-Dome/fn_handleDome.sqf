@@ -69,16 +69,15 @@ _unit addAction ["Toggle alarm", {
 	
 }, nil, 9, false, false, "", "!(_this in _target)", 10];
 
-/* while {alive _unit} do {
-	if (!(_unit getVariable ["alarmplaying",false])) then {
-		_unit setVariable ["alarmplaying",true,true];
-		_unit say3D ["CRAMALARM",1000,1,false,0];
-		_unit spawn {
-					sleep 10;
-					_this setVariable ["alarmplaying",false,true];
-					};
+
+if (!(_unit getVariable ["alarmplaying",false])) then {
+	_unit setVariable ["alarmplaying",true,true];
+	_unit say3D ["CRAMALARM",1000,1,false,0];
+	_unit spawn {
+		sleep 10;
+		_this setVariable ["alarmplaying",false,true];
 	};
-}; */
+};
 
 //Change logic
 _unit setVariable ["_tgtLogic", _tgtLogic];

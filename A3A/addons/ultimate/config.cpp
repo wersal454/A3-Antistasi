@@ -76,6 +76,15 @@ class cfgVehicles
 			};
 		};
 
+    /* class CRAM_AAA_System_01_base_F:B_AAA_System_01_F {
+	displayName = "CRAM";
+	    class EventHandlers: EventHandlers {
+		    class CRAM37 {
+			    init = "[_this select 0] remoteExec ['CRAM37_fnc_handleCRAM', 2];";
+			    //init = "[_this select 0] spawn CRAM37_fnc_handleCRAM; systemchat str (local (_this # 0));";
+		    };
+	    };
+    }; */
 		class Turrets: Turrets {
 			class MainTurret: MainTurret {
 				magazines[] = {"magazine_Cannon_Phalanx_x1550","magazine_Cannon_Phalanx_x1550","magazine_Cannon_Phalanx_x1550"};
@@ -163,6 +172,44 @@ class cfgVehicles
 			init = "(_this select 0) hideObjectGlobal true;";
 		};
 		scope = 1;
+	};
+
+    class Logic;
+	class Module_F: Logic
+	{
+		class AttributesBase
+		{
+			class Default;
+			class Edit;
+			class Combo;
+			class Checkbox;
+			class CheckboxNumber;
+			class ModuleDescription;
+			class Units;
+		};
+		class ModuleDescription
+		{
+			class AnyBrain;
+		};
+	};
+	
+	class ModuleCRAM_initCram: Module_F
+	{
+		displayName = "Init CRAM";
+		author = "Dankan37";
+		scope = 2;
+		scopeCurator = 2;
+		category = "CRAM_modules";
+		
+		isGlobal = 1;
+		function = "CRAM37_fnc_handleCRAMinit";
+		class Attributes: AttributesBase
+		{
+			class Units: Units
+			{
+				property = "ModuleCBRN_RemoveExposure_Units";
+			};	
+		};
 	};
 };
 
@@ -317,7 +364,7 @@ class CfgSounds
 	class CRAMALARM
 	{
 		name = "CRAM_Alarm";
-		sound[] = {"D37_cram\Sound\CRAM_ALARM.ogg", 1.0, 1.0};
+		sound[] = {"functions\D37_cram\Sound\CRAM_ALARM.ogg", 1.0, 1.0};
 		titles[] = {0, ""};
 	};
 };
@@ -350,3 +397,12 @@ class cfgMagazines {
 };
 
 //weapons[] = {"weapon_rim116Launcher"};
+
+class CfgFactionClasses
+{
+	class CRAM_modules
+	{
+		displayName = "CRAM modules";
+		priority = 10;
+	};
+};

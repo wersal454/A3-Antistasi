@@ -28,6 +28,7 @@
 			[{alive _this}, "UNIT MUST BE ALIVE"]
 		]] call CBRN_fnc_moduleHandleCuratorPlacement;
 */
+
 params ["_logic", ["_custom", []], ["_type", "OBJECT"]];
 
 //We must have a local logic object

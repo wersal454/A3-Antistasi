@@ -43,17 +43,17 @@ class CfgFunctions
             class handleTargets {};
             class initShells {};
             class pickTarget {};
-            class postInitEH {};
+            class postInitEH {postInit	= 1;};
             class watchQuality {};
         };
         class D37cram
         {
             file = QPATHTOFOLDER(functions\D37_cram);
             class handleCRAM {};
+            class handleCRAMinit {};
             class handleCuratorPlacement {};
-            class initShells {};
             class pickTargetCRAM {};
-            class postInit {};
+            class postInit {postInit = 1;};
         };
         class Utility
         {
