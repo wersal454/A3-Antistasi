@@ -21,6 +21,11 @@ if (fullCrew [_veh, "", true] isEqualTo []) exitWith {
 	if (typeof _veh in A3A_utilityItemHM) then { _veh call A3A_fnc_initObject };
 };
 
+_veh setVehicleRadar 0; ///might break something
+_veh setVehicleReceiveRemoteTargets true;
+_veh setVehicleReportRemoteTargets true;
+_veh setVehicleReportOwnPosition true;
+
 if !(isNil { _veh getVariable "ownerSide" }) exitWith {
 	// vehicle already initialized, just swap side and exit
 	[_veh, _side, true] call A3A_fnc_vehKilledOrCaptured;
