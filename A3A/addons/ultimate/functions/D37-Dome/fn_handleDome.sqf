@@ -19,6 +19,7 @@ _unit setVariable ["DomeRunning", true];
 
 if(!isServer) exitWith {};
 
+
 //Chase camera behind the missile 
 allowAttach = false;
 //Handle the missile
@@ -28,7 +29,7 @@ _unit addEventHandler ["Fired", {
 	if(isNull _target) exitWith {};
 
 	_parameters = _unit getVariable "WeaponsPar";
-	[_projectile, _target, _parameters] spawn IRON_DOME37_fnc_guidanceLaws;
+	[_projectile, _target, _parameters] spawn A3U_fnc_guidanceLaws;
 	if(allowAttach) then {
 			_projectile spawn {
 			allowAttach = false;
@@ -65,8 +66,19 @@ _unit addAction ["Toggle alarm", {
 
 	_id = owner _caller;
 	["Alarm state: " + _out] remoteExec ["hint", _id];
-
+	
 }, nil, 9, false, false, "", "!(_this in _target)", 10];
+
+/* while {alive _unit} do {
+	if (!(_unit getVariable ["alarmplaying",false])) then {
+		_unit setVariable ["alarmplaying",true,true];
+		_unit say3D ["CRAMALARM",1000,1,false,0];
+		_unit spawn {
+					sleep 10;
+					_this setVariable ["alarmplaying",false,true];
+					};
+	};
+}; */
 
 //Change logic
 _unit setVariable ["_tgtLogic", _tgtLogic];
@@ -144,11 +156,11 @@ while {alive _unit and (someAmmo _unit) and _isActive} do {
 
 		//Pick a target
 		if(count _entities > 0) then {
-			[_entities] call IRON_DOME37_fnc_initshells;
-			_target = [_entities, _unit, _tgtLogic] call IRON_DOME37_fnc_pickTarget;
+			[_entities] call A3U_fnc_initshells;
+			_target = [_entities, _unit, _tgtLogic] call A3U_fnc_pickTarget;
 
 			if(!isNull _target) then {
-				["_targetedShells", _target, "add"] call IRON_DOME37_fnc_handleTargets;
+				["_targetedShells", _target, "add"] call A3U_fnc_handleTargets;
 			};
 		};
 	};
@@ -182,7 +194,7 @@ while {alive _unit and (someAmmo _unit) and _isActive} do {
 			_pos set [2, (_pos select 2) + _increment ];
 			_unit doWatch _pos;
 
-			waitUntil {([_unit, _pos] call IRON_DOME37_fnc_watchQuality > 0.8) or (time - _time) > 7};
+			waitUntil {([_unit, _pos] call A3U_fnc_watchQuality > 0.8) or (time - _time) > 7};
 			sleep 1;
 		};
 			
@@ -199,7 +211,7 @@ while {alive _unit and (someAmmo _unit) and _isActive} do {
 			_target spawn {
 				sleep 25;
 				if(alive _this) then {
-					["_targetedShells", _this, "remove"] call IRON_DOME37_fnc_handleTargets;
+					["_targetedShells", _this, "remove"] call A3U_fnc_handleTargets;
 				};
 			};
 
@@ -207,7 +219,7 @@ while {alive _unit and (someAmmo _unit) and _isActive} do {
 			sleep _shotsDelay;	
 		} else {
 			isNil {
-				["_targetedShells", _target, "remove"] call IRON_DOME37_fnc_handleTargets;
+				["_targetedShells", _target, "remove"] call A3U_fnc_handleTargets;
 			};
 		};
 	} else {

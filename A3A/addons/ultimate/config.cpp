@@ -14,6 +14,20 @@ class CfgPatches
         authorUrl = "";
         VERSION_CONFIG;
     };
+    class D37_cram
+    {
+        units[] = {"CRAM_Fake_PlaneTGT"};
+		weapons[] = {};
+		requiredVersion = 0.1;
+		requiredAddons[] = {"A3_Static_F_Jets_AAA_System_01"};
+    };
+    class D37_dome
+    {
+        units[] = {"B_SAM_System_01_F_DOME"};
+		weapons[] = {"B_SAM_System_01_F_DOME"};
+		requiredVersion = 0.1;
+		requiredAddons[] = {"A3_Static_F_Jets_SAM_System_01","A3_Static_F_Jets_SAM_System_02"};
+    };
 };
 
 #include "CfgFunctions.hpp"
@@ -22,6 +36,12 @@ class cfgWeapons
 {
     class ItemRadio;
     #include "patches\cfgWeapons.hpp"
+
+    class LauncherCore;
+	class MissileLauncher: LauncherCore {};
+	class weapon_rim116Launcher: MissileLauncher {
+		magazines[] += {"magazine_Missile_dome_x21"};
+	};
 };
 
 class cfgVehicles
@@ -29,6 +49,121 @@ class cfgVehicles
     class Item_Base_F;
     class Thing;
     #include "patches\cfgVehicles.hpp"
+
+    //B_AAA_System_01_F
+	//["AAA_System_01_base_F","StaticMGWeapon","StaticWeapon","LandVehicle","Land","AllVehicles","All"]
+
+	//["Plane_Fighter_01_Base_F","Plane_Base_F","Plane","Air","AllVehicles","All"]
+	
+
+    class AllVehicles;
+	class Land: AllVehicles {};
+	class LandVehicle: Land {};
+	class StaticWeapon: LandVehicle {};
+	class StaticMGWeapon: StaticWeapon {};
+    class AAA_System_01_base_F: StaticMGWeapon{
+		class EventHandlers;
+
+		class Turrets {
+			class MainTurret;
+		};
+	};
+
+    class B_AAA_System_01_F:AAA_System_01_base_F {
+		class EventHandlers: EventHandlers {
+			class CRAM37 {
+				init = "[_this select 0, 2800, 2] spawn A3U_fnc_handleCRAM;";
+			};
+		};
+
+		class Turrets: Turrets {
+			class MainTurret: MainTurret {
+				magazines[] = {"magazine_Cannon_Phalanx_x1550","magazine_Cannon_Phalanx_x1550","magazine_Cannon_Phalanx_x1550"};
+			};
+		};
+	};
+	class SAM_System_01_base_F: StaticMGWeapon{
+		class EventHandlers;
+		class Turrets {
+			class MainTurret;
+		};
+	};
+
+	class B_SAM_System_01_F: SAM_System_01_base_F {
+		class EventHandlers: EventHandlers {
+			class DOME37 {
+				init = "[_this select 0, 4400, 1] spawn A3U_fnc_handleDome;";
+			};
+		};
+	};
+
+    class B_SAM_System_01_F_DOME: B_SAM_System_01_F {
+        displayName = "Iron Dome";
+        class EventHandlers: EventHandlers {
+			class DOME37 {
+				init = "[_this select 0, 4400, 1, [420/3.6, 0, 4, false, 14, 1]] spawn A3U_fnc_handleDome;";
+			};
+		};
+
+        class Turrets: Turrets {
+            class MainTurret: MainTurret {
+                initElev = 89;
+                maxelev = 90;
+                minelev = 89;
+
+				magazines[] = {"magazine_Missile_dome_x21"};
+            };
+        };
+    };
+
+	class SAM_System_03_base_F:StaticMGWeapon {
+		class EventHandlers;
+	};
+	class B_SAM_System_03_F: SAM_System_03_base_F {
+		class EventHandlers: EventHandlers {
+			class DOME37 {
+				init = "[_this select 0, 7500, 1, [1100/3.6, 0, 4, true, 30, 3]] spawn A3U_fnc_handleDome;";
+			};
+		};
+	};
+
+	class SAM_System_04_base_F:StaticMGWeapon {
+		class EventHandlers;
+	};
+	class O_SAM_System_04_F: SAM_System_04_base_F {
+		class EventHandlers: EventHandlers {
+			class DOME37 {
+				init = "[_this select 0, 7500, 1, [1100/3.6, 0, 4, true, 30, 3]] spawn A3U_fnc_handleDome;";
+			};
+		};
+	};
+
+	class SAM_System_02_base_F: StaticMGWeapon {
+		class EventHandlers;
+	};
+	class B_SAM_System_02_F: SAM_System_02_base_F {
+		class EventHandlers: EventHandlers {
+			class DOME37 {
+				init = "[_this select 0, 4500, 1, [800/3.6, 0, 3, true, 15, 4]] spawn A3U_fnc_handleDome;";
+			};
+		};
+	};
+
+    class Air: AllVehicles {};
+	class Plane: Air {};
+	class Plane_Base_F: Plane {};
+	class Plane_Fighter_01_Base_F: Plane_Base_F {};
+	class B_Plane_Fighter_01_F: Plane_Fighter_01_Base_F {
+		class EventHandlers {};
+	};
+
+	class CRAM_Fake_PlaneTGT: B_Plane_Fighter_01_F {
+		//model = "\A3\Structures_F\Mil\Helipads\HelipadEmpty_F.p3d";
+		class EventHandlers: EventHandlers {
+			init = "(_this select 0) hideObjectGlobal true;";
+		};
+		scope = 1;
+	};
 };
 
 class RscBackPicture;
@@ -177,3 +312,41 @@ class Extended_PreInit_EventHandlers
         init = "call A3U_fnc_init";
     };
 };
+class CfgSounds
+{
+	class CRAMALARM
+	{
+		name = "CRAM_Alarm";
+		sound[] = {"D37_cram\Sound\CRAM_ALARM.ogg", 1.0, 1.0};
+		titles[] = {0, ""};
+	};
+};
+
+//["SAM_System_01_base_F","StaticMGWeapon","StaticWeapon","LandVehicle","Land","AllVehicles","All"]
+
+//["ammo_Missile_ShortRangeAABase","MissileBase","MissileCore","Default"]
+class cfgAmmo {
+	class MissileCore;
+	class MissileBase: MissileCore {};
+	class ammo_Missile_ShortRangeAABase: MissileBase {};
+	class ammo_Missile_rim116: ammo_Missile_ShortRangeAABase {};
+
+	class ammo_Missile_dome: ammo_Missile_rim116 {
+		thrust = 40;
+		thrustTime = 34;
+		timeToLive = 34;
+	};
+};
+
+//["VehicleMagazine","CA_Magazine","Default"]
+class cfgMagazines {
+	class CA_Magazine;
+	class VehicleMagazine: CA_Magazine {};
+	class magazine_Missile_rim116_x21: VehicleMagazine {};
+
+	class magazine_Missile_dome_x21: magazine_Missile_rim116_x21 {
+		ammo = "ammo_Missile_dome";
+	};	
+};
+
+//weapons[] = {"weapon_rim116Launcher"};

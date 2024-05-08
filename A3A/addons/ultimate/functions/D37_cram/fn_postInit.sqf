@@ -1,5 +1,3 @@
-#include "..\..\..\script_component.hpp"
-FIX_LINE_NUMBERS()
 if(!isServer) exitWith {};
 
 //Prevents multiple overlaps

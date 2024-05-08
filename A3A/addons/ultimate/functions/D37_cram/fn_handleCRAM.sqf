@@ -1,7 +1,7 @@
 _unit       = param[0];
 _distance   = param[1, 2800];
 _tgtLogic 	= param[2, 0];
-_typeArray 	= param[3, ["ShellBase","RocketBase","MissileBase"]];
+_typeArray 	= param[3, ["ShellBase","RocketBase","MissileBase","SubmunitionBase"]];
 _ignored	= param[4, ["ammo_Missile_rim116"]];
 
 if(!isServer) exitWith {};
@@ -100,8 +100,8 @@ while {alive _unit} do {
 
 		//Init all the entities
 		//Maximum priority, avoids overlapping
-		isNil {[_entities] call CRAM37_fnc_initshells;};
-		_target = [_entities, _unit, _tgtLogic] call CRAM37_fnc_pickTarget;
+		isNil {[_entities] call A3U_fnc_initshells;};
+		_target = [_entities, _unit, _tgtLogic] call A3U_fnc_pickTargetCRAM;
 
 		if(!isNull _target) then {
 			_target allowdamage false;
@@ -139,7 +139,7 @@ while {alive _unit} do {
 						[_unit, _wep, [0]] call BIS_fnc_fire;
 					};					
 					
-					sleep 0.013; //75 rounds per second
+					sleep 0.001; //75 rounds per second
 				};
 
 				detach _fake;

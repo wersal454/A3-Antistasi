@@ -28,8 +28,6 @@
 			[{alive _this}, "UNIT MUST BE ALIVE"]
 		]] call CBRN_fnc_moduleHandleCuratorPlacement;
 */
-#include "..\..\..\script_component.hpp"
-FIX_LINE_NUMBERS()
 params ["_logic", ["_custom", []], ["_type", "OBJECT"]];
 
 //We must have a local logic object

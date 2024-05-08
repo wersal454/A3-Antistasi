@@ -158,7 +158,7 @@ while {alive _target and alive _missile} do {
 };
 
 //Clean up
-["_targetedShells", _target, "remove"] call IRON_DOME37_fnc_handleTargets;
+["_targetedShells", _target, "remove"] call A3U_fnc_handleTargets;
 
 //If the target died or the missile timedout make it blow in mid air
 if(alive _missile) then {

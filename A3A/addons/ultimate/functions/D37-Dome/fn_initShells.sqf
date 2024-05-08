@@ -32,8 +32,8 @@ private _outArray = _initializedShells;
 				//systemChat (str _x + " was destroyed!");
 
 				//Cleanup
-				["_targetedShells", _x, "remove"] call IRON_DOME37_fnc_handleTargets;
-				["_initializedShells", _x, "remove"] call IRON_DOME37_fnc_handleTargets;
+				["_targetedShells", _x, "remove"] call A3U_fnc_handleTargets;
+				["_initializedShells", _x, "remove"] call A3U_fnc_handleTargets;
 				deletevehicle _x;
 			};
 			sleep 0.04; //Assuming the missile flies at 2000m/s a radious of 40 meters needs a 0.04 seconds resolution
