@@ -46,6 +46,16 @@ class Templates
         description = $STR_A3AP_setupFactionsTab_exegermenos;
     };
 
+    class WS_Riv_ION : WS_Base
+    {
+        side = "Riv";
+        flagTexture = "\lxws\data_f_lxws\img\flags\flag_ion_co.paa";
+        name = "WS ION";
+        file = "WS_Riv_ION";
+        forceDLC[] = {"ws"};
+        description = $STR_A3AP_setupFactionsTab_ion;
+    }
+
     // ************************************** Vanilla *******************************************************
 
     class Vanilla_Base : Base
