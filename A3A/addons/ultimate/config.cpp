@@ -1,5 +1,6 @@
 #include "script_component.hpp"
 
+
 class CfgPatches 
 {
     class ADDON 
@@ -358,6 +359,53 @@ class Extended_PreInit_EventHandlers
 	{
         init = "call A3U_fnc_init";
     };
+};
+class CfgSounds
+{
+	class CRAMALARM
+	{
+		name = "CRAM_Alarm";
+		sound[] = {"functions\D37_cram\Sound\CRAM_ALARM.ogg", 1.0, 1.0};
+		titles[] = {0, ""};
+	};
+};
+
+//["SAM_System_01_base_F","StaticMGWeapon","StaticWeapon","LandVehicle","Land","AllVehicles","All"]
+
+//["ammo_Missile_ShortRangeAABase","MissileBase","MissileCore","Default"]
+class cfgAmmo {
+	class MissileCore;
+	class MissileBase: MissileCore {};
+	class ammo_Missile_ShortRangeAABase: MissileBase {};
+	class ammo_Missile_rim116: ammo_Missile_ShortRangeAABase {};
+
+	class ammo_Missile_dome: ammo_Missile_rim116 {
+		thrust = 40;
+		thrustTime = 34;
+		timeToLive = 34;
+	};
+};
+
+//["VehicleMagazine","CA_Magazine","Default"]
+class cfgMagazines {
+	class CA_Magazine;
+	class VehicleMagazine: CA_Magazine {};
+	class magazine_Missile_rim116_x21: VehicleMagazine {};
+
+	class magazine_Missile_dome_x21: magazine_Missile_rim116_x21 {
+		ammo = "ammo_Missile_dome";
+	};	
+};
+
+//weapons[] = {"weapon_rim116Launcher"};
+
+class CfgFactionClasses
+{
+	class CRAM_modules
+	{
+		displayName = "CRAM modules";
+		priority = 10;
+	};
 };
 class CfgSounds
 {
