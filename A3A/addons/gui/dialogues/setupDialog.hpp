@@ -205,14 +205,32 @@ class A3A_SetupDialog : A3A_TabbedDialog
                     w = 26 * GRID_W;
                     h = 4 * GRID_H;
                 };
+                class NewNamespaceCheck: A3A_Checkbox {
+                    idc = A3A_IDC_SETUP_NAMESPACECHECKBOX;
+                    onCheckedChanged = "['newNamespaceCheck'] call A3A_fnc_setupLoadgameTab";
+                    x = 126 * GRID_W;
+                    y = 30 * GRID_H;
+                    w = 4 * GRID_W;
+                    h = 4 * GRID_H;
+                };
+                class NewNamespaceText: A3A_text {
+                    idc = A3A_IDC_SETUP_NAMESPACETEXT;
+                    text = $STR_antistasi_dialogs_setup_use_new_namespace;
+                    x = 130 * GRID_W;
+                    y = 30 * GRID_H;
+                    w = 26 * GRID_W;
+                    h = 4 * GRID_H;
+                };
                 class SetHQPosButton: A3A_Button {
                     idc = A3A_IDC_SETUP_HQPOSBUTTON;
                     text = $STR_antistasi_dialogs_setup_set_hq_position;
                     onButtonClick = "['setHQPos'] call A3A_fnc_setupLoadgameTab";
                     x = 126 * GRID_W;
-                    y = 30 * GRID_H;
+                    y = 36 * GRID_H;
                     w = 30 * GRID_W;
-                    h = 6 * GRID_H;
+                    h = 5 * GRID_H;
+                    // w = 36 * GRID_W;
+                    // h = 6 * GRID_H;
                 };
 
                 class DeleteButton: A3A_Button {

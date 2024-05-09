@@ -134,7 +134,7 @@ private _text = (localize "STR_marker_civ_convoy");
     sleep 2;
 } forEach _convoyobj;
 
-[_convoyobj select 0, localize "STR_marker_civ_convoy", false] spawn A3A_fnc_inmuneConvoy;			// Disabled the stuck-vehicle hacks
+[_convoyobj select 0, localize "STR_marker_civ_convoy", true] spawn A3A_fnc_inmuneConvoy;			// Disabled the stuck-vehicle hacks
 
 private _civGroups = [];
 

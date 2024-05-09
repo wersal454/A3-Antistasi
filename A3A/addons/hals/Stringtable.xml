@@ -548,6 +548,51 @@
                 <Korean>아르마 3</Korean>
                 <French>Arma 3</French>
             </Key>
+            <Key ID="STR_A3AU_Apex">
+                <Original>Apex</Original>
+                <English>Apex</English>
+                <Russian>Apex</Russian>
+            </Key>
+            <Key ID="STR_A3AU_Artofwar">
+                <Original>Art of war</Original>
+                <English>Art of war</English>
+                <Russian>Art of war</Russian>
+            </Key>
+            <Key ID="STR_A3AU_Contact">
+                <Original>Contact</Original>
+                <English>Contact</English>
+                <Russian>Contact</Russian>
+            </Key>
+            <Key ID="STR_A3AU_Jets">
+                <Original>Jets</Original>
+                <English>Jets</English>
+                <Russian>Jets</Russian>
+            </Key>
+            <Key ID="STR_A3AU_Kart">
+                <Original>Kart</Original>
+                <English>Kart</English>
+                <Russian>Kart</Russian>
+            </Key>
+            <Key ID="STR_A3AU_Lawsofwar">
+                <Original>Laws of war</Original>
+                <English>Laws of war</English>
+                <Russian>Laws of war</Russian>
+            </Key>
+            <Key ID="STR_A3AU_Marksmen">
+                <Original>Marksmen</Original>
+                <English>Marksmen</English>
+                <Russian>Marksmen</Russian>
+            </Key>
+            <Key ID="STR_A3AU_Tanks">
+                <Original>Tanks</Original>
+                <English>Tanks</English>
+                <Russian>Tanks</Russian>
+            </Key>
+            <Key ID="STR_A3AU_kkiv2035">
+                <Original>Kkiv 2035</Original>
+                <English>Kkiv 2035</English>
+                <Russian>Kkiv 2035</Russian>
+            </Key>
             <Key ID="STR_A3AU_CSLA">
                 <Original>CSLA</Original>
                 <English>CSLA</English>
