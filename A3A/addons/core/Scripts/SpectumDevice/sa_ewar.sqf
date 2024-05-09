@@ -68,9 +68,47 @@ sa_is_signal_uav={
 	_result;
 };
 
-//Scan friendly/foe
+//Scan friendly/foe now land vehicle and remove crew
 sa_scan_friendly_foe={
-	private ["_friendly_uavs","_enemy_uavs","_other_signals,_weak_signals"];
+	private _chance=0;
+	private _txt="";
+	private _unit=[];
+	{
+		if (([_x] call sa_is_signal_uav) in [1,2]) then {
+			_chance=((_x select 1)-sa_sens_min)/(sa_sens_max-sa_sens_min);
+			_txt=_txt+format ["%1%2 ",round(_chance*100),"%"];
+			if(_chance>=(random 1)) then {
+				_unit=_x select 0 select 0;
+				[_unit] remoteExec ["fnc_sa_local_add_to_jamm_list",[0,-2] select isDedicated];
+				if (_unit isKindOf "Air") then {
+					private _safeLandPos = [_unit,1,250,2,0,4,0] call BIS_fnc_findSafePos;
+					_wp = (group _unit) addWaypoint [_safeLandPos, 1];
+					_wp setWaypointBehaviour "SAFE";
+					_wp setWaypointType "GETOUT";
+					private _time = time;
+					waitUntil {sleep 0.1, (getPos _unit) select 2 <1.3/*  || time - _time <= 30 */};
+					{
+						_unit deleteVehicleCrew _x;
+					} forEach crew _unit;
+				} else {
+					{
+						_unit deleteVehicleCrew _x;
+					} forEach crew _unit;
+				};
+			};
+		};
+	} forEach sa_sel_freq;
+	
+	if(_chance>0) then {
+		_sa_display_ctrl ctrlSetStructuredText parseText format [ sa_str_message_jamm,_txt];
+	}
+	else {
+		_sa_display_ctrl ctrlSetStructuredText parseText format [ sa_str_message_jamm_no_target];
+	};
+	_sa_display_ctrl ctrlSetPosition [safeZoneX+safeZoneW-0.55, safeZoneY+0.15, 0.35, 0.05];
+	_sa_display_ctrl ctrlCommit 0;
+	_sa_display_ctrl ctrlShow true;
+	/* private ["_friendly_uavs","_enemy_uavs","_other_signals,_weak_signals"];
 	_friendly_uavs=0;
 	_enemy_uavs=0;
 	_other_signals=0;
@@ -101,16 +139,16 @@ sa_scan_friendly_foe={
 	_sa_display_ctrl ctrlSetPosition [safeZoneX+safeZoneW-0.55, safeZoneY+0.15, 0.35, 0.13];
 	_sa_display_ctrl ctrlCommit 0;
 			
-	_sa_display_ctrl ctrlShow true;
+	_sa_display_ctrl ctrlShow true; */
 };
 
-//Jamm
+
 
 fnc_sa_local_add_to_jamm_list={
 	params ["_unit"];
 	if (side _unit==side player) then {	sa_local_jamm_buffer pushBackUnique _unit;};
 };
-
+//remove antenna
 sa_jamm={
 	private _chance=0;
 	private _txt="";
@@ -122,7 +160,7 @@ sa_jamm={
 			if(_chance>=(random 1)) then {
 				_unit=_x select 0 select 0;
 				[_unit] remoteExec ["fnc_sa_local_add_to_jamm_list",[0,-2] select isDedicated];
-				if!(typeof _unit in sa_ins_list) then { ///change it or simply delete it
+				//if!(typeof _unit in sa_ins_list) then { ///change it or simply delete it
 					
 					{
 						_unit deleteVehicleCrew _x;
@@ -131,8 +169,7 @@ sa_jamm={
 					_unit setHit ["motor",1,true, objNull, objNull, true]
 					//object setHit [part, damage, useEffects, killer, instigator, breakRotor]
 					///damage turret instead of deleting gunner (for UGV(or leave it as is))
-
-					_unit deleteVehicleCrew gunner _unit;
+					//_unit deleteVehicleCrew gunner _unit;
 					/* group _unit spawn 
 					{
 						[_this, (currentWaypoint _this)] setWaypointPosition [getPosASL ((units _this) select 0), -1];
@@ -142,12 +179,11 @@ sa_jamm={
 							deleteWaypoint [_this, _i];
 						};
 					}; */
-				}
-				else {
+				/* } else {
 					if(!isAutonomous _unit) then {
 						_unit setAutonomous true;
 					};
-				};
+				}; */
 			};
 		};
 	} forEach sa_sel_freq;
@@ -163,11 +199,64 @@ sa_jamm={
 	_sa_display_ctrl ctrlShow true;
 };
 
-//1st antenna dummy
-sa_1st_antenna_dummy={
-	_sa_display_ctrl ctrlSetStructuredText parseText format [sa_str_message_nofunction];
-	_sa_display_ctrl ctrlCommit 0;
+//1st antenna
+sa_1st_antenna_swap={
+	private ["_friendly_uavs","_enemy_uavs","_other_signals,_weak_signals"];
+	_friendly_uavs=0;
+	_enemy_uavs=0;
+	_other_signals=0;
+	_weak_signals=0;
+	{
+		[player,_x select 0 select 1] remoteExec ["fnc_sa_add_spike_signal",2];//no JIP for now
+		if((_x select 1)>sa_ident_str) then {
 			
+			if(([_x] call sa_is_signal_uav)>0) then {
+				if(side (_x select 0 select 0)==side player) then {
+					_friendly_uavs=_friendly_uavs+1;
+				}
+				else {
+					_enemy_uavs=_enemy_uavs+1;
+				};
+			}
+			else {
+				_other_signals=_other_signals+1;
+			};
+		}
+		else {
+			_weak_signals=_weak_signals+1;
+		};
+		
+	} forEach sa_sel_freq;
+	
+	_sa_display_ctrl ctrlSetStructuredText parseText format [ sa_str_message_scan, _friendly_uavs,_enemy_uavs,_other_signals,_weak_signals];
+	_sa_display_ctrl ctrlSetPosition [safeZoneX+safeZoneW-0.55, safeZoneY+0.15, 0.35, 0.13];
+	_sa_display_ctrl ctrlCommit 0;
+	private _chance=0;
+	private _txt="";
+	private _unit=[];
+	{
+		if (([_x] call sa_is_signal_uav) in [1,2]) then {
+			_chance=((_x select 1)-sa_sens_min)/(sa_sens_max-sa_sens_min);
+			_txt=_txt+format ["%1%2 ",round(_chance*100),"%"];
+			if(_chance>=(random 1)) then {
+				_friendlyGroup = createGroup independent;
+				_unit=_x select 0 select 0;
+				[_unit] remoteExec ["fnc_sa_local_add_to_jamm_list",[0,-2] select isDedicated];
+				{
+					[_x] joinSilent _friendlyGroup;
+				} forEach crew _unit;
+			};
+		};
+	} forEach sa_sel_freq;
+	
+	if(_chance>0) then {
+		_sa_display_ctrl ctrlSetStructuredText parseText format [ sa_str_message_jamm,_txt];
+	}
+	else {
+		_sa_display_ctrl ctrlSetStructuredText parseText format [ sa_str_message_jamm_no_target];
+	};
+	_sa_display_ctrl ctrlSetPosition [safeZoneX+safeZoneW-0.55, safeZoneY+0.15, 0.35, 0.05];
+	_sa_display_ctrl ctrlCommit 0;
 	_sa_display_ctrl ctrlShow true;
 };
 	
@@ -226,7 +315,7 @@ _g=[] spawn {
 			missionNamespace setVariable ["#EM_Transmit", _scan_complete];
 			
 			switch ((handgunItems player) select 0) do {
-				case "muzzle_antenna_01_f": {[] call sa_1st_antenna_dummy;};
+				case "muzzle_antenna_01_f": {[] call sa_1st_antenna_swap;sa_scan_progress=0;_scan_complete=false};
 				case "muzzle_antenna_02_f": {[] call sa_scan_friendly_foe;};
 				case "muzzle_antenna_03_f": {[] call sa_jamm;sa_scan_progress=0;_scan_complete=false;};
 				default {[] call sa_scan_friendly_foe;}
