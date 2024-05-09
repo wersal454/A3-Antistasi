@@ -61,6 +61,18 @@ class CfgMarkers
 		icon = QPATHTOFOLDER(Pictures\Markers\marker_unsc_ca.paa);
 		texture = QPATHTOFOLDER(Pictures\Markers\marker_unsc_ca.paa);
 	};
+	class a3u_flag_ascension_android : a3u_flag_optre_unsc
+	{
+		name = "Android";
+		icon = QPATHTOFOLDER(Pictures\Markers\android_ca.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\android_ca.paa);
+	};
+	class a3u_flag_ascension_vanguard : a3u_flag_ascension_android
+	{
+		name = "Vanguard";
+		icon = QPATHTOFOLDER(Pictures\Markers\vanguard_ca.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\vanguard_ca.paa);
+	};
 	class a3u_flag_optre_covenant: a3u_flag_optre_unsc 
 	{
 		name = "Covenant";
