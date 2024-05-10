@@ -99,7 +99,7 @@ while {true} do {
 		["destroyedSites",false,true] remoteExec ["BIS_fnc_endMission"];
 	};
 
-	if (_totalVictory isEqualTo false and (_popReb > _popGov) and {({sidesX getVariable [_x,sideUnknown] == teamPlayer} count (airportsX + milbases)) == count (airportsX + milbases)}) then {
+	if (totalVictory isEqualTo false and (_popReb > _popGov) and {({sidesX getVariable [_x,sideUnknown] == teamPlayer} count (airportsX + milbases)) == count (airportsX + milbases)}) then {
 		isNil { ["ended", true] call A3A_fnc_writebackSaveVar };
 		["end1",true,true,true,true] remoteExec ["BIS_fnc_endMission",0];
 	};
