@@ -26,6 +26,8 @@ private _hasRF = "rf" in A3A_enabledDLC;
 //       Vehicles       //
 //////////////////////////
 
+["vehiclesDropPod", ["Land_Pod_Heli_Transport_04_covered_F"]] call _fnc_saveToTemplate; 
+
 ["ammobox", "B_supplyCrate_F"] call _fnc_saveToTemplate;     //Don't touch or you die a sad and lonely death!
 ["surrenderCrate", "Box_East_Wps_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
 ["equipmentBox", "Box_CSAT_Equip_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
@@ -205,6 +207,7 @@ if (_hasWs) then {
 ]] call _fnc_saveToTemplate;
 
 ["variants", [
+    ["Land_Pod_Heli_Transport_04_covered_F", ["Black",1]],
     ["O_SFIA_Truck_02_aa_lxWS", ["Opfor",1]],
     ["O_SFIA_ZU23_lxWS", ["hex",1, "SFIA",0]],
     ["I_Truck_02_MRL_F", ["Opfor", 1, "Indep",0]],

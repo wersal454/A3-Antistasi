@@ -1022,7 +1022,7 @@ if (_hasGM) then {
 };
 
 if (_hasCSLA) then {
-	_backpacks append ["US85_bpSf","FIA_bpPack US85_bpAlice"];
+	_backpacks append ["US85_bpSf","FIA_bpPack", "US85_bpAlice"];
 };
 
 _loadoutData set ["offuniforms", _offuniforms]; ///check offuniforms later.
