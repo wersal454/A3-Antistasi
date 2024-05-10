@@ -46,6 +46,16 @@ class Templates
         description = $STR_A3AP_setupFactionsTab_exegermenos;
     };
 
+    class WS_Riv_ION : WS_Base
+    {
+        side = "Riv";
+        flagTexture = "\lxws\data_f_lxws\img\flags\flag_ion_co.paa";
+        name = "WS ION";
+        file = "WS_Riv_ION";
+        forceDLC[] = {"ws"};
+        description = $STR_A3AP_setupFactionsTab_ion;
+    }
+
     // ************************************** Vanilla *******************************************************
 
     class Vanilla_Base : Base
@@ -149,6 +159,16 @@ class Templates
         file = "Vanilla_Reb_LL";
         climate[] = {"temperate", "arctic"};
         description = $STR_A3AP_setupFactionsTab_ll;
+    };
+
+    class Vanilla_Remnants : Vanilla_Base
+    {
+        side = "Riv";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Vanilla\flag_aaf_torn_co.paa);
+        name = "A3 AAF Remnants";
+        file = "Vanilla_Riv_Remnants";
+        climate[] = {"arid", "temperate", "arctic"}; ///arctic?
+        description = $STR_A3AP_setupFactionsTab_remnants;
     };
 
     class Vanilla_Exegermenos : Vanilla_Base
@@ -699,5 +719,9 @@ class Templates
     // ***************************** East Asia War *****************************
 
     #include "Templates\EAW\templates.hpp"
+
+    // ***************************** Androids *****************************
+
+    #include "Templates\Android\templates.hpp"
 
 };

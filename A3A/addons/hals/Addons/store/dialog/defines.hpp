@@ -222,7 +222,7 @@ class RscItemListBoxCategories {
 	colorShadow[] = {0, 0, 0, 0.5};
 	period = 0;
 	maxHistoryDelay = 1;
-	itemSpacing = 0.001;
+	itemSpacing = 0.01;
 	itemBackground[] = {0, 1, 1, 0.1};
 };
 

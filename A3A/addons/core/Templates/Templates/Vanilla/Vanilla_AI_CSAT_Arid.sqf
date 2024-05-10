@@ -53,13 +53,13 @@ private _aa = ["O_APC_Tracked_02_AA_F"];
 private _transportBoat = ["O_Boat_Transport_01_F"];
 ["vehiclesGunBoats", ["O_Boat_Armed_01_hmg_F"]] call _fnc_saveToTemplate;
 
-private _planesCAS = ["O_Plane_CAS_02_dynamicLoadout_F"];
-private _planesAA = ["O_Plane_CAS_02_dynamicLoadout_F"];
+private _planesCAS = ["O_Plane_CAS_02_dynamicLoadout_F","O_UAV_02_dynamicLoadout_F"];
+private _planesAA = ["O_Plane_CAS_02_dynamicLoadout_F","O_UAV_02_dynamicLoadout_F"];
 
 private _planesTransport = [];
 if (_hasApex) then {
 	_planesTransport pushback "O_T_VTOL_02_infantry_dynamicLoadout_F";
-    _planesCAS pushback "O_T_VTOL_02_infantry_dynamicLoadout_F";
+    _planesCAS append ["O_T_VTOL_02_infantry_dynamicLoadout_F","O_T_UAV_04_CAS_F"];
     _planesAA pushback "O_T_VTOL_02_infantry_dynamicLoadout_F";
 };
 
@@ -80,7 +80,7 @@ private _lightAttackHelicopters = ["O_Heli_Light_02_dynamicLoadout_F"];
 ["O_MBT_02_arty_F",["32Rnd_155mm_Mo_shells_O", "2Rnd_155mm_Mo_Cluster_O", "6Rnd_155mm_Mo_mine_O"]]
 ]] call _fnc_saveToTemplate;
 
-["uavsAttack", ["O_UAV_02_dynamicLoadout_F"]] call _fnc_saveToTemplate;
+["uavsAttack", ["O_UAV_02_dynamicLoadout_F","O_T_UAV_04_CAS_F"]] call _fnc_saveToTemplate;
 private _uavsPortable = if (_hasWs) then {["O_UAV_02_lxWS", "O_UAV_01_F"]} else {["O_UAV_01_F"]};
 
 //Config special vehicles - militia vehicles are mostly used in the early game, police cars are being used by troops around cities -- Example:
