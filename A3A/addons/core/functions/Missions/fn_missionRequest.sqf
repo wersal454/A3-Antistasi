@@ -100,7 +100,7 @@ switch (_type) do {
 				[[_site],"A3A_fnc_CON_MilAdmin"] remoteExec ["A3A_fnc_scheduler",2]
 			} else {
 				if (_possibleFrontlineMarkers isNotEqualTo []) then {
-					[[_Fronlinesite],"A3A_fnc_CON_Outpost_Compet"] remoteExec ["A3A_fnc_scheduler",2]; ///better check is needed
+					[[_frontlineSite],"A3A_fnc_CON_Outpost_Compet"] remoteExec ["A3A_fnc_scheduler",2]; //better check is needed
 				} else {
 					[[_site],"A3A_fnc_CON_Outpost"] remoteExec ["A3A_fnc_scheduler",2];
 				};
