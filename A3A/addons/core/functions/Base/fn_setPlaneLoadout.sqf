@@ -191,6 +191,22 @@ if (_type == "CASDIVE") then
             _plane setVariable ["bombRacks", ["Bomb_03_Plane_CAS_02_F","BombCluster_02_F"]];
             _plane setVariable ["diveParams", [800, 500, 180, 55, 20, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
         };
+        //Vanilla JETS UAV
+        case "B_UAV_05_F":
+        {
+            _loadout = ["PylonMissile_Bomb_GBU12_x1","PylonMissile_1Rnd_BombCluster_01_F"];
+            _plane setVariable ["bombRacks", ["weapon_GBU12Launcher","BombCluster_01_F"]];
+            _plane setVariable ["diveParams", [1000, 700, 180, 55, 25, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
+        };
+        //Vanilla UAV
+        case "I_UAV_02_dynamicLoadout_F";
+        case "O_UAV_02_dynamicLoadout_F";
+        case "B_UAV_02_dynamicLoadout_F":
+        {
+            _loadout = ["PylonMissile_1Rnd_Mk82_F","PylonMissile_1Rnd_BombCluster_03_F"];
+            _plane setVariable ["bombRacks", ["Mk82BombLauncher","BombCluster_03_F"]];
+            _plane setVariable ["diveParams", [600, 400, 180, 55, 25, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
+        };
         //Aegis F-35
         case "Atlas_B_A_Plane_Fighter_05_ard_F";
         case "Atlas_B_A_Plane_Fighter_05_trp_F";
@@ -761,6 +777,30 @@ if (_type == "CAS") then
             _plane setVariable ["rocketLauncher", ["rockets_Skyfire","Rocket_03_HE_Plane_CAS_02_F","Rocket_03_AP_Plane_CAS_02_F"]];
             _plane setVariable ["missileLauncher", ["missiles_SCALPEL"]];
             _plane setVariable ["diveParams", [1000, 600, 180, 55, 15, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
+        };
+        //Vanilla JETS UAV
+        case "B_UAV_05_F":
+        {
+            _loadout = ["PylonMissile_Missile_HARM_INT_x1","PylonMissile_Missile_AGM_02_x2"];
+            _plane setVariable ["missileLauncher", ["weapon_HARMLauncher","weapon_AGM_65Launcher"]];
+            _plane setVariable ["diveParams", [1000, 600, 180, 55, 20, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
+        };
+        //Vanilla UAV
+        case "I_UAV_02_dynamicLoadout_F";
+        case "O_UAV_02_dynamicLoadout_F";
+        case "B_UAV_02_dynamicLoadout_F":
+        {
+            _loadout = ["PylonRack_12Rnd_missiles","PylonRack_3Rnd_LG_scalpel"];
+            _plane setVariable ["rocketLauncher", ["missiles_DAR"]];
+            _plane setVariable ["missileLauncher", ["missiles_SCALPEL"]];
+            _plane setVariable ["diveParams", [600, 400, 180, 55, 25, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
+        };
+        //Vanilla APEX UAV
+        case "O_T_UAV_04_CAS_F":
+        {
+            _loadout = ["4Rnd_LG_Jian"];
+            _plane setVariable ["missileLauncher", ["missiles_Jian"]];
+            _plane setVariable ["diveParams", [600, 400, 180, 55, 25, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
         };
         //Aegis experimental CAS plane without rocket launchers, let's see how this will play out
         case "Atlas_B_A_Plane_Fighter_05_ard_F";
@@ -1338,6 +1378,22 @@ if (_type == "AA") then
             _plane setVariable ["mainGun", "gatling_30mm_VTOL_02"];
             _plane setVariable ["missileLauncher", ["Missile_AA_03_Plane_CAS_02_F"]];
             _plane setVariable ["diveParams", [1000, 600, 180, 55, 15, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
+        };
+        //Vanilla JETS UAV
+        case "B_UAV_05_F":
+        {
+            _loadout = ["PylonRack_1Rnd_AAA_missiles","PylonRack_1Rnd_Missile_AA_04_F"];
+            _plane setVariable ["missileLauncher", ["missiles_ASRAAM","Missile_AA_04_Plane_CAS_01_F"]];
+            _plane setVariable ["diveParams", [1000, 600, 180, 55, 20, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
+        };
+        //Vanilla UAV
+        case "I_UAV_02_dynamicLoadout_F";
+        case "O_UAV_02_dynamicLoadout_F";
+        case "B_UAV_02_dynamicLoadout_F":
+        {
+            _loadout = ["PylonRack_1Rnd_AAA_missiles","PylonRack_1Rnd_Missile_AA_04_F"];
+            _plane setVariable ["missileLauncher", ["missiles_ASRAAM","Missile_AA_04_Plane_CAS_01_F"]];
+            _plane setVariable ["diveParams", [600, 400, 180, 55, 25, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
         };
 	    ///Aegis/Atlas
         case "Atlas_B_A_Plane_Fighter_05_Stealth_F";

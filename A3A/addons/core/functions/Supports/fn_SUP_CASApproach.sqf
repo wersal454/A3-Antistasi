@@ -193,6 +193,8 @@ private _baseSpotChance = 0.05 * (1 + _aggro / 100);
 #define STATE_REPOSITION 2
 #define STATE_APPROACH 3
 
+_plane setVehicleRadar 1;
+
 private _numRuns = 0;
 private _acquired = false;
 private _targetObj = objNull;
@@ -286,7 +288,7 @@ while {true} do
                 private _targVector = _lastKnownPos vectorDiff (getPosASL _plane);
                 private _dotdir = vectorNormalized _targVector vectorDotProduct vectorDir _plane;
                 if (_dotdir < 0.90) exitWith {};
-
+                _plane setVehicleRadar 1;
                 // Kick off the attack run and wait until it's done
                 _group setCurrentWaypoint _loiterWP;
                 private _runHandle = [_plane, _targetObj, _supportName] spawn A3A_fnc_SUP_CASRun;
@@ -338,5 +340,5 @@ while {true} do
 
     };
 };
-
+_plane setVehicleRadar 0;
 _plane removeEventHandler ["Fired", _firedEH];

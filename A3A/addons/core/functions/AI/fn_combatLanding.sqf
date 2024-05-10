@@ -25,8 +25,6 @@ if (_vehType in FactionGet(all,"vehiclesHelisAttack") + FactionGet(all,"vehicles
 _crewGroup setVariable ["A3A_AIScriptHandle", _thisScript];
 _cargoGroup setVariable ["A3A_AIScriptHandle", _thisScript];
 
-private [_landPos];
-
 private _landPad = createVehicle ["Land_HelipadEmpty_F", _landPos, [], 0, "NONE"];
 _helicopter setVariable ["LandingPad", _landPad, true];             // cleared up (eventually) by heli deletion handler
 

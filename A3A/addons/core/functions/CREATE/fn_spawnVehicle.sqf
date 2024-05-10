@@ -90,12 +90,4 @@ if (isNil "_unitType") then {
 //Spawn the crew
 _group = [_group, _veh, _unitType] call A3A_fnc_createVehicleCrew;
 
-if ((driver _veh) == objNull) then {
-    private _driver = [_group, _unitType, getPos _veh, [], 10] call A3A_fnc_createUnit;
-    _driver assignAsDriver _veh;
-    [_driver] orderGetIn true;
-    _driver moveInDriver _veh;
-    [_driver] join _group;
-};
-
 [_veh, crew _veh, _group];
