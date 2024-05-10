@@ -165,6 +165,11 @@ class planeLoadouts
    
     class AA
     {
+        // OPTRE
+        class OPTRE_YSS_1000_A
+        {
+            loadout[] = {"OPTRE_3Rnd_Jackknife_sabre_missile","PylonRack_1Rnd_Missile_AA_04_F","OPTRE_3Rnd_Jackknife_sabre_missile","PylonRack_1Rnd_Missile_AA_04_F","OPTRE_M1024_2000Rnd_30mm"};
+        };
         /// TFC
         class TFC_CP140_dynamicLoadout
         {
