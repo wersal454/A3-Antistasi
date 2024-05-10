@@ -22,6 +22,8 @@ FIX_LINE_NUMBERS()
 
 params ["_supportName", "_side", "_resPool", "_maxSpend", "_target", "_targPos", "_reveal", "_delay"];
 
+/// add _oppositeSide and send it into routine function 
+
 private _airport = [_side, _targPos] call A3A_fnc_availableBasesAir;
 if (isNil "_airport") exitWith { Debug_1("No airport found for %1 support", _supportName); -1; };
 
@@ -37,17 +39,20 @@ if (_target isEqualType objNull and {!isNull _target}) then {
     A3A_supportStrikes pushBack [_side, "AREA", _target, time + 1200, 1200, 200];
     _targArray = [_target, _targPos];
 };
-
+private _planeTest = createVehicle [_vehType, [0,0,0], [], 0, "FLY"];
 // name, side, suppType, center, radius, [target, targpos]
 private _suppData = [_supportName, _side, "GUNSHIP", _targPos, 3000, _targArray];       // should radius be larger?
 A3A_activeSupports pushBack _suppData;
 
-if(_side == Occupants) then {
-    [_suppData, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineNATO;
-} else {
-    [_suppData, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineCSAT;
+switch (true) do
+{
+	case (_planeTest isKindOf "VTOL_01_armed_base_F"): {[_suppData, _side, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineV44;};
+	case (_planeTest isKindOf "vnx_air_c119_base"): {[_suppData, _side, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineNickelSteel;};
+    case (_planeTest isKindOf "USAF_AC130U_base"): {[_suppData, _side, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineUSAF;};
+	default {[_suppData, _side, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineDefault;};
 };
 
+deleteVehicle _planeTest;
 [_reveal, _side, "GUNSHIP", _targPos, _delay] spawn A3A_fnc_showInterceptedSetupCall;
 
 // Vehicle cost + extra support cost for balance

@@ -103,9 +103,13 @@ private _angle = asin (1500/_distance);
 private _lenght = cos (_angle) * _distance;
 Debug_3("Distance %1 Length %2 Angle %3", _distance, _lenght, _angle);
 private _height = (ATLToASL _supportPos) select 2;
-_height = _height + 500;
+_height = _height + 600;
 //Sets minimal height in relation to ground
-_strikePlane flyInHeight 500;
+if (_planeTest isKindOf "USAF_AC130U_base") then {
+    _strikePlane flyInHeight 800; ///cause this is stupid, stupid plane (not tested)
+} else {
+    _strikePlane flyInHeight 600; /// fly higher or fly lower ?
+};
 private _entryPos = _spawnPos getPos [_lenght, _startDir + _angle];
 Debug_1("Entry Pos: %1", _entryPos);
 _entryPos set [2, _height];
@@ -116,7 +120,13 @@ _entryPoint setWaypointStatements ["true", "(vehicle this) setVariable ['InArea'
 private _loiterWP = _strikeGroup addWaypoint [_supportPos, 0, 2];
 _loiterWP setWaypointType "LOITER";
 _loiterWP setWaypointLoiterType "CIRCLE_L";
-_loiterWP setWaypointSpeed "NORMAL";
-_loiterWP setWaypointLoiterRadius 1200;
+_loiterWP setWaypointSpeed "NORMAL"; ///maybe "LIMITED"
+
+if (_planeTest isKindOf "USAF_AC130U_base") then {
+    _loiterWP setWaypointLoiterRadius 1000; ///cause this is stupid, stupid plane (not tested)
+} else {
+    _loiterWP setWaypointLoiterRadius 800; /// big or small?
+};
+
 _strikePlane setDir (_startDir + _angle);
 [_strikePlane, _strikeGroup];

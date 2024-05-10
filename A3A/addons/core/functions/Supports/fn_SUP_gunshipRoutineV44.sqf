@@ -1,10 +1,10 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-params ["_suppData", "_resPool", "_airport", "_sleepTime", "_reveal"];
+params ["_suppData", "_side", "_faction", "_vehType","_resPool", "_airport", "_sleepTime", "_reveal"];
 _suppData params ["_supportName", "_side", "_suppType", "_suppCenter", "_suppRadius", "_suppTarget"];
-
-private _gunshipData = [Occupants, _airport, _supportName, selectRandom (A3A_faction_occ get "vehiclesPlanesGunship"), _suppTarget, _resPool, _suppCenter, (A3A_faction_occ get "unitPilot")] call A3A_fnc_SUP_gunshipSpawn;
+///maybe _side instead of _faction
+private _gunshipData = [_side, _airport, _supportName, _vehType, _suppTarget, _resPool, _suppCenter, _faction get "unitPilot"] call A3A_fnc_SUP_gunshipSpawn;
 _gunshipData params ["_gunship", "_strikeGroup"];
 
 //Prepare crew units and spawn them in
@@ -14,7 +14,7 @@ private _mainGunner = objNull;
 private _heavyGunner = objNull;
 
 for "_i" from 1 to 2 do {
-    _crew = [_strikeGroup, FactionGet(occ, "unitPilot"), getPos _gunship] call A3A_fnc_createUnit;
+    _crew = [_strikeGroup, _faction get "unitPilot", getPos _gunship] call A3A_fnc_createUnit;
     if(_i == 1) then {
         _crew moveInTurret [_gunship, [1]];
         _heavyGunner = _crew;
@@ -67,7 +67,7 @@ _textMarker setMarkerType "mil_dot";
 _textMarker setMarkerText "Gunship";
 _textMarker setMarkerColor colorOccupants;
 _textMarker setMarkerAlpha 0;
-[_reveal, _suppCenter, Occupants, "GUNSHIP", format ["%1_coverage", _supportName], _textMarker] spawn A3A_fnc_showInterceptedSupportCall;
+//[_reveal, _suppCenter, Occupants, "GUNSHIP", format ["%1_coverage", _supportName], _textMarker] spawn A3A_fnc_showInterceptedSupportCall;
 
 waitUntil
 {
@@ -76,12 +76,12 @@ waitUntil
     {!(alive _gunship) ||
     (_gunship getVariable ["InArea", false])}
 };
-
+sleep 20; //maybe more to get plane in to the position
 if !(_gunship getVariable ["InArea", false]) exitWith
 {
     Debug_1("%1 has been destroyed before reaching the area", _supportName);
     //Gunship destroyed before reaching the area
-    [_supportName, Occupants] call A3A_fnc_endSupport;
+    [_gunship] spawn A3A_fnc_vehDespawner;
 };
 
 _gunship setVariable ["IsActive", true];
@@ -216,7 +216,7 @@ private _heavyGunnerList = [];
 {
     #include "..\..\script_component.hpp"
     FIX_LINE_NUMBERS()
-    params ["_gunship", "_mainGunnerList", "_heavyGunner", "_supportName"];
+    params ["_gunship", "_heavyGunnerList", "_heavyGunner", "_supportName"]; ///_mainGunnerList
 
     private _fnc_executeFireOrder =
     {
@@ -278,6 +278,10 @@ private _heavyGunnerList = [];
             if(count _targetList > 0) then
             {
                 Debug("Gunship | Using priority list");
+                diag_log _targetList;
+                diag_log _targetList;
+                diag_log _targetList;
+                diag_log _targetList;
                 //Priority target, execute first
                 private _target = _targetList#0#0#0;
                 private _supportMarker = format ["%1_coverage", _supportName];
@@ -351,6 +355,10 @@ while {_lifeTime > 0} do
     ) then
     {
         private _targets = _suppCenter nearEntities [["Man", "LandVehicle", "Helicopter"], 400];
+        diag_log _targets;
+        diag_log _targets;
+        diag_log _targets;
+        diag_log _targets;
         _targets = _targets select
         {
             if(_x isKindOf "Man") then
@@ -359,7 +367,7 @@ while {_lifeTime > 0} do
             }
             else
             {
-                (alive _x) && {(_x getVariable ["ownerSide", sideUnknown]) in [teamPlayer, Invaders] || {(side group driver _x) in [teamPlayer, Invaders]}}
+                (alive _x) && {(_x getVariable ["ownerSide", sideUnknown]) in [teamPlayer, Invaders] || {(side group driver _x) in [teamPlayer, Invaders]}} ////don't forget to change it to _oppositeSide or something
             }
         };
         Debug_2("%1 found %2 targets in its area", _supportName, count _targets);
@@ -459,12 +467,8 @@ if (alive _gunship) then
     waitUntil {!(alive _gunship) || ((getMarkerPos _airport) distance2D _gunship) < 100};
     if(alive _gunship) then
     {
-        {
-            deleteVehicle _x;
-        } forEach (crew _gunship);
-        deleteVehicle _gunship;
+        [_gunship] spawn A3A_fnc_vehDespawner;
     };
 };
 
 //Deleting all the support data here
-[_supportName, Occupants] call A3A_fnc_endSupport;
