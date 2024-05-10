@@ -9100,11 +9100,23 @@
                 <French>Site de l'accident d'hélicoptère</French>
             </Key>
             <Key ID="STR_A3A_Missions_LOG_Helicrash_task_desc">
-                <Original>%1 helicopter with some valueable cargo has been shot down in %2. Bring helicopter's cargo to the HQ before enemy's rescue team. We must get it before %3. Enemy frontline troops already found the crashsite and guarding it.</Original>
+                <Original>%1 helicopter with some valueable cargo has been shot down in %2. Collect the data and bring it to the HQ before enemy's rescue team. We must get it before %3. Enemy frontline troops are on their way.</Original>
                 <Russian>Вертолёт %1 c ценным грузом был сбит в %2. Привезите этот груз в штаб до того как его заберёт вражеская эвакуационная команда. Мы должны сделать это %3. Вражеские передовые отряды уже обнаружили груз и охраняют его.</Russian>
                 <Chinesesimp>%1 载有贵重货物的直升机已在 %2 被击落。 在敌方救援队之前将直升机的货物带到总部。 我们必须在 %3 之前得到它。 敌前线部队已经找到坠机点并把守着。</Chinesesimp>
                 <Korean>%2에서 가치 있는 화물을 적재한 %1의 헬리콥터가 격추되었습니다. 헬리콥터의 화물을 적 구조대보다 먼저 본부로 가져오십시오. %3 이전에 확보해야 합니다. 적의 최전선 부대가 이미 추락 지점을 발견하고 지키는 중입니다.</Korean>
                 <French>L'hélicoptère %1 avec une cargaison de valeur a été abattu à %2. Apportez la cargaison de l'hélicoptère au QG avant l'arrivée de l'équipe de secours ennemie. Nous devons l'obtenir avant %3. Les troupes ennemies de première ligne ont déjà trouvé le site du crash et le gardent.</French>
+            </Key>
+            <Key ID="STR_A3A_Missions_LOG_crashsite_task_header">
+                <Original>Reconnaissance Vehicle Crash Site</Original>
+                <Russian>Направляйтесь на предпологаемое место крушения</Russian>
+            </Key>
+            <Key ID="STR_A3A_Missions_LOG_crashsite_task_desc">
+                <Original>%1s' reconnaissance vehicle was shot down. Go to the supposed crash site in %2. Collect the data and bring it back to HQ before the enemy recovery team. We must get it before %3. Enemy frontline troops are on their way to recover the data.</Original>
+                <Russian>Транспорт %1 c разведданными был подбит в %2. Соберите их и доставьте в штаб до того как их заберёт вражеская эвакуационная команда. Мы должны сделать это %3. Вражеские передовые отряды уже в пути.</Russian>
+            </Key>
+            <Key ID="STR_A3A_Missions_LOG_crashsite_task_alt">
+                <Original>Deliver the crashsite data to the arms dealer. He will pay handsomely! Petros won't be too upset about it.</Original>
+                <Russian>Доставьте данные торговцу оружием. Он щедро за них заплатит (Петрос не сильно расстроится).</Russian>
             </Key>
             <Key ID="STR_A3A_Missions_SUPP_Supplies_task_header">
                 <Original>Deliver Supplies to %1</Original>
