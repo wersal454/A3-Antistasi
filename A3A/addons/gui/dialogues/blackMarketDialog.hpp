@@ -10,9 +10,9 @@ class A3A_BlackMarketDialog : A3A_TabbedDialog
         {
             idc = -1;
             text = $STR_trader_black_market_title;
-            x = DIALOG_X;
-            y = DIALOG_Y - 10 * GRID_H;
-            w = DIALOG_W * GRID_W;
+            x = DIALOG_VEHSTORE_X;
+            y = DIALOG_VEHSTORE_Y - 10 * GRID_H;
+            w = DIALOG_VEHSTORE_W * GRID_W;
             h = 5 * GRID_H;
         };
 
@@ -21,8 +21,8 @@ class A3A_BlackMarketDialog : A3A_TabbedDialog
           idc = -1;
           text = $STR_antistasi_dialogs_black_market_tip;
           font = A3A_NOTIFICATION_FONT;
-          x = DIALOG_X;
-          y = DIALOG_Y - 1 * GRID_H;
+          x = DIALOG_VEHSTORE_X;
+          y = DIALOG_Y - (-4.5) * GRID_H;
           w = DIALOG_W * GRID_W;
           h = 5 * GRID_H;
         };
@@ -30,10 +30,10 @@ class A3A_BlackMarketDialog : A3A_TabbedDialog
         class TabButtons : A3A_ControlsGroupNoScrollbars
         {
             idc = A3A_IDC_MAINDIALOGTABBUTTONS;
-            x = DIALOG_X;
-            y = DIALOG_Y - 5 * GRID_H;
-            w = DIALOG_W * GRID_W;
-            h = 5 * GRID_H;
+            x = DIALOG_VEHSTORE_X;
+            y = DIALOG_VEHSTORE_Y - 5 * GRID_H;
+            w = DIALOG_VEHSTORE_W * GRID_W;
+            h = 10 * GRID_H;
 
             class Controls
             {
@@ -47,7 +47,103 @@ class A3A_BlackMarketDialog : A3A_TabbedDialog
                     w = 30 * GRID_W;
                     h = 5 * GRID_H;
                 };
+
+                class VehicleTabButton2 : A3A_Button
+                {
+                    idc = A3A_IDC_BLACKMARKETTABBUTTON;
+                    text = $STR_antistasi_dialogs_vehicle_tab_mil;
+                    onButtonClick = "[""switchTab"", [""vehicles""]] call A3A_fnc_blackMarketDialog";
+                    x = 30 * GRID_W;
+                    y = 0;
+                    w = 30 * GRID_W;
+                    h = 5 * GRID_H;
+                };
+            
+                class VehicleTabButton3 : A3A_Button
+                {
+                    idc = A3A_IDC_BLACKMARKETTABBUTTON;
+                    text = $STR_antistasi_dialogs_vehicle_tab_mil;
+                    onButtonClick = "[""switchTab"", [""vehicles""]] call A3A_fnc_blackMarketDialog";
+                    x = 60 * GRID_W;
+                    y = 0;
+                    w = 30 * GRID_W;
+                    h = 5 * GRID_H;
+                };
+
+                class VehicleTabButton4 : A3A_Button
+                {
+                    idc = A3A_IDC_BLACKMARKETTABBUTTON;
+                    text = $STR_antistasi_dialogs_vehicle_tab_mil;
+                    onButtonClick = "[""switchTab"", [""vehicles""]] call A3A_fnc_blackMarketDialog";
+                    x = 90 * GRID_W;
+                    y = 0;
+                    w = 30 * GRID_W;
+                    h = 5 * GRID_H;
+                };
+                class VehicleTabButton5 : A3A_Button
+                {
+                    idc = A3A_IDC_BLACKMARKETTABBUTTON;
+                    text = $STR_antistasi_dialogs_vehicle_tab_mil;
+                    onButtonClick = "[""switchTab"", [""vehicles""]] call A3A_fnc_blackMarketDialog";
+                    x = 120 * GRID_W;
+                    y = 0;
+                    w = 30 * GRID_W;
+                    h = 5 * GRID_H;
+                };
+                class VehicleTabButton6 : A3A_Button
+                {
+                    idc = A3A_IDC_BLACKMARKETTABBUTTON;
+                    text = $STR_antistasi_dialogs_vehicle_tab_mil;
+                    onButtonClick = "[""switchTab"", [""vehicles""]] call A3A_fnc_blackMarketDialog";
+                    x = 0 * GRID_W;
+                    y = 5 * GRID_H;
+                    w = 30 * GRID_W;
+                    h = 5 * GRID_H;
+                };
+                class VehicleTabButton7 : A3A_Button
+                {
+                    idc = A3A_IDC_BLACKMARKETTABBUTTON;
+                    text = $STR_antistasi_dialogs_vehicle_tab_mil;
+                    onButtonClick = "[""switchTab"", [""vehicles""]] call A3A_fnc_blackMarketDialog";
+                    x = 30 * GRID_W;
+                    y = 5 * GRID_H;
+                    w = 30 * GRID_W;
+                    h = 5 * GRID_H;
+                };
+                class VehicleTabButton8 : A3A_Button
+                {
+                    idc = A3A_IDC_BLACKMARKETTABBUTTON;
+                    text = $STR_antistasi_dialogs_vehicle_tab_mil;
+                    onButtonClick = "[""switchTab"", [""vehicles""]] call A3A_fnc_blackMarketDialog";
+                    x = 60 * GRID_W;
+                    y = 5 * GRID_H;
+                    w = 30 * GRID_W;
+                    h = 5 * GRID_H;
+                };
+
+                class VehicleTabButton9 : A3A_Button
+                {
+                    idc = A3A_IDC_BLACKMARKETTABBUTTON;
+                    text = $STR_antistasi_dialogs_vehicle_tab_mil;
+                    onButtonClick = "[""switchTab"", [""vehicles""]] call A3A_fnc_blackMarketDialog";
+                    x = 90 * GRID_W;
+                    y = 5 * GRID_H;
+                    w = 30 * GRID_W;
+                    h = 5 * GRID_H;
+                };
+
+                class VehicleTabButton10 : A3A_Button
+                {
+                    idc = A3A_IDC_BLACKMARKETTABBUTTON;
+                    text = $STR_antistasi_dialogs_vehicle_tab_mil;
+                    onButtonClick = "[""switchTab"", [""vehicles""]] call A3A_fnc_blackMarketDialog";
+                    x = 120 * GRID_W;
+                    y = 5 * GRID_H;
+                    w = 30 * GRID_W;
+                    h = 5 * GRID_H;
+                };
             };
+
         };
 
         // Main content
@@ -62,9 +158,162 @@ class A3A_BlackMarketDialog : A3A_TabbedDialog
                 {
                     idc = A3A_IDC_BLACKMARKETVEHICLESGROUP;
                     x = 0;
+                    y = 9.5 * GRID_H;
+                    w = PX_W(DIALOG_VEHSTORE_W);
+                    h = PX_H(DIALOG_VEHSTORE_H) - 9.5 * GRID_H;
+                };
+            };
+        };
+        class VehicleTab2 : A3A_DefaultControlsGroup
+        {
+            idc = A3A_IDC_BLACKMARKETMAIN;
+            show = false;
+
+            class Controls
+            {
+                class VehiclesControlsGroup : A3A_ControlsGroupNoHScrollbars
+                {
+                    idc = A3A_IDC_BLACKMARKETVEHICLESGROUP2;
+                    x = 0;
                     y = 4 * GRID_H;
-                    w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 8 * GRID_H;
+                    w = PX_W(DIALOG_VEHSTORE_W);
+                    h = PX_H(DIALOG_VEHSTORE_H) - 8 * GRID_H;
+                };
+            };
+        };
+        class VehicleTab3 : A3A_DefaultControlsGroup
+        {
+            idc = A3A_IDC_BLACKMARKETMAIN;
+            show = false;
+
+            class Controls
+            {
+                class VehiclesControlsGroup : A3A_ControlsGroupNoHScrollbars
+                {
+                    idc = A3A_IDC_BLACKMARKETVEHICLESGROUP3;
+                    x = 0;
+                    y = 4 * GRID_H;
+                    w = PX_W(DIALOG_VEHSTORE_W);
+                    h = PX_H(DIALOG_VEHSTORE_H) - 8 * GRID_H;
+                };
+            };
+        };
+        class VehicleTab4 : A3A_DefaultControlsGroup
+        {
+            idc = A3A_IDC_BLACKMARKETMAIN;
+            show = false;
+
+            class Controls
+            {
+                class VehiclesControlsGroup : A3A_ControlsGroupNoHScrollbars
+                {
+                    idc = A3A_IDC_BLACKMARKETVEHICLESGROUP3;
+                    x = 0;
+                    y = 4 * GRID_H;
+                    w = PX_W(DIALOG_VEHSTORE_W);
+                    h = PX_H(DIALOG_VEHSTORE_H) - 8 * GRID_H;
+                };
+            };
+        };
+        class VehicleTab5 : A3A_DefaultControlsGroup
+        {
+            idc = A3A_IDC_BLACKMARKETMAIN;
+            show = false;
+
+            class Controls
+            {
+                class VehiclesControlsGroup : A3A_ControlsGroupNoHScrollbars
+                {
+                    idc = A3A_IDC_BLACKMARKETVEHICLESGROUP3;
+                    x = 0;
+                    y = 4 * GRID_H;
+                    w = PX_W(DIALOG_VEHSTORE_W);
+                    h = PX_H(DIALOG_VEHSTORE_H) - 8 * GRID_H;
+                };
+            };
+        };
+        class VehicleTab6 : A3A_DefaultControlsGroup
+        {
+            idc = A3A_IDC_BLACKMARKETMAIN;
+            show = false;
+
+            class Controls
+            {
+                class VehiclesControlsGroup : A3A_ControlsGroupNoHScrollbars
+                {
+                    idc = A3A_IDC_BLACKMARKETVEHICLESGROUP3;
+                    x = 0;
+                    y = 4 * GRID_H;
+                    w = PX_W(DIALOG_VEHSTORE_W);
+                    h = PX_H(DIALOG_VEHSTORE_H) - 8 * GRID_H;
+                };
+            };
+        };
+        class VehicleTab7 : A3A_DefaultControlsGroup
+        {
+            idc = A3A_IDC_BLACKMARKETMAIN;
+            show = false;
+
+            class Controls
+            {
+                class VehiclesControlsGroup : A3A_ControlsGroupNoHScrollbars
+                {
+                    idc = A3A_IDC_BLACKMARKETVEHICLESGROUP3;
+                    x = 0;
+                    y = 4 * GRID_H;
+                    w = PX_W(DIALOG_VEHSTORE_W);
+                    h = PX_H(DIALOG_VEHSTORE_H) - 8 * GRID_H;
+                };
+            };
+        };
+        class VehicleTab8 : A3A_DefaultControlsGroup
+        {
+            idc = A3A_IDC_BLACKMARKETMAIN;
+            show = false;
+
+            class Controls
+            {
+                class VehiclesControlsGroup : A3A_ControlsGroupNoHScrollbars
+                {
+                    idc = A3A_IDC_BLACKMARKETVEHICLESGROUP3;
+                    x = 0;
+                    y = 4 * GRID_H;
+                    w = PX_W(DIALOG_VEHSTORE_W);
+                    h = PX_H(DIALOG_VEHSTORE_H) - 8 * GRID_H;
+                };
+            };
+        };
+        class VehicleTab9 : A3A_DefaultControlsGroup
+        {
+            idc = A3A_IDC_BLACKMARKETMAIN;
+            show = false;
+
+            class Controls
+            {
+                class VehiclesControlsGroup : A3A_ControlsGroupNoHScrollbars
+                {
+                    idc = A3A_IDC_BLACKMARKETVEHICLESGROUP3;
+                    x = 0;
+                    y = 4 * GRID_H;
+                    w = PX_W(DIALOG_VEHSTORE_W);
+                    h = PX_H(DIALOG_VEHSTORE_H) - 8 * GRID_H;
+                };
+            };
+        };
+        class VehicleTab10 : A3A_DefaultControlsGroup
+        {
+            idc = A3A_IDC_BLACKMARKETMAIN;
+            show = false;
+
+            class Controls
+            {
+                class VehiclesControlsGroup : A3A_ControlsGroupNoHScrollbars
+                {
+                    idc = A3A_IDC_BLACKMARKETVEHICLESGROUP3;
+                    x = 0;
+                    y = 4 * GRID_H;
+                    w = PX_W(DIALOG_VEHSTORE_W);
+                    h = PX_H(DIALOG_VEHSTORE_H) - 8 * GRID_H;
                 };
             };
         };
@@ -72,8 +321,8 @@ class A3A_BlackMarketDialog : A3A_TabbedDialog
         class CloseButton : A3A_CloseButton
         {
             idc = -1;
-            x = DIALOG_X + DIALOG_W * GRID_W - 5 * GRID_W;
-            y = DIALOG_Y - 10 * GRID_H;
+            x = DIALOG_VEHSTORE_X + DIALOG_VEHSTORE_W * GRID_W - 5 * GRID_W;
+            y = DIALOG_VEHSTORE_Y - 10 * GRID_H;
         };
     };
 
