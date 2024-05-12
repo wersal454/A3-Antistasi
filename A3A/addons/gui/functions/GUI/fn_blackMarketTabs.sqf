@@ -37,6 +37,7 @@ private _selectedTab = -1;
 if (_tab isEqualTo "vehicles") then 
 {
     _selectedTab = A3A_IDC_BLACKMARKETVEHICLESGROUP;
+    _params params ["_tab", "_selectedTab", "_category"];
     Debug("BuyVehicleTab starting...");
 
     // show the vehicle tab so that user don't freak out
@@ -48,7 +49,7 @@ if (_tab isEqualTo "vehicles") then
     _objPreview ctrlShow false;
 
     // Add stuff to the buyable vehicles list
-    private _buyableVehiclesList = [] call SCRT_fnc_ui_populateBlackMarket;
+    private _buyableVehiclesList = [_category] call SCRT_fnc_ui_populateBlackMarket;
     private _vehiclesControlsGroup = _display displayCtrl _selectedTab;
 
     private _added = 0;
@@ -72,13 +73,14 @@ if (_tab isEqualTo "vehicles") then
         */
 
         // Add some extra padding to the top if there are 2 rows or less
-        private _topPadding = if (count _buyableVehiclesList < 7) then {5 * GRID_H} else {0};
+        //private _topPadding = if (count _buyableVehiclesList < 7) then {5 * GRID_H} else {0};
+        private _topPadding = 10 * GRID_H;
 
-        private _itemXpos = 7 * GRID_W + ((7 * GRID_W + 44 * GRID_W) * (_added mod 3));
-        private _itemYpos = (floor (_added / 3)) * (44 * GRID_H) + _topPadding;
+        private _itemXpos = 7 * GRID_W + ((7 * GRID_W + 44 * GRID_W) * (_added mod 3)); /// space between first row(?) and left border
+        private _itemYpos = (floor (_added / 3)) * (44 * GRID_H) + _topPadding; ///spacer between vehicles
 
         private _itemControlsGroup = _display ctrlCreate ["A3A_ControlsGroupNoScrollbars", -1, _vehiclesControlsGroup];
-        _itemControlsGroup ctrlSetPosition[_itemXpos, _itemYpos, 44 * GRID_W, 37 * GRID_H];
+        _itemControlsGroup ctrlSetPosition[_itemXpos, _itemYpos, 44 * GRID_W, 44 * GRID_H];
         _itemControlsGroup ctrlSetFade 1;
         _itemControlsGroup ctrlCommit 0;
 
