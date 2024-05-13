@@ -5771,12 +5771,14 @@
                 <English>Hide Enemy Zone Markers</English>
                 <Russian>Спрятать маркеры вражеских баз</Russian>
                 <French>Cacher les marqueurs ennemis</French>
+                <Korean>적 구역 마커 숨기기</Korean>
             </Key>
             <Key ID="STR_A3AU_hide_enemy_markers_recon_plane_distance">
                 <Original>Recon Plane Zone Reveal Distance</Original>
                 <English>Recon Plane Zone Reveal Distance</English>
                 <Russian>Дистанция открытыя маркеров самолётом разведки</Russian>
                 <French>Zone révélée par les avions de reconnaissance.</French>
+                <Korean>정찰기의 정찰 거리</Korean>
             </Key>
             <Key ID="STR_A3AU_total_victory">
                 <Original>Enable Total Victory Conditions</Original>
