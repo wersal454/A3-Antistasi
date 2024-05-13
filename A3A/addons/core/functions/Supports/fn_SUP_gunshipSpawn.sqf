@@ -106,10 +106,17 @@ Debug_3("Distance %1 Length %2 Angle %3", _distance, _lenght, _angle);
 private _height = (ATLToASL _supportPos) select 2;
 _height = _height + 600;
 //Sets minimal height in relation to ground
-if (_strikePlane isKindOf "USAF_AC130U_base") then {
+/* if (_strikePlane isKindOf "USAF_AC130U_base") then {
     _strikePlane flyInHeight 700; ///cause this is stupid, stupid plane (not tested)
 } else {
     _strikePlane flyInHeight 600; /// fly higher or fly lower ?
+}; */
+switch (true) do
+{
+	case (_strikePlane isKindOf "VTOL_01_armed_base_F"): {_strikePlane flyInHeight 600;};
+	case (_strikePlane isKindOf "vnx_air_c119_base"): {_strikePlane flyInHeight 500;};
+    case (_strikePlane isKindOf "USAF_AC130U_base"): {_strikePlane flyInHeight 700;};
+	default {_strikePlane flyInHeight 600;};
 };
 private _entryPos = _spawnPos getPos [_lenght, _startDir + _angle];
 Debug_1("Entry Pos: %1", _entryPos);
@@ -125,11 +132,17 @@ _loiterWP setWaypointLoiterType "CIRCLE_L";
 _loiterWP setWaypointBehaviour "CARELESS"; ///Might break something
 _loiterWP setWaypointSpeed "NORMAL"; ///maybe "LIMITED"
 
-if (_strikePlane isKindOf "USAF_AC130U_base") then {
+/* if (_strikePlane isKindOf "USAF_AC130U_base") then {
     _loiterWP setWaypointLoiterRadius 900; ///cause this is stupid, stupid plane (not tested)
 } else {
     _loiterWP setWaypointLoiterRadius 800; /// big or small?
+}; */
+switch (true) do
+{
+	case (_strikePlane isKindOf "VTOL_01_armed_base_F"): {_loiterWP setWaypointLoiterRadius 800;};
+	case (_strikePlane isKindOf "vnx_air_c119_base"): {_loiterWP setWaypointLoiterRadius 700;};
+    case (_strikePlane isKindOf "USAF_AC130U_base"): {_loiterWP setWaypointLoiterRadius 900;};
+	default {_loiterWP setWaypointLoiterRadius 800;};
 };
-
 _strikePlane setDir (_startDir + _angle);
 [_strikePlane, _strikeGroup];

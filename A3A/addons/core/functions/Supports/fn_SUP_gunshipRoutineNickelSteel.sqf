@@ -17,16 +17,15 @@ private _crew = objNull;
 
 private _mainGunner = objNull;
 private _heavyGunner = objNull;
-private _gunner = gunner _gunship;
 
 for "_i" from 1 to 2 do {
     _crew = [_strikeGroup, _faction get "unitPilot", getPos _gunship] call A3A_fnc_createUnit;
     if(_i == 1) then {
         _crew moveInTurret [_gunship, [1]];
-        _heavyGunner = _crew;
+        _mainGunner = _crew;
     } else {
         _crew moveInTurret [_gunship, [2]];
-        _mainGunner = _crew;
+        _heavyGunner = _crew;
     };
 };
 
@@ -43,7 +42,6 @@ _gunship addEventHandler
         {
             _target = getPosASL _target;
         };
-
         if(_weapon == "vn_gunpod_twin_gau4" || _weapon == "vn_gunpod_gau2") then ///probably delete this check and pretend that every maingun on every gunship is the same
         {
             _target = (_target vectorAdd [0,0,20]) apply {_x + (random 10) - 5};
@@ -228,17 +226,17 @@ private _mainGunnerList = [];
 };
 ///"vn_gunpod_twin_gau4" gau-4 3000 ammo
 ///"vn_gunpod_gau2" gau-2 14000 ammo
-///"SEARCHLIGHT" fire search light
+///"SEARCHLIGHT" search light
 ///"vn_v_launcher_mk24" fire flares when found new target
-_gunship setVariable ["AP_Ammo", 3000]; //change variables later
+_gunship setVariable ["AP_Ammo", 14000]; //change variables later
 _gunship setVariable ["HE_Ammo", 14000]; //change variables later
-_gunship setVariable ["Rockets", 76]; //delete this one
+_gunship setVariable ["Rockets", 3000]; //delete this one
 
 private _supportMarker = format ["%1_coverage", _supportName];
+_gunship turretUnit [1] action ["SearchLightOn", _gunship];
+_strikeGroup setCombatMode "YELLOW";  ///seemengly doesn't want to fire without it(i.e. with "blue" combat mode)
 
-//_strikeGroup setCombatMode "YELLOW";
-
-private _lifeTime = 300;
+private _lifeTime = 400;
 while {_lifeTime > 0} do
 {
     if
@@ -265,8 +263,12 @@ while {_lifeTime > 0} do
         {
             {
                 private _target = _x;
-				_gunner fireAtTarget [_target, "SEARCHLIGHT"];
-				[_gunship, "SEARCHLIGHT"] call BIS_fnc_fire;
+                _heavyGunner reveal [_target, 3];
+                _mainGunner reveal [_target, 3];
+                _heavyGunner doTarget _target;
+                _heavyGunner doWatch _target;
+                _mainGunner doTarget _target;
+                _mainGunner doWatch _target;
                 if(_target isKindOf "Helicopter") then
                 {
                     //Fast moving helicopter, use minigun against it

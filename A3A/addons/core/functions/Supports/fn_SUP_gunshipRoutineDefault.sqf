@@ -37,33 +37,24 @@ _gunship addEventHandler
 
         /* if(_weapon == "rockets_Skyfire") then /// maybe some sort of check if weapon is not "maingun" which is probably first or second in the array
         { */
-            //_target = _target apply {_x + (random 50) - 25};
-            [_projectile, _target] spawn
-            {
-                params ["_projectile", "_target"];
-                sleep 0.25;
-                private _speed = (speed _projectile)/3.6;
-                private _dir = vectorNormalized (_target vectorDiff (getPosASL _projectile));
-                _projectile setVelocity (_dir vectorMultiply _speed);
-                _projectile setVectorDir _dir;
-                while {!(isNull _projectile) && {alive _projectile}} do
-                {
-                    if ((getPos _projectile) select 2 < 10) exitwith {};
-                    sleep 0.15;
-                    private _dir = vectorNormalized (_target vectorDiff (getPosASL _projectile));
-                    _projectile setVelocity (_dir vectorMultiply _speed);
-                    _projectile setVectorDir _dir;
-                };
-            };
-        /* }; */
-        /* if(_weapon == "gatling_30mm_VTOL_02") then ///probably delete this check and pretend that every maingun on every gunship is the same
+        //_target = _target apply {_x + (random 50) - 25};
+        [_projectile, _target] spawn
         {
-            _target = (_target vectorAdd [0,0,20]) apply {_x + (random 10) - 5};
+            params ["_projectile", "_target"];
+            sleep 0.1;
             private _speed = (speed _projectile)/3.6;
             private _dir = vectorNormalized (_target vectorDiff (getPosASL _projectile));
             _projectile setVelocity (_dir vectorMultiply _speed);
             _projectile setVectorDir _dir;
-        }; */
+            while {!(isNull _projectile) && {alive _projectile}} do
+            {
+                if ((getPos _projectile) select 2 < 10) exitwith {};
+                sleep 0.15;
+                private _dir = vectorNormalized (_target vectorDiff (getPosASL _projectile));
+                _projectile setVelocity (_dir vectorMultiply _speed);
+                _projectile setVectorDir _dir;
+            };
+        };
     }
 ];
 
@@ -244,8 +235,6 @@ _gunship setVariable ["HE_Ammo", 250];
 _gunship setVariable ["Rockets", 76];
 
 private _supportMarker = format ["%1_coverage", _supportName];
-
-//_strikeGroup setCombatMode "YELLOW";
 
 private _lifeTime = 400;
 while {_lifeTime > 0} do
