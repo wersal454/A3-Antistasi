@@ -1,7 +1,7 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-params ["_suppData", "_side", "_faction", "_vehType","_resPool", "_airport", "_sleepTime", "_reveal"];
+params ["_suppData", "_side", "_oppositeSide", "_faction", "_vehType","_resPool", "_airport", "_sleepTime", "_reveal"];
 _suppData params ["_supportName", "_side", "_suppType", "_suppCenter", "_suppRadius", "_suppTarget"];
 /* while {_sleepTime > 0} do
 {
@@ -13,17 +13,11 @@ _suppData params ["_supportName", "_side", "_suppType", "_suppCenter", "_suppRad
 private _gunshipData = [_side, _airport, _supportName, _vehType, _suppTarget, _resPool, _suppCenter, _faction get "unitPilot"] call A3A_fnc_SUP_gunshipSpawn;
 _gunshipData params ["_gunship", "_strikeGroup"];
 
-/* {
-    _gunship setPylonLoadout [_forEachIndex + 1, _x, true];
-} forEach ["PylonRack_19Rnd_Rocket_Skyfire","PylonRack_19Rnd_Rocket_Skyfire","PylonRack_19Rnd_Rocket_Skyfire","PylonRack_19Rnd_Rocket_Skyfire"];
- */
-//Prepare crew units and spawn them in
-/* private _mainGunner = [_strikeGroup, _faction get "unitPilot", getPos _gunship] call A3A_fnc_createUnit; */
-
 private _crew = objNull;
 
 private _mainGunner = objNull;
 private _heavyGunner = objNull;
+private _gunner = gunner _gunship;
 
 for "_i" from 1 to 2 do {
     _crew = [_strikeGroup, _faction get "unitPilot", getPos _gunship] call A3A_fnc_createUnit;
@@ -50,23 +44,6 @@ _gunship addEventHandler
             _target = getPosASL _target;
         };
 
-        if(_weapon == "rockets_Skyfire") then /// maybe some sort of check if weapon is not "maingun" which is probably first or second in the array
-        {
-            _target = _target apply {_x + (random 50) - 25};
-            [_projectile, _target] spawn
-            {
-                params ["_projectile", "_target"];
-                sleep 0.25;
-                private _speed = (speed _projectile)/3.6;
-                while {!(isNull _projectile) && {alive _projectile}} do
-                {
-                    sleep 0.25;
-                    private _dir = vectorNormalized (_target vectorDiff (getPosASL _projectile));
-                    _projectile setVelocity (_dir vectorMultiply _speed);
-                    _projectile setVectorDir _dir;
-                };
-            };
-        };
         if(_weapon == "vn_gunpod_twin_gau4" || _weapon == "vn_gunpod_gau2") then ///probably delete this check and pretend that every maingun on every gunship is the same
         {
             _target = (_target vectorAdd [0,0,20]) apply {_x + (random 10) - 5};
@@ -259,7 +236,7 @@ _gunship setVariable ["Rockets", 76]; //delete this one
 
 private _supportMarker = format ["%1_coverage", _supportName];
 
-_strikeGroup setCombatMode "YELLOW";
+//_strikeGroup setCombatMode "YELLOW";
 
 private _lifeTime = 300;
 while {_lifeTime > 0} do
@@ -271,19 +248,15 @@ while {_lifeTime > 0} do
     ///if !(_gunship getVariable ["CurrentlyFiring", false]) then
     {
         private _targets = _suppCenter nearEntities [["Man", "LandVehicle", "Helicopter"], 400];
-        diag_log _targets;
-        diag_log _targets;
-        diag_log _targets;
-        diag_log _targets;
         _targets = _targets select
         {
             if(_x isKindOf "Man") then
             {
-                ((side group _x) != Invaders) && {[_x] call A3A_fnc_canFight}
+                ((side group _x) in [teamPlayer, _oppositeSide]) && {[_x] call A3A_fnc_canFight}
             }
             else
             {
-               (alive _x) && {(_x getVariable ["ownerSide", sideUnknown]) in [teamPlayer, Occupants] || {(side group driver _x) in [teamPlayer, Occupants]}} ////don't forget to change it to _oppositeSide or something
+                (alive _x) && {(_x getVariable ["ownerSide", sideUnknown]) in [teamPlayer, _oppositeSide] || {(side group driver _x) in [teamPlayer, _oppositeSide]}} ////don't forget to change it to _oppositeSide or something
             }
         };
         Debug_2("%1 found %2 targets in its area", _supportName, count _targets);

@@ -13,10 +13,11 @@ _launcher addEventHandler ["Fired", {
 
 private _targetObj = objNull;
 private _laser = objNull;
+private _attachObj = objNull;
 private _timeout = time + 900;
 private _targTimeout = 0;
 private _acquisition = 0;
-private _missiles = 2; ///maybe 1
+private _missiles = 1; ///maybe 2
 while {true} do
 {
     // check if launcher/crew are intact
@@ -71,9 +72,12 @@ while {true} do
     // Actually fire
     Debug("Firing at target");
     //Creates the laser target to mark the target
+    
+    _attachObj = createVehicle ["Land_Battery_F", (getPos _targetObj), [], 0, "CAN_COLLIDE"];
     _laser = createVehicle ["LaserTargetE", (getPos _targetObj), [], 0, "CAN_COLLIDE"];
     Info_1("Trying to attack laser to %1", _targetObj);
-    _laser attachTo [_targetObj, [0,0,0]];
+    _attachObj attachTo [_targetObj, [0,0,0]];
+    _laser attachTo [_attachObj, [0,0,0]];
 
     //Send the laser target to the launcher
     _side reportRemoteTarget [_laser, 300];
@@ -85,21 +89,25 @@ while {true} do
     diag_log (currentMagazine _launcher);
     [_reveal, getPosATL _targetObj, _side, "CRUISEMISSILE", _targetObj, 60] spawn A3A_fnc_showInterceptedSupportCall;
 
+    sleep 20;
+    detach _attachObj;
     /* _launcher setWeaponReloadingTime [gunner _launcher, currentMuzzle (gunner _launcher), 0.05];
     _launcher loadMagazine [[0], currentMuzzle (gunner _launcher), "magazine_Missiles_Cruise_01_Cluster_x18"]; */
-    _side reportRemoteTarget [_laser, 300];
+    /* _side reportRemoteTarget [_laser, 300];
     _laser confirmSensorTarget [_side, true];
-    _launcher fireAtTarget [_laser, "weapon_vls_01"];
+    _launcher fireAtTarget [_laser, "weapon_vls_01"]; */
 
     //_launcher setWeaponReloadingTime [gunner _launcher, "weapon_vls_01", 1];
 
     _missiles = _missiles - 1;
     _targTimeout = (time + 120);
-    sleep 1;
+    sleep 1; //_targTimeout ?
 };
 
 _suppData set [4, 0];       // zero radius to signal termination
 
+sleep 180; ///missile just won't fly for longer, though some better way would be nice
 [_launcher] spawn A3A_fnc_vehDespawner;
 [_group] spawn A3A_fnc_groupDespawner;
 deleteVehicle _laser;
+deleteVehicle _attachObj;

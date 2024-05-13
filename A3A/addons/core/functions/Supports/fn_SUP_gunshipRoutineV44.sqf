@@ -1,7 +1,7 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-params ["_suppData", "_side", "_faction", "_vehType","_resPool", "_airport", "_sleepTime", "_reveal"];
+params ["_suppData", "_side", "_oppositeSide", "_faction", "_vehType","_resPool", "_airport", "_sleepTime", "_reveal"];
 _suppData params ["_supportName", "_side", "_suppType", "_suppCenter", "_suppRadius", "_suppTarget"];
 ///maybe _side instead of _faction
 private _gunshipData = [_side, _airport, _supportName, _vehType, _suppTarget, _resPool, _suppCenter, _faction get "unitPilot"] call A3A_fnc_SUP_gunshipSpawn;
@@ -318,9 +318,9 @@ private _heavyGunnerList = [];
             }
             else
             {
-                if(count _mainGunnerList > 0) then
+                if(count _heavyGunnerList > 0) then
                 {
-                    private _targetParams = _mainGunnerList deleteAt 0;
+                    private _targetParams = _heavyGunnerList deleteAt 0;
                     _targetParams params ["_target", "_minigunShots", "_howitzerShots"];
                     if
                     (
@@ -342,7 +342,7 @@ _gunship setVariable ["HE_Ammo", 240];
 _gunship setVariable ["Howitzer_Ammo", 100];
 _gunship setVariable ["Minigun_Ammo", 4000];
 
-_strikeGroup setCombatMode "YELLOW";
+//_strikeGroup setCombatMode "YELLOW";
 
 private _lifeTime = 300;
 
@@ -355,19 +355,15 @@ while {_lifeTime > 0} do
     ) then
     {
         private _targets = _suppCenter nearEntities [["Man", "LandVehicle", "Helicopter"], 400];
-        diag_log _targets;
-        diag_log _targets;
-        diag_log _targets;
-        diag_log _targets;
         _targets = _targets select
         {
             if(_x isKindOf "Man") then
             {
-                ((side group _x) in [teamPlayer, Invaders]) && {[_x] call A3A_fnc_canFight}
+                ((side group _x) in [teamPlayer, _oppositeSide]) && {[_x] call A3A_fnc_canFight}
             }
             else
             {
-                (alive _x) && {(_x getVariable ["ownerSide", sideUnknown]) in [teamPlayer, Invaders] || {(side group driver _x) in [teamPlayer, Invaders]}} ////don't forget to change it to _oppositeSide or something
+                (alive _x) && {(_x getVariable ["ownerSide", sideUnknown]) in [teamPlayer, _oppositeSide] || {(side group driver _x) in [teamPlayer, _oppositeSide]}} ////don't forget to change it to _oppositeSide or something
             }
         };
         Debug_2("%1 found %2 targets in its area", _supportName, count _targets);

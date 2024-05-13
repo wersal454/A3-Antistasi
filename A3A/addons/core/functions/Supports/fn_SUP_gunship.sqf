@@ -31,6 +31,12 @@ private _aggro = if(_side == Occupants) then {aggressionOccupants} else {aggress
 if (_delay < 0) then { _delay = (0.5 + random 1) * (450 - 15*tierWar - 1*_aggro) };
 
 private _faction = Faction(_side);
+private _oppositeSide = objNull;
+if (_side == Occupants) then {
+    _oppositeSide = Invaders;
+} else {
+    _oppositeSide = Occupants;
+};
 private _vehType = selectRandom (_faction get "vehiclesPlanesGunship");
 if (isNil "_vehType") exitWith { Debug_1("No gunship for faction.", _supportName); -1; };
 
@@ -46,10 +52,10 @@ A3A_activeSupports pushBack _suppData;
 
 switch (true) do
 {
-	case (_planeTest isKindOf "VTOL_01_armed_base_F"): {[_suppData, _side, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineV44;};
-	case (_planeTest isKindOf "vnx_air_c119_base"): {[_suppData, _side, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineNickelSteel;};
-    case (_planeTest isKindOf "USAF_AC130U_base"): {[_suppData, _side, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineUSAF;};
-	default {[_suppData, _side, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineDefault;};
+	case (_planeTest isKindOf "VTOL_01_armed_base_F"): {[_suppData, _side, _oppositeSide, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineV44;};
+	case (_planeTest isKindOf "vnx_air_c119_base"): {[_suppData, _side, _oppositeSide, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineNickelSteel;};
+    case (_planeTest isKindOf "USAF_AC130U_base"): {[_suppData, _side, _oppositeSide, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineUSAF;};
+	default {[_suppData, _side, _oppositeSide, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineDefault;};
 };
 
 deleteVehicle _planeTest;

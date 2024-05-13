@@ -46,11 +46,11 @@
 
 private _planesCAS = ["vn_b_air_f4c_at", "vn_b_air_f100d_at"];
 ["vehiclesPlanesAA", ["vn_b_air_f4c_cap", "vn_b_air_f100d_cap"]] call _fnc_saveToTemplate;
-["vehiclesPlanesTransport", []] call _fnc_saveToTemplate;
+private _transportplanes = [];
 private _gunship = [];
 if (isClass (configFile >> "cfgVehicles" >> "vnx_b_air_ac119_02_01")) then {
 	_gunship pushBack "vnx_b_air_ac119_01_01";
-  _transportplanes append ["vnx_b_air_ac119_02_01","vnx_b_air_ac119_02_02"];
+  	_transportplanes append ["vnx_b_air_ac119_02_01","vnx_b_air_ac119_02_02"];
 	_planesCAS pushBack "vnx_b_air_ac119_04_01";
 };
 ["vehiclesPlanesGunship", _gunship] call _fnc_saveToTemplate;

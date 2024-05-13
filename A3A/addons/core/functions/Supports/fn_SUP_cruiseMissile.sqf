@@ -21,10 +21,10 @@ private _weights = [];
 {
     private _pos = markerPos _x;
     private _dist = _pos distance2D _targPos;
-    if (_dist > 8000 or _dist < 1500) then {continue};
+    if (_dist > 8000) then {continue}; // or _dist < 1500    ///kinda dumb, doesn't work,spawns on bases closer then 8000
     if (sidesX getVariable [_x,sideUnknown] != _side) then {continue};
     if (spawner getVariable _x == 0) then {continue};              // don't need spawn places, so this is fine
-    if (garrison getVariable [_x + "_samDestroyedCD", 0] != 0) then {continue}; //means that SAM was previously destroyed and needs to be replenished
+    //if (garrison getVariable [_x + "_samDestroyedCD", 0] != 0) then {continue}; //means that SAM was previously destroyed and needs to be replenished
 	
     if (_target isEqualType objNull and {!isNull _target}) then {
         private _targDir = _pos getDir _targPos;
@@ -42,7 +42,7 @@ if (_airports isEqualTo []) exitWith {
 
 private _airport = _airports selectRandomWeighted _weights;
 private _launcherType =["B_Ship_MRLS_01_F", "B_Ship_MRLS_01_F"] select (_side == Invaders);
-private _launcher = [_launcherType, markerPos _airport, 50, 5, true] call A3A_fnc_safeVehicleSpawn;
+private _launcher = [_launcherType, markerPos _airport, 200, 10, true] call A3A_fnc_safeVehicleSpawn;
 
 private _group = [_side, _launcher] call A3A_fnc_createVehicleCrew;
 [_launcher, _side] call A3A_fnc_AIVEHInit;
@@ -54,7 +54,7 @@ if (_delay < 0) then { _delay = (0.5 + random 1) * (600 - 15*tierWar - 1*_aggro)
 
 private _targArray = [];
 if (_target isEqualType objNull and {!isNull _target}) then {
-    A3A_supportStrikes pushBack [_side, "TARGET", _target, time + 1200, 1200, 200];
+    A3A_supportStrikes pushBack [_side, "TARGET", _target, time + 1200, 1200, 400];
     _targArray = [_target, _targPos];
 };
 
