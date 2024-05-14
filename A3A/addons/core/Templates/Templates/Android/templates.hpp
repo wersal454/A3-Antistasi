@@ -1,6 +1,6 @@
     class Android_Base
     {
-        requiredAddons[] = {"SSV_Android", "SSV_Vanguard", "OPTRE_Core", "WBK_ZombieCreatures", "ExoMod_Universality_Uniforms"};
+        requiredAddons[] = {"SSV_Android", "SSV_Vanguard", "OPTRE_Core", "ExoMod_Universality_Uniforms"};
         basepath = QPATHTOFOLDER(Templates\Templates\Android);
         logo = QPATHTOFOLDER(Pictures\antistasi_ultimate_logo.paa);
         flagTexture = QPATHTOFOLDER(Templates\Templates\Android\images\flag_android_ca.paa);
@@ -40,6 +40,7 @@
 
     class Corrupted_Civ_Zombie : Android_Base
     {
+        requiredAddons[] = {"SSV_Android", "SSV_Vanguard", "OPTRE_Core", "ExoMod_Universality_Uniforms", "WBK_ZombieCreatures"};
         flagTexture = QPATHTOFOLDER(Templates\Templates\Android\images\flag_vanguard_ca.paa);
         priority = 10;
         side = "Civ";

@@ -4,76 +4,76 @@
 
 #include "..\..\..\script_component.hpp"
 
-["name", "UNSC"] call _fnc_saveToTemplate;
-["spawnMarkerName", "UNSC Infinity"] call _fnc_saveToTemplate;
+["name", "Liberation Army"] call _fnc_saveToTemplate; 						
+["spawnMarkerName", "Sahrani Liberation Army Support Corridor"] call _fnc_saveToTemplate; 			
 
-["flag", "Flag_NATO_F"] call _fnc_saveToTemplate;
-["flagTexture", QPATHTOFOLDER(Templates\Templates\OPTRE\images\flag_unsc_ca.paa)] call _fnc_saveToTemplate;
-["flagMarkerType", "a3u_flag_optre_unsc"] call _fnc_saveToTemplate;
+["flag", "Flag_NATO_F"] call _fnc_saveToTemplate; 						
+["flagTexture", "\PRACS_SLA_Core\Flags\flag_north_co_mrk.paa"] call _fnc_saveToTemplate;		
+["flagMarkerType", "PRACS_SLA_Flag_mrk"] call _fnc_saveToTemplate;
 
 //////////////////////////
 //       Vehicles       //
 //////////////////////////
 
-["ammobox", "B_supplyCrate_F"] call _fnc_saveToTemplate;     //Don't touch or you die a sad and lonely death!
+["ammobox", "B_supplyCrate_F"] call _fnc_saveToTemplate;
 ["surrenderCrate", "Box_IND_Wps_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
 ["equipmentBox", "Box_NATO_Equip_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
 
-["vehiclesBasic", ["OPTRE_M274_ATV"]] call _fnc_saveToTemplate;
-["vehiclesLightUnarmed", ["OPTRE_M813_TT", "OPTRE_M12_FAV"]] call _fnc_saveToTemplate;
-["vehiclesLightArmed", ["OPTRE_M12_LRV", "OPTRE_M12A1_LRV"]] call _fnc_saveToTemplate; //this line determines light and armed vehicles -- Example: ["vehiclesLightArmed", ["B_MRAP_01_hmg_F", "B_MRAP_01_gmg_F"]] -- Array, can contain multiple assets
-["vehiclesTrucks", ["OPTRE_m1087_stallion_unsc"]] call _fnc_saveToTemplate;
-["vehiclesCargoTrucks", ["OPTRE_m1087_stallion_cover_unsc"]] call _fnc_saveToTemplate;
-["vehiclesAmmoTrucks", ["OPTRE_m1087_stallion_unsc_resupply"]] call _fnc_saveToTemplate;
-["vehiclesRepairTrucks", ["OPTRE_m1087_stallion_unsc_repair"]] call _fnc_saveToTemplate;
-["vehiclesFuelTrucks", ["OPTRE_m1087_stallion_unsc_refuel"]] call _fnc_saveToTemplate;
-["vehiclesMedical", ["OPTRE_m1087_stallion_unsc_medical"]] call _fnc_saveToTemplate;
-["vehiclesLightAPCs", []] call _fnc_saveToTemplate;
-["vehiclesAirborne", ["OPTRE_M12_LRV"]] call _fnc_saveToTemplate;
-["vehiclesAPCs", ["OPTRE_M412_IFV_UNSC", "OPTRE_M413_MGS_UNSC"]] call _fnc_saveToTemplate;
-["vehiclesIFVs", []] call _fnc_saveToTemplate;
-["vehiclesLightTanks",  ["OPTRE_M494"]] call _fnc_saveToTemplate;
-["vehiclesTanks", ["OPTRE_M808B_UNSC"]] call _fnc_saveToTemplate;
-["vehiclesAA", ["OPTRE_M808B2"]] call _fnc_saveToTemplate;
+["vehiclesBasic", ["B_Quadbike_01_F"]] call _fnc_saveToTemplate;
+["vehiclesLightUnarmed", ["PRACS_SLA_BTR40", "PRACS_SLA_UAZ_open", "PRACS_SLA_UAZ"]] call _fnc_saveToTemplate;
+["vehiclesLightArmed", ["PRACS_SLA_BTR40_NSV", "PRACS_SLA_UAZ_DSHKM", "PRACS_SLA_Tigr"]] call _fnc_saveToTemplate;
+["vehiclesTrucks", ["PRACS_SLA_URAL"]] call _fnc_saveToTemplate;
+["vehiclesCargoTrucks", ["PRACS_SLA_URAL"]] call _fnc_saveToTemplate;
+["vehiclesAmmoTrucks", ["PRACS_SLA_Ural_Ammo", "PRACS_SLA_MAZ_ammo"]] call _fnc_saveToTemplate;
+["vehiclesRepairTrucks", ["PRACS_SLA_URAL_Repair"]] call _fnc_saveToTemplate;
+["vehiclesFuelTrucks", ["PRACS_SLA_URAL_Fuel"]] call _fnc_saveToTemplate;
+["vehiclesMedical", ["PRACS_SLA_Ural_AMB"]] call _fnc_saveToTemplate;
+["vehiclesLightAPCs", ["PRACS_SLA_BTR40_AT", "PRACS_SLA_Type63_AT", "PRACS_SLA_MTLB", "PRACS_SLA_BRDM_HQ_PKT", "PRACS_SLA_BMD2", "PRACS_SLA_BTR80"]] call _fnc_saveToTemplate;
+["vehiclesAirborne", ["PRACS_SLA_BMD1", "PRACS_SLA_BRDM", "PRACS_SLA_BTR60"]] call _fnc_saveToTemplate;
+["vehiclesAPCs", ["PRACS_SLA_MTLB", "PRACS_SLA_BRDM", "PRACS_SLA_BTR80A"]] call _fnc_saveToTemplate;
+["vehiclesIFVs", ["PRACS_SLA_BTR60", "PRACS_SLA_Type63"]] call _fnc_saveToTemplate;
+["vehiclesLightTanks",  ["PRACS_SLA_BMP2", "PRACS_SLA_BMP1"]] call _fnc_saveToTemplate;
+["vehiclesTanks", ["PRACS_SLA_T72B", "PRACS_SLA_T72BV", "PRACS_SLA_T80U"]] call _fnc_saveToTemplate;
+["vehiclesAA", ["PRACS_SLA_BTR40_AAM", "PRACS_SLA_URAL_Zu23", "PRACS_SLA_2S6M_Tunguska", "PRACS_SLA_SA13", "PRACS_SLA_SA8", "PRACS_SLA_SA9", "PRACS_SLA_ZSU23"]] call _fnc_saveToTemplate;
 
-["vehiclesTransportBoats", ["optre_catfish_unarmed_f"]] call _fnc_saveToTemplate;
-["vehiclesGunBoats", ["optre_catfish_mg_f"]] call _fnc_saveToTemplate;
-["vehiclesAmphibious", ["optre_catfish_gauss_f"]] call _fnc_saveToTemplate; // ghost is basically the only vehicle that actually moves on water
+["vehiclesTransportBoats", ["PRACS_SLA_GoFast"]] call _fnc_saveToTemplate;
+["vehiclesGunBoats", ["PRACS_SLA_GoFast_gun"]] call _fnc_saveToTemplate;
+["vehiclesAmphibious", ["PRACS_SLA_BTR60"]] call _fnc_saveToTemplate;
 
-["vehiclesPlanesCAS", ["OPTRE_YSS_1000_A_VTOL"]] call _fnc_saveToTemplate;
-["vehiclesPlanesAA", ["OPTRE_YSS_1000_A"]] call _fnc_saveToTemplate;
-["vehiclesPlanesTransport", ["OPTRE_Pelican_unarmed"]] call _fnc_saveToTemplate; // I pray this works
+["vehiclesPlanesCAS", ["PRACS_SLA_MiG27", "PRACS_SLA_Su25"]] call _fnc_saveToTemplate;
+["vehiclesPlanesAA", ["PRACS_SLA_MiG21", "PRACS_SLA_MiG23"]] call _fnc_saveToTemplate;
+["vehiclesPlanesTransport", ["PRACS_AN12B"]] call _fnc_saveToTemplate;
 
-["vehiclesHelisLight", ["OPTRE_UNSC_falcon"]] call _fnc_saveToTemplate;
-["vehiclesHelisTransport", ["OPTRE_UNSC_falcon_s"]] call _fnc_saveToTemplate;
-["vehiclesHelisLightAttack", ["OPTRE_UNSC_hornet_CAS"]] call _fnc_saveToTemplate;
-["vehiclesHelisAttack", ["OPTRE_AV22C_Sparrowhawk"]] call _fnc_saveToTemplate;
+["vehiclesHelisLight", ["PRACS_SLA_Mi8amt"]] call _fnc_saveToTemplate;
+["vehiclesHelisTransport", ["PRACS_SLA_Mi24D"]] call _fnc_saveToTemplate;
+["vehiclesHelisLightAttack", ["rhs_mi28n_vvs"]] call _fnc_saveToTemplate;
+["vehiclesHelisAttack", ["RHS_Ka52_vvs"]] call _fnc_saveToTemplate;
 
-["vehiclesArtillery", ["OPTRE_M875_SPH"]] call _fnc_saveToTemplate;
+["vehiclesArtillery", ["PRACS_SLA_2s1"]] call _fnc_saveToTemplate;
 ["magazines", createHashMapFromArray [
-["OPTRE_M875_SPH", ["32Rnd_155mm_Mo_shells"]]
+["PRACS_SLA_2s1", ["rhs_mag_bk13_5"]]
 ]] call _fnc_saveToTemplate;
 
-["uavsAttack", ["OPTRE_Wombat_B"]] call _fnc_saveToTemplate;
+["uavsAttack", ["B_UAV_02_CAS_F"]] call _fnc_saveToTemplate;
 ["uavsPortable", ["B_UAV_01_F"]] call _fnc_saveToTemplate;
 
-["vehiclesMilitiaLightArmed", ["OPTRE_M12_FAV"]] call _fnc_saveToTemplate;
-["vehiclesMilitiaTrucks", ["OPTRE_m1087_stallion_unsc"]] call _fnc_saveToTemplate;
-["vehiclesMilitiaCars", ["OPTRE_M274_ATV"]] call _fnc_saveToTemplate;
-["vehiclesMilitiaAPCs", ["OPTRE_M12_FAV_APC"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaLightArmed", ["PRACS_SLA_UAZ_DSHKM"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaTrucks", ["PRACS_SLA_Ural_flat_bed"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaCars", ["PRACS_SLA_UAZ_open_guards"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaAPCs", ["PRACS_SLA_BRDM_HQ_PKT"]] call _fnc_saveToTemplate;
 
-["vehiclesPolice", ["OPTRE_M813_TT"]] call _fnc_saveToTemplate;
+["vehiclesPolice", ["PRACS_SLA_UAZ_open_recon"]] call _fnc_saveToTemplate;
 
-["staticMGs", ["OPTRE_Static_M247H_Tripod"]] call _fnc_saveToTemplate;
-["staticAT", ["OPTRE_Static_Gauss"]] call _fnc_saveToTemplate;
-["staticAA", ["OPTRE_Static_AA"]] call _fnc_saveToTemplate;
+["staticMGs", ["PRACS_SLA_DShK"]] call _fnc_saveToTemplate;
+["staticAT", ["PRACS_SLA_SPG9M_tripod"]] call _fnc_saveToTemplate;
+["staticAA", ["rhs_Igla_AA_pod_msv"]] call _fnc_saveToTemplate;
 ["staticMortars", ["B_Mortar_01_F"]] call _fnc_saveToTemplate;
-["staticHowitzers", []] call _fnc_saveToTemplate;
+["staticHowitzers", ["PRACS_SLA_M46"]] call _fnc_saveToTemplate;
 
-["vehicleRadar", "B_Radar_System_01_F"] call _fnc_saveToTemplate;
-["vehicleSam", "OPTRE_Lance"] call _fnc_saveToTemplate;
+["vehicleRadar", "PRACS_P37_Radar"] call _fnc_saveToTemplate;
+["vehicleSam", "PRACS_SLA_S60"] call _fnc_saveToTemplate;
 
-["howitzerMagazineHE", ""] call _fnc_saveToTemplate;
+["howitzerMagazineHE", "PRACS_130mm_X32"] call _fnc_saveToTemplate;
 
 ["mortarMagazineHE", "8Rnd_82mm_Mo_shells"] call _fnc_saveToTemplate;
 ["mortarMagazineSmoke", "8Rnd_82mm_Mo_Smoke_white"] call _fnc_saveToTemplate;
@@ -82,20 +82,14 @@
 ["minefieldAT", ["ATMine"]] call _fnc_saveToTemplate;
 ["minefieldAPERS", ["APERSMine"]] call _fnc_saveToTemplate;
 
-#include "OPTRE_Vehicle_Attributes.sqf"
-
 /////////////////////
 ///  Identities   ///
 /////////////////////
 
-["voices", ["Male01ENG","Male02ENG","Male03ENG","Male04ENG","Male05ENG","Male06ENG","Male07ENG","Male08ENG","Male09ENG","Male10ENG","Male11ENG","Male12ENG"]] call _fnc_saveToTemplate;
-["faces", ["AfricanHead_01","AfricanHead_02","AfricanHead_03","Barklem",
-"GreekHead_A3_05","GreekHead_A3_07","Sturrock","WhiteHead_01","WhiteHead_02",
-"WhiteHead_03","WhiteHead_04","WhiteHead_05","WhiteHead_06","WhiteHead_07",
-"WhiteHead_08","WhiteHead_09","WhiteHead_11","WhiteHead_12","WhiteHead_14",
-"WhiteHead_15","WhiteHead_16","WhiteHead_18","WhiteHead_19","WhiteHead_20",
-"WhiteHead_21"]] call _fnc_saveToTemplate;
-["sfVoices", ["Male01ENGB", "Male02ENG", "Male03ENGB", "Male04ENG", "Male05ENGB"]] call _fnc_saveToTemplate;
+["voices", ["Male01RUS","Male02RUS","Male03RUS","Male04ENG","Male05ENG","Male06ENG"]] call _fnc_saveToTemplate;
+["faces", ["WhiteHead_04","WhiteHead_05","WhiteHead_06"]] call _fnc_saveToTemplate;
+["sfFaces", ["WhiteHead_01","WhiteHead_02","WhiteHead_03","WhiteHead_22_sa"]] call _fnc_saveToTemplate;
+["sfVoices", ["Male01RUS","Male02RUS","Male03RUS"]] call _fnc_saveToTemplate;
 
 //////////////////////////
 //       Loadouts       //
@@ -111,10 +105,10 @@ _loadoutData set ["marksmanRifles", []];
 _loadoutData set ["sniperRifles", []];
 
 _loadoutData set ["missileATLaunchers", [
-    ["OPTRE_M41_SSR", "", "", "", ["OPTRE_M41_Twin_HEAT"], [], ""]
+    ["rhs_weap_rpg7", "", "", "", ["rhs_rpg7_PG7VR_mag"], [], ""]
 ]];
 _loadoutData set ["AALaunchers", [
-    ["OPTRE_M41_SSR", "", "", "", ["OPTRE_M41_Twin_HEAT_Thermal"], [], ""]
+    ["rhs_weap_igla", "", "", "", ["Titan_AA"], [], ""]
 ]];
 
 _loadoutData set ["sidearms", []];
@@ -126,7 +120,7 @@ _loadoutData set ["lightExplosives", ["DemoCharge_Remote_Mag"]];
 _loadoutData set ["heavyExplosives", ["SatchelCharge_Remote_Mag"]];
 
 _loadoutData set ["antiTankGrenades", []];
-_loadoutData set ["antiInfantryGrenades", ["OPTRE_M9_Frag"]];
+_loadoutData set ["antiInfantryGrenades", ["HandGrenade", "MiniGrenade"]];
 _loadoutData set ["smokeGrenades", ["SmokeShell"]];
 _loadoutData set ["signalsmokeGrenades", ["SmokeShellYellow", "SmokeShellRed", "SmokeShellPurple", "SmokeShellOrange", "SmokeShellGreen", "SmokeShellBlue"]];
 
@@ -137,17 +131,17 @@ _loadoutData set ["watches", ["ItemWatch"]];
 _loadoutData set ["compasses", ["ItemCompass"]];
 _loadoutData set ["radios", ["ItemRadio"]];
 _loadoutData set ["gpses", ["ItemGPS"]];
-_loadoutData set ["NVGs", ["OPTRE_NVG"]];
-_loadoutData set ["binoculars", ["OPTRE_Binoculars"]];
-_loadoutData set ["rangefinders", ["OPTRE_Smartfinder"]];
+_loadoutData set ["NVGs", ["rhs_1PN138"]];
+_loadoutData set ["binoculars", ["rhs_pdu4"]];
+_loadoutData set ["rangefinders", ["rhsusf_bino_lerca_1200_tan"]];
 
-_loadoutData set ["traitorUniforms", ["OPTRE_UNSC_Army_Uniform_R_BLK"]];
-_loadoutData set ["traitorVests", ["OPTRE_UNSC_M52A_Armor_Breacher_URB", "OPTRE_UNSC_M52A_Armor1_URB"]];
-_loadoutData set ["traitorHats", ["OPTRE_UNSC_CH252_Helmet_URB"]];
+_loadoutData set ["traitorUniforms", ["PRACS_M10_Commando_uniform"]];
+_loadoutData set ["traitorVests", ["PRACS_O_CIRAS_GAL_rifleman", "PRACS_O_CIRAS_G3_rifleman"]];
+_loadoutData set ["traitorHats", ["PRACS_Patrol_ASDPM_B_Cap", "PRACS_Patrol_SDPM_Cap", "PRACS_Patrol_SMAR_Cap"]];
 
-_loadoutData set ["officerUniforms", ["OPTRE_UNSC_Army_Uniform_BLKURB"]];
-_loadoutData set ["officerVests", ["OPTRE_UNSC_M52A_Armor_Sniper_URB", "V_Rangemaster_belt"]];
-_loadoutData set ["officerHats", ["OPTRE_PatrolCap_Navy"]];
+_loadoutData set ["officerUniforms", ["PRACS_M10_SNG_D_PL_uniform", "PRACS_M10_1ID_PL_uniform"]];
+_loadoutData set ["officerVests", ["PRACS_holster_vest", "V_Rangemaster_belt", "rhs_6sh92_digi_radio"]];
+_loadoutData set ["officerHats", ["PRACS_Patrol_6TDes_Cap", "PRACS_1st_Infantry_beret"]];
 
 _loadoutData set ["cloakUniforms", []];
 _loadoutData set ["cloakVests", []];
@@ -162,12 +156,12 @@ _loadoutData set ["glVests", []];
 _loadoutData set ["engVests", []];
 _loadoutData set ["vests", []];
 _loadoutData set ["backpacks", []];
-_loadoutData set ["longRangeRadios", ["OPTRE_ANPRC_515"]];
+_loadoutData set ["longRangeRadios", ["B_RadioBag_01_wdl_F"]];
 _loadoutData set ["atBackpacks", []];
 _loadoutData set ["slBackpacks", []];
 _loadoutData set ["helmets", []];
-_loadoutData set ["slHat", ["OPTRE_UNSC_CH252A_Black_Helmet"]];
-_loadoutData set ["sniHats", ["OPTRE_UNSC_CH252A_Black_Helmet"]];
+_loadoutData set ["slHat", []];
+_loadoutData set ["sniHats", []];
 
 //Item *set* definitions. These are added in their entirety to unit loadouts. No randomisation is applied.
 _loadoutData set ["items_medical_basic", ["BASIC"] call A3A_fnc_itemset_medicalSupplies];
@@ -202,9 +196,6 @@ _loadoutData set ["items_police_extras", []];
 _loadoutData set ["items_crew_extras", []];
 _loadoutData set ["items_unarmed_extras", []];
 
-_loadoutData set ["glasses", []];
-_loadoutData set ["goggles", []];
-
 //TODO - ACE overrides for misc essentials, medical and engineer gear
 
 ///////////////////////////////////////
@@ -212,169 +203,164 @@ _loadoutData set ["goggles", []];
 ///////////////////////////////////////
 
 private _sfLoadoutData = _loadoutData call _fnc_copyLoadoutData;
-_sfLoadoutData set ["uniforms", ["OPTRE_MJOLNIR_Undersuit"]];
-_sfLoadoutData set ["vests", ["OPTRE_MJOLNIR_MkVBArmor", "OPTRE_MJOLNIR_MkVBArmor_MkV4"]];
-_sfLoadoutData set ["mgVests", ["OPTRE_MJOLNIR_MkVBArmor", "OPTRE_MJOLNIR_MkVBArmor_MkV4"]];
-_sfLoadoutData set ["medVests", ["OPTRE_MJOLNIR_MkVBArmor", "OPTRE_MJOLNIR_MkVBArmor_MkV4"]];
-_sfLoadoutData set ["glVests", ["OPTRE_MJOLNIR_MkVBArmor", "OPTRE_MJOLNIR_MkVBArmor_MkV4"]];
-_sfLoadoutData set ["backpacks", ["OPTRE_ANPRC_515_Spartan"]];
-_sfLoadoutData set ["slBackpacks", ["OPTRE_ANPRC_515_Spartan"]];
-_sfLoadoutData set ["atBackpacks", ["OPTRE_ANPRC_515_Spartan"]];
-_sfLoadoutData set ["helmets", ["OPTRE_MJOLNIR_MkVBHelmet", "OPTRE_MJOLNIR_MkVBHelmet_UA_HUL", "OPTRE_MJOLNIR_EOD"]];
-_sfLoadoutData set ["slHat", ["OPTRE_MJOLNIR_CQC"]];
-_sfLoadoutData set ["sniHats", ["OPTRE_MJOLNIR_Commando", "OPTRE_MJOLNIR_Commando_HUL3"]];
+_sfLoadoutData set ["uniforms", ["PRACS_SLA_M88_Especas_uniform"]];
+_sfLoadoutData set ["vests", ["PRACS_SLA_6sh92", "PRACS_SLA_6sh92_R"]];
+_sfLoadoutData set ["mgVests", ["PRACS_SLA_6B23_6sh92"]];
+_sfLoadoutData set ["medVests", ["PRACS_SLA_6B23_6sh92_L_Radio"]];
+_sfLoadoutData set ["glVests", ["PRACS_SLA_6sh92_VOG", "PRACS_SLA_6sh92_VOG_SF"]];
+_sfLoadoutData set ["backpacks", ["PRACS_SLA_cammo_RD54"]];
+_sfLoadoutData set ["slBackpacks", ["PRACS_SLA_RD54"]];
+_sfLoadoutData set ["atBackpacks", ["PRACS_SLA_cammo_RD54"]];
+_sfLoadoutData set ["helmets", ["PRACS_SLA_Especas_Beret"]];
+_sfLoadoutData set ["slHat", ["PRACS_SLA_6B27M_ess"]];
+_sfLoadoutData set ["sniHats", ["PRACS_SLA_Soft_Cap"]];
+_sfLoadoutData set ["NVGs", ["NVGoggles_OPFOR"]];
+_sfLoadoutData set ["binoculars", ["rhs_pdu4"]];
+
+_sfLoadoutData set ["lightATLaunchers", ["rhs_weap_rpg26"]];
+_sfLoadoutData set ["lightHELaunchers", ["rhs_weap_rshg2"]];
 
 _sfLoadoutData set ["slRifles", [
-    ["OPTRE_BR55HB", "", "", "optre_br55hb_scope", ["OPTRE_36Rnd_95x40_Mag", "OPTRE_36Rnd_95x40_Mag", "OPTRE_36Rnd_95x40_Mag"], [], ""]
+    ["rhs_weap_ak105_npz", "rhs_acc_pgs64", "", "rhs_acc_okp7_picatinny", ["rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK"], [], ""],
+    ["rhs_weap_ak105_zenitco01", "rhs_acc_pgs64", "", "rhs_acc_pkas", ["rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK"], [], "rhs_acc_grip_rk6"],
+    ["rhs_weap_ak104_zenitco01_b33", "rhs_acc_dtk", "", "rhs_acc_ekp8_18", ["rhs_30Rnd_762x39mm_polymer", "rhs_30Rnd_762x39mm_polymer", "rhs_30Rnd_762x39mm_polymer"], [], "rhs_acc_grip_ffg2"]
 ]];
-_sfLoadoutData set ["rifles", [
-    ["OPTRE_MA5B", "", "", "optre_ma5_smartlink", ["OPTRE_60Rnd_762x51_Mag", "OPTRE_60Rnd_762x51_Mag", "OPTRE_60Rnd_762x51_Mag"], [], ""],
-    ["OPTRE_BR55HB", "", "", "optre_br55hb_scope", ["OPTRE_36Rnd_95x40_Mag", "OPTRE_36Rnd_95x40_Mag", "OPTRE_36Rnd_95x40_Mag"], [], ""]
+_sfLoadoutData set ["rifles", [  
+    ["rhs_weap_ak105_npz", "rhs_acc_pgs64", "", "rhs_acc_1p63", ["rhs_30Rnd_545x39_7N6_AK"], [], ""],
+    ["PRACS_rk62", "", "", "", ["PRACS_30Rnd_762x39_Rk_7N6_mag"], [], ""]
 ]];
-_sfLoadoutData set ["carbines", [
-    ["OPTRE_M392_DMR", "", "optre_dmr_light", "optre_br55hb_scope", ["OPTRE_15Rnd_762x51_Mag", "OPTRE_15Rnd_762x51_Mag", "OPTRE_15Rnd_762x51_Mag"], [], ""],
-    ["OPTRE_Commando", "", "", "optic_Holosight_blk_F", ["Commando_20Rnd_65_Mag", "Commando_20Rnd_65_Mag", "Commando_20Rnd_65_Mag"], [], ""]
+_sfLoadoutData set ["carbines", [  
+    ["rhs_weap_ak74m_desert", "", "", "rhs_acc_ekp8_02", ["rhs_30Rnd_545x39_7N10_desert_AK"], [], ""]
 ]];
 _sfLoadoutData set ["grenadeLaunchers", [
-    ["OPTRE_MA5BGL", "", "", "optre_ma5_smartlink", ["OPTRE_60Rnd_762x51_Mag", "OPTRE_60Rnd_762x51_Mag", "OPTRE_60Rnd_762x51_Mag"], ["1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "OPTRE_1Rnd_SmokeGreen_Grenade_shell"], ""]
+    ["rhs_weap_ak74m_gp25_npz", "rhs_acc_dtk", "", "rhs_acc_rakurspm", ["rhs_30Rnd_545x39_7N10_AK", "rhs_30Rnd_545x39_7N10_AK", "rhs_30Rnd_545x39_7N10_AK"], ["rhs_VOG25"], ""]
 ]];
 _sfLoadoutData set ["SMGs", [
-    ["OPTRE_M7", "", "optre_m7_laser", "optre_m7_sight", [], [], ""],
-    ["OPTRE_M45ATAC", "", "optre_m45_flashlight_green", "", [], [], ""]
+    ["PRACS_UZI", "", "", "rhsusf_acc_rm05", ["PRACS_35rd_9mm_UZI"], [], ""]
 ]];
 _sfLoadoutData set ["machineGuns", [
-    ["OPTRE_M247H_Etilka", "", "", "", ["OPTRE_200Rnd_127x99_M247H_Etilka_Ball", "OPTRE_200Rnd_127x99_M247H_Etilka_Ball", "OPTRE_200Rnd_127x99_M247H_Etilka_Ball"], [], ""]
+    ["rhs_weap_pkm", "", "", "", ["rhs_100Rnd_762x54mmR", "rhs_100Rnd_762x54mmR", "rhs_100Rnd_762x54mmR"], [], ""],
+    ["rhs_weap_aks74n", "", "", "rhs_acc_ekp8_02", ["rhs_45Rnd_545X39_7N10_AK", "rhs_45Rnd_545X39_7N10_AK", "rhs_45Rnd_545X39_7N10_AK"], [], ""]
 ]];
 _sfLoadoutData set ["marksmanRifles", [
-    ["OPTRE_M393_DMR", "", "", "optre_m393_scope", ["OPTRE_15Rnd_762x51_Mag", "OPTRE_15Rnd_762x51_Mag", "OPTRE_15Rnd_762x51_Mag"], [], "bipod_01_f_blk"]
+    ["rhs_weap_svdp_wd_npz", "", "", "rhs_acc_dh520x56", ["rhs_10Rnd_762x54mmR_7N1", "rhs_10Rnd_762x54mmR_7N1", "rhs_10Rnd_762x54mmR_7N1"], [], ""]
 ]];
-_sfLoadoutData set ["sniperRifles", [
-    ["OPTRE_SRS99C", "", "", "optre_srs99c_scope", [], [], ""]
+_sfLoadoutData set ["sniperRifles", [   
+    ["rhs_weap_t5000", "", "", "rhs_acc_dh520x56", ["rhs_5Rnd_338lapua_t5000"], [], ""]
 ]];
 _sfLoadoutData set ["sidearms", [
-    ["OPTRE_M6G", "optre_m6_silencer", "optre_m6g_flashlight", "optre_m6g_scope", [], [], ""]
+    ["rhs_weap_pya", "", "", "", [], [], ""],
+    ["rhs_weap_6p53", "", "", "", [], [], ""]
 ]];
-
-_sfLoadoutData set ["lightATLaunchers", [["OPTRE_M41_SSR", "", "", "", ["OPTRE_M41_Twin_HEAT"], [], ""]]];
-_sfLoadoutData set ["ATLaunchers", [["OPTRE_M41_SSR", "", "", "", ["OPTRE_M41_Twin_HEAT"], [], ""]]];
 
 /////////////////////////////////
 //    Elite Loadout Data       //
 /////////////////////////////////
 
 private _eliteLoadoutData = _loadoutData call _fnc_copyLoadoutData;
-if (["MA_Armor"] call A3U_fnc_hasAddon) then {
-    _eliteLoadoutData set ["uniforms", ["MA_M56S_BDU"]];
-    _eliteLoadoutData set ["slUniform", ["MA_M56S_BDU"]];
-    _eliteLoadoutData set ["vests", ["MA_M56R_Vest"]];
-    _eliteLoadoutData set ["mgVests", ["MA_M56R_CQB_Vest"]];
-    _eliteLoadoutData set ["medVests", ["MA_M56S_Medic_Vest"]];
-    _eliteLoadoutData set ["slVests", ["MA_M56S_Vest"]];
-    _eliteLoadoutData set ["glVests", ["MA_M56_CustomVest_1"]];
-    _eliteLoadoutData set ["engVests", ["MA_M56R_Vest_ODST_Radio"]];
-    _eliteLoadoutData set ["backpacks", ["MA_M56S_Rucksack"]];
-    _eliteLoadoutData set ["slBackpacks", ["MA_M56S_Rucksack_ODST_Radio"]];
-    _eliteLoadoutData set ["atBackpacks", ["OPTRE_ILCS_Rucksack_Heavy"]];
-    _eliteLoadoutData set ["helmets", ["MA_M56SR_Helmet_Black_Visor", "MA_M56SH_Helmet_Black_Visor"]];
-    _eliteLoadoutData set ["sniHats", ["MA_M56A_Helmet_Red_Visor"]];
-} else {
-    _eliteLoadoutData set ["uniforms", ["OPTRE_UNSC_ODST_Uniform"]];
-    _eliteLoadoutData set ["slUniform", ["OPTRE_UNSC_ODST_Uniform"]];
-    _eliteLoadoutData set ["vests", ["OPTRE_UNSC_M52D_Armor"]];
-    _eliteLoadoutData set ["mgVests", ["OPTRE_UNSC_M52D_Armor_Rifleman"]];
-    _eliteLoadoutData set ["medVests", ["OPTRE_UNSC_M52D_Armor_Medic"]];
-    _eliteLoadoutData set ["slVests", ["OPTRE_UNSC_M52D_Armor_Rifleman"]];
-    _eliteLoadoutData set ["glVests", ["OPTRE_UNSC_M52D_Armor_Rifleman"]];
-    _eliteLoadoutData set ["engVests", ["OPTRE_UNSC_M52D_Armor_Rifleman"]];
-    _eliteLoadoutData set ["backpacks", ["OPTRE_ILCS_Rucksack_Black"]];
-    _eliteLoadoutData set ["slBackpacks", ["OPTRE_ILCS_Rucksack_Medical"]];
-    _eliteLoadoutData set ["atBackpacks", ["OPTRE_ILCS_Rucksack_Heavy"]];
-    _eliteLoadoutData set ["helmets", ["OPTRE_UNSC_CH252D_Helmet"]];
-    _eliteLoadoutData set ["sniHats", ["OPTRE_UNSC_CH252A_Black_Helmet"]]; 
-};
+_eliteLoadoutData set ["uniforms", ["PRACS_SLA_M88_Paratrooper_uniform"]];
+_eliteLoadoutData set ["slUniform", ["PRACS_SLA_M88_SL_uniform"]];
+_eliteLoadoutData set ["vests", ["PRACS_SLA_6B23_6sh92_L_Radio"]];
+_eliteLoadoutData set ["mgVests", ["PRACS_O_CIRAS_MG_SF"]];
+_eliteLoadoutData set ["medVests", ["PRACS_SLA_6sh92_R_SF"]];
+_eliteLoadoutData set ["slVests", ["PRACS_SLA_6B23_M"]];
+_eliteLoadoutData set ["glVests", ["PRACS_SLA_6B23_6sh92_VOG"]];
+_eliteLoadoutData set ["engVests", ["PRACS_SLA_6sh92"]];
+_eliteLoadoutData set ["backpacks", ["PRACS_SLA_cammo_RD54"]];
+_eliteLoadoutData set ["slBackpacks", ["PRACS_SLA_cammo_RD54"]];
+_eliteLoadoutData set ["atBackpacks", ["PRACS_SLA_cammo_RD54"]];
+_eliteLoadoutData set ["helmets", ["PRACS_SLA_6B27M"]];
+_eliteLoadoutData set ["sniHats", ["PRACS_SLA_ssh68_cover"]];
+_eliteLoadoutData set ["binoculars", ["rhs_pdu4"]];
+
+_eliteLoadoutData set ["lightATLaunchers", ["rhs_weap_rpg26"]];
+_eliteLoadoutData set ["lightHELaunchers", ["rhs_weap_rshg2"]];
 
 _eliteLoadoutData set ["slRifles", [
-    ["OPTRE_BR55", "optre_ma5suppressor", "", "optre_br55hb_scope", ["OPTRE_36Rnd_95x40_Mag"], [], ""]
+["rhs_weap_ak105_npz", "rhs_acc_pgs64", "", "rhs_acc_okp7_picatinny", ["rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK"], [], ""],
+["rhs_weap_aks74n_2", "rhs_acc_dtk3", "", "rhs_acc_pkas", ["rhs_30Rnd_545x39_7N6M_plum_AK", "rhs_30Rnd_545x39_7N6M_plum_AK", "rhs_30Rnd_545x39_7N6M_plum_AK"], [], "rhs_acc_grip_rk6"]
 ]];
 _eliteLoadoutData set ["rifles", [
-    ["OPTRE_MA5C", "optre_ma5suppressor", "", "optre_ma5c_smartlink", ["OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag"], [], ""]
+    ["rhs_weap_ak105_npz", "rhs_acc_pgs64", "", "rhs_acc_okp7_picatinny", ["rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK"], [], ""],
+    ["rhs_weap_aks74n_2", "rhs_acc_dtk3", "", "rhs_acc_pkas", ["rhs_30Rnd_545x39_7N6M_plum_AK", "rhs_30Rnd_545x39_7N6M_plum_AK", "rhs_30Rnd_545x39_7N6M_plum_AK"], [], "rhs_acc_grip_rk6"],
+    ["rhs_weap_akm_zenitco01_b33", "rhs_acc_dtkakm", "", "rhs_acc_ekp8_18", ["rhs_30Rnd_762x39mm_bakelite", "rhs_30Rnd_762x39mm_bakelite", "rhs_30Rnd_762x39mm_bakelite"], [], "rhs_acc_grip_rk6"]
 ]];
 _eliteLoadoutData set ["carbines", [
-    ["OPTRE_MA37B", "optre_ma5suppressor", "", "", ["OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag"], [], ""]
+    ["rhs_weap_ak104", "", "", "rhs_acc_ekp8_02", ["rhs_30Rnd_762x39mm_polymer", "rhs_30Rnd_762x39mm_polymer", "rhs_30Rnd_762x39mm_polymer"], [], ""]
 ]];
 _eliteLoadoutData set ["grenadeLaunchers", [
-    ["OPTRE_M319N", "", "", "", ["M319_HE_Grenade_Shell", "M319_Smoke", "OPTRE_signalSmokeB"], [], ""]
+    ["rhs_weap_ak74m_gp25", "rhs_acc_dtk", "", "rhs_acc_1p63", ["rhs_30Rnd_545x39_7N10_AK", "rhs_30Rnd_545x39_7N10_AK", "rhs_30Rnd_545x39_7N10_AK"], ["rhs_VOG25"], ""]
 ]];
 _eliteLoadoutData set ["SMGs", [
-    ["OPTRE_M7", "optre_m7_silencer", "", "optre_m393_eotech", [], [], ""],
-    ["OPTRE_M45", "", "", "", [], [], ""]
+    ["PRACS_UZI", "", "", "rhsusf_acc_rm05", ["PRACS_30rd_9mm_UZI"], [], ""]
 ]];
 _eliteLoadoutData set ["machineGuns", [
-    ["OPTRE_M247", "", "", "", ["OPTRE_100Rnd_762x51_Box", "OPTRE_100Rnd_762x51_Box", "OPTRE_100Rnd_762x51_Box"], [], "bipod_01_F_blk"]
+    ["rhs_weap_pkm", "", "", "", ["rhs_100Rnd_762x54mmR", "rhs_100Rnd_762x54mmR", "rhs_100Rnd_762x54mmR"], [], ""],
+    ["rhs_weap_aks74n", "", "", "rhs_acc_ekp8_02", ["rhs_45Rnd_545X39_7N10_AK", "rhs_45Rnd_545X39_7N10_AK", "rhs_45Rnd_545X39_7N10_AK"], [], ""]
 ]];
 _eliteLoadoutData set ["marksmanRifles", [
-    ["OPTRE_M295_BMR", "optre_ma5suppressor", "", "optre_m393_acog", ["OPTRE_25Rnd_762x51_Mag", "OPTRE_25Rnd_762x51_Mag", "OPTRE_25Rnd_762x51_Mag"], [], ""]
+    ["rhs_weap_svdp_wd_npz", "", "", "rhs_acc_dh520x56", ["rhs_10Rnd_762x54mmR_7N1", "rhs_10Rnd_762x54mmR_7N1", "rhs_10Rnd_762x54mmR_7N1"], [], ""]
 ]];
 _eliteLoadoutData set ["sniperRifles", [
-    ["OPTRE_SRS99C", "optre_srs99d_suppressor", "", "optre_srs99c_scope", [], [], ""]
+    ["rhs_weap_t5000", "", "", "rhs_acc_dh520x56", ["rhs_5Rnd_338lapua_t5000"], [], ""]
 ]];
 _eliteLoadoutData set ["sidearms", [
-    ["OPTRE_M6G", "", "optre_m6g_flashlight", "", [], [], ""]
+    ["rhs_weap_pya", "", "", "", [], [], ""],
+    ["rhs_weap_6p53", "", "", "", [], [], ""]
 ]];
-
-_eliteLoadoutData set ["lightATLaunchers", [["OPTRE_M41_SSR", "", "", "", ["OPTRE_M41_Twin_HEAT"], [], ""]]];
-_eliteLoadoutData set ["ATLaunchers", [["OPTRE_M41_SSR", "", "", "", ["OPTRE_M41_Twin_HEAT"], [], ""]]];
 
 /////////////////////////////////
 //    Military Loadout Data    //
 /////////////////////////////////
 
 private _militaryLoadoutData = _loadoutData call _fnc_copyLoadoutData;
-_militaryLoadoutData set ["uniforms", ["OPTRE_UNSC_Army_Uniform_DES"]];
-_militaryLoadoutData set ["slUniform", ["OPTRE_UNSC_Army_Uniform_DES"]];
-_militaryLoadoutData set ["vests", ["OPTRE_UNSC_M52A_Armor_Rifleman_DES"]];
-_militaryLoadoutData set ["mgVests", ["OPTRE_UNSC_M52A_Armor_MG_DES"]];
-_militaryLoadoutData set ["medVests", ["OPTRE_UNSC_M52A_Armor_Corpsman_MAR"]];
-_militaryLoadoutData set ["slVests", ["OPTRE_UNSC_M52A_Armor_TL_DES"]];
-_militaryLoadoutData set ["glVests", ["OPTRE_UNSC_M52A_Armor_Grenadier_DES"]];
-_militaryLoadoutData set ["engVests", ["OPTRE_UNSC_M52A_Armor1_DES"]];
-_militaryLoadoutData set ["backpacks", ["OPTRE_UNSC_Rucksack", "OPTRE_UNSC_Rucksack_Medic", "OPTRE_UNSC_Rucksack_Heavy"]];
-_militaryLoadoutData set ["slBackpacks", ["OPTRE_ILCS_Rucksack_Black"]];
-_militaryLoadoutData set ["atBackpacks", ["OPTRE_ILCS_Rucksack_Heavy"]];
-_militaryLoadoutData set ["helmets", ["OPTRE_UNSC_CH252_Helmet_DES", "OPTRE_UNSC_CH252_Helmet2_DES"]];
-_militaryLoadoutData set ["sniHats", ["OPTRE_UNSC_CH252A_Black_Helmet"]];
+_militaryLoadoutData set ["uniforms", ["PRACS_SLA_M88_Guards_uniform"]];
+_militaryLoadoutData set ["slUniform", ["PRACS_SLA_M88_Guards_SL_uniform"]];
+_militaryLoadoutData set ["vests", ["PRACS_SLA_6b2_chicom"]];
+_militaryLoadoutData set ["mgVests", ["PRACS_SLA_6B23_6sh92"]];
+_militaryLoadoutData set ["medVests", ["PRACS_SLA_6B23_6sh92_L_Headset"]];
+_militaryLoadoutData set ["slVests", ["PRACS_SLA_6B23_O"]];
+_militaryLoadoutData set ["glVests", ["PRACS_SLA_6B23_6sh92_VOG"]];
+_militaryLoadoutData set ["engVests", ["PRACS_SLA_6sh92_R"]];
+_militaryLoadoutData set ["backpacks", ["PRACS_SLA_RD54"]];
+_militaryLoadoutData set ["slBackpacks", ["PRACS_SLA_RD54"]];
+_militaryLoadoutData set ["atBackpacks", ["PRACS_SLA_RD54"]];
+_militaryLoadoutData set ["helmets", ["PRACS_SLA_Guards_Beret"]];
+_militaryLoadoutData set ["sniHats", ["PRACS_SLA_6B27M_ess"]];
+_militaryLoadoutData set ["binoculars", ["rhs_pdu4"]];
+
+_militaryLoadoutData set ["lightATLaunchers", ["rhs_weap_rpg26"]];
+_militaryLoadoutData set ["lightHELaunchers", ["rhs_weap_rshg2"]];
 
 _militaryLoadoutData set ["slRifles", [
-    ["OPTRE_BR55", "", "", "optre_br55hb_scope", ["OPTRE_36Rnd_95x40_Mag", "OPTRE_36Rnd_95x40_Mag", "OPTRE_36Rnd_95x40_Mag"], [], ""]
+    ["rhs_weap_akm_zenitco01_b33", "", "", "", ["rhs_30Rnd_762x39mm_bakelite", "rhs_30Rnd_762x39mm_bakelite", "rhs_30Rnd_762x39mm_bakelite"], [], ""],
+    ["rhs_weap_g36c", "", "", "rhsusf_acc_compm4", ["rhssaf_30rnd_556x45_EPR_G36"], [], ""]
 ]];
 _militaryLoadoutData set ["rifles", [
-    ["OPTRE_MA5C", "", "", "", ["OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag"], [], ""]
+    ["rhs_weap_aks74n_2_npz", "", "", "rhs_acc_ekp8_18", ["rhs_30Rnd_545x39_7N6M_plum_AK", "rhs_30Rnd_545x39_7N6M_plum_AK", "rhs_30Rnd_545x39_7N6M_plum_AK"], [], ""],
+    ["rhs_weap_m16a4_carryhandle", "", "", "rhsusf_acc_eotech_552", ["rhs_mag_30Rnd_556x45_M855A1_Stanag"], [], ""]
 ]];
 _militaryLoadoutData set ["carbines", [
-    ["OPTRE_MA37B", "", "", "", ["OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag"], [], ""]
+    ["PRACS_rk62", "", "", "", ["PRACS_30Rnd_762x39_Rk_7N6_mag", "PRACS_30Rnd_762x39_Rk_7N6_mag", "PRACS_30Rnd_762x39_Rk_7N6_mag"], [], ""]
 ]];
 _militaryLoadoutData set ["grenadeLaunchers", [
-    ["OPTRE_M319N", "", "", "", ["M319_HE_Grenade_Shell", "M319_Smoke", "OPTRE_signalSmokeB"], [], ""]
+    ["rhs_weap_ak74m_gp25_npz", "rhs_acc_dtk", "", "rhs_acc_rakurspm", ["rhs_30Rnd_545x39_7N10_AK", "rhs_30Rnd_545x39_7N10_AK", "rhs_30Rnd_545x39_7N10_AK"], ["rhs_VOG25"], ""]
 ]];
 _militaryLoadoutData set ["SMGs", [
-    ["OPTRE_M7", "", "", "", [], [], ""],
-    ["OPTRE_M45", "", "", "", [], [], ""]
+    ["PRACS_HK33", "", "", "rhsusf_acc_rm05", ["PRACS_30rd_HK33_mag"], [], ""]
 ]];
 _militaryLoadoutData set ["machineGuns", [
-    ["OPTRE_M247", "", "", "", ["OPTRE_100Rnd_762x51_Box", "OPTRE_100Rnd_762x51_Box", "OPTRE_100Rnd_762x51_Box"], [], "bipod_01_F_blk"]
+    ["rhs_weap_aks74n", "", "", "rhs_acc_ekp8_02", ["rhs_45Rnd_545X39_7N10_AK", "rhs_45Rnd_545X39_7N10_AK", "rhs_45Rnd_545X39_7N10_AK"], [], ""]
 ]];
 _militaryLoadoutData set ["marksmanRifles", [
-    ["OPTRE_M295_BMR", "", "", "optre_m393_acog", ["OPTRE_25Rnd_762x51_Mag", "OPTRE_25Rnd_762x51_Mag", "OPTRE_25Rnd_762x51_Mag"], [], ""]
+    ["rhs_weap_vss", "", "", "rhs_acc_pso1m2", ["rhs_20rnd_9x39mm_SP5", "rhs_20rnd_9x39mm_SP5", "rhs_20rnd_9x39mm_SP5"], [], ""]
 ]];
 _militaryLoadoutData set ["sniperRifles", [
-    ["OPTRE_SRS99C", "", "", "optre_srs99c_scope", [], [], ""]
+    ["rhs_weap_t5000", "", "", "rhs_acc_dh520x56", ["rhs_5Rnd_338lapua_t5000"], [], ""]
 ]];
 _militaryLoadoutData set ["sidearms", [
-    ["OPTRE_M6G", "", "optre_m6g_flashlight", "", [], [], ""]
+    ["rhs_weap_makarov_pm", "", "", "", [], [], ""]
 ]];
-
-_militaryLoadoutData set ["lightATLaunchers", [["OPTRE_M41_SSR", "", "", "", ["OPTRE_M41_Twin_HEAT"], [], ""]]];
-_militaryLoadoutData set ["ATLaunchers", [["OPTRE_M41_SSR", "", "", "", ["OPTRE_M41_Twin_HEAT"], [], ""]]];
 
 ///////////////////////////////
 //    Police Loadout Data    //
@@ -382,15 +368,16 @@ _militaryLoadoutData set ["ATLaunchers", [["OPTRE_M41_SSR", "", "", "", ["OPTRE_
 
 private _policeLoadoutData = _loadoutData call _fnc_copyLoadoutData;
 
-_policeLoadoutData set ["uniforms", ["OPTRE_CMA_Uniform", "OPTRE_CMA_Uniform_Rolled"]];
-_policeLoadoutData set ["vests", ["OPTRE_Vest_CMA_Light", "OPTRE_Vest_CMA_Heavy"]];
-_policeLoadoutData set ["helmets", ["OPTRE_CMA_Helmet_ear", "OPTRE_CMA_Helmet_chops"]];
+_policeLoadoutData set ["uniforms", ["PRACS_SLA_Border_Guard_uniform"]];
+_policeLoadoutData set ["vests", ["rhs_belt_AK", "rhs_belt_AK_back"]];
+_policeLoadoutData set ["helmets", ["PRACS_SLA_Border_Guard_Cap"]];
 
 _policeLoadoutData set ["SMGs", [
-    ["OPTRE_MA37K", "", "", "", ["OPTRE_32Rnd_762x51_Mag"], [], ""]
+    ["rhs_weap_aks74u", "", "", "", ["rhs_30Rnd_545x39_7N6_AK"], [], ""],
+    ["rhs_weap_pp2000", "", "", "", ["rhs_mag_9x19mm_7n31_20"], [], ""]
 ]];
 _policeLoadoutData set ["sidearms", [
-    ["OPTRE_M6G", "", "", "", ["OPTRE_8Rnd_127x40_AP_Mag"], [], ""]
+    ["rhs_weap_type94_new", "", "", "", ["rhs_mag_6x8mm_mhp"], [], ""]
 ]];
 
 ////////////////////////////////
@@ -398,58 +385,61 @@ _policeLoadoutData set ["sidearms", [
 ////////////////////////////////
 
 private _militiaLoadoutData = _loadoutData call _fnc_copyLoadoutData;
-_militiaLoadoutData set ["uniforms", ["OPTRE_FC_Marines_Uniform_DES_L"]];
-_militiaLoadoutData set ["vests", ["OPTRE_FC_M52B_Armor_Rifleman_DES", "OPTRE_FC_M52B_Armor_Light_DES"]];
-_militiaLoadoutData set ["sniVests", ["OPTRE_FC_M52B_Armor_Sniper_DES"]];
-_militiaLoadoutData set ["backpacks", ["OPTRE_UNSC_Rucksack"]];
-_militiaLoadoutData set ["slBackpacks", ["OPTRE_UNSC_Rucksack"]];
-_militiaLoadoutData set ["atBackpacks", ["OPTRE_UNSC_Rucksack"]];
-_militiaLoadoutData set ["helmets", ["OPTRE_FC_CH255_Helmet_DES"]];
-_militiaLoadoutData set ["sniHats", ["OPTRE_FC_CH255_Helmet_DES_Visor"]];
+_militiaLoadoutData set ["uniforms", ["PRACS_SLA_M88_uniform"]];
+_militiaLoadoutData set ["vests", ["rhs_suspender_AK"]];
+_militiaLoadoutData set ["sniVests", ["rhs_suspender_SKS"]];
+_militiaLoadoutData set ["backpacks", ["rhs_rd54"]];
+_militiaLoadoutData set ["slBackpacks", ["PRACS_SLA_cammo_RD54"]];
+_militiaLoadoutData set ["atBackpacks", ["rhs_rpg_empty"]];
+_militiaLoadoutData set ["helmets", ["PRACS_SLA_ssh68"]];
+_militiaLoadoutData set ["sniHats", ["PRACS_SLA_ssh68_cover"]];
+
+_militiaLoadoutData set ["lightATLaunchers", ["rhs_weap_rpg26"]];
+_militiaLoadoutData set ["lightHELaunchers", ["rhs_weap_rshg2"]];
 
 _militiaLoadoutData set ["rifles", [
-    ["OPTRE_MA5C", "", "", "", ["OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag"], [], ""]
+    ["rhs_weap_ak74", "", "", "", ["rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK"], [], ""]
 ]];
 _militiaLoadoutData set ["carbines", [
-    ["OPTRE_MA5A", "", "", "", ["OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag"], [], ""]
+    ["rhs_weap_ak74n", "", "", "", ["rhs_30Rnd_545x39_7N10_AK", "rhs_30Rnd_545x39_7N10_AK", "rhs_30Rnd_545x39_7N10_AK"], [], ""]
 ]];
 _militiaLoadoutData set ["grenadeLaunchers", [
-    ["OPTRE_M319", "", "", "", ["M319_HE_Grenade_Shell", "M319_Smoke", "OPTRE_signalSmokeB"], [], ""]
+    ["rhs_weap_ak74n_gp25", "", "", "rhs_acc_1p78", ["rhs_30Rnd_545x39_7N10_AK", "rhs_30Rnd_545x39_7N10_AK", "rhs_30Rnd_545x39_7N10_AK"], ["rhs_VOG25", "rhs_VOG25", "rhs_VOG25"], ""]
 ]];
 _militiaLoadoutData set ["SMGs", [
-    ["OPTRE_MA37K", "", "", "", ["OPTRE_32Rnd_762x51_Mag"], [], ""]
+    ["PRACS_UZI", "", "", "rhsusf_acc_eotech_xps3", ["PRACS_30rd_9mm_UZI"], [], ""],
+    ["rhs_weap_aks74u", "", "", "", ["rhs_30Rnd_545x39_7N6_AK"], [], ""]
 ]];
 _militiaLoadoutData set ["machineGuns", [
-    ["OPTRE_M73", "", "", "", ["OPTRE_100Rnd_95x40_Box", "OPTRE_100Rnd_95x40_Box", "OPTRE_100Rnd_95x40_Box"], [], "bipod_01_F_blk"]
+    ["rhs_weap_ak74m_desert_npz", "", "", "", ["rhs_45Rnd_545X39_7N10_AK", "rhs_45Rnd_545X39_7N10_AK", "rhs_45Rnd_545X39_7N10_AK"], [], ""]
 ]];
 _militiaLoadoutData set ["marksmanRifles", [
-    ["OPTRE_M295_BMR", "", "", "optre_m393_acog", ["OPTRE_25Rnd_762x51_Mag", "OPTRE_25Rnd_762x51_Mag", "OPTRE_25Rnd_762x51_Mag"], [], ""]
+    ["PRACS_g3a3", "", "", "rhsusf_acc_m8541_low", ["PRACS_20rd_G3_mag", "PRACS_20rd_G3_mag", "PRACS_20rd_G3_mag"], [], ""]
 ]];
 _militiaLoadoutData set ["sidearms", [
-    ["OPTRE_M6G", "", "", "", ["OPTRE_8Rnd_127x40_AP_Mag"], [], ""]
+    ["rhs_weap_makarov_pm", "", "", "", [], [], ""]
 ]];
-
-_militiaLoadoutData set ["lightATLaunchers", [["OPTRE_M41_SSR", "", "", "", ["OPTRE_M41_Twin_HEAT"], [], ""]]];
-_militiaLoadoutData set ["ATLaunchers", [["OPTRE_M41_SSR", "", "", "", ["OPTRE_M41_Twin_HEAT"], [], ""]]];
 
 //////////////////////////
 //    Misc Loadouts     //
 //////////////////////////
 
 private _crewLoadoutData = _militaryLoadoutData call _fnc_copyLoadoutData;
-_crewLoadoutData set ["uniforms", ["OPTRE_UNSC_Navy_Uniform_Orange"]];
-_crewLoadoutData set ["vests", ["OPTRE_UNSC_M52A_Armor3_DES"]];
-_crewLoadoutData set ["helmets", ["OPTRE_UNSC_CH252_Helmet2_Vacuum_DES"]];
+_crewLoadoutData set ["uniforms", ["PRACS_SLA_Border_Guard_uniform"]];
+_crewLoadoutData set ["vests", ["rhs_belt_sks"]];
+_crewLoadoutData set ["helmets", ["rhs_tsh4"]];
 _crewLoadoutData set ["carbines", [
-    ["OPTRE_M7", "", "", "optre_m12_optic", ["OPTRE_60Rnd_5x23mm_Mag"], [], ""]
-]];
+    ["PRACS_UZI", "", "", "", ["PRACS_35rd_9mm_UZI", "PRACS_35rd_9mm_UZI", "PRACS_35rd_9mm_UZI"], [], ""],
+    ["rhs_weap_aks74u", "rhs_acc_pgs64_74u", "", "", ["rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_AK_green"], [], ""]
+]];	
 
 private _pilotLoadoutData = _militaryLoadoutData call _fnc_copyLoadoutData;
-_pilotLoadoutData set ["uniforms", ["OPTRE_UNSC_Navy_Uniform_Orange"]];
-_pilotLoadoutData set ["vests", ["OPTRE_UNSC_M52A_Armor2_DES"]];
-_pilotLoadoutData set ["helmets", ["OPTRE_FC_VX19_Helmet_Desert"]];
+_pilotLoadoutData set ["uniforms", ["PRACS_SLA_M88_O_uniform"]];
+_pilotLoadoutData set ["vests", ["rhs_vest_pistol_holster", "rhs_6sh46"]];
+_pilotLoadoutData set ["helmets", ["rhs_zsh7a_mike_green", "rhs_zsh7a_mike_green_alt"]];
 _pilotLoadoutData set ["carbines", [
-    ["OPTRE_M7", "", "", "optre_m12_optic", ["OPTRE_60Rnd_5x23mm_Mag"], [], ""]
+    ["rhs_weap_aks74u", "rhs_acc_pgs64_74u", "", "", ["rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_7N6_AK", "rhs_30Rnd_545x39_AK_green"], [], ""],
+    ["PRACS_UZI", "", "", "", ["PRACS_35rd_9mm_UZI", "PRACS_35rd_9mm_UZI", "PRACS_35rd_9mm_UZI"], [], ""]
 ]];
 
 /////////////////////////////////
@@ -984,6 +974,7 @@ private _patrolSpotterTemplate = {
     ["rangefinders"] call _fnc_addBinoculars;
     ["NVGs"] call _fnc_addNVGs;
 };
+
 ////////////////////////////////////////////////////////////////////////////////////////
 //  You shouldn't touch below this line unless you really really know what you're doing.
 //  Things below here can and will break the gamemode if improperly changed.
@@ -992,23 +983,21 @@ private _patrolSpotterTemplate = {
 /////////////////////////////
 //  Special Forces Units   //
 /////////////////////////////
-private _spartanUnit = ["baseClass", "OPTRE_FC_Spartan_MkVI", false];
-
 private _prefix = "SF";
 private _unitTypes = [
-    ["SquadLeader", _squadLeaderTemplate, [_spartanUnit], [_prefix]],
-    ["Radioman", _radiomanTemplate, [_spartanUnit], [_prefix]],
-    ["Rifleman", _riflemanTemplate, [_spartanUnit], [_prefix]],
-    ["Medic", _medicTemplate, [["medic", true], _spartanUnit], [_prefix]],
-    ["Engineer", _engineerTemplate, [["engineer", true], _spartanUnit], [_prefix]],
-    ["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true], _spartanUnit], [_prefix]],
-    ["Grenadier", _grenadierTemplate, [_spartanUnit], [_prefix]],
-    ["LAT", _latTemplate, [_spartanUnit], [_prefix]],
-    ["AT", _atTemplate, [_spartanUnit], [_prefix]],
-    ["AA", _aaTemplate, [_spartanUnit], [_prefix]],
-    ["MachineGunner", _machineGunnerTemplate, [_spartanUnit], [_prefix]],
-    ["Marksman", _marksmanTemplate, [_spartanUnit], [_prefix]],
-    ["Sniper", _sniperTemplate, [_spartanUnit], [_prefix]]
+	["SquadLeader", _squadLeaderTemplate, [], [_prefix]],
+	["Rifleman", _riflemanTemplate, [], [_prefix]],
+	["Radioman", _radiomanTemplate, [], [_prefix]],
+	["Medic", _medicTemplate, [["medic", true]], [_prefix]],
+	["Engineer", _engineerTemplate, [["engineer", true]], [_prefix]],
+	["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true]], [_prefix]],
+	["Grenadier", _grenadierTemplate, [], [_prefix]],
+	["LAT", _latTemplate, [], [_prefix]],
+	["AT", _atTemplate, [], [_prefix]],
+	["AA", _aaTemplate, [], [_prefix]],
+	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
+	["Marksman", _marksmanTemplate, [], [_prefix]],
+	["Sniper", _sniperTemplate, [], [_prefix]]
 ];
 
 
@@ -1027,21 +1016,21 @@ private _unitTypes = [
 ///////////////////////
 private _prefix = "military";
 private _unitTypes = [
-    ["SquadLeader", _squadLeaderTemplate, [], [_prefix]],
-    ["Radioman", _radiomanTemplate, [], [_prefix]],
-    ["Rifleman", _riflemanTemplate, [], [_prefix]],
-    ["Medic", _medicTemplate, [["medic", true]], [_prefix]],
-    ["Engineer", _engineerTemplate, [["engineer", true]], [_prefix]],
-    ["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true]], [_prefix]],
-    ["Grenadier", _grenadierTemplate, [], [_prefix]],
-    ["LAT", _latTemplate, [], [_prefix]],
-    ["AT", _atTemplate, [], [_prefix]],
-    ["AA", _aaTemplate, [], [_prefix]],
-    ["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
-    ["Marksman", _marksmanTemplate, [], [_prefix]],
-    ["Sniper", _sniperTemplate, [], [_prefix]],
-    ["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
-    ["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
+	["SquadLeader", _squadLeaderTemplate, [], [_prefix]],
+	["Rifleman", _riflemanTemplate, [], [_prefix]],
+	["Radioman", _radiomanTemplate, [], [_prefix]],
+	["Medic", _medicTemplate, [["medic", true]], [_prefix]],
+	["Engineer", _engineerTemplate, [["engineer", true]], [_prefix]],
+	["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true]], [_prefix]],
+	["Grenadier", _grenadierTemplate, [], [_prefix]],
+	["LAT", _latTemplate, [], [_prefix]],
+	["AT", _atTemplate, [], [_prefix]],
+	["AA", _aaTemplate, [], [_prefix]],
+	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
+	["Marksman", _marksmanTemplate, [], [_prefix]],
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    	["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    	["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _militaryLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
@@ -1051,8 +1040,8 @@ private _unitTypes = [
 ////////////////////////
 private _prefix = "police";
 private _unitTypes = [
-    ["SquadLeader", _policeTemplate, [], [_prefix]],
-    ["Standard", _policeTemplate, [], [_prefix]]
+	["SquadLeader", _policeTemplate, [], [_prefix]],
+	["Standard", _policeTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _policeLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
@@ -1062,21 +1051,21 @@ private _unitTypes = [
 ////////////////////////
 private _prefix = "militia";
 private _unitTypes = [
-    ["SquadLeader", _squadLeaderTemplate, [], [_prefix]],
-    ["Radioman", _radiomanTemplate, [], [_prefix]],
-    ["Rifleman", _riflemanTemplate, [], [_prefix]],
-    ["Medic", _medicTemplate, [["medic", true]], [_prefix]],
-    ["Engineer", _engineerTemplate, [["engineer", true]], [_prefix]],
-    ["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true]], [_prefix]],
-    ["Grenadier", _grenadierTemplate, [], [_prefix]],
-    ["LAT", _latTemplate, [], [_prefix]],
-    ["AT", _atTemplate, [], [_prefix]],
-    ["AA", _aaTemplate, [], [_prefix]],
-    ["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
-    ["Marksman", _marksmanTemplate, [], [_prefix]],
-    ["Sniper", _sniperTemplate, [], [_prefix]],
-    ["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
-    ["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
+	["SquadLeader", _squadLeaderTemplate, [], [_prefix]],
+	["Rifleman", _riflemanTemplate, [], [_prefix]],
+	["Radioman", _radiomanTemplate, [], [_prefix]],
+	["Medic", _medicTemplate, [["medic", true]], [_prefix]],
+	["Engineer", _engineerTemplate, [["engineer", true]], [_prefix]],
+	["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true]], [_prefix]],
+	["Grenadier", _grenadierTemplate, [], [_prefix]],
+	["LAT", _latTemplate, [], [_prefix]],
+	["AT", _atTemplate, [], [_prefix]],
+	["AA", _aaTemplate, [], [_prefix]],
+	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
+	["Marksman", _marksmanTemplate, [], [_prefix]],
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    	["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    	["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _militiaLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
@@ -1086,21 +1075,21 @@ private _unitTypes = [
 ///////////////////////
 private _prefix = "elite";
 private _unitTypes = [
-    ["SquadLeader", _squadLeaderTemplate, [], [_prefix]],
-    ["Radioman", _radiomanTemplate, [], [_prefix]],
-    ["Rifleman", _riflemanTemplate, [], [_prefix]],
-    ["Medic", _medicTemplate, [["medic", true]], [_prefix]],
-    ["Engineer", _engineerTemplate, [["engineer", true]], [_prefix]],
-    ["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true]], [_prefix]],
-    ["Grenadier", _grenadierTemplate, [], [_prefix]],
-    ["LAT", _latTemplate, [], [_prefix]],
-    ["AT", _atTemplate, [], [_prefix]],
-    ["AA", _aaTemplate, [], [_prefix]],
-    ["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
-    ["Marksman", _marksmanTemplate, [], [_prefix]],
-    ["Sniper", _sniperTemplate, [], [_prefix]],
-    ["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
-    ["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
+	["SquadLeader", _squadLeaderTemplate, [], [_prefix]],
+	["Rifleman", _riflemanTemplate, [], [_prefix]],
+	["Radioman", _radiomanTemplate, [], [_prefix]],
+	["Medic", _medicTemplate, [["medic", true]], [_prefix]],
+	["Engineer", _engineerTemplate, [["engineer", true]], [_prefix]],
+	["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true]], [_prefix]],
+	["Grenadier", _grenadierTemplate, [], [_prefix]],
+	["LAT", _latTemplate, [], [_prefix]],
+	["AT", _atTemplate, [], [_prefix]],
+	["AA", _aaTemplate, [], [_prefix]],
+	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
+	["Marksman", _marksmanTemplate, [], [_prefix]],
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    	["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    	["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _eliteLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
