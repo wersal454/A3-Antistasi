@@ -598,6 +598,7 @@
                 <English>CSLA</English>
                 <Russian>CSLA</Russian>
                 <French>CSLA</French>
+                <Korean>CSLA</Korean>
             </Key>
             <Key ID="STR_A3AU_RF">
                 <Original>Reaction Force</Original>
@@ -704,7 +705,7 @@
                 <Korean>IFA</Korean>
                 <French>IFA</French>
             </Key>
-			<Key ID="STR_A3AU_fow">
+            <Key ID="STR_A3AU_fow">
                 <Original>FoW</Original>
                 <English>FoW</English>
                 <Russian>FoW</Russian>
