@@ -20,21 +20,21 @@
 ["equipmentBox", "Box_NATO_Equip_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
 
 ["vehiclesBasic", ["B_Quadbike_01_F"]] call _fnc_saveToTemplate;
-["vehiclesLightUnarmed", ["PRACS_SLA_UAZ_open", "PRACS_SLA_UAZ"]] call _fnc_saveToTemplate;
-["vehiclesLightArmed", ["PRACS_SLA_UAZ_DSHKM", "PRACS_SLA_Tigr"]] call _fnc_saveToTemplate;
+["vehiclesLightUnarmed", ["PRACS_SLA_BTR40", "PRACS_SLA_UAZ_open", "PRACS_SLA_UAZ"]] call _fnc_saveToTemplate;
+["vehiclesLightArmed", ["PRACS_SLA_BTR40_NSV", "PRACS_SLA_UAZ_DSHKM", "PRACS_SLA_Tigr"]] call _fnc_saveToTemplate;
 ["vehiclesTrucks", ["PRACS_SLA_URAL"]] call _fnc_saveToTemplate;
 ["vehiclesCargoTrucks", ["PRACS_SLA_URAL"]] call _fnc_saveToTemplate;
-["vehiclesAmmoTrucks", ["PRACS_SLA_Ural_Ammo"]] call _fnc_saveToTemplate;
+["vehiclesAmmoTrucks", ["PRACS_SLA_Ural_Ammo", "PRACS_SLA_MAZ_ammo"]] call _fnc_saveToTemplate;
 ["vehiclesRepairTrucks", ["PRACS_SLA_URAL_Repair"]] call _fnc_saveToTemplate;
 ["vehiclesFuelTrucks", ["PRACS_SLA_URAL_Fuel"]] call _fnc_saveToTemplate;
 ["vehiclesMedical", ["PRACS_SLA_Ural_AMB"]] call _fnc_saveToTemplate;
-["vehiclesLightAPCs", ["PRACS_SLA_MTLB", "PRACS_SLA_BRDM_HQ_PKT"]] call _fnc_saveToTemplate;
+["vehiclesLightAPCs", ["PRACS_SLA_BTR40_AT", "PRACS_SLA_Type63_AT", "PRACS_SLA_MTLB", "PRACS_SLA_BRDM_HQ_PKT", "PRACS_SLA_BMD2", "PRACS_SLA_BTR80"]] call _fnc_saveToTemplate;
 ["vehiclesAirborne", ["PRACS_SLA_BMD1", "PRACS_SLA_BRDM", "PRACS_SLA_BTR60"]] call _fnc_saveToTemplate;
-["vehiclesAPCs", ["PRACS_SLA_MTLB", "PRACS_SLA_BRDM"]] call _fnc_saveToTemplate;
+["vehiclesAPCs", ["PRACS_SLA_MTLB", "PRACS_SLA_BRDM", "PRACS_SLA_BTR80A"]] call _fnc_saveToTemplate;
 ["vehiclesIFVs", ["PRACS_SLA_BTR60", "PRACS_SLA_Type63"]] call _fnc_saveToTemplate;
 ["vehiclesLightTanks",  ["PRACS_SLA_BMP2", "PRACS_SLA_BMP1"]] call _fnc_saveToTemplate;
-["vehiclesTanks", ["PRACS_SLA_T72B", "PRACS_SLA_T72BV"]] call _fnc_saveToTemplate;
-["vehiclesAA", ["PRACS_SLA_BTR40_AAM", "PRACS_SLA_URAL_Zu23"]] call _fnc_saveToTemplate;
+["vehiclesTanks", ["PRACS_SLA_T72B", "PRACS_SLA_T72BV", "PRACS_SLA_T80U"]] call _fnc_saveToTemplate;
+["vehiclesAA", ["PRACS_SLA_BTR40_AAM", "PRACS_SLA_URAL_Zu23", "PRACS_SLA_2S6M_Tunguska", "PRACS_SLA_SA13", "PRACS_SLA_SA8", "PRACS_SLA_SA9", "PRACS_SLA_ZSU23"]] call _fnc_saveToTemplate;
 
 ["vehiclesTransportBoats", ["PRACS_SLA_GoFast"]] call _fnc_saveToTemplate;
 ["vehiclesGunBoats", ["PRACS_SLA_GoFast_gun"]] call _fnc_saveToTemplate;
