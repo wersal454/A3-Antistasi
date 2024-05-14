@@ -1152,7 +1152,7 @@ class A3A_TabbedDialogBlackmarket : A3A_DefaultDialog
             x = DIALOG_X;
             y = DIALOG_Y - 5 * GRID_H;
             w = DIALOG_W * GRID_W;
-            h = 10 * GRID_H;
+            h = 15 * GRID_H;
         };
 
         class Background : A3A_Background

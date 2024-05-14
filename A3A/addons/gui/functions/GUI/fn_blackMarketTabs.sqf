@@ -32,17 +32,11 @@ params[
 ];
 
 private _display = findDisplay A3A_IDD_BLACKMARKETVEHICLEDIALOG;
-private _selectedTab = -1;
 
 if (_tab isEqualTo "vehicles") then 
 {
-    _selectedTab = A3A_IDC_BLACKMARKETVEHICLESGROUP;
     _params params ["_tab", "_selectedTab", "_category"];
     Debug("BuyVehicleTab starting...");
-
-    // show the vehicle tab so that user don't freak out
-    private _selectedTabCtrl = _display displayCtrl A3A_IDC_BLACKMARKETMAIN;
-    _selectedTabCtrl ctrlShow true;
 
     // Setup Object render
     private _objPreview = _display displayCtrl A3A_IDC_BLACKMARKETBUYOBJECTRENDER;
@@ -55,10 +49,12 @@ if (_tab isEqualTo "vehicles") then
     private _added = 0;
     {
         _x params ["_className", "_price", "_canGoUndercover"];
+        private _configClass = configFile >> "CfgVehicles" >> _className;
+        if (!isClass _configClass) then { continue };
+
         private _crewCount = [_className] call A3A_fnc_getVehicleCrewCount;
         _crewCount params ["_driver", "_coPilot", "_commander", "_gunners", "_passengers", "_passengersFFV"];
         
-        private _configClass = configFile >> "CfgVehicles" >> _className;
         private _displayName = getText (_configClass >> "displayName");
         private _editorPreview = getText (_configClass >> "editorPreview");
         //private _vehicleIcon= getText (_configClass >> "Icon");
@@ -73,8 +69,7 @@ if (_tab isEqualTo "vehicles") then
         */
 
         // Add some extra padding to the top if there are 2 rows or less
-        //private _topPadding = if (count _buyableVehiclesList < 7) then {5 * GRID_H} else {0};
-        private _topPadding = 10 * GRID_H;
+        private _topPadding = if (count _buyableVehiclesList < 7) then {4 * GRID_H} else {3 * GRID_H};/* private _topPadding = 10 * GRID_H; */
 
         private _itemXpos = 7 * GRID_W + ((7 * GRID_W + 44 * GRID_W) * (_added mod 3)); /// space between first row(?) and left border
         private _itemYpos = (floor (_added / 3)) * (44 * GRID_H) + _topPadding; ///spacer between vehicles
@@ -107,7 +102,6 @@ if (_tab isEqualTo "vehicles") then
                 if (true || isNil "Dev_GUI_prevInjectEnter") then {
                     params ["_control"];
                     private _UIScaleAdjustment = (0.55/getResolution#5);  // I tweaked this on UI Small, so that's why the 0.55 is the base size.
-    
                     private _model = _control getVariable "model";
                     private _className = _control getVariable "className";
                     private _display = findDisplay A3A_IDD_BLACKMARKETVEHICLEDIALOG;
