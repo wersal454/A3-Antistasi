@@ -38,11 +38,8 @@ class A3A {
                 mainGun[] = {"Twin_Cannon_20mm"};
                 rocketLauncher[] = {"Rocket_04_AP_Plane_CAS_01_F"};
                 missileLauncher[] = {"Missile_AGM_02_Plane_CAS_01_F", "missiles_SCALPEL"};
-                code = "params ['_plane']; [_plane,['Hex',1], true] call BIS_fnc_initVehicle;"; //example testing purposes
             };
-            class a3a_Plane_Fighter_03_grey_F : I_Plane_Fighter_03_dynamicLoadout_F{
-                code = "";
-            };
+            class a3a_Plane_Fighter_03_grey_F : I_Plane_Fighter_03_dynamicLoadout_F{};
         };
         class CAPPlane
         {
