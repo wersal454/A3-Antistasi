@@ -306,7 +306,6 @@ class CfgFunctions
             class HQGameOptions {};
             class loadPreviousSession {};
             class mineDialog {};
-            class moveHQObject {};
             class persistentSave {};
             class skiptime {};
             class squadOptions {};
@@ -779,9 +778,10 @@ class CfgFunctions
             class attachedObjects {};
             class buyItem {};
             class carryItem {};
-            class dropObject {};
+            class dropItem {};
             class initObject {};
             class initObjectRemote {};
+            class isCarrying {};
             class remainingFuel {};
             class rotateItem {};
         };
