@@ -5329,7 +5329,7 @@
         <Czech>Skupina pašeráků byla zatčena v %1 a mají být posláni do vězení. Jděte tam a osvoboďte je, aby se připojili k naší věci. Udělejte to před %2.</Czech>
       </Key>
       <Key ID="STR_A3A_fn_mission_res_refu_text2">
-        <Original>A group of %3 supporters are hidden in %1 awaiting for evacuation. We have to find them before %2 does. If not, there will be a certain death for them. Bring them back to HQ.</Original>
+        <Original>A group of %3 supporters are hidden in %1 awaiting for evacuation. We have to find them before %2 does. If not, there will be a certain death for them. Bring them back to HQ before %4.</Original>
         <Italian>Un gruppo di sostenitori %3 sono nascosti a %1 in attesa di essere evacuati. Dobbiamo trovarli prima che lo faccia %2. Se non ci riusciremo verranno sicuramente giustiziati. Portali al QG.</Italian>
         <Spanish>Un grupo de seguidores de %3 están escondidos en %1 esperando una evacuación. Tenemos que encontrares antes de que %2 lo haga. De lo contrario, su muerte está asegurada. Traedlos  de vuelta al CG.</Spanish>
         <French>Un groupe de %3 partisans sont cachés à %1 et attendent une evacuation. Nous devons les trouver avant que %2 ne le fasse. Sinon leur mort est certaine. Ramenez les au QG.</French>
