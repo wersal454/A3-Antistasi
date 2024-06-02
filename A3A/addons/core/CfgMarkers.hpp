@@ -2,6 +2,13 @@ class CfgMarkers
 {
 	class flag_NATO;
 
+	class a3a_flag_aaf_torn_co: flag_NATO 
+	{
+		name = "AAF Remnants";
+		icon = QPATHTOFOLDER(Pictures\Markers\marker_aaf_torn_co.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\marker_aaf_torn_co.paa);
+	};
+
 	class a3a_flag_cdf: flag_NATO 
 	{
 		name = "CDF";
@@ -30,6 +37,20 @@ class CfgMarkers
 		texture = QPATHTOFOLDER(Pictures\Markers\chdkz_co.paa);
 	};
 
+	class a3u_flag_ija: flag_NATO 
+	{
+		name = "IJA Flag";
+		icon = QPATHTOFOLDER(Pictures\Markers\marker_ija_ca.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\marker_ija_ca.paa);
+	};
+
+	class a3u_flag_roc: flag_NATO 
+	{
+		name = "ROC Flag";
+		icon = QPATHTOFOLDER(Pictures\Markers\marker_roc_ca.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\marker_roc_ca.paa);
+	};
+
     class loc_MilAdministration {
         color[] = {1,1,1,1};
         icon = QPATHTOFOLDER(Pictures\Markers\milAdministration_CA.paa);
@@ -46,6 +67,18 @@ class CfgMarkers
 		name = "UNSC";
 		icon = QPATHTOFOLDER(Pictures\Markers\marker_unsc_ca.paa);
 		texture = QPATHTOFOLDER(Pictures\Markers\marker_unsc_ca.paa);
+	};
+	class a3u_flag_ascension_android : a3u_flag_optre_unsc
+	{
+		name = "Android";
+		icon = QPATHTOFOLDER(Pictures\Markers\android_ca.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\android_ca.paa);
+	};
+	class a3u_flag_ascension_vanguard : a3u_flag_ascension_android
+	{
+		name = "Vanguard";
+		icon = QPATHTOFOLDER(Pictures\Markers\vanguard_ca.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\vanguard_ca.paa);
 	};
 	class a3u_flag_optre_covenant: a3u_flag_optre_unsc 
 	{

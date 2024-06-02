@@ -503,7 +503,7 @@
 		class opticsRhs 
 		{
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_rhs", localize "STR_A3AU_sights"]);
-			picture = "";
+			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 
 			class rhsgref_acc_l1a1_l2a2 {
 				price = 450;

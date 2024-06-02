@@ -84,7 +84,7 @@ private _antennasDeadPositions = [];
 ["distanceSPWN", distanceSPWN] call A3A_fnc_setStatVariable;		// backwards compatibility
 ["chopForest", chopForest] call A3A_fnc_setStatVariable;
 ["nextTick", nextTick - time] call A3A_fnc_setStatVariable;
-["weather",[fogParams,overcast]] call A3A_fnc_setStatVariable; //rrobably should be rain
+["weather",[fogParams,overcast,gusts,humidity,lightnings,rain,rainParams,rainbow,waves,wind,windDir,windStr]] call A3A_fnc_setStatVariable; //rrobably should be rain
 private _destroyedPositions = destroyedBuildings apply { getPosATL _x };
 ["destroyedBuildings",_destroyedPositions] call A3A_fnc_setStatVariable;
 
@@ -185,6 +185,23 @@ _arrayEst = [];
 		_arrayEst pushBack [typeOf _x,getPosWorld _x,vectorUp _x, vectorDir _x];
 	};
 } forEach staticsToSave;
+
+private _rebMarkers = (airportsX + outposts + seaports + factories + resourcesX + milbases) select { sidesX getVariable _x == teamPlayer };
+// ^ Update to include plus related stuff
+_rebMarkers append outpostsFIA; _rebMarkers pushBack "Synd_HQ";
+{
+	// Ignore if outside mission distance (temporary)
+	if (!alive _x or (_x distance2d markerPos "Synd_HQ" > distanceMission)) then { continue };
+
+	// Ignore if not within a rebel marker
+	private _building = _x;
+	private _indexes = _rebMarkers inAreaArrayIndexes [getPosATL _x, 500, 500];
+	if (-1 == _indexes findIf { _building inArea _rebMarkers#_x } ) then { continue };
+
+	_arrayEst pushBack [typeOf _x,getPosWorld _x,vectorUp _x, vectorDir _x];
+} forEach A3A_buildingsToSave;
+
+["staticsX", _arrayEst] call A3A_fnc_setStatVariable;
 
 private _excessiveConstructions = maxConstructions - (count constructionsToSave);
 if(_excessiveConstructions < 0) then {

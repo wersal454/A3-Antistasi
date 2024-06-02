@@ -9,9 +9,11 @@ class DOUBLES(ADDON,Nodes)
     #include "Nodes\3CBBAF.hpp"
     #include "Nodes\3CBFactions.hpp"
     #include "Nodes\CUP.hpp"
+    #include "Nodes\CSLA.hpp"
     #include "Nodes\D3S.hpp"
     #include "Nodes\GM.hpp"
     #include "Nodes\RDS.hpp"
+    #include "Nodes\RF.hpp"
     #include "Nodes\RHS.hpp"
     #include "Nodes\RNT.hpp"
     #include "Nodes\Scion.hpp"
@@ -31,6 +33,11 @@ class DOUBLES(ADDON,Nodes)
     #include "Nodes\EMP.hpp"
 	#include "Nodes\BRAF.hpp"
 	#include "Nodes\AMF.hpp"
+	#include "Nodes\TFC.hpp"
+	#include "Nodes\TMT.hpp"
+	#include "Nodes\NFtS.hpp"
+	#include "Nodes\EAW.hpp"
+	#include "Nodes\FOW.hpp"
 };
 
 class DOUBLES(ADDON,Cargo)
@@ -47,10 +54,13 @@ class DOUBLES(ADDON,Cargo)
 
     #include "Cargo\3CBFactions.hpp"
     #include "Cargo\ACE.hpp"
+    #include "Cargo\Aegis.hpp"
     #include "Cargo\BWA3.hpp"
     #include "Cargo\CUP.hpp"
+    #include "Cargo\CSLA.hpp"
     #include "Cargo\GM.hpp"
     #include "Cargo\RHS.hpp"
+    #include "Cargo\RF.hpp"
     #include "Cargo\IFA.hpp"
     #include "Cargo\SPE.hpp"
     #include "Cargo\UNS.hpp"
@@ -60,6 +70,7 @@ class DOUBLES(ADDON,Cargo)
     #include "Cargo\WS.hpp"
     #include "Cargo\CW.hpp"
     #include "Cargo\FFAA.hpp"
+	#include "Cargo\NFtS.hpp"
 
 };
 

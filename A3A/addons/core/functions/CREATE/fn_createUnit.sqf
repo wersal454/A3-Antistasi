@@ -43,7 +43,7 @@ if !(_unitDefinition isEqualTo []) exitWith {
 
 					_unitClass = _units selectRandomWeighted _weights; // grab a random classname, weighted
 					
-					// [_units, _weights] call A3U_fnc_weightTest; // only for debug, don't forget to comment before updating, it's probably very resource intensive
+					// [_units, _weights] call A3U_fnc_weightTest; // Only for debug. Don't forget to comment before updating, it's probably very intensive
 				};
 				_unitClass = selectRandom (_x select 1); // grab a random classname
 			};
@@ -57,7 +57,7 @@ if !(_unitDefinition isEqualTo []) exitWith {
 	private _unit = _group createUnit [_unitClass, _position, _markers, _placement, _special];
     [_unit] joinSilent _group; // normally, this command is literally pointless. But when we're mixing base classes (e.g opfor) but spawning them as blufor (swap enemy sides selection), it'll make them fight each other unless we do this
 
-    if (_canSkip) then {} else {
+    if (_canSkip isEqualTo false) then {
 	    _unit setUnitLoadout selectRandom _loadouts;
     };
 	_unit setVariable ["unitType", _type, true];
@@ -82,6 +82,6 @@ if !(_unitDefinition isEqualTo []) exitWith {
 	_unit
 };
 
-private _unit = _group createUnit  [_type, _position, _markers, _placement, _special];
+private _unit = _group createUnit [_type, _position, _markers, _placement, _special];
 _unit setVariable ["unitType", _type, true];
 _unit

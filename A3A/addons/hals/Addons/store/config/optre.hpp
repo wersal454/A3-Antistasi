@@ -206,7 +206,7 @@
 
 		class opticshalo{
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_optre", localize "STR_A3AU_sights"]);
-			picture = "";
+			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 			ITEM(optre_br45_scope, 150, MAGAZINE_STOCK);
 			ITEM(optre_br55hb_scope, 150, MAGAZINE_STOCK);
 			ITEM(optre_m392_scope, 150, MAGAZINE_STOCK);

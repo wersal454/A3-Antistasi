@@ -12,3 +12,4 @@ Maintainer: DoomMetal
 #include "blackMarketDialog.hpp"
 #include "arsenalLimitsDialog.hpp"
 #include "setupDialog.hpp"
+#include "teamLeaderBuilder.hpp"

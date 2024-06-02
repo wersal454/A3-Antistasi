@@ -123,7 +123,6 @@ private _pressTemplate = {
 private _specialUnits = [
     "Zombie_O_Walker_Civ",
     "Zombie_O_Shambler_Civ",
-    "WBK_SpecialZombie_Corrupted_3",
     "Zombie_Special_OPFOR_Leaper_2",
     "Zombie_Special_OPFOR_Boomer"
 ];
@@ -131,7 +130,6 @@ private _specialUnits = [
 private _specialUnitsWeights = [
     1.0,
     0.8,
-    0.4,
     0.1,
     0.07
 ];

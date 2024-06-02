@@ -41,9 +41,9 @@
 ["ammobox", "Box_FIA_Support_F"] call _fnc_saveToTemplate; 	//Don't touch or you die a sad and lonely death!
 ["surrenderCrate", "Box_NATO_Wps_F"] call _fnc_saveToTemplate;
 
-["vehiclesRivalsLightArmed", ["CW_Offroad_Mando_HMG"]] call _fnc_saveToTemplate;
+["vehiclesRivalsLightArmed", ["3AS_ISP"]] call _fnc_saveToTemplate;
 ["vehiclesRivalsTrucks", ["CW_Mando_argon_transport"]] call _fnc_saveToTemplate;
-["vehiclesRivalsCars", ["CW_Offroad_Mando"]] call _fnc_saveToTemplate;
+["vehiclesRivalsCars", ["3AS_ISP_Transport"]] call _fnc_saveToTemplate;
 ["vehiclesRivalsAPCs", ["3AS_RTT_Wheeled"]] call _fnc_saveToTemplate;
 ["vehiclesRivalsTanks", ["ls_ground_aat_black"]] call _fnc_saveToTemplate;
 ["vehiclesRivalsHelis", ["3AS_Patrol_LAAT_Imperial"]] call _fnc_saveToTemplate;			

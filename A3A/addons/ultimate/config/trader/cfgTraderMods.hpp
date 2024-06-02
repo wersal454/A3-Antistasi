@@ -5,222 +5,177 @@ class CLASSNAME {\
     condition = CONDITION;\
 };
 
-class traderAddons
+class traderMods
 {
-    class addons_base
+    class base
     {
         addons[] = {};
+        prefix = "";
     };
-    class addons_empire : addons_base
+    class kkiv2035 : base
+    {
+        addons[] = {"Kio_Kkiv_2035"};
+        prefix = "kkiv2035";
+    };
+    class aegis : base
+    {
+        addons[] = {"Weapons_1_F_lxWS","A3_Aegis_Armor_F_Aegis_APC_Tracked_02", "A3_Atlas_Armor_F_Atlas_APC_Tracked_02", "A3_Opf_Armor_F_Opf_APC_Tracked_02"};
+        prefix = "aegis";
+    };
+    class wmempire : base
+    {
+        addons[] = {"WM_Rebels"};
+        prefix = "wmemp";
+    };
+    class empire : base
     {
         addons[] = {"JMSLLTE_empire_mod"};
+        prefix = "emp";
     };
-    class addons_unsung : addons_base
+    class eaw : base
+    {
+        addons[] = {"EAW_Air","WBK_MeleeMechanics"};
+        prefix = "ww2eaw";
+    };
+    class ww2fow : base
+    {
+        addons[] = {"fow_tanks"};
+        prefix = "fowstore";
+    };
+    class unsung : base
     {
         addons[] = {"uns_weap_w"};
+        prefix = "unsstore";
     };
-    class addons_sogpf : addons_base
+    class sogpf : base
     {
         addons[] = {"vn_weapons"};
+        prefix = "vn";
     };
-    class addons_3CBF : addons_base
+    class 3CBF : base
     {
         addons[] = {"UK3CB_Factions_Vehicles_SUV"};
+        prefix = "3cbf";
     };
-    class addons_IFA : addons_base
+    class IFA : base
     {
         addons[] = {"IFA3_Core"};
+        prefix = "ww2mod";
     };
-    class addons_SPE : addons_base
+    class SPE : base
     {
         addons[] = {"ww2_spe_assets_c_characters_germans_c"};
+        prefix = "ww2cdlc";
     };
-    class addons_FFAA : addons_base
+    class FFAA : base
     {
         addons[] = {"ffaa_data"};
+        prefix = "ffaastock";
     };
-    class addons_Pedagne : addons_base
+    class Pedagne : base
     {
         addons[] = {"ASZ_Weapons_A3"};
+        prefix = "italystock";
     };
-    class addons_SFP : addons_base
+    class SFP : base
     {
         addons[] = {"sfp_soldiers"};
+        prefix = "sfpstock";
     };
-    class addons_PLA : addons_base
+    class PLA : base
     {
         addons[] = {"mas_chi_army"};
+        prefix = "plastock";
     };
-    class addons_BWA3 : addons_base
+    class rf : base
+    {
+        addons[] = {"RF_Weapons"};
+        prefix = "rf";
+    };
+    class BWA3 : base
     {
         addons[] = {"bwa3_common"};
+        prefix = "bwastock";
     };
-    class addons_CW : addons_base
+    class CW : base
     {
         addons[] = {"3AS_Characters", "442_equipment", "SWLB_clones", "JLTS_core", "CWDependencies"};
+        prefix = "cw";
     };
-    class addons_CUP : addons_base
+    class CUP : base
     {
         addons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core"};
+        prefix = "cup";
     };
-    class addons_3CBBAF : addons_base
+    class csla : base
+    {
+        addons[] = {"CSLA"};
+        prefix = "csla";
+    };
+    class 3CBBAF : base
     {
         addons[] = {"UK3CB_BAF_Weapons", "UK3CB_BAF_Vehicles", "UK3CB_BAF_Units_Common", "UK3CB_BAF_Equipment"};
+        prefix = "3cbbafstock";
     };
-    class addons_RHS : addons_base
+    class RHS : base
     {
         addons[] = {"rhsgref_main", "rhssaf_c_vehicles", "rhs_c_tanks", "RHS_US_A2Port_Armor"};
-    };
-    class addons_OPTRE : addons_base
+        prefix = "rhs";
+    }; // TO-DO: Make a stock for each mod. USAF, AFRF, GREF, etc
+    class OPTRE : base
     {
         addons[] = {"OPTRE_Core", "OPTRE_FC_Core"};
+        prefix = "optre";
     };
-    class addons_GM : addons_base
+    class GM : base
     {
         addons[] = {"gm_core"};
+        prefix = "globmob";
     };
-    class addons_niarms : addons_base
+    class niarms : base
     {
         addons[] = {"hlcweapons_core"};
+        prefix = "niarms";
     };
-    class addons_fwa : addons_base
+    class fwa : base
     {
         addons[] = {"sp_fwa_fal"};
+        prefix = "fwa";
     };
-    class addons_tow : addons_base
+    class tow : base
     {
         addons[] = {"Tier1_Weapons"};
+        prefix = "tow";
     };
-    class addons_sma : addons_base
+    class sma : base
     {
         addons[] = {"SMA_Weapons"};
+        prefix = "sma";
     };
-    class addons_csa38 : addons_base
+    class csa38 : base
     {
         addons[] = {"csa38ii_data"};
+        prefix = "csa38";
     };
-    class addons_scion : addons_base
+    class scion : base
     {
         addons[] = {"sc_weapons"};
+        prefix = "scion";
     };
-    class addons_wrs : addons_base
+    class wrs : base
     {
         addons[] = {"WBK_SciFiWeaponary"};
+        prefix = "wrs";
     };
-    class addons_braf : addons_base
+    class braf : base
     {
         addons[] = {"BRAF_Air"};
+        prefix = "brafstock";
     };
-    class traderPrefixes
+	
+    class nfts : base
     {
-        class base : addons_base
-        {
-            prefix = "";
-        };
-        class empire : addons_empire
-        {
-            prefix = "emp";
-        };
-        class unsung : addons_unsung
-        {
-            prefix = "unsstore";
-        };
-        class sogpf : addons_sogpf
-        {
-            prefix = "vn";
-        };
-        class 3CBF : addons_3CBF
-        {
-            prefix = "3cbf";
-        };
-        class IFA : addons_IFA
-        {
-            prefix = "ww2mod";
-        };
-        class SPE : addons_SPE
-        {
-            prefix = "ww2cdlc";
-        };
-        class FFAA : addons_FFAA
-        {
-            prefix = "ffaastock";
-        };
-        class Pedagne : addons_Pedagne
-        {
-            prefix = "italystock";
-        };
-        class SFP : addons_SFP
-        {
-            prefix = "sfpstock";
-        };
-        class PLA : addons_PLA
-        {
-            prefix = "plastock";
-        };
-        class BWA3 : addons_BWA3
-        {
-            prefix = "bwastock";
-        };
-        class CW : addons_CW
-        {
-            prefix = "cw";
-        };
-        class CUP : addons_CUP
-        {
-            prefix = "cup";
-        };
-        class 3CBBAF : addons_3CBBAF
-        {
-            prefix = "3cbbafstock";
-        };
-        class RHS : addons_RHS
-        {
-            prefix = "rhs";
-        };
-        class OPTRE : addons_OPTRE
-        {
-            prefix = "optre";
-        };
-        class GM : addons_GM
-        {
-            prefix = "globmob";
-        };
-        class niarms : addons_niarms
-        {
-            prefix = "niarms";
-        };
-        class fwa : addons_fwa
-        {
-            prefix = "fwa";
-        };
-        class tow : addons_tow
-        {
-            prefix = "tow";
-        };
-        class sma : addons_sma
-        {
-            prefix = "sma";
-        };
-        class csa38 : addons_csa38
-        {
-            prefix = "csa38";
-        };
-        class scion : addons_scion
-        {
-            prefix = "scion";
-        };
-        class wrs : addons_wrs
-        {
-            prefix = "wrs";
-        };
-        class braf : addons_braf
-        {
-            prefix = "brafstock";
-        };
-    };
-    class blackMarketStock
-    {
-        #include "vehicles\rhs.hpp"
-        #include "vehicles\cup.hpp"
+        addons[] = {"NORTH_Main"};
+        prefix = "nftsstock";
     };
 };

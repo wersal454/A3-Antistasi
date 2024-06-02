@@ -50,6 +50,8 @@
 
     ["3AS_Barc", 1750, "CAR", {true}],
     ["3AS_BarcSideCar", 2050, "CAR", {true}],
+	["3AS_ISP", 3000, "CAR", {true}],
+	["3AS_ISP_Transport", 2500, "CAR", {true}],
 
     ["3AS_RTT", 6000, "APC", {true}],
 

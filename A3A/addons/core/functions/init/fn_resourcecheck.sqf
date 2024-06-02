@@ -99,7 +99,13 @@ while {true} do {
 		["destroyedSites",false,true] remoteExec ["BIS_fnc_endMission"];
 	};
 
-	if ((_popReb > _popGov) and {({sidesX getVariable [_x,sideUnknown] == teamPlayer} count (airportsX + milbases)) == count (airportsX + milbases)}) then {
+	if (totalVictory isEqualTo false and (_popReb > _popGov) and {({sidesX getVariable [_x,sideUnknown] == teamPlayer} count (airportsX + milbases)) == count (airportsX + milbases)}) then {
+		isNil { ["ended", true] call A3A_fnc_writebackSaveVar };
+		["end1",true,true,true,true] remoteExec ["BIS_fnc_endMission",0];
+	};
+
+	private _victoryZones = airportsX + milbases + outposts + resourcesX + factories + seaports;
+	if ( (totalVictory isEqualTo true) && { (_popReb > _popGov) } && { ( {sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (_victoryZones) ) isEqualTo count (_victoryZones) } ) then {
 		isNil { ["ended", true] call A3A_fnc_writebackSaveVar };
 		["end1",true,true,true,true] remoteExec ["BIS_fnc_endMission",0];
 	};
@@ -166,6 +172,9 @@ while {true} do {
 */
 	[] spawn A3A_fnc_promotePlayer;
 	[] call A3A_fnc_assignBossIfNone;
+
+	// Clear out plank objects that haven't been constructed and have exceeded the timeout
+	call A3A_fnc_processBuildingTimeouts;
 
 	// Decrease HQ knowledge values, old ones faster than current
 	if (A3A_curHQInfoOcc < 1) then { A3A_curHQInfoOcc = 0 max (A3A_curHQInfoOcc - 0.01) };

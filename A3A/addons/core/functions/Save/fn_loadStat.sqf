@@ -129,8 +129,26 @@ if (_varName in specialVarLoads) then {
             // Avoid persisting potentially-broken fog values
             private _fogParams = _varValue select 0;
             0 setFog [_fogParams#0, (_fogParams#1) max 0, (_fogParams#2) max 0];
-            0 setRain (_varValue select 1);
-            forceWeatherChange;
+            0 setOvercast (_varValue select 1);
+
+            // Ensure compatibility with < v10.7.0
+            if(count _varValue == 12) then {
+                0 setGusts (_varValue select 2);
+                setHumidity (_varValue select 3);
+                0 setLightnings (_varValue select 4);
+                0 setRain (_varValue select 5);
+                private _rainParams = _varValue select 6;
+                0 setRainbow (_varValue select 7);
+                0 setWaves (_varValue select 8);
+                private _windParams = _varValue select 9;
+                setWind [_windParams#0, _windParams#1, _windParams#2];
+                0 setWindDir (_varValue select 10);
+                0 setWindStr (_varValue select 11);
+                forceWeatherChange;
+                _rainParams call BIS_fnc_setRain;
+            } else {
+                forceWeatherChange;
+            };
         };
 
         case 'resourcesFIA': {
@@ -363,8 +381,12 @@ if (_varName in specialVarLoads) then {
                 };
                 [_veh, teamPlayer] call A3A_fnc_AIVEHinit;                  // Calls initObject instead if it's a buyable item
                 // TODO: Check whether various buyable items turn up as "Building"
-                if ((_veh isKindOf "StaticWeapon") or (_veh isKindOf "Building") and isNil {_veh getVariable "A3A_canGarage"}) then {
-                    staticsToSave pushBack _veh;
+                if (isNil {_veh getVariable "A3A_canGarage"}) then {        // Buyable items should set this
+                    if (_veh isKindOf "StaticWeapon") exitWith { staticsToSave pushBack _veh };
+                    if (_veh isKindOf "Building") exitWith {
+                        _veh setVariable ["A3A_building", true, true];
+                        A3A_buildingsToSave pushBack _veh;
+                    };
                 };
                 if (!isNil "_state") then {
                     [_veh, _state] call HR_GRG_fnc_setState;

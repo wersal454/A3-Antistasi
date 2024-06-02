@@ -389,7 +389,7 @@
 
 		class opticsuns{
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_unsung", localize "STR_A3AU_sights"]);
-			picture = "";
+			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 			
 			ITEM(uns_o_anpvs2_m16, 350, MAGAZINE_STOCK);
 			ITEM(uns_o_colt4x, 150, MAGAZINE_STOCK);

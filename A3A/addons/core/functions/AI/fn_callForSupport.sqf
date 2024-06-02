@@ -38,7 +38,7 @@ if !(_groupLeader call A3A_fnc_canFight) exitWith {};
 
 if((_group getVariable ["A3A_canCallSupportAt", -1]) > time) exitWith {};
 
-private _timeToCallSupport = (30 + random 15) / A3A_balancePlayerScale;
+private _timeToCallSupport = (10 + random 5) / A3A_balancePlayerScale;
 _group setVariable ["A3A_canCallSupportAt", time + 15*_timeToCallSupport];
 
 ServerDebug_4("Leader of %1 (side %2) is starting to request support against %3 (type %4)", _group, _side, _target, typeof _target);

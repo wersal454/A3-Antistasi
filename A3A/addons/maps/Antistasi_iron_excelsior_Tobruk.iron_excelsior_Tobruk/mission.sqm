@@ -12,7 +12,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=129;
+		nextID=150;
 	};
 	class Camera
 	{
@@ -248,7 +248,7 @@ class CustomAttributes
 				class data
 				{
 					singleType="SCALAR";
-					value=1;
+					value=0;
 				};
 			};
 		};
@@ -595,7 +595,7 @@ class Mission
 							colorName="ColorGreen";
 							a=5;
 							b=5;
-							angle=104.25596;
+							angle=104.25595;
 							id=182;
 							atlOffset=239.84312;
 						};
@@ -664,7 +664,7 @@ class Mission
 							colorName="ColorGreen";
 							a=5;
 							b=5;
-							angle=271.77588;
+							angle=271.77585;
 							id=225;
 							atlOffset=239.84341;
 						};
@@ -678,7 +678,7 @@ class Mission
 							colorName="ColorGreen";
 							a=5;
 							b=5;
-							angle=223.77895;
+							angle=223.77893;
 							id=226;
 							atlOffset=239.84323;
 						};
@@ -692,7 +692,7 @@ class Mission
 							colorName="ColorGreen";
 							a=5;
 							b=5;
-							angle=269.36887;
+							angle=269.36884;
 							id=227;
 							atlOffset=239.84296;
 						};
@@ -720,7 +720,7 @@ class Mission
 							colorName="ColorGreen";
 							a=5;
 							b=5;
-							angle=357.57687;
+							angle=357.57684;
 							id=229;
 							atlOffset=239.84343;
 						};
@@ -734,7 +734,7 @@ class Mission
 							colorName="ColorGreen";
 							a=5;
 							b=5;
-							angle=4.4429979;
+							angle=4.4429975;
 							id=230;
 							atlOffset=239.74591;
 						};
@@ -784,7 +784,7 @@ class Mission
 							colorName="ColorWEST";
 							a=198.73523;
 							b=52.733326;
-							angle=13.252301;
+							angle=13.2523;
 							id=17;
 							atlOffset=-2.9413037;
 						};
@@ -825,7 +825,7 @@ class Mission
 							colorName="ColorGreen";
 							a=5;
 							b=5;
-							angle=219.60779;
+							angle=219.60777;
 							id=394;
 							atlOffset=2.3841858e-007;
 						};
@@ -874,7 +874,7 @@ class Mission
 							colorName="ColorOrange";
 							a=36.194;
 							b=36.985001;
-							angle=343.17188;
+							angle=343.17184;
 							id=29;
 							atlOffset=-0.00018596649;
 						};
@@ -1800,7 +1800,6 @@ class Mission
 					dataType="Marker";
 					position[]={1061.7373,2.7037606e+012,6727.4204};
 					name="respawn_guerrila";
-					text=$STR_headquarters;
 					type="hd_flag";
 					colorName="ColorGUER";
 					id=46;
@@ -3420,7 +3419,7 @@ class Mission
 					position[]={10071.764,-15.551135,2774.5195};
 					name="seaSpawn_9";
 					type="hd_objective";
-					angle=44.474804;
+					angle=44.4748;
 					id=246;
 					atlOffset=4.5188646;
 				};
@@ -3529,7 +3528,7 @@ class Mission
 					position[]={10107.329,-15.292367,2682.26};
 					name="seaSpawn_10";
 					type="hd_objective";
-					angle=44.474804;
+					angle=44.4748;
 					id=247;
 					atlOffset=4.5188665;
 				};
@@ -3648,7 +3647,7 @@ class Mission
 					position[]={10164.183,-15.551135,2729.6526};
 					name="seaSpawn_11";
 					type="hd_objective";
-					angle=44.474804;
+					angle=44.4748;
 					id=248;
 					atlOffset=4.5188646;
 				};

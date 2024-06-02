@@ -8,13 +8,17 @@
   </p>
   <!-- <p>
     <a href="https://github.com/igorkis-scrts/A3-Antistasi-Plus/releases/latest">
-        <img src="https://img.shields.io/badge/Current_Stable_Version-2.2.4-red" alt="Antistasi Plus Version">
+        <img src="https://img.shields.io/badge/Current_Stable_Version-2.3.2-red" alt="Antistasi Plus Version">
     </a>
   </p> -->
 </div>
 
-### Latest Stable Release
+## Latest Stable Release
 **[Steam Workshop: Antistasi Ultimate](https://steamcommunity.com/sharedfiles/filedetails/?id=3020755032)**
+
+### _Interested in Extender modding?_
+
+**[Extender Example (Ultimate)](https://github.com/Westalgie/A3UExtender)**
 
 ## [Features](https://github.com/SilenceIsFatto/A3-Antistasi-Ultimate/wiki/Features)
 
@@ -24,9 +28,9 @@
 - Magrepack by Outlawled, R3vo and OOster
 - HALs_Store by HallyG, R3vo and barman75
 - DRO by mbrdmn
-- Discord Rich Presence by ConnorAU 
-- Antistasi Plus fork of Community by Socrates
-- Antistasi Ultimate fork of Plus by Stutpip123, Silence, Karl, Antistasi Ultimate Team
+- Discord Rich Presence by ConnorAU
+- Antistasi Plus (fork of Community) by Socrates
+- Antistasi Ultimate (fork of Plus) by the [Antistasi Ultimate Dev Team](https://github.com/SilenceIsFatto/A3-Antistasi-Ultimate/wiki/Developers)
 
 ## Additional Icons Credits
 <div>

@@ -126,6 +126,20 @@ class Params
         texts[] = {"8","12","16","24","32"};
         default = 16;
     };
+    class A3A_selfReviveMethods
+    {
+        title = $STR_A3A_Params_selfReviveMethods_title;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text, $STR_A3A_Params_selfReviveMethods_withstand};
+        default = 0;
+    };
+    class A3A_builderPermissions
+    {
+        title = "Player classes permitted to use the building placer";
+        values[] = {1, 2, 3};
+        texts[] = {"Team leaders", "Engineers", "Both"};
+        default = 3;
+    };
 
     class Spacer101
     {
@@ -169,6 +183,55 @@ class Params
         texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
         default = 0;
     };
+    class radiomanSupport
+    {
+        title = $STR_A3AU_radioman_support;
+        values[] = {0,1};
+        texts[] = {$STR_A3AU_dialogs_radioman_support,$STR_A3AU_dialogs_squadleader_support};
+        default = 0;
+    };
+    class hideEnemyMarkers
+    {
+        title = $STR_A3AU_hide_enemy_markers;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
+    class hideEnemyMarkersReconPlaneDistance
+    {
+        title = $STR_A3AU_hide_enemy_markers_recon_plane_distance;
+        values[] = {100, 300, 500, 1000, 1500, 2000};
+        texts[] = {"100", "300", "500", "1000", "1500", "2000"};
+        default = 500;
+    };
+    class totalVictory
+    {
+        title = $STR_A3AU_total_victory;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
+    class staminaEnabled
+    {
+        title = $STR_A3AU_stamina_enabled;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 1;
+    };
+    class fatigueEnabled
+    {
+        title = $STR_A3AU_fatigue_enabled;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 1;
+    };
+    class swayEnabled
+    {
+        title = $STR_A3AU_sway_enabled;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 1;
+    };
 
     class Spacer60
     {
@@ -208,9 +271,23 @@ class Params
     class lootCrateDistance
     {
         title = $STR_params_lootCrateDistance;
-        values[] = {25, 50, 75, 100};
-        texts[] = {"25", "50", "75", "100"};
+        values[] = {10, 25, 50, 75, 100};
+        texts[] = {"10", "25", "50", "75", "100"};
         default = 50;
+    };
+    class lootCratePrice
+    {
+        title = $STR_params_lootCratePrice;
+        values[] = {100, 200, 300, 400, 500};
+        texts[] = {"100", "200", "300", "400", "500"};
+        default = 100;
+    };
+    class lootCrateUnlockedItems
+    {
+        title = $STR_params_lootCrateUnlockedItems;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
     };
     class playerIcons
     {
@@ -479,7 +556,17 @@ class Params
         title = $STR_params_allowGuidedLaunchers;
         values[] = {1,0};
         texts[] = {$STR_antistasi_dialogs_generic_button_yes_text, $STR_antistasi_dialogs_generic_button_no_text};
+        default = 1;
+
+    };
+    class allowUnlockedExplosives
+    {
+        attr[] = {"server"};
+        title = $STR_params_allowUnlockedExplosives;
+        values[] = {1,0};
+        texts[] = {$STR_antistasi_dialogs_generic_button_yes_text,$STR_antistasi_dialogs_generic_button_no_text};
         default = 0;
+
     };
     class startWithLongRangeRadio
     {
@@ -509,7 +596,7 @@ class Params
         title = $STR_params_reviveKitsEnabled;
         values[] = {0,1};
         texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
-        default = 0;
+        default = 1;
     };
 
     class SpacerLoot
@@ -684,8 +771,8 @@ class Params
     class A3A_GUIDevPreview
     {
         title = $STR_params_A3A_GUIDevPreview;
-        values[] = {0,1};
-        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        values[] = {0};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text};
         default = 0;
     };
 };

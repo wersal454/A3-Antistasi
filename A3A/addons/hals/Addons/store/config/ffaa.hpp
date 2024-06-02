@@ -120,7 +120,7 @@
 
 		class opticsffaa{
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_ffaa", localize "STR_A3AU_sights"]);
-			picture = "";
+			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 			
 			ITEM(ffaa_optic_acog, 160, MAGAZINE_STOCK);
 			ITEM(ffaa_optic_elcan, 150, MAGAZINE_STOCK);

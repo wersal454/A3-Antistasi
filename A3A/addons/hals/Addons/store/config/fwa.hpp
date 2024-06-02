@@ -117,7 +117,7 @@
 		class opticsFWA
 		{
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_fwa", localize "STR_A3AU_sights"]);
-			picture = "";
+			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 
 			class sp_fwa_scope_zf39 {
 				price = 1500;

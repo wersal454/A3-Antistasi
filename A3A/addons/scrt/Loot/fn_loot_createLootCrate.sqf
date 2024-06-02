@@ -2,7 +2,7 @@
 FIX_LINE_NUMBERS()
 
 private _lootCrateType = FactionGet(reb, "lootCrate");
-private _cost = round ([_lootCrateType] call A3A_fnc_vehiclePrice);
+private _cost = lootCratePrice;
 private _resourcesFIA = 0;
 
 if (player != theBoss) then {

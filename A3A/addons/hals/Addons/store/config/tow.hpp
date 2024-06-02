@@ -101,7 +101,7 @@
 		class opticsTOW
 		{
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_tow", localize "STR_A3AU_sights"]);
-			picture = "";
+			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 
 			class tier1_leupoldm3a_adm_black {
 				price = 1500;

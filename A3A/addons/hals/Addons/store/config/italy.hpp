@@ -136,7 +136,7 @@
 
 		class opticsitaly{
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_italy", localize "STR_A3AU_sights"]);
-			picture = "";
+			picture = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 			
 			ITEM(asz_acog, 200, MAGAZINE_STOCK);
 			ITEM(asz_aimpoint_compm4s, 150, MAGAZINE_STOCK);

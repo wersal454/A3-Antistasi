@@ -48,9 +48,21 @@ private _makeUnconscious =
 	_unit setVariable ["incapacitated",true,true];
 	_unit setVariable ["helpFailed", 0];
 	_unit setUnconscious true;
+	if (leader _unit == player && _unit == player) then {
+            {
+	        _x leaveVehicle (assignedVehicle _x);
+	        doGetOut _x; 
+                unassignVehicle _x;
+            } forEach units player;
+        };
 	if (vehicle _unit != _unit) then
 	{
 		moveOut _unit;
+	};
+	if (leader _unit == player && _unit == player) then {
+		{
+			unassignVehicle _x;
+		} forEach units group _unit;
 	};
 	if (isPlayer _unit) then {_unit allowDamage false};
 	private _fromside = if (!isNull _injurer) then {side group _injurer} else {sideUnknown};

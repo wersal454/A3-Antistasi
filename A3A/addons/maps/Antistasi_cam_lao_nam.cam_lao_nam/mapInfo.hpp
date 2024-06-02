@@ -20,4 +20,16 @@ class cam_lao_nam {
 		{16488.2,3704.06,0},{17653.2,9194.32,4.76837e-007}
 	};
 	climate = "tropical";
+	buildObjects[] = {
+		// Standalone bunkers
+		{"Land_vn_bunker_small_01", 60}, {"Land_vn_pillboxbunker_01_hex_f", 200}, {"Land_vn_pillboxbunker_01_rectangle_f", 300},
+		// Trenches & matching firing posts
+		{"Land_vn_b_trench_45_02", 40}, {"Land_vn_b_trench_05_02", 20}, {"Land_vn_b_trench_firing_04", 60}, {"Land_vn_b_trench_firing_05", 80}, {"Land_vn_b_mortarpit_01", 40},			// circular low trench
+		// VN sandbag walls
+		{"Land_vn_bagfence_01_long_green_f", 10}, {"Land_vn_bagfence_01_short_green_f", 10}, {"Land_vn_bagfence_01_round_green_f", 10},
+		// Higher sandbag/metal walls + junk
+		{"Land_vn_b_trench_revetment_tall_03", 20}, {"Land_vn_b_trench_revetment_05_01", 30}, {"Land_vn_barricade_01_4m_f", 30},
+		// PAVN stuff
+		{"Land_vn_o_bunker_03", 40}, {"Land_vn_o_platform_06", 40}, {"Land_vn_fence_punji_01_03", 10}
+	};
 };

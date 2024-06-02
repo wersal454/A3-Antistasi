@@ -2,7 +2,7 @@
     {
         requiredAddons[] = {"AMF_FAMAS", "r3f_armes"};
         basepath = QPATHTOFOLDER(Templates\Templates\AMF);
-        logo = QPATHTOFOLDER(Templates\Templates\AMF\images\flag_france_co.paa);
+        logo = QPATHTOFOLDER(Pictures\antistasi_ultimate_logo.paa);
         priority = 80;
     };
 
