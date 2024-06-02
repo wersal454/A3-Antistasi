@@ -1,8 +1,8 @@
 import csv
 import os
 
-def write_to_file(filename="output", data="", category=""):
-    with open(f'output/{filename}_{category[0].upper()}.txt', 'w+') as file:
+def write_to_file(filename="output", data="", category="", extension="txt"):
+    with open(f'output/{filename}_{category[0]}.{extension}', 'w+') as file:
         # file.write(str(data))
         for line in data:
             file.write(str(line) + "\n")

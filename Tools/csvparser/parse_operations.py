@@ -92,6 +92,7 @@ def parse_all_csv_files_in_dir(prefix="BlackMarketVehicles - "):
     all_vehicles = []
     all_categories = []
     all_classes = []
+    all_includes = []
 
     for file in files:
         category_custom = file[:-4]
@@ -112,12 +113,15 @@ def parse_all_csv_files_in_dir(prefix="BlackMarketVehicles - "):
     # print(list_dict)
 
     for modset in modsets:
+        includes = f'#include "vehicles\\vehicles_{modset}.hpp"'
 
         arma_classes = generate_config_list(list_dict, modset)
         all_classes.extend(arma_classes + ["\n"])
-        file_operations.write_to_file("output", arma_classes, [modset])
+        all_includes.append(includes)
+        file_operations.write_to_file("vehicles", arma_classes, [modset], extension="hpp")
 
-    file_operations.write_to_file("output", all_classes, ["ALL"])
+    file_operations.write_to_file("vehicles", all_classes, ["ALL"], extension="hpp")
+    file_operations.write_to_file("includes", all_includes, ["ALL"], extension="txt")
 
     # for modset in data_modsets:
 

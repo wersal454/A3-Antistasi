@@ -9,7 +9,7 @@ def delete_csv_files_in_dir(directory=os.getcwd(), delete_all=False, folder="csv
 
     for file in directories:
         if os.path.isfile(f"{folder}/{file}"):
-            if file.endswith(".csv") or file.endswith(".txt"):
+            if file.endswith(".csv") or file.endswith(".txt") or file.endswith(".hpp"):
                 if (delete_all != True):
                     confirmation = input(f"Are you sure? This will delete {file}! (Y/N): ")
 

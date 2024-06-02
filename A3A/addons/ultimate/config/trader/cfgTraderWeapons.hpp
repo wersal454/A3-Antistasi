@@ -62,6 +62,10 @@
         {
             prefix = "plastock";
         };
+        class weapons_ws : weapons_base
+        {
+            prefix = "ws";
+        };
         class weapons_rf : weapons_base
         {
             prefix = "rf";

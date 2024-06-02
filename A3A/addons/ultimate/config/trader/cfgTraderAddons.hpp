@@ -7,6 +7,12 @@
     {
         addons[] = {"Weapons_1_F_lxWS","A3_Aegis_Armor_F_Aegis_APC_Tracked_02", "A3_Atlas_Armor_F_Atlas_APC_Tracked_02", "A3_Opf_Armor_F_Opf_APC_Tracked_02"};
         weapons = "weapons_aegis";
+        vehicles = "vehicles_aegis";
+    };
+    class addons_amf : addons_base
+    {
+        addons[] = {"AMF_FAMAS", "r3f_armes"};
+        vehicles = "vehicles_amf";
     };
     class addons_wmempire : addons_base
     {
@@ -27,6 +33,7 @@
     {
         addons[] = {"fow_tanks"};
         weapons = "weapons_ww2fow";
+        vehicles = "vehicles_fow";
     };
     class addons_unsung : addons_base
     {
@@ -37,56 +44,78 @@
     {
         addons[] = {"vn_weapons"};
         weapons = "weapons_sogpf";
+        vehicles = "vehicles_sog";
     };
     class addons_3cbf : addons_base
     {
         addons[] = {"UK3CB_Factions_Vehicles_SUV"};
         weapons = "weapons_3cbf";
+        vehicles = "vehicles_3cbf";
     };
     class addons_ifa : addons_base
     {
         addons[] = {"IFA3_Core"};
         weapons = "weapons_ifa";
+        vehicles = "vehicles_ifa";
     };
     class addons_spe : addons_base
     {
         addons[] = {"ww2_spe_assets_c_characters_germans_c"};
         weapons = "weapons_spe";
+        vehicles = "vehicles_spe";
     };
     class addons_ffaa : addons_base
     {
         addons[] = {"ffaa_data"};
         weapons = "weapons_ffaa";
+        vehicles = "vehicles_ffaa";
     };
     class addons_pedagne : addons_base
     {
         addons[] = {"ASZ_Weapons_A3"};
         weapons = "weapons_pedagne";
+        vehicles = "vehicles_pedagne";
     };
     class addons_sfp : addons_base
     {
         addons[] = {"sfp_soldiers"};
         weapons = "weapons_sfp";
+        vehicles = "vehicles_sfp";
     };
     class addons_pla : addons_base
     {
         addons[] = {"mas_chi_army"};
         weapons = "weapons_pla";
+        vehicles = "vehicles_pla";
+    };
+    class addons_ws : addons_base
+    {
+        addons[] = {"Weapons_1_F_lxWS"};
+        weapons = "weapons_ws";
+        vehicles = "vehicles_ws"
     };
     class addons_rf : addons_base
     {
         addons[] = {"RF_Weapons"};
         weapons = "weapons_rf";
+        // Needs vehicles doing, can use some of the technical variants I made in config fixes
+    };
+    class addons_racs : addons_base
+    {
+        addons[] = {"PRACS_Core", "PRACS_SLA_Core"};
+        vehicles = "vehicles_racs";
     };
     class addons_bwa3 : addons_base
     {
         addons[] = {"bwa3_common"};
         weapons = "weapons_bwa3";
+        vehicles = "vehicles_bw";
     };
     class addons_cw : addons_base
     {
         addons[] = {"3AS_Characters", "442_equipment", "SWLB_clones", "JLTS_core", "CWDependencies"};
         weapons = "weapons_cw";
+        vehicles = "vehicles_cw";
     };
     class addons_cup : addons_base
     {
@@ -103,6 +132,7 @@
     {
         addons[] = {"UK3CB_BAF_Weapons", "UK3CB_BAF_Vehicles", "UK3CB_BAF_Units_Common", "UK3CB_BAF_Equipment"};
         weapons = "weapons_3cbbaf";
+        vehicles = "vehicles_3cbbaf";
     };
     class addons_rhs : addons_base
     {
@@ -114,11 +144,13 @@
     {
         addons[] = {"OPTRE_Core", "OPTRE_FC_Core"};
         weapons = "weapons_optre";
+        vehicles = "vehicles_optre";
     };
     class addons_gm : addons_base
     {
         addons[] = {"gm_core"};
         weapons = "weapons_gm";
+        vehicles = "vehicles_gm";
     };
     class addons_niarms : addons_base
     {
@@ -135,6 +167,16 @@
         addons[] = {"Tier1_Weapons"};
         weapons = "weapons_tow";
     };
+    class addons_tmt : addons_base
+    {
+        addons[] = {"TMT_Core", "CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core"};
+        weapons = "weapons_tmt";
+    };
+    class addons_tfc : addons_base
+    {
+        addons[] = {"TFC_Core_Data", "TFC_CA_Characters", "TFC_SF_Characters", "tfc_rcaf_cc130j"};
+        weapons = "weapons_tfc";
+    };
     class addons_sma : addons_base
     {
         addons[] = {"SMA_Weapons"};
@@ -144,11 +186,13 @@
     {
         addons[] = {"csa38ii_data"};
         weapons = "weapons_csa38";
+        vehicles = "vehicles_csa38";
     };
     class addons_scion : addons_base
     {
         addons[] = {"sc_weapons"};
         weapons = "weapons_scion";
+        vehicles = "vehicles_scion";
     };
     class addons_wrs : addons_base
     {
@@ -159,6 +203,7 @@
     {
         addons[] = {"BRAF_Air"};
         weapons = "weapons_braf";
+        vehicles = "vehicles_braf";
     };
     class addons_nfts : addons_base
     {

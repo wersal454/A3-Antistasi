@@ -37,11 +37,7 @@ private _cfg = _baseCfg call BIS_fnc_getCfgSubClasses;
 private _vanillaModsets = ["vanilla", "apex", "artofwar", "contact", "jets", "kart", "lawsofwar", "marksmen", "tanks"];
 
 // Special cases
-if (vanillaArmsDealer isEqualTo true && {!(_modsets isEqualTo [])}) then {_modsets append _vanillaModsets}; // if parameter to keep vanilla weapons in arms dealer is on
-
-if (_modsets isEqualTo []) then {_modsets append _vanillaModsets}; // If it still hasn't got anything by this point, we can safely assume no supported mods are loaded.
-
-if ("ws" in A3A_enabledDLC) then {_modsets pushBack "ws"}; // western sahara
+if (_modsets isEqualTo [] || {vanillaArmsDealer isEqualTo true}) then {_modsets append _vanillaModsets}; // If it still hasn't got anything by this point, we can safely assume no supported mods are loaded.
 
 if ("coldWar" in A3A_factionEquipFlags) then { // 3cbf cold war
     _modsets pushBack "3cbfcw";
