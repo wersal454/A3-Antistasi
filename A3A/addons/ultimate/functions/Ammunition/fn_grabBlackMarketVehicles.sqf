@@ -32,6 +32,11 @@ private _cfg = _baseCfg call BIS_fnc_getCfgSubClasses;
 	private _vehicles = _vehicleCfg call BIS_fnc_getCfgSubClasses;
 
 	{
+		if !(isClass (configFile >> "CfgVehicles" >> _x)) then {
+			[format["%1 does not exist in CfgVehicles. Skipped adding due to CTD issues if it is previewed.", _x], _fnc_scriptName] call A3U_fnc_log;
+			continue;
+		};
+
 		private _price = getNumber (_vehicleCfg >> _x >> "price");
 		private _type = getText (_vehicleCfg >> _x >> "type");
 		private _condition = compile getText (_vehicleCfg >> _x >> "condition");
@@ -48,6 +53,11 @@ if (_blackMarketStock isEqualTo [] || {vanillaArmsDealer isEqualTo true}) then {
 	private _vehicles = _vehicleCfg call BIS_fnc_getCfgSubClasses;
 
 	{
+		if !(isClass (configFile >> "CfgVehicles" >> _x)) then {
+			[format["%1 does not exist in CfgVehicles. Skipped adding due to CTD issues if it is previewed.", _x], _fnc_scriptName] call A3U_fnc_log;
+			continue;
+		};
+
 		private _price = getNumber (_vehicleCfg >> _x >> "price");
 		private _type = getText (_vehicleCfg >> _x >> "type");
 		private _condition = compile getText (_vehicleCfg >> _x >> "condition");

@@ -13,6 +13,7 @@ class CfgFunctions
         class blackmarket
         {
             file = QPATHTOFOLDER(functions\blackmarket);
+            class hasRequirements {};
             class sidesX {};
         };
         class cba
