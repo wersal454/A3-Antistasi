@@ -4,6 +4,8 @@ import os
 import file_operations
 import csv_operations
 
+from conditions import *
+
 def parse_file(filename="armedcar", category_custom=""):
     
     print(f"\n<------- Currently parsing: {filename}.csv ------->\n")
@@ -76,13 +78,8 @@ def read_parsed_file(parsed_data, filename, category_custom=""):
                     data = ['', '', '']
 
                 if ('' not in data):
-                    # print(data)
 
                     data_write.append(data)
-
-                    # file_operations.generate_config(data, category, cur_modset, classes)
-
-    # file_operations.write_to_file("output", classes, category)
 
     return [data_write, modsets, categories]
 
@@ -97,6 +94,11 @@ def parse_all_csv_files_in_dir(prefix="BlackMarketVehicles - "):
     for file in files:
         category_custom = file[:-4]
 
+        print(file)
+
+        if ("MODSETS" in file or "CONDITIONS" in file):
+            continue
+
         if (prefix == ""):
             data = parse_file(f"{file[:-4]}", category_custom)
         else:
@@ -110,7 +112,6 @@ def parse_all_csv_files_in_dir(prefix="BlackMarketVehicles - "):
     
     list_dict = convert_list_to_dict(all_vehicles, all_categories)
     modsets = list(list_dict.keys())
-    # print(list_dict)
 
     for modset in modsets:
         includes = f'#include "vehicles\\vehicles_{modset}.hpp"'
@@ -120,13 +121,14 @@ def parse_all_csv_files_in_dir(prefix="BlackMarketVehicles - "):
         all_includes.append(includes)
         file_operations.write_to_file("vehicles", arma_classes, [modset], extension="hpp")
 
-    file_operations.write_to_file("vehicles", all_classes, ["ALL"], extension="hpp")
-    file_operations.write_to_file("includes", all_includes, ["ALL"], extension="txt")
+    file_operations.write_to_file("vehicles", all_classes, ["[ALL]"], extension="hpp")
+    file_operations.write_to_file("includes", all_includes, ["[ALL]"], extension="txt")
 
-    # for modset in data_modsets:
+    print(all_categories)
+    print("Done")
 
 def generate_config_list(list_data, modset):
-    print(list_data)
+    # print(list_data)
 
     arma_classes = []
     mod_header = (f"class vehicles_{modset.lower()} : vehicles_base")
@@ -134,7 +136,7 @@ def generate_config_list(list_data, modset):
     
     vehicle_types = list(list_data[modset].keys())
 
-    print(f"Vehicle types are: {vehicle_types}")
+    # print(f"Vehicle types are: {vehicle_types}")
 
     for vehicle_type in vehicle_types:
         vehicles = list(list_data[modset][vehicle_type].keys())
@@ -142,27 +144,25 @@ def generate_config_list(list_data, modset):
         if (vehicles == {} or vehicles == []):
             continue
 
-        print(f"Vehicles are: {vehicles}")
+        # print(f"Vehicles are: {vehicles}")
 
         for vehicle in vehicles:
             vehicle_classname = vehicle
             vehicle_name = list_data[modset][vehicle_type][vehicle_classname]["name"]
             vehicle_price = list_data[modset][vehicle_type][vehicle_classname]["price"]
+            vehicle_condition = list_data[modset][vehicle_type][vehicle_classname]["condition"]
 
-            arma_class = f'    ITEM({vehicle_classname}, {vehicle_price}, "{vehicle_type}", "true");'
-
-            # print([vehicle_type, vehicle_classname, vehicle_name, vehicle_price])
-            # print(arma_class)
+            arma_class = f'    ITEM({vehicle_classname}, {vehicle_price}, "{vehicle_type}", "{vehicle_condition}");'
             arma_classes.append(arma_class)
         
     arma_classes.append("};")
-    print(arma_classes)
+    # print(arma_classes)
     return arma_classes
 
 
 def convert_list_to_dict(list_data, list_categories):
     item_dictionary = {}
-    print(list_categories)
+    # print(list_categories)
 
     for item in range(len(list_data)):
         modset = [element for element in list_data[item] if element == list_data[item][0]]
@@ -171,34 +171,75 @@ def convert_list_to_dict(list_data, list_categories):
             if (category in modset or isinstance(modset, str)):
                 modset.remove(category)
 
-        # print(modset)
-
         if (modset != [] and (modset[0] not in list_categories)):
             item_dictionary.update({modset[0]: {}})
 
         for category in list_categories:
             if (modset != []):
-                # print(modset)
                 item_dictionary[modset[0]].update({category: {}})
 
     for item in list_data:
 
         modset = item[0]
 
-        # print(modset)
-
         if (modset in list_categories):
             continue
-
-        # print(item)
 
         classname = item[1]
         name = item[2]
         price = item[3]
         category = item[4]
 
-        # print(category)
+        condition = f"{CONDITION_COMMON_TRUE}"
 
-        item_dictionary[modset][category[0]][classname] = ({"name": name, "price": price, "category": category})
+        if (CONDITION_DEBUG == True):
+            condition = "true"
+        else:
+            match category[0]:
+                case "AA":
+                    condition = f"{CONDITION_COMMON_OR_START}{CONDITION_SEAPORT_LIGHT} {CONDITION_COMMON_OR} {CONDITION_RESOURCE_MEDIUM}{CONDITION_COMMON_OR_END} {CONDITION_COMMON_AND} {CONDITION_FACTORY_MEDIUM}"
+
+                case "APC":
+                    condition = f"{CONDITION_COMMON_OR_START}{CONDITION_SEAPORT_LIGHT} {CONDITION_COMMON_OR} {CONDITION_RESOURCE_MEDIUM}{CONDITION_COMMON_OR_END} {CONDITION_COMMON_AND} {CONDITION_FACTORY_MEDIUM}"
+
+                case "UNARMEDCAR":
+                    condition = f"{CONDITION_RESOURCE_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_LIGHT}"
+
+                case "ARMEDCAR":
+                    condition = f"{CONDITION_RESOURCE_MEDIUM} {CONDITION_COMMON_AND} {CONDITION_FACTORY_MEDIUM}"
+
+                case "ARTILLERY":
+                    condition = f"{CONDITION_RESOURCE_MEDIUM} {CONDITION_COMMON_AND} {CONDITION_FACTORY_MEDIUM}"
+
+                case "BOAT":
+                    condition = f"{CONDITION_SEAPORT_LIGHT}"
+                    
+                case "HELI":
+                    condition = f"{CONDITION_COMMON_OR_START}{CONDITION_AIRPORT_LIGHT} {CONDITION_COMMON_OR} {CONDITION_MILBASE_LIGHT}{CONDITION_COMMON_OR_END} {CONDITION_COMMON_AND} {CONDITION_FACTORY_MEDIUM}"
+
+                case "PLANE":
+                    condition = f"{CONDITION_AIRPORT_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_HEAVY}"
+
+                case "STATICAA":
+                    condition = f"{CONDITION_TIER_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_LIGHT}"
+
+                case "STATICAT":
+                    condition = f"{CONDITION_TIER_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_LIGHT}"
+
+                case "STATICMG":
+                    condition = f"{CONDITION_TIER_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_LIGHT}"
+
+                case "STATICMORTAR":
+                    condition = f"{CONDITION_TIER_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_LIGHT}"
+
+                case "TANK":
+                    condition = f"{CONDITION_MILBASE_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_HEAVY}"
+
+                case "UAV":
+                    condition = f"{CONDITION_AIRPORT_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_MEDIUM}"
+
+        condition = f"{condition}"
+
+        item_dictionary[modset][category[0]][classname] = ({"name": name, "price": price, "category": category[0], "condition": condition})
 
     return item_dictionary

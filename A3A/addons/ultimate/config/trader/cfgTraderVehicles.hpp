@@ -19,6 +19,7 @@
     #include "vehicles\vehicles_tmt.hpp"
     #include "vehicles\vehicles_gm.hpp"
     #include "vehicles\vehicles_spe.hpp"
+    #include "vehicles\vehicles_unsung.hpp"
     #include "vehicles\vehicles_amf.hpp"
     #include "vehicles\vehicles_3cbbaf.hpp"
     #include "vehicles\vehicles_bw.hpp"

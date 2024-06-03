@@ -10,6 +10,11 @@ class CfgFunctions
             class grabBlackMarketVehicles {};
             class removeUnlockedItems {};
         };
+        class blackmarket
+        {
+            file = QPATHTOFOLDER(functions\blackmarket);
+            class sidesX {};
+        };
         class cba
         {
             file = QPATHTOFOLDER(functions\cba);
