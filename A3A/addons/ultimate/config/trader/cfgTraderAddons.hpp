@@ -39,6 +39,7 @@
     {
         addons[] = {"uns_weap_w"};
         weapons = "weapons_unsung";
+        vehicles = "vehicles_unsung";
     };
     class addons_sogpf : addons_base
     {
