@@ -16,10 +16,28 @@ params ["_traderX"];
 
 private _modsets = [];
 
-private _baseCfg = (configfile >> "A3U" >> "traderAddons");
+private _oldCfg = (configFile >> "A3U" >> "traderMods") call BIS_fnc_getCfgSubClasses;
+
+if (_oldCfg isNotEqualTo []) then {
+    {
+        private _addons = getArray (configFile >> "A3U" >> "traderMods" >> _x >> "addons");
+        private _prefix = getText (configFile >> "A3U" >> "traderMods" >> _x >> "prefix");
+
+        if ([_addons] call A3U_fnc_hasAddon) then {
+            _modsets pushBack _prefix;
+            [format ["Added %1 to _modsets list (old version). It is now deprecated and should be updated ASAP.", _prefix]] call A3U_fnc_log;
+        };
+    } forEach _oldCfg;
+};
+
+private _baseCfg = (configFile >> "A3U" >> "traderAddons");
 private _cfg = _baseCfg call BIS_fnc_getCfgSubClasses;
 
+private _ignoreClasses = ["traderWeapons", "traderVehicles"];
+
 {
+    if (_x in _ignoreClasses) then {continue};
+
     private _addons = getArray (_baseCfg >> _x >> "addons");
     if (_addons isEqualTo []) then {continue};
 
