@@ -477,5 +477,15 @@ class planeLoadouts
 			missileLauncher[] = {"TS5A_ProtonLauncher"};
         };
 		class WM_TieAdvanced : WM_TieInterceptor {};
+		class cwr3_b_f4e
+        {
+            loadout[] = {"CUP_PylonPod_1Rnd_AIM_120_AMRAAM_M","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_M","CUP_PylonPod_1Rnd_AIM_9L_LAU_Sidewinder_M","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_M","CUP_PylonPod_1Rnd_AIM_9L_LAU_Sidewinder_M","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_M","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_M"};
+            mainGun = "cwr3_vacannon_m61a1";
+        };
+		class cwr3_b_f16c
+        {
+            loadout[] = {"PylonRack_Missile_BIM9X_x1","PylonRack_Missile_BIM9X_x1","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_M","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_M","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_M","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_M","PylonRack_Missile_BIM9X_x1","PylonRack_Missile_BIM9X_x1"};
+            mainGun = "cwr3_vacannon_m61a1";
+        };
     };
 };

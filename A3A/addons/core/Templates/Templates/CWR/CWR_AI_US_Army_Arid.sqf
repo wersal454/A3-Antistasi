@@ -17,22 +17,22 @@
 ["surrenderCrate", "Box_IND_Wps_F"] call _fnc_saveToTemplate;
 ["equipmentBox", "Box_NATO_Equip_F"] call _fnc_saveToTemplate;
 
-["vehiclesBasic", ["cwr3_b_m151"]] call _fnc_saveToTemplate;
-["vehiclesLightUnarmed", ["cwr3_b_hmmwv","cwr3_b_hmmwv_transport"]] call _fnc_saveToTemplate;
-["vehiclesLightArmed", ["cwr3_b_hmmwv_m2"]] call _fnc_saveToTemplate;
-["vehiclesTrucks", ["cwr3_b_m939"]] call _fnc_saveToTemplate;
-["vehiclesCargoTrucks", ["cwr3_b_m939_open"]] call _fnc_saveToTemplate;
-["vehiclesAmmoTrucks", ["cwr3_b_m939_reammo"]] call _fnc_saveToTemplate;
-["vehiclesRepairTrucks", ["cwr3_b_m939_repair"]] call _fnc_saveToTemplate;
-["vehiclesFuelTrucks", ["cwr3_b_m939_refuel"]] call _fnc_saveToTemplate;
-["vehiclesMedical", ["cwr3_b_m939_mev", "cwr3_b_m113a1_mev", "cwr3_b_m113a3_mev", "cwr3_b_hmmwv_mev"]] call _fnc_saveToTemplate;
-["vehiclesLightAPCs", ["cwr3_b_m113a3", "cwr3_b_m113a3"]] call _fnc_saveToTemplate;
-["vehiclesAPCs", ["cwr3_b_m2a2", "cwr3_b_m2a2"]] call _fnc_saveToTemplate;            // mortar carrier: "CUP_B_M1129_MC_MK19_Woodland"
-["vehiclesIFVs", ["cwr3_b_m2a2", "cwr3_b_m901_itv"]] call _fnc_saveToTemplate;
-["vehiclesTanks", ["cwr3_b_m60a3", "cwr3_b_m60a3_tts", "cwr3_b_m1", "cwr3_b_m1a1"]] call _fnc_saveToTemplate;
-["vehiclesAA", ["cwr3_b_m163"]] call _fnc_saveToTemplate;
-["vehiclesAirborne", ["cwr3_b_m113a3", "cwr3_b_m113a3"]] call _fnc_saveToTemplate;
-["vehiclesLightTanks",  ["cwr3_b_m2a2", "cwr3_b_m2a2"]] call _fnc_saveToTemplate;
+["vehiclesBasic", ["cwr3_b_m151_des"]] call _fnc_saveToTemplate;
+["vehiclesLightUnarmed", ["cwr3_b_hmmwv_des","cwr3_b_hmmwv_transport_des"]] call _fnc_saveToTemplate;
+["vehiclesLightArmed", ["cwr3_b_hmmwv_m2_des"]] call _fnc_saveToTemplate;
+["vehiclesTrucks", ["cwr3_b_m939_des"]] call _fnc_saveToTemplate;
+["vehiclesCargoTrucks", ["cwr3_b_m939_open_des"]] call _fnc_saveToTemplate;
+["vehiclesAmmoTrucks", ["cwr3_b_m939_reammo_des"]] call _fnc_saveToTemplate;
+["vehiclesRepairTrucks", ["cwr3_b_m939_repair_des"]] call _fnc_saveToTemplate;
+["vehiclesFuelTrucks", ["cwr3_b_m939_refuel_des"]] call _fnc_saveToTemplate;
+["vehiclesMedical", ["cwr3_b_m939_mev_des", "cwr3_b_m113a1_mev_des", "cwr3_b_m113a3_mev_des", "cwr3_b_hmmwv_mev_des"]] call _fnc_saveToTemplate;
+["vehiclesLightAPCs", ["cwr3_b_m113a3_des", "cwr3_b_m113a3_des"]] call _fnc_saveToTemplate;
+["vehiclesAPCs", ["cwr3_b_m2a2_des", "cwr3_b_m2a2_des"]] call _fnc_saveToTemplate;            // mortar carrier: "CUP_B_M1129_MC_MK19_Woodland"
+["vehiclesIFVs", ["cwr3_b_m2a2_des", "cwr3_b_m901_itv_des"]] call _fnc_saveToTemplate;
+["vehiclesTanks", ["cwr3_b_m60a3_des", "cwr3_b_m60a3_tts_des", "cwr3_b_m1_des", "cwr3_b_m1a1_des"]] call _fnc_saveToTemplate;
+["vehiclesAA", ["cwr3_b_m163_des"]] call _fnc_saveToTemplate;
+["vehiclesAirborne", ["cwr3_b_m113a3_des", "cwr3_b_m113a3_des"]] call _fnc_saveToTemplate;
+["vehiclesLightTanks",  ["cwr3_b_m2a2_des", "cwr3_b_m2a2_des"]] call _fnc_saveToTemplate;
 
 ["vehiclesTransportBoats", ["cwr3_b_zodiac"]] call _fnc_saveToTemplate;
 ["vehiclesGunBoats", ["cwr3_b_boat"]] call _fnc_saveToTemplate;
@@ -47,16 +47,16 @@
 ["vehiclesHelisLightAttack", ["cwr3_b_uh1_armed", "cwr3_b_uh1_gunship", "cwr3_b_ah6j", "cwr3_b_kiowa_at", "cwr3_b_kiowa_m2", "cwr3_b_kiowa_dyn"]] call _fnc_saveToTemplate;
 ["vehiclesHelisAttack", ["cwr3_b_ah1f", "cwr3_b_ah64", "cwr3_b_ah64_hellfire", "cwr3_b_uh60_x4_esss"]] call _fnc_saveToTemplate;
 
-["vehiclesArtillery", ["cwr3_b_m270_he"]] call _fnc_saveToTemplate;
-["magazines", createHashMapFromArray [["cwr3_b_m270_he", ["CUP_12Rnd_MLRS_HE"]]]] call _fnc_saveToTemplate;
+["vehiclesArtillery", ["cwr3_b_m270_he_des"]] call _fnc_saveToTemplate;
+["magazines", createHashMapFromArray [["cwr3_b_m270_he_des", ["CUP_12Rnd_MLRS_HE"]]]] call _fnc_saveToTemplate;
 
 ["uavsAttack", []] call _fnc_saveToTemplate;
 ["uavsPortable", []] call _fnc_saveToTemplate;
 
-["vehiclesMilitiaLightArmed", ["cwr3_b_m151_m2"]] call _fnc_saveToTemplate;
-["vehiclesMilitiaTrucks", ["cwr3_b_m939_open"]] call _fnc_saveToTemplate;
-["vehiclesMilitiaCars", ["cwr3_b_m151"]] call _fnc_saveToTemplate;
-["vehiclesMilitiaAPCs", ["cwr3_b_m113a1"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaLightArmed", ["cwr3_b_m151_m2_des"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaTrucks", ["cwr3_b_m939_open_des"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaCars", ["cwr3_b_m151_des"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaAPCs", ["cwr3_b_m113a1_des"]] call _fnc_saveToTemplate;
 
 ["vehiclesPolice", ["cwr3_c_cj5_police"]] call _fnc_saveToTemplate;
 
@@ -141,13 +141,13 @@ _loadoutData set ["NVGs", ["CUP_NVG_PVS7"]];
 _loadoutData set ["binoculars", ["Binocular"]];
 _loadoutData set ["rangefinders", ["Binocular"]];
 
-_loadoutData set ["traitorUniforms", ["cwr3_b_uniform_m81_woodland_early"]];
+_loadoutData set ["traitorUniforms", ["cwr3_b_uniform_desert_6color"]];
 _loadoutData set ["traitorVests", ["cwr3_b_vest_alice_officer"]];
-_loadoutData set ["traitorHats", ["cwr3_b_headgear_cap_m81_woodland_early"]];
+_loadoutData set ["traitorHats", ["cwr3_b_headgear_cap_desert_6color"]];
 
-_loadoutData set ["officerUniforms", ["cwr3_b_uniform_m81_woodland"]];
-_loadoutData set ["officerVests", ["cwr3_b_vest_pasgt_alice_woodland_officer"]];
-_loadoutData set ["officerHats", ["cwr3_b_headgear_cap_m81_woodland"]];
+_loadoutData set ["officerUniforms", ["cwr3_b_uniform_desert_6color"]];
+_loadoutData set ["officerVests", ["cwr3_b_vest_pasgt_alice_6color_desert_officer"]];
+_loadoutData set ["officerHats", ["cwr3_b_headgear_cap_desert_6color"]];
 
 _loadoutData set ["uniforms", []];
 _loadoutData set ["slUniforms", []];
@@ -211,17 +211,17 @@ _loadoutData set ["items_unarmed_extras", []];
 private _sfLoadoutData = _loadoutData call _fnc_copyLoadoutData;
 _sfLoadoutData set ["items_marksman_extras", (_mmItems + _sfmmItems)];
 _sfLoadoutData set ["items_sniper_extras", (_mmItems + _sfmmItems)];
-_sfLoadoutData set ["uniforms", ["cwr3_b_uniform_pilot_black"]];
-_sfLoadoutData set ["vests", ["cwr3_b_vest_pasgt_lbv_black"]];
-_sfLoadoutData set ["mgVests", ["cwr3_b_vest_pasgt_lbv_alice_black"]];
-_sfLoadoutData set ["medVests", ["cwr3_b_vest_pasgt_lbv_alice_black"]];
-_sfLoadoutData set ["glVests", ["cwr3_b_vest_pasgt_lbv_alice_black"]];
+_sfLoadoutData set ["uniforms", ["cwr3_b_uniform_desert_6color_rolled"]];
+_sfLoadoutData set ["vests", ["cwr3_b_vest_pasgt_alice_6color_desert"]];
+_sfLoadoutData set ["mgVests", ["cwr3_b_vest_pasgt_alice_6color_desert_mg", "cwr3_b_vest_pasgt_alice_6color_desert_ar"]];
+_sfLoadoutData set ["medVests", ["cwr3_b_vest_pasgt_alice_6color_desert_medic"]];
+_sfLoadoutData set ["glVests", ["cwr3_b_vest_pasgt_alice_6color_desert_gl"]];
 _sfLoadoutData set ["backpacks", ["cwr3_b_backpack_alice_black", "cwr3_b_backpack_alice_specop_black"]];
 _sfLoadoutData set ["slBackpacks", ["cwr3_b_backpack_alice_specop_black"]];
 _sfLoadoutData set ["atBackpacks", ["cwr3_b_backpack_alice_specop_black"]];
-_sfLoadoutData set ["helmets", ["cwr3_b_headgear_pasgt_m81_woodland_scrim"]];
-_sfLoadoutData set ["slHat", ["cwr3_b_headgear_cap_m81_woodland"]];
-_sfLoadoutData set ["sniHats", ["cwr3_b_headgear_boonie_m81_woodland"]];
+_sfLoadoutData set ["helmets", ["cwr3_b_headgear_pasgt_desert_6color", "cwr3_b_headgear_pasgt_desert_6color_goggles"]];
+_sfLoadoutData set ["slHat", ["cwr3_b_headgear_cap_desert_6color"]];
+_sfLoadoutData set ["sniHats", ["cwr3_b_headgear_boonie_desert_6color"]];
 _sfLoadoutData set ["NVGs", ["CUP_NVG_PVS7"]];
 _sfLoadoutData set ["binoculars", ["Binocular"]];
 //["Weapon", "Muzzle", "Rail", "Sight", [], [], "Bipod"];
@@ -266,18 +266,18 @@ _sfLoadoutData set ["sidearms", [
 /////////////////////////////////
 
 private _eliteLoadoutData = _loadoutData call _fnc_copyLoadoutData;
-_eliteLoadoutData set ["uniforms", ["cwr3_b_uniform_m81_woodland", "cwr3_b_uniform_m81_woodland_rolled_gloves"]];
-_eliteLoadoutData set ["slUniforms", ["cwr3_b_uniform_m81_woodland_rolled"]];
-_eliteLoadoutData set ["vests", ["cwr3_b_vest_pasgt_alice_woodland"]];
-_eliteLoadoutData set ["mgVests", ["cwr3_b_vest_pasgt_alice_woodland_mg", "cwr3_b_vest_pasgt_alice_woodland_ar"]];
-_eliteLoadoutData set ["medVests", ["cwr3_b_vest_pasgt_alice_woodland_medic"]];
-_eliteLoadoutData set ["slVests", ["cwr3_b_vest_pasgt_alice_woodland_officer"]];
-_eliteLoadoutData set ["glVests", ["cwr3_b_vest_pasgt_alice_woodland_gl"]];
-_eliteLoadoutData set ["engVests", ["cwr3_b_vest_pasgt_alice_woodland_etool"]];
+_eliteLoadoutData set ["uniforms", ["cwr3_b_uniform_desert_6color"]];
+_eliteLoadoutData set ["slUniforms", ["cwr3_b_uniform_desert_6color"]];
+_eliteLoadoutData set ["vests", ["cwr3_b_vest_pasgt_alice_6color_desert"]];
+_eliteLoadoutData set ["mgVests", ["cwr3_b_vest_pasgt_alice_6color_desert_mg", "cwr3_b_vest_pasgt_alice_6color_desert_ar"]];
+_eliteLoadoutData set ["medVests", ["cwr3_b_vest_pasgt_alice_6color_desert_medic"]];
+_eliteLoadoutData set ["slVests", ["cwr3_b_vest_pasgt_alice_6color_desert_officer"]];
+_eliteLoadoutData set ["glVests", ["cwr3_b_vest_pasgt_alice_6color_desert_gl"]];
+_eliteLoadoutData set ["engVests", ["cwr3_b_vest_pasgt_alice_6color_desert_etool"]];
 _eliteLoadoutData set ["backpacks", ["cwr3_b_backpack_alice"]];
 _eliteLoadoutData set ["slBackpacks", ["cwr3_o_backpack_harness_roll"]];
 _eliteLoadoutData set ["atBackpacks", ["cwr3_b_backpack_alice"]];
-_eliteLoadoutData set ["helmets", ["cwr3_b_headgear_pasgt_m81_woodland", "cwr3_b_headgear_pasgt_m81_woodland_camonet", "cwr3_b_headgear_pasgt_m81_woodland_goggles", "cwr3_b_headgear_pasgt_m81_woodland_net"]];
+_eliteLoadoutData set ["helmets", ["cwr3_b_headgear_pasgt_desert_6color", "cwr3_b_headgear_pasgt_desert_6color_goggles"]];
 _eliteLoadoutData set ["binoculars", ["Binocular"]];
 
 _eliteLoadoutData set ["slRifles", [
@@ -326,8 +326,8 @@ _eliteLoadoutData set ["sidearms", [
 /////////////////////////////////
 
 private _militaryLoadoutData = _loadoutData call _fnc_copyLoadoutData;
-_militaryLoadoutData set ["uniforms", ["cwr3_b_uniform_m81_woodland_early"]];
-_militaryLoadoutData set ["slUniforms", ["cwr3_b_uniform_m81_woodland_gloves_early"]];
+_militaryLoadoutData set ["uniforms", ["cwr3_b_uniform_desert_6color"]];
+_militaryLoadoutData set ["slUniforms", ["cwr3_b_uniform_desert_6color"]];
 _militaryLoadoutData set ["vests", ["cwr3_b_vest_alice"]];
 _militaryLoadoutData set ["mgVests", ["cwr3_b_vest_alice_mg", "cwr3_b_vest_alice_ar"]];
 _militaryLoadoutData set ["medVests", ["cwr3_b_vest_alice_medic"]];
@@ -337,7 +337,7 @@ _militaryLoadoutData set ["engVests", ["cwr3_b_vest_alice_etool"]];
 _militaryLoadoutData set ["backpacks", ["cwr3_b_backpack_alice"]];
 _militaryLoadoutData set ["slBackpacks", ["cwr3_o_backpack_harness_roll"]];
 _militaryLoadoutData set ["atBackpacks", ["cwr3_b_backpack_alice"]];
-_militaryLoadoutData set ["helmets", ["cwr3_b_headgear_m1_woodland_army_early", "cwr3_b_headgear_m1_goggles_woodland_army_early"]];
+_militaryLoadoutData set ["helmets", ["cwr3_b_headgear_m1_desert_6color"]];
 _militaryLoadoutData set ["binoculars", ["Binocular"]];
 
 _militaryLoadoutData set ["slRifles", [
@@ -388,9 +388,9 @@ _militaryLoadoutData set ["sidearms", [
 
 private _policeLoadoutData = _loadoutData call _fnc_copyLoadoutData;
 
-_policeLoadoutData set ["uniforms", ["cwr3_b_uniform_og107"]];
+_policeLoadoutData set ["uniforms", ["cwr3_b_uniform_desert_6color"]];
 _policeLoadoutData set ["vests", ["cwr3_b_vest_alice_crew"]];
-_policeLoadoutData set ["helmets", ["cwr3_b_headgear_cap_og107"]];
+_policeLoadoutData set ["helmets", ["cwr3_b_headgear_cap_desert_6color"]];
 
 _policeLoadoutData set ["shotGuns", [
     ["CUP_smg_M3A1", "", "", "", ["CUP_30Rnd_45ACP_M3A1_M"], [], ""]
@@ -409,13 +409,13 @@ _policeLoadoutData set ["sidearms", [
 ////////////////////////////////
 
 private _militiaLoadoutData = _loadoutData call _fnc_copyLoadoutData;
-_militiaLoadoutData set ["uniforms", ["cwr3_b_uniform_og107"]];
+_militiaLoadoutData set ["uniforms", ["cwr3_b_uniform_desert_6color"]];
 _militiaLoadoutData set ["vests", ["cwr3_b_vest_alice", "cwr3_b_vest_alice_medic", "cwr3_b_vest_alice_etool"]];
 _militiaLoadoutData set ["sniVests", ["cwr3_b_vest_alice_light"]];
 _militiaLoadoutData set ["backpacks", ["cwr3_b_backpack_alice"]];
 _militiaLoadoutData set ["slBackpacks", ["cwr3_o_backpack_harness_roll"]];
 _militiaLoadoutData set ["atBackpacks", ["cwr3_b_backpack_alice"]];
-_militiaLoadoutData set ["helmets", ["cwr3_b_headgear_cap_og107", "cwr3_b_headgear_m1_mitchell", "cwr3_b_headgear_cap_og107", "cwr3_b_headgear_m1_mitchell", "cwr3_b_headgear_m1_goggles_mitchell"]];
+_militiaLoadoutData set ["helmets", ["cwr3_b_headgear_m1_desert_6color", "cwr3_b_headgear_cap_desert_6color"]];
 
 _militiaLoadoutData set ["rifles", [
     ["CUP_arifle_M16A1", "", "", "", ["CUP_20Rnd_556x45_Stanag"], [], ""],
