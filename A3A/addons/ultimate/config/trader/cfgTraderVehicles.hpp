@@ -2,6 +2,7 @@
     {
         prefix = "";
     };
+    #include "vehicles\vehicles_conditions.hpp"
     #include "vehicles\vehicles_rhs.hpp"
     #include "vehicles\vehicles_3cbf.hpp"
     #include "vehicles\vehicles_ifa3.hpp"

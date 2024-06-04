@@ -1,3 +1,0 @@
-python cleanup.py
-
-pause

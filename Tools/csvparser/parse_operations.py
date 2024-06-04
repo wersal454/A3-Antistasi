@@ -3,7 +3,10 @@ import os
 
 import file_operations
 import csv_operations
+from category import match_category
+from category import match_category_macro
 
+from common import *
 from conditions import *
 
 def parse_file(filename="armedcar", category_custom=""):
@@ -113,6 +116,22 @@ def parse_all_csv_files_in_dir(prefix="BlackMarketVehicles - "):
     list_dict = convert_list_to_dict(all_vehicles, all_categories)
     modsets = list(list_dict.keys())
 
+    conditions = {}
+    vehicle_conditions = []
+    for vehicle_type in vehicle_types_common:
+
+        condition = match_category(category=vehicle_type)
+
+        conditions[vehicle_type] = condition
+
+    for vehicle_type, condition in conditions.items():
+        vehicle_condition_macro = f'#define VEHICLE_CONDITION_{vehicle_type} {condition}'
+        vehicle_condition = f'condition_{vehicle_type} = "[[VEHICLE_CONDITION_{vehicle_type}]]";\n' # needs to be a common variable
+        vehicle_conditions.append(vehicle_condition_macro)
+        vehicle_conditions.append(vehicle_condition)
+
+    print(vehicle_conditions)
+
     for modset in modsets:
         includes = f'#include "vehicles\\vehicles_{modset}.hpp"'
 
@@ -121,22 +140,19 @@ def parse_all_csv_files_in_dir(prefix="BlackMarketVehicles - "):
         all_includes.append(includes)
         file_operations.write_to_file("vehicles", arma_classes, [modset], extension="hpp")
 
-    file_operations.write_to_file("vehicles", all_classes, ["[ALL]"], extension="hpp")
-    file_operations.write_to_file("includes", all_includes, ["[ALL]"], extension="txt")
+    file_operations.write_to_file("vehicles", all_classes, ["ALL"], extension="hpp")
+    file_operations.write_to_file("includes", all_includes, ["ALL"], extension="txt")
+    file_operations.write_to_file("vehicles", vehicle_conditions, ["conditions"], extension="hpp")
 
     print(all_categories)
     print("Done")
 
 def generate_config_list(list_data, modset):
-    # print(list_data)
-
     arma_classes = []
     mod_header = (f"class vehicles_{modset.lower()} : vehicles_base")
     arma_classes.append(mod_header + "\n{")
     
     vehicle_types = list(list_data[modset].keys())
-
-    # print(f"Vehicle types are: {vehicle_types}")
 
     for vehicle_type in vehicle_types:
         vehicles = list(list_data[modset][vehicle_type].keys())
@@ -156,13 +172,10 @@ def generate_config_list(list_data, modset):
             arma_classes.append(arma_class)
         
     arma_classes.append("};")
-    # print(arma_classes)
     return arma_classes
-
 
 def convert_list_to_dict(list_data, list_categories):
     item_dictionary = {}
-    # print(list_categories)
 
     for item in range(len(list_data)):
         modset = [element for element in list_data[item] if element == list_data[item][0]]
@@ -195,50 +208,7 @@ def convert_list_to_dict(list_data, list_categories):
         if (CONDITION_DEBUG == True):
             condition = "true"
         else:
-            match category[0]:
-                case "AA":
-                    condition = f"{CONDITION_COMMON_OR_START}{CONDITION_SEAPORT_LIGHT} {CONDITION_COMMON_OR} {CONDITION_RESOURCE_MEDIUM}{CONDITION_COMMON_OR_END} {CONDITION_COMMON_AND} {CONDITION_FACTORY_MEDIUM}"
-
-                case "APC":
-                    condition = f"{CONDITION_COMMON_OR_START}{CONDITION_SEAPORT_LIGHT} {CONDITION_COMMON_OR} {CONDITION_RESOURCE_MEDIUM}{CONDITION_COMMON_OR_END} {CONDITION_COMMON_AND} {CONDITION_FACTORY_MEDIUM}"
-
-                case "UNARMEDCAR":
-                    condition = f"{CONDITION_RESOURCE_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_LIGHT}"
-
-                case "ARMEDCAR":
-                    condition = f"{CONDITION_RESOURCE_MEDIUM} {CONDITION_COMMON_AND} {CONDITION_FACTORY_MEDIUM}"
-
-                case "ARTILLERY":
-                    condition = f"{CONDITION_RESOURCE_MEDIUM} {CONDITION_COMMON_AND} {CONDITION_FACTORY_MEDIUM}"
-
-                case "BOAT":
-                    condition = f"{CONDITION_SEAPORT_LIGHT}"
-                    
-                case "HELI":
-                    condition = f"{CONDITION_COMMON_OR_START}{CONDITION_AIRPORT_LIGHT} {CONDITION_COMMON_OR} {CONDITION_MILBASE_LIGHT}{CONDITION_COMMON_OR_END} {CONDITION_COMMON_AND} {CONDITION_FACTORY_MEDIUM}"
-
-                case "PLANE":
-                    condition = f"{CONDITION_AIRPORT_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_HEAVY}"
-
-                case "STATICAA":
-                    condition = f"{CONDITION_TIER_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_LIGHT}"
-
-                case "STATICAT":
-                    condition = f"{CONDITION_TIER_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_LIGHT}"
-
-                case "STATICMG":
-                    condition = f"{CONDITION_TIER_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_LIGHT}"
-
-                case "STATICMORTAR":
-                    condition = f"{CONDITION_TIER_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_LIGHT}"
-
-                case "TANK":
-                    condition = f"{CONDITION_MILBASE_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_HEAVY}"
-
-                case "UAV":
-                    condition = f"{CONDITION_AIRPORT_LIGHT} {CONDITION_COMMON_AND} {CONDITION_FACTORY_MEDIUM}"
-
-        condition = f"{condition}"
+            condition = match_category_macro(category=category[0])
 
         item_dictionary[modset][category[0]][classname] = ({"name": name, "price": price, "category": category[0], "condition": condition})
 

@@ -8170,6 +8170,10 @@
                 <Korean>차량 암시장</Korean>
                 <French>Marché noir des véhicules</French>
             </Key>
+            <Key ID="STR_trader_black_market_requirements">
+                <Original>Vehicle requirements can be found by clicking the notebook in the top right corner.</Original>
+                <Russian>Placeholder</Russian>
+            </Key>
         </Container>
         <Container name="intel_actions">
             <Key ID="STR_millaptop_getdata_text">
