@@ -105,7 +105,7 @@ _loadoutData set ["machineGuns", []];
 _loadoutData set ["marksmanRifles", []];
 _loadoutData set ["sniperRifles", []];
 _loadoutData set ["lightATLaunchers", [
-	["cwr3_launch_m72a3", "", "", "",["cwr3_at4_heat_m"], [], ""], 
+	["cwr3_launch_m72a3", "", "", "",[], [], ""], 
 	["cwr3_launch_at4", "", "", "",["cwr3_at4_heat_m"], [], ""]
 ]];
 _loadoutData set ["missileATLaunchers", [
@@ -254,7 +254,7 @@ _sfLoadoutData set ["sniperRifles", [
     ["CUP_srifle_M24_wdl", "", "", "CUP_optic_LeupoldM3LR", ["CUP_5Rnd_762x51_M24"], [], ""]
 ]];
 _sfLoadoutData set ["lightATLaunchers", [
-    ["cwr3_launch_m72a3", "", "", "",["cwr3_at4_heat_m"], [], ""], 
+    ["cwr3_launch_m72a3", "", "", "",[], [], ""], 
 	["cwr3_launch_at4", "", "", "",["cwr3_at4_heat_m"], [], ""]
 ]];
 _sfLoadoutData set ["sidearms", [
@@ -313,7 +313,7 @@ _eliteLoadoutData set ["sniperRifles", [
     ["CUP_srifle_M24_wdl", "", "", "CUP_optic_LeupoldM3LR", ["CUP_5Rnd_762x51_M24"], [], ""]
 ]];
 _eliteLoadoutData set ["lightATLaunchers", [
-    ["cwr3_launch_m72a3", "", "", "",["cwr3_at4_heat_m"], [], ""], 
+    ["cwr3_launch_m72a3", "", "", "",[], [], ""], 
 	["cwr3_launch_at4", "", "", "",["cwr3_at4_heat_m"], [], ""]
 ]];
 _eliteLoadoutData set ["sidearms", [
@@ -374,7 +374,7 @@ _militaryLoadoutData set ["sniperRifles", [
     ["CUP_srifle_M24_wdl", "", "", "CUP_optic_LeupoldM3LR", ["CUP_5Rnd_762x51_M24"], [], ""]
 ]];
 _militaryLoadoutData set ["lightATLaunchers", [
-    ["cwr3_launch_m72a3", "", "", "",["cwr3_at4_heat_m"], [], ""], 
+    ["cwr3_launch_m72a3", "", "", "",[], [], ""], 
 	["cwr3_launch_at4", "", "", "",["cwr3_at4_heat_m"], [], ""]
 ]];
 _militaryLoadoutData set ["sidearms", [
@@ -448,7 +448,7 @@ _militiaLoadoutData set ["sniperRifles", [
     ["CUP_srifle_M24_wdl", "", "", "CUP_optic_LeupoldM3LR", ["CUP_5Rnd_762x51_M24"], [], ""]
 ]];
 _militiaLoadoutData set ["lightATLaunchers", [
-    ["cwr3_launch_m72a3", "", "", "",["cwr3_at4_heat_m"], [], ""], 
+    ["cwr3_launch_m72a3", "", "", "",[], [], ""], 
 	["cwr3_launch_at4", "", "", "",["cwr3_at4_heat_m"], [], ""]
 ]];
 _militiaLoadoutData set ["sidearms", [

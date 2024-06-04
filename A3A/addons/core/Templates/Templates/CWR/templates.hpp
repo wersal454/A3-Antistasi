@@ -13,14 +13,14 @@
     {
         side = "Occ";
         flagTexture = "a3\data_f\flags\flag_us_co.paa";
-        name = "CWR US Army";
+        name = "CWR US Army Temperate";
         file = "CWR_AI_US_Army_Temperate";
 		climate[] = {"temperate","tropical","arctic"};
     };
 	
     class CWR_USArmy_Arid : CWR_USArmy_Temperate
     {
-        name = "CWR US Army";
+        name = "CWR US Army Arid";
         file = "CWR_AI_US_Army_Arid";
 		climate[] = {"arid"};
     };
