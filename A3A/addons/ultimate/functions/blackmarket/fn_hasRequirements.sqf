@@ -33,8 +33,6 @@ private _airportsRebel = _rebelZones count _airports;
 private _seaportsRebel = _rebelZones count _seaports;
 private _outpostsRebel = _rebelZones count _outposts;
 
-diag_log [_resourcesRebel, _factoriesRebel, _milbasesRebel, _airportsRebel, _seaportsRebel, _outpostsRebel];
-
 if (blackMarketIgnoreRequirements isEqualTo true) then {
     _requirement = "true";
 };

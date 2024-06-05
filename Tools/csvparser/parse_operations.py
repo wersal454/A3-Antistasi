@@ -38,7 +38,6 @@ def read_parsed_file(parsed_data, filename, category_custom=""):
         category = [filename]
 
     categories.extend(category)
-
     data_write.append(category)
 
     for row in parsed_data:
@@ -130,10 +129,8 @@ def parse_all_csv_files_in_dir(prefix="BlackMarketVehicles - "):
         vehicle_conditions.append(vehicle_condition_macro)
         vehicle_conditions.append(vehicle_condition)
 
-    print(vehicle_conditions)
-
     for modset in modsets:
-        includes = f'#include "vehicles\\vehicles_{modset}.hpp"'
+        includes = f'#include "vehicles_{modset}.hpp"'
 
         arma_classes = generate_config_list(list_dict, modset)
         all_classes.extend(arma_classes + ["\n"])
@@ -141,10 +138,9 @@ def parse_all_csv_files_in_dir(prefix="BlackMarketVehicles - "):
         file_operations.write_to_file("vehicles", arma_classes, [modset], extension="hpp")
 
     file_operations.write_to_file("vehicles", all_classes, ["ALL"], extension="hpp")
-    file_operations.write_to_file("includes", all_includes, ["ALL"], extension="txt")
     file_operations.write_to_file("vehicles", vehicle_conditions, ["conditions"], extension="hpp")
+    file_operations.write_to_file("vehicles", all_includes, ["includes"], extension="hpp")
 
-    print(all_categories)
     print("Done")
 
 def generate_config_list(list_data, modset):
@@ -159,8 +155,6 @@ def generate_config_list(list_data, modset):
 
         if (vehicles == {} or vehicles == []):
             continue
-
-        # print(f"Vehicles are: {vehicles}")
 
         for vehicle in vehicles:
             vehicle_classname = vehicle

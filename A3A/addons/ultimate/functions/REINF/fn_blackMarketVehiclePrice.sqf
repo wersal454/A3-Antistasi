@@ -5,6 +5,11 @@ params ["_typeX"];
 
 private _cost = A3U_blackMarketStock select { _x select 0 == _typeX } select 0 select 1;
 
+if (_cost isEqualType "") exitWith {
+	Error_1("Invalid vehicle price at %1.", _typeX);
+	0
+};
+
 _cost = if (isNil "_cost") then {
 	Error_1("Invalid vehicle price at %1.", _typeX);
 
@@ -18,6 +23,5 @@ _cost = if (isNil "_cost") then {
 
 	round (_cost - (_cost * (0.1 * _multiplier)))
 };
-
 
 _cost
