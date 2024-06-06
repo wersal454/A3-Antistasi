@@ -137,7 +137,7 @@ def parse_all_csv_files_in_dir(prefix="BlackMarketVehicles - "):
         all_includes.append(includes)
         file_operations.write_to_file("vehicles", arma_classes, [modset], extension="hpp")
 
-    file_operations.write_to_file("vehicles", all_classes, ["ALL"], extension="hpp")
+    # file_operations.write_to_file("vehicles", all_classes, ["ALL"], extension="hpp") # uncomment to have all the classes merged into this file
     file_operations.write_to_file("vehicles", vehicle_conditions, ["conditions"], extension="hpp")
     file_operations.write_to_file("vehicles", all_includes, ["includes"], extension="hpp")
 
