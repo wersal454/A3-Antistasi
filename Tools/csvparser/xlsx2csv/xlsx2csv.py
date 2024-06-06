@@ -224,6 +224,7 @@ class Xlsx2csv:
     # def __del__(self):
     #     # make sure to close zip file, ziphandler does have a close() method
     #     self.ziphandle.close()
+    # Might be unsafe to leave this commented out, but tbh, it was terrible anyway because it expected that the file actually existed in the first place
 
     def getSheetIdByName(self, name):
         for s in self.workbook.sheets:
