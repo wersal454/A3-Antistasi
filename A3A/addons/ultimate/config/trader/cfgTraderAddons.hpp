@@ -56,8 +56,8 @@
     class addons_ifa : addons_base
     {
         addons[] = {"IFA3_Core"};
-        weapons = "weapons_ifa";
-        vehicles = "vehicles_ifa";
+        weapons = "weapons_ifa3";
+        vehicles = "vehicles_ifa3";
     };
     class addons_spe : addons_base
     {

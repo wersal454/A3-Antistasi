@@ -38,7 +38,7 @@
         {
             prefix = "3cbf";
         };
-        class weapons_ifa : weapons_base
+        class weapons_ifa3 : weapons_base
         {
             prefix = "ww2mod";
         };

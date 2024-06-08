@@ -9,7 +9,7 @@
 	N/A
 
     Usage:
-    [] call A3U_grabBlackMarketVehicles;
+    [] call A3U_fnc_grabBlackMarketVehicles;
 */
 private _blackMarketStock = [];
 

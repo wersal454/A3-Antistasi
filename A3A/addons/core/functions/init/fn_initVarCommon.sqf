@@ -15,6 +15,13 @@ Info("Setting initial variables");
 debug = false;
 //A3A_customHintEnable = false; // Disables custom hints for boot duration. Is set to true in initClient.
 
+
+////////////////////////////////////
+// BLACK MARKET VEHICLE LIST	 ///
+////////////////////////////////////
+Info("Generating black market vehicles list");
+[] call A3U_fnc_grabBlackMarketVehicles;
+
 ////////////////////////////////////
 //     BEGIN SIDES AND COLORS    ///
 ////////////////////////////////////
