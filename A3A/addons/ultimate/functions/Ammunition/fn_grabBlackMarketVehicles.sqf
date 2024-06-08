@@ -68,3 +68,6 @@ if (_blackMarketStock isEqualTo [] || {vanillaArmsDealer isEqualTo true}) then {
 };
 
 A3U_blackMarketStock = _blackMarketStock;
+publicVariable "A3U_blackMarketStock"; // May not be the greatest thing but making it work between scopes is annoying
+
+A3U_blackMarketStock;
