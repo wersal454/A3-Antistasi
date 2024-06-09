@@ -2,7 +2,8 @@ class vehicles_aegis : vehicles_base
 {
     ITEM(O_R_APC_Wheeled_04_cannon_F, 31310, "APC", VEHICLE_CONDITION_APC);
     ITEM(C_Boat_Civil_02_F, 1700, "BOAT", VEHICLE_CONDITION_BOAT);
-    ITEM(Aegis_I_EAF_Heli_Attack_04_F, 8, "HELI", VEHICLE_CONDITION_HELI);
+    ITEM(Aegis_I_EAF_Heli_Attack_04_F, 54766, "HELI", VEHICLE_CONDITION_HELI);
+    ITEM(I_Heli_Attack_03_F, 49421, "HELI", VEHICLE_CONDITION_HELI);
     ITEM(Aegis_I_Heli_Transport_02_Heavy_F, 12000, "HELI", VEHICLE_CONDITION_HELI);
     ITEM(Aegis_C_Heli_Transport_02_VIP_F, 10800, "HELI", VEHICLE_CONDITION_HELI);
     ITEM(B_Plane_Fighter_05_F, 92550, "PLANE", VEHICLE_CONDITION_PLANE);

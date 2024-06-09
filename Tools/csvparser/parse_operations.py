@@ -57,12 +57,15 @@ def read_parsed_file(parsed_data, filename, category_custom=""):
 
                 # If price isn't an integer (usually due to a comment in the last row), step back 1 element
                 if (type(price) != int):
-                    price = test[-2]
+                    price = test[-1]
+                    if (price == "" or price in comment_types): # fix comments that broke the parser
+                        price = test[-2]
 
                 # If price is a float, yeet that out
                 # (int() didn't work)
                 if (type(price) == str and "." in price):
                     price = price[:-2]
+                    price = price.replace(".", "")
 
                 data = [classname, name, price, category]
                 

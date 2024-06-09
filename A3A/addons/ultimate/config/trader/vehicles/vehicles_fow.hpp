@@ -1,9 +1,9 @@
 class vehicles_fow : vehicles_base
 {
-    ITEM(fow_v_sdkfz_250_ger_heer, 3900, "APC", VEHICLE_CONDITION_APC);
-    ITEM(fow_v_sdkfz_251_camo_ger_heer, 4500, "APC", VEHICLE_CONDITION_APC);
-    ITEM(fow_v_universalCarrier, 4800, "APC", VEHICLE_CONDITION_APC);
-    ITEM(fow_v_lvta2_usa, 7300, "APC", VEHICLE_CONDITION_APC);
+    ITEM(fow_v_sdkfz_250_ger_heer, 3340, "APC", VEHICLE_CONDITION_APC);
+    ITEM(fow_v_sdkfz_251_camo_ger_heer, 3800, "APC", VEHICLE_CONDITION_APC);
+    ITEM(fow_v_universalCarrier, 4240, "APC", VEHICLE_CONDITION_APC);
+    ITEM(fow_v_lvta2_usa, 6480, "APC", VEHICLE_CONDITION_APC);
     ITEM(fow_v_kubelwagen_mg34_ger_heer, 2100, "ARMEDCAR", VEHICLE_CONDITION_ARMEDCAR);
     ITEM(fow_v_sdkfz_222_ger_heer, 5200, "ARMEDCAR", VEHICLE_CONDITION_ARMEDCAR);
     ITEM(fow_v_sdkfz_234_1, 5200, "ARMEDCAR", VEHICLE_CONDITION_ARMEDCAR);
