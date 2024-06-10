@@ -6953,6 +6953,15 @@
         <Russian>Контроль ИИ</Russian>
         <Chinesesimp>控制单位</Chinesesimp>
       </Key>
+      <Key ID="STR_A3A_fn_reinf_convSqd_title">
+        <Original>Convert To Squad</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_convSqd_no_selected">
+        <Original>You need to select some valid units.</Original>
+      </Key>
+      <Key ID="STR_A3A_fn_reinf_convSqd_created">
+        <Original>Converted %1 squad members into high command group %2.</Original>
+      </Key>
       <Key ID="STR_A3A_fn_reinf_dismissPlayerGroup_GTFO">
         <Original>Get out of my sight you useless scum!</Original>
         <French>Hors de ma vue vermine!</French>
@@ -10909,6 +10918,12 @@
         <Czech>Vyčistí mrtvá těla, zahozenou výzbroj, zničené vozidla a podobné entity. Výrazně pomáhá s chodem klienta a servru, doporučuje se spustit alespoň jednou za hodinu.</Czech>
         <Turkish>Oyunda birçok şeyi temizler. Görevi dondurduğu için dikkatli kullanın</Turkish>
         <Chinesesimp>清理游戏中的一些东西。谨慎使用, 因为它可能导致任务卡死</Chinesesimp>
+      </Key>
+      <Key ID="STR_antistasi_dialogs_commander_comm_convSquad">
+        <Original>Convert to Squad</Original>
+      </Key>
+      <Key ID="STR_antistasi_dialogs_commander_comm_convSquad_tooltip">
+        <Original>Convert currently selected AI units to a high command squad.</Original>
       </Key>
       <Key ID="STR_antistasi_dialogs_commander_comm_faction_garage">
         <Original>Faction Garage</Original>
