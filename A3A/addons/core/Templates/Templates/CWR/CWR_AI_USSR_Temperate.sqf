@@ -78,7 +78,7 @@
 ["minefieldAT", ["CUP_MineE"]] call _fnc_saveToTemplate;
 ["minefieldAPERS", ["APERSMine"]] call _fnc_saveToTemplate;
 
-#include "CUP_Vehicle_Attributes.sqf"
+#include "CWR_Vehicle_Attributes.sqf"
 
 /////////////////////
 ///  Identities   ///
@@ -107,8 +107,8 @@ _loadoutData set ["marksmanRifles", []];
 _loadoutData set ["sniperRifles", []];
 
 _loadoutData set ["AALaunchers", [
-    ["CUP_launch_9K32Strela", "", "", "", [""], [], ""],
-	["CUP_launch_Igla", "", "", "", [""], [], ""]
+    ["CUP_launch_9K32Strela", "", "", "", [], [], ""],
+	["CUP_launch_Igla", "", "", "", [], [], ""]
 ]];
 _loadoutData set ["lightATLaunchers", [
 	["CUP_launch_RPG18", "", "", "",[], [], ""], 
@@ -146,13 +146,13 @@ _loadoutData set ["NVGs", ["cwr3_o_nvg_pnv57_tsh3"]];
 _loadoutData set ["binoculars", ["Binocular"]];
 _loadoutData set ["rangefinders", ["Binocular"]];
 
-_loadoutData set ["traitorUniforms", ["CUP_U_O_RUS_Soldier_VKPO_VDV_EMR_rolled_up_gloves_pads"]];
-_loadoutData set ["traitorVests", ["CUP_Vest_RUS_6B45_Sh117"]];
-_loadoutData set ["traitorHats", ["CUP_H_PMC_Beanie_Khaki"]];
+_loadoutData set ["traitorUniforms", ["cwr3_o_uniform_klmk_1957_birch_v2", "cwr3_o_uniform_klmk_1957_splats_v2"]];
+_loadoutData set ["traitorVests", ["cwr3_o_vest_6b2_officer"]];
+_loadoutData set ["traitorHats", ["cwr3_o_headgear_fieldcap_m1982"]];
 
-_loadoutData set ["officerUniforms", ["CUP_U_O_RUS_Soldier_VKPO_VDV_EMR_rolled_up_gloves_pads"]];
-_loadoutData set ["officerVests", ["CUP_Vest_RUS_6B45_Sh117"]];
-_loadoutData set ["officerHats", ["CUP_H_RUS_Beret_Spetsnaz"]];
+_loadoutData set ["officerUniforms", ["cwr3_o_uniform_klmk_1957_birch_v2", "cwr3_o_uniform_klmk_1957_splats_v2"]];
+_loadoutData set ["officerVests", ["cwr3_o_vest_6b2_officer"]];
+_loadoutData set ["officerHats", ["cwr3_o_headgear_fieldcap_m1982"]];
 
 _loadoutData set ["cloakUniforms", []];
 _loadoutData set ["cloakVests", []];
@@ -171,7 +171,7 @@ _loadoutData set ["longRangeRadios", []];
 _loadoutData set ["atBackpacks", []];
 _loadoutData set ["slBackpacks", []];
 _loadoutData set ["helmets", []];
-_loadoutData set ["slHat", ["CUP_H_RUS_Beret_VDV"]];
+_loadoutData set ["slHat", []];
 _loadoutData set ["sniHats", []];
 
 //Item *set* definitions. These are added in their entirety to unit loadouts. No randomisation is applied.
