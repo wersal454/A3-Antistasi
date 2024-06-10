@@ -1,9 +1,6 @@
 params [["_markersX", markersX]];
 
-// private _hideEnemyMarkers = missionNamespace getVariable ["A3U_setting_hideEnemyMarkers",false];
 if !(hideEnemyMarkers) exitWith {};
-
-
 
 markersImmune = markersX select {
     ((sidesX getVariable [_x, sideUnknown]) isEqualTo resistance)
