@@ -27,10 +27,12 @@ _costs = if (isNil "_costs") then {
 	This causes the wrong function (this) being called for price instead of A3U_fnc_blackMarketVehiclePrice, as "vehiclesReb" was designed for HQ vehicles (afaik)
 
 	Known issue: This may break the price for anything in HQ and black market, but at that point, why is it in the black market?
+	There may be the potential for a money exploit: If a player buys something for 500 in the HQ store, but it's also in the BM for 10000, upon selling this may give 5000 back.
+	I added an extra check to prevent this, but should be taken into account if ever maintained in the future
 */
 private _blackMarketPrice = [_typeX] call A3U_fnc_blackMarketVehiclePrice;
 
-if (_blackMarketPrice isNotEqualTo 0) then {
+if (_costs isEqualTo 0 && {_blackMarketPrice isNotEqualTo 0}) then { // checking cost first should stop a potential money dupe glitch
 	_costs = _blackMarketPrice;
 };
 
