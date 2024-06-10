@@ -163,8 +163,8 @@ _loadoutData set ["longRangeRadios", ["cwr3_b_backpack_radio"]];
 _loadoutData set ["atBackpacks", []];
 _loadoutData set ["slBackpacks", []];
 _loadoutData set ["helmets", []];
-_loadoutData set ["slHat", ["H_Beret_02"]];
-_loadoutData set ["sniHats", ["CUP_H_USArmy_Boonie_hs_OEFCP"]];
+_loadoutData set ["slHat", []];
+_loadoutData set ["sniHats", []];
 _loadoutData set ["glasses", []];
 _loadoutData set ["goggles", []];
 
