@@ -23,7 +23,7 @@
 ["vehiclesLightUnarmed", ["PRACS_M1025", "PRACS_M1025_marine"]] call _fnc_saveToTemplate;
 ["vehiclesLightArmed", ["PRACS_M1025_M2", "PRACS_M1151_M240"]] call _fnc_saveToTemplate;
 ["vehiclesTrucks", ["PRACS_M250_open", "PRACS_M250"]] call _fnc_saveToTemplate;
-["vehiclesCargoTrucks", ["PRACS_M250_flat_bed", "PRACS_M250"]] call _fnc_saveToTemplate;
+["vehiclesCargoTrucks", ["PRACS_M250_open", "PRACS_M250"]] call _fnc_saveToTemplate;
 ["vehiclesAmmoTrucks", ["PRACS_M250_Ammo"]] call _fnc_saveToTemplate;
 ["vehiclesRepairTrucks", ["PRACS_M250_Repair"]] call _fnc_saveToTemplate;
 ["vehiclesFuelTrucks", ["PRACS_M250_fuel"]] call _fnc_saveToTemplate;
@@ -58,7 +58,7 @@
 ["uavsPortable", ["B_UAV_01_F"]] call _fnc_saveToTemplate;
 
 ["vehiclesMilitiaLightArmed", ["PRACS_M1025_M2"]] call _fnc_saveToTemplate;
-["vehiclesMilitiaTrucks", ["PRACS_M250_flat_bed"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaTrucks", ["PRACS_M250_open"]] call _fnc_saveToTemplate;
 ["vehiclesMilitiaCars", ["PRACS_M998_cargo_open"]] call _fnc_saveToTemplate;
 ["vehiclesMilitiaAPCs", ["PRACS_M1117"]] call _fnc_saveToTemplate;
 
