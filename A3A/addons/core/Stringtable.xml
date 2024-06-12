@@ -10383,6 +10383,9 @@
         <Korean>예상 설정 시간: %1분</Korean>
         <Russian>Осталось времени: %1 мин.</Russian>
       </Key>
+      <Key ID="STR_A3A_fn_support_showIntStpCll_TANK">
+        <Original>%1 just sent a tank platoon.</Original>
+      </Key>
       <Key ID="STR_A3A_fn_support_showIntStpCll_UAV">
         <Original>%1 is sending a spotting UAV.</Original>
         <Korean>%1 세력이 감시형 UAV를 보냄</Korean>
