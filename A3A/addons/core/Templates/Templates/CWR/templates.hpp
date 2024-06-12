@@ -25,6 +25,15 @@
 		climate[] = {"arid"};
     };
 
+    class CWR_USMC_Temperate : CWR_Base
+    {
+        requiredAddons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core", "cwr3_weapons", "cwr3_expansion_usmc"};
+		side = "Occ";
+        flagTexture = "a3\data_f\flags\flag_us_co.paa";
+        name = "CWR USMC Temperate";
+        file = "CWR_AI_USMC_Temperate";
+    };
+
     class CWR_BAF_Temperate : CWR_Base
     {
 		requiredAddons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core", "cwr3_weapons", "cwr3_expansion_uk"};

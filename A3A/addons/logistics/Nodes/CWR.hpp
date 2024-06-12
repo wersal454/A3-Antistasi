@@ -30,6 +30,7 @@ class cwr3_b_m939_open : TRIPLES(ADDON,Nodes,Base)
 };
 
 class cwr3_b_m939_open_des : cwr3_b_m939_open {};
+class cwr3_b_usmc_m939_open : cwr3_b_m939_open {};
 
 class cwr3_b_m939 : TRIPLES(ADDON,Nodes,Base)
 {
@@ -64,6 +65,7 @@ class cwr3_b_m939 : TRIPLES(ADDON,Nodes,Base)
 };
 
 class cwr3_b_m939_des : cwr3_b_m939 {};
+class cwr3_b_usmc_m939 : cwr3_b_m939 {};
 
 class cwr3_b_uk_fv620_transport : TRIPLES(ADDON,Nodes,Base)
 {
