@@ -73,8 +73,8 @@
 ///////////////////////////
 
 private _initialRebelEquipment = [
-    "CUP_sgun_slamfire", "CUP_srifle_LeeEnfield", "CUP_srifle_LeeEnfield_rail",
-    "CUP_1Rnd_12Gauge_Pellets_No00_Buck", "CUP_1Rnd_12Gauge_Pellets_No3_Buck", "CUP_10x_303_M",
+    "CUP_sgun_slamfire", "CUP_srifle_Mosin_Nagant",
+    "CUP_1Rnd_12Gauge_Pellets_No00_Buck", "CUP_1Rnd_12Gauge_Pellets_No3_Buck", "CUP_srifle_Mosin_Nagant",
     "CUP_hgun_TT", "CUP_8Rnd_762x25_TT",
     ["CUP_launch_RPG18", 50],
     ["IEDUrbanSmall_Remote_Mag", 10], ["IEDLandSmall_Remote_Mag", 10], ["IEDUrbanBig_Remote_Mag", 3], ["IEDLandBig_Remote_Mag", 3],
