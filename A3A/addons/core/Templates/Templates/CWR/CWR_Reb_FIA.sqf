@@ -103,7 +103,7 @@ private _rebUniforms = [
     "cwr3_i_uniform_jigsaw_rolled",
     "cwr3_i_uniform_M62",
     "cwr3_i_uniform_og107",
-    "cwr3_i_uniform_weathered",
+    "cwr3_i_uniform_splitter_weathered",
     "cwr3_i_uniform_winter_gloves"
 ];          //Uniforms given to Player Rebels
 
@@ -115,7 +115,7 @@ private _rebUniformsAI = [
     "cwr3_i_uniform_jigsaw_rolled",
     "cwr3_i_uniform_M62",
     "cwr3_i_uniform_og107",
-    "cwr3_i_uniform_weathered"
+    "cwr3_i_uniform_splitter_weathered"
 ];          //Uniforms given to AI Rebels
 
 ["uniforms", _rebUniforms] call _fnc_saveToTemplate;         //These Items get added to the Arsenal
