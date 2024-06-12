@@ -118,7 +118,7 @@ _loadoutData set ["offuniforms", ["cwr3_o_fia_uniform_polish_splinter"]];
 _loadoutData set ["vests", ["cwr3_i_vest_chicom"]];
 _loadoutData set ["heavyVests", ["cwr3_i_vest_chicom"]];
 _loadoutData set ["atBackpacks", ["cwr3_o_backpack_rpg7"]];
-_loadoutData set ["backpacks", ["cwr3_b_bakcpack_alice"]];
+_loadoutData set ["backpacks", ["cwr3_b_backpack_alice"]];
 _loadoutData set ["helmets", ["cwr3_o_headgear_ssh68"]];
 _loadoutData set ["heavyHelmets", ["cwr3_o_headgear_ssh68"]];
 
