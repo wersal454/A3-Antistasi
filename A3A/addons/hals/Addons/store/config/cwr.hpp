@@ -93,7 +93,7 @@
 			ITEM(cwr3_arifle_l86a1, 1200, RIFLE_STOCK); // CUP_60Rnd_556x45_SureFire
 			ITEM(cwr3_arifle_m16a1_lsw, 600, RIFLE_STOCK);
 			ITEM(cwr3_arifle_m16a1e1_lsw, 2050, RIFLE_STOCK);
-			ITEM(cwr3_arifle_m60e3, 2000, RIFLE_STOCK); // CUP_100Rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M
+			ITEM(cwr3_lmg_m60e3, 2000, RIFLE_STOCK); // CUP_100Rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M
 
 		};
 
