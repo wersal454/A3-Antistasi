@@ -795,7 +795,7 @@ class cfgHALsStore
 				"opticseaw",
 			};
 		};		
-		class cwr		
+		class cwrstock		
 		{
 			displayName = $STR_ARMS_DEALER_STORE;
 			categories[] = {
