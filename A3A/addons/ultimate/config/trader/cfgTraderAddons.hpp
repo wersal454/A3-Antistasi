@@ -1,3 +1,15 @@
+    /*
+        Each addon entry can use these values:
+        addons[] = {};
+        weapons = traderWeapons entry;
+        vehicles = traderVehicles entry;
+
+        Essentially, this is the core file. It links to other files.
+        For example, if you load AMF it will add vehicles to the black market dealer.
+        If you load Aegis, it will add both vehicles and weapons to their respective dealers.
+        If you load AMF and Aegis, you'll get things from both.
+    */
+    
     class addons_kkiv2035 : addons_base
     {
         addons[] = {"Kio_Kkiv_2035"};
@@ -18,6 +30,7 @@
     {
         addons[] = {"WM_Rebels"};
         weapons = "weapons_wmempire";
+        vehicles = "vehicles_wm";
     };
     class addons_empire : addons_base
     {
@@ -28,6 +41,7 @@
     {
         addons[] = {"EAW_Air","WBK_MeleeMechanics"};
         weapons = "weapons_eaw";
+        vehicles = "vehicles_eaw";
     };
     class addons_ww2fow : addons_base
     {
@@ -172,11 +186,13 @@
     {
         addons[] = {"TMT_Core", "CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core"};
         weapons = "weapons_tmt";
+        vehicles = "vehicles_tmt";
     };
     class addons_tfc : addons_base
     {
         addons[] = {"TFC_Core_Data", "TFC_CA_Characters", "TFC_SF_Characters", "tfc_rcaf_cc130j"};
         weapons = "weapons_tfc";
+        vehicles = "vehicles_tfc";
     };
     class addons_sma : addons_base
     {
@@ -210,4 +226,10 @@
     {
         addons[] = {"NORTH_Main"};
         weapons = "weapons_nfts";
+        vehicles = "vehicles_nfts";
+    };
+    class addons_android : addons_base
+    {
+        addons[] = {"SSV_Android", "SSV_Vanguard", "OPTRE_Core"};
+        vehicles = "vehicles_android";
     };
