@@ -171,4 +171,10 @@ class traderMods
         addons[] = {"NORTH_Main"};
         prefix = "nftsstock";
     };
+	
+    class cwr : base
+    {
+        addons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core", "cwr3_weapons"};
+        prefix = "cwrstock";
+    };
 };
