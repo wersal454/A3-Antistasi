@@ -25,12 +25,12 @@
 ["vehiclesAmmoTrucks", ["cwr3_b_usmc_m939_reammo"]] call _fnc_saveToTemplate;
 ["vehiclesRepairTrucks", ["cwr3_b_usmc_m939_repair"]] call _fnc_saveToTemplate;
 ["vehiclesFuelTrucks", ["cwr3_b_usmc_m939_refuel"]] call _fnc_saveToTemplate;
-["vehiclesMedical", ["cwr3_b_m939_mev", "cwr3_b_m113a1_mev", "cwr3_b_m113a3_mev", "cwr3_b_hmmwv_mev"]] call _fnc_saveToTemplate;
+["vehiclesMedical", ["cwr3_b_usmc_hmmwv_mev"]] call _fnc_saveToTemplate;
 ["vehiclesLightAPCs", ["cwr3_b_usmc_lav25_hq", "cwr3_b_usmc_aav"]] call _fnc_saveToTemplate;
 ["vehiclesAPCs", ["cwr3_b_usmc_lav25m240", "cwr3_b_usmc_lav25m240"]] call _fnc_saveToTemplate;            // mortar carrier: "CUP_B_M1129_MC_MK19_Woodland"
 ["vehiclesIFVs", ["cwr3_b_m2a2", "cwr3_b_usmc_lav25m240"]] call _fnc_saveToTemplate;
 ["vehiclesTanks", ["cwr3_b_usmc_m60a3", "cwr3_b_usmc_m1"]] call _fnc_saveToTemplate;
-["vehiclesAA", ["cwr3_b_usamc_m163"]] call _fnc_saveToTemplate;
+["vehiclesAA", ["cwr3_b_usmc_m163"]] call _fnc_saveToTemplate;
 ["vehiclesAirborne", ["cwr3_b_usmc_lav25_hq", "cwr3_b_usmc_lav25m240"]] call _fnc_saveToTemplate;
 ["vehiclesLightTanks",  ["cwr3_b_usmc_aav", "cwr3_b_usmc_lav25m240"]] call _fnc_saveToTemplate;
 
