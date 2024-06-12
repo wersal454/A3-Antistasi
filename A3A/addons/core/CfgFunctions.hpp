@@ -295,11 +295,13 @@ class CfgFunctions
             class prepFunctions {};
             class spawnDebuggingLoop {};
             class spawnSelectedTemplateAI {};
-            class debugSpawnVics {};    
+            class debugSpawnVics {};
         };
 
         class Dialogs {
             file = QPATHTOFOLDER(functions\Dialogs);
+            class canFastTravel {};
+            class calculateFastTravelCost {};
             class clearForest {};
             class createDialog_shouldLoadPersonalSave {};
             class dialogHQ {};
@@ -445,6 +447,10 @@ class CfgFunctions
         class OrgPlayers {
             file = QPATHTOFOLDER(functions\OrgPlayers);
             class donateMoney {};
+            class sendMoney {};
+            class isClientAdmin {};
+            class isLocalAdmin {};
+            class isLocalAdminOrServer {};
             class isMember {};
             class makePlayerBossIfEligible {};
             class memberAdd {};

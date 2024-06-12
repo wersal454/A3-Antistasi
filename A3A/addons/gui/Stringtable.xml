@@ -3053,7 +3053,7 @@
         <Chinesesimp>无可用载具</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_main_player_money_text">
-        <Original>Current money:&lt;br/&gt;€ %1</Original>
+        <Original>Current money: € %1</Original>
         <German>Aktuelles Geld:&lt;br/&gt;€ %1</German>
         <Italian>Denaro attuale:&lt;br/&gt;€ %1</Italian>
         <Spanish>Dinero:&lt;br/&gt;€ %1</Spanish>
