@@ -348,6 +348,13 @@ if (_type == "CASDIVE") then
             _plane setVariable ["bombRacks", ["BombCluster_02_F","weapon_KAB250Launcher"]];
             _plane setVariable ["diveParams", [1000, 600, 180, 55, 15, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
         };
+		case "cwr3_b_frs1":
+        {
+            _loadout = ["CUP_PylonPod_1Rnd_GBU12_M","CUP_PylonPod_1Rnd_GBU12_M","CUP_PylonPod_1Rnd_GBU12_M","CUP_PylonPod_1Rnd_GBU12_M","CUP_PylonPod_1Rnd_GBU12_M","CUP_PylonPod_1Rnd_GBU12_M"];
+            _plane setVariable ["mainGun", "CUP_Vacannon_GAU12_veh"];
+            _plane setVariable ["bombRacks", ["CUP_Vblauncher_GBU12_veh"]];
+            _plane setVariable ["diveParams", [1000, 600, 180, 55, 15, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
+        };
 		// cup aircraft
         case "CUP_B_L39_CZ":
         {
@@ -958,6 +965,13 @@ if (_type == "CAS") then
             _plane setVariable ["mainGun", "cwr3_vacannon_nr30_veh"];
             _plane setVariable ["rocketLauncher", ["Rocket_03_AP_Plane_CAS_02_F","Rocket_03_HE_Plane_CAS_02_F"]];
             _plane setVariable ["missileLauncher", ["Missile_AGM_01_Plane_CAS_02_F"]];
+        };
+		case "cwr3_b_frs1":
+        {
+            _loadout = ["CUP_PylonPod_19Rnd_CRV7_HE_plane_M","CUP_PylonPod_19Rnd_CRV7_HE_plane_M","CUP_PylonPod_2Rnd_AGM114K_Hellfire_II_Plane_M","CUP_PylonPod_2Rnd_AGM114K_Hellfire_II_Plane_M","CUP_PylonPod_19Rnd_CRV7_HE_plane_M","CUP_PylonPod_19Rnd_CRV7_HE_plane_M"];
+            _plane setVariable ["mainGun", "CUP_Vacannon_GAU12_veh"];
+            _plane setVariable ["rocketLauncher", ["CUP_Vmlauncher_CRV7_veh"]];
+            _plane setVariable ["missileLauncher", ["CUP_Vmlauncher_AGM114K_veh"]];
         };
         // cup aircraft
         case "CUP_B_L39_CZ":

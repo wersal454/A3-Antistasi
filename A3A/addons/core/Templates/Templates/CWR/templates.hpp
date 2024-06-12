@@ -25,6 +25,15 @@
 		climate[] = {"arid"};
     };
 
+    class CWR_BAF_Temperate : CWR_Base
+    {
+		requiredAddons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core", "cwr3_weapons", "cwr3_expansion_uk"};
+        side = "Occ";
+        flagTexture = "\A3\Data_F\Flags\flag_uk_co.paa";
+        name = "CWR BAF Temperate";
+        file = "CWR_AI_BAF_Temperate";
+    };
+
     class CWR_USSR_Temperate : CWR_Base
     {
         side = "Inv";

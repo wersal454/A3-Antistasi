@@ -64,3 +64,27 @@ class cwr3_b_m939 : TRIPLES(ADDON,Nodes,Base)
 };
 
 class cwr3_b_m939_des : cwr3_b_m939 {};
+
+class cwr3_b_uk_fv620_transport : TRIPLES(ADDON,Nodes,Base)
+{
+        class Nodes
+    {
+        class Node1
+        {
+            offset[] = {0,0.83,-0.3};
+        };
+        class Node2
+        {
+            offset[] = {0,0.03,-0.3};
+        };
+        class Node3
+        {
+            offset[] = {0,-0.77,-0.3};
+        };
+        class Node4
+        {
+            offset[] = {0,-1.57,-0.3};
+        };
+    };
+};
+
