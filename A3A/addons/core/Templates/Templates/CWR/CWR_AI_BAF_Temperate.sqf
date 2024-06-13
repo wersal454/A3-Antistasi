@@ -62,7 +62,7 @@
 
 ["staticMGs", ["CUP_B_M2StaticMG_US"]] call _fnc_saveToTemplate;
 ["staticAT", ["cwr3_b_tow"]] call _fnc_saveToTemplate;
-["staticAA", ["CUP_B_CUP_Stinger_AA_pod_US"]] call _fnc_saveToTemplate;
+["staticAA", ["cwr3_b_uk_javelin_lml"]] call _fnc_saveToTemplate;
 ["staticMortars", ["cwr3_b_m252"]] call _fnc_saveToTemplate;
 ["staticHowitzers", ["cwr3_b_m119"]] call _fnc_saveToTemplate;
 
