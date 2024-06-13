@@ -107,14 +107,12 @@ _loadoutData set ["binoculars", ["Binocular"]];
 _loadoutData set ["Rangefinder", ["Binocular"]];
 
 _loadoutData set ["uniforms", [
-	"cwr3_o_fia_uniform_ttsko_p",
-	"cwr3_o_fia_uniform_ttsko_p_rolled",
-	"cwr3_o_fia_uniform_polish_splinter",
-	"cwr3_o_fia_uniform_khaki",
-	"cwr3_o_fia_uniform_granite"
+	"cwr3_trf_uniform_blumentarn",
+	"cwr3_trf_uniform_blumentarn_rolled",
+	"cwr3_trf_uniform_denison_brush_rolled"
 ]];
 
-_loadoutData set ["offuniforms", ["cwr3_o_fia_uniform_polish_splinter"]];
+_loadoutData set ["offuniforms", ["cwr3_trf_uniform_denison_brush_rolled"]];
 _loadoutData set ["vests", ["cwr3_i_vest_chicom"]];
 _loadoutData set ["heavyVests", ["cwr3_i_vest_chicom"]];
 _loadoutData set ["atBackpacks", ["cwr3_o_backpack_rpg7"]];
