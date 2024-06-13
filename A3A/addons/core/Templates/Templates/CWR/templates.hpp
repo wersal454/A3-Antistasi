@@ -55,7 +55,7 @@
     {
 		requiredAddons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core", "cwr3_weapons", "cwr3_expansion_tdf"};
         side = "Occ";
-        flagTexture = "cwr3\expansions\cwr3_expansion_tdf\data\_flag_tdf_co.paa";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\CWR\flag_tdf.paa);
         name = "CWR TDF Arid";
         file = "CWR_AI_TDF_Arid";
     };

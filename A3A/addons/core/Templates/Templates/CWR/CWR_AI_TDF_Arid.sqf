@@ -2,11 +2,13 @@
 //   Side Information   //
 //////////////////////////
 
+#include "..\..\..\script_component.hpp"
+
 ["name", "TDF"] call _fnc_saveToTemplate;
 ["spawnMarkerName", "TDF Support Corridor"] call _fnc_saveToTemplate;
 
 ["flag", "Flag_NATO_F"] call _fnc_saveToTemplate;
-["flagTexture", "cwr3\expansions\cwr3_expansion_tdf\data\_flag_tdf_co.paa"] call _fnc_saveToTemplate;
+["flagTexture", QPATHTOFOLDER(Templates\Templates\CWR\flag_tdf.paa)] call _fnc_saveToTemplate;
 ["flagMarkerType", "cwr3_faction_tdf"] call _fnc_saveToTemplate;
 
 //////////////////////////
