@@ -46,4 +46,5 @@ class mapInfo {
 	#include "Antistasi_UMB_Colombia.UMB_Colombia\mapInfo.hpp"
 	#include "Antistasi_tem_kujari.tem_kujari\mapInfo.hpp"
 	#include "Antistasi_stozec.stozec\mapInfo.hpp"
+	#include "Antistasi_yulakia.yulakia\mapInfo.hpp"
 };
