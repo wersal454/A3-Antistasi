@@ -68,18 +68,18 @@ class yulakia {
 {"prohovka", 58},
 {"mazemovo", 1488},
 {"komatin", 579}};
-	disabledTowns[] = {"Spook"};
+	disabledTowns[] = {"radarhill","lauka","fdremont","snake","spook","baralin","larta","femaleprison","prisonfalot"};
 	antennas[] = {
 		{775.425,10736.354,0},{1868.418,11576.886,0},{3896.548,9866.954,0},{4884.698,7759.159,0},{2781.467,4977.655,0},{4872.998,616.521,0},{9623.172,2436.480,0},{9971.369,4186.449,0},{9407.533,7399.086,0},{11106.395,11412.269,0},{5983.700,11891.654,0}
 	};
 	antennasBlacklistIndex[] = {};
 	banks[] = {}; //no suitable building available
 	garrison[] = {
-		{},{"outpost_4","outpost_5","outpost_6","outpost_8","outpost_9","outpost_11","outpost_13","outpost_19","outpost_23","outpost_25","outpost_29","resource_2","resource_3","resource_5","resource_9","airport_3","airport_4","factory_3","factory_6","factory_7","milbase_2","milbase_3","milbase_4","seaport_3","seaport_4"},{},{}
+		{},{"outpost_4","outpost_5","outpost_6","outpost_8","outpost_9","outpost_10","outpost_11","outpost_13","outpost_19","outpost_23","outpost_25","outpost_29","resource_2","resource_3","resource_5","resource_9","airport_3","airport_4","factory_3","factory_6","factory_7","milbase_2","milbase_3","milbase_4","seaport_3","seaport_4","control_2","control_3","control_4","control_5","control_8","control_13","control_14","control_15","control_16","control_20","control_25","control_26","control_27","control_28","control_29","control_30","control_31"},{},{"control_2","control_3","control_4","control_5","control_8","control_13","control_14","control_15","control_16","control_20","control_25","control_26","control_27","control_28","control_29","control_30","control_31"}
 	};
 	fuelStationTypes[] = {"Land_A_FuelStation_Feed","Land_Ind_FuelStation_Feed_EP1","Land_FuelStation_Feed_PMC","Land_Fuelstation","Land_Fuelstation_army","Land_Benzina_schnell"};
 	milAdministrations[] = {
-		{6126.765,8186.791,0},{2576.363,9488.853,0},{1572.933,4227.279,0},{10637.579,2256.144,0}
+		{6126.765,8186.791,0},{2576.363,9488.853,0},{1572.933,4227.279,0},{10637.579,2256.144,0},{12206.332,10544.731,0}
 	};
 	climate = "temperate";
 	buildObjects[] = {
