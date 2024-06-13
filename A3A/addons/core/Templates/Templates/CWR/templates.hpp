@@ -55,7 +55,7 @@
     {
 		requiredAddons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core", "cwr3_weapons", "cwr3_expansion_tdf"};
         side = "Occ";
-        flagTexture = QPATHTOFOLDER(Templates\Templates\CWR\flag_tdf.paa);
+        flagTexture = "cwr3\expansions\cwr3_expansion_tdf\data\flag_tdf_co.paa";
         name = "CWR TDF Arid";
         file = "CWR_AI_TDF_Arid";
     };
@@ -74,4 +74,13 @@
         flagTexture = "cwr3\general\cwr3_flags\data\belarus_old.paa";
         name = "CWR Communist Militia";
         file = "CWR_Riv_ComMilitia";
+    };
+
+    class CWR_TRF : CWR_Base
+    {
+		requiredAddons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core", "cwr3_weapons", "cwr3_expansion_tdf"};
+        side = "Riv";
+        flagTexture = "cwr3\expansions\cwr3_expansion_tdf\data\flag_rebels_co.paa";
+        name = "CWR Tonali Rebels";
+        file = "CWR_Riv_TReb";
     };
