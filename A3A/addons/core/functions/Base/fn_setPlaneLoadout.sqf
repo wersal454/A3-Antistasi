@@ -365,6 +365,7 @@ if (_type == "CASDIVE") then
 
         };
         case "cwr3_o_su25";
+		case "cwr3_tdf_su25";
 		case "CUP_B_Su25_Dyn_CDF";
         case "CUP_O_Su25_Dyn_RU";
         case "CUP_O_Su25_Dyn_SLA";
@@ -983,6 +984,7 @@ if (_type == "CAS") then
             _plane setVariable ["missileLauncher", ["Missile_AGM_01_Plane_CAS_02_F"]];
         };
         case "cwr3_o_su25";
+		case "cwr3_tdf_su25";
 		case "CUP_B_Su25_Dyn_CDF";
         case "CUP_O_Su25_Dyn_RU";
         case "CUP_O_Su25_Dyn_SLA";
