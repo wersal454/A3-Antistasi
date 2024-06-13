@@ -72,7 +72,7 @@
     {
         side = "Riv";
         flagTexture = "cwr3\general\cwr3_flags\data\belarus_old.paa";
-        name = "CWR Communist Militia";
+        name = "CWR Militia";
         file = "CWR_Riv_ComMilitia";
     };
 
