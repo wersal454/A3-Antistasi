@@ -52,12 +52,14 @@ private _fnc_buildSupportHM =
 {
     params ["_faction"];
     private _lowAir = _faction getOrDefault ["attributeLowAir", false];
+    private _noSAM = _faction getOrDefault ["attributeNoSAM", false];
     private _suppHM = createHashMap;
     {
         _x params ["_suppType", "_baseType", "_weight", "_lowAirWeight", "_effRadius", "_strikepower", "_flags", "_reqType"];
         if (_faction get _reqType isEqualTo []) then { continue };
         if ("u" in _flags and !allowUnfairSupports) then { continue };
         if ("f" in _flags and !allowFuturisticSupports) then { continue };
+        if (_suppType == "SAM" and _noSAM) then { continue };
 
         private _weight = [_weight, _lowAirWeight] select _lowAir;
         _suppHM set [_suppType, [_baseType, _weight, _effRadius, _strikepower]];
