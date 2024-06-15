@@ -457,8 +457,46 @@ class Templates
         shortName = "SAF";
         lore = $STR_A3A_templates_lore_RHS_AI_SAF;
     };
+	
 
-    // ***************************** 3CB Factions *****************************
+    //************* SFP ********************************************************
+    class SFP_Base
+    {
+        requiredAddons[] = {"Swedish_Forces_Pack","CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core"};
+        basepath = QPATHTOFOLDER(Templates\Templates\SFP);
+        logo = "\sfp_config\data\logos\sfp_logo_ca.paa";
+	    flagTexture = "\sfp_config\data\flag_sweden_co.paa";
+        priority = 70;
+    };
+    class SFP_SAF00 : SFP_Base
+    {
+	    side = "Occ";
+        name = "SFP Early SDF";
+        file = "SFP_AI_SWE_early";
+        climate[] = {"temperate","tropical","arid"};
+    };
+    class SFP_SAF00_Arctic : SFP_Base
+    {
+	    side = "Occ";
+        name = "SFP Early SDF ARTIC";
+        file = "SFP_AI_SWE_early_snow";
+        climate[] = {"arctic"};
+    };
+    class SFP_SAF15 : SFP_Base
+    {
+	    side = "Occ";
+        name = "SFP Modern SDF";
+        file = "SFP_AI_SWE";
+        climate[] = {"temperate","tropical","arid"};
+    };
+    class SFP_SAF15_Arctic : SFP_Base
+    {
+	    side = "Occ";
+        name = "SFP Modern SDF ARTIC";
+        file = "SFP_AI_SWE_snow";
+        climate[] = {"arctic"};
+    };
+    //************* 3CB Factions ***************************************************
 
     class 3CBF_Base
     {
