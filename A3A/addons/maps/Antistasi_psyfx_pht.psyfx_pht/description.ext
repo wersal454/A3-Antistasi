@@ -13,7 +13,7 @@ class CfgDiscordRichPresence
     defaultDetails="";
     defaultState="";
     defaultLargeImageKey="tanoa";
-    defaultLargeImageText="Antistasi Ultimate - Tanoa";
+    defaultLargeImageText="Antistasi Ultimate - Phuoc Tuy";
     defaultSmallImageKey="arma_3_logo";
     defaultSmallImageText="Arma 3 Custom Scenario";
     useTimeElapsed=1;

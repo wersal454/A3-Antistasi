@@ -194,7 +194,8 @@ A3A_milBuildingWhitelist = A3A_buildingWhitelist + [
 	"Land_vn_guardtower_03_f",
 	"Land_vn_guardtower_04_f",
 	"LAND_CSJ_gunpit",
-	"LAND_uns_weapon_pit"
+	"LAND_uns_weapon_pit",
+	"csj_VCbunk01"
 ];
 A3A_buildingBlacklist = [
 	"Bridge_PathLod_base_F","Land_Slum_House03_F","Land_Bridge_01_PathLod_F","Land_Bridge_Asphalt_PathLod_F","Land_Bridge_Concrete_PathLod_F","Land_Bridge_HighWay_PathLod_F","Land_Bridge_01_F","Land_Bridge_Asphalt_F","Land_Bridge_Concrete_F","Land_Bridge_HighWay_F","Land_Canal_Wall_Stairs_F","warehouse_02_f",

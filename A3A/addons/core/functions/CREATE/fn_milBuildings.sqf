@@ -319,7 +319,7 @@ for "_i" from 0 to (count _buildings) - 1 do
         {
             private _type = selectRandom (_faction get "staticMGs");
             private _dir = (getDir _building) - 180;
-            private _pos = _building modelToWorld [0.5,0.5,0.3];
+            private _pos = _building modelToWorld [0.5,0.1,0.3];
             [_type, _pos, _dir] call _fnc_spawnStatic;
         };
         if     ((_typeB == "LAND_CSJ_gunpit")) exitWith
@@ -327,6 +327,13 @@ for "_i" from 0 to (count _buildings) - 1 do
             private _type = selectRandom (_faction get "staticAA");
             private _dir = (getDir _building) - 90;
             private _pos = _building modelToWorld [0,0,1.2];
+            [_type, _pos, _dir] call _fnc_spawnStatic;
+        };
+        if     ((_typeB == "csj_VCbunk01")) exitWith
+        {
+            private _type = selectRandom (_faction get "staticMGs");
+            private _dir = (getDir _building) - 180;
+            private _pos = _building modelToWorld [0,0,-0.5];
             [_type, _pos, _dir] call _fnc_spawnStatic;
         };
     };
