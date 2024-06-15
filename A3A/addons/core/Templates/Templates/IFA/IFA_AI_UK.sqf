@@ -9,6 +9,10 @@
 ["flagTexture", "\A3\Data_F\Flags\flag_uk_co.paa"] call _fnc_saveToTemplate;
 ["flagMarkerType", "flag_UK"] call _fnc_saveToTemplate;
 
+["attributeNoSAM", true] call _fnc_saveToTemplate;              // Don't use SAM supports
+["attributeLowAir", true] call _fnc_saveToTemplate;
+["placeIntel_itemLarge", ["Intel_File2_F",-155,false]] call _fnc_saveToTemplate;
+
 //////////////////////////
 //       Vehicles       //
 //////////////////////////
