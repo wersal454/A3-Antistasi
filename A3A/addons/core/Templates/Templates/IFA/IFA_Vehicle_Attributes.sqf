@@ -1,7 +1,4 @@
 
-["attributeNoSAM", true] call _fnc_saveToTemplate;              // Don't use SAM supports
-["attributeLowAir", true] call _fnc_saveToTemplate;
-["placeIntel_itemLarge", ["Intel_File2_F",-155,false]] call _fnc_saveToTemplate;
 
 
 //Most vehicles below are inserted into categories that which normally has higher requirements in regular antistasi

@@ -9,6 +9,10 @@
 ["flagTexture", "\x\A3A\addons\core\Pictures\Flags\ifa_sov.paa"] call _fnc_saveToTemplate;
 ["flagMarkerType", "a3a_flag_SOV"] call _fnc_saveToTemplate;
 
+["attributeNoSAM", true] call _fnc_saveToTemplate;              // Don't use SAM supports
+["attributeLowAir", true] call _fnc_saveToTemplate;
+["placeIntel_itemLarge", ["Intel_File2_F",-155,false]] call _fnc_saveToTemplate;
+
 //////////////////////////
 //       Vehicles       //
 //////////////////////////
