@@ -13,8 +13,8 @@ Arguments:
     <INTEGER> Total number of vehicles to create
     <INTEGER> Number of attack/support vehicles to create
     <INTEGER> Optional, tier modifier to apply to vehicle selection (Default: 0)
+    <STRING> Optional, troop type to use (Default: "Normal")
     <BOOL> Optional, true to only use tanks (Default: false)
-//    <STRING> Optional, troop type to use (Default: "Normal")
 
 Return array:
     <SCALAR> Resources spent
@@ -25,7 +25,7 @@ Return array:
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-params ["_side", "_base", "_target", "_resPool", "_vehCount", "_vehAttackCount", ["_tierMod", 0], ["_tanksOnly", false]];
+params ["_side", "_base", "_target", "_resPool", "_vehCount", "_vehAttackCount", ["_tierMod", 0], ["_troopType", "Normal"], ["_tanksOnly", false]];
 private _targpos = if (_target isEqualType []) then { _target } else { markerPos _target };
 private _transportRatio = 1 - _vehAttackCount / _vehCount;
 
@@ -44,7 +44,7 @@ private _landPosBlacklist = [];
 for "_i" from 1 to _vehCount do {
     private _vehType = selectRandomWeighted ([_supportPool, _transportPool] select _isTransport);
 
-    private _vehData = [_vehType, "Normal", _resPool, _landPosBlacklist, _side, _base, _targPos] call A3A_fnc_createAttackVehicle;
+    private _vehData = [_vehType, _troopType, _resPool, _landPosBlacklist, _side, _base, _targPos] call A3A_fnc_createAttackVehicle;
     if !(_vehData isEqualType []) exitWith {
         Error_1("Failed to spawn land vehicle at marker %1", _base);
     };          // couldn't create for some reason, assume we're out of spawn places?
