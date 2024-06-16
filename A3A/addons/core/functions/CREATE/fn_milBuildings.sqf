@@ -343,6 +343,41 @@ for "_i" from 0 to (count _buildings) - 1 do
             private _pos = _building modelToWorld [-1.2,1,0.2];
             [_type, _pos, _dir] call _fnc_spawnStatic;
         };
+        if  ((_typeB == "Land_SPE_H667")) exitWith
+        {
+            private _type = selectRandom (_faction get "staticMGs");
+            private _dir = (getDir _building) - 180;
+            private _pos = _building modelToWorld [0,-0.1,0.3];
+            [_type, _pos, _dir] call _fnc_spawnStatic;
+        };
+        if  ((_typeB == "Land_SPE_H612")) exitWith
+        {
+            private _type = selectRandom (_faction get "staticMGs");
+            private _dir = (getDir _building) - 180;
+            private _pos = _building modelToWorld [-0.3,-5,0.3];
+            [_type, _pos, _dir] call _fnc_spawnStatic;
+        };
+        if  ((_typeB == "Land_SPE_H630")) exitWith
+        {
+            private _type = selectRandom (_faction get "staticMGs");
+            private _dir = (getDir _building) - 180;
+            private _pos = _building modelToWorld [0.8,-2.5,0.3];
+            [_type, _pos, _dir] call _fnc_spawnStatic;
+        };
+        if  ((_typeB == "Land_SPE_H669")) exitWith
+        {
+            private _type = selectRandom (_faction get "staticAT");
+            private _dir = (getDir _building) - 180;
+            private _pos = _building modelToWorld [0,-3.2,0.3];
+            [_type, _pos, _dir] call _fnc_spawnStatic;
+        };
+        if  ((_typeB == "Land_SPE_H679")) exitWith
+        {
+            private _type = selectRandom (_faction get "staticAT");
+            private _dir = (getDir _building) - 180;
+            private _pos = _building modelToWorld [-0.2,-2,0.3];
+            [_type, _pos, _dir] call _fnc_spawnStatic;
+        };
     };
 };
 

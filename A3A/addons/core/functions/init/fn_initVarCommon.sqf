@@ -196,7 +196,12 @@ A3A_milBuildingWhitelist = A3A_buildingWhitelist + [
 	"Land_WW2_Bunker_H679",
 	"Land_WW2_Bunker_Gun_R",
 	"Land_WW2_Bunker_Gun_L",
-	"Land_WW2_BET_Flak_Bettung"
+	"Land_WW2_BET_Flak_Bettung",
+	"Land_SPE_H612",
+	"Land_SPE_H630",
+	"Land_SPE_H667",
+	"Land_SPE_H669",
+	"Land_SPE_H679"
 ];
 A3A_buildingBlacklist = [
 	"Bridge_PathLod_base_F","Land_Slum_House03_F","Land_Bridge_01_PathLod_F","Land_Bridge_Asphalt_PathLod_F","Land_Bridge_Concrete_PathLod_F","Land_Bridge_HighWay_PathLod_F","Land_Bridge_01_F","Land_Bridge_Asphalt_F","Land_Bridge_Concrete_F","Land_Bridge_HighWay_F","Land_Canal_Wall_Stairs_F","warehouse_02_f",
