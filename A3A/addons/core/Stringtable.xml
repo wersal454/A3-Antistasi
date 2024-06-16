@@ -5791,7 +5791,7 @@
             <Key ID="STR_A3AU_blackmarket_ignore_requirements">
                 <Original>Ignore Black Market Vehicle Requirements</Original>
                 <English>Ignore Black Market Vehicle Requirements</English>
-                <Russian>Placeholder</Russian>
+                <Russian>Игнорировать условия разблокировки транспорта у черного торговца </Russian>
             </Key>
             <Key ID="STR_A3AU_stamina_enabled">
                 <Original>Enable Stamina (Vanilla)</Original>
