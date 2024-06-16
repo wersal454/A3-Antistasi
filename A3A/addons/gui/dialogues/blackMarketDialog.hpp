@@ -16,16 +16,16 @@ class A3A_BlackMarketDialog : A3A_TabbedDialog
             h = 5 * GRID_H;
         };
 
-        class TipText : A3A_TitlebarText
-        {
-          idc = -1;
-          text = $STR_antistasi_dialogs_black_market_tip;
-          font = A3A_NOTIFICATION_FONT;
-          x = DIALOG_X;
-          y = DIALOG_Y - 1 * GRID_H;
-          w = DIALOG_W * GRID_W;
-          h = 5 * GRID_H;
-        };
+        // class TipText : A3A_TitlebarText
+        // {
+        //     idc = -1;
+        //     text = $STR_antistasi_dialogs_black_market_tip;
+        //     font = A3A_NOTIFICATION_FONT;
+        //     x = DIALOG_X;
+        //     y = DIALOG_Y - 1 * GRID_H;
+        //     w = DIALOG_W * GRID_W;
+        //     h = 5 * GRID_H;
+        // };
     
         class TabButtons : A3A_ControlsGroupNoScrollbars
         {
@@ -67,6 +67,26 @@ class A3A_BlackMarketDialog : A3A_TabbedDialog
                     h = PX_H(DIALOG_H) - 8 * GRID_H;
                 };
             };
+        };
+
+        class AboutButton : A3A_CloseButton
+        {
+            idc = -1;
+            text = A3A_Icon_Requirements;
+            onButtonClick = "";
+            url = "https://github.com/SilenceIsFatto/A3-Antistasi-Ultimate/wiki/Arms-Dealer#vehicle-unlock-requirements";
+            x = DIALOG_X + DIALOG_W * GRID_W - 10 * GRID_W;
+            y = DIALOG_Y - 10 * GRID_H;
+        };
+        class AboutText : A3A_TitlebarText
+        {
+            idc = -1;
+            text = $STR_trader_black_market_requirements;
+            font = A3A_NOTIFICATION_FONT;
+            x = DIALOG_X;
+            y = DIALOG_Y - 1 * GRID_H;
+            w = DIALOG_W * GRID_W;
+            h = 5 * GRID_H;
         };
 
         class CloseButton : A3A_CloseButton
