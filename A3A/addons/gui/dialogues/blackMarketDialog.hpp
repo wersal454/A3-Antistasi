@@ -74,7 +74,7 @@ class A3A_BlackMarketDialog : A3A_TabbedDialog
             idc = -1;
             text = A3A_Icon_Requirements;
             onButtonClick = "";
-            url = "https://docs.google.com/spreadsheets/d/1WN8JbQZncTYtS_S9Wk2AzqUnAFf8NzVh0Tkk-BhUgj8/edit#gid=438629924"; // Replace with link to ultimate github (or site)
+            url = "https://github.com/SilenceIsFatto/A3-Antistasi-Ultimate/wiki/Arms-Dealer#vehicle-unlock-requirements";
             x = DIALOG_X + DIALOG_W * GRID_W - 10 * GRID_W;
             y = DIALOG_Y - 10 * GRID_H;
         };
