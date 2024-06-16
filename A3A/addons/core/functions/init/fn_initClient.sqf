@@ -322,12 +322,13 @@ player addEventHandler ["GetInMan", {
     };
 }];
 
+private _blackMarketStock = call A3U_fnc_grabBlackMarketVehicles;
 
-if (((A3A_faction_reb get "blackMarketStock") select {(_x select 2) isEqualTo "ARTILLERY"}) isNotEqualTo []) then {
+if ((_blackMarketStock select {(_x select 2) isEqualTo "ARTILLERY"}) isNotEqualTo []) then {
 	player addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
 		private _vehType = typeOf _vehicle;
-		private _artyTypes = (A3A_faction_reb get "blackMarketStock") select {(_x select 2) isEqualTo "ARTILLERY"};
+		private _artyTypes = _blackMarketStock select {(_x select 2) isEqualTo "ARTILLERY"};
 
 		if ((typeOf _vehicle) in _artyTypes) then {
 			enableEngineArtillery false;
@@ -336,7 +337,7 @@ if (((A3A_faction_reb get "blackMarketStock") select {(_x select 2) isEqualTo "A
 
 	player addEventHandler ["GetOutMan", {
 		params ["_unit", "_role", "_vehicle"];
-        private _artyTypes = (A3A_faction_reb get "blackMarketStock") select {(_x select 2) isEqualTo "ARTILLERY"};
+        private _artyTypes = _blackMarketStock select {(_x select 2) isEqualTo "ARTILLERY"};
 
 		if ((typeOf _vehicle) in _artyTypes) then {
 			enableEngineArtillery true;
