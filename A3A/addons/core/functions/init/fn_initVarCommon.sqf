@@ -193,6 +193,15 @@ A3A_milBuildingWhitelist = A3A_buildingWhitelist + [
 	"Land_vn_guardtower_02_f",
 	"Land_vn_guardtower_03_f",
 	"Land_vn_guardtower_04_f",
+	"Land_WW2_Bunker_H679",
+	"Land_WW2_Bunker_Gun_R",
+	"Land_WW2_Bunker_Gun_L",
+	"Land_WW2_BET_Flak_Bettung",
+	"Land_SPE_H612",
+	"Land_SPE_H630",
+	"Land_SPE_H667",
+	"Land_SPE_H669",
+	"Land_SPE_H679"
 	"LAND_CSJ_gunpit",
 	"LAND_uns_weapon_pit",
 	"csj_VCbunk01"
