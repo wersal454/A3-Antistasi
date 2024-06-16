@@ -233,3 +233,19 @@
         addons[] = {"SSV_Android", "SSV_Vanguard", "OPTRE_Core"};
         vehicles = "vehicles_android";
     };
+    class addons_cwr : addons_base
+    {
+        addons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core", "cwr3_weapons"};
+        weapons = "cwrstock";
+        vehicles = "vehicles_cwriii"
+    };
+    class addons_cwrbaf : addons_base
+    {
+        addons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core", "cwr3_weapons", "cwr3_expansion_uk"};
+        vehicles = "vehicles_cwriiibaf"
+    };
+    class addons_cwrusmc : addons_base
+    {
+        addons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core", "cwr3_weapons", "cwr3_expansion_usmc"};
+        vehicles = "vehicles_cwriiiusmc"
+    };
