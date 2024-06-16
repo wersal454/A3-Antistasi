@@ -5618,6 +5618,9 @@
             </Key>
         </Container>
         <Container name="A3A_selfRevive">
+            <Key ID="STR_A3A_Params_removeRestore_title">
+                <Original>Disable the "Restore nearby units" option on the vehicle box.</Original>
+            </Key>
             <Key ID="STR_A3A_Params_selfReviveMethods_title">
                 <Original>Self-revive methods enabled</Original>
                 <Russian>Способы самовозрождения активированны</Russian>
