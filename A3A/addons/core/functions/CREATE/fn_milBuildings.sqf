@@ -399,6 +399,13 @@ for "_i" from 0 to (count _buildings) - 1 do
             private _pos = _building modelToWorld [0,0,-0.5];
             [_type, _pos, _dir] call _fnc_spawnStatic;
         };
+        if     ((_typeB == "Land_Vil_Tower")) exitWith
+        {
+            private _type = selectRandom (_faction get "staticMGs");
+            private _dir = (getDir _building) - 180;
+            private _pos = _building modelToWorld [-0.5,-0.7,1.3];
+            [_type, _pos, _dir] call _fnc_spawnStatic;
+        };
     };
 };
 
