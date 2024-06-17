@@ -49,7 +49,7 @@ if (_donateAmount <= 0) exitWith {
     false;
 };
 
-if (typeName _donateTo isEqualTo "STRING") exitWith {
+if (_donateTo isEqualType "") exitWith {
     switch (toLower _donateTo) do {
         case ("faction"): {
             if ([-_donateAmount, _donateFrom] call A3A_fnc_resourcesPlayer) exitWith {
@@ -62,10 +62,10 @@ if (typeName _donateTo isEqualTo "STRING") exitWith {
             [_title, format [localize "STR_A3A_fn_orgp_donMon_no_less", _donateAmount]] remoteExecCall ["A3A_fnc_customHint", _donateFrom];
             false;  // Return
         };
-    };
-    default {
-        Error("Switch case ("+toLower _donateTo+") does not match any options.");
-        false;  // Return
+        default {
+            Error("Switch case ("+toLower _donateTo+") does not match any options.");
+            false;  // Return
+        };
     };
 };
 
