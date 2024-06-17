@@ -79,7 +79,7 @@ class yulakia {
 	};
 	fuelStationTypes[] = {"Land_A_FuelStation_Feed","Land_Ind_FuelStation_Feed_EP1","Land_FuelStation_Feed_PMC","Land_Fuelstation","Land_Fuelstation_army","Land_Benzina_schnell"};
 	milAdministrations[] = {
-		{6126.765,8186.791,0},{2576.363,9488.853,0},{1572.933,4227.279,0},{10637.579,2256.144,0},{12206.332,10544.731,0}
+		{6126.732,8186.014,0},{2576.363,9488.853,0},{1572.933,4227.279,0},{10637.579,2256.144,0},{12206.332,10544.731,0}
 	};
 	climate = "temperate";
 	buildObjects[] = {
