@@ -64,7 +64,8 @@ while {true} do {
     if (dialog) then { sleep 0.1; continue };           // don't spam hints while the setup dialog is open
     private _stateStr = localize ("STR_A3A_feedback_serverinfo_" + A3A_startupState);
     isNil { [localize "STR_A3A_feedback_serverinfo", _stateStr, true] call A3A_fnc_customHint };         // not re-entrant, apparently
-    if (A3A_startupState == "completed") exitWith {};
+    //if (A3A_startupState == "completed") exitWith {};
+    if (!isNil "serverInitDone") exitWith {};           // speculative init order fix
     sleep 0.1;
 };
 

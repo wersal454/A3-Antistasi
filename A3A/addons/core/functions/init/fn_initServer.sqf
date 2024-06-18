@@ -303,9 +303,9 @@ if (A3A_hasACE) then {
 };
 
 
+A3A_startupState = "completed"; publicVariable "A3A_startupState";
 serverInitDone = true; publicVariable "serverInitDone";
 Info("Setting serverInitDone as true");
-A3A_startupState = "completed"; publicVariable "A3A_startupState";
 
 
 // ********************* Initialize loops *******************************************
