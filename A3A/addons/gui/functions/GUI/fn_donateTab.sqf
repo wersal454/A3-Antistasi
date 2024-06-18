@@ -52,7 +52,8 @@ switch (_mode) do
         _moneyText ctrlSetText format ["%1 €", _money];
 
         private _playerListCtrl = _display displayCtrl A3A_IDC_DONATEPLAYERLIST;
-        A3A_GUI_donateTab_sortedPlayers = allPlayers select { _x isNotEqualTo player } apply {[toLower name _x,_x]};
+        private _players = allPlayers - entities "HeadlessClient_F";
+        A3A_GUI_donateTab_sortedPlayers = _players select { _x isNotEqualTo player } apply {[toLower name _x,_x]};
         A3A_GUI_donateTab_sortedPlayers sort true;
         A3A_GUI_donateTab_sortedPlayers = A3A_GUI_donateTab_sortedPlayers apply {_x#1};
         lbClear _playerListCtrl;
