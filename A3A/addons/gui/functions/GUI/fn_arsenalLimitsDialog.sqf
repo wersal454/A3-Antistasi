@@ -29,6 +29,15 @@ switch (_mode) do
 {
     case ("init"):
     {
+        if (!isServer) then {
+            // Go fetch a fresh copy of the arsenal data
+            jna_datalist = nil;
+            [clientOwner, "jna_datalist"] remoteExecCall ["publicVariableClient", 2];
+            private _timeout = time + 10;
+            waitUntil { sleep 0.1; !isNil "jna_datalist" or time > _timeout };
+        };
+        if (isNil "jna_datalist") exitWith { closeDialog 0 };
+
         if !(player call A3A_fnc_isMember) then {
             [localize "STR_antistasi_arsenal_limits_dialog_hint_title", localize "STR_antistasi_arsenal_limits_dialog_guest_warning"] call A3A_fnc_customHint;
             (_display displayctrl A3A_IDC_ARSLIMRESETBUTTON) ctrlEnable false;
