@@ -540,6 +540,7 @@ class CfgFunctions
             class buildMinefield {};
             class controlHCsquad {};
             class controlunit {};
+            class convertToSquad {};
             class dismissPlayerGroup {};
             class dismissSquad {};
             class enemyNearCheck {};
