@@ -68,7 +68,7 @@ class yulakia {
 {"prohovka", 58},
 {"mazemovo", 1488},
 {"komatin", 579}};
-	disabledTowns[] = {"radarhill","lauka","fdremont","snake","spook","baralin","larta","femaleprison","prisonfalot"};
+	disabledTowns[] = {"belin","mellenlake","radarhill","lauka","lapotchka","gorka","southborder","fdremont","lilychalet","zelenchi","fairview","zimakscottage","snake","spook","baralin","haleyscottage","devilsgorge","heliport","mirtelov","lakesanctuary","larta","femaleprison","prisonfalot","npp"};
 	antennas[] = {
 		{775.425,10736.354,0},{1868.418,11576.886,0},{3896.548,9866.954,0},{4884.698,7759.159,0},{2781.467,4977.655,0},{4872.998,616.521,0},{9623.172,2436.480,0},{9971.369,4186.449,0},{9407.533,7399.086,0},{11106.395,11412.269,0},{5983.700,11891.654,0},{6171.370,4459.927,0}
 	};
@@ -79,7 +79,7 @@ class yulakia {
 	};
 	fuelStationTypes[] = {"Land_A_FuelStation_Feed","Land_Ind_FuelStation_Feed_EP1","Land_FuelStation_Feed_PMC","Land_Fuelstation","Land_Fuelstation_army","Land_Benzina_schnell"};
 	milAdministrations[] = {
-		{6126.732,8186.014,0},{2576.363,9488.853,0},{1572.933,4227.279,0},{10637.579,2256.144,0},{12206.332,10544.731,0}
+		{6126.732,8186.014,0},{2568.647,9486.456,0},{1572.933,4227.279,0},{10637.579,2256.144,0},{12206.332,10544.731,0}
 	};
 	climate = "temperate";
 	buildObjects[] = {
