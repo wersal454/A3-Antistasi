@@ -6,7 +6,7 @@
 ["spawnMarkerName", "USSR Support Corridor"] call _fnc_saveToTemplate;
 
 ["flag", "Flag_NATO_F"] call _fnc_saveToTemplate;
-["flagTexture", "cup\baseconfigs\cup_baseconfigs\data\flags\flag_rus_co.paa"] call _fnc_saveToTemplate;
+["flagTexture", "cwr3\general\cwr3_flags\data\ussr.paa"] call _fnc_saveToTemplate;
 ["flagMarkerType", "cwr3_faction_ussr"] call _fnc_saveToTemplate;
 
 //////////////////////////
