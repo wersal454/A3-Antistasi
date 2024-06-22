@@ -659,6 +659,9 @@
         <Turkish>Direkler</Turkish>
         <Chinesesimp>挂架</Chinesesimp>
       </Key>
+      <Key ID="STR_HR_GRG_Generic_SellVeh">
+        <Original>Sell Vehicle</Original>
+      </Key>
       <Key ID="STR_HR_GRG_Generic_Static">
         <Original>Statics</Original>
         <German>Statik</German>
@@ -672,9 +675,6 @@
         <Portuguese>Estáticas</Portuguese>
         <Turkish>Statikler</Turkish>
         <Chinesesimp>固定武器</Chinesesimp>
-      </Key>
-      <Key ID="STR_HR_GRG_Generic_SellVeh">
-        <Original>Sell Vehicle</Original>
       </Key>
       <Key ID="STR_HR_GRG_Generic_Texture">
         <Original>Texture</Original>
