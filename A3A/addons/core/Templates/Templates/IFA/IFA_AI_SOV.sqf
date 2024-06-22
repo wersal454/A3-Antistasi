@@ -23,7 +23,7 @@
 
 // vehicles can be placed in more than one category if they fit between both. Cost will be derived by the higher category
 ["vehiclesBasic", ["LIB_Willys_MB"]] call _fnc_saveToTemplate;
-["vehiclesLightUnarmed", ["LIB_Willys_MB", "LIB_Willys_MB_Hood"]] call _fnc_saveToTemplate;
+["vehiclesLightUnarmed", ["LIB_Willys_MB", "LIB_Willys_MB"]] call _fnc_saveToTemplate;
 private _vehiclesLightArmed = ["LIB_Scout_M3_FFV", "LIB_Scout_M3_FFV"];
 ["vehiclesTrucks", ["LIB_US6_Open","LIB_US6_Tent_Cargo"]] call _fnc_saveToTemplate;
 ["vehiclesCargoTrucks", ["LIB_US6_Open_Cargo","LIB_Zis5v"]] call _fnc_saveToTemplate;
@@ -66,9 +66,9 @@ private _vehiclesHeavyTanks = ["LIB_JS2_43"];
 //Config special vehicles
 ["vehiclesMilitiaLightArmed", ["a3a_LIB_Willys_MB_M1919", "a3a_LIB_Willys_MB_M1919"]] call _fnc_saveToTemplate;
 ["vehiclesMilitiaTrucks", ["LIB_Zis5v"]] call _fnc_saveToTemplate;
-["vehiclesMilitiaCars", ["LIB_GazM1_SOV","LIB_GazM1_SOV_camo_sand"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaCars", ["LIB_Willys_MB_Hood","LIB_Willys_MB_Hood"]] call _fnc_saveToTemplate;
 
-["vehiclesPolice", ["LIB_GazM1"]] call _fnc_saveToTemplate;
+["vehiclesPolice", ["LIB_GazM1_SOV"]] call _fnc_saveToTemplate;
 
 if (isClass (configFile >> "CfgPatches" >> "FA_WW2_Armored_Cars")) then {
     _vehiclesLightArmed append ["FA_BA10M", "FA_BA64"];
