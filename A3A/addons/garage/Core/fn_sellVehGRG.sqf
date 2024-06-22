@@ -46,5 +46,5 @@ _recipients pushBackUnique 2; // to avoid double-calling the function on localho
 
 [_refund] spawn HR_GRG_addResources;
 
-["STR_HR_GRG_Feedback_sellVehicle_sold",[str _refund]] call HR_GRG_fnc_Hint;
+["STR_HR_GRG_Feedback_sellVehicle_sold",[str _refund]] remoteExecCall ["HR_GRG_fnc_hint", _player];
 Info_4("Vehicle UID %1 sold by %2 for %3. Vehicle classname: %4.", _vehUID, name _player, _refund,_class);
