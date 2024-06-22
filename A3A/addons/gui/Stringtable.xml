@@ -2,12 +2,6 @@
 <Project name="A3-Antistasi">
   <Package name="A3-Antistasi gui">
     <Container name="arsenal_limits_dialog">
-      <Key ID="STR_antistasi_arsenal_limits_dialog_hint_title">
-        <Original>Arsenal Guest Limits</Original>
-      </Key>
-      <Key ID="STR_antistasi_arsenal_limits_dialog_guest_warning">
-        <Original>As a guest commander you can't reduce arsenal limits below default, or below values set by members.</Original>
-      </Key>
       <Key ID="STR_antistasi_arsenal_limits_dialog_close">
         <Original>CLOSE</Original>
         <German>Schließen</German>
@@ -35,6 +29,12 @@
         <Portuguese>Atual</Portuguese>
         <Turkish>Şu anki</Turkish>
         <Chinesesimp>当前</Chinesesimp>
+      </Key>
+      <Key ID="STR_antistasi_arsenal_limits_dialog_guest_warning">
+        <Original>As a guest commander you can't reduce arsenal limits below default, or below values set by members.</Original>
+      </Key>
+      <Key ID="STR_antistasi_arsenal_limits_dialog_hint_title">
+        <Original>Arsenal Guest Limits</Original>
       </Key>
       <Key ID="STR_antistasi_arsenal_limits_dialog_limit">
         <Original>Limit</Original>
@@ -3054,13 +3054,6 @@
       </Key>
       <Key ID="STR_antistasi_dialogs_main_player_money_text">
         <Original>Current money: € %1</Original>
-        <German>Aktuelles Geld:&lt;br/&gt;€ %1</German>
-        <Italian>Denaro attuale:&lt;br/&gt;€ %1</Italian>
-        <Spanish>Dinero:&lt;br/&gt;€ %1</Spanish>
-        <French>Argent actuel :&lt;br/&gt;€ %1</French>
-        <Korean>현재 자금:&lt;br/&gt;%1€</Korean>
-        <Russian>Текущий баланс:&lt;br/&gt;€ %1</Russian>
-        <Czech>Aktuální peníze:&lt;br/&gt;€ %1</Czech>
       </Key>
       <Key ID="STR_antistasi_dialogs_main_sell_vehicle">
         <Original>Sell</Original>
@@ -3951,6 +3944,9 @@
       </Key>
     </Container>
     <Container name="setup_dialog">
+      <Key ID="STR_A3A_fn_GUI_setupLoadgameTab_badFactions">
+        <Original>The currently selected factions are not loaded.&lt;br/&gt;Go to the Factions tab and select available factions.</Original>
+      </Key>
       <Key ID="STR_A3A_fn_GUI_setupLoadgameTab_copy">
         <Original>Copy game with ID %1</Original>
         <Italian>Copia partita con ID %1</Italian>
@@ -4112,17 +4108,6 @@
       </Key>
       <Key ID="STR_antistasi_dialogs_setup_dlc">
         <Original>DLC and Addons</Original>
-        <German>DLC</German>
-        <Italian>DLC</Italian>
-        <Spanish>DLC</Spanish>
-        <French>DLC</French>
-        <Korean>DLC</Korean>
-        <Russian>DLC</Russian>
-        <Polish>DLC</Polish>
-        <Czech>DLC</Czech>
-        <Portuguese>DLC</Portuguese>
-        <Turkish>DLC</Turkish>
-        <Chinesesimp>DLC</Chinesesimp>
       </Key>
       <Key ID="STR_antistasi_dialogs_setup_faction_tab_button">
         <Original>Factions</Original>
@@ -4140,6 +4125,9 @@
       </Key>
       <Key ID="STR_antistasi_dialogs_setup_factionInfo">
         <Original>Faction Information</Original>
+      </Key>
+      <Key ID="STR_antistasi_dialogs_setup_infoPanel_header">
+        <Original>%1 Information</Original>
       </Key>
       <Key ID="STR_antistasi_dialogs_setup_invaders">
         <Original>Invaders</Original>
@@ -4266,6 +4254,9 @@
         <Portuguese>Parametros</Portuguese>
         <Turkish>Parametreler</Turkish>
         <Chinesesimp>参数</Chinesesimp>
+      </Key>
+      <Key ID="STR_antistasi_dialogs_setup_prettyAddons">
+        <Original>Required Addons: %1</Original>
       </Key>
       <Key ID="STR_antistasi_dialogs_setup_rebels">
         <Original>Rebels</Original>
@@ -4398,15 +4389,6 @@
         <Portuguese>Usar novo ficheiro</Portuguese>
         <Turkish>Yeni kayıt dosyası kullan</Turkish>
         <Chinesesimp>使用新的存档文件</Chinesesimp>
-      </Key>
-      <Key ID="STR_antistasi_dialogs_setup_infoPanel_header">
-        <Original>%1 Information</Original>
-      </Key>
-      <Key ID="STR_antistasi_dialogs_setup_prettyAddons">
-        <Original>Required Addons: %1</Original>
-      </Key>
-      <Key ID="STR_A3A_fn_GUI_setupLoadgameTab_badFactions">
-        <Original>The currently selected factions are not loaded.\nGo to the Factions tab and select available factions.</Original>
       </Key>
     </Container>
   </Package>
