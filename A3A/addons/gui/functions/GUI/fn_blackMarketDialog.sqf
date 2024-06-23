@@ -33,11 +33,22 @@ params[
     ["_callbackHandlerKey", "BUYFIA"]
 ];
 
+private _display = findDisplay A3A_IDD_BLACKMARKETVEHICLEDIALOG;
+private _paramsTable = _display displayCtrl A3A_IDC_SETUP_BMTABLE;
+
 switch (_mode) do
 {
     case ("switchTab"):
     {
         ['on'] call SCRT_fnc_ui_toggleMenuBlur;
+
+        // private _vehicleType = (_paramsTable getVariable ["vehicleType", ""]);
+
+        // diag_log _vehicleType;
+
+        // private _categoryIndex = _vehicleType lbValue lbCurSel _vehicleType;
+
+        // diag_log _categoryIndex;
 
         private _display = findDisplay A3A_IDD_BLACKMARKETVEHICLEDIALOG;
         private _selectedTab = _params select 0;
@@ -47,8 +58,53 @@ switch (_mode) do
         private _selectedTabIDC = -1;
         switch (_selectedTab) do 
         {
-            case ("vehicles"): {
+            case ("all"): 
+            {
                 _selectedTabIDC = A3A_IDC_BLACKMARKETMAIN;
+            };
+            case ("artillery"): 
+            {
+                _selectedTabIDC = A3A_IDC_BLACKMARKETARTY;
+            };
+            case ("apc"): 
+            {
+                _selectedTabIDC = A3A_IDC_BLACKMARKETAPC;
+            };
+            case ("AA"): 
+            {
+                _selectedTabIDC = A3A_IDC_BLACKMARKETAA;
+            };
+            case ("uav"): 
+            {
+                _selectedTabIDC = A3A_IDC_BLACKMARKETUAV;
+            };
+            case ("tank"): 
+            {
+                _selectedTabIDC = A3A_IDC_BLACKMARKETTANK;
+            };
+            case ("statics"):
+            {
+                _selectedTabIDC = A3A_IDC_BLACKMARKETSTATICS;
+            };
+            case ("heli"): 
+            {
+                _selectedTabIDC = A3A_IDC_BLACKMARKETHELI;
+            };
+            case ("plane"): 
+            {
+                _selectedTabIDC = A3A_IDC_BLACKMARKETPLANE;
+            };
+            case ("armedcar"): 
+            {
+                _selectedTabIDC = A3A_IDC_BLACKMARKETARMEDCAR;
+            };
+            case ("unarmedcar"): 
+            {
+                _selectedTabIDC = A3A_IDC_BLACKMARKETUNARMEDCAR;
+            };
+            case ("boat"): 
+            {
+                _selectedTabIDC = A3A_IDC_BLACKMARKETBOAT;
             };
         };
 
@@ -58,6 +114,17 @@ switch (_mode) do
 
         private _allTabs = [
             A3A_IDC_BLACKMARKETMAIN,
+            A3A_IDC_BLACKMARKETARTY,
+            A3A_IDC_BLACKMARKETAPC,
+            A3A_IDC_BLACKMARKETAA,
+            A3A_IDC_BLACKMARKETUAV,
+            A3A_IDC_BLACKMARKETTANK,
+            A3A_IDC_BLACKMARKETSTATICS,
+            A3A_IDC_BLACKMARKETHELI,
+            A3A_IDC_BLACKMARKETPLANE,
+            A3A_IDC_BLACKMARKETARMEDCAR,
+            A3A_IDC_BLACKMARKETUNARMEDCAR,
+            A3A_IDC_BLACKMARKETBOAT,
             A3A_IDC_BLACKMARKETPREVIEW
         ];
 
@@ -78,7 +145,33 @@ switch (_mode) do
     case ("onLoad"):
     {
         ['on'] call SCRT_fnc_ui_toggleMenuBlur;
-        ["vehicles"] call A3A_fnc_blackMarketTabs;
+        ["vehicles", [A3A_IDC_BLACKMARKETMAIN, A3A_IDC_BLACKMARKETVEHICLESGROUP, "all"]] call A3A_fnc_blackMarketTabs; ///show all?
+        ["vehicles", [A3A_IDC_BLACKMARKETARTY, A3A_IDC_BLACKMARKETVEHICLESGROUPATRY, "artillery"]] call A3A_fnc_blackMarketTabs;
+        ["vehicles", [A3A_IDC_BLACKMARKETAPC, A3A_IDC_BLACKMARKETVEHICLESGROUPAPC, "apc"]] call A3A_fnc_blackMarketTabs;
+        ["vehicles", [A3A_IDC_BLACKMARKETAA, A3A_IDC_BLACKMARKETVEHICLESGROUPAA, "AA"]] call A3A_fnc_blackMarketTabs;
+        ["vehicles", [A3A_IDC_BLACKMARKETUAV, A3A_IDC_BLACKMARKETVEHICLESGROUPUAV, "uav"]] call A3A_fnc_blackMarketTabs;
+        ["vehicles", [A3A_IDC_BLACKMARKETTANK, A3A_IDC_BLACKMARKETVEHICLESGROUPTANK, "tank"]] call A3A_fnc_blackMarketTabs;
+        ["vehicles", [A3A_IDC_BLACKMARKETSTATICS, A3A_IDC_BLACKMARKETVEHICLESGROUPSTATICS, "statics"]] call A3A_fnc_blackMarketTabs;
+        ["vehicles", [A3A_IDC_BLACKMARKETHELI, A3A_IDC_BLACKMARKETVEHICLESGROUPHELI, "heli"]] call A3A_fnc_blackMarketTabs;
+        ["vehicles", [A3A_IDC_BLACKMARKETPLANE, A3A_IDC_BLACKMARKETVEHICLESGROUPPLANE, "plane"]] call A3A_fnc_blackMarketTabs;
+        ["vehicles", [A3A_IDC_BLACKMARKETARMEDCAR, A3A_IDC_BLACKMARKETVEHICLESGROUPARMEDCAR, "armedcar"]] call A3A_fnc_blackMarketTabs;
+        ["vehicles", [A3A_IDC_BLACKMARKETUNARMEDCAR, A3A_IDC_BLACKMARKETVEHICLESGROUPUNARMED, "unarmedcar"]] call A3A_fnc_blackMarketTabs;
+        ["vehicles", [A3A_IDC_BLACKMARKETBOAT, A3A_IDC_BLACKMARKETVEHICLESGROUPBOAT, "boat"]] call A3A_fnc_blackMarketTabs;
+
+        // private _vehicleTypes = ["All", "Artillery", "APC", "AA", "UAV", "Tank", "Statics", "Helicopters", "Planes", "Armed Car", "Unarmed Car", "Boat"];
+        // private _vals = ["all", "artillery", "apc", "aa", "uav", "tank", "statics", "heli", "plane", "armedcar", "unarmedcar", "boat"];
+
+        // private _valsCtrl = _display ctrlCreate ["A3A_ComboBox_Small", -1 + A3A_IDC_SETUP_BMROWS, _paramsTable];
+        // _valsCtrl ctrlSetPosition [GRID_W*35, GRID_H*-17.8, GRID_W*30, GRID_H*5];
+        // _valsCtrl ctrlCommit 0;
+        // {
+        //     private _index = _valsCtrl lbAdd (_vehicleTypes#_forEachIndex);
+        //     _valsCtrl lbSetValue [_index, (_vals find _x)];
+        // } forEach _vals;
+        // private _default = "all";
+        // _valsCtrl lbSetCurSel (_vals find _default);
+
+        // _paramsTable setVariable ["vehicleType", _valsCtrl];
 
         // show the vehicle tab so that user don't freak out
         private _display = findDisplay A3A_IDD_BLACKMARKETVEHICLEDIALOG;
