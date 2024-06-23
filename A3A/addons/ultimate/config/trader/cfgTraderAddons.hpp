@@ -185,13 +185,11 @@
     class addons_tmt : addons_base
     {
         addons[] = {"TMT_Core"};
-        weapons = "weapons_tmt";
         vehicles = "vehicles_tmt";
     };
     class addons_tfc : addons_base
     {
         addons[] = {"TFC_Core_Data", "TFC_CA_Characters", "TFC_SF_Characters", "tfc_rcaf_cc130j"};
-        weapons = "weapons_tfc";
         vehicles = "vehicles_tfc";
     };
     class addons_sma : addons_base
