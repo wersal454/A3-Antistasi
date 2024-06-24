@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=248;
+		nextID=268;
 	};
 	class Camera
 	{
-		pos[]={2536.1489,103.15112,9541.125};
-		dir[]={0.62461042,-0.60031646,-0.49956641};
-		up[]={0.46887231,0.79970795,-0.37500632};
-		aside[]={-0.62462473,6.5425411e-007,-0.78097445};
+		pos[]={8842.0605,44.514156,6591.3145};
+		dir[]={-0.27160412,-0.58349413,0.76535577};
+		up[]={-0.19514295,0.81211621,0.54989493};
+		aside[]={0.94241863,-4.8195943e-008,0.33443904};
 	};
 };
 binarizationWanted=0;
@@ -373,7 +373,7 @@ class Mission
 							colorName="ColorOrange";
 							a=72.716042;
 							b=144.69751;
-							angle=210.34242;
+							angle=210.34241;
 							id=126;
 							atlOffset=-0.039041996;
 						};
@@ -1378,7 +1378,7 @@ class Mission
 					colorName="ColorYellow";
 					a=6.4089999;
 					b=5.434;
-					angle=181.62892;
+					angle=181.62891;
 					id=823;
 					atlOffset=361.88168;
 				};
@@ -1800,7 +1800,7 @@ class Mission
 							colorName="ColorGreen";
 							a=5;
 							b=5;
-							angle=179.33696;
+							angle=179.33694;
 							id=829;
 							atlOffset=0.0003721714;
 						};
@@ -2660,7 +2660,7 @@ class Mission
 							colorName="ColorGreen";
 							a=5;
 							b=5;
-							angle=208.59993;
+							angle=208.59991;
 							id=658;
 							atlOffset=241.01831;
 						};
@@ -2965,7 +2965,7 @@ class Mission
 							colorName="ColorBrown";
 							a=132.42015;
 							b=92.084961;
-							angle=1.3952161;
+							angle=1.395216;
 							id=830;
 							atlOffset=0.40897346;
 						};
@@ -3151,7 +3151,7 @@ class Mission
 							colorName="ColorGreen";
 							a=85.720116;
 							b=69.255821;
-							angle=228.35973;
+							angle=228.35971;
 							id=108;
 							atlOffset=-0.012202263;
 						};
@@ -3384,7 +3384,7 @@ class Mission
 							colorName="ColorGreen";
 							a=38.192101;
 							b=75.206696;
-							angle=225.84845;
+							angle=225.84843;
 							id=139;
 							atlOffset=0.088546753;
 						};
@@ -3404,14 +3404,14 @@ class Mission
 						class Item29
 						{
 							dataType="Marker";
-							position[]={8820.3359,10.97,6636.7148};
+							position[]={8831.2773,10.97,6632.3047};
 							name="outpost_29";
-							markerType="RECTANGLE";
+							markerType="ELLIPSE";
 							type="rectangle";
 							colorName="ColorGreen";
-							a=41.409767;
-							b=89.970078;
-							angle=265.96335;
+							a=41.920937;
+							b=68.225471;
+							angle=270.51901;
 							id=288;
 						};
 						class Item30
@@ -3521,7 +3521,7 @@ class Mission
 							colorName="ColorGreen";
 							a=5;
 							b=5;
-							angle=7.1199961;
+							angle=7.1199956;
 							id=667;
 						};
 						class Item38
@@ -6713,7 +6713,7 @@ class Mission
 			};
 			id=251;
 			type="Land_HelipadEmpty_F";
-			atlOffset=0.092205048;
+			atlOffset=7.2479248e-005;
 		};
 		class Item113
 		{
