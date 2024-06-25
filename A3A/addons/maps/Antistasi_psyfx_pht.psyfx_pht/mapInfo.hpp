@@ -11,7 +11,7 @@ class psyfx_pht {
 		
 	};
 	garrison[] = {
-		{},{"airport","milbase_1","seaport","resource_1"},{},{}
+		{},{"airport","milbase_1","seaport","resource_1","outpost","outpost_1","outpost_2","outpost_3","outpost_4","outpost_5","outpost_6","outpost_7","outpost_8","outpost_9"},{},{}
 	};
 	fuelStationTypes[] = {
 		"Land_FuelStation_Feed_F","Land_fs_feed_F","Land_FuelStation_01_pump_malevil_F","Land_FuelStation_01_pump_F","Land_FuelStation_02_pump_F","Land_FuelStation_03_pump_F"
