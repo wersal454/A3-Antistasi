@@ -33,76 +33,69 @@ params[
     ["_callbackHandlerKey", "BUYFIA"]
 ];
 
-private _display = findDisplay A3A_IDD_BLACKMARKETVEHICLEDIALOG;
-private _paramsTable = _display displayCtrl A3A_IDC_SETUP_BMTABLE;
-
 switch (_mode) do
 {
     case ("switchTab"):
     {
         ['on'] call SCRT_fnc_ui_toggleMenuBlur;
 
-        // private _vehicleType = (_paramsTable getVariable ["vehicleType", ""]);
+        private _vehicleType = (uiNamespace getVariable ["bm_vehicleTypeBox", ""]);
+        private _categoryIndex = _vehicleType lbValue lbCurSel _vehicleType;
 
-        // diag_log _vehicleType;
-
-        // private _categoryIndex = _vehicleType lbValue lbCurSel _vehicleType;
-
-        // diag_log _categoryIndex;
+        diag_log _categoryIndex;
 
         private _display = findDisplay A3A_IDD_BLACKMARKETVEHICLEDIALOG;
-        private _selectedTab = _params select 0;
 
-        Debug_1("MainDialog switching tab to %1.", _selectedTab);
+        Debug_1("MainDialog switching tab to %1.", _categoryIndex);
 
         private _selectedTabIDC = -1;
-        switch (_selectedTab) do 
+        switch (_categoryIndex) do 
         {
-            case ("all"): 
+            case (0): 
             {
                 _selectedTabIDC = A3A_IDC_BLACKMARKETMAIN;
             };
-            case ("artillery"): 
+            case (1): 
             {
                 _selectedTabIDC = A3A_IDC_BLACKMARKETARTY;
             };
-            case ("apc"): 
+            case (2): 
             {
                 _selectedTabIDC = A3A_IDC_BLACKMARKETAPC;
             };
-            case ("AA"): 
+            case (3): 
             {
                 _selectedTabIDC = A3A_IDC_BLACKMARKETAA;
             };
-            case ("uav"): 
+            case (4): 
             {
                 _selectedTabIDC = A3A_IDC_BLACKMARKETUAV;
             };
-            case ("tank"): 
+            case (5): 
             {
                 _selectedTabIDC = A3A_IDC_BLACKMARKETTANK;
             };
-            case ("statics"):
+            case (6):
             {
                 _selectedTabIDC = A3A_IDC_BLACKMARKETSTATICS;
             };
-            case ("heli"): 
+            case (7): 
             {
                 _selectedTabIDC = A3A_IDC_BLACKMARKETHELI;
             };
-            case ("plane"): 
+            case (8): 
             {
                 _selectedTabIDC = A3A_IDC_BLACKMARKETPLANE;
             };
-            case ("armedcar"): 
+            case (9): 
             {
                 _selectedTabIDC = A3A_IDC_BLACKMARKETARMEDCAR;
             };
-            case ("unarmedcar"): 
+            case (10): 
             {
                 _selectedTabIDC = A3A_IDC_BLACKMARKETUNARMEDCAR;
             };
-            case ("boat"): 
+            case (11): 
             {
                 _selectedTabIDC = A3A_IDC_BLACKMARKETBOAT;
             };
@@ -145,6 +138,27 @@ switch (_mode) do
     case ("onLoad"):
     {
         ['on'] call SCRT_fnc_ui_toggleMenuBlur;
+
+        private _displayBM = findDisplay A3A_IDD_BLACKMARKETVEHICLEDIALOG;
+        private _bmTable = _displayBM displayCtrl A3A_IDC_SETUP_BMTABLE;
+
+        private _vehicleTypes = ["All", "Artillery", "APC", "AA", "UAV", "Tank", "Statics", "Helicopters", "Planes", "Armed Car", "Unarmed Car", "Boat"];
+        private _vals = ["all", "artillery", "apc", "aa", "uav", "tank", "statics", "heli", "plane", "armedcar", "unarmedcar", "boat"];
+
+        private _valsCtrl = _bmTable;
+        _valsCtrl ctrlSetPosition [GRID_W * -30.4, GRID_H*-17.9, GRID_W*125, GRID_H*5];
+        _valsCtrl ctrlCommit 0;
+        {
+            private _index = _valsCtrl lbAdd (_vehicleTypes#_forEachIndex);
+            _valsCtrl lbSetValue [_index, (_vals find _x)];
+        } forEach _vals;
+        
+        private _default = "all";
+        _valsCtrl lbSetCurSel (_vals find _default);
+        _valsCtrl lbSetSelected [0, true];
+
+        uiNamespace setVariable ["bm_vehicleTypeBox", _valsCtrl];
+
         ["vehicles", [A3A_IDC_BLACKMARKETMAIN, A3A_IDC_BLACKMARKETVEHICLESGROUP, "all"]] call A3A_fnc_blackMarketTabs; ///show all?
         ["vehicles", [A3A_IDC_BLACKMARKETARTY, A3A_IDC_BLACKMARKETVEHICLESGROUPATRY, "artillery"]] call A3A_fnc_blackMarketTabs;
         ["vehicles", [A3A_IDC_BLACKMARKETAPC, A3A_IDC_BLACKMARKETVEHICLESGROUPAPC, "apc"]] call A3A_fnc_blackMarketTabs;
@@ -157,26 +171,6 @@ switch (_mode) do
         ["vehicles", [A3A_IDC_BLACKMARKETARMEDCAR, A3A_IDC_BLACKMARKETVEHICLESGROUPARMEDCAR, "armedcar"]] call A3A_fnc_blackMarketTabs;
         ["vehicles", [A3A_IDC_BLACKMARKETUNARMEDCAR, A3A_IDC_BLACKMARKETVEHICLESGROUPUNARMED, "unarmedcar"]] call A3A_fnc_blackMarketTabs;
         ["vehicles", [A3A_IDC_BLACKMARKETBOAT, A3A_IDC_BLACKMARKETVEHICLESGROUPBOAT, "boat"]] call A3A_fnc_blackMarketTabs;
-
-        // private _vehicleTypes = ["All", "Artillery", "APC", "AA", "UAV", "Tank", "Statics", "Helicopters", "Planes", "Armed Car", "Unarmed Car", "Boat"];
-        // private _vals = ["all", "artillery", "apc", "aa", "uav", "tank", "statics", "heli", "plane", "armedcar", "unarmedcar", "boat"];
-
-        // private _valsCtrl = _display ctrlCreate ["A3A_ComboBox_Small", -1 + A3A_IDC_SETUP_BMROWS, _paramsTable];
-        // _valsCtrl ctrlSetPosition [GRID_W*35, GRID_H*-17.8, GRID_W*30, GRID_H*5];
-        // _valsCtrl ctrlCommit 0;
-        // {
-        //     private _index = _valsCtrl lbAdd (_vehicleTypes#_forEachIndex);
-        //     _valsCtrl lbSetValue [_index, (_vals find _x)];
-        // } forEach _vals;
-        // private _default = "all";
-        // _valsCtrl lbSetCurSel (_vals find _default);
-
-        // _paramsTable setVariable ["vehicleType", _valsCtrl];
-
-        // show the vehicle tab so that user don't freak out
-        private _display = findDisplay A3A_IDD_BLACKMARKETVEHICLEDIALOG;
-        private _selectedTabCtrl = _display displayCtrl A3A_IDC_BLACKMARKETMAIN;
-        _selectedTabCtrl ctrlShow true;
     };
 
     case ("onUnload"): 

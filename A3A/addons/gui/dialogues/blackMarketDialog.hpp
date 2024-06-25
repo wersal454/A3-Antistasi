@@ -1,8 +1,8 @@
 class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
 {
-  idd = A3A_IDD_BLACKMARKETVEHICLEDIALOG;
-  onLoad = "['onLoad'] spawn A3A_fnc_blackMarketDialog";
-  onUnload = "['onUnload'] spawn A3A_fnc_blackMarketDialog";
+    idd = A3A_IDD_BLACKMARKETVEHICLEDIALOG;
+    onLoad = "['onLoad'] spawn A3A_fnc_blackMarketDialog";
+    onUnload = "['onUnload'] spawn A3A_fnc_blackMarketDialog";
 
     class Controls
     {
@@ -15,17 +15,6 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
             w = DIALOG_W * GRID_W;
             h = 5 * GRID_H;
         };
-
-        // class TipText : A3A_TitlebarText
-        // {
-        //     idc = -1;
-        //     text = $STR_antistasi_dialogs_black_market_tip;
-        //     font = A3A_NOTIFICATION_FONT;
-        //     x = DIALOG_X;
-        //     y = DIALOG_Y - 1 * GRID_H;
-        //     w = DIALOG_W * GRID_W;
-        //     h = 5 * GRID_H;
-        // };
     
         class TabButtons : A3A_ControlsGroupNoScrollbars
         {
@@ -37,123 +26,13 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
 
             class Controls
             {
-                class VehicleTabButton1 : A3A_Button
-                {
-                    idc = -1;
-                    text = $STR_antistasi_dialogs_vehicle_tab_arty;
-                    onButtonClick = "[""switchTab"", [""artillery""]] call A3A_fnc_blackMarketDialog";
-                    x = 0;
-                    y = 0;
-                    w = 35 * GRID_W;
-                    h = 5 * GRID_H;
-                };
-                class VehicleTabButton2 : A3A_Button
-                {
-                    idc = -1;
-                    text = $STR_antistasi_dialogs_vehicle_tab_apc;
-                    onButtonClick = "[""switchTab"", [""apc""]] call A3A_fnc_blackMarketDialog";
-                    x = 35 * GRID_W;
-                    y = 0;
-                    w = 30 * GRID_W;
-                    h = 5 * GRID_H;
-                };
-                class VehicleTabButton3 : A3A_Button
-                {
-                    idc = -1;
-                    text = $STR_antistasi_dialogs_vehicle_tab_AA;
-                    onButtonClick = "[""switchTab"", [""AA""]] call A3A_fnc_blackMarketDialog";
-                    x = 65 * GRID_W;
-                    y = 0;
-                    w = 30 * GRID_W;
-                    h = 5 * GRID_H;
-                };
-                class VehicleTabButton4 : A3A_Button
-                {
-                    idc = -1;
-                    text = $STR_antistasi_dialogs_vehicle_tab_uav;
-                    onButtonClick = "[""switchTab"", [""uav""]] call A3A_fnc_blackMarketDialog";
-                    x = 95 * GRID_W;
-                    y = 0;
-                    w = 30 * GRID_W;
-                    h = 5 * GRID_H;
-                };
-                class VehicleTabButton5 : A3A_Button
-                {
-                    idc = -1;
-                    text = $STR_antistasi_dialogs_vehicle_tab_tank;
-                    onButtonClick = "[""switchTab"", [""tank""]] call A3A_fnc_blackMarketDialog";
-                    x = 125 * GRID_W;
-                    y = 0;
-                    w = 35 * GRID_W;
-                    h = 5 * GRID_H;
-                };
-                class VehicleTabButton6 : A3A_Button
-                {
-                    idc = -1;
-                    text = $STR_antistasi_dialogs_vehicle_tab_statics;
-                    onButtonClick = "[""switchTab"", [""statics""]] call A3A_fnc_blackMarketDialog";
-                    x = 0 * GRID_W;
-                    y = 5 * GRID_H;
-                    w = 35 * GRID_W;
-                    h = 5 * GRID_H;
-                };
-                class VehicleTabButton7 : A3A_Button
-                {
-                    idc = -1;
-                    text = $STR_antistasi_dialogs_vehicle_tab_heli;
-                    onButtonClick = "[""switchTab"", [""heli""]] call A3A_fnc_blackMarketDialog";
-                    x = 35 * GRID_W;
-                    y = 5 * GRID_H;
-                    w = 30 * GRID_W;
-                    h = 5 * GRID_H;
-                };
-                class VehicleTabButton8 : A3A_Button
-                {
-                    idc = -1;
-                    text = $STR_antistasi_dialogs_vehicle_tab_plane;
-                    onButtonClick = "[""switchTab"", [""plane""]] call A3A_fnc_blackMarketDialog";
-                    x = 65 * GRID_W;
-                    y = 5 * GRID_H;
-                    w = 30 * GRID_W;
-                    h = 5 * GRID_H;
-                };
-                class VehicleTabButton9 : A3A_Button
-                {
-                    idc = -1;
-                    text = $STR_antistasi_dialogs_vehicle_tab_armedcar;
-                    onButtonClick = "[""switchTab"", [""armedcar""]] call A3A_fnc_blackMarketDialog";
-                    x = 95 * GRID_W;
-                    y = 5 * GRID_H;
-                    w = 30 * GRID_W;
-                    h = 5 * GRID_H;
-                };
-                class VehicleTabButton10 : A3A_Button
-                {
-                    idc = -1;
-                    text = $STR_antistasi_dialogs_vehicle_tab_unarmedcar;
-                    onButtonClick = "[""switchTab"", [""unarmedcar""]] call A3A_fnc_blackMarketDialog";
-                    x = 125 * GRID_W;
-                    y = 5 * GRID_H;
-                    w = 35 * GRID_W;
-                    h = 5 * GRID_H;
-                };
-                class VehicleTabButton11 : A3A_Button
-                {
-                    idc = -1;
-                    text = $STR_antistasi_dialogs_vehicle_tab_boat;
-                    onButtonClick = "[""switchTab"", [""boat""]] call A3A_fnc_blackMarketDialog";
-                    x = 125 * GRID_W;
-                    y = 5 * GRID_H;
-                    w = 35 * GRID_W;
-                    h = 5 * GRID_H;
-                };
                 class VehicleTabButton : A3A_Button
                 {
                     idc = -1;
-                    text = $STR_antistasi_dialogs_vehicle_tab_all;
+                    text = $STR_antistasi_dialogs_vehicle_tab_select;
                     onButtonClick = "[""switchTab"", [""all""]] call A3A_fnc_blackMarketDialog";
                     x = 125 * GRID_W;
-                    y = 10 * GRID_H;
+                    y = 0;
                     w = 35 * GRID_W;
                     h = 5 * GRID_H;
                 };
@@ -377,15 +256,6 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
             };
         };
 
-        class AboutButton : A3A_CloseButton
-        {
-            idc = -1;
-            text = A3A_Icon_Requirements;
-            onButtonClick = "";
-            url = "https://github.com/SilenceIsFatto/A3-Antistasi-Ultimate/wiki/Arms-Dealer#vehicle-unlock-requirements";
-            x = DIALOG_X + DIALOG_W * GRID_W - 10 * GRID_W;
-            y = DIALOG_Y - 10 * GRID_H;
-        };
         class AboutText : A3A_TitlebarText
         {
             idc = -1;
@@ -396,12 +266,32 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
             w = DIALOG_W * GRID_W;
             h = 5 * GRID_H;
         };
+        class AboutButton : A3A_CloseButton
+        {
+            idc = -1;
+            text = A3A_Icon_Requirements;
+            onButtonClick = "";
+            url = "https://github.com/SilenceIsFatto/A3-Antistasi-Ultimate/wiki/Arms-Dealer#vehicle-unlock-requirements";
+            x = DIALOG_X + DIALOG_W * GRID_W - 10 * GRID_W;
+            y = DIALOG_Y - 10 * GRID_H;
+        };
 
         class CloseButton : A3A_CloseButton
         {
             idc = -1;
             x = DIALOG_X + DIALOG_W * GRID_W - 5 * GRID_W;
             y = DIALOG_Y - 10 * GRID_H;
+        };
+
+        class VehicleTabCombo : A3A_ComboBox_Small_BM
+        {
+            idc = A3A_IDC_SETUP_BMTABLE;
+            fade = 0;
+            access = 1;
+            x = 0;
+            y = 0;
+            w = 0;
+            h = 0;
         };
     };
 

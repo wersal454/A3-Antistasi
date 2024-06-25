@@ -636,6 +636,10 @@
                 <Spanish>Rebelde</Spanish>
                 <French>Rebelle</French>
             </Key>
+            <Key ID="STR_antistasi_dialogs_vehicle_tab_select">
+                <Original>Select</Original>
+                <Russian>Placeholder</Russian>
+            </Key>
             <Key ID="STR_antistasi_dialogs_vehicle_tab_all">
                 <Original>All vehicles</Original>
                 <Russian>Вся техника</Russian>

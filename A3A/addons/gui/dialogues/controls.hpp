@@ -1086,7 +1086,7 @@ class A3A_DefaultDialog
             x = DIALOG_X;
             y = DIALOG_Y - 5 * GRID_H;
             w = DIALOG_W * GRID_W;
-            h = 20 * GRID_H;
+            h = 5 * GRID_H;
         };
 
         class Background : A3A_Background
@@ -1146,14 +1146,14 @@ class A3A_TabbedDialogBlackmarket : A3A_DefaultDialog
             h = 5 * GRID_H;
         };
 
-        class TabsBackground : A3A_Background
-        {
-            colorBackground[] = A3A_COLOR_TABS_BACKGROUND;
-            x = DIALOG_X;
-            y = DIALOG_Y - 5 * GRID_H;
-            w = DIALOG_W * GRID_W;
-            h = 15 * GRID_H;
-        };
+        // class TabsBackground : A3A_Background
+        // {
+        //     colorBackground[] = A3A_COLOR_TABS_BACKGROUND;
+        //     x = DIALOG_X;
+        //     y = DIALOG_Y - 5 * GRID_H;
+        //     w = DIALOG_W * GRID_W;
+        //     h = 15 * GRID_H;
+        // };
 
         class Background : A3A_Background
         {
@@ -1203,4 +1203,9 @@ class A3A_ComboBox_Small : A3A_ComboBox
 {
     sizeEx = GUI_TEXT_SIZE_SMALL;
     rowHeight = GUI_TEXT_SIZE_SMALL;
+};
+class A3A_ComboBox_Small_BM : A3A_ComboBox_Small
+{
+    colorBackground[] = {0,0,0,1};
+    SizeEx = GUI_TEXT_SIZE_MEDIUM;
 };
