@@ -33,7 +33,11 @@ if (isPlayer _unit) then {
 	openMap false;
 
 	{
-		if ((!isPlayer _x) and (vehicle _x != _x) and (_x distance _unit < 50)) then {unassignVehicle _x; [_x] orderGetIn false}
+		unassignVehicle _x;  // Ensure AI aren't assigned to a vehicle
+		if ((!isPlayer _x) and (vehicle _x != _x) and (_x distance _unit < 50)) then {
+			_x action ["getOut", vehicle _x];  // Added to force AI to get out of the vehicle
+			[_x] orderGetIn false;
+		};
 	} forEach units group _unit;
 }
 else {
