@@ -138,7 +138,7 @@ _loadoutData set ["watches", ["ItemWatch"]];
 _loadoutData set ["compasses", ["ItemCompass"]];
 _loadoutData set ["radios", ["ItemRadio"]];
 _loadoutData set ["gpses", ["ItemGPS"]];
-_loadoutData set ["NVGs", ["rhs_1PN138", "", ""]];
+_loadoutData set ["NVGs", ["rhs_1PN138"]];
 _loadoutData set ["binoculars", ["Binocular"]];
 _loadoutData set ["rangefinders", ["Rangefinder"]];
 
@@ -236,6 +236,7 @@ _militaryLoadoutData set ["uniforms", ["rhsgref_uniform_TLA_1"]];
 _militaryLoadoutData set ["vests", ["rhs_lifchik","rhs_lifchik_light","rhs_6b2_lifchik","rhs_6b2_lifchik"]];
 _militaryLoadoutData set ["backpacks", ["rhs_sidor", "rhs_sidor", "rhs_rd54_flora2"]];
 _militaryLoadoutData set ["helmets", ["rhsgref_helmet_pasgt_olive","rhsgref_M56","rhs_headband"]];
+_militaryLoadoutData set ["NVGs", ["rhs_1PN138"]];
 
 _militaryLoadoutData set ["rifles", [
 ["rhs_weap_l1a1_wood", "rhsgref_acc_falMuzzle_l1a1", "", "", ["rhs_mag_20Rnd_762x51_m80_fnfal"], [], ""],
