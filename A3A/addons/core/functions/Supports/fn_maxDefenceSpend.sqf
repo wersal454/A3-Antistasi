@@ -48,7 +48,8 @@ if (_target isEqualType objNull and {_target isKindOf "Air"}) exitWith
         if (_sside == _side && _starg isEqualTo _target) then { _targSpend = _targSpend + _pow };
     } forEach A3A_supportStrikes;
 
-    private _threshold = 150 * (4 min _maxResources / _curResources);
+    private _threshold = [A3A_airThresholdOcc, A3A_airThresholdInv] select (_side == Invaders);
+    private _threshold = _threshold * 0.6 * (4 min _maxResources / _curResources);
     private _maxSpendTarg = _targThreat - _targSpend - _threshold;
 
     private _maxAASpend = _maxResources * 0.3;

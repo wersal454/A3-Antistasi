@@ -75,7 +75,7 @@
 ["minefieldAT", ["SPE_US_M1A1_ATMINE"]] call _fnc_saveToTemplate;
 ["minefieldAPERS", ["SPE_US_M3_Pressure_MINE", "SPE_US_M3_MINE"]] call _fnc_saveToTemplate;
 
-//#include "3CBFactions_Vehicle_Attributes.sqf"
+#include "SPE_Vehicle_Attributes.sqf"
 
 /////////////////////
 ///  Identities   ///
