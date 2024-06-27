@@ -11,7 +11,7 @@ class Gulfcoast {
 		{13104.8,1074.83,0},{14856.5,5291.96,0},{6981.71,5476.02,0},{7912.48,11198.3,0},{3095.36,12046.4,0}
 	};
 	garrison[] = {
-		{},{"airport_2","airport_6","milbase_2","seaport_3","seaport_4","outpost_2","outpost_6","outpost_18","outpost_19","factory_3","factory_5","resource_6","resource_9"},{},{"control_1","control_2","control_3","control_4","control_5","control_6","control_7","control_8","control_9","control_10","control_11","control_12","control_13","control_14"}
+		{},{"airport_2","airport_6","milbase_2","seaport_3","seaport_4","outpost_2","outpost_6","outpost_18","outpost_19","factory_3","resource_6","resource_9"},{},{"control_1","control_2","control_3","control_4","control_5","control_6","control_7","control_8","control_9","control_10","control_11","control_12","control_13","control_14","control_15","control_16","control_17","control_18","control_19","control_20","control_21","control_22","control_23","control_24","control_25","control_26","control_27","control_28","control_29"}
 	};
 	fuelStationTypes[] = {
 		"Land_FuelStation_01_pump_F","Land_FuelStation_02_pump_F","Land_FuelStation_03_pump_F","Land_fs_feed_F","Land_FuelStation_Feed_F","Land_FuelStation_01_pump_malevil_F","Land_Fuelstation","Land_Fuelstation_army","Land_A_FuelStation_Feed","Land_Ind_FuelStation_Feed_EP1","Land_FuelStation_Feed_PMC"
