@@ -5,7 +5,6 @@
 *.log
 *.pbo
 *.pbo.bak
-*.bat
 *.png
 AntistasiBuilder.cfg
 
@@ -26,4 +25,12 @@ Antistasi-Ultimate.biprivatekey
 __pycache__/
 build/
 release/
+dev/
+Tools/TownGenerator/output.txt
+Tools/csvparser/output/*.txt
+Tools/csvparser/csv/*.csv
+Tools/csvparser/xlsx2csv/*.xlsx
+Tools/csvparser/xlsx2csv/*.csv
 *.py[cod]
+Tools/ValidationResults.txt
+/Tools/csvparser/output

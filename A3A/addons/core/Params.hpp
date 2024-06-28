@@ -38,8 +38,8 @@ class Params
     class limitedFT
     {
         title = $STR_params_allowFT;
-        values[] = {0,1};
-        texts[] = {$STR_params_allowFT_0, $STR_params_allowFT_1};
+        values[] = {0,1,2};
+        texts[] = {$STR_params_allowFT_0, $STR_params_allowFT_1,$STR_params_civ_traffic_none};
         default = 0;
     };
     class civTraffic
@@ -48,6 +48,13 @@ class Params
         values[] = {0,1,2,4};
         texts[] = {$STR_params_civ_traffic_none,$STR_params_civ_traffic_low,$STR_params_civ_traffic_medium,$STR_params_civ_traffic_high};
         default = 2;
+    };
+    class A3A_removeRestore
+    {
+        title = $STR_A3A_Params_removeRestore_title;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
     };
     class globalCivilianMax
     {
@@ -109,14 +116,14 @@ class Params
     {
         title = $STR_params_afk;
         values[] = {120,300,900,1800,9999999};
-        texts[] = {"2","5","15","30",$STR_params_afk_disabled};
+        texts[] = {"2","5","15","30", $STR_params_afk_disabled};
         default = 300;
     };
     class A3A_GCThreshold
     {
         title = $STR_params_gc_threshold;
         values[] = {3600, 7200, 10800, 14400, 9999999};
-        texts[] = {"1hr", "2hrs", "3hrs", "4hrs", "Disabled"};
+        texts[] = {"1", "2", "3", "4", $STR_params_afk_disabled};
         Default = 9999999;
     };
     class A3A_reviveTime
@@ -125,6 +132,119 @@ class Params
         values[] = {8,12,16,24,32};
         texts[] = {"8","12","16","24","32"};
         default = 16;
+    };
+    class A3A_selfReviveMethods
+    {
+        title = $STR_A3A_Params_selfReviveMethods_title;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text, $STR_A3A_Params_selfReviveMethods_withstand};
+        default = 0;
+    };
+    class A3A_builderPermissions
+    {
+        title = "Player classes permitted to use the building placer";
+        values[] = {1, 2, 3};
+        texts[] = {"Team leaders", "Engineers", "Both"};
+        default = 3;
+    };
+
+    class Spacer101
+    {
+        title = "";
+        values[] = {""};
+        texts[] = {""};
+        default = "";
+    };
+    class Spacer102
+    {
+        title = $STR_A3AU_params_name;
+        values[] = {""};
+        texts[] = {""};
+        default = "";
+    };
+    class cosmeticsEnabled
+    {
+        title = $STR_A3AU_cosmetics;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 1;
+    };
+    class zombiesUncapped
+    {
+        title = $STR_A3AU_uncap_zombie_spawn;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
+    class plusGarrison
+    {
+        title = $STR_A3AU_old_garrison_spawn;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
+    class vanillaArmsDealer
+    {
+        title = $STR_A3AU_vanilla_weapons_in_arms_dealer;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
+    class radiomanSupport
+    {
+        title = $STR_A3AU_radioman_support;
+        values[] = {0,1};
+        texts[] = {$STR_A3AU_dialogs_radioman_support,$STR_A3AU_dialogs_squadleader_support};
+        default = 0;
+    };
+    class hideEnemyMarkers
+    {
+        title = $STR_A3AU_hide_enemy_markers;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
+    class hideEnemyMarkersReconPlaneDistance
+    {
+        title = $STR_A3AU_hide_enemy_markers_recon_plane_distance;
+        values[] = {100, 300, 500, 1000, 1500, 2000};
+        texts[] = {"100", "300", "500", "1000", "1500", "2000"};
+        default = 500;
+    };
+    class totalVictory
+    {
+        title = $STR_A3AU_total_victory;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
+    class blackMarketIgnoreRequirements
+    {
+        title = $STR_A3AU_blackmarket_ignore_requirements;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
+    class staminaEnabled
+    {
+        title = $STR_A3AU_stamina_enabled;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 1;
+    };
+    class fatigueEnabled
+    {
+        title = $STR_A3AU_fatigue_enabled;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 1;
+    };
+    class swayEnabled
+    {
+        title = $STR_A3AU_sway_enabled;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 1;
     };
 
     class Spacer60
@@ -165,9 +285,23 @@ class Params
     class lootCrateDistance
     {
         title = $STR_params_lootCrateDistance;
-        values[] = {25, 50, 75, 100};
-        texts[] = {"25", "50", "75", "100"};
+        values[] = {10, 25, 50, 75, 100};
+        texts[] = {"10", "25", "50", "75", "100"};
         default = 50;
+    };
+    class lootCratePrice
+    {
+        title = $STR_params_lootCratePrice;
+        values[] = {100, 200, 300, 400, 500};
+        texts[] = {"100", "200", "300", "400", "500"};
+        default = 100;
+    };
+    class lootCrateUnlockedItems
+    {
+        title = $STR_params_lootCrateUnlockedItems;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
     };
     class playerIcons
     {
@@ -436,7 +570,17 @@ class Params
         title = $STR_params_allowGuidedLaunchers;
         values[] = {1,0};
         texts[] = {$STR_antistasi_dialogs_generic_button_yes_text, $STR_antistasi_dialogs_generic_button_no_text};
+        default = 1;
+
+    };
+    class allowUnlockedExplosives
+    {
+        attr[] = {"server"};
+        title = $STR_params_allowUnlockedExplosives;
+        values[] = {1,0};
+        texts[] = {$STR_antistasi_dialogs_generic_button_yes_text,$STR_antistasi_dialogs_generic_button_no_text};
         default = 0;
+
     };
     class startWithLongRangeRadio
     {
@@ -466,16 +610,8 @@ class Params
         title = $STR_params_reviveKitsEnabled;
         values[] = {0,1};
         texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
-        default = 0;
-    };
-    class cosmeticsEnabled
-    {
-        title = "Enable Cosmetics";
-        values[] = {0,1};
-        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
         default = 1;
     };
-
 
     class SpacerLoot
     {
@@ -649,8 +785,8 @@ class Params
     class A3A_GUIDevPreview
     {
         title = $STR_params_A3A_GUIDevPreview;
-        values[] = {0,1};
-        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        values[] = {0};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text};
         default = 0;
     };
 };

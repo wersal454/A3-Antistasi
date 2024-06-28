@@ -144,7 +144,7 @@ if (_spawnParameter isEqualType []) then {
 			_faction get "vehiclesMilitiaTrucks"
 		};
 		_types = _types select { _x in FactionGet(all,"vehiclesCargoTrucks") };
-		if (count _types == 0) then { (_faction get "vehiclesCargoTrucks") } else { _types };
+		if (count _types == 0) then { _types = (_faction get "vehiclesCargoTrucks") } else { _types }; // failsafe didn't work?
 		selectRandom _types;
 	};
 	isNil {

@@ -30,23 +30,34 @@ if !(_unitDefinition isEqualTo []) exitWith {
     private _canSkip = false;
 
     {
-        if (_x select 0 isEqualTo "baseClass") then {
+        if (_x select 0 isEqualTo "baseClass") then
+		{
             _unitClass = _x select 1; // grab the classname
-			if ((_x select 1) isEqualType []) then {
+			if (_unitClass isEqualType []) then
+			{
+				if ((_unitClass select 0) isEqualType []) exitWith
+				{
+					private _weights = ((_x select 1) select 1);
+
+					private _units = ((_x select 1) select 0);
+
+					_unitClass = _units selectRandomWeighted _weights; // grab a random classname, weighted
+					
+					// [_units, _weights] call A3U_fnc_weightTest; // Only for debug. Don't forget to comment before updating, it's probably very intensive
+				};
 				_unitClass = selectRandom (_x select 1); // grab a random classname
 			};
         };
-        if (_x select 2 isEqualTo true) then {
+        if (_x select 2 isEqualTo true) then
+		{
             _canSkip = true;
         };
     } forEach _traits; // grab all data from base class trait
 
 	private _unit = _group createUnit [_unitClass, _position, _markers, _placement, _special];
     [_unit] joinSilent _group; // normally, this command is literally pointless. But when we're mixing base classes (e.g opfor) but spawning them as blufor (swap enemy sides selection), it'll make them fight each other unless we do this
-	
-	// if (_unitClass in A3U_unitSides) then {_unit addRating -5000}; // if they are in this array then they probably want to be attacked by everyone (e.g, zombies)
 
-    if (_canSkip) then {} else {
+    if (_canSkip isEqualTo false) then {
 	    _unit setUnitLoadout selectRandom _loadouts;
     };
 	_unit setVariable ["unitType", _type, true];
@@ -71,6 +82,6 @@ if !(_unitDefinition isEqualTo []) exitWith {
 	_unit
 };
 
-private _unit = _group createUnit  [_type, _position, _markers, _placement, _special];
+private _unit = _group createUnit [_type, _position, _markers, _placement, _special];
 _unit setVariable ["unitType", _type, true];
 _unit

@@ -1,13 +1,79 @@
 [
     "A3U_setting_enableCosmetics", // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "CHECKBOX", // setting type
-    "Enable Cosmetic Items (Takes effect on new save)", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "Enable Cosmetic Items", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "Antistasi Ultimate", // Pretty name of the category where the setting can be found. Can be stringtable entry.
     true,
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
 		missionNamespace setVariable ["A3U_setting_enableCosmetics",_value,true];
+    }
+] call CBA_fnc_addSetting;
+
+[
+    "A3U_setting_enableAdvancedTowing", // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "CHECKBOX", // setting type
+    "Enable Advanced Towing", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "Antistasi Ultimate", // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    true,
+    true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
+    {  
+        params ["_value"];
+		missionNamespace setVariable ["A3U_setting_enableAdvancedTowing",_value,true];
+    }
+] call CBA_fnc_addSetting;
+
+// [
+//     "A3U_setting_hideEnemyMarkers", // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+//     "CHECKBOX", // setting type
+//     "Hide Enemy Markers (Takes effect on restart)", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+//     "Antistasi Ultimate", // Pretty name of the category where the setting can be found. Can be stringtable entry.
+//     true,
+//     false, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
+//     {  
+//         params ["_value"];
+// 		missionNamespace setVariable ["A3U_setting_hideEnemyMarkers",_value,true];
+//         // hideEnemyMarkers = _value;
+//     }
+// ] call CBA_fnc_addSetting;
+
+[
+    "A3U_setting_tierWarMilitia", // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "SLIDER", // setting type
+    "War Level For Militia", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "Antistasi Ultimate", // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    [2, 7, 3, 0], // lowest, highest, default, idk what the last one does
+    true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
+    {  
+        params ["_value"];
+		missionNamespace setVariable ["A3U_setting_tierWarMilitia",(round _value),true];
+    }
+] call CBA_fnc_addSetting;
+
+[
+    "A3U_setting_tierWarElite", // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "SLIDER", // setting type
+    "War Level For Elite", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "Antistasi Ultimate", // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    [2, 15, 8, 0],
+    true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
+    {  
+        params ["_value"];
+		missionNamespace setVariable ["A3U_setting_tierWarElite",(round _value),true];
+    }
+] call CBA_fnc_addSetting;
+
+[
+    "A3U_setting_tierWarPunishments", // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "SLIDER", // setting type
+    "War Level For Invader Punishments", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "Antistasi Ultimate", // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    [1, 8, 3, 0],
+    true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
+    {  
+        params ["_value"];
+		missionNamespace setVariable ["A3U_setting_tierWarPunishments",(round _value),true];
     }
 ] call CBA_fnc_addSetting;
 
@@ -63,6 +129,8 @@ if (["tts_emission"] call A3U_fnc_hasAddon) then {
             missionNamespace setVariable ["A3U_setting_emissionSpeedMaximum",round(_value),true];
         }
     ] call CBA_fnc_addSetting;
+
+    #include "fn_emission_settings.sqf"
 };
 
 if (["diwako_anomalies"] call A3U_fnc_hasAddon) then {
@@ -83,7 +151,7 @@ if (["diwako_anomalies"] call A3U_fnc_hasAddon) then {
         "SLIDER", // setting type
         "Anomaly Population (Lower = More)", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
         "Antistasi Ultimate - Diwako Anomaly Settings", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-        [100, 1000, 200, 0],
+        [0, 1000, 200, 0],
         true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
         {
             params ["_value"];

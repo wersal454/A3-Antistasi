@@ -100,11 +100,11 @@ private _initialRebelEquipment = [
     "SPE_Binocular_US"
 ];
 
-if (A3A_hasTFAR) then {_initialRebelEquipment append ["tf_microdagr", "tf_anprc154"]};
+// if (A3A_hasTFAR) then {_initialRebelEquipment append ["TFAR_SCR536"]};
 if (A3A_hasTFAR && startWithLongRangeRadio) then {
     _initialRebelEquipment pushBack "B_SPE_GER_Radio";
 };
-if (A3A_hasTFARBeta) then {_initialRebelEquipment append ["TFAR_microdagr", "TFAR_anprc154"]};
+// if (A3A_hasTFARBeta) then {_initialRebelEquipment append ["TFAR_SCR536"]};
 if (A3A_hasTFARBeta && startWithLongRangeRadio) then {
     _initialRebelEquipment pushBack "B_LIB_GER_Radio";
 };

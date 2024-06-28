@@ -14,6 +14,13 @@ if (isNil "_player") exitWith {
     publicVariableServer "isEventInProgress";
 };
 
+private _civPlane = (A3A_faction_civ getOrDefault ["vehiclesCivPlanes", []]);
+if (_civPlane isEqualTo []) exitWith {
+    Error("No civ plane found, aborting.");
+    isEventInProgress = false;
+    publicVariableServer "isEventInProgress";
+};
+
 private _originPosition = position _player;
 
 Info_2("%1 will be used as center of the event at %2 position.", name _player, str _originPosition);

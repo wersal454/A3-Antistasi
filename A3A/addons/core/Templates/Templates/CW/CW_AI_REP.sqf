@@ -18,20 +18,20 @@
 ["equipmentBox", "Box_NATO_Equip_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
 
 ["vehiclesBasic", ["3AS_Barc"]] call _fnc_saveToTemplate; 			//this line determines basic vehicles, the lightest kind available. -- Example: ["vehiclesBasic", ["B_Quadbike_01_F"]] -- Array, can contain multiple assets
-["vehiclesLightUnarmed", ["CW_Ifrit"]] call _fnc_saveToTemplate; 		
-["vehiclesLightArmed",["3AS_BarcSideCar", "CW_Ifrit_HMG", "CW_Offroad_AT", "3AS_Barc"]] call _fnc_saveToTemplate; 		
+["vehiclesLightUnarmed", ["3AS_ISP_Transport"]] call _fnc_saveToTemplate; 		
+["vehiclesLightArmed",["3AS_BarcSideCar", "3AS_ISP", "3AS_ISP", "3AS_Barc"]] call _fnc_saveToTemplate; 		
 ["vehiclesTrucks", ["442_argon_transport", "442_argon_covered"]] call _fnc_saveToTemplate; 		
 ["vehiclesCargoTrucks", ["442_argon_transport", "442_argon_covered"]] call _fnc_saveToTemplate; 		
 ["vehiclesAmmoTrucks", ["442_argon_ammo"]] call _fnc_saveToTemplate; 	
 ["vehiclesRepairTrucks", ["442_argon_repair"]] call _fnc_saveToTemplate; 	
 ["vehiclesFuelTrucks", ["442_argon_fuel"]] call _fnc_saveToTemplate;	
 ["vehiclesMedical", ["442_argon_medical"]] call _fnc_saveToTemplate;
-["vehiclesLightAPCs", ["3AS_RTT", "3AS_RTT_Wheeled"]] call _fnc_saveToTemplate;
-["vehiclesAPCs", ["3as_saber_m1", "3as_saber_m1Recon"]] call _fnc_saveToTemplate;
-["vehiclesAirborne", ["CW_Ifrit_HMG", "CW_Offroad_AT"]] call _fnc_saveToTemplate;
-["vehiclesIFVs", ["3as_saber_super", "3as_saber_m1G"]] call _fnc_saveToTemplate;
-["vehiclesLightTanks",  ["3as_saber_super", "3as_saber_m1G"]] call _fnc_saveToTemplate;
-["vehiclesTanks", ["3as_ATAP_base"]] call _fnc_saveToTemplate;
+["vehiclesLightAPCs", ["3AS_RTT", "3AS_RTT_Wheeled", "3AS_PX10_REP_F"]] call _fnc_saveToTemplate;
+["vehiclesAPCs", ["3AS_PX10_REP_UP", "3AS_Saber_M1", "3AS_Saber_M1Recon"]] call _fnc_saveToTemplate;
+["vehiclesAirborne", ["3AS_PX10_REP_F", "3AS_Saber_M1"]] call _fnc_saveToTemplate;
+["vehiclesIFVs", ["3AS_Saber_Super", "3AS_Saber_M1G"]] call _fnc_saveToTemplate;
+["vehiclesLightTanks",  ["3AS_Saber_Super", "3AS_Saber_M1G"]] call _fnc_saveToTemplate;
+["vehiclesTanks", ["3AS_ATAP_Base","3AS_ATTE_Base","3AS_ATTE_TCW"]] call _fnc_saveToTemplate;
 ["vehiclesAA", ["3AS_RX200_Base"]] call _fnc_saveToTemplate;
 
 ["vehiclesTransportBoats", ["I_Boat_Transport_01_F"]] call _fnc_saveToTemplate; 
@@ -39,13 +39,13 @@
 ["vehiclesAmphibious", []] call _fnc_saveToTemplate;
 
 ["vehiclesPlanesCAS", ["3AS_BTLB_Bomber"]] call _fnc_saveToTemplate;
-["vehiclesPlanesAA", ["3as_Z95_Republic"]] call _fnc_saveToTemplate;
+["vehiclesPlanesAA", ["3AS_Z95_Republic","3as_Vwing_base"]] call _fnc_saveToTemplate;
 ["vehiclesPlanesTransport", ["3AS_Republic_Transport_01"]] call _fnc_saveToTemplate;
 
 ["vehiclesHelisLight", ["3AS_Patrol_LAAT_Republic"]] call _fnc_saveToTemplate;
-["vehiclesHelisTransport", ["3as_LAAT_Mk2", "3as_LAAT_Mk2", "3as_LAAT_Mk2", "3AS_Nuclass"]] call _fnc_saveToTemplate;
-["vehiclesHelisLightAttack", ["3as_LAAT_Mk1"]] call _fnc_saveToTemplate;
-["vehiclesHelisAttack", ["3as_LAAT_Mk1"]] call _fnc_saveToTemplate;
+["vehiclesHelisTransport", ["3AS_LAAT_Mk2", "3AS_LAAT_Mk2", "3AS_LAAT_Mk2", "3AS_Nu_REP_F","3AS_Rho_REP_F"]] call _fnc_saveToTemplate;
+["vehiclesHelisLightAttack", ["3AS_LAAT_Mk1"]] call _fnc_saveToTemplate;
+["vehiclesHelisAttack", ["3AS_LAAT_Mk1"]] call _fnc_saveToTemplate;
 
 
 ["vehiclesArtillery", ["442_rx200_arty"]] call _fnc_saveToTemplate;
@@ -57,12 +57,12 @@
 ["uavsPortable", ["3as_uas2"]] call _fnc_saveToTemplate;
 
 //Config special vehicles - militia vehicles are mostly used in the early game, police cars are being used by troops around cities -- Example:
-["vehiclesMilitiaLightArmed", ["CW_Offroad_HMG"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaLightArmed", ["3AS_ISP"]] call _fnc_saveToTemplate;
 ["vehiclesMilitiaTrucks", ["442_argon_transport", "442_argon_covered"]] call _fnc_saveToTemplate;
-["vehiclesMilitiaCars", ["CW_Offroad_Rep"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaCars", ["3AS_ISP_Transport"]] call _fnc_saveToTemplate;
 ["vehiclesMilitiaAPCs", ["3AS_RTT_Wheeled"]] call _fnc_saveToTemplate;
 
-["vehiclesPolice", ["CW_Offroad_Rep"]] call _fnc_saveToTemplate;
+["vehiclesPolice", ["3AS_ISP_Transport"]] call _fnc_saveToTemplate;
 
 ["staticMGs", ["3AS_HeavyRepeater_Unarmoured"]] call _fnc_saveToTemplate;
 ["staticAT", ["3as_ParticleCannon"]] call _fnc_saveToTemplate;
@@ -147,6 +147,9 @@ _loadoutData set ["traitorHats", ["SWLB_clone_P2_helmet"]];
 _loadoutData set ["officerUniforms", ["SWLB_clone_uniform"]];
 _loadoutData set ["officerVests", ["SWLB_clone_assault_armor"]];
 _loadoutData set ["officerHats", ["SWLB_clone_P2_helmet"]];
+
+_loadoutData set ["cloakUniforms", []];
+_loadoutData set ["cloakVests", []];
 
 _loadoutData set ["uniforms", []];
 _loadoutData set ["slUniforms", []];
@@ -885,6 +888,57 @@ private _officerTemplate = {
     ["radios"] call _fnc_addRadio;
 };
 
+private _patrolSniperTemplate = {
+    ["sniHats"] call _fnc_setHelmet;
+    [selectRandomWeighted [[], 2, "glasses", 0.75, "goggles", 0.5]] call _fnc_setFacewear;
+    [["cloakVests","vests"] call _fnc_fallback] call _fnc_setVest;
+    [["cloakUniforms","uniforms"] call _fnc_fallback] call _fnc_setUniform;
+
+    [["sniperRifles", "marksmanRifles"] call _fnc_fallback] call _fnc_setPrimary;
+    ["primary", 6] call _fnc_addMagazines;
+
+    ["sidearms"] call _fnc_setHandgun;
+    ["handgun", 2] call _fnc_addMagazines;
+
+    ["items_medical_standard"] call _fnc_addItemSet;
+    ["items_sniper_extras"] call _fnc_addItemSet;
+    ["items_miscEssentials"] call _fnc_addItemSet;
+    ["antiInfantryGrenades", 1] call _fnc_addItem;
+    ["smokeGrenades", 2] call _fnc_addItem;
+
+    ["maps"] call _fnc_addMap;
+    ["watches"] call _fnc_addWatch;
+    ["compasses"] call _fnc_addCompass;
+    ["radios"] call _fnc_addRadio;
+    ["NVGs"] call _fnc_addNVGs;
+};
+
+private _patrolSpotterTemplate = {
+    ["sniHats"] call _fnc_setHelmet;
+    [selectRandomWeighted [[], 2, "glasses", 0.75, "goggles", 0.5]] call _fnc_setFacewear;
+    [["cloakVests","vests"] call _fnc_fallback] call _fnc_setVest;
+    [["cloakUniforms","uniforms"] call _fnc_fallback] call _fnc_setUniform;
+
+    [selectRandom ["rifles", "carbines", "marksmanRifles"]] call _fnc_setPrimary;
+    ["primary", 6] call _fnc_addMagazines;
+
+    ["sidearms"] call _fnc_setHandgun;
+    ["handgun", 2] call _fnc_addMagazines;
+
+    ["items_medical_standard"] call _fnc_addItemSet;
+    ["items_sniper_extras"] call _fnc_addItemSet;
+    ["items_miscEssentials"] call _fnc_addItemSet;
+    ["antiInfantryGrenades", 1] call _fnc_addItem;
+    ["smokeGrenades", 2] call _fnc_addItem;
+
+    ["maps"] call _fnc_addMap;
+    ["watches"] call _fnc_addWatch;
+    ["compasses"] call _fnc_addCompass;
+    ["radios"] call _fnc_addRadio;
+    ["rangefinders"] call _fnc_addBinoculars;
+    ["NVGs"] call _fnc_addNVGs;
+};
+
 ////////////////////////////////////////////////////////////////////////////////////////
 //  You shouldn't touch below this line unless you really really know what you're doing.
 //  Things below here can and will break the gamemode if improperly changed.
@@ -938,7 +992,9 @@ private _unitTypes = [
 	["AA", _aaTemplate, [], [_prefix]],
 	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
 	["Marksman", _marksmanTemplate, [], [_prefix]],
-	["Sniper", _sniperTemplate, [], [_prefix]]
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    	["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    	["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _militaryLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
@@ -971,7 +1027,9 @@ private _unitTypes = [
 	["AA", _aaTemplate, [], [_prefix]],
 	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
 	["Marksman", _marksmanTemplate, [], [_prefix]],
-	["Sniper", _sniperTemplate, [], [_prefix]]
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    	["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    	["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _militiaLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
@@ -993,7 +1051,9 @@ private _unitTypes = [
 	["AA", _aaTemplate, [], [_prefix]],
 	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
 	["Marksman", _marksmanTemplate, [], [_prefix]],
-	["Sniper", _sniperTemplate, [], [_prefix]]
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    	["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    	["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _eliteLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;

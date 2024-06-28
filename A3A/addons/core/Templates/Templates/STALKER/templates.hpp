@@ -1,6 +1,6 @@
     class STALKER_Base
     {
-        requiredAddons[] = {"CUP_Vehicles_Core", "SCE_Uniforms"};
+        requiredAddons[] = {"CUP_Vehicles_Core", "CUP_Creatures_Military_Russia", "CUP_Weapons_AK", "SCE_Uniforms"};
         logo = QPATHTOFOLDER(Templates\Templates\STALKER\images\flag_ukraine_co.paa); // before people go "WOOO WHEN UKRAINE FACTION", no! STALKER is set in ukraine around 2000-2010
         flagTexture = QPATHTOFOLDER(Templates\Templates\STALKER\images\flag_ukraine_co.paa);
         basepath = QPATHTOFOLDER(Templates\Templates\STALKER);
@@ -26,7 +26,7 @@
 
     class STALKER_Civ_Zombie : STALKER_Base
     {
-        requiredAddons[] = {"WBK_ZombieCreatures"};
+        requiredAddons[] = {"SCE_Uniforms", "CUP_Creatures_Military_Russia", "WBK_ZombieCreatures"};
         side = "Civ";
         name = "Mutants";
         file = "STALKER_Civ_Zombie";
@@ -80,3 +80,5 @@
         file = "STALKER_Riv_Bandits";
         description = "[STALKER] Led by Yoga, this faction has notoriously been a pain for the Loners to deal with. Almost everyone hates them.";
     };
+
+    #include "templates_RHS.hpp"

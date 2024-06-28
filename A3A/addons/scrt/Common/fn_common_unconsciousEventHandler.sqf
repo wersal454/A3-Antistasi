@@ -6,6 +6,11 @@ params ["_displayOrControl", "_key", "_shift", "_ctrl", "_alt"];
 
 private _handled = false;
 
+if (_key == 35) then {
+	if (A3A_selfReviveMethods isEqualTo true) then { [] spawn A3A_fnc_selfRevive };
+	//if (A3A_selfReviveMethods == 2) then { [] spawn A3A_fnc_transferToAI };		// different keys later?
+};
+
 if (reviveKitsEnabled) then {
 	switch (_key) do {
 		case DIK_R: {

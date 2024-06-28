@@ -31,6 +31,10 @@ if (_quantity > _quantityMax) then {
 	_quantity = _quantityMax;
 };
 
+if (_quantity isEqualTo -1) then {
+	_quantity = _quantityMax;
+};
+
 [[_typeX,_position,_quantity,_mine],"A3A_fnc_buildMinefield"] remoteExec ["A3A_fnc_scheduler",2];
 
 closeDialog 0;

@@ -92,13 +92,17 @@ if (_faction isEqualTo A3A_faction_reb && {_civNonHuman}) exitWith {
 // Disregard the above statement if civs aren't human
 if (_civNonHuman) exitWith
 {
-    if (count _special >= (globalCivilianMax * 2)) exitWith {
+    if (count _special >= (globalCivilianMax * 2) && {zombiesUncapped isEqualTo false}) exitWith {
         Info("Global spawn limit reached! - Exiting");
     };
 
     // if (_numCiv < 5) then {_numCiv = _numCiv * 2}; // we want the cities to be infested, no?
     if (maxCiviliansPerTown <= 10) then {
         _numCiv = random [6, 8, 10];
+    };
+
+    if (zombiesUncapped isEqualTo true) then {
+        _numCiv = _numCiv * (selectRandom [2,3]);
     };
     
     switch _faction do

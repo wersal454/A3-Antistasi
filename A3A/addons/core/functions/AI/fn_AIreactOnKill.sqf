@@ -43,7 +43,11 @@ if(count _activeGroupMembers == 0) exitWith {};
 
 //Call help if possible
 if(_group getVariable ["A3A_canCallSupportAt", -1] < time) then {
-    [_group, _killer] spawn A3A_fnc_callForSupportInfantry;
+    if (radiomanSupport isEqualTo false) then { // use radioman
+        [_group, _killer] spawn A3A_fnc_callForSupportInfantry;
+    } else { // use SL
+        [_group, _killer] spawn A3A_fnc_callForSupport;
+    };
 };
 
 // Call for Local battery support.

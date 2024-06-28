@@ -18,6 +18,8 @@
 ["toolKits", ["vn_b_item_toolkit"]] call _fnc_saveToTemplate;  // Relies on autodetection.
 ["itemMaps", ["vn_b_item_map"]] call _fnc_saveToTemplate;  // Relies on autodetection.
 
+["vehicleHealthStation", ["Land_vn_tent_mash_02_01", 75]] call _fnc_saveToTemplate;
+
 ["diveGear", ["vn_b_uniform_seal_09_01", "vn_b_acc_seal_01", "vn_b_vest_seal_01"]] call _fnc_saveToTemplate;
 
 ["flyGear", ["vn_b_uniform_heli_01_01"]] call _fnc_saveToTemplate;
@@ -121,10 +123,8 @@ private _rebUniforms = [
 ///  Identities   ///
 /////////////////////
 
-["faces", ["GreekHead_A3_02","GreekHead_A3_03","GreekHead_A3_04",
-"GreekHead_A3_05","GreekHead_A3_06","GreekHead_A3_07","GreekHead_A3_08",
-"GreekHead_A3_09","Ioannou","Mavros"]] call _fnc_saveToTemplate;
-["voices", ["Male01GRE", "Male02GRE", "Male03GRE", "Male04GRE", "Male05GRE", "Male06GRE"]] call _fnc_saveToTemplate;
+["faces", ["AsianHead_A3_01", "AsianHead_A3_02", "AsianHead_A3_03", "AsianHead_A3_04", "AsianHead_A3_05", "AsianHead_A3_06", "AsianHead_A3_07"]] call _fnc_saveToTemplate;
+["voices", ["Male01CHI", "Male02CHI", "Male03CHI"]] call _fnc_saveToTemplate;
 
 //////////////////////////
 //       Loadouts       //

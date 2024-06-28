@@ -13,7 +13,7 @@ FIX_LINE_NUMBERS()
 
 params ["_plane", "_target", "_supportName"];
 Debug_1("%1 has started gun run", _supportName);
-
+_plane setVehicleRadar 1;
 //Creating the startpoint for the fire EH loop
 private _fnc_executeWeaponFire =
 {
@@ -70,6 +70,8 @@ private _fnc_executeWeaponFire =
         _plane setVariable ["rocketReload", getNumber (_modeCfg >> "reloadTime")];
         Debug_3("Firing %1 shots with mode %2 and reload %3", _plane getVariable "rocketShots", configName _modeCfg, _plane getVariable "rocketReload");
         (driver _plane) forceWeaponFire [_selectedWeapon, configName _modeCfg];
+        (gunner _plane) forceWeaponFire [_selectedWeapon, configName _modeCfg];
+        (commander _plane) forceWeaponFire [_selectedWeapon, configName _modeCfg];
     };
 
     private _selectedWeapon = _plane getVariable ["mainGun", ""];
@@ -86,6 +88,8 @@ private _fnc_executeWeaponFire =
         _plane setVariable ["mainGunReload", getNumber (_modeCfg >> "reloadTime")];
         Debug_3("Firing %1 shots with mode %2 and reload %3", _plane getVariable "mainGunShots", configName _modeCfg, _plane getVariable "mainGunReload");
         (driver _plane) forceWeaponFire [_selectedWeapon, configName _modeCfg];
+        (gunner _plane) forceWeaponFire [_selectedWeapon, configName _modeCfg];
+        (commander _plane) forceWeaponFire [_selectedWeapon, configName _modeCfg];
     };
 };
 
@@ -157,7 +161,14 @@ addMissionEventHandler ["EachFrame",
 waitUntil { sleep 1; _transform#8 >= 1 };
 
 Debug_1("Gun run for %1 finished, returning control", _supportName);
-
+_plane setVehicleRadar 0;
+for '_i' from 1 to 3 do
+    {
+        [_plane, "CMFlareLauncher"] call BIS_fnc_fire;
+        [_plane, "CMFlareLauncher_Triples"] call BIS_fnc_fire;
+        [_plane, "CMFlareLauncher_Singles"] call BIS_fnc_fire;
+        sleep 1;
+    };
 /*
     if(_interval > 0.25 && (_fireParams#0#0)) then
     {

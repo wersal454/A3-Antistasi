@@ -68,6 +68,7 @@ Maintainer: DoomMetal
 #define A3A_Icon_Napalm_Bomb        A3A_GUI_QTEXTURE_PATH_OF(icon_napalm_bomb.paa)
 #define A3A_Icon_None               A3A_GUI_QTEXTURE_PATH_OF(icon_none.paa)
 #define A3A_Icon_Pilot              A3A_GUI_QTEXTURE_PATH_OF(icon_pilot.paa)
+#define A3A_Icon_Requirements       A3A_GUI_QTEXTURE_PATH_OF(icon_requirements.paa)
 #define A3A_Icon_Rescue             A3A_GUI_QTEXTURE_PATH_OF(icon_rescue.paa)
 #define A3A_Icon_Rifleman           A3A_GUI_QTEXTURE_PATH_OF(icon_rifleman.paa)
 #define A3A_Icon_Sniper             A3A_GUI_QTEXTURE_PATH_OF(icon_sniper.paa)
@@ -123,3 +124,12 @@ Maintainer: DoomMetal
 
 // Place Holders
 #define A3A_PlaceHolder_NoVehiclePreview   A3A_GUI_QTEXTURE_PATH_OF(placeholder_no_vehicle_preview.paa)
+
+//teamleader placer keys
+#define A3A_Icon_key_alt          A3A_GUI_QTEXTURE_PATH_OF(keys\alt_key_ca.paa)
+#define A3A_Icon_key_c           A3A_GUI_QTEXTURE_PATH_OF(keys\c_key_ca.paa)
+#define A3A_Icon_key_t           A3A_GUI_QTEXTURE_PATH_OF(keys\t_key_ca.paa)
+#define A3A_Icon_key_e        A3A_GUI_QTEXTURE_PATH_OF(keys\e_key_ca.paa)
+#define A3A_Icon_key_r       A3A_GUI_QTEXTURE_PATH_OF(keys\r_key_ca.paa)
+#define A3A_Icon_key_shift        A3A_GUI_QTEXTURE_PATH_OF(keys\shift_key_ca.paa)
+#define A3A_Icon_key_space       A3A_GUI_QTEXTURE_PATH_OF(keys\space_key_ca.paa)

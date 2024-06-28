@@ -13,6 +13,31 @@ private _fnc_distCheck = {
 	if (_rebelSpawners inAreaArray [getPosATL _object, _dist, _dist] isEqualTo []) then { deleteVehicle _object };
 };
 
+// Cleanup constructed buildings
+private _rebMarkers = (airportsX + outposts + seaports + factories + resourcesX + milbases) select { sidesX getVariable _x == teamPlayer };
+// ^ Add extra plus related stuff
+_rebMarkers append outpostsFIA; _rebMarkers pushBack "Synd_HQ";
+
+A3A_buildingsToSave = A3A_buildingsToSave select {
+	// Keep if there are rebel spawners within 500m
+	if (_rebelSpawners inAreaArray [getPosATL _x, 500, 500] isNotEqualTo []) then { continueWith true };
+
+	// Delete if outside mission distance (temporary)
+	if (_x distance2d markerPos "Synd_HQ" > distanceMission) then { deleteVehicle _x; continueWith false };
+
+	// Delete if not within a rebel marker
+	private _building = _x;
+	private _indexes = _rebMarkers inAreaArrayIndexes [getPosATL _x, 500, 500];
+	if (-1 != _indexes findIf { _building inArea _rebMarkers#_x } ) then { continueWith true };
+	deleteVehicle _x; false;
+};
+
+Debug("Moving dead solders out of vehicles...")
+{
+	if !(isNull objectParent _x) then { moveOut _x };
+} forEach allDeadMen;
+Debug("Finished moving soldiers out of vehicles; executing garbage clean.")
+sleep 0.5;
 
 { deleteVehicle _x } forEach allDead;
 { deleteVehicle _x } forEach (allMissionObjects "WeaponHolder");
@@ -36,6 +61,7 @@ if (A3A_hasACE) then {
 	{ deleteVehicle _x } forEach (allMissionObjects "UserTexture1m_F");						// ACE spraycan tags
 	{ deleteVehicle _x } forEach (allMissionObjects "ace_cookoff_Turret_MBT_01");			//MBT turret wrecks
 	{ deleteVehicle _x } forEach (allMissionObjects "ace_cookoff_Turret_MBT_02");
+	{ [_x, 200] call _fnc_distCheck } forEach (allMissionObjects "ACE_Grave");
 	{ [_x, 200] call _fnc_distCheck } forEach (allMissionObjects "ACE_envelope_big");		// ACE trench objects
 	{ [_x, 200] call _fnc_distCheck } forEach (allMissionObjects "ACE_envelope_small");
 };

@@ -50,6 +50,18 @@ selectPlayer _unit;
 //otherwise unit will lose his identity
 [_unit, _face, _speaker] call A3A_fnc_setIdentity;
 
+if (fatigueEnabled isEqualTo false) then {
+	_unit enableFatigue false;
+};
+
+if (staminaEnabled isEqualTo false) then {
+	_unit enableStamina false;
+};
+
+if (swayEnabled isEqualTo false) then {
+	_unit setCustomAimCoef 0;
+};
+
 private _timeX = aiControlTime;
 
 _unit addAction [(localize "STR_antistasi_actions_return_control_to_ai"),{selectPlayer leader (group (_this select 0))}];

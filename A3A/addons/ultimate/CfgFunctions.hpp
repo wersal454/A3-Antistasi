@@ -7,6 +7,14 @@ class CfgFunctions
             file = QPATHTOFOLDER(functions\Ammunition);
             class grabForbiddenItems {};
             class removeForbiddenItems {};
+            class grabBlackMarketVehicles {};
+            class removeUnlockedItems {};
+        };
+        class blackmarket
+        {
+            file = QPATHTOFOLDER(functions\blackmarket);
+            class hasRequirements {};
+            class sidesX {};
         };
         class cba
         {
@@ -16,7 +24,20 @@ class CfgFunctions
         class init
         {
             file = QPATHTOFOLDER(functions\init);
+            class checkMods {};
             class init {};
+            class initZones {};
+            class popup {};
+        };
+        class REINF
+        {
+            file = QPATHTOFOLDER(functions\REINF);
+            class blackMarketVehiclePrice {};
+        };
+        class patches
+        {
+            file = QPATHTOFOLDER(functions\patches);
+            class IMS_stealthKill {};
         };
         class STALKER
         {
@@ -30,9 +51,20 @@ class CfgFunctions
         {
             file = QPATHTOFOLDER(functions\Utility);
             class exportCrate {};
+            class exportPylons {};
+            class exportTowns {};
             class hasAddon {};
             class log {};
             class logisticsGrabSeats {};
+            class weightTest {};
+        };
+        class zones
+        {
+            file = QPATHTOFOLDER(functions\zones);
+            class revealRandomZones {};
+            class revealZone {};
+            class revealZones {};
+            class revealZonesDistance {};
         };
     };
 };

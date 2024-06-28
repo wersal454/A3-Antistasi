@@ -90,6 +90,8 @@ DECLARE_SERVER_VAR(A3A_lastGarbageCleanTime, serverTime);
 DECLARE_SERVER_VAR(A3A_arsenalLimits, createHashMap);
 //Time of last garbage clean notification
 DECLARE_SERVER_VAR(A3A_lastGarbageCleanTimeNote, serverTime);
+// Under-construction objects
+DECLARE_SERVER_VAR(A3A_unbuiltObjects, []);
 
 //Antistasi Plus variables
 
@@ -164,6 +166,7 @@ A3A_oldHQInfoOcc = [];			// arrays of [xpos, ypos, knowledge]
 A3A_oldHQInfoInv = [];
 
 // These are silly, should be nil/true and local-defined only
+A3A_buildingsToSave = [];
 cityIsSupportChanging = false;
 resourcesIsChanging = false;
 savingServer = true;					// lock out saves until this is changed
@@ -298,8 +301,7 @@ Info("Setting up faction and DLC equipment flags");
 
 // Set enabled & disabled DLC/CDLC arrays for faction/equipment modification
 private _loadedDLC = getLoadedModsInfo select {
-	(_x#3 or {_x#0 isEqualTo "Arma 3 Creator DLC: Western Sahara"})
-	and {!(_x#1 in ["A3","curator","argo","tacops", "kart"])}
+	(_x#3) and {!(_x#1 in ["A3","curator","argo","tacops"])}
 } apply {tolower (_x#1)};
 A3A_enabledDLC = (_saveData get "DLC") apply {tolower _x};                 // should be pre-checked against _loadedDLC
 {
@@ -375,6 +377,8 @@ Info("Reading templates");
 
 } forEach (_saveData get "addonVics");
 
+Info("Generating black market vehicles list");
+[] call A3U_fnc_grabBlackMarketVehicles;
 call A3A_fnc_compileMissionAssets;
 
 { //broadcast the templates to the clients
@@ -511,7 +515,10 @@ ONLY_DECLARE_SERVER_VAR(A3A_utilityItemHM);
 
 //fast ropes are hard defined here, because of old fixed offsets.
 //fastrope needs to be rewritten and then we can get get ridd of this
-private _vehFastRope = ["O_Heli_Light_02_unarmed_F","B_Heli_Transport_01_camo_F","RHS_UH60M_d","UK3CB_BAF_Merlin_HC3_18_GPMG_DDPM_RM","UK3CB_BAF_Merlin_HC3_18_GPMG_Tropical_RM","RHS_Mi8mt_vdv","RHS_Mi8mt_vv","RHS_Mi8mt_Cargo_vv"];
+
+private _vehFastRope = (FactionGet(all,"vehiclesHelisTransport") + FactionGet(all,"vehiclesHelisLight") + FactionGet(all,"vehiclesHelisAttack") + FactionGet(all,"vehiclesHelisLightAttack"));
+diag_log _vehFastRope;
+//private _vehFastRope = ["O_Heli_Light_02_unarmed_F","B_Heli_Transport_01_camo_F","RHS_UH60M_d","UK3CB_BAF_Merlin_HC3_18_GPMG_DDPM_RM","UK3CB_BAF_Merlin_HC3_18_GPMG_Tropical_RM","RHS_Mi8mt_vdv","RHS_Mi8mt_vv","RHS_Mi8mt_Cargo_vv"];
 DECLARE_SERVER_VAR(vehFastRope, _vehFastRope);
 DECLARE_SERVER_VAR(A3A_vehClassToCrew,call A3A_fnc_initVehClassToCrew);
 
@@ -531,6 +538,7 @@ private _vehicleResourceCosts = createHashMap;
 { _vehicleResourceCosts set [_x, 70] } forEach FactionGet(all, "vehiclesHelisLight");
 { _vehicleResourceCosts set [_x, 100] } forEach FactionGet(all, "vehiclesHelisTransport");
 { _vehicleResourceCosts set [_x, 130] } forEach FactionGet(all, "vehiclesHelisLightAttack") + FactionGet(all, "vehiclesPlanesTransport");
+{ _vehicleResourceCosts set [_x, 150] } forEach FactionGet(all, "vehiclesDropPod");
 { _vehicleResourceCosts set [_x, 250] } forEach FactionGet(all, "vehiclesPlanesCAS") + FactionGet(all, "vehiclesPlanesAA");
 { _vehicleResourceCosts set [_x, 250] } forEach FactionGet(all, "vehiclesHelisAttack");
 

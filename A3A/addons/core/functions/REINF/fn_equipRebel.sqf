@@ -41,10 +41,11 @@ if (!isNil "_customLoadout") exitWith {
 		_unit setUnitLoadout _customLoadout;
 	};
 
-    if (goggles _unit != _goggles) then {
+    if (goggles _unit != _goggles && {randomizeRebelLoadoutUniforms}) then {
         removeGoggles _unit;
         _unit addGoggles _goggles;
     };
+
     _unit linkItem (selectRandom (A3A_faction_reb get "compasses"));
 	_unit linkItem (selectRandom (A3A_faction_reb get "maps"));
 	_unit linkItem (selectRandom (A3A_faction_reb get "watches"));

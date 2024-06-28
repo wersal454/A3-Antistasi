@@ -9,7 +9,7 @@ if (str (_display) == "no display") exitWith {};
 private _costTextBox = _display displayCtrl 2761;
 private _comboBox = _display displayCtrl 2758;
 private _index = lbCurSel _comboBox;
-private _minefieldType =  lbData [2758, _index];
+private _minefieldType = lbData [2758, _index];
 
 minefieldType = _minefieldType;
 private _costs = 0;
@@ -26,7 +26,7 @@ private _mine = "";
 private _availableMinesPool = _pool select { 
 	private _className = _x select 0;
 	private _quantity = _x select 1;
-	_className in _minePool && {_quantity >= 5};
+	_className in _minePool && {_quantity >= 5 || {_quantity isEqualTo -1}};
 };
 
 if (count _availableMinesPool < 1) then {

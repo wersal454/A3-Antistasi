@@ -11,6 +11,7 @@ class RscTitles {
        fadeout = 0;
        duration = 0;
     };
+    #include "placerHintsRsc.hpp"
     class A3A_StatusBar {
         idd = 745;
         movingEnable =  0;

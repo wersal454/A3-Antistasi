@@ -184,6 +184,7 @@ allUAVTerminals = allUAVTerminals select {
 
 //Remove Prop Food
 allMagBullet = allMagBullet select { getText (configFile >> "CfgMagazines" >> _x >> "ammo") isNotEqualTo "FakeAmmo"; };
+allMagBullet = allMagBullet select { !(_x in A3U_forbiddenItems) };
 
 //Remove False NVGs
 allNVGs = allNVGs select { getarray (configFile >> "CfgWeapons" >> _x >> "visionMode") isnotequalto ["Normal","Normal"]};

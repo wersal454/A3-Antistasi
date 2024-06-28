@@ -123,12 +123,51 @@ private _pressTemplate = {
     ["compasses"] call _fnc_addCompass;
 };
 
+private _specialUnits = [];
+private _specialUnitsWeights = [];
+
+if (["dev_mutant_asymhuman"] call A3U_fnc_hasAddon) then {
+    _specialUnits = [
+        "dev_o_zombie_polo_2_F_afro",
+        "dev_o_zombie_casual_5_v2_F_afro",
+        "dev_form939_o",
+        "dev_asymhuman_o",
+        "dev_toxmut_o"
+    ];
+
+    _specialUnitsWeights = [
+        0.7,
+        0.5,
+        0.3,
+        0.2,
+        0.1
+    ];
+} else {
+    _specialUnits = [
+        "Zombie_O_Walker_Civ",
+        "Zombie_O_Shambler_Civ",
+        "Zombie_Special_OPFOR_Screamer",
+        "Zombie_Special_OPFOR_Leaper_2",
+        "Zombie_Special_OPFOR_Boomer",
+        "WBK_SpecialZombie_Smasher_3"
+    ];
+
+    _specialUnitsWeights = [
+        1.0,
+        0.8,
+        0.3,
+        0.2,
+        0.1,
+        0.001
+    ];
+};
+
 private _prefix = "militia";
 private _unitTypes = [
     ["Press", _pressTemplate], // to-do: allow press to spawn but make them special infected
     ["Worker", _workerTemplate], // needed to be normal for resources, factories, etc
     ["Man", _manTemplate],
-    ["Special", _manTemplate, [["baseClass", ["Zombie_O_Walker_Civ", "Zombie_O_Shambler_Civ", "Zombie_Special_OPFOR_Leaper_1", "Zombie_Special_OPFOR_Leaper_2"], true]]]
+    ["Special", _manTemplate, [["baseClass", [_specialUnits, _specialUnitsWeights], true]]]
 ];
 
 [_prefix, _unitTypes, _loadoutData] call _fnc_generateAndSaveUnitsToTemplate;

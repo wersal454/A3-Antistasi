@@ -3,7 +3,7 @@
 		///////////////////////////////////////////////////////
 		class handgunsAegis 
 		{
-			displayName = "Aegis Handguns";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Aegis", localize "STR_A3AU_handguns"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\handgun_ca.paa";
 			ITEM(hgun_Pistol_heavy_01_F, 450, PISTOL_STOCK);
 			ITEM(hgun_Pistol_heavy_01_green_F, 450, PISTOL_STOCK);
@@ -21,7 +21,7 @@
 
 		class launchersAegis 
 		{
-			displayName = "Aegis Launchers";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Aegis", localize "STR_A3AU_launchers"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\secondaryWeapon_ca.paa";
 
 			ITEM(launch_RPG7_F, 650, LAUNCHER_STOCK);
@@ -58,9 +58,70 @@
 			ITEM(launch_O_Titan_short_camo_F, 3250, 3);
 		};
 
+		class launcherMagazinesAegis
+		{
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Aegis", localize "STR_A3AU_launcherAmmo"]);
+			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoMag_ca.paa";
+		
+			class RPG7_F {
+				price = 200;
+				stock = 50;
+			};
+
+			class Vorona_HE {
+				price = 75;
+				stock = 50;
+			};
+			class Vorona_HEAT {
+				price = 100;
+				stock = 50;
+			};
+			class MRAWS_HEAT55_F {
+				price = 250;
+				stock = 50;
+			};
+			class MRAWS_HE_F {
+				price = 150;
+				stock = 50;
+			};
+			class MRAWS_HEAT_F {
+				price = 300;
+				stock = 50;
+			};
+
+			class NLAW_F {
+				price = 300;
+				stock = 50;
+			};
+
+			class RPG32_F {
+				price = 300;
+				stock = 50;
+			};
+			class RPG32_HE_F {
+				price = 200;
+				stock = 50;
+			};
+
+			class Titan_AA {
+				price = 400;
+				stock = 10;
+			};
+
+			class Titan_AT {
+				price = 300;
+				stock = 10;
+			};
+			class Titan_AP {
+				price = 200;
+				stock = 10;
+			};
+
+		};
+
 		class riflesAegis 
 		{
-			displayName = "Aegis Rifles";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Aegis", localize "STR_A3AU_rifles"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\primaryWeapon_ca.paa";
 
 			ITEM(arifle_AKS_F, 250, RIFLE_STOCK);
@@ -267,7 +328,7 @@
 
 		class specialWeaponsAegis 
 		{
-			displayName = "Aegis Special Weapons";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Aegis", localize "STR_A3AU_specialWeapons"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\primaryWeapon_ca.paa";
 
 			ITEM(GL_XM25_F, 1500, RIFLE_STOCK);
@@ -290,7 +351,7 @@
 
 		class mgAegis 
 		{
-			displayName = "Aegis MGs";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Aegis", localize "STR_A3AU_mgs"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\primaryWeapon_ca.paa";
 
 			ITEM(arifle_RPK_F, 900, RIFLE_STOCK);
@@ -346,7 +407,7 @@
 
 		class sniperRiflesAegis 
 		{
-			displayName = "Aegis Snipers";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Aegis", localize "STR_A3AU_sniperRifles"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\primaryWeapon_ca.paa";
 
 			ITEM(srifle_DMR_07_blk_F, 1450, RIFLE_STOCK);
@@ -422,7 +483,7 @@
 
 		class smgAegis 
 		{
-			displayName = "Aegis SMGs";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Aegis", localize "STR_A3AU_smgs"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\primaryWeapon_ca.paa";
 
 			ITEM(SMG_03C_TR_black, 350, RIFLE_STOCK);
@@ -459,7 +520,7 @@
 
 		class pointersAegis 
 		{
-			displayName = "Aegis Pointers";
+			displayName = __EVAL(formatText ["%1 %2 %3 %4", localize "STR_A3AU_Aegis", localize "STR_A3AU_pointers", localize "STR_A3AU_and", localize "STR_A3AU_flashlights"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemAcc_ca.paa";
 
 			ITEM(acc_flashlight, 75, PN_STOCK);
@@ -479,7 +540,7 @@
 
 		class muzzlesAegis 
 		{
-			displayName = "Aegis Muzzles";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Aegis", localize "STR_A3AU_muzzles"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemMuzzle_ca.paa";
 
 			ITEM(muzzle_snds_338_black, 500, MZ_STOCK); //5
@@ -520,7 +581,7 @@
 
 		class opticsAegis 
 		{
-			displayName = "Aegis Optics";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Aegis", localize "STR_A3AU_sights"]);
 			picture = "A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa";
 
 			class optic_tws {
@@ -763,7 +824,7 @@
 
 		class magazinesAegis 
 		{
-			displayName = "Aegis Magazines";
+			displayName = __EVAL(formatText ["%1 %2 %3 %4", localize "STR_A3AU_Aegis", localize "STR_A3AU_magazines", localize "STR_A3AU_and", localize "STR_A3AU_glGrenades"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoMag_ca.paa";
 
 			///////////////////////////////////////////////////////

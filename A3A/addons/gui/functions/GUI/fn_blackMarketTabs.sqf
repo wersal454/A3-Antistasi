@@ -64,6 +64,7 @@ if (_tab isEqualTo "vehicles") then
         private _model = getText (_configClass >> "model");
 
         private _hasVehiclePreview = fileExists _editorPreview;
+        if (!_hasVehiclePreview) then {_editorPreview = A3A_PlaceHolder_NoVehiclePreview; _hasVehiclePreview = true}; // Remove this line to re-add "object" renders
         /* Turn on if you want the icons as a midway fallback
         if (!_hasVehiclePreview && fileExists _vehicleIcon) then {
             _editorPreview = _vehicleIcon;

@@ -25,14 +25,14 @@ if ([getPosATL player] call A3A_fnc_enemyNearCheck) exitWith {
 
 construction_selectedEngineer = objNull;
 
-private _engineers = (units group player) select {_x getUnitTrait "engineer"};
+private _engineers = (units group player) select {_x call A3A_fnc_isEngineer};
 private _playerIsEngineer = false;
 private _otherPlayerEngineers = [];
 private _aiEngineers = [];
 private _abortMessage = "";
 
 {
-	if (_x getUnitTrait "engineer") then {
+	if (_x call A3A_fnc_isEngineer) then {
 		if (isPlayer _x) then {
 			if (player == _x) then {
 				_playerIsEngineer = true;

@@ -78,6 +78,8 @@ private _initialRebelEquipment = [
     "Binocular"
 ];
 
+if (["diwako_anomalies"] call A3U_fnc_hasAddon) then {_initialRebelEquipment append ["anomalydetector"]};
+
 if (A3A_hasTFAR) then {_initialRebelEquipment append ["tf_microdagr", "tf_anprc154"]};
 if (A3A_hasTFAR && startWithLongRangeRadio) then {
     _initialRebelEquipment pushBack "tf_anprc155";

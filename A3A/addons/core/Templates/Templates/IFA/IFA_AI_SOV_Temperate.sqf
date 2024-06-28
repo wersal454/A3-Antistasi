@@ -131,7 +131,7 @@ _loadoutData set ["signalsmokeGrenades", ["SmokeShellYellow", "SmokeShellRed", "
 _loadoutData set ["maps", ["ItemMap"]];
 _loadoutData set ["watches", ["LIB_GER_ItemWatch"]];
 _loadoutData set ["compasses", ["LIB_GER_ItemCompass_deg"]];
-_loadoutData set ["radios", []];
+_loadoutData set ["radios", ["TFAR_SCR536"]];
 _loadoutData set ["gpses", []];
 _loadoutData set ["NVGs", []];
 _loadoutData set ["binoculars", ["LIB_Binocular_SU"]];
@@ -144,6 +144,9 @@ _loadoutData set ["traitorHats", ["H_LIB_SOV_RA_PrivateCap"]];
 _loadoutData set ["officerUniforms", ["U_LIB_SOV_Kapitan_summer"]];
 _loadoutData set ["officerVests", ["V_LIB_SOV_RA_OfficerVest"]];
 _loadoutData set ["officerHats", ["H_LIB_NKVD_OfficerCap"]];
+
+_loadoutData set ["cloakUniforms", []];
+_loadoutData set ["cloakVests", []];
 
 _loadoutData set ["uniforms", []];
 _loadoutData set ["slUniforms", []];
@@ -417,7 +420,7 @@ private _riflemanTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
-    ["radios"] call _fnc_addRadio;
+    // ["radios"] call _fnc_addRadio;
     ["NVGs"] call _fnc_addNVGs;
 };
 
@@ -444,7 +447,7 @@ private _radiomanTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
-    ["radios"] call _fnc_addRadio;
+    // ["radios"] call _fnc_addRadio;
     ["NVGs"] call _fnc_addNVGs;
 };
 
@@ -469,7 +472,7 @@ private _medicTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
-    ["radios"] call _fnc_addRadio;
+    // ["radios"] call _fnc_addRadio;
     ["NVGs"] call _fnc_addNVGs;
 };
 
@@ -495,7 +498,7 @@ private _grenadierTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
-    ["radios"] call _fnc_addRadio;
+    // ["radios"] call _fnc_addRadio;
     ["NVGs"] call _fnc_addNVGs;
 };
 
@@ -527,7 +530,7 @@ private _explosivesExpertTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
-    ["radios"] call _fnc_addRadio;
+    // ["radios"] call _fnc_addRadio;
     ["NVGs"] call _fnc_addNVGs;
 };
 
@@ -555,7 +558,7 @@ private _engineerTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
-    ["radios"] call _fnc_addRadio;
+    // ["radios"] call _fnc_addRadio;
     ["NVGs"] call _fnc_addNVGs;
 };
 
@@ -584,7 +587,7 @@ private _latTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
-    ["radios"] call _fnc_addRadio;
+    // ["radios"] call _fnc_addRadio;
     ["NVGs"] call _fnc_addNVGs;
 };
 
@@ -613,7 +616,7 @@ private _atTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
-    ["radios"] call _fnc_addRadio;
+    // ["radios"] call _fnc_addRadio;
     ["NVGs"] call _fnc_addNVGs;
 };
 
@@ -642,7 +645,7 @@ private _aaTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
-    ["radios"] call _fnc_addRadio;
+    // ["radios"] call _fnc_addRadio;
     ["NVGs"] call _fnc_addNVGs;
 };
 
@@ -667,7 +670,7 @@ private _machineGunnerTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
-    ["radios"] call _fnc_addRadio;
+    // ["radios"] call _fnc_addRadio;
     ["NVGs"] call _fnc_addNVGs;
 };
 
@@ -691,7 +694,7 @@ private _marksmanTemplate= {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
-    ["radios"] call _fnc_addRadio;
+    // ["radios"] call _fnc_addRadio;
     ["rangefinders"] call _fnc_addBinoculars;
     ["NVGs"] call _fnc_addNVGs;
 };
@@ -716,7 +719,7 @@ private _sniperTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
-    ["radios"] call _fnc_addRadio;
+    // ["radios"] call _fnc_addRadio;
     ["rangefinders"] call _fnc_addBinoculars;
     ["NVGs"] call _fnc_addNVGs;
 };
@@ -740,7 +743,7 @@ private _policeTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
-    ["radios"] call _fnc_addRadio;
+    // ["radios"] call _fnc_addRadio;
 };
 
 private _crewTemplate = {
@@ -762,7 +765,7 @@ private _crewTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
-    ["radios"] call _fnc_addRadio;
+    // ["radios"] call _fnc_addRadio;
     ["gpses"] call _fnc_addGPS;
     ["NVGs"] call _fnc_addNVGs;
 };
@@ -778,7 +781,7 @@ private _unarmedTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
-    ["radios"] call _fnc_addRadio;
+    // ["radios"] call _fnc_addRadio;
 };
 
 private _traitorTemplate = {
@@ -820,6 +823,57 @@ private _officerTemplate = {
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
     ["radios"] call _fnc_addRadio;
+};
+
+private _patrolSniperTemplate = {
+    ["sniHats"] call _fnc_setHelmet;
+    [selectRandomWeighted [[], 2, "glasses", 0.75, "goggles", 0.5]] call _fnc_setFacewear;
+    [["cloakVests","vests"] call _fnc_fallback] call _fnc_setVest;
+    [["cloakUniforms","uniforms"] call _fnc_fallback] call _fnc_setUniform;
+
+    [["sniperRifles", "marksmanRifles"] call _fnc_fallback] call _fnc_setPrimary;
+    ["primary", 6] call _fnc_addMagazines;
+
+    ["sidearms"] call _fnc_setHandgun;
+    ["handgun", 2] call _fnc_addMagazines;
+
+    ["items_medical_standard"] call _fnc_addItemSet;
+    ["items_sniper_extras"] call _fnc_addItemSet;
+    ["items_miscEssentials"] call _fnc_addItemSet;
+    ["antiInfantryGrenades", 1] call _fnc_addItem;
+    ["smokeGrenades", 2] call _fnc_addItem;
+
+    ["maps"] call _fnc_addMap;
+    ["watches"] call _fnc_addWatch;
+    ["compasses"] call _fnc_addCompass;
+    ["radios"] call _fnc_addRadio;
+    ["NVGs"] call _fnc_addNVGs;
+};
+
+private _patrolSpotterTemplate = {
+    ["sniHats"] call _fnc_setHelmet;
+    [selectRandomWeighted [[], 2, "glasses", 0.75, "goggles", 0.5]] call _fnc_setFacewear;
+    [["cloakVests","vests"] call _fnc_fallback] call _fnc_setVest;
+    [["cloakUniforms","uniforms"] call _fnc_fallback] call _fnc_setUniform;
+
+    [selectRandom ["rifles", "carbines", "marksmanRifles"]] call _fnc_setPrimary;
+    ["primary", 6] call _fnc_addMagazines;
+
+    ["sidearms"] call _fnc_setHandgun;
+    ["handgun", 2] call _fnc_addMagazines;
+
+    ["items_medical_standard"] call _fnc_addItemSet;
+    ["items_sniper_extras"] call _fnc_addItemSet;
+    ["items_miscEssentials"] call _fnc_addItemSet;
+    ["antiInfantryGrenades", 1] call _fnc_addItem;
+    ["smokeGrenades", 2] call _fnc_addItem;
+
+    ["maps"] call _fnc_addMap;
+    ["watches"] call _fnc_addWatch;
+    ["compasses"] call _fnc_addCompass;
+    ["radios"] call _fnc_addRadio;
+    ["rangefinders"] call _fnc_addBinoculars;
+    ["NVGs"] call _fnc_addNVGs;
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -875,7 +929,9 @@ private _unitTypes = [
 	["AA", _aaTemplate, [], [_prefix]],
 	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
 	["Marksman", _marksmanTemplate, [], [_prefix]],
-	["Sniper", _sniperTemplate, [], [_prefix]]
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    	["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    	["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _militaryLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
@@ -908,7 +964,9 @@ private _unitTypes = [
 	["AA", _aaTemplate, [], [_prefix]],
 	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
 	["Marksman", _marksmanTemplate, [], [_prefix]],
-	["Sniper", _sniperTemplate, [], [_prefix]]
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    	["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    	["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _militiaLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;
@@ -930,7 +988,9 @@ private _unitTypes = [
 	["AA", _aaTemplate, [], [_prefix]],
 	["MachineGunner", _machineGunnerTemplate, [], [_prefix]],
 	["Marksman", _marksmanTemplate, [], [_prefix]],
-	["Sniper", _sniperTemplate, [], [_prefix]]
+	["Sniper", _sniperTemplate, [], [_prefix]],
+    	["PatrolSniper", _patrolSniperTemplate, [], [_prefix]],
+    	["PatrolSpotter", _patrolSpotterTemplate, [], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _eliteLoadoutData] call _fnc_generateAndSaveUnitsToTemplate;

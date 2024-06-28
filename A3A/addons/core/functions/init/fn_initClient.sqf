@@ -103,6 +103,7 @@ if (!isServer) then {
 
 // Headless clients register with server and bail out at this point
 if (!isServer and !hasInterface) exitWith {
+    player setPosATL (markerPos respawnTeamPlayer vectorAdd [-100, -100, 0]);
     [clientOwner] remoteExecCall ["A3A_fnc_addHC",2];
 };
 
@@ -313,7 +314,7 @@ player addEventHandler ["GetInMan", {
     };
     if (!_exit) then {
         private _vehType = typeOf _veh;
-        if (_veh in undercoverVehicles) then {
+        if (_vehType in undercoverVehicles) then {
             if !(_veh getVariable ["A3A_reported", false]) then {
                 [] spawn A3A_fnc_goUndercover;
             };
@@ -321,12 +322,13 @@ player addEventHandler ["GetInMan", {
     };
 }];
 
+private _blackMarketStock = call A3U_fnc_grabBlackMarketVehicles;
 
-if (((A3A_faction_reb get "blackMarketStock") select {(_x select 2) isEqualTo "ARTILLERY"}) isNotEqualTo []) then {
+if ((_blackMarketStock select {(_x select 2) isEqualTo "ARTILLERY"}) isNotEqualTo []) then {
 	player addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
 		private _vehType = typeOf _vehicle;
-		private _artyTypes = (A3A_faction_reb get "blackMarketStock") select {(_x select 2) isEqualTo "ARTILLERY"};
+		private _artyTypes = _blackMarketStock select {(_x select 2) isEqualTo "ARTILLERY"};
 
 		if ((typeOf _vehicle) in _artyTypes) then {
 			enableEngineArtillery false;
@@ -335,7 +337,7 @@ if (((A3A_faction_reb get "blackMarketStock") select {(_x select 2) isEqualTo "A
 
 	player addEventHandler ["GetOutMan", {
 		params ["_unit", "_role", "_vehicle"];
-        private _artyTypes = (A3A_faction_reb get "blackMarketStock") select {(_x select 2) isEqualTo "ARTILLERY"};
+        private _artyTypes = _blackMarketStock select {(_x select 2) isEqualTo "ARTILLERY"};
 
 		if ((typeOf _vehicle) in _artyTypes) then {
 			enableEngineArtillery true;
@@ -511,7 +513,7 @@ _flagLight lightAttachObject [flagX, [0, 0, 4]];
 _flagLight setLightAttenuation [7, 0, 0.5, 0.5];
 
 vehicleBox allowDamage false;
-vehicleBox addAction [format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\use_ca.paa' size='1.6' shadow=2 /> <t>%1</t>", localize "STR_A3A_actions_restore_units"], A3A_fnc_vehicleBoxRestore,nil,0,false,true,"","(isPlayer _this) and (_this == _this getVariable ['owner',objNull]) and (side (group _this) == teamPlayer)", 4];
+vehicleBox addAction [format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\use_ca.paa' size='1.6' shadow=2 /> <t>%1</t>", localize "STR_A3A_actions_restore_units"], A3A_fnc_vehicleBoxRestore,nil,0,false,true,"","(isPlayer _this) and (_this == _this getVariable ['owner',objNull]) and (side (group _this) == teamPlayer) and !A3A_removeRestore", 4];
 [vehicleBox] call HR_GRG_fnc_initGarage;
 if (A3A_hasACE) then { [vehicleBox, VehicleBox] call ace_common_fnc_claim;};	//Disables ALL Ace Interactions
 vehicleBox addAction [format ["<img image='a3\ui_f\data\igui\cfg\simpletasks\types\truck_ca.paa' size='1.6' shadow=2 /> <t>%1</t>", localize "STR_antistasi_actions_buy_vehicle"], {
@@ -568,6 +570,12 @@ mapX addAction [localize "STR_antistasi_actions_move_this_asset", A3A_fnc_moveHQ
 
 [] spawn A3A_fnc_unitTraits;
 
+// Get list of buildable objects, has map (and template?) dependency
+call A3A_fnc_initBuildableObjects;
+
+// Start cursorObject monitor loop for adding removeStructure actions
+// Note: unitTraits must run first to add engineer trait to default commander
+0 spawn A3A_fnc_initBuilderMonitors;
 
 disableSerialization;
 //1 cutRsc ["H8erHUD","PLAIN",0,false];
@@ -633,4 +641,22 @@ Info("initClient completed");
 
 if (!isMultiplayer) then {
 	["noSingleplayer",false,1,false,false] call BIS_fnc_endMission;
+};
+
+call A3U_fnc_checkMods;
+
+if (["WBK_IMS_ANIMS_2"] call A3U_fnc_hasAddon) then {
+    [player] call A3U_fnc_IMS_stealthKill;
+};
+
+if (fatigueEnabled isEqualTo false) then { 
+	player enableFatigue false; 
+}; 
+ 
+if (staminaEnabled isEqualTo false) then { 
+	player enableStamina false; 
+}; 
+ 
+if (swayEnabled isEqualTo false) then { 
+	player setCustomAimCoef 0; 
 };

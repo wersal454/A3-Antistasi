@@ -13,7 +13,7 @@
 /* OVERWRITES */
 // ["vehicleMedicalBox", [""]] call _fnc_saveToTemplate;
 // ["vehicleLightSource", "Land_LampShabby_F"] call _fnc_saveToTemplate;
-["vehicleFuelDrum", ["Land_OPTRE_barrel_hydrogen", 150]] call _fnc_saveToTemplate;
+// ["vehicleFuelDrum", ["Land_OPTRE_barrel_hydrogen", 150]] call _fnc_saveToTemplate; // bugged
 // ["vehicleFuelTank", ["B_Slingload_01_Fuel_F", 1000]] call _fnc_saveToTemplate;
 // ["vehicleRepairStation", ["Land_RepairDepot_01_green_F", 5000]] call _fnc_saveToTemplate;
 // ["vehicleAmmoStation", ["Box_IND_AmmoVeh_F", 5000]] call _fnc_saveToTemplate;

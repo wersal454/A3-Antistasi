@@ -3,7 +3,7 @@
 		///////////////////////////////////////////////////////
 		class handgunsBraf 
 		{
-			displayName = "BRAF Handguns";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Braf", localize "STR_A3AU_handguns"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\handgun_ca.paa";
 
 			ITEM(braf_imbel_m973, 150, PISTOL_STOCK); // braf_9Rnd_9mm
@@ -13,7 +13,7 @@
 
 		class smgBraf 
 		{
-			displayName = "BRAF SMGs";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Braf", localize "STR_A3AU_smgs"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\primaryWeapon_ca.paa";
 
 			ITEM(Braf_MT12, 300, PISTOL_STOCK); // 30Rnd_9x21_Mag
@@ -24,7 +24,7 @@
 
 		class launchersBraf 
 		{
-			displayName = "BRAF Launchers";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Braf", localize "STR_A3AU_launchers"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\secondaryWeapon_ca.paa";
 
 			ITEM(braf_launch_alac, 250, 50);
@@ -36,7 +36,7 @@
 
 		class launcherMagazinesBraf 
 		{
-			displayName = "BRAF Launcher Ammo";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Braf", localize "STR_A3AU_launcherAmmo"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoMag_ca.paa";
 
 			ITEM(braf_Igla_missile, 200, 25);
@@ -45,7 +45,7 @@
 
 		class specialWeaponsBraf 
 		{
-			displayName = "BRAF Special Weapons";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Braf", localize "STR_A3AU_specialWeapons"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\primaryWeapon_ca.paa";
 
 			ITEM(braf_boito_14_oldstock, 300, RIFLE_STOCK); // BRAF_Boito_5Rnd_buck
@@ -64,7 +64,7 @@
 
 		class sniperRiflesBraf 
 		{
-			displayName = "BRAF Snipers";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Braf", localize "STR_A3AU_sniperRifles"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\primaryWeapon_ca.paa";
 
 			ITEM(braf_HK417, 850, RIFLE_STOCK); // 20Rnd_762x51_HK417_mag
@@ -88,7 +88,7 @@
 
 		class mgBraf 
 		{
-			displayName = "BRAF MGs";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Braf", localize "STR_A3AU_mgs"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\primaryWeapon_ca.paa";
 
 			ITEM(Braf_lmga4, 800, RIFLE_STOCK); // CUP_60Rnd_556x45_SureFire
@@ -100,7 +100,7 @@
 
 		class riflesBraf
 		{
-			displayName = "BRAF Rifles";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Braf", localize "STR_A3AU_rifles"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\primaryWeapon_ca.paa";
 
 			ITEM(Braf_m16a1_carbine, 400, RIFLE_STOCK); // braf_20Rnd_556x45
@@ -129,7 +129,7 @@
 
 		class magazinesBraf 
 		{
-			displayName = "BRAF Magazines";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Braf", localize "STR_A3AU_magazines"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoMag_ca.paa";
 
 			ITEM(braf_9Rnd_9mm, 15, MZ_STOCK);
@@ -184,7 +184,7 @@
 
 		class pointersBraf 
 		{
-			displayName = "BRAF Pointers";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Braf", localize "STR_A3AU_pointers"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemAcc_ca.paa";
 
 			ITEM(braf_an_peq_15, 75, PN_STOCK);
@@ -196,7 +196,7 @@
 
 		class muzzlesBraf 
 		{
-			displayName = "BRAF Muzzles";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Braf", localize "STR_A3AU_muzzles"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemMuzzle_ca.paa";
 
 			ITEM(braf_msr_silencer, 500, MZ_STOCK);
@@ -206,7 +206,7 @@
 
 		class opticsBraf 
 		{
-			displayName = "BRAF Optics";
+			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_Braf", localize "STR_A3AU_sights"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemOptic_ca.paa";
 
 			ITEM(braf_c79_aaf, 250, MAGAZINE_STOCK);
@@ -224,7 +224,7 @@
 
 		class navigationBraf
 		{
-			displayName = "BRAF Binoculars, NVGs";
+			displayName = __EVAL(formatText ["%1 %2 %3 %4", localize "STR_A3AU_Braf", localize "STR_A3AU_binoculars", localize "STR_A3AU_and", localize "STR_A3AU_nvgs"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\compass_ca.paa";
 
 			ITEM(braf_Steiner_750RC, 300, NN_STOCK);
