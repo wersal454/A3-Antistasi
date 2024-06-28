@@ -39,9 +39,19 @@ try {
 	private _trader = _unit getVariable ["HALs_store_trader_current", objNull];
 	if (isNull _trader) then {throw [""]};
 
+	private _forbiddenItem_is_unlimited = false;
+
+	if (_classname in A3U_forbiddenItems) then {
+		private _is_forbiddenItem = isClass (configFile >> "A3U" >> "forbiddenItems" >> _classname);
+
+		if (_is_forbiddenItem) then {
+			_forbiddenItem_is_unlimited = (getNumber (configFile >> "A3U" >> "forbiddenItems" >> _classname >> "unlimited"));
+		};
+	};
+
     // Check if the trader will buy this item
 	private _stock = [_trader, _classname] call HALs_store_fnc_getTraderStock;
-	if (_stock isEqualTo -1) then {
+	if (_stock isEqualTo -1 && {!(_is_forbidden)}) then {
 		// Try parent
 		_parent = _classname call HALs_store_fnc_getParentClassname;
 		_stock = [_trader, _parent] call HALs_store_fnc_getTraderStock;
@@ -79,7 +89,10 @@ try {
 	) select {(_x select 1) == -1 || {(_x select 1) >= minWeaps}}) apply {_x select 0};
 
 	if (_classname in _unlockedItems) then {
-		throw ["The trader is not interested in this item, no deal."]
+		// If classname is "unlocked" but is also a forbidden item (that can't be unlimited), we want it to sell as usual
+		if (_is_forbiddenItem && {!(_forbiddenItem_is_unlimited)}) then {} else {
+			throw ["The trader is not interested in this item, no deal."]
+		};
 	};
 
 	_unlockedItems = nil;
