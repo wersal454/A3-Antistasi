@@ -68,9 +68,9 @@ private _vehiclesHeavyTanks = ["LIB_Churchill_Mk7","LIB_Churchill_Mk7_Crocodile"
 //These intentionally appear again above among the regular 'military' vehile, to inject some british (militia) troops into the mix
 ["vehiclesMilitiaLightArmed", ["LIB_UK_Willys_MB_M1919", "LIB_UK_Willys_MB_M1919"]] call _fnc_saveToTemplate;
 ["vehiclesMilitiaTrucks", ["LIB_US_NAC_GMC_Tent", "LIB_US_NAC_GMC_Tent","LIB_US_NAC_GMC_Open"]] call _fnc_saveToTemplate;
-["vehiclesMilitiaCars", ["LIB_UK_Willys_MB","LIB_UK_Willys_MB_Hood"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaCars", ["LIB_UK_Willys_MB","LIB_UK_Willys_MB"]] call _fnc_saveToTemplate;
 
-["vehiclesPolice", ["LIB_GazM1"]] call _fnc_saveToTemplate;
+["vehiclesPolice", ["LIB_UK_Willys_MB_Hood"]] call _fnc_saveToTemplate;
 
 if (isClass (configFile >> "CfgPatches" >> "FA_WW2_Armored_Cars")) then {
     _vehiclesLightTanks append ["FA_T17E1", "FA_DaimlerMk2", "FA_DaimlerMk2"];               //There's an argument to be made to put these in lightArmed too, leaving them here for the moment though

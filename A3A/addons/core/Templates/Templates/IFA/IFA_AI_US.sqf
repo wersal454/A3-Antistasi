@@ -68,9 +68,9 @@ private _vehiclesHeavyTanks = [];
 //These intentionally appear again above among the regular 'military' vehile, to inject some british (militia) troops into the mix
 ["vehiclesMilitiaLightArmed", ["LIB_UK_Willys_MB_M1919", "LIB_UK_Willys_MB_M1919"]] call _fnc_saveToTemplate;
 ["vehiclesMilitiaTrucks", ["LIB_US_NAC_GMC_Tent","LIB_US_NAC_GMC_Open"]] call _fnc_saveToTemplate;
-["vehiclesMilitiaCars", ["LIB_UK_Willys_MB","LIB_UK_Willys_MB_Hood"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaCars", ["LIB_UK_Willys_MB","LIB_UK_Willys_MB"]] call _fnc_saveToTemplate;
 
-["vehiclesPolice", ["LIB_GazM1"]] call _fnc_saveToTemplate;
+["vehiclesPolice", ["LIB_UK_Willys_MB_Hood"]] call _fnc_saveToTemplate;
 
 if (isClass (configFile >> "CfgPatches" >> "FA_WW2_Tanks")) then {
     _vehiclesHeavyTanks append ["FA_M26"];
