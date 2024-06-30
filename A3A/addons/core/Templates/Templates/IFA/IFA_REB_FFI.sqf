@@ -92,6 +92,9 @@ private _initialRebelEquipment = [
 "LIB_Binocular_GER"
 ];
 
+if (isClass (configFile >> "CfgPatches" >> "IFA3_COMP_ACE_main")) then {
+    _initialRebelEquipment append ["ACE_LIB_LadungPM", "ACE_LIB_FireCord"];
+};
 if (A3A_hasTFAR) then {_initialRebelEquipment append ["tf_microdagr","tf_anprc154"]};
 if (A3A_hasTFAR && startWithLongRangeRadio) then {_initialRebelEquipment append ["B_LIB_US_Radio"]};
 if (A3A_hasTFARBeta) then {_initialRebelEquipment append ["TFAR_microdagr","TFAR_anprc154"]};
