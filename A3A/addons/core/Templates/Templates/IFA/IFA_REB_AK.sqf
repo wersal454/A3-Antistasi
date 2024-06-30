@@ -161,6 +161,9 @@ _loadoutData set ["uniforms", _rebUniforms];
 
 _loadoutData set ["facewear", _winterGear + ["G_Bandanna_blk", "G_Bandanna_tan", "G_LIB_Dienst_Brille", "G_LIB_Dienst_Brille2","G_LIB_Scarf2_B", "G_LIB_Scarf2_G","G_LIB_Scarf_B", "G_LIB_Scarf_G"]];
 
+if (isClass (configFile >> "CfgPatches" >> "IFA3_COMP_ACE_main")) then {
+    _initialRebelEquipment append ["ACE_LIB_LadungPM", "ACE_LIB_FireCord"];
+};
 _loadoutData set ["items_medical_basic", ["BASIC"] call A3A_fnc_itemset_medicalSupplies];
 _loadoutData set ["items_medical_standard", ["STANDARD"] call A3A_fnc_itemset_medicalSupplies];
 _loadoutData set ["items_medical_medic", ["MEDIC"] call A3A_fnc_itemset_medicalSupplies];
