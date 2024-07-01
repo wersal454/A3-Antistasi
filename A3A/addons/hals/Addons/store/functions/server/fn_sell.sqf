@@ -39,19 +39,21 @@ try {
 	private _trader = _unit getVariable ["HALs_store_trader_current", objNull];
 	if (isNull _trader) then {throw [""]};
 
-	private _forbiddenItem_is_unlimited = false;
+	private _forbiddenItem_is_unlimited = 0;
 
 	if (_classname in A3U_forbiddenItems) then {
 		private _is_forbiddenItem = isClass (configFile >> "A3U" >> "forbiddenItems" >> _classname);
 
+		diag_log format["%1 is a forbidden item.", _classname];
+
 		if (_is_forbiddenItem) then {
-			_forbiddenItem_is_unlimited = (getNumber (configFile >> "A3U" >> "forbiddenItems" >> _classname >> "unlimited"));
+			_is_forbiddenItemUnlimited = (getNumber (configFile >> "A3U" >> "forbiddenItems" >> _classname >> "unlimited"));
 		};
 	};
 
     // Check if the trader will buy this item
 	private _stock = [_trader, _classname] call HALs_store_fnc_getTraderStock;
-	if (_stock isEqualTo -1 && {!(_is_forbidden)}) then {
+	if (_stock isEqualTo -1) then { // && {_is_forbiddenItem isEqualTo false}
 		// Try parent
 		_parent = _classname call HALs_store_fnc_getParentClassname;
 		_stock = [_trader, _parent] call HALs_store_fnc_getTraderStock;
@@ -86,13 +88,12 @@ try {
 		(jna_dataList select IDC_RSCDISPLAYARSENAL_TAB_NVGS) + 
 		(jna_dataList select IDC_RSCDISPLAYARSENAL_TAB_HEADGEAR) + 
 		(jna_dataList select IDC_RSCDISPLAYARSENAL_TAB_VEST)
-	) select {(_x select 1) == -1 || {(_x select 1) >= minWeaps}}) apply {_x select 0};
+	) select {(_x select 1) == -1 || {(_x select 1) >= minWeaps && {_is_forbiddenItemUnlimited isEqualTo 0}}}) apply {_x select 0};
+
+	diag_log (format["%1 unlock state: %2", _classname, (_classname in _unlockedItems)]);
 
 	if (_classname in _unlockedItems) then {
-		// If classname is "unlocked" but is also a forbidden item (that can't be unlimited), we want it to sell as usual
-		if (_is_forbiddenItem && {!(_forbiddenItem_is_unlimited)}) then {} else {
-			throw ["The trader is not interested in this item, no deal."]
-		};
+		throw ["The trader is not interested in this item, no deal."]
 	};
 
 	_unlockedItems = nil;
