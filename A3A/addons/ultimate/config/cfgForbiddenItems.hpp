@@ -11,8 +11,6 @@ class forbiddenItems
         unlimited = 0;
     };
 
-    class LMG_Mk200_F : forbidden_unlimited_base {}; // here for testing purposes
-
     #include "cfgForbiddenItemsAndroid.hpp"
     #include "cfgForbiddenItemsCW.hpp"
     #include "cfgForbiddenItemsFWA.hpp"
