@@ -21,7 +21,7 @@ private _heliCrew = _heliData select 1;
 private _groupHeli = _heliData select 2;
 
 if (_heliType isEqualTo []) exitWith {
-	["Support", "A helicopter is not available in this template. Apologies! You have been refunded."] call A3A_fnc_customHint;
+	["Support", "A helicopter is not available due to template issues. Apologies! You have been refunded."] call A3A_fnc_customHint;
 	[0,2000] remoteExec ["A3A_fnc_resourcesFIA",2];
 };
 
