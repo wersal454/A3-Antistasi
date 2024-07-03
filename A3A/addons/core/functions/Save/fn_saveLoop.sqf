@@ -38,10 +38,10 @@ private _namespace = [profileNamespace, missionProfileNamespace] select _saveToN
 
 
 // Move this campaign to the end of the save list
-private _saveList = [_namespace getVariable "antistasiPlus2SavedGames"] param [0, [], [[]]];
+private _saveList = [_namespace getVariable "antistasiUltimate2SavedGames"] param [0, [], [[]]];
 _saveList deleteAt (_saveList findIf { _x select 0 == _campaignID });
 _saveList pushBack [_campaignID, worldName, "Greenfor"];
-_namespace setVariable ["antistasiPlus2SavedGames", _saveList];
+_namespace setVariable ["antistasiUltimate2SavedGames", _saveList];
 
 // Update the legacy campaign ID for backwards compatibility
 if (!_saveToNewNamespace) then { _namespace setVariable ["ss_campaignID", _campaignID] };
