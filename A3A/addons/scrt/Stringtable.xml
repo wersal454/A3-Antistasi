@@ -8164,7 +8164,7 @@
         </Container>
         <Container name="black_market">
             <Key ID="STR_trader_black_market_title">
-                <Original>Vehicle Black Market</Original>
+                <Original>Vehicle Black Market - Click the notepad for more info.</Original>
                 <Russian>Черный рынок техники</Russian>
                 <Chinesesimp>载具黑市</Chinesesimp>
                 <Korean>차량 암시장</Korean>
