@@ -17,6 +17,38 @@ private _resBoost = nil;
 private _rivalsTaskChance = 5;
 private _traderTaskChance = 5;
 
+private _condition_AA = getText (configFile >> "traderAddons" >> "traderVehicles" >> "condition_AA");
+private _condition_APC = getText (configFile >> "traderAddons" >> "traderVehicles" >> "condition_APC");
+private _condition_ARMEDCAR = getText (configFile >> "traderAddons" >> "traderVehicles" >> "condition_ARMEDCAR");
+private _condition_ARTILLERY = getText (configFile >> "traderAddons" >> "traderVehicles" >> "condition_ARTILLERY");
+private _condition_BOAT = getText (configFile >> "traderAddons" >> "traderVehicles" >> "condition_BOAT");
+private _condition_HELI = getText (configFile >> "traderAddons" >> "traderVehicles" >> "condition_HELI");
+private _condition_PLANE = getText (configFile >> "traderAddons" >> "traderVehicles" >> "condition_PLANE");
+private _condition_STATICAA = getText (configFile >> "traderAddons" >> "traderVehicles" >> "condition_STATICAA");
+private _condition_STATICAT = getText (configFile >> "traderAddons" >> "traderVehicles" >> "condition_STATICAT");
+private _condition_STATICMG = getText (configFile >> "traderAddons" >> "traderVehicles" >> "condition_STATICMG");
+private _condition_STATICMORTAR = getText (configFile >> "traderAddons" >> "traderVehicles" >> "condition_STATICMORTAR");
+private _condition_TANK = getText (configFile >> "traderAddons" >> "traderVehicles" >> "condition_TANK");
+private _condition_UAV = getText (configFile >> "traderAddons" >> "traderVehicles" >> "condition_UAV");
+private _condition_UNARMEDCAR = getText (configFile >> "traderAddons" >> "traderVehicles" >> "condition_UNARMEDCAR");
+
+private _conditions = [
+	[_condition_AA, "AA"], 
+	[_condition_APC, "APCs"], 
+	[_condition_ARMEDCAR, "Armed Cars"], 
+	[_condition_ARTILLERY, "Artillery"], 
+	[_condition_BOAT, "Boats"], 
+	[_condition_HELI, "Helicopters"], 
+	[_condition_PLANE, "Planes"], 
+	[_condition_STATICAA, "Statics: AA"], 
+	[_condition_STATICAT, "Statics: AT"], 
+	[_condition_STATICMG, "Statics: MG"], 
+	[_condition_STATICMORTAR, "Statics: Mortar"],
+	[_condition_TANK, "Tanks"],
+	[_condition_UAV, "UAVs"],
+	[_condition_UNARMEDCAR, "Unarmed Cars"]
+];
+
 while {true} do {
 	nextTick = time + 600;
 	waitUntil {sleep 15; time >= nextTick};
@@ -256,5 +288,16 @@ while {true} do {
 
 	if (areRivalsDiscovered && {!areRivalsDefeated}) then{
 		[random [5,7,10]] call SCRT_fnc_rivals_addProgressToRivalsLocationReveal;
+	};
+
+	if (isTraderQuestCompleted) then {
+		{
+			private _condition = compile _x#0;
+
+			if (_condition) then {
+				private _text = format["%1 is now unlocked in the Arms Dealer.", x#1];
+				[_text, _fnc_scriptName] call A3U_fnc_log;
+			};
+		} forEach _conditions;
 	};
 };
