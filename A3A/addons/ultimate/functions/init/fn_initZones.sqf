@@ -18,8 +18,6 @@ if (isNil "revealedZones") then {
     revealedZones = [];
 };
 
-diag_log _revealedZones;
-
 {
     private _markerSide = sidesX getVariable [_x, sideUnknown];
 
