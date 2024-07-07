@@ -1235,6 +1235,9 @@
                 <Korean>&lt;t size='0.6'&gt;%3의 &lt;t size='0.6' color='%1'&gt;%2&lt;/t&gt;이 항복했습니다. 그들의 지원 경로는 차단될 것이고 더 이상 우리를 공격하지 않을 것입니다. 축하합니다!&lt;/t&gt;</Korean>
                 <French>&lt;t size='0.6'&gt;&lt;t size='0.6' color='%1'&gt;%2&lt;/t&gt; sur %3 se sont rendues. Leur axe de soutien sera fermé et elles ne lanceront plus d'attaque contre nous. Félicitations !&lt;/t&gt;</French>
             </Key>
+            <Key ID="STR_comms_mp_faction_return">
+                <Original>&lt;t size='0.6'&gt;&lt;t size='0.6' color='%1'&gt;%2&lt;/t&gt; forces on %3 have returned with help from an unknown force. Their support corridor will be re-opened and they will likely launch attacks on us!&lt;/t&gt;</Original>
+            </Key>
             <Key ID="STR_comms_mp_recon_prisoner_success">
                 <Original>&lt;t size='0.6'&gt;&lt;t size='0.6' color='#988df7'&gt;Interrogated combatant&lt;/t&gt; shares approximate enemy positions.&lt;/t&gt;</Original>
                 <Russian>&lt;t size='0.6'&gt;&lt;t size='0.6' color='#988df7'&gt;Допрошенный солдат&lt;/t&gt; делится примерным местоположением противника в округе.&lt;/t&gt;</Russian>
