@@ -130,6 +130,7 @@ if (_hasCSLA) then {
 ["vehiclesTruck", _VehTruck] call _fnc_saveToTemplate;
 ["vehiclesCivBoat", _CivBoat] call _fnc_saveToTemplate;
 ["vehiclesAA", _vehicleAA] call _fnc_saveToTemplate;
+["staticMortars", _staticMortars] call _fnc_saveToTemplate;
 ["staticAA", _staticAA] call _fnc_saveToTemplate;
 ["vehiclesCivCar", _vehiclesCivCar] call _fnc_saveToTemplate;
 ["vehiclesLightUnarmed", _vehiclesLightUnarmed] call _fnc_saveToTemplate;
