@@ -113,6 +113,22 @@ private _milAdminPositions = [];
 { _milAdminPositions pushBack getPos _x; } forEach A3A_destroyedMilAdministrations;
 ["destroyedMilAdmins", _milAdminPositions] call A3A_fnc_setStatVariable;
 
+//Antistasi Ultimate variables
+private _revealedZones = [];
+
+{
+    private _markerSide = sidesX getVariable [_x, sideUnknown];
+    if (_markerSide isNotEqualTo sideUnknown && {_markerSide isNotEqualTo resistance} && {!(_x in markersImmune)}) then 
+    {
+		private _dummyMarker = "Dum"+_x;
+        if (markerAlpha _dummyMarker isNotEqualTo 0) then {_revealedZones pushBack _x};
+    };
+} forEach markersX;
+
+["revealedZones", _revealedZones] call A3A_fnc_setStatVariable;
+
+diag_log format["Saving revealed zones: %1", _revealedZones];
+//Antistasi Ultimate variables ^
 
 private ["_hrBackground","_resourcesBackground","_veh","_typeVehX","_weaponsX","_ammunition","_items","_backpcks","_containers","_arrayEst","_posVeh","_dierVeh","_prestigeOPFOR","_prestigeBLUFOR","_city","_dataX","_markersX","_garrison","_arrayMrkMF","_positionOutpost","_typeMine","_posMine","_detected","_typesX","_exists","_friendX"];
 
