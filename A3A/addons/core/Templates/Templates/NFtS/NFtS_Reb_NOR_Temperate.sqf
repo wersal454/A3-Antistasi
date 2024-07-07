@@ -25,6 +25,7 @@
 ["vehiclesCivTruck", ["LIB_Zis5v"]] call _fnc_saveToTemplate;
 ["vehiclesCivHeli", []] call _fnc_saveToTemplate;
 ["vehiclesCivBoat", ["NORTH_FIN_Syoksyvene"]] call _fnc_saveToTemplate;
+["vehiclesCivSupply", ["LIB_OpelBlitz_Tent_Y_Camo"]] call _fnc_saveToTemplate;
 
 ["staticMGs", ["NORTH_FIN_Maxim"]] call _fnc_saveToTemplate;
 ["staticAT", ["NORTH_FIN_45PSTK37"]] call _fnc_saveToTemplate;

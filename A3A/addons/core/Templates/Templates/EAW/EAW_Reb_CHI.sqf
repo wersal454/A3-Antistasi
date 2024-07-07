@@ -25,6 +25,7 @@
 ["vehiclesCivTruck", ["EAW_Dodge1936_Pickup"]] call _fnc_saveToTemplate;
 ["vehiclesCivHeli", []] call _fnc_saveToTemplate;
 ["vehiclesCivBoat", ["LIB_LCA"]] call _fnc_saveToTemplate;
+["vehiclesCivSupply", ["fow_v_type97_truck_ija"]] call _fnc_saveToTemplate;
 
 ["staticMGs", ["EAW_Type24_MG"]] call _fnc_saveToTemplate;
 ["staticAT", ["EAW_ROC_Pak36"]] call _fnc_saveToTemplate;
