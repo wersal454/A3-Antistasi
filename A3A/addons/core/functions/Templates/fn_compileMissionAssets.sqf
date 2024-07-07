@@ -33,7 +33,7 @@ A3A_faction_all = createHashMap;
 
 private _fnc_extractMarketClasses = {
     private _type = _this;
-    private _vehicleRegisters = (A3A_faction_reb get "blackMarketStock") select {(_x select 2) isEqualTo _type};
+    private _vehicleRegisters = A3U_blackMarketStock select {(_x select 2) isEqualTo _type};
     if (_vehicleRegisters isEqualTo []) exitWith {[]};
 
     _vehicleRegisters apply {_x select 0}
@@ -113,7 +113,6 @@ setVar("vehiclesHelisTransport", OccAndInv("vehiclesHelisTransport") );
 setVar("vehiclesPlanesAA", OccAndInv("vehiclesPlanesAA") );
 setVar("vehiclesPlanesCAS", OccAndInv("vehiclesPlanesCAS") );
 setVar("vehiclesPlanesTransport", OccAndInv("vehiclesPlanesTransport"));
-setVar("vehiclesPlanesGunship", OccAndInv("vehiclesPlanesGunship"));
 setVar("staticMortars", OccAndInv("staticMortars") + Riv("staticMortars") + Reb("staticMortars") + ("STATICMORTAR" call _fnc_extractMarketClasses));
 setVar("staticAA", OccAndInv("staticAA") + Reb("staticAA") + ("STATICAA" call _fnc_extractMarketClasses));
 setVar("staticAT", OccAndInv("staticAT") + Reb("staticAT") + ("STATICAT" call _fnc_extractMarketClasses));
@@ -180,7 +179,6 @@ private _vehFixedWing =
 OccAndInv("vehiclesPlanesCAS")
 + OccAndInv("vehiclesPlanesAA")
 + OccAndInv("vehiclesPlanesTransport")
-+ OccAndInv("vehiclesPlanesGunship")
 + Reb("vehiclesPlane")
 + Reb("vehiclesCivPlane")
 + ("PLANE" call _fnc_extractMarketClasses);
@@ -232,7 +230,7 @@ private _vehReb =
     + Reb("vehiclesAT") + Reb("vehiclesLightArmed") + Reb("vehiclesLightUnarmed")
     + Reb("staticMGs") + Reb("staticAT") + Reb("staticAA") + Reb("staticMortars")
     + Reb("vehiclesHelis") + Reb("vehiclesPlane") + Reb("vehiclesMedical") + Reb("vehiclesAA")
-    + ((A3A_faction_reb get "blackMarketStock") apply {_x select 0});
+    + (A3U_blackMarketStock apply {_x select 0});
 setVar("vehiclesReb", _vehReb);
 
 //trucks that can cary logistics cargo
