@@ -127,7 +127,14 @@ private _revealedZones = [];
 
 ["revealedZones", _revealedZones] call A3A_fnc_setStatVariable;
 
+if (isNil "unlockedVehicleTypes") then {
+	unlockedVehicleTypes = [];
+};
+
+["unlockedVehicleTypes", unlockedVehicleTypes] call A3A_fnc_setStatVariable;
+
 diag_log format["Saving revealed zones: %1", _revealedZones];
+diag_log format["Saving unlocked vehicle types: %1", unlockedVehicleTypes];
 //Antistasi Ultimate variables ^
 
 private ["_hrBackground","_resourcesBackground","_veh","_typeVehX","_weaponsX","_ammunition","_items","_backpcks","_containers","_arrayEst","_posVeh","_dierVeh","_prestigeOPFOR","_prestigeBLUFOR","_city","_dataX","_markersX","_garrison","_arrayMrkMF","_positionOutpost","_typeMine","_posMine","_detected","_typesX","_exists","_friendX"];
