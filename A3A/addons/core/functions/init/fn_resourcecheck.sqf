@@ -312,6 +312,15 @@ while {true} do {
 			};
 		} forEach _conditions;
 
+		private _unlockedMessages = "The following vehicles have been unlocked at the Arms Dealer.<br/>"; // To-Do: Localize
+
+		{
+			private _vehicleType = _x;
+			_unlockedMessages = _unlockedMessages + "<br/>" + _vehicleType; // <br/> vehicleType <br/>
+		} forEach _vehicleTypesUnlocked;
+
+		[localize "STR_marker_arms_dealer", _unlockedMessages] remoteExec ["A3A_fnc_customHint", 0, false];
+
 		unlockedVehicleTypes = _vehicleTypesUnlocked;
 		
 		publicVariable "unlockedVehicleTypes";
