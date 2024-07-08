@@ -9150,7 +9150,7 @@
             </Key>
             <Key ID="STR_A3A_Missions_SUPP_Supplies_enemynear">
                 <Original>Keep the area clear of hostiles for %1 more seconds.</Original>
-                <Russian>Не пускайте врагов к ящику в течение %2 секунд.</Russian>
+                <Russian>Не пускайте врагов к ящику в течение %1 секунд.</Russian>
                 <Chinesesimp>保持该区域没有敌人 %1 秒。</Chinesesimp>
                 <Korean>%1초 동안 적이 없도록 하십시오.</Korean>
                 <French>Gardez la zone exempte d'hostiles pendant %1 secondes supplémentaires.</French>
