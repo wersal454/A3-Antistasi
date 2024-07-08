@@ -18,6 +18,7 @@ private _timeout = time + 900;
 private _targTimeout = 0;
 private _acquisition = 0;
 private _missiles = 1; ///maybe 2
+sleep 10;
 while {true} do
 {
     // check if launcher/crew are intact
@@ -82,22 +83,23 @@ while {true} do
     //Send the laser target to the launcher
     _side reportRemoteTarget [_laser, 300];
     _laser confirmSensorTarget [_side, true];
-    //_launcher setWeaponReloadingTime [gunner _launcher, currentMuzzle (gunner _launcher), 0.1];
-    //_launcher loadMagazine [[-1], "weapon_vls_01", "ammo_Missile_Cruise_01_Cluster"];
-    //gameLogic action ["SwitchMagazine", m1a1, gunner m1a1, 1];
     _launcher fireAtTarget [_laser, "weapon_vls_01"];
     diag_log (currentMagazine _launcher);
     [_reveal, getPosATL _targetObj, _side, "CRUISEMISSILE", _targetObj, 60] spawn A3A_fnc_showInterceptedSupportCall;
 
-    sleep 20;
-    detach _attachObj;
-    /* _launcher setWeaponReloadingTime [gunner _launcher, currentMuzzle (gunner _launcher), 0.05];
-    _launcher loadMagazine [[0], currentMuzzle (gunner _launcher), "magazine_Missiles_Cruise_01_Cluster_x18"]; */
-    /* _side reportRemoteTarget [_laser, 300];
+    _launcher setWeaponReloadingTime [gunner _launcher, currentMuzzle gunner _launcher, 0.001];
+    _launcher removeMagazinesTurret ["magazine_Missiles_Cruise_01_x18",[0]]; 
+    _launcher removeWeaponTurret ["weapon_VLS_01",[0]]; 
+    _launcher addMagazineTurret ["magazine_Missiles_Cruise_01_Cluster_x18",[0]]; 
+    _launcher addWeaponTurret ["weapon_VLS_01",[0]];
+    _launcher setWeaponReloadingTime [gunner _launcher, currentMuzzle gunner _launcher, 0.001];
+    sleep 10;
+    _side reportRemoteTarget [_laser, 300];
     _laser confirmSensorTarget [_side, true];
-    _launcher fireAtTarget [_laser, "weapon_vls_01"]; */
+    _launcher fireAtTarget [_laser, "weapon_vls_01"];
 
-    //_launcher setWeaponReloadingTime [gunner _launcher, "weapon_vls_01", 1];
+    sleep 10;
+    detach _attachObj;
 
     _missiles = _missiles - 1;
     _targTimeout = (time + 120);

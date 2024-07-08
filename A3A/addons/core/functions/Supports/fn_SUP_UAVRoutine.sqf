@@ -67,8 +67,7 @@ _groupVeh setCurrentWaypoint _wp;
 _uav flyInHeight 400;           // maybe not necessary if we lock the waypoint
 _groupVeh lockWP true;          // prevent exiting the SAD waypoint
 
-// do we just run for 20mins and then RTB?
-private _timeout = time + 1200;
+private _timeout = time + 900;
 private _enemySide = [Invaders, Occupants] select (_side == Invaders);
 _uav addEventHandler
 [
@@ -84,9 +83,6 @@ _uav addEventHandler
             _target = getPosASL _target;
         };
 
-        /* if(_weapon == "rockets_Skyfire") then ///something else or remove completly
-        {}; */
-        ///_target = _target apply {_x + (random 30) - 15}; commented out due to making Z coordinate above target 
         [_projectile, _target] spawn
         {
             params ["_projectile", "_target"];

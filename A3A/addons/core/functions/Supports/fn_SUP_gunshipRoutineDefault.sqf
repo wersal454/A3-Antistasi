@@ -245,7 +245,7 @@ while {_lifeTime > 0} do
     ) then
     ///if !(_gunship getVariable ["CurrentlyFiring", false]) then
     {
-        private _targets = _suppCenter nearEntities [["Man", "LandVehicle", "Helicopter"], 400];
+        private _targets = _suppCenter nearEntities [["Man", "LandVehicle", "Helicopter", "Plane", "Ship"], 400];
         _targets = _targets select
         {
             if(_x isKindOf "Man") then
@@ -263,42 +263,58 @@ while {_lifeTime > 0} do
         {
             {
                 private _target = _x;
-                if(_target isKindOf "Helicopter") then ///maybe "air"? also seemengly they don't target boats
+                if(_target isKindOf "Helicopter") then
                 {
                     //Fast moving helicopter, use minigun against it
                     _mainGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 0];
                 }
                 else
                 {
-                    if(_target isKindOf "LandVehicle") then
+                    if(_target isKindOf "Plane" && (isTouchingGround _target)) then
                     {
-                        if(_target isKindOf "Tank") then
-                        {
-                            //MBT, breach with AP ammo
-                            _mainGunnerList pushBack [_target, 24, _antiTankBelt, 0];
-                        }
-                        else
-                        {
-                            if(_target in FactionGet(all,"vehiclesAPCs")) then
-                            {
-                                //APC, use mainly AP and rarely rockets
-                                _mainGunnerList pushBack [_target, 18, _antiAPCBelt, 4];
-                            }
-                            else
-                            {
-                                //Any kind of light vehicle, destroy with rockets and mixed belt
-                                _mainGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 8];
-                            };
-                        };
+                        //parked or grounded plane, use minigun against it
+                        _mainGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 0];
                     }
                     else
                     {
-                        //Infantry, if crowded use rockets too
-                        private _nearUnits = _targets select {(_x isKindOf "Man") && ([_x] call A3A_fnc_canFight) && {(_x distanceSqr _target) < 100}};
-                        private _rockets = 0;
-                        if(count _nearUnits > 2) then {_rockets = 4};
-                        _mainGunnerList pushBack [_target, 6, _antiInfBelt, _rockets];
-                    };
+                        if(_target isKindOf "LandVehicle") then
+                        {
+                            if(_target isKindOf "Tank") then
+                            {
+                                //MBT, breach with AP ammo
+                                _mainGunnerList pushBack [_target, 24, _antiTankBelt, 0];
+                            }
+                            else
+                            {
+                                if(_target in FactionGet(all,"vehiclesAPCs")) then
+                                {
+                                    //APC, use mainly AP and rarely rockets
+                                    _mainGunnerList pushBack [_target, 18, _antiAPCBelt, 4];
+                                }
+                                else
+                                {
+                                    //Any kind of light vehicle, destroy with rockets and mixed belt
+                                    _mainGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 8];
+                                };
+                            };
+                        }
+                        else
+                        {
+                            if(_target isKindOf "Ship") then
+                            {
+                                //boat,probably light,use rockets and mixed belt
+                                _mainGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 0];
+                            }
+                            else
+                            {
+                                //Infantry, if crowded use rockets too
+                                private _nearUnits = _targets select {(_x isKindOf "Man") && ([_x] call A3A_fnc_canFight) && {(_x distanceSqr _target) < 100}};
+                                private _rockets = 0;
+                                if(count _nearUnits > 2) then {_rockets = 4};
+                                _mainGunnerList pushBack [_target, 6, _antiInfBelt, _rockets];
+                            };
+                        };
+                    }; 
                 };
             } forEach _targets;
             _gunship setVariable ["CurrentlyFiring", true];
