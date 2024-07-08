@@ -70,7 +70,9 @@ _textMarker setMarkerType "mil_dot";
 _textMarker setMarkerText "Gunship";
 _textMarker setMarkerColor colorOccupants;
 _textMarker setMarkerAlpha 0;
-//[_reveal, _suppCenter, Invaders, "GUNSHIP", format ["%1_coverage", _supportName], _textMarker] spawn A3A_fnc_showInterceptedSupportCall;
+private _delay = selectRandom [-1,1];
+if (_delay < 0) then { _delay = (0.5 + random 1) * (450 - 15*tierWar - 1*_aggro) };
+[_reveal, _side, "GUNSHIP", _suppCenter, _delay] spawn A3A_fnc_showInterceptedSetupCall;
 
 waitUntil
 {
@@ -146,10 +148,12 @@ private _mainGunnerList = [];
             {
                 private _muzzle = if(_belt select ((_i - 1) % 3)) then {"HE"} else {"AP"};
                 _gunner forceWeaponFire [_muzzle, "close"];
+                [_gunner, (weapons _gunner) select 0] call BIS_fnc_fire;
                 _gunshots = _gunshots - 1;
             };
             if(_rocketShots > 0) then
             {
+                [_gunship, (weapons _gunship) select 0] call BIS_fnc_fire;
                 _gunner forceWeaponFire ["rockets_Skyfire", "Burst"];
                 _rocketShots = _rocketShots - 1;
             };

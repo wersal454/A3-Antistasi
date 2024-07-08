@@ -12,15 +12,21 @@ private _crew = objNull;
 
 private _mainGunner = objNull;
 private _heavyGunner = objNull;
+private _thirdGunner = objNull;
 
-for "_i" from 1 to 2 do {
+for "_i" from 1 to 3 do {
     _crew = [_strikeGroup, _faction get "unitPilot", getPos _gunship] call A3A_fnc_createUnit;
     if(_i == 1) then {
-        _crew moveInTurret [_gunship, [1]];
-        _heavyGunner = _crew;
-    } else {
         _crew moveInTurret [_gunship, [2]];
-        _mainGunner = _crew;
+        _thirdGunner = _crew;
+    } else {
+		if(_i == 2) then {
+			_crew moveInTurret [_gunship, [0]];
+        	_mainGunner = _crew;
+		} else {
+			_crew moveInTurret [_gunship, [1]];
+        	_heavyGunner = _crew;
+		};
     };
 };
 
@@ -31,17 +37,23 @@ _gunship addEventHandler ["Fired", {
     private _heavyTarget = _gunship getVariable ["currentTargetHeavyGunner", objNull];
     private _target = [];
 
-    if(_weapon == "autocannon_40mm_VTOL_01") then {
+    if(_weapon == "3as_LAAT_Medium_Canon") then {
         if(isNull _mainTarget) exitWith {};
         _target = getPosASL _mainTarget;
         _target = (_target vectorAdd [0,0,15]) apply {_x + (random 10) - 5};
     };
-    if(_weapon == "gatling_20mm_VTOL_01") then {
+    if(_weapon == "ParticleBeamCannon_B") then {
         if(isNull _heavyTarget) exitWith {};
         _target = getPosASL _heavyTarget;
         _target = (_target vectorAdd [0,0,30]) apply {_x + (random 25) - 12.5};
     };
-    if(_weapon == "cannon_105mm_VTOL_01") then {
+    if(_weapon == "ParticleBeamCannon") then {
+        if(isNull _heavyTarget) exitWith {};
+        _target = getPosASL _heavyTarget;
+        _target = (_target vectorAdd [0,0,10]) apply {_x + (random 2) - 1};
+        _gunship setWeaponReloadingTime [_gunner, _weapon, 0.3];
+    };
+    if(_weapon == "ParticleBeamCannon_R") then {
         if(isNull _heavyTarget) exitWith {};
         _target = getPosASL _heavyTarget;
         _target = (_target vectorAdd [0,0,10]) apply {_x + (random 2) - 1};
@@ -139,7 +151,8 @@ private _heavyGunnerList = [];
 
         for "_i" from 1 to _gunshots do
         {
-            private _muzzle = if(_belt select ((_i - 1) % 3)) then {"HE"} else {"AP"};
+            private _muzzle = "3as_LAAT_Medium_Canon";
+			[_gunship, "3as_LAAT_Medium_Canon"] call BIS_fnc_fire;
             _gunner forceWeaponFire [_muzzle, "close"];
             sleep 0.25;
         };
@@ -215,11 +228,11 @@ private _heavyGunnerList = [];
 };
 
 //Fire loop for howitzer and minigun gunner
-[_gunship, _heavyGunnerList, _heavyGunner, _supportName] spawn
+[_gunship, _heavyGunnerList, _heavyGunner, _supportName] spawn ///_heavyGunnerList
 {
     #include "..\..\script_component.hpp"
     FIX_LINE_NUMBERS()
-    params ["_gunship", "_heavyGunnerList", "_heavyGunner", "_supportName"]; ///_mainGunnerList
+    params ["_gunship", "_heavyGunnerList", "_heavyGunner", "_supportName"]; ///_heavyGunner
 
     private _fnc_executeFireOrder =
     {
@@ -256,12 +269,18 @@ private _heavyGunnerList = [];
         {
             if(_minigunShots > 0) then
             {
-                _gunner forceWeaponFire ["gatling_20mm_VTOL_01", "manual"];
+				[_gunship, "ParticleBeamCannon_B"] call BIS_fnc_fire;
+                _gunner forceWeaponFire ["ParticleBeamCannon_B", "manual"];
                 _minigunShots = _minigunShots - 1;
             };
             if(((_i - 1) % 100 == 0) && (_howitzerShots > 0)) then
             {
-                _gunner forceWeaponFire ["cannon_105mm_VTOL_01", "player"];
+				[_gunship, "3AS_LAAT_Missile_AGM"] call BIS_fnc_fire;
+                [_gunship, "ParticleBeamCannon"] call BIS_fnc_fire;
+                [_gunship, "ParticleBeamCannon_R"] call BIS_fnc_fire;
+                _gunner forceWeaponFire ["3AS_LAAT_Missile_AGM", "player"];
+                _gunner forceWeaponFire ["ParticleBeamCannon", "player"];
+                _gunner forceWeaponFire ["ParticleBeamCannon_R", "player"];
                 _howitzerShots = _howitzerShots - 1;
             };
             sleep 0.03;
@@ -300,16 +319,16 @@ private _heavyGunnerList = [];
                     {
                         if(_target isKindOf "Tank") then
                         {
-                            [_heavyGunner, _target, 25, 0] call _fnc_executeFireOrder;
+                            [_heavyGunner, _target, 25, 0] call _fnc_executeFireOrder; ///_heavyGunner
                         }
                         else
                         {
-                            [_heavyGunner, _target, 100, 2] call _fnc_executeFireOrder;
+                            [_heavyGunner, _target, 100, 2] call _fnc_executeFireOrder; ///_heavyGunner
                         };
                     }
                     else
                     {
-                        [_heavyGunner, _target, 50, 0] call _fnc_executeFireOrder;
+                        [_heavyGunner, _target, 50, 0] call _fnc_executeFireOrder; ///_heavyGunner
                     };
                 }
                 else
@@ -331,7 +350,7 @@ private _heavyGunnerList = [];
                         {_target isKindOf "AllVehicles" && (alive _target)}
                     ) then
                     {
-                        [_heavyGunner, _target, _minigunShots, _howitzerShots] call _fnc_executeFireOrder;
+                        [_heavyGunner, _target, _minigunShots, _howitzerShots] call _fnc_executeFireOrder; ///_heavyGunner
                     };
                 };
             };
@@ -339,15 +358,17 @@ private _heavyGunnerList = [];
         sleep 1;
     };
 };
-
-_gunship setVariable ["AP_Ammo", 160];
-_gunship setVariable ["HE_Ammo", 240];
-_gunship setVariable ["Howitzer_Ammo", 100];
+///"USAF_M102" big cannon 100 rounds
+///"USAF_L60" medium cannon 256 ammo + 1 mag
+///"USAF_GAU12" minigun 2000 ammo
+_gunship setVariable ["AP_Ammo", 100];
+_gunship setVariable ["HE_Ammo", 100];
+_gunship setVariable ["Howitzer_Ammo", 512]; /// not sure about 512
 _gunship setVariable ["Minigun_Ammo", 4000];
 
 //_strikeGroup setCombatMode "YELLOW";
 
-private _lifeTime = 300;
+private _lifeTime = 400;
 
 while {_lifeTime > 0} do
 {
@@ -396,7 +417,7 @@ while {_lifeTime > 0} do
                             if(_target isKindOf "Tank") then
                             {
                                 //MBT, breach with AP ammo
-                                _mainGunnerList pushBack [_target, 18, _antiTankBelt, 0];
+                                _mainGunnerList pushBack [_target, 24, _antiTankBelt, 0];
                             }
                             else
                             {

@@ -116,6 +116,10 @@ switch (true) do
 	case (_strikePlane isKindOf "VTOL_01_armed_base_F"): {_strikePlane flyInHeight 600;};
 	case (_strikePlane isKindOf "vnx_air_c119_base"): {_strikePlane flyInHeight 500;};
     case (_strikePlane isKindOf "USAF_AC130U_base"): {_strikePlane flyInHeight 700;};
+    case (_strikePlane isKindOf "OPTRE_Pelican_F"): {_strikePlane flyInHeight 500;};
+    case (_strikePlane isKindOf "ls_hmp_base"): {_strikePlane flyInHeight 500;};
+    case (_strikePlane isKindOf "3AS_HMP_Base"): {_strikePlane flyInHeight 500;};
+    case (_strikePlane isKindOf "3AS_laat_Base"): {_strikePlane flyInHeight 500;};
 	default {_strikePlane flyInHeight 600;};
 };
 private _entryPos = _spawnPos getPos [_lenght, _startDir + _angle];
@@ -142,6 +146,10 @@ switch (true) do
 	case (_strikePlane isKindOf "VTOL_01_armed_base_F"): {_loiterWP setWaypointLoiterRadius 800;};
 	case (_strikePlane isKindOf "vnx_air_c119_base"): {_loiterWP setWaypointLoiterRadius 700;};
     case (_strikePlane isKindOf "USAF_AC130U_base"): {_loiterWP setWaypointLoiterRadius 900;};
+    case (_strikePlane isKindOf "OPTRE_Pelican_F"): {_loiterWP setWaypointLoiterRadius 700;};
+    case (_strikePlane isKindOf "ls_hmp_base"): {_loiterWP setWaypointLoiterRadius 700;};
+    case (_strikePlane isKindOf "3AS_HMP_Base"): {_loiterWP setWaypointLoiterRadius 700;};
+    case (_strikePlane isKindOf "3AS_laat_Base"): {_loiterWP setWaypointLoiterRadius 700;};
 	default {_loiterWP setWaypointLoiterRadius 800;};
 };
 _strikePlane setDir (_startDir + _angle);

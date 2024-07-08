@@ -62,10 +62,7 @@ if (_hasApex) then {
     _planesTransport pushback "B_T_VTOL_01_infantry_F";
     _gunship pushback "B_T_VTOL_01_armed_F";
 };
-/// "USAF_AC130U"   USAF gunship
-/* if (isClass (configFile >> "cfgVehicles" >> ""USAF_AC130U"")) then {
-	_gunship pushBack "USAF_AC130U";
-}; */
+
 private _transportHelicopters = ["B_Heli_Transport_01_F"];
 
 if (_hasHelicopters) then {

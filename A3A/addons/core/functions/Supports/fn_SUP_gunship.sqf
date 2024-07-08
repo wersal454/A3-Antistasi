@@ -55,6 +55,10 @@ switch (true) do
 	case (_planeTest isKindOf "VTOL_01_armed_base_F"): {[_suppData, _side, _oppositeSide, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineV44;};
 	case (_planeTest isKindOf "vnx_air_c119_base"): {[_suppData, _side, _oppositeSide, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineNickelSteel;};
     case (_planeTest isKindOf "USAF_AC130U_base"): {[_suppData, _side, _oppositeSide, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineUSAF;};
+    case (_planeTest isKindOf "OPTRE_Pelican_F"): {[_suppData, _side, _oppositeSide, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutinePelican;};
+    case (_planeTest isKindOf "ls_hmp_base"): {[_suppData, _side, _oppositeSide, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineStarWarsHMP;};
+    case (_planeTest isKindOf "3AS_HMP_Base"): {[_suppData, _side, _oppositeSide, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineStarWarsHMP;};
+    case (_planeTest isKindOf "3AS_laat_Base"): {[_suppData, _side, _oppositeSide, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineStarWarsLAAT;};
 	default {[_suppData, _side, _oppositeSide, _faction, _vehType, _resPool, _airport, _delay, _reveal] spawn A3A_fnc_SUP_gunshipRoutineDefault;};
 };
 

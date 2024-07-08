@@ -66,6 +66,9 @@ _textMarker setMarkerText "Gunship";
 _textMarker setMarkerColor colorOccupants;
 _textMarker setMarkerAlpha 0;
 //[_reveal, _suppCenter, Invaders, "GUNSHIP", format ["%1_coverage", _supportName], _textMarker] spawn A3A_fnc_showInterceptedSupportCall;
+private _delay = selectRandom [-1,1];
+if (_delay < 0) then { _delay = (0.5 + random 1) * (450 - 15*tierWar - 1*_aggro) };
+[_reveal, _side, "GUNSHIP", _suppCenter, _delay] spawn A3A_fnc_showInterceptedSetupCall;
 
 waitUntil
 {
