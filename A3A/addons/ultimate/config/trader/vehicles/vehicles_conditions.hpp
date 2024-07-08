@@ -1,13 +1,13 @@
-#define VEHICLE_CONDITION_AA (["seaports_1"] call A3U_fnc_hasRequirements || ["resources_3"] call A3U_fnc_hasRequirements) && ["factories_3"] call A3U_fnc_hasRequirements
+#define VEHICLE_CONDITION_AA (["seaports_2"] call A3U_fnc_hasRequirements || ["milbases_1"] call A3U_fnc_hasRequirements) && ["factories_3"] call A3U_fnc_hasRequirements
 condition_AA = VEHICLE_CONDITION_AA;
 
-#define VEHICLE_CONDITION_APC (["seaports_1"] call A3U_fnc_hasRequirements || ["resources_3"] call A3U_fnc_hasRequirements) && ["factories_3"] call A3U_fnc_hasRequirements
+#define VEHICLE_CONDITION_APC (["seaports_2"] call A3U_fnc_hasRequirements || ["milbases_1"] call A3U_fnc_hasRequirements) && ["factories_3"] call A3U_fnc_hasRequirements
 condition_APC = VEHICLE_CONDITION_APC;
 
 #define VEHICLE_CONDITION_ARMEDCAR ["resources_3"] call A3U_fnc_hasRequirements && ["factories_3"] call A3U_fnc_hasRequirements
 condition_ARMEDCAR = VEHICLE_CONDITION_ARMEDCAR;
 
-#define VEHICLE_CONDITION_ARTILLERY ["resources_3"] call A3U_fnc_hasRequirements && ["factories_3"] call A3U_fnc_hasRequirements
+#define VEHICLE_CONDITION_ARTILLERY ["resources_5"] call A3U_fnc_hasRequirements && ["factories_3"] call A3U_fnc_hasRequirements
 condition_ARTILLERY = VEHICLE_CONDITION_ARTILLERY;
 
 #define VEHICLE_CONDITION_BOAT ["seaports_1"] call A3U_fnc_hasRequirements
