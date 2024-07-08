@@ -34,7 +34,7 @@ private _basic = ["B_T_Quadbike_01_F"];
 private _unarmedVehicles = ["B_T_MRAP_01_F"];
 private _armedVehicles = ["B_T_MRAP_01_gmg_F", "B_T_MRAP_01_hmg_F"];
 private _Trucks = ["B_T_Truck_01_covered_F", "B_T_Truck_01_transport_F"];
-private _cargoTrucks = ["B_T_Truck_01_flatbed_F", "B_T_Truck_01_cargo_F"];
+private _cargoTrucks = ["B_T_Truck_01_flatbed_F", "B_T_Truck_01_cargo_F","B_T_UGV_01_olive_F"];
 private _ammoTrucks = ["B_T_Truck_01_ammo_F"];
 private _repairTrucks = ["B_T_Truck_01_Repair_F","B_T_APC_Tracked_01_CRV_F"];
 private _fuelTrucks = ["B_T_Truck_01_fuel_F"];
@@ -43,8 +43,8 @@ private _lightAPCs = ["B_T_APC_Wheeled_01_cannon_F"];
 private _APCs = ["B_T_APC_Wheeled_01_cannon_F"];           // CRV has no cargo: "B_APC_Tracked_01_CRV_F"
 private _IFVs = ["B_T_APC_Tracked_01_rcws_F"];
 
-private _airborneVehicles = ["B_T_APC_Wheeled_01_cannon_F"];
-private _lightTanks = [];
+private _airborneVehicles = ["B_T_APC_Wheeled_01_cannon_F","B_T_UGV_01_rcws_olive_F"];
+private _lightTanks = ["B_T_UGV_01_rcws_olive_F"];
 private _tanks = ["B_T_MBT_01_cannon_F", "B_T_MBT_01_TUSK_F"];
 private _aa = ["B_T_APC_Tracked_01_AA_F"];
 
