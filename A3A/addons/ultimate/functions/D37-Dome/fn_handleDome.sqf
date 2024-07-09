@@ -155,7 +155,7 @@ while {alive _unit and (someAmmo _unit) and _isActive} do {
 
 		//Pick a target
 		if(count _entities > 0) then {
-			[_entities] call A3U_fnc_initshells;
+			[[_entities]] call A3U_fnc_initshells;
 			_target = [_entities, _unit, _tgtLogic] call A3U_fnc_pickTarget;
 
 			if(!isNull _target) then {
