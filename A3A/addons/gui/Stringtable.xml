@@ -638,7 +638,7 @@
             </Key>
             <Key ID="STR_antistasi_dialogs_vehicle_tab_select">
                 <Original>Select</Original>
-                <Russian>Placeholder</Russian>
+                <Russian>Выбрать</Russian>
             </Key>
             <Key ID="STR_antistasi_dialogs_vehicle_tab_all">
                 <Original>All vehicles</Original>
@@ -686,7 +686,7 @@
             </Key>
             <Key ID="STR_antistasi_dialogs_vehicle_tab_boat">
                 <Original>Boats</Original>
-                <Russian>Placeholder.</Russian>
+                <Russian>Лодки.</Russian>
             </Key>
             <Key ID="STR_antistasi_dialogs_vehicle_tab_static">
                 <Original>Statics</Original>
