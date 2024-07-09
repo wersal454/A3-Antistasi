@@ -49,7 +49,7 @@ class CfgFunctions
         };
         class D37Dome
         {
-            file = QPATHTOFOLDER(functions\D37-Dome);
+            file = QPATHTOFOLDER(functions\D37_dome);
             class guidanceLaws {};
             class handleDome {};
             class handleTargets {};
