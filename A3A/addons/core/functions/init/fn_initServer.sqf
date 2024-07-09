@@ -50,8 +50,6 @@ Info("Background init started");
 
 // No reason not to do this early
 [] execVM QPATHTOFOLDER(Scripts\fn_advancedTowingInit.sqf);
-[] execVM QPATHTOFOLDER(Scripts\SpectumDevice\spectrum_device.sqf);
-[] execVM QPATHTOFOLDER(Scripts\SpectumDevice\sa_ewar.sqf);
 
 // Nav stuff, should have no parameter/save dependence at all
 call A3A_fnc_loadNavGrid;
@@ -352,5 +350,10 @@ if(A3A_hasACE) then
 };
 
 call A3U_fnc_initZones;
+
+if (enableSpectrumDevice) then {
+    [] execVM QPATHTOFOLDER(Scripts\SpectumDevice\spectrum_device.sqf);
+    [] execVM QPATHTOFOLDER(Scripts\SpectumDevice\sa_ewar.sqf);
+};
 
 Info("initServer completed");
