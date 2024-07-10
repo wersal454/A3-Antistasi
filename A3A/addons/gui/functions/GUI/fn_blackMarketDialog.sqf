@@ -146,7 +146,7 @@ switch (_mode) do
         private _vals = ["all", "artillery", "apc", "aa", "uav", "tank", "statics", "heli", "plane", "armedcar", "unarmedcar", "boat"];
 
         private _valsCtrl = _bmTable;
-        _valsCtrl ctrlSetPosition [GRID_W * -30.4, GRID_H*-17.9, GRID_W*125, GRID_H*5];
+        ///_valsCtrl ctrlSetPosition [GRID_W * -30.4, GRID_H*-17.9, GRID_W*125, GRID_H*5];
         _valsCtrl ctrlCommit 0;
         {
             private _index = _valsCtrl lbAdd (_vehicleTypes#_forEachIndex);
