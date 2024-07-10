@@ -26,6 +26,8 @@ private _hasRF = "rf" in A3A_enabledDLC;
 //       Vehicles       //
 //////////////////////////
 
+["vehiclesDropPod", ["SpaceshipCapsule_01_F"]] call _fnc_saveToTemplate; 
+
 ["ammobox", "B_supplyCrate_F"] call _fnc_saveToTemplate;     //Don't touch or you die a sad and lonely death!
 ["surrenderCrate", "Box_NATO_Wps_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
 ["equipmentBox", "Box_NATO_Equip_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
@@ -51,8 +53,8 @@ private _aa = ["B_APC_Tracked_01_AA_F"];
 private _transportBoat = ["B_Boat_Transport_01_F"];
 ["vehiclesGunBoats", ["B_Boat_Armed_01_minigun_F","a3a_Boat_Armed_01_hmg_blufor_F"]] call _fnc_saveToTemplate;
 
-private _planesCAS = ["B_Plane_CAS_01_dynamicLoadout_F"];
-private _planesAA = ["B_Plane_CAS_01_dynamicLoadout_F"];
+private _planesCAS = ["B_Plane_CAS_01_dynamicLoadout_F","B_UAV_02_dynamicLoadout_F"];
+private _planesAA = ["B_Plane_CAS_01_dynamicLoadout_F","B_UAV_02_dynamicLoadout_F"];
 
 private _planesTransport = [];
 if (_hasApex) then {
@@ -104,8 +106,8 @@ private _radar = [];
 private _SAM = [];
 
 if (_hasJets) then {
-	_planesCAS pushback "B_Plane_Fighter_01_F";
-	_planesAA pushback "B_Plane_Fighter_01_Stealth_F";
+	_planesCAS append ["B_Plane_Fighter_01_F","B_UAV_05_F"];
+	_planesAA append ["B_Plane_Fighter_01_Stealth_F","B_UAV_05_F"];
 	_radar pushback "B_Radar_System_01_F";
 	_SAM append ["B_SAM_System_03_F","B_SAM_System_02_F","B_SAM_System_01_F","B_AAA_System_01_F"];
 	_howitzers pushBack "B_Ship_Gun_01_F";

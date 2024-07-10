@@ -50,8 +50,8 @@ private _aa = ["I_LT_01_AA_F"]; ///"B_APC_Tracked_01_AA_F"
 private _transportBoat = ["I_Boat_Transport_01_F"];
 ["vehiclesGunBoats", ["I_Boat_Armed_01_minigun_F"]] call _fnc_saveToTemplate;
 
-private _planesCAS = ["I_Plane_Fighter_03_dynamicLoadout_F"];
-private _planesAA = ["I_Plane_Fighter_03_dynamicLoadout_F"];
+private _planesCAS = ["I_Plane_Fighter_03_dynamicLoadout_F","I_UAV_02_dynamicLoadout_F"];
+private _planesAA = ["I_Plane_Fighter_03_dynamicLoadout_F","I_UAV_02_dynamicLoadout_F"];
 if (_hasJets) then {
 	_planesCAS pushback "I_Plane_Fighter_04_F";
 	_planesAA pushback "I_Plane_Fighter_04_F";
@@ -118,7 +118,7 @@ if (_hasApex) then {
 if (_hasRF) then {
     _unarmedVehicles append ["I_Pickup_rf","I_Pickup_Comms_rf"];
     _armedVehicles pushBack "I_Pickup_mmg_rf";
-    _militiaLightArmed pushBack "I_Pickup_hmg_rf";
+    _militiaLightArmed append ["I_Pickup_mmg_rf","I_Pickup_hmg_rf"];
     _militiaCars append ["I_Pickup_rf","I_Pickup_Comms_rf"];
     _aa pushBack "I_Pickup_aat_rf";
     _SAM pushback "I_Pickup_aat_rf";

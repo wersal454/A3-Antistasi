@@ -260,27 +260,6 @@ if (_hasCSLA) then {
     ];
 };
 
-if (_hasCSLA) then {
-    (_loadoutData get "antiInfantryGrenades") append [
-        "CSLA_F1","CSLA_RG4o","CSLA_RG4u","CSLA_URG86u","CSLA_URG86o"
-    ];
-};
-if (_hasCSLA) then {
-    (_loadoutData get "lightExplosives") append [
-        "CSLA_TNT0100g"
-    ];
-};
-if (_hasCSLA) then {
-    (_loadoutData get "APMines") append [
-        "CSLA_F1m_mag","US85_M67m_mag","CSLA_NO2","CSLA_RG4m_mag","CSLA_URG86m_mag","CSLA_PPMiNa_mag"
-    ];
-};
-if (_hasCSLA) then {
-    (_loadoutData get "ATMines") append [
-        "CSLA_PtMiBa3_mag"
-    ];
-};
-
 if (_hasRF) then {
 	_marksmanRifles pushBack ["srifle_DMR_01_black_RF", "", "acc_flashlight", "optic_VRCO_RF", ["10Rnd_762x54_Mag","10Rnd_762x54_Mag","10Rnd_762x54_Mag"], [], ""];
 	_rifles pushBack ["arifle_ash12_blk_RF", "", "", "", ["20Rnd_127x55_Mag_RF","20Rnd_127x55_Mag_RF"], [], ""];
@@ -289,7 +268,7 @@ if (_hasRF) then {
 	_gls pushBack ["arifle_ash12_GL_blk_RF", "", "acc_flashlight", "optic_VRCO_khk_RF", ["10Rnd_127x55_Mag_RF", "20Rnd_127x55_Mag_RF"], ["1Rnd_HE_Grenade_shell", "1Rnd_SmokeGreen_Grenade_shell", "UGL_FlareGreen_F"], ""];
 	_pistols append ["hgun_Glock19_RF", "hgun_Glock19_auto_RF", "hgun_DEagle_RF", "hgun_Glock19_auto_khk_RF", "hgun_DEagle_classic_RF"];
 
-	if (random 100 <= 25) then {
+	if (random 100 <= 45) then {
 		_tunedRifles pushBack ["srifle_h6_gold_rf", "muzzle_snds_M", "", "optic_VRCO_RF", ["30Rnd_556x45_AP_Stanag_green_RF"], [], ""];
 		_pistols append ["hgun_DEagle_gold_RF"];
 	};
@@ -585,12 +564,12 @@ if (_hasRF) then {
 _loadoutData set ["fullmask", [	"G_Balaclava_combat", "G_Balaclava_lowprofile", "G_Balaclava_blk"]];
 
 if (_hasGM) then {
-    (_loadoutData get "facewear") append [
+    (_loadoutData get "fullmask") append [
         "gm_ge_facewear_stormhood_blk",
         "gm_ge_facewear_stormhood_dustglasses_blk",
         "gm_ge_facewear_stormhood_brd"
-        ];
-} ;
+    ];
+};
 
 _loadoutData set ["headgear", [
     "H_Shemag_olive",
@@ -652,10 +631,7 @@ if (_hasGM) then {
 		"gm_ge_headgear_headset_crew_oli",
         "gm_gc_headgear_fjh_model4_oli",
         "gm_ge_headgear_m92_cover_glasses_oli",
-        "gm_ge_headgear_m92_cover_oli",
-        "gm_ge_headgear_psh77_oli",
-        "gm_ge_headgear_psh77_up_oli",
-        "gm_ge_headgear_psh77_down_oli"
+        "gm_ge_headgear_m92_cover_oli"
 	];
 };
 
@@ -911,7 +887,7 @@ if (_hasContact) then {
 };
 
 /////Helmets
-private _helmets = ["H_HelmetB"];
+private _helmets = ["H_HelmetB"]; ///look for more helmets
 
 if (_hasWs) then {
 	_helmets append [
@@ -955,8 +931,22 @@ if (_hasLawsOfWar) then {
 	_helmets append ["H_PASGT_basic_black_F", "H_PASGT_basic_blue_F", "H_PASGT_basic_olive_F", "H_PASGT_neckprot_blue_press_F", "H_PASGT_basic_blue_press_F","H_HeadBandage_clean_F", "H_HeadBandage_stained_F", "H_HeadBandage_bloody_F"];
 };
 
-if (_hasLawsOfWar) then {
+if (_hasContact) then {
 	_helmets append ["H_HelmetAggressor_F", "H_HelmetAggressor_cover_F", "H_HelmetAggressor_cover_taiga_F"];
+};
+
+if (_hasGM) then {
+	_helmets append [
+        "gm_ge_headgear_psh77_oli",
+        "gm_ge_headgear_psh77_up_oli",
+        "gm_ge_headgear_psh77_down_oli",
+		"gm_ge_bgs_headgear_psh77_cover_smp",
+		"gm_ge_bgs_headgear_psh77_cover_up_smp",
+		"gm_ge_bgs_headgear_psh77_cover_down_smp",
+		"gm_ge_bgs_headgear_psh77_cover_str",
+		"gm_ge_bgs_headgear_psh77_cover_up_str",
+		"gm_ge_bgs_headgear_psh77_cover_down_str"
+    ]; 
 };
 
 if (_hasCSLA) then {
@@ -1004,10 +994,41 @@ if (_hasCSLA) then {
 };
 
 /////
-_loadoutData set ["offuniforms", ["U_I_C_Soldier_Camo_F"]]; ///check offuniforms later
+private _offuniforms = ["U_I_C_Soldier_Camo_F"];
+private _backpacks = ["B_AssaultPack_rgr","B_AssaultPack_cbr","B_AssaultPack_sgg","B_AssaultPack_khk","B_AssaultPack_blk","B_TacticalPack_oli","B_Carryall_oli","B_Kitbag_sgg","B_FieldPack_oli"];
+
+if (_hasApex) then {
+	_backpacks append ["B_ViperHarness_oli_F","B_ViperLightHarness_oli_F"];
+};
+
+if (_hasArtOfWar) then {
+	_backpacks append ["B_CivilianBackpack_01_Everyday_Black_F","B_CivilianBackpack_01_Everyday_Astra_F","B_CivilianBackpack_01_Everyday_Vrana_F","B_CivilianBackpack_01_Sport_Green_F","B_CivilianBackpack_01_Sport_Red_F","B_CivilianBackpack_01_Sport_Blue_F"];
+};
+
+if (_hasContact) then {
+	_backpacks append ["B_FieldPack_green_F","B_RadioBag_01_digi_F","B_RadioBag_01_black_F","B_Carryall_green_F"];
+};
+
+if (_hasRF) then {
+	_backpacks append ["B_DuffleBag_Olive_NoLogo_RF","B_DuffleBag_Black_NoLogo_RF","B_DuffleBag_Sand_RF","B_DuffleBag_Red_RF","B_DuffleBag_Olive_RF","B_DuffleBag_Blue_RF","B_DuffleBag_Black_RF","B_DuffleBag_VRANA_RF"];
+};
+
+if (_hasLawsOfWar) then {
+	_backpacks append ["B_Messenger_Olive_F","B_Messenger_Black_F","B_LegStrapBag_olive_F","B_LegStrapBag_black_F"];
+};
+
+if (_hasGM) then {
+	_backpacks append ["gm_dk_army_backpack_73_oli","gm_ge_army_backpack_90_blk","gm_ge_army_backpack_90_oli","gm_ge_army_backpack_80_oli","gm_ge_backpack_sem35_oli","gm_pl_army_backpack_at_80_gry"];
+};
+
+if (_hasCSLA) then {
+	_backpacks append ["US85_bpSf","FIA_bpPack", "US85_bpAlice"];
+};
+
+_loadoutData set ["offuniforms", _offuniforms]; ///check offuniforms later.
 _loadoutData set ["vests", _vests];
 _loadoutData set ["heavyVests", _heavyVests];
-_loadoutData set ["backpacks", ["B_TacticalPack_oli", "B_Carryall_oli"]]; ///check for backpacks later
+_loadoutData set ["backpacks", _backpacks]; ///check for backpacks later.
 _loadoutData set ["helmets", _helmets];
 _loadoutData set ["crewHelmets", _crewhelmets];
 
