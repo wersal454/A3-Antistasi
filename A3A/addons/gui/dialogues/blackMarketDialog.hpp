@@ -36,6 +36,17 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
                     w = 35 * GRID_W;
                     h = 5 * GRID_H;
                 };
+
+                class VehicleTabCombo : A3A_ComboBox_Small_BM
+                {
+                    idc = A3A_IDC_SETUP_BMTABLE;
+                    fade = 0;
+                    access = 1;
+                    x = 0 * GRID_W;
+                    y = 0;
+                    w = 125 * GRID_W;
+                    h = 5 * GRID_H;/* GRID_H */
+                };
             };
         };
 
@@ -283,16 +294,6 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
             y = DIALOG_Y - 10 * GRID_H;
         };
 
-        class VehicleTabCombo : A3A_ComboBox_Small_BM
-        {
-            idc = A3A_IDC_SETUP_BMTABLE;
-            fade = 0;
-            access = 1;
-            x = -36 * GRID_W;
-            y = -22 * GRID_H;
-            w = 125 * GRID_W;
-            h = 5 * GRID_H;
-        };
     };
 
     // Used for preview renders. Has to be defined inline. Class inheritance incompatible. ctrlCreate incompatible.
