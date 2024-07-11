@@ -4,6 +4,7 @@ private _bleedOut = time + 450;
 private _isPlayer = false;
 private _playersX = false;
 private _inPlayerGroup = false;
+private _handlerCountdown = 0;
 _unit setBleedingremaining 300;
 
 private _fnc_applyPostEffect = {
@@ -14,6 +15,41 @@ private _fnc_applyPostEffect = {
 	"filmGrain" ppEffectAdjust [0.05, 1, 1, 0, 1]; 
 	"filmGrain" ppEffectCommit 0; 
 	"filmGrain" ppEffectEnable true;
+};
+
+private _fnc_selfReviveCountdownStart = {
+	private _diff = (player getVariable ["A3A_selfReviveTimeout", -1]) - time;
+	private _initialCountDown = [_diff] call BIS_fnc_countDown;
+
+	if (_diff > 0) then {
+		_handlerCountdown = addMissionEventHandler [
+			"EachFrame", 
+			{ 
+				hintSilent parseText format[
+					"<t color='#FFFFFF'>%1<br/><t color='#FFFFFF'>%2</t>", 
+					localize "STR_antistasi_actions_unconscious_self_withstand_countdown",
+					[(([0] call BIS_fnc_countdown) / 60) + .01, "HH:MM"] call BIS_fnc_timetostring
+				]
+			}
+		];
+	}
+	else {
+		_handlerCountdown = addMissionEventHandler [
+			"EachFrame", 
+			{ 
+				hintSilent parseText format[
+					"<t color='#FFFFFF'>%1<br/><t color='#008000'>%2</t>", 
+					localize "STR_antistasi_actions_unconscious_self_withstand_countdown",
+					localize "STR_antistasi_actions_unconscious_self_withstand_ready"
+				]
+			}
+		];
+	};
+};
+
+private _fnc_selfReviveCountdownStop = {
+	removeMissionEventHandler ["EachFrame", _handlerCountdown];
+	hintSilent "";
 };
 
 if (isPlayer _unit) then {
@@ -63,6 +99,7 @@ else {
 
 if (_isPlayer) then {
 	[] call _fnc_applyPostEffect;
+	[] call _fnc_selfReviveCountdownStart;
 };
 
 _unit setFatigue 1;
@@ -175,7 +212,8 @@ if (_isPlayer and (_unit getVariable ["respawn",false])) exitWith {};
 
 if (time > _bleedOut) exitWith {
 	if (_isPlayer) then {
-		_unit call A3A_fnc_respawn
+		_unit call A3A_fnc_respawn;
+		[] call _fnc_selfReviveCountdownStop;
 	}
 	else {
 		_unit setDamage 1;
@@ -186,6 +224,7 @@ if (alive _unit) then {
 	_unit setUnconscious false;
 	_unit switchMove "unconsciousoutprone";
 	_unit setBleedingRemaining 0;
+	[] call _fnc_selfReviveCountdownStop;
 
 	if (isPlayer _unit) then {
 		[] call SCRT_fnc_misc_updateRichPresence;
