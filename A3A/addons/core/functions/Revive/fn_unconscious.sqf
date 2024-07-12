@@ -18,7 +18,7 @@ private _fnc_applyPostEffect = {
 };
 
 private _fnc_selfReviveCountdownStart = {
-	private _diff = (player getVariable ["A3A_selfReviveTimeout", -1]) - time;
+	private _diff = (_unit getVariable ["A3A_selfReviveTimeout", -1]) - time;
 	private _initialCountDown = [_diff] call BIS_fnc_countDown;
 
 	if (_diff > 0) then {
