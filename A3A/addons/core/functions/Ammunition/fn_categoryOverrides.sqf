@@ -407,3 +407,9 @@ private _categoryOverrideTable = [
 ["SPE_M1_Garand_M7", ["Rifles","Weapons","GrenadeLaunchers"]]
 
 ];
+
+//Create a local namespace.
+A3A_categoryOverrides = false call A3A_fnc_createNamespace;
+{
+	A3A_categoryOverrides setVariable [_x select 0, _x select 1];
+} forEach _categoryOverrideTable;
