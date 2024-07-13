@@ -102,7 +102,7 @@ while {alive _unit} do {
 			_unit doTarget _target;
 			_shell = attachedTo _target;
 			
-			waitUntil{_unit aimedAtTarget [_target, _wep] > 0.25 or (time - _time) > 0.85};
+			waitUntil{_unit aimedAtTarget [_target, _wep] > 0.50 or (time - _time) > 0.85};
 			for "_i" from 1 to 100 do {
 				if(!alive _shell) exitWith {};
 				if((_i % 20) == 0) then {

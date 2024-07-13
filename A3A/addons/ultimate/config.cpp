@@ -1,6 +1,5 @@
 #include "script_component.hpp"
 
-
 class CfgPatches 
 {
     class ADDON 
@@ -45,7 +44,6 @@ class cfgWeapons
 		  magazines[] += {"magazine_Missile_dome_x21"};
 	  };
 };
-
 
 class RscBackPicture;
 class RscEditLCD;
@@ -195,9 +193,9 @@ class Extended_PreInit_EventHandlers
 };
 class CfgSounds
 {
-	class CRAMALARM
+	class CRAM_ALARM
 	{
-		name = "CRAM_Alarm";
+		name = "CRAM_ALARN";
 		sound[] = {"functions\D37_cram\Sound\CRAM_ALARM.ogg", 1.0, 1.0};
 		titles[] = {0, ""};
 	};
@@ -232,14 +230,14 @@ class cfgMagazines {
 
 //weapons[] = {"weapon_rim116Launcher"};
 
-class CfgFactionClasses
+/* class CfgFactionClasses
 {
 	class CRAM_modules
 	{
 		displayName = "CRAM modules";
 		priority = 10;
 	};
-};
+}; */
 
 //["SAM_System_01_base_F","StaticMGWeapon","StaticWeapon","LandVehicle","Land","AllVehicles","All"]
 

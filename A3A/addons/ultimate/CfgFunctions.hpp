@@ -47,7 +47,7 @@ class CfgFunctions
             class emission {};
             class fillMapAnomalies {};
         };
-        class D37Dome
+        class D37dome
         {
             file = QPATHTOFOLDER(functions\D37_dome);
             class guidanceLaws {};
