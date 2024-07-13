@@ -25,11 +25,12 @@ private _fnc_selfReviveCountdownStart = {
 		_handlerCountdown = addMissionEventHandler [
 			"EachFrame", 
 			{ 
-				hintSilent parseText format[
-					"<t color='#FFFFFF'>%1<br/><t color='#FFFFFF'>%2</t>", 
+				[
 					localize "STR_antistasi_actions_unconscious_self_withstand_countdown",
-					[(([0] call BIS_fnc_countdown) / 60) + .01, "HH:MM"] call BIS_fnc_timetostring
-				]
+					format[
+						[(([0] call BIS_fnc_countdown) / 60) + .01, "HH:MM"] call BIS_fnc_timetostring
+					]
+				] call A3A_fnc_customHint
 			}
 		];
 	}
@@ -37,11 +38,13 @@ private _fnc_selfReviveCountdownStart = {
 		_handlerCountdown = addMissionEventHandler [
 			"EachFrame", 
 			{ 
-				hintSilent parseText format[
-					"<t color='#FFFFFF'>%1<br/><t color='#008000'>%2</t>", 
+				[
 					localize "STR_antistasi_actions_unconscious_self_withstand_countdown",
-					localize "STR_antistasi_actions_unconscious_self_withstand_ready"
-				]
+					format[
+						"<t color='#008000'>%1</t>", 
+						localize "STR_antistasi_actions_unconscious_self_withstand_ready"
+					]
+				] call A3A_fnc_customHint
 			}
 		];
 	};
