@@ -52,7 +52,6 @@ private _fnc_selfReviveCountdownStart = {
 
 private _fnc_selfReviveCountdownStop = {
 	removeMissionEventHandler ["EachFrame", _handlerCountdown];
-	hintSilent "";
 };
 
 if (isPlayer _unit) then {
