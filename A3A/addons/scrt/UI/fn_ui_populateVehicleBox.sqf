@@ -63,7 +63,7 @@ switch (_category) do {
 		_isCivilian = true;
 		_vehicleClasses = _civilianVehicles;
     };
-	case "military": {
+	case "militaryall": {
 		private _militaryVehicles = 
 			(A3A_faction_reb get 'vehiclesBasic') + 
 			(A3A_faction_reb get 'vehiclesTruck') + 
@@ -153,7 +153,7 @@ switch (_category) do {
 			_statics append _availableVehs;
 		};
 
-		 (A3A_faction_reb get 'staticMGs') select {_x isNotEqualTo []};
+		(A3A_faction_reb get 'staticMGs') select {_x isNotEqualTo []};
 
 		if (tierWar > 3) then {
 			private _availableVehs = 
@@ -169,6 +169,42 @@ switch (_category) do {
 			};
 		};
 
+		_vehicleClasses = _statics;
+	};
+	case "staticMG": {
+		private _statics = [];
+		
+		if (tierWar > 2) then {
+			private _availableVehs = (A3A_faction_reb get 'staticMGs') select {_x isNotEqualTo []};
+			_statics append _availableVehs;
+		};
+		(A3A_faction_reb get 'staticMGs') select {_x isNotEqualTo []};
+		_vehicleClasses = _statics;
+	};
+	case "staticAT": {
+		private _statics = [];
+		if (tierWar > 3) then {
+			private _availableVehs = (A3A_faction_reb get 'staticAT') select {_x isNotEqualTo []};
+			_statics append _availableVehs;
+		};
+		_vehicleClasses = _statics;
+	};
+	case "staticAA": {
+		private _statics = [];
+		if (tierWar > 3) then {
+			private _availableVehs = (A3A_faction_reb get 'staticAA') select {_x isNotEqualTo []};
+			_statics append _availableVehs;
+		};
+		_vehicleClasses = _statics;
+	};
+	case "staticMORTAR": {
+		private _statics = [];
+		if (tierWar > 4) then {
+			private _mortars = A3A_faction_reb get 'staticMortars';
+			if (_mortars isNotEqualTo []) then {
+				_statics append _mortars;
+			};
+		};
 		_vehicleClasses = _statics;
 	};
 	default {
