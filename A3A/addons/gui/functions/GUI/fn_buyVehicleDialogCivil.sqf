@@ -126,7 +126,7 @@ switch (_mode) do
         uiNamespace setVariable ["cv_vehicleTypeBox", _valsCtrl];
 
         ["vehicles", [A3A_IDC_BUYCIVVEHICLEMAIN, A3A_IDC_CIVVEHICLESGROUP, "civall"]] call A3A_fnc_buyVehicleTabs; ///show all?
-        ["vehicles", [A3A_IDC_BUYCIVVEHICLECARS, A3A_IDC_CIVVEHICLESGROUPTRUCKSCARS, "civcars"]] call A3A_fnc_buyVehicleTabs;
+        ["vehicles", [A3A_IDC_BUYCIVVEHICLECARS, A3A_IDC_CIVVEHICLESGROUPCARS, "civcars"]] call A3A_fnc_buyVehicleTabs;
         ["vehicles", [A3A_IDC_BUYCIVVEHICLETRUCKS, A3A_IDC_CIVVEHICLESGROUPTRUCKS, "civtrucks"]] call A3A_fnc_buyVehicleTabs;
         ["vehicles", [A3A_IDC_BUYCIVVEHICLEBOATS, A3A_IDC_CIVVEHICLESGROUPBOATS, "civboats"]] call A3A_fnc_buyVehicleTabs;
         ["vehicles", [A3A_IDC_BUYCIVVEHICLEHELI, A3A_IDC_CIVVEHICLESGROUPHELI, "civheli"]] call A3A_fnc_buyVehicleTabs;
@@ -144,63 +144,3 @@ switch (_mode) do
         Error_1("BuyVehicle mode does not exist: %1", _mode);
     };
 };
-/* private _display = findDisplay A3A_IDD_BUYVEHICLEDIALOG;
-        private _selectedTab = _params select 0;
-
-        Debug_1("MainDialog switching tab to %1.", _selectedTab);
-
-        private _selectedTabIDC = -1;
-        switch (_selectedTab) do 
-        {
-            case ("civilian"): {
-                _selectedTabIDC = A3A_IDC_BUYCIVVEHICLEMAIN;
-            };
-            case("rebel"): {
-                _selectedTabIDC = A3A_IDC_BUYREBVEHICLEMAIN;};
-            case ("static"): {
-                _selectedTabIDC = A3A_IDC_BUYSTATICMAIN;
-            };
-            case("other"): {
-                _selectedTabIDC = A3A_IDC_BUYOTHERMAIN;
-            };
-        };
-
-        if (_selectedTabIDC == -1) exitWith {
-            Error("Attempted to access tab without permission : %1", _selectedTab);
-        };
-
-        private _allTabs = [
-            A3A_IDC_BUYCIVVEHICLEMAIN,
-            A3A_IDC_BUYREBVEHICLEMAIN,
-            A3A_IDC_BUYSTATICMAIN,
-            A3A_IDC_BUYOTHERMAIN,
-            A3A_IDC_BUYVEHICLEPREVIEW
-        ];
-
-        // Hide all tabs
-        Debug("Hiding all tabs");
-        {
-            private _ctrl = _display displayCtrl _x;
-            _ctrl ctrlShow false;
-        } forEach _allTabs;
-
-
-        // Show selected tab
-        Debug("Showing selected tab");
-        private _selectedTabCtrl = _display displayCtrl _selectedTabIDC;
-        _selectedTabCtrl ctrlShow true;
-    };
-
-    case ("onLoad"):
-    {
-        ['on'] call SCRT_fnc_ui_toggleMenuBlur;
-        ["vehicles", [A3A_IDC_BUYCIVVEHICLEMAIN, A3A_IDC_CIVVEHICLESGROUP, "civilian"]] call A3A_fnc_buyVehicleTabs;
-        ["vehicles", [A3A_IDC_BUYREBVEHICLEMAIN, A3A_IDC_REBVEHICLESGROUP, "military"]] call A3A_fnc_buyVehicleTabs;
-        ["vehicles", [A3A_IDC_BUYSTATICMAIN, A3A_IDC_STATICSGROUP, "static"]] call A3A_fnc_buyVehicleTabs;
-        ["other"] call A3A_fnc_buyVehicleTabs;
-
-        // show the vehicle tab so that user don't freak out
-        private _display = findDisplay A3A_IDD_BUYVEHICLEDIALOG;
-        private _selectedTabCtrl = _display displayCtrl A3A_IDC_BUYCIVVEHICLEMAIN;
-        _selectedTabCtrl ctrlShow true;
-    }; */

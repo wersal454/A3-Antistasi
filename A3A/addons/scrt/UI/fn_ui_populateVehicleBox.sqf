@@ -91,6 +91,60 @@ switch (_category) do {
 
 		_vehicleClasses = _militaryVehicles;
 	};
+	case "militarybasic": {
+		private _militaryVehicles = (A3A_faction_reb get 'vehiclesBasic') select {_x isNotEqualTo []};
+		_vehicleClasses = _militaryVehicles;
+	};
+	case "militarytrucks": {
+		private _militaryVehicles = (A3A_faction_reb get 'vehiclesTruck') select {_x isNotEqualTo []};
+		_vehicleClasses = _militaryVehicles;
+	};
+	case "militarylightunarmed": {
+		private _militaryVehicles = (A3A_faction_reb get 'vehiclesLightUnarmed') select {_x isNotEqualTo []};
+		_vehicleClasses = _militaryVehicles;
+	};
+	case "militaryboats": {
+		private _militaryVehicles = (A3A_faction_reb get 'vehiclesBoat') select {_x isNotEqualTo []};
+		_vehicleClasses = _militaryVehicles;
+	};
+	case "militarymedical": {
+		private _militaryVehicles =	(A3A_faction_reb get 'vehiclesMedical')	select {_x isNotEqualTo []};
+		_vehicleClasses = _militaryVehicles;
+	};
+	case "militarylightarmed": {
+		private _militaryVehicles =[];
+		if (tierWar > 2) then {
+			private _availableVehs = (A3A_faction_reb get 'vehiclesLightArmed') select {_x isNotEqualTo ""};
+			_militaryVehicles append _availableVehs;
+		};
+		_vehicleClasses = _militaryVehicles;
+	};
+	case "militaryat": {
+		private _militaryVehicles =[];
+		if (tierWar > 3) then {
+			private _availableVehs = 
+				(A3A_faction_reb get 'vehiclesAT') select {_x isNotEqualTo []};
+			_militaryVehicles append _availableVehs;
+		};
+		_vehicleClasses = _militaryVehicles;
+	};
+	case "militaryaa": {
+		private _militaryVehicles =[];
+		if (tierWar > 3) then {
+			private _availableVehs = 
+				(A3A_faction_reb get 'vehiclesAA') select {_x isNotEqualTo []};
+			_militaryVehicles append _availableVehs;
+		};
+		_vehicleClasses = _militaryVehicles;
+	};
+	case "militaryplane": {
+		private _militaryVehicles =[];
+		private _milAircrafts = A3A_faction_reb get "vehiclesPlane";
+		if (_milAircrafts isNotEqualTo [] && {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count airportsX > 0}) then {
+			_militaryVehicles append _milAircrafts;
+		};
+		_vehicleClasses = _militaryVehicles;
+	};
 	case "static": {
 		private _statics = [];
 		
