@@ -22,7 +22,7 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
             x = DIALOG_X;
             y = DIALOG_Y - 5 * GRID_H;
             w = DIALOG_W * GRID_W;
-            h = 10 * GRID_H;
+            h = 5 * GRID_H;
 
             class Controls
             {
@@ -62,9 +62,9 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
                 {
                     idc = A3A_IDC_BLACKMARKETVEHICLESGROUP;
                     x = 0;
-                    y = 10 * GRID_H;
+                    y = 5 * GRID_H;
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 10 * GRID_H;
+                    h = PX_H(DIALOG_H) - 5 * GRID_H;
                 };
             };
         };
@@ -80,9 +80,9 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
                 {
                     idc = A3A_IDC_BLACKMARKETVEHICLESGROUPATRY;
                     x = 0;
-                    y = 10 * GRID_H; //9.5
+                    y = 5 * GRID_H; //9.5
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 10 * GRID_H; //9.5
+                    h = PX_H(DIALOG_H) - 5 * GRID_H; //9.5
                 };
             };
         };
@@ -98,9 +98,9 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
                 {
                     idc = A3A_IDC_BLACKMARKETVEHICLESGROUPAPC;
                     x = 0;
-                    y = 10 * GRID_H;
+                    y = 5 * GRID_H;
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 10 * GRID_H;
+                    h = PX_H(DIALOG_H) - 5 * GRID_H;
                 };
             };
         };
@@ -116,9 +116,9 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
                 {
                     idc = A3A_IDC_BLACKMARKETVEHICLESGROUPAA;
                     x = 0;
-                    y = 10 * GRID_H;
+                    y = 5 * GRID_H;
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 10 * GRID_H;
+                    h = PX_H(DIALOG_H) - 5 * GRID_H;
                 };
             };
         };
@@ -134,9 +134,9 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
                 {
                     idc = A3A_IDC_BLACKMARKETVEHICLESGROUPUAV;
                     x = 0;
-                    y = 10 * GRID_H;
+                    y = 5 * GRID_H;
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 10 * GRID_H;
+                    h = PX_H(DIALOG_H) - 5 * GRID_H;
                 };
             };
         };
@@ -152,9 +152,9 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
                 {
                     idc = A3A_IDC_BLACKMARKETVEHICLESGROUPTANK;
                     x = 0;
-                    y = 10 * GRID_H;
+                    y = 5 * GRID_H;
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 10 * GRID_H;
+                    h = PX_H(DIALOG_H) - 5 * GRID_H;
                 };
             };
         };
@@ -170,9 +170,9 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
                 {
                     idc = A3A_IDC_BLACKMARKETVEHICLESGROUPSTATICS;
                     x = 0;
-                    y = 10 * GRID_H;
+                    y = 5 * GRID_H;
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 10 * GRID_H;
+                    h = PX_H(DIALOG_H) - 5 * GRID_H;
                 };
             };
         };
@@ -188,9 +188,9 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
                 {
                     idc = A3A_IDC_BLACKMARKETVEHICLESGROUPHELI;
                     x = 0;
-                    y = 10 * GRID_H;
+                    y = 5 * GRID_H;
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 10 * GRID_H;
+                    h = PX_H(DIALOG_H) - 5 * GRID_H;
                 };
             };
         };
@@ -206,9 +206,9 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
                 {
                     idc = A3A_IDC_BLACKMARKETVEHICLESGROUPPLANE;
                     x = 0;
-                    y = 10 * GRID_H;
+                    y = 5 * GRID_H;
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 10 * GRID_H;
+                    h = PX_H(DIALOG_H) - 5 * GRID_H;
                 };
             };
         };
@@ -224,9 +224,9 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
                 {
                     idc = A3A_IDC_BLACKMARKETVEHICLESGROUPARMEDCAR;
                     x = 0;
-                    y = 10 * GRID_H;
+                    y = 5 * GRID_H;
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 10 * GRID_H;
+                    h = PX_H(DIALOG_H) - 5 * GRID_H;
                 };
             };
         };
@@ -242,9 +242,9 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
                 {
                     idc = A3A_IDC_BLACKMARKETVEHICLESGROUPUNARMED;
                     x = 0;
-                    y = 10 * GRID_H;
+                    y = 5 * GRID_H;
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 10 * GRID_H;
+                    h = PX_H(DIALOG_H) - 5 * GRID_H;
                 };
             };
         };
@@ -260,9 +260,9 @@ class A3A_BlackMarketDialog : A3A_TabbedDialogBlackmarket
                 {
                     idc = A3A_IDC_BLACKMARKETVEHICLESGROUPBOAT;
                     x = 0;
-                    y = 10 * GRID_H;
+                    y = 5 * GRID_H;
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 10 * GRID_H;
+                    h = PX_H(DIALOG_H) - 5 * GRID_H;
                 };
             };
         };
