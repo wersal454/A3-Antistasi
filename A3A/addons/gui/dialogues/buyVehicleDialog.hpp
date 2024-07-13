@@ -24,7 +24,7 @@ class A3A_BuyVehicleDialog : A3A_TabbedDialog
           x = DIALOG_X;
           y = DIALOG_Y - 1 * GRID_H;
           w = DIALOG_W * GRID_W;
-          h = 5 * GRID_H;
+          h = 15 * GRID_H;
         };
     
         class TabButtons : A3A_ControlsGroupNoScrollbars
@@ -41,7 +41,7 @@ class A3A_BuyVehicleDialog : A3A_TabbedDialog
                 {
                     idc = -1;
                     text = $STR_antistasi_dialogs_vehicle_tab_civ;
-                    onButtonClick = "[""switchTab"", [""civilian""]] call A3A_fnc_buyVehicleDialog";
+                    onButtonClick = "[""switchTab"", [""civilian""]] call A3A_fnc_buyVehicleDialogCivil";
                     x = 0;
                     y = 0;
                     w = 30 * GRID_W;
@@ -95,13 +95,137 @@ class A3A_BuyVehicleDialog : A3A_TabbedDialog
                 {
                     idc = A3A_IDC_CIVVEHICLESGROUP;
                     x = 0;
-                    y = 4 * GRID_H;
+                    y = 10 * GRID_H;
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 8 * GRID_H;
+                    h = PX_H(DIALOG_H) - 10 * GRID_H;
+                };
+
+                class VehicleTabComboCivil : A3A_ComboBox_Small_BM
+                {
+                    idc = A3A_IDC_SETUP_CVTABLE;
+                    fade = 0;
+                    access = 1;
+                    x = 0 * GRID_W;
+                    y = 0;
+                    w = 125 * GRID_W;
+                    h = 5 * GRID_H;/* GRID_H */
+                };
+
+                class SelectTabButton : A3A_Button
+                {
+                    idc = -1;
+                    text = $STR_antistasi_dialogs_vehicle_tab_select;
+                    onButtonClick = "[""switchTab"", [""all""]] call A3A_fnc_buyVehicleDialog";
+                    x = 125 * GRID_W;
+                    y = 0;
+                    w = 35 * GRID_W;
+                    h = 5 * GRID_H;
+                };
+                /* class VehicleTabCivAll : A3A_DefaultControlsGroup
+                {
+                    idc = A3A_IDC_BUYCIVVEHICLEALL;
+                    show = false;
+
+                    class Controls
+                    {
+                        class VehiclesControlsGroup : A3A_ControlsGroupNoHScrollbars
+                        {
+                            idc = A3A_IDC_CIVVEHICLESGROUPALL;
+                            x = 0;
+                            y = 5 * GRID_H;
+                            w = PX_W(DIALOG_W);
+                            h = PX_H(DIALOG_H) - 5 * GRID_H;
+                        };
+                    };
+                }; */
+                class VehicleTabCivCars : A3A_DefaultControlsGroup
+                {
+                    idc = A3A_IDC_BUYCIVVEHICLECARS;
+                    show = false;
+
+                    class Controls
+                    {
+                        class VehiclesControlsGroup : A3A_ControlsGroupNoHScrollbars
+                        {
+                            idc = A3A_IDC_CIVVEHICLESGROUPCARS;
+                            x = 0;
+                            y = 5 * GRID_H;
+                            w = PX_W(DIALOG_W);
+                            h = PX_H(DIALOG_H) - 5 * GRID_H;
+                        };
+                    };
+                };
+                class VehicleTabCivTrucks : A3A_DefaultControlsGroup
+                {
+                    idc = A3A_IDC_BUYCIVVEHICLETRUCKS;
+                    show = false;
+
+                    class Controls
+                    {
+                        class VehiclesControlsGroup : A3A_ControlsGroupNoHScrollbars
+                        {
+                            idc = A3A_IDC_CIVVEHICLESGROUPTRUCKS;
+                            x = 0;
+                            y = 5 * GRID_H;
+                            w = PX_W(DIALOG_W);
+                            h = PX_H(DIALOG_H) - 5 * GRID_H;
+                        };
+                    };
+                };
+                class VehicleTabCivBoats : A3A_DefaultControlsGroup
+                {
+                    idc = A3A_IDC_BUYCIVVEHICLEBOATS;
+                    show = false;
+
+                    class Controls
+                    {
+                        class VehiclesControlsGroup : A3A_ControlsGroupNoHScrollbars
+                        {
+                            idc = A3A_IDC_CIVVEHICLESGROUPBOATS;
+                            x = 0;
+                            y = 5 * GRID_H;
+                            w = PX_W(DIALOG_W);
+                            h = PX_H(DIALOG_H) - 5 * GRID_H;
+                        };
+                    };
+                };
+                class VehicleTabCivHeli : A3A_DefaultControlsGroup
+                {
+                    idc = A3A_IDC_BUYCIVVEHICLEHELI;
+                    show = false;
+
+                    class Controls
+                    {
+                        class VehiclesControlsGroup : A3A_ControlsGroupNoHScrollbars
+                        {
+                            idc = A3A_IDC_CIVVEHICLESGROUPHELI;
+                            x = 0;
+                            y = 5 * GRID_H;
+                            w = PX_W(DIALOG_W);
+                            h = PX_H(DIALOG_H) - 5 * GRID_H;
+                        };
+                    };
+                };
+                class VehicleTabCivPlane : A3A_DefaultControlsGroup
+                {
+                    idc = A3A_IDC_BUYCIVVEHICLEPLANE;
+                    show = false;
+
+                    class Controls
+                    {
+                        class VehiclesControlsGroup : A3A_ControlsGroupNoHScrollbars
+                        {
+                            idc = A3A_IDC_CIVVEHICLESGROUPPLANE;
+                            x = 0;
+                            y = 5 * GRID_H;
+                            w = PX_W(DIALOG_W);
+                            h = PX_H(DIALOG_H) - 5 * GRID_H;
+                        };
+                    };
                 };
             };
         };
-
+            
         class rebelVehicleTab : A3A_DefaultControlsGroup
         {
             idc = A3A_IDC_BUYREBVEHICLEMAIN;
@@ -113,9 +237,31 @@ class A3A_BuyVehicleDialog : A3A_TabbedDialog
                 {
                     idc = A3A_IDC_REBVEHICLESGROUP;
                     x = 0;
-                    y = 4 * GRID_H;
+                    y = 10 * GRID_H;
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 8 * GRID_H;
+                    h = PX_H(DIALOG_H) - 10 * GRID_H;
+                };
+
+                class VehicleTabComboRebel : A3A_ComboBox_Small_BM
+                {
+                    idc = A3A_IDC_SETUP_BMTABLEREBEL;
+                    fade = 0;
+                    access = 1;
+                    x = 0 * GRID_W;
+                    y = 0;
+                    w = 125 * GRID_W;
+                    h = 5 * GRID_H;/* GRID_H */
+                };
+
+                class SelectTabButton : A3A_Button
+                {
+                    idc = -1;
+                    text = $STR_antistasi_dialogs_vehicle_tab_select;
+                    onButtonClick = "[""switchTab"", [""all""]] call A3A_fnc_buyVehicleDialog";
+                    x = 125 * GRID_W;
+                    y = 0;
+                    w = 35 * GRID_W;
+                    h = 5 * GRID_H;
                 };
             };
         };
@@ -131,9 +277,31 @@ class A3A_BuyVehicleDialog : A3A_TabbedDialog
                 {
                     idc = A3A_IDC_STATICSGROUP;
                     x = 0;
-                    y = 4 * GRID_H;
+                    y = 10 * GRID_H;
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 8 * GRID_H;
+                    h = PX_H(DIALOG_H) - 10 * GRID_H;
+                };
+
+                class VehicleTabComboStatic : A3A_ComboBox_Small_BM
+                {
+                    idc = A3A_IDC_SETUP_BMTABLESTATICS;
+                    fade = 0;
+                    access = 1;
+                    x = 0 * GRID_W;
+                    y = 0;
+                    w = 125 * GRID_W;
+                    h = 5 * GRID_H;/* GRID_H */
+                };
+
+                class SelectTabButton : A3A_Button
+                {
+                    idc = -1;
+                    text = $STR_antistasi_dialogs_vehicle_tab_select;
+                    onButtonClick = "[""switchTab"", [""all""]] call A3A_fnc_buyVehicleDialog";
+                    x = 125 * GRID_W;
+                    y = 0;
+                    w = 35 * GRID_W;
+                    h = 5 * GRID_H;
                 };
             };
         };
@@ -149,9 +317,9 @@ class A3A_BuyVehicleDialog : A3A_TabbedDialog
                 {
                     idc = A3A_IDC_OTHERGROUP;
                     x = 0;
-                    y = 4 * GRID_H;
+                    y = 10 * GRID_H;
                     w = PX_W(DIALOG_W);
-                    h = PX_H(DIALOG_H) - 8 * GRID_H;
+                    h = PX_H(DIALOG_H) - 10 * GRID_H;
                 };
             };
         };

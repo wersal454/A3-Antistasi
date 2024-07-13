@@ -43,8 +43,7 @@ switch (_mode) do
                 _selectedTabIDC = A3A_IDC_BUYCIVVEHICLEMAIN;
             };
             case("rebel"): {
-                _selectedTabIDC = A3A_IDC_BUYREBVEHICLEMAIN;
-            };
+                _selectedTabIDC = A3A_IDC_BUYREBVEHICLEMAIN;};
             case ("static"): {
                 _selectedTabIDC = A3A_IDC_BUYSTATICMAIN;
             };
@@ -82,9 +81,9 @@ switch (_mode) do
     case ("onLoad"):
     {
         ['on'] call SCRT_fnc_ui_toggleMenuBlur;
-        ["vehicles", [A3A_IDC_BUYCIVVEHICLEMAIN, A3A_IDC_CIVVEHICLESGROUP, "civilian"]] call A3A_fnc_buyVehicleTabs;
-        ["vehicles", [A3A_IDC_BUYREBVEHICLEMAIN, A3A_IDC_REBVEHICLESGROUP, "military"]] call A3A_fnc_buyVehicleTabs;
-        ["vehicles", [A3A_IDC_BUYSTATICMAIN, A3A_IDC_STATICSGROUP, "static"]] call A3A_fnc_buyVehicleTabs;
+        ["vehicles", [A3A_IDC_BUYCIVVEHICLEMAIN, A3A_IDC_CIVVEHICLESGROUP, "civilian"]] call A3A_fnc_buyVehicleTabsCivilian;
+        ["vehicles", [A3A_IDC_BUYREBVEHICLEMAIN, A3A_IDC_REBVEHICLESGROUP, "military"]] call A3A_fnc_buyVehicleTabsRebel;
+        ["vehicles", [A3A_IDC_BUYSTATICMAIN, A3A_IDC_STATICSGROUP, "static"]] call A3A_fnc_buyVehicleTabsStatics;
         ["other"] call A3A_fnc_buyVehicleTabs;
 
         // show the vehicle tab so that user don't freak out

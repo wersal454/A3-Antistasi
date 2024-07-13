@@ -10,13 +10,52 @@ private _vehicleClasses = [];
 private _isCivilian = false;
 
 switch (_category) do {
-    case "civilian": {
+    case "civall": {
         private _civilianVehicles = 
 			(A3A_faction_reb get 'vehiclesCivCar') +
 			(A3A_faction_reb get 'vehiclesCivTruck') +
 			(A3A_faction_reb get 'vehiclesCivBoat') select {_x isNotEqualTo ""};
 		
 		private _civAircrafts = (A3A_faction_reb get "vehiclesCivHeli") + (A3A_faction_reb get 'vehiclesCivPlane');
+		if (_civAircrafts isNotEqualTo [] && {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count airportsX > 0}) then {
+			_civilianVehicles append _civAircrafts;
+		};
+
+		_isCivilian = true;
+		_vehicleClasses = _civilianVehicles;
+    };
+	case "civcars": {
+        private _civilianVehicles = (A3A_faction_reb get 'vehiclesCivCar') select {_x isNotEqualTo ""};
+
+		_isCivilian = true;
+		_vehicleClasses = _civilianVehicles;
+    };
+	case "civtrucks": {
+        private _civilianVehicles = (A3A_faction_reb get 'vehiclesCivTruck') select {_x isNotEqualTo ""};
+
+		_isCivilian = true;
+		_vehicleClasses = _civilianVehicles;
+    };
+	case "civboats": {
+        private _civilianVehicles =	(A3A_faction_reb get 'vehiclesCivBoat') select {_x isNotEqualTo ""};
+
+		_isCivilian = true;
+		_vehicleClasses = _civilianVehicles;
+    };
+	case "civheli": {
+        private _civilianVehicles = [];
+		private _civAircrafts = (A3A_faction_reb get "vehiclesCivHeli");
+		if (_civAircrafts isNotEqualTo [] && {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count airportsX > 0}) then {
+			_civilianVehicles append _civAircrafts;
+		};
+
+		_isCivilian = true;
+		_vehicleClasses = _civilianVehicles;
+    };
+	case "civplane": {
+        private _civilianVehicles = [];
+		
+		private _civAircrafts = (A3A_faction_reb get 'vehiclesCivPlane');
 		if (_civAircrafts isNotEqualTo [] && {{sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count airportsX > 0}) then {
 			_civilianVehicles append _civAircrafts;
 		};
