@@ -198,6 +198,7 @@ if (_isPlayer) then {
 if (_isPlayer) then {
 	(findDisplay 46) displayRemoveEventHandler ["KeyDown", respawnMenu];
 	[_unit,"remove"] remoteExec ["A3A_fnc_flagaction",0,_unit];
+	[] call _fnc_selfReviveCountdownStop;
 }
 else {
 	_unit stop false;
