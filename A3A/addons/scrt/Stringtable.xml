@@ -8176,7 +8176,7 @@
             </Key>
             <Key ID="STR_trader_black_market_requirements">
                 <Original>Vehicle requirements can be found by clicking the notepad in the top right corner.</Original>
-                <Russian>И соответственно, Условия разблокировки можно найти, кликнув на иконку книги/тетради в правом верхнем углу</Russian>
+                <Russian>Условия разблокировки можно найти, кликнув на иконку блокнота в правом верхнем углу</Russian>
             </Key>
         </Container>
         <Container name="intel_actions">
@@ -9158,7 +9158,7 @@
             </Key>
             <Key ID="STR_A3A_Missions_SUPP_Supplies_enemynear">
                 <Original>Keep the area clear of hostiles for %1 more seconds.</Original>
-                <Russian>Не пускайте врагов к ящику в течение %2 секунд.</Russian>
+                <Russian>Не пускайте врагов к ящику в течение %1 секунд.</Russian>
                 <Chinesesimp>保持该区域没有敌人 %1 秒。</Chinesesimp>
                 <Korean>%1초 동안 적이 없도록 하십시오.</Korean>
                 <French>Gardez la zone exempte d'hostiles pendant %1 secondes supplémentaires.</French>
