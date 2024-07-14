@@ -62,6 +62,15 @@ _unit addAction ["Change targeting mode", {
 	_x setSkill 1;
 }foreach crew _unit;
 
+/* private _friendlyentities = [];
+private _side = side _unit;
+addMissionEventHandler ["ArtilleryShellFired", {
+	params ["_vehicle", "_weapon", "_ammo", "_gunner", "_instigator", "_artilleryTarget", "_targetPosition", "_shell"];
+	if (side _gunner == _side) then {
+		_friendlyentities = pushBack _shell;
+	};
+}]; */ ///untill 2.18 is released
+
 //Performance optimizations
 _emptyLoops = 0;
 _delay = 0.1;
@@ -75,6 +84,9 @@ while {alive _unit} do {
 	_list = _list select {
 		typeOf (_x # 0) == "CRAM_Fake_PlaneTGT";
 	};
+	/* _list = _list select {
+		_x !in _friendlyentities;
+	}; */ ///untill 2.18 is released
 	_entities = [];
 	{
 		_entities pushback (_x # 0);

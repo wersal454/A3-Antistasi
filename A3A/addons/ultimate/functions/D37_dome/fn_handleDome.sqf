@@ -50,6 +50,40 @@ _unit addEventHandler ["Fired", {
 	};
 }];
 
+/* private _friendlyentities = [];
+private _side = side _unit;
+addMissionEventHandler ["ArtilleryShellFired", {
+	params ["_vehicle", "_weapon", "_ammo", "_gunner", "_instigator", "_artilleryTarget", "_targetPosition", "_shell"];
+	if (side _gunner == _side) then {
+		_friendlyentities = pushBack _shell;
+	};
+}];  *////untill 2.18 is released
+_unit addEventHandler ["Fired", {
+	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
+	_target = _unit getVariable ["currentTarget", objNull];
+	if(isNull _target) exitWith {};
+
+	_parameters = _unit getVariable "WeaponsPar";
+	[_projectile, _target, _parameters] spawn A3U_fnc_guidanceLaws;
+	if(allowAttach) then {
+			_projectile spawn {
+			allowAttach = false;
+
+			_cam = "camera" camCreate (ASLToAGL eyePos player);
+			_cam attachTo [_this, [3,-15,0]];
+			_cam cameraEffect ["external", "back"];
+			_cam camCommitPrepared 0;
+			waitUntil { camCommitted _cam };
+
+
+			waitUntil {!alive _this};
+			_cam cameraEffect ["terminate", "back"];
+			camDestroy _cam;
+			allowAttach = true;
+		};
+	};
+}];
+
 //_unit setVehicleRadar 1;
 _unit setVariable ["alarmEnabled", false];
 //Toggle incoming alarm
@@ -139,6 +173,9 @@ while {alive _unit and (someAmmo _unit) and _isActive} do {
 		_targetedShells = missionNamespace getVariable ["_targetedShells", []];
 		for "_i" from 0 to _loops do {
 			_near = _unit nearObjects [_typeArray select _i, _distance];
+			/* if (_near !in _friendlyentities) then {
+				_entities append _near;
+			}; */ ///untill 2.18 is released
 			_entities append _near;
 		};
 
