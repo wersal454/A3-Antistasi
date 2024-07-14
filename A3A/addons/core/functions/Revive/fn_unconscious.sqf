@@ -29,7 +29,8 @@ private _fnc_selfReviveCountdownStart = {
 					localize "STR_antistasi_actions_unconscious_self_withstand_countdown",
 					format[
 						[(([0] call BIS_fnc_countdown) / 60) + .01, "HH:MM"] call BIS_fnc_timetostring
-					]
+					],
+					true
 				] call A3A_fnc_customHint
 			}
 		];
@@ -43,7 +44,8 @@ private _fnc_selfReviveCountdownStart = {
 					format[
 						"<t color='#008000'>%1</t>", 
 						localize "STR_antistasi_actions_unconscious_self_withstand_ready"
-					]
+					],
+					true
 				] call A3A_fnc_customHint
 			}
 		];
