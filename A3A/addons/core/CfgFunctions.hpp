@@ -50,6 +50,7 @@ class CfgFunctions
             class napalmDamage {};
             class napalmParticles {};
             class nearEnemy {};
+            class orbitalLanding {};
             class paradrop {};
             class rearmCall {};
             class recallGroup {};
@@ -243,7 +244,9 @@ class CfgFunctions
             class createAttackForceAir {};
             class createAttackForceLand {};
             class createAttackForceMixed {};
+            class createAttackForceOrbital {};
             class createAttackVehicle {};
+            class createAttackVehicleOrbital {};
             class createSDKGarrisons {};
             class createSDKgarrisonsTemp {};
             class createUnit {};
@@ -642,6 +645,8 @@ class CfgFunctions
             class SUP_QRFAirAvailable {};
             class SUP_QRFLand {};
             class SUP_QRFLandAvailable {};
+            class SUP_QRFOrbital {};
+            class SUP_QRFOrbitalAvailable {};
             class SUP_QRFRoutine {};
             class SUP_SAM {};
             class SUP_SAMAvailable {};

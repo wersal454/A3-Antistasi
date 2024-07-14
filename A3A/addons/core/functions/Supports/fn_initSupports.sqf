@@ -43,6 +43,7 @@ private _initData = [
     ["QRFLAND",       "TROOPS", 1.0, 1.4,   0,   0,  "", ""],
     ["QRFAIR",        "TROOPS", 0.5, 0.1,   0,   0,  "", ""],
     ["QRFVEHAIRDROP", "TROOPS", 0.3, 0.1,   0,   0,  "", "vehiclesPlanesTransport"],
+    ["QRFORBITAL",        "TROOPS", 0.5, 0.1,   0,   0,  "", "vehiclesDropPod"],     ///needs to be balanced
     ["CARPETBOMBS",     "AREA", 0.5, 0.1, 200,   0, "u", ""],                            // balanced against airstrikes
     ["SAM",           "TARGET", 1.0, 1.0,   0, 100, "u", ""],                             // balanced against ASF
     ["ORBITALSTRIKE",   "AREA", 0.2, 0.0, 300,   0, "f", ""]
