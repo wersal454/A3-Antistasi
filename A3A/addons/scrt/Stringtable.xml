@@ -3125,14 +3125,6 @@
                 <Korean>공수 기계화 신속대응군</Korean>
                 <French>QRF aérienne mécanisée</French>
             </Key>
-            <Key ID="STR_notifiers_SUP_execute_QRFOrbital">
-                <Original>A %1 orbital QRF just dropped</Original>
-                <Russian>Орбитальный десант %1 приземлились</Russian>
-            </Key>
-            <Key ID="STR_notifiers_SUP_execute_QRFOrbital_marker">
-                <Original>Orbital QRF</Original>
-                <Russian>Орибальный СБР</Russian>
-            </Key>
             <Key ID="STR_notifiers_SUP_execute_airstrike">
                 <Original>%1 is about to execute an airstrike</Original>
                 <Russian>%1 собирается нанести авиаудар</Russian>
@@ -3454,10 +3446,6 @@
                 <Chinesesimp>%1 派出了一支机械化快速反应部队</Chinesesimp>
                 <Korean>%1이(가) 방금 공수 기계화 신속대응군을 보냈습니다</Korean>
                 <French>%1 vient d'envoyer une QRF mécanisée aéroportée</French>
-            </Key>
-            <Key ID="STR_notifiers_SUP_setup_QRFOrbital">
-                <Original>%1 just sent a orbital landing</Original>
-                <Russian>%1 отправили орбитальный десант</Russian>
             </Key>
             <Key ID="STR_notifiers_SUP_setup_wavedAttack">
                 <Original>%1 just sent a major attack wave</Original>
@@ -6895,11 +6883,13 @@
                 <Original>Moveout vehicle crew</Original>
                 <Russian>Выгнать экипаж их техники</Russian>
                 <French>Déplace l'équipage du véhicule</French>
+                <Korean>차량 승무원 내보내기</Korean>
             </Key>
             <Key ID="STR_antistasi_dialogs_moveout_crew_tooltip">
                 <Original>Moves out crew from vehicle you looking at.</Original>
                 <Russian>Выгоняет экипаж из техники на которую вы смотрите.</Russian>
                 <French>Déplace l'équipage du véhicule que vous regardez.</French>
+                <Korean>현재 보고 있는 차량의 승무원을 내보냅니다.</Korean>
             </Key>
             <Key ID="STR_antistasi_dialogs_arsenal_limits_title">
                 <Original>Arsenal Limits</Original>
@@ -7304,8 +7294,8 @@
                 <Original>Antistasi Ultimate - %1, Version: %2, Unlock Weapon Number: %3, Limited Fast Travel: %4, Rivals: %5, Time since GC: %6</Original>
                 <Russian>Antistasi Ultimate - %1, Версия: %2, Кол-во орудий для разблок-ки: %3, Ограниченное быстрое перемещение по карте: %4, Инсургенты: %5, Прошло времени с момента сборки мусора: %6</Russian>
                 <Chinesesimp>Antistasi Ultimate - %1, 版本: %2, 解锁武器数量: %3, 是否限制快速旅行: %4, 对手: %5, GC之后经过的时间: %6</Chinesesimp>
-                <Korean>안티스타시 플러스 - %1, 버전: %2, 무기 언락 수: 53, 빠른 이동 제한: %4 라이벌: %5, 쓰레기 청소 이후 지난 시간:%6</Korean>
                 <French>Antistasi Ultimate - %1, Version: %2, Nombre d'armes à débloquer: %3, Voyage rapide limité : %4, Rivaux: %5, Temps écoulé depuis le nettoyage: %6</French>
+                <Korean>안티스타시 플러스 - %1, 버전: %2, 무기 언락 수: %3, 빠른 이동 제한: %4 라이벌: %5, 쓰레기 청소 이후 지난 시간:%6</Korean>
             </Key>
             <Key ID="STR_commander_menu_skill_level_title">
                 <Original>%1 Skill Level: %2/%3</Original>
@@ -8174,11 +8164,15 @@
         </Container>
         <Container name="black_market">
             <Key ID="STR_trader_black_market_title">
-                <Original>Vehicle Black Market</Original>
+                <Original>Vehicle Black Market - Click the notepad for more info.</Original>
                 <Russian>Черный рынок техники</Russian>
                 <Chinesesimp>载具黑市</Chinesesimp>
                 <Korean>차량 암시장</Korean>
                 <French>Marché noir des véhicules</French>
+            </Key>
+            <Key ID="STR_trader_black_market_requirements">
+                <Original>Vehicle requirements can be found by clicking the notepad in the top right corner.</Original>
+                <Russian>Условия разблокировки можно найти, кликнув на иконку блокнота в правом верхнем углу</Russian>
             </Key>
         </Container>
         <Container name="intel_actions">
@@ -9119,15 +9113,15 @@
                 <French>L'hélicoptère %1 avec une cargaison de valeur a été abattu à %2. Apportez la cargaison de l'hélicoptère au QG avant l'arrivée de l'équipe de secours ennemie. Nous devons l'obtenir avant %3. Les troupes ennemies de première ligne ont déjà trouvé le site du crash et le gardent.</French>
             </Key>
             <Key ID="STR_A3A_Missions_LOG_crashsite_task_header">
-                <Original>Reconnaissance vehicle crash site</Original>
+                <Original>Reconnaissance Vehicle Crash Site</Original>
                 <Russian>Направляйтесь на предпологаемое место крушения</Russian>
             </Key>
             <Key ID="STR_A3A_Missions_LOG_crashsite_task_desc">
-                <Original>%1 helicopter with some valueable cargo has been shot down in %2. Bring helicopter's cargo to the HQ before enemy's rescue team. We must get it before %3. Enemy frontline troops already found the crashsite and guarding it.</Original>
+                <Original>%1s' reconnaissance vehicle sent a distress signal. The vehicles trajectory suggests that the crash is expected to happen at %2. Collect the data and bring it back to HQ before the enemy recovery team. We must get it before %3. Enemy frontline troops are on their way to recover the data.</Original>
                 <Russian>Транспорт %1 c разведданными был подбит в %2. Соберите их и доставьте в штаб до того как их заберёт вражеская эвакуационная команда. Мы должны сделать это %3. Вражеские передовые отряды уже в пути.</Russian>
             </Key>
             <Key ID="STR_A3A_Missions_LOG_crashsite_task_alt">
-                <Original>Deliver the data to arms dealer. He will pay handsomely (Petros won't be too upset).</Original>
+                <Original>Deliver the crashsite data to the arms dealer. He will pay handsomely! Petros won't be too upset about it.</Original>
                 <Russian>Доставьте данные торговцу оружием. Он щедро за них заплатит (Петрос не сильно расстроится).</Russian>
             </Key>
             <Key ID="STR_A3A_Missions_SUPP_Supplies_task_header">
@@ -9160,7 +9154,7 @@
             </Key>
             <Key ID="STR_A3A_Missions_SUPP_Supplies_enemynear">
                 <Original>Keep the area clear of hostiles for %1 more seconds.</Original>
-                <Russian>Не пускайте врагов к ящику в течение %2 секунд.</Russian>
+                <Russian>Не пускайте врагов к ящику в течение %1 секунд.</Russian>
                 <Chinesesimp>保持该区域没有敌人 %1 秒。</Chinesesimp>
                 <Korean>%1초 동안 적이 없도록 하십시오.</Korean>
                 <French>Gardez la zone exempte d'hostiles pendant %1 secondes supplémentaires.</French>
@@ -9473,6 +9467,7 @@
             <Key ID="STR_antistasi_actions_unconscious_action_prompt_withstand">
                 <Original>&lt;br/&gt;Press H to Withstand.</Original>
                 <French>&lt;br/&gt;Appuyez sur H pour résister.</French>
+                <Korean>&lt;br/&gt;H키를 눌러 스스로 일어나십시오.</Korean>
             </Key>
             <Key ID="STR_antistasi_actions_common_access_vehicle_marker_text">
                 <Original>Access Vehicle Market</Original>
@@ -12112,9 +12107,9 @@
                 <French>A T T E N T I O N</French>
             </Key>
             <Key ID="STR_A3A_Dialogs_create_dialog_save_personal_save_1">
-                <Original>Antistasi Plus has a custom save system.&lt;br/&gt;&lt;br/&gt;</Original>
-                <Russian>Antistasi Plus использует нестандартную систему сохранений.&lt;br/&gt;&lt;br/&gt;</Russian>
-                <Chinesesimp>Antistasi Plus有一个自定义的保存系统。&lt;br/&gt;&lt;br/&gt;</Chinesesimp>
+                <Original>Antistasi Ultimate has a custom save system.&lt;br/&gt;&lt;br/&gt;</Original>
+                <Russian>Antistasi Ultimate использует нестандартную систему сохранений.&lt;br/&gt;&lt;br/&gt;</Russian>
+                <Chinesesimp>Antistasi Ultimate有一个自定义的保存系统。&lt;br/&gt;&lt;br/&gt;</Chinesesimp>
                 <Korean>안티스타시 플러스는 사용자 지정 저장 시스템을 가졌습니다.&lt;br/&gt;&lt;br/&gt;</Korean>
                 <French>Antistasi Plus dispose d'un système de sauvegarde personnalisé.&lt;br/&gt;&lt;br/&gt;</French>
             </Key>
@@ -12843,11 +12838,13 @@
                 <Original>Move out crew</Original>
                 <Russian>Выгнать экипаж из техники</Russian>
                 <French>Expulser l'équipage du véhicule</French>
+                <Korean>승무원 내보내기</Korean>
             </Key>
             <Key ID="STR_A3A_Base_moveOutCrew_err0">
                 <Original>Vehicle must contain rebel crew or civillian crew.</Original>
                 <Russian>В транспортном средстве должен находиться экипаж повстанцев или гражданских.</Russian>
                 <French>Le véhicule doit contenir un équipage rebelle ou civil.</French>
+                <Korean>차량에 반드시 반군 또는 민간인 승무원이 타고 있어야 합니다.</Korean>
             </Key>
             <Key ID="STR_A3A_Base_sellVehicle_err0">
                 <Original>Vehicle must be closer than 50 meters to the headquarters marker.</Original>
@@ -12895,6 +12892,7 @@
                 <Original>Crew moved out.</Original>
                 <Russian>Экипаж покинул технику.</Russian>
                 <French>L'équipage a abandonné le véhicule.</French>
+                <Korean>승무원을 내보냈습니다.</Korean>
             </Key>
         </Container>
         <Container name="A3A_CREATE">
