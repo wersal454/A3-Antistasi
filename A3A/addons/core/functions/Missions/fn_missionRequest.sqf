@@ -193,9 +193,9 @@ switch (_type) do {
                     [[_site],"A3A_fnc_LOG_Salvage"] remoteExec ["A3A_fnc_scheduler", 2];
                 };
                 case(_site in controlsX): {
-					private _LOGmissions = ["A3A_fnc_LOG_Airdrop", 0.35, "A3A_fnc_LOG_Helicrash", 0.35, "A3A_fnc_LOG_Crashsite", 0.3];
-					private _LOGmission = selectRandomWeighted _LOGmissions;
-					[[_site],_LOGmission] remoteExec ["A3A_fnc_scheduler", 2];
+					private _logMissions = ["A3A_fnc_LOG_Airdrop", 0.35, "A3A_fnc_LOG_Helicrash", 0.35, "A3A_fnc_LOG_Crashsite", 0.5];
+					private _logMission = selectRandomWeighted _logMissions;
+					[[_site],_logMission] remoteExec ["A3A_fnc_scheduler", 2];
                 };
                 default {};
             };
