@@ -703,6 +703,12 @@
                 <Russian>Лидер команды</Russian>
                 <Korean>분대장</Korean>
             </Key>
+            <Key ID="STR_A3AU_downed_help">
+                <Original>I am injured comrades! Help!</Original>
+                <English>I am injured comrades! Help!</English>
+                <Russian>Placeholder</Russian>
+                <Korean>Placeholder</Korean>
+            </Key>
         </Container>
         <Container name="credits_generic">
             <Key ID="STR_antistasi_credits_generic_overview_text">
@@ -5792,6 +5798,11 @@
                 <Original>Ignore Black Market Vehicle Requirements</Original>
                 <English>Ignore Black Market Vehicle Requirements</English>
                 <Russian>Игнорировать условия разблокировки транспорта у черного торговца </Russian>
+            </Key>
+            <Key ID="STR_A3AU_use_downed_notifaction">
+                <Original>Notify Players When Downed</Original>
+                <English>Notify Players When Downed</English>
+                <Russian>Placeholder</Russian>
             </Key>
             <Key ID="STR_A3AU_stamina_enabled">
                 <Original>Enable Stamina (Vanilla)</Original>

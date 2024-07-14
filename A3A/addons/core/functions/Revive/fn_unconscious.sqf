@@ -30,6 +30,10 @@ if (isPlayer _unit) then {
 		_unit setCaptive true
 	};
 
+	if (useDownedNotification) then {
+		_unit globalChat format [localize "STR_A3AU_downed_help", name _unit];
+	};
+
 	openMap false;
 
 	{
