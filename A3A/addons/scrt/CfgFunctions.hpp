@@ -53,6 +53,7 @@ class CfgFunctions {
 			class effect_createBurningDebrisEffect {};
 			class effect_createGasEffect {};
 			class effect_createSmallExplosionEffect {};
+			class effect_orbitalDropEffect {};
 		};
 
 		class Rally {
