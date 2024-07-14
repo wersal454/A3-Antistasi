@@ -52,10 +52,11 @@ _unit addEventHandler ["Fired", {
 //_unit setVehicleRadar 1;
 _unit setVariable ["alarmEnabled", false];
 //Toggle incoming alarm
+_unit setVariable ["alarmEnabled", true, true];
 _unit addAction ["Toggle alarm", {
 	params ["_target", "_caller", "_actionId", "_arguments"];
 	_state = !(_target getVariable ["alarmEnabled", true]);
-	_target setVariable ["alarmEnabled", _state];
+	_target setVariable ["alarmEnabled", _state, true];
 
 	_out = "";
 	if(_state) then {
@@ -66,18 +67,9 @@ _unit addAction ["Toggle alarm", {
 
 	_id = owner _caller;
 	["Alarm state: " + _out] remoteExec ["hint", _id];
-	
+
 }, nil, 9, false, false, "", "!(_this in _target)", 10];
 
-
-if (!(_unit getVariable ["alarmplaying",false])) then {
-	_unit setVariable ["alarmplaying",true,true];
-	_unit say3D ["CRAMALARM",1000,1,false,0];
-	_unit spawn {
-		sleep 10;
-		_this setVariable ["alarmplaying",false,true];
-	};
-};
 
 //Change logic
 _unit setVariable ["_tgtLogic", _tgtLogic];
@@ -177,6 +169,17 @@ while {alive _unit and (someAmmo _unit) and _isActive} do {
 			_angleToTgt = (_angleToTgt - 0.1) max 0;
 			_angleToTgt = _angleToTgt/90;
 		*/
+
+		if(_unit getVariable ["alarmEnabled",false]) then {
+			if (!(_unit getVariable ["alarmplaying",false])) then {
+				_unit setVariable ["alarmplaying",true,true];
+				_unit say3D ["CRAMALARM",1000,1,false,0];
+				_unit spawn {
+					sleep 10;
+					_this setVariable ["alarmplaying",false,true];
+				};
+			};
+		};
 		
 		//Engagement logic
 		_time = time;

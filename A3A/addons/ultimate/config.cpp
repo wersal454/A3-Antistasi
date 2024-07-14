@@ -191,16 +191,6 @@ class Extended_PreInit_EventHandlers
         init = "call A3U_fnc_init";
     };
 };
-class CfgSounds
-{
-	class CRAM_ALARM
-	{
-		name = "CRAM_ALARN";
-		sound[] = {"functions\D37_cram\Sound\CRAM_ALARM.ogg", 1.0, 1.0};
-		titles[] = {0, ""};
-	};
-};
-
 //["SAM_System_01_base_F","StaticMGWeapon","StaticWeapon","LandVehicle","Land","AllVehicles","All"]
 
 //["ammo_Missile_ShortRangeAABase","MissileBase","MissileCore","Default"]
