@@ -489,7 +489,8 @@ if (_hasWs) then {
         "lxWS_H_Bandanna_blk_hs",
         "H_Cap_headphones_ion_lxws",
         "lxWS_H_CapB_rvs_blk_ION",
-        "lxWS_H_Headset"
+        "lxWS_H_Headset",
+        "H_Beret_Headset_lxWS"
     ];
 };
 if (_hasApex) then {
