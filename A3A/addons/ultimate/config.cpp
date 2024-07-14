@@ -217,22 +217,3 @@ class cfgMagazines {
 		ammo = "ammo_Missile_dome";
 	};	
 };
-
-//weapons[] = {"weapon_rim116Launcher"};
-
-/* class CfgFactionClasses
-{
-	class CRAM_modules
-	{
-		displayName = "CRAM modules";
-		priority = 10;
-	};
-}; */
-
-//["SAM_System_01_base_F","StaticMGWeapon","StaticWeapon","LandVehicle","Land","AllVehicles","All"]
-
-//["ammo_Missile_ShortRangeAABase","MissileBase","MissileCore","Default"]
-
-//["VehicleMagazine","CA_Magazine","Default"]
-
-//weapons[] = {"weapon_rim116Launcher"};

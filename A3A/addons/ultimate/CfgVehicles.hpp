@@ -3,11 +3,6 @@ class cfgVehicles
     class Item_Base_F;
     class Thing;
     #include "patches\cfgVehicles.hpp"
-
-    //B_AAA_System_01_F
-	//["AAA_System_01_base_F","StaticMGWeapon","StaticWeapon","LandVehicle","Land","AllVehicles","All"]
-
-	//["Plane_Fighter_01_Base_F","Plane_Base_F","Plane","Air","AllVehicles","All"]
 	
     class AllVehicles;
 	class Land: AllVehicles {};
@@ -276,42 +271,4 @@ class cfgVehicles
 		};
 		scope = 1;
 	};
-
-    /* class Logic;
-	class Module_F: Logic
-	{
-		class AttributesBase
-		{
-			class Default;
-			class Edit;
-			class Combo;
-			class Checkbox;
-			class CheckboxNumber;
-			class ModuleDescription;
-			class Units;
-		};
-		class ModuleDescription
-		{
-			class AnyBrain;
-		};
-	};
-	
-	class ModuleCRAM_initCram: Module_F
-	{
-		displayName = "Init CRAM";
-		author = "Dankan37";
-		scope = 2;
-		scopeCurator = 2;
-		category = "CRAM_modules";
-		
-		isGlobal = 1;
-		function = "CRAM37_fnc_handleCRAMinit";
-		class Attributes: AttributesBase
-		{
-			class Units: Units
-			{
-				property = "ModuleCBRN_RemoveExposure_Units";
-			};	
-		};
-	}; */
 };

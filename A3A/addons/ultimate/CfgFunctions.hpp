@@ -63,7 +63,6 @@ class CfgFunctions
             file = QPATHTOFOLDER(functions\D37_cram);
             class handleCRAM {};
             class handleCRAMinit {};
-            class handleCuratorPlacement {};
             class pickTargetCRAM {};
             class postInit {postInit = 1;};
         };
