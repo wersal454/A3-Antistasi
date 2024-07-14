@@ -2,6 +2,7 @@ _unit = param[0];
 
 if(!isServer) exitWith {};
 if(is3DEN) exitWith {};
+if !(allowCRAMIRONDOME) exitWith {};
 
 private _isInitialized = (_unit getVariable ["cramInit", false]);
 if(_isInitialized) exitWith {};

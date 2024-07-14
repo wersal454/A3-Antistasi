@@ -520,6 +520,14 @@ class Params
         texts[] = {$STR_antistasi_dialogs_generic_button_no_text, $STR_antistasi_dialogs_generic_button_yes_text};
         default = 0;
     };
+    class allowCRAMIRONDOME
+    {
+        attr[] = {"server"};
+        title = $STR_params_allowCRAMIRONDOME;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text, $STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
     class A3A_rebelGarrisonLimit
     {
         title = $STR_params_rebelGarrisonLimit;

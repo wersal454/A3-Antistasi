@@ -7,6 +7,7 @@ _typeArray 	= param[4, ["ShellBase","RocketBase","MissileBase","SubmunitionBase"
 _ignored	= param[5, ["MissileBase"]];
 
 
+if !(allowCRAMIRONDOME) exitWith {};
 
 //Stops previous dome script, starts new one
 _unit setVariable ["DomeInit", false, true];

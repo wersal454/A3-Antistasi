@@ -5029,6 +5029,10 @@
                 <Korean>[실험용] 적군이 미래적인 지원을 사용하도록 허용</Korean>
                 <French>[Expérimental] Permettre à l'ennemi d'utiliser des supports futuristes</French>
             </Key>
+            <Key ID="STR_params_allowCRAMIRONDOME">
+                <Original>Allow C-RAM/IRON-DOME script</Original>
+                <Russian>Разрешить механику C-RAM/IRON-DOME</Russian>
+            </Key>
             <Key ID="STR_params_CrateOptions">
                 <Original>LOOT CRATE SETTINGS</Original>
                 <Russian>НАСТРОЙКИ ЯЩИКОВ С ЛУТОМ</Russian>

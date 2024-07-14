@@ -1,3 +1,4 @@
+if !(allowCRAMIRONDOME) exitWith {};
 //Optimized version of the shells initialization script 
 private _entities = param[0];
 
