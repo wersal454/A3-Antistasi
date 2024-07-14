@@ -8164,11 +8164,15 @@
         </Container>
         <Container name="black_market">
             <Key ID="STR_trader_black_market_title">
-                <Original>Vehicle Black Market</Original>
+                <Original>Vehicle Black Market - Click the notepad for more info.</Original>
                 <Russian>Черный рынок техники</Russian>
                 <Chinesesimp>载具黑市</Chinesesimp>
                 <Korean>차량 암시장</Korean>
                 <French>Marché noir des véhicules</French>
+            </Key>
+            <Key ID="STR_trader_black_market_requirements">
+                <Original>Vehicle requirements can be found by clicking the notepad in the top right corner.</Original>
+                <Russian>Условия разблокировки можно найти, кликнув на иконку блокнота в правом верхнем углу</Russian>
             </Key>
         </Container>
         <Container name="intel_actions">
@@ -9145,7 +9149,7 @@
                 <Russian>Направляйтесь на предпологаемое место крушения</Russian>
             </Key>
             <Key ID="STR_A3A_Missions_LOG_crashsite_task_desc">
-                <Original>%1s' reconnaissance vehicle was shot down. Go to the supposed crash site in %2. Collect the data and bring it back to HQ before the enemy recovery team. We must get it before %3. Enemy frontline troops are on their way to recover the data.</Original>
+                <Original>%1s' reconnaissance vehicle sent a distress signal. The vehicles trajectory suggests that the crash is expected to happen at %2. Collect the data and bring it back to HQ before the enemy recovery team. We must get it before %3. Enemy frontline troops are on their way to recover the data.</Original>
                 <Russian>Транспорт %1 c разведданными был подбит в %2. Соберите их и доставьте в штаб до того как их заберёт вражеская эвакуационная команда. Мы должны сделать это %3. Вражеские передовые отряды уже в пути.</Russian>
             </Key>
             <Key ID="STR_A3A_Missions_LOG_crashsite_task_alt">
@@ -9182,7 +9186,7 @@
             </Key>
             <Key ID="STR_A3A_Missions_SUPP_Supplies_enemynear">
                 <Original>Keep the area clear of hostiles for %1 more seconds.</Original>
-                <Russian>Не пускайте врагов к ящику в течение %2 секунд.</Russian>
+                <Russian>Не пускайте врагов к ящику в течение %1 секунд.</Russian>
                 <Chinesesimp>保持该区域没有敌人 %1 秒。</Chinesesimp>
                 <Korean>%1초 동안 적이 없도록 하십시오.</Korean>
                 <French>Gardez la zone exempte d'hostiles pendant %1 secondes supplémentaires.</French>

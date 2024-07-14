@@ -26,6 +26,8 @@ private _limit = if (_difficult) then {
 _limit params ["_dateLimitNum", "_displayTime"];
 
 private _destinationName = [_markerX] call A3A_fnc_localizar;
+// if this chooses a control (which it can) it has no name. 
+// As such the task description will show as "Go to the supposed crash site in ."
 
 //creating array for cleanup
 private _vehicles = [];
@@ -69,14 +71,14 @@ while {true} do {
 };
 
 // selecting classnames
-private _reconVehicleDroppod = _faction getOrDefault ["vehiclesDropPod", []];
+// private _reconVehicleDroppod = _faction getOrDefault ["vehiclesDropPod", []];
 
-private _reconVehicleClass = selectRandom ((_faction get "vehiclesPlanesTransport") + (_faction get "uavsAttack") + _reconVehicleDroppod);
+private _reconVehicleClass = selectRandom ((_faction get "vehiclesPlanesTransport") + (_faction get "uavsAttack")); //  + _reconVehicleDroppod
 private _pilotClass = _faction get "unitPilot";
 
-if (_reconVehicleClass in _reconVehicleDroppod) exitWith { 
-   [_markerX] call A3A_fnc_LOG_Crashsite_Satellite;
-};
+// if (_reconVehicleClass in _reconVehicleDroppod) exitWith { 
+//    [_markerX] call A3A_fnc_LOG_Crashsite_Satellite;
+// };
 
 private _searchHeliClassLight = _faction getOrDefault ["vehiclesHelisLight", []];
 private _searchHeliClassLightAttack = _faction getOrDefault ["vehiclesHelisLightAttack", []];
@@ -103,7 +105,6 @@ if ("lowTech" in A3A_factionEquipFlags) then {
 } else {
    _blackboxClass = "Land_PortableServer_01_black_F";
 };
-//
 
 private _specOpsArray = if (_difficult) then {selectRandom (_faction get "groupSpecOpsRandom")} else {selectRandom ([_faction, "groupsTierSquads"] call SCRT_fnc_unit_flattenTier)};
 //new
@@ -131,12 +132,15 @@ Debug_1("Crashsite position has been found after %1 iterations.", str _iteration
 Info_1("Crashsite position: %1", str _crashPosition);
 
 //creating mission marker near crash site
-
-private _reconVehicle = createVehicle [_reconVehicleClass, [_crashPosition select 0, _crashPosition select 1, 0.9], [], 0, "CAN_COLLIDE"];
+private _reconVehiclePlaceholder = createVehicle ["Land_Can_V2_F", [_crashPosition select 0, _crashPosition select 1, 0.9], [], 0, "CAN_COLLIDE"];
 //hide
-_reconVehicle hideObjectGlobal true;
+_reconVehiclePlaceholder hideObjectGlobal true;
 
-private _crashPositionMarker = _reconVehicle getRelPos [random 1,random 1];
+private _crashPositionMarker = _reconVehiclePlaceholder getRelPos [random 1,random 1];
+
+private _startTime = 15 call SCRT_fnc_misc_getTimeLimit;
+private _startTimeNum = _startTime select 0;
+private _startTimeDisplay = _startTime select 1;
 
 //creating Task
 private _taskId = "LOG" + str A3A_taskCount;
@@ -150,7 +154,7 @@ private _rebelTaskText = format [
 [
     [teamPlayer,civilian],
     _taskId,
-    [format [localize "STR_A3A_Missions_LOG_crashsite_task_desc", _faction get "name", _destinationName, _displayTime], localize "STR_A3A_Missions_LOG_crashsite_task_header", _markerX],
+    [format [localize "STR_A3A_Missions_LOG_crashsite_task_desc", _faction get "name", _startTimeDisplay, _displayTime], localize "STR_A3A_Missions_LOG_crashsite_task_header", _markerX],
     _crashPositionMarker,
     false,
     0,
@@ -160,11 +164,10 @@ private _rebelTaskText = format [
 ] call BIS_fnc_taskCreate;
 [_taskId, "LOG", "CREATED"] remoteExecCall ["A3A_fnc_taskUpdate", 2];
 
-//checking if players reached minimum distance to start vfx or if time limit has passed
-private _missionstart = serverTime;
-waitUntil {sleep 1; (player distance2D _crashPosition) < 1500 || _missionstart >= serverTime + 600 };
+//checking if time has passed to start vfx
+waitUntil {sleep 1; (dateToNumber date >= _startTimeNum)};
 
-_vehicles pushBack _reconVehicle;
+// This is the "crashing" vehicle, hence dummy
 private _reconVehicleDummy = createVehicle [_reconVehicleClass, [0, 0, 250], [], 0, "NONE"];
 private _quad = createVehicle ["I_Quadbike_01_F", [0, 0, 250], [], 0, "NONE"];
 _reconVehicleDummy attachTo [_quad];
@@ -196,22 +199,22 @@ _reconVehicleDummy setVectorUp _targetVector;
 _bomb1 = "ammo_Missile_Cruise_01" createVehicle [getPos _quad select 0, getPos _quad select 1 ,0];
 [_quad] call SCRT_fnc_effect_crashingEffects;
 
+private _crashsiteActual = getPosATL _quad;
+_bomb2 = "ammo_Missile_Cruise_01" createVehicle [(_crashsiteActual  select 0),(_crashsiteActual  select 1),0];
 
-private _crashsiteactual = getPosATL _quad;
-_bomb2 = "ammo_Missile_Cruise_01" createVehicle [(_crashsiteactual  select 0),(_crashsiteactual  select 1),0];
+private _reconVehicle = createVehicle [_reconVehicleClass, [0,0,10], [], 0, "CAN_COLLIDE"];
+_reconVehicle setPos [_crashsiteActual select 0, _crashsiteActual select 1, 1];
 clearWeaponCargoGlobal _reconVehicle;
 clearMagazineCargoGlobal _reconVehicle;
 
-private _crater = "CraterLong_02_F" createVehicle _crashsiteactual;
+private _crater = "CraterLong_02_F" createVehicle _crashsiteActual;
 deletevehicle _reconVehicleDummy;
 deletevehicle _quad;
 
-_reconVehicle setPos [_crashsiteactual select 0, _crashsiteactual select 1, 1];
-_reconVehicle hideObjectGlobal false;
 _reconVehicle setDamage 0.6;
 _reconVehicle animateDoor ["Door_rear_source", 1, true];
 
-private _smokeEffect = "test_EmptyObjectForSmoke" createVehicle _crashsiteactual; 
+private _smokeEffect = "test_EmptyObjectForSmoke" createVehicle _crashsiteActual; 
 _smokeEffect attachTo [_reconVehicle,[0,1.5,-1]];
 _effectsAndProps pushBack _smokeEffect;
 
@@ -227,7 +230,7 @@ _effectsAndProps pushBack _crater;
 } forEach nearestTerrainObjects [_reconVehicle, ["Tree", "Bush", "BUILDING","RUIN","POWERWIND","POWERWAVE","POWERSOLAR","POWER LINES","MAIN ROAD","LIGHTHOUSE","HOUSE","HOSPITAL","HIDE","FUELSTATION","FOUNTAIN","FORTRESS","FENCE","CROSS","CHURCH","CHAPEL","BUSSTOP","BUNKER","QUAY","ROAD","SMALL TREE","STACK","TOURISM","TRACK","TRAIL","TRANSMITTER","VIEW-TOWER","WALL","WATERTOWER"], 20, false, true];
 
 
-Info_2("Crash Location: %1, Aircraft: %2", _crashsiteactual, _reconVehicle);
+Info_2("Crash Location: %1, Aircraft: %2", _crashsiteActual, _reconVehicle);
 
 _groupPilot = createGroup _sideX;
 _pilot = "";
@@ -235,7 +238,7 @@ _pilotPosition = "";
 _bloodSplatter = "";
 
 if (typeOf _reconVehicle in (_faction get "vehiclesPlanesTransport")) then { 
-    _pilot = [_groupPilot, _pilotClass, _crashsiteactual, [], 0, "NONE"] call A3A_fnc_createUnit;
+    _pilot = [_groupPilot, _pilotClass, _crashsiteActual, [], 0, "NONE"] call A3A_fnc_createUnit;
     _pilotPosition = position _pilot;
     _bloodSplatter = createVehicle ["BloodSplatter_01_Large_New_F", [_pilotPosition select 0, _pilotPosition select 1,0/*  + 0.05 */], [], 0,  "CAN_COLLIDE"];
     _pilot setDamage 1;
@@ -245,7 +248,7 @@ if (typeOf _reconVehicle in (_faction get "vehiclesPlanesTransport")) then {
 for "_i" from 0 to (random [3,5,6]) do {
     private _firePosition = 
     [
-        _crashsiteactual, 
+        _crashsiteActual, 
         2,
         25,
         2
@@ -266,8 +269,8 @@ for "_i" from 0 to (random [3,5,6]) do {
 //
 
 //spawning box
-private _boxPosition = +_crashsiteactual;
-_boxPosition set [2, (_crashsiteactual select 2) + 5];
+private _boxPosition = +_crashsiteActual;
+_boxPosition set [2, (_crashsiteActual select 2) + 5];
 private _box = _blackboxClass createVehicle _boxPosition;
 _box allowDamage false;
 _box setVectorDirAndUp [[0,0,0], [0,1,0]];
@@ -374,15 +377,15 @@ if (_searchHeliClass isNotEqualTo []) then {
         };
     } forEach units _heliInfGroup;
     
-    _landPos = [_crashsiteactual, 30, 100, 10, 0, 0.25, 0, [], [[0,0,0],[0,0,0]]] call BIS_fnc_findSafePos;
+    _landPos = [_crashsiteActual, 30, 100, 10, 0, 0.25, 0, [], [[0,0,0],[0,0,0]]] call BIS_fnc_findSafePos;
     _totalSeats = [typeOf _cargoVehicle, false] call BIS_fnc_crewCount; 
     _heliInfGroupSize = count units _heliInfGroup;
     if(_searchHeliClass in (_faction get "vehiclesHelisLight")) then {
         private _roll = random 100;
 		if(_roll >= 50) then {
-            [_searchHeliVeh, _heliInfGroup, _crashsiteactual, _cargoGroupSpawnpositon, _heliVehicleGroup] spawn A3A_fnc_fastrope;
+            [_searchHeliVeh, _heliInfGroup, _crashsiteActual, _cargoGroupSpawnpositon, _heliVehicleGroup] spawn A3A_fnc_fastrope;
         } else {
-            [_searchHeliVeh, _heliVehicleGroup,_heliInfGroup, _crashsiteactual, _cargoGroupSpawnpositon, _landPos] spawn A3A_fnc_combatLanding;    
+            [_searchHeliVeh, _heliVehicleGroup,_heliInfGroup, _crashsiteActual, _cargoGroupSpawnpositon, _landPos] spawn A3A_fnc_combatLanding;    
         };
         if (_totalSeats - 2 < _heliInfGroupSize) then { // -2 because cargo will take at most 2 seats
             sleep 8; // just to make sure cargovehicles won't collide
@@ -401,9 +404,11 @@ if (_searchHeliClass isNotEqualTo []) then {
     } else {
         _heliVehicleGroupWP2 = _heliVehicleGroup  addWaypoint [position _box, 1];
         _heliVehicleGroupWP2 setWaypointType "LOITER";
+        // _heliVehicleGroupWP2 setWaypointBehaviour "AWARE";
         _heliVehicleGroupWP2 setWaypointBehaviour "SAFE";
         [_heliVehicleGroup, 0] setWaypointLoiterRadius 400;
         [_heliVehicleGroup, 0] setWaypointLoiterType "CIRCLE_L";
+        // [_heliVehicleGroup, 0] setWaypointCombatMode "RED";
     };
 };
 
@@ -785,13 +790,13 @@ switch(true) do
         [_taskId, "LOG", "FAILED"] call A3A_fnc_taskSetState;
         [_taskId2, "LOG", "FAILED"] call A3A_fnc_taskSetState;
 
-        [-900, _sideX] remoteExec ["A3A_fnc_timingCA",2];
+        [-900, _sideX] remoteExec ["A3A_fnc_timingCA",2]; // isn't this function running on the server? Might aswell just turn the remoteExecs to call/spawn
         [-10,theBoss] call A3A_fnc_addScorePlayer;
         if (dateToNumber date > _dateLimitNum) then {
-            _hrT = server getVariable "hr";
-            _resourcesFIAT = server getVariable "resourcesFIA";
+            private _hrT = server getVariable "hr";
+            private _resourcesFIAT = server getVariable "resourcesFIA";
             [-1*(round(_hrT/3)),-1*(round(_resourcesFIAT/3))] remoteExec ["A3A_fnc_resourcesFIA",2];
-            [-10*_factor, 90] remoteExec ["SCRT_fnc_rivals_reduceActivity",2];
+            [-10, 90] remoteExec ["SCRT_fnc_rivals_reduceActivity",2];
             { A3A_curHQInfoInv = A3A_curHQInfoInv + 0.25 + random 0.5 } remoteExecCall ["call", 2];
 	    }; //If players fail, enemy will get location of the HQ
     };
@@ -817,13 +822,16 @@ switch(true) do
         } forEach (call SCRT_fnc_misc_getRebelPlayers);
 
         [10*_bonus,theBoss] call A3A_fnc_addScorePlayer;
-        [250*_bonus,theBoss, true] call A3A_fnc_addMoneyPlayer;
+        [250*_bonus,theBoss,true] call A3A_fnc_addMoneyPlayer;
         ["Large", _sideX] remoteExec ["A3A_fnc_selectIntel", 2];
 
         for "_i" from 0 to 3 do {
             [(position _box), 6000, 1200, false] spawn SCRT_fnc_common_recon;
             if (hideEnemyMarkers) then {
-                [(selectRandom [2,3])] call A3U_fnc_revealRandomZones;
+                if (random 100 >= 70) then {
+                    private _zoneAmount = selectRandom [1,2];
+                    [_zoneAmount] call A3U_fnc_revealRandomZones;
+                };
             };
             uiSleep 60;
         };
@@ -847,7 +855,7 @@ switch(true) do
         
         [20*_bonus,theBoss] call A3A_fnc_addScorePlayer;
         [500*_bonus,theBoss, true] call A3A_fnc_addMoneyPlayer;
-        [20] call SCRT_fnc_trader_setTraderDiscount;
+        // [20] call SCRT_fnc_trader_setTraderDiscount;
     };
     default
     {
