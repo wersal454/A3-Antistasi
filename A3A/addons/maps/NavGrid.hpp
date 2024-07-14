@@ -48,4 +48,5 @@ class NavGrid {
 	stozec = QPATHTOFOLDER(Antistasi_stozec.stozec\navGrid.sqf);
 	psyfx_pht = QPATHTOFOLDER(Antistasi_psyfx_pht.psyfx_pht\navGrid.sqf);
 	yulakia = QPATHTOFOLDER(Antistasi_yulakia.yulakia\navGrid.sqf);
+	Gulfcoast = QPATHTOFOLDER(Antistasi_Gulfcoast.Gulfcoast\navGrid.sqf);
 };
