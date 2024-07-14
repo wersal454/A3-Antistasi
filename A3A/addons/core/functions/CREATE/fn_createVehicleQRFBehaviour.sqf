@@ -34,7 +34,7 @@ if (getNumber (configOf _vehicle >> "vtol") > 0 && _vehType in FactionGet(all,"v
     _vehicle setVehicleRadar 1;
 };
 
-if (_vehicle isKindOf "Air") then
+if (_vehicle isKindOf "Air" || typeOf _vehicle in (_faction get "vehiclesDropPod")) then
 {
     if (_vehType in FactionGet(all,"vehiclesHelisTransport") + FactionGet(all,"vehiclesHelisLight") || _vtol != "" || (typeOf _vehicle in (_faction get "vehiclesDropPod"))) exitWith
     {
