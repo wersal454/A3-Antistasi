@@ -887,4 +887,5 @@ sleep 20;
 
 deleteVehicle _box;
 
+
 Info("Helicrash clean up complete.");
