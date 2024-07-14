@@ -56,10 +56,10 @@ if (count _potentials > 0) then {
 diag_log _countX;
 private _taskId = "RES" + str A3A_taskCount;
 if (count _potentials > 0) then {
-	[[teamPlayer,civilian],_taskId,[format [localize "STR_A3A_Missions_RES_Prisoners_task_desc",_nameDest,_displayTime],localize "STR_A3A_Missions_RES_Prisoners_task_header",_markerX],_spawnPos,false,0,true,"run",true] call BIS_fnc_taskCreate;
+	[[teamPlayer,civilian],_taskId,[format [localize "STR_A3A_Missions_RES_Deserters_task_desc",_nameDest,_displayTime],localize "STR_A3A_Missions_RES_Deserters_task_header",_markerX],_spawnPos,false,0,true,"run",true] call BIS_fnc_taskCreate;///add stringtables
 	[_taskId, "RES", "CREATED"] remoteExecCall ["A3A_fnc_taskUpdate", 2];
 } else {
-	[[teamPlayer,civilian],_taskId,[format [localize "STR_A3A_Missions_RES_Prisoners_task_desc",_nameDest,_displayTime],localize "STR_A3A_Missions_RES_Prisoners_task_header",_markerX],_positionX,false,0,true,"run",true] call BIS_fnc_taskCreate;
+	[[teamPlayer,civilian],_taskId,[format [localize "STR_A3A_Missions_RES_Deserters_task_desc",_nameDest,_displayTime],localize "STR_A3A_Missions_RES_Deserters_task_header",_markerX],_positionX,false,0,true,"run",true] call BIS_fnc_taskCreate;
 	[_taskId, "RES", "CREATED"] remoteExecCall ["A3A_fnc_taskUpdate", 2];
 };
 waitUntil {
@@ -234,6 +234,14 @@ if ({alive _x} count _Deserters == 0) then {
 		[_countX, _x] call A3A_fnc_addScorePlayer;
 		[_countX*10,_x] call A3A_fnc_addMoneyPlayer;
 	} forEach (call SCRT_fnc_misc_getRebelPlayers);
+
+	for "_i" from 0 to 2 do {
+        [(getMarkerPos respawnTeamPlayer), 6000, 1200, false] spawn SCRT_fnc_common_recon;
+        if (hideEnemyMarkers) then {
+            [(selectRandom [2,3])] call A3U_fnc_revealRandomZones;
+        };
+        uiSleep 60;
+    };
 
 	private _bonusAmount = round (_countX*_bonus/2);
 	[_bonusAmount,theBoss] call A3A_fnc_addScorePlayer;

@@ -47,16 +47,16 @@ private _soldiers = [];
 
 switch (true) do {
 	case (_markerX in resourcesX): {
-		_textX = format [localize "STR_CON_Outpost_resources_desc", _nameDest, _displayTime];
-		_taskName = localize "STR_CON_Outpost_resources_task";
+		_textX = format [localize "STR_CON_Outpost_resources_compet_desc", _nameDest, _displayTime, _oppositeside]; ///add stringtables
+		_taskName = localize "STR_CON_Outpost_resources_compet_task";
 	};
 	case (_markerX in controlsX): {
-		_textX = format [localize "STR_CON_Outpost_controls_desc", _nameDest, _displayTime];
-		_taskName = localize "STR_CON_Outpost_controls_task";
+		_textX = format [localize "STR_CON_Outpost_controls_compet_desc", _nameDest, _displayTime, _oppositeside];
+		_taskName = localize "STR_CON_Outpost_controls_compet_task";
 	};
 	default {
-		_textX = format [localize "STR_CON_Outpost_outposts_desc", _nameDest, _displayTime];
-		_taskName = localize "STR_CON_Outpost_outposts_task";
+		_textX = format [localize "STR_CON_Outpost_outposts_compet_desc", _nameDest, _displayTime, _oppositeside];
+		_taskName = localize "STR_CON_Outpost_outposts_compet_task";
 	};
 };
 

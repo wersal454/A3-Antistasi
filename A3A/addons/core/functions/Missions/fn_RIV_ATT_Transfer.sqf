@@ -135,15 +135,15 @@ private _taskId = "RIV_ATT" + str A3A_taskCount;
     [teamPlayer,civilian],
     _taskId,
     [
-        format [localize "STR_RIV_ATT_hideout_text", A3A_faction_riv get "name", ([_marker] call A3A_fnc_localizar), _displayTime],
-        format [localize "STR_RIV_ATT_hideout_header", A3A_faction_riv get "name"],///Rename
+        format [localize "STR_RIV_ATT_transfer_text", A3A_faction_riv get "name", ([_marker] call A3A_fnc_localizar), _displayTime],
+        format [localize "STR_RIV_ATT_transfer_header", A3A_faction_riv get "name"],
         _marker
     ],
     _hideoutPosition,
     false,
     0,
     true,
-    "destroy",
+    "destroy",///maybe change the icon
     true
 ] call BIS_fnc_taskCreate;
 [_taskId, "RIV_ATT", "CREATED"] remoteExecCall ["A3A_fnc_taskUpdate", 2];
@@ -490,6 +490,19 @@ switch(true) do {
         [_taskId, "RIV_ATT", "CANCELED"] call A3A_fnc_taskSetState;
     };
     case (!isNil "_vehObj" && {(!alive _vehObj || {_vehObj inArea [getMarkerPos respawnTeamPlayer, 50, 50, 0, false]})}): {
+        Info("Transfer vehicle destroyed or stolen, success.");
+        [_taskId, "RIV_ATT", "SUCCEEDED"] call A3A_fnc_taskSetState;
+        [0, 1500] remoteExec ["A3A_fnc_resourcesFIA",2];
+        { 
+            [50,_x] call A3A_fnc_addScorePlayer;
+            [800,_x] call A3A_fnc_addMoneyPlayer;
+        } forEach (call SCRT_fnc_misc_getRebelPlayers);
+        [25,theBoss] call A3A_fnc_addScorePlayer;
+        [400,theBoss, true] call A3A_fnc_addMoneyPlayer;
+
+        [_marker, "HIDEOUT"] remoteExecCall ["SCRT_fnc_rivals_destroyLocation",2];
+    };
+    case (!isNil "_lootContainer" && {(!alive _lootContainer || {_lootContainer inArea [getMarkerPos respawnTeamPlayer, 50, 50, 0, false]})}): {
         Info("Transfer vehicle destroyed or stolen, success.");
         [_taskId, "RIV_ATT", "SUCCEEDED"] call A3A_fnc_taskSetState;
         [0, 1500] remoteExec ["A3A_fnc_resourcesFIA",2];
