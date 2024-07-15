@@ -43,10 +43,10 @@ private _initData = [
     ["QRFLAND",       "TROOPS", 1.0, 1.4,   0,   0,  "", ""],
     ["QRFAIR",        "TROOPS", 0.5, 0.1,   0,   0,  "", ""],
     ["QRFVEHAIRDROP", "TROOPS", 0.3, 0.1,   0,   0,  "", "vehiclesPlanesTransport"],
-    ["QRFORBITAL",        "TROOPS", 0.5, 0.1,   0,   0,  "", "vehiclesDropPod"],     ///needs to be balanced
+    ["QRFORBITAL",        "TROOPS", 0.5, 0.1,   0,   0,  "f", "vehiclesDropPod"],     ///needs to be balanced
     ["CARPETBOMBS",     "AREA", 0.5, 0.1, 200,   0, "u", ""],                            // balanced against airstrikes
     ["SAM",           "TARGET", 1.0, 1.0,   0, 100, "u", ""],                             // balanced against ASF
-    ["ORBITALSTRIKE",   "AREA", 0.2, 0.0, 300,   0, "f", ""]
+    ["ORBITALSTRIKE",   "AREA", 0.2, 0.0, 300,   0, "fu", ""]
 //  ["UAV",           "TARGET", 1.0, 0.4,   0, 80,  "", "uavsAttack"],
 //  ["GUNSHIP",    ["AREA",   0.2,  50,   0]],                 // uh. Does AREA work for this? Only lasts 5 minutes so maybe...
 ];
@@ -62,6 +62,7 @@ private _fnc_buildSupportHM =
         if (_faction get _reqType isEqualTo []) then { continue };
         if ("u" in _flags and !allowUnfairSupports) then { continue };
         if ("f" in _flags and !allowFuturisticSupports) then { continue };
+        if ("fu" in _flags and !allowFuturisticUnfairSupports) then { continue };
 
         private _weight = [_weight, _lowAirWeight] select _lowAir;
         _suppHM set [_suppType, [_baseType, _weight, _effRadius, _strikepower]];

@@ -72,7 +72,7 @@ sleep 0.5;
 
 //setAperture 0;
 
-waitUntil { sleep 0.01; getPos _object select 2 < 7 }; ///0.01 because we don't wanna bounce
+waitUntil { sleep 0.01; getPos _object select 2 < 4 }; ///0.01 because we don't wanna bounce
 
 deleteVehicle _ps0;
 deleteVehicle _ps1;

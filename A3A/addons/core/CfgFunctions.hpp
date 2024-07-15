@@ -51,6 +51,7 @@ class CfgFunctions
             class napalmParticles {};
             class nearEnemy {};
             class orbitalLanding {};
+            class orbitalLandingSinglePod {};
             class paradrop {};
             class rearmCall {};
             class recallGroup {};
