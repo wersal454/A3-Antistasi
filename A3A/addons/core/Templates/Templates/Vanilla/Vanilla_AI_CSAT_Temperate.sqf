@@ -145,7 +145,6 @@ if (_hasWs) then {
 };
 
 ["vehiclesTransportBoats", _transportBoat] call _fnc_saveToTemplate;
-["vehiclesTransportBoats", _transportBoat] call _fnc_saveToTemplate;
 ["staticHowitzers", _howitzers] call _fnc_saveToTemplate;
 ["vehiclesLightUnarmed", _lightUnarmed] call _fnc_saveToTemplate;
 ["vehiclesLightArmed", _lightArmed] call _fnc_saveToTemplate;
@@ -190,6 +189,7 @@ if (_hasWs) then {
 ]] call _fnc_saveToTemplate;
 
 ["variants", [
+    ["Land_Pod_Heli_Transport_04_covered_F", ["Black",1]],
     ["O_Plane_Fighter_02_F", ["CamoGreyHex", 0.5 , "CamoBlue", 0.5, "CamoAridHex", 0]],
     ["O_Plane_Fighter_02_Stealth_F", ["CamoGreyHex", 0.5 , "CamoBlue", 0.5, "CamoAridHex", 0]],
     ["O_T_VTOL_02_infantry_dynamicLoadout_F", ["Grey", 0.4, "Hex", 0, "GreenHex", 0.6]],

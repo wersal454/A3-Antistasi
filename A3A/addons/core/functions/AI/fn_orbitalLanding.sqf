@@ -39,20 +39,21 @@ _wp2 setWaypointType "SAD";
 
 {_x setBehaviour "AWARE";} forEach units _Pod;
 
-if (_podseats == 1) then {
-
-}else{
+if (_podseats != 1) then {
 	_pod allowDamage false;
-
 	_pod lock 2;
 	_pod setVehicleLock "LOCKED";
+
 	_pod setPos [(_landpos select 0),(_landpos select 1), 3000];
 	_pod setVelocity [0,0,-150];
+
 	[_pod] call SCRT_fnc_effect_orbitalDropEffect;
 	_pod setVelocity [0,0,-1];
+
 	_bomb = "DemoCharge_Remote_Ammo_Scripted" createVehicle [0,0,0];
 	_bomb setPosWorld (position _pod); 
 	_bomb setDamage 1;
+
 	sleep 0.2;
 	_pod setPos [(getPos _pod select 0),(getPos _pod  select 1),1];
 
@@ -60,7 +61,6 @@ if (_podseats == 1) then {
 
 	{
 		_x allowDamage true;
-
 	} forEach units _groupX;
 
 	_pod allowDamage true;
