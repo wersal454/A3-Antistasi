@@ -8757,24 +8757,24 @@
                 <French>Un %1 perturbe nos opérations dans la région. Allez-y et capturez-le avant %2.</French>
             </Key>
             <Key ID="STR_CON_Outpost_resources_compet_task">
-                <Original>Resource Acquisition(competition)</Original>
-                <Russian>Захват ресурсов(соревнование)</Russian>
+                <Original>Resource Acquisition at the frontline</Original>
+                <Russian>Захват ресурсов на передовой</Russian>
             </Key>
             <Key ID="STR_CON_Outpost_resources_compet_desc">
                 <Original>A %1 would be a fine addition to our cause. Go there and capture it before %2. %3 Sent their troups as well</Original>
                 <Russian>%1 был бы прекрасным дополнением к нашему общему делу. Отправляйтесь туда и захватите его до %2. %3 также отправила туда свои войска</Russian>
             </Key>
             <Key ID="STR_CON_Outpost_controls_compet_task">
-                <Original>Destroy Roadblock(compet)</Original>
-                <Russian>Уничтожьте блокпост(соревнование)</Russian>
+                <Original>Destroy Roadblock at the frontline</Original>
+                <Russian>Уничтожьте блокпост на передовой</Russian>
             </Key>
             <Key ID="STR_CON_Outpost_controls_compet_desc">
                 <Original>A %1 interferes with our operations in the area. Go there and destroy it before %2. %3 Sent their troups as well</Original>
                 <Russian>%1 мешает нашим операциям в окрестностях. Отправляйтесь туда и уничтожьте его до %2. %3 также отправила туда свои войска</Russian>
             </Key>
             <Key ID="STR_CON_Outpost_outposts_compet_task">
-                <Original>Take Outpost(compet)</Original>
-                <Russian>Захватите аванпост(соревнование)</Russian>
+                <Original>Frontline Struggle</Original>
+                <Russian>Борьба на передовой</Russian>
             </Key>
             <Key ID="STR_CON_Outpost_outposts_compet_desc">
                 <Original>A %1 is disturbing our operations in the area. Go there and capture it before %2. %3 Sent their troups as well</Original>
