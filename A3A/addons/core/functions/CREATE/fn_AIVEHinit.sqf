@@ -204,7 +204,7 @@ if (_side != teamPlayer) then
 	}];
 };
 
-if(_veh isKindOf "Air") then
+/* if(_veh isKindOf "Air") then
 {
     //Start airspace control script if rebel player enters
     _veh addEventHandler ["GetIn", {
@@ -215,7 +215,7 @@ if(_veh isKindOf "Air") then
 			[_veh] spawn A3A_fnc_airspaceControl;
 		};
     }];
-};
+}; */
 
 if(_veh isKindOf "Air") then
 {

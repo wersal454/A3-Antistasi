@@ -86,11 +86,11 @@ private _typeVeh = if (_difficultX) then { selectRandom (_faction get "vehiclesG
 private _typeGroup = if _difficultX then {selectRandom ([_faction, "groupsTierSquads"] call SCRT_fnc_unit_flattenTier)} else {selectRandom ([_faction, "groupsTierMedium"] call SCRT_fnc_unit_flattenTier)};
 private _boatSpawnLocation = selectRandom [_mrk1Pos, _mrk2Pos, _mrk3Pos];
 
-private _typeSDV = "";
-private _diverType = "";
-private _diversGroup = createGroup _sideX;
-private _diversGroup2 = createGroup _sideX;
 if ("vanilla" in A3A_factionEquipFlags) then {
+	private _typeSDV = "";
+	private _diverType = "";
+	private _diversGroup = createGroup _sideX;
+	private _diversGroup2 = createGroup _sideX;
    _typeSDV = selectRandom (_faction get "vehiclesSDV");
    if (_typeSDV == "I_SDV_01_F") then {
 		_diverType = "I_diver_F";
