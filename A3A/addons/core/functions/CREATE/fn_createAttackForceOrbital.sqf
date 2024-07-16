@@ -35,6 +35,7 @@ private _cargoGroups = [];
 
 private _faction = Faction(_side);
 private _transportPlanes = _faction get "vehiclesDropPod";
+/* if (_transportPlanes isEqualType []) exitwith {}; */
 private _lhFactor = 0 max (1 - (tierWar+_tierMod) / 10);            // phase out light helis at higher war tiers
 
 private _transportPool = [];

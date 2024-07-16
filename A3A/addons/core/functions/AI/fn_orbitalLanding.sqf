@@ -93,11 +93,13 @@ if (_podseats < _groupcount) then {
 			_podX = typeOf _pod createVehicle position _x;
 			sleep 2;
 		} forEach units _groupX;
-	}else{
-		_SafeMovePos = [getPos _pod, 1, 3, 3, 1, 20, 0] call BIS_fnc_findSafePos;
-		_x setPos _SafeMovePos;
-		sleep 0.02;
-	} forEach units _groupX;
+	} else {
+		{
+			_SafeMovePos = [getPos _pod, 1, 3, 3, 1, 20, 0] call BIS_fnc_findSafePos;
+			_x setPos _SafeMovePos;
+			sleep 0.02;
+		} forEach units _groupX;	
+	};
 };
 if (_podseats == 1) then {
 	deleteVehicle driver _pod;

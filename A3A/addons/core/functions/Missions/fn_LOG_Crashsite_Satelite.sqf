@@ -88,7 +88,7 @@ private _blackboxClass = "";
 if (_reconvehicle == "SpaceshipCapsule_01_wreck_F") then {
     _blackboxClass = "SpaceshipCapsule_01_container_F";
 } else {
-    _blackboxClass = "Land_PortableServer_01_black_F"; ///should be something else
+    _blackboxClass = "Land_PortableServer_01_black_F";
 };
 
 
