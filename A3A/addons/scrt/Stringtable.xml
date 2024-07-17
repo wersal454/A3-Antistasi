@@ -9473,6 +9473,14 @@
                 <French>&lt;br/&gt;Appuyez sur H pour résister.</French>
                 <Korean>&lt;br/&gt;H키를 눌러 스스로 일어나십시오.</Korean>
             </Key>
+            <Key ID="STR_antistasi_actions_unconscious_self_withstand_countdown">
+                <Original>Self-Revive Cooldown</Original>
+                <Korean>자가소생 쿨다운</Korean>
+            </Key>
+            <Key ID="STR_antistasi_actions_unconscious_self_withstand_ready">
+                <Original>Available</Original>
+                <Korean>준비됨</Korean>
+            </Key>
             <Key ID="STR_antistasi_actions_common_access_vehicle_marker_text">
                 <Original>Access Vehicle Market</Original>
                 <Russian>Посмотреть чёрный рынок техники</Russian>
