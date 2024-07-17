@@ -351,4 +351,9 @@ if(A3A_hasACE) then
 
 call A3U_fnc_initZones;
 
+if (enableSpectrumDevice) then {
+    [] execVM QPATHTOFOLDER(Scripts\SpectumDevice\spectrum_device.sqf);
+    [] execVM QPATHTOFOLDER(Scripts\SpectumDevice\sa_ewar.sqf);
+};
+
 Info("initServer completed");

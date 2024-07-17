@@ -678,15 +678,15 @@
             </Key>
             <Key ID="STR_antistasi_dialogs_vehicle_tab_armedcar">
                 <Original>Armed cars</Original>
-                <Russian>Вооруженные авто.</Russian>
+                <Russian>Вооруженные автомобили</Russian>
             </Key>
             <Key ID="STR_antistasi_dialogs_vehicle_tab_unarmedcar">
                 <Original>Unarmed cars</Original>
-                <Russian>Безоружные авто.</Russian>
+                <Russian>Безоружные автомобили</Russian>
             </Key>
             <Key ID="STR_antistasi_dialogs_vehicle_tab_boat">
                 <Original>Boats</Original>
-                <Russian>Лодки.</Russian>
+                <Russian>Лодки</Russian>
             </Key>
             <Key ID="STR_antistasi_dialogs_vehicle_tab_static">
                 <Original>Statics</Original>

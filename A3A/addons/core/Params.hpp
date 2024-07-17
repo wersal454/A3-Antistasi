@@ -225,6 +225,13 @@ class Params
         texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
         default = 0;
     };
+    class useDownedNotification
+    {
+        title = $STR_A3AU_use_downed_notification;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
     class staminaEnabled
     {
         title = $STR_A3AU_stamina_enabled;
@@ -508,6 +515,13 @@ class Params
     {
         attr[] = {"server"};
         title = $STR_params_allowUnfairSupports;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text, $STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
+    class enableSpectrumDevice
+    {
+        title = $STR_params_enableSpectrumDevice;
         values[] = {0,1};
         texts[] = {$STR_antistasi_dialogs_generic_button_no_text, $STR_antistasi_dialogs_generic_button_yes_text};
         default = 0;
