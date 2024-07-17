@@ -2,7 +2,7 @@ class cfgVehicles
 {
     class Item_Base_F;
     class Thing;
-    #include "patches\cfgVehicles.hpp"
+    //#include "patches\cfgVehicles.hpp"
 	
     class AllVehicles;
 	class Land: AllVehicles {};

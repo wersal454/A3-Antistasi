@@ -47,25 +47,6 @@ class CfgFunctions
             class emission {};
             class fillMapAnomalies {};
         };
-        class D37Dome
-        {
-            file = QPATHTOFOLDER(functions\D37\D37_dome);
-            class guidanceLaws {};
-            class handleDome {};
-            class handleTargets {};
-            class initShells {};
-            class pickTarget {};
-            class postInitEH {postInit	= 1;};
-            class watchQuality {};
-        };
-        class D37cram
-        {
-            file = QPATHTOFOLDER(functions\D37\D37_cram);
-            class handleCRAM {};
-            class handleCRAMinit {};
-            class pickTargetCRAM {};
-            class postInit {postInit = 1;};
-        };
         class Utility
         {
             file = QPATHTOFOLDER(functions\Utility);
@@ -84,6 +65,25 @@ class CfgFunctions
             class revealZone {};
             class revealZones {};
             class revealZonesDistance {};
+        };
+        class D37Dome
+        {
+            file = QPATHTOFOLDER(functions\D37\D37_dome);
+            class guidanceLaws {};
+            class handleDome {};
+            class handleTargets {};
+            class initShells {};
+            class pickTarget {};
+            class postInitEH {postInit	= 1;};
+            class watchQuality {};
+        };
+        class D37cram
+        {
+            file = QPATHTOFOLDER(functions\D37\D37_cram);
+            class handleCRAM {};
+            class handleCRAMinit {};
+            class pickTargetCRAM {};
+            class postInit {postInit = 1;};
         };
     };
 };
