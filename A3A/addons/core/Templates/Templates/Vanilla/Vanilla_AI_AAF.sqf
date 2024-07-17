@@ -34,7 +34,7 @@ private _basic = ["I_Quadbike_01_F"];
 private _unarmedVehicles = ["I_MRAP_03_F"];
 private _armedVehicles = ["I_MRAP_03_hmg_F", "I_MRAP_03_gmg_F"];
 private _Trucks = ["I_Truck_02_transport_F", "I_Truck_02_covered_F"];
-private _cargoTrucks = ["I_Truck_02_transport_F", "I_Truck_02_covered_F"];
+private _cargoTrucks = ["I_Truck_02_transport_F", "I_Truck_02_covered_F","I_UGV_01_F"];
 private _ammoTrucks = ["I_Truck_02_ammo_F"];
 private _repairTrucks = ["I_Truck_02_box_F"];
 private _fuelTrucks = ["I_Truck_02_fuel_F"];
@@ -42,9 +42,9 @@ private _medicalTrucks = ["I_Truck_02_medical_F"];
 private _lightAPCs = [];
 private _APCs = ["I_APC_Wheeled_03_cannon_F"];
 private _IFVs = ["I_APC_tracked_03_cannon_F"];
-private _airborneVehicles = ["I_APC_Wheeled_03_cannon_F"];
+private _airborneVehicles = ["I_APC_Wheeled_03_cannon_F","I_UGV_01_rcws_F"];
 private _tanks = ["I_MBT_03_cannon_F"];
-private _lightTanks = [];
+private _lightTanks = ["I_UGV_01_rcws_F"];
 private _aa = ["I_LT_01_AA_F"]; ///"B_APC_Tracked_01_AA_F"
 
 private _transportBoat = ["I_Boat_Transport_01_F"];
@@ -57,7 +57,6 @@ if (_hasJets) then {
 	_planesAA pushback "I_Plane_Fighter_04_F";
 };
 private _planesTransport = [];
-
 
 private _helisLight = ["I_Heli_light_03_unarmed_F"];
 private _transportHelicopters = ["I_Heli_Transport_02_F"];
@@ -140,7 +139,7 @@ if (_hasTanks) then {
 };
 //If Western Sahara DLC
 if (_hasWs) then {
-    _cargoTrucks = ["I_Truck_02_flatbed_lxWS", "I_Truck_02_cargo_lxWS"];
+    _cargoTrucks = ["I_Truck_02_flatbed_lxWS", "I_Truck_02_cargo_lxWS","I_UGV_01_F"];
     _aa pushBack "I_A_Truck_02_aa_lxWS";
     _staticAA pushBack "I_Tura_ZU23_lxWS";
 };
