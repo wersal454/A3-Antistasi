@@ -5015,6 +5015,10 @@
                 <Korean>지원 설정</Korean>
                 <French>PARAMÈTRES DE SOUTIEN</French>
             </Key>
+            <Key ID="STR_params_enableSpectrumDevice">
+                <Original>Enable spectrum device hacking capability (conctact dlc required)</Original>
+                <Russian>Разрешить возможность взлома с помощью spectrum device (необходимо дополнение contact)</Russian>
+            </Key>
             <Key ID="STR_params_allowUnfairSupports">
                 <Original>Allow unfair (unbalanced) supports to be used by the enemy</Original>
                 <Russian>Разрешить использование противником несправедливых (несбалансированных) вариантов поддержки</Russian>
@@ -9472,6 +9476,14 @@
                 <Original>&lt;br/&gt;Press H to Withstand.</Original>
                 <French>&lt;br/&gt;Appuyez sur H pour résister.</French>
                 <Korean>&lt;br/&gt;H키를 눌러 스스로 일어나십시오.</Korean>
+            </Key>
+            <Key ID="STR_antistasi_actions_unconscious_self_withstand_countdown">
+                <Original>Self-Revive Cooldown</Original>
+                <Korean>자가소생 쿨다운</Korean>
+            </Key>
+            <Key ID="STR_antistasi_actions_unconscious_self_withstand_ready">
+                <Original>Available</Original>
+                <Korean>준비됨</Korean>
             </Key>
             <Key ID="STR_antistasi_actions_common_access_vehicle_marker_text">
                 <Original>Access Vehicle Market</Original>

@@ -5799,7 +5799,7 @@
                 <English>Ignore Black Market Vehicle Requirements</English>
                 <Russian>Игнорировать условия разблокировки транспорта у черного торговца </Russian>
             </Key>
-            <Key ID="STR_A3AU_use_downed_notifaction">
+            <Key ID="STR_A3AU_use_downed_notification">
                 <Original>Notify Players When Downed</Original>
                 <English>Notify Players When Downed</English>
                 <Russian>Placeholder</Russian>
