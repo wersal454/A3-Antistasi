@@ -48,4 +48,5 @@ class mapInfo {
 	#include "Antistasi_stozec.stozec\mapInfo.hpp"
 	#include "Antistasi_psyfx_pht.psyfx_pht\mapInfo.hpp"
 	#include "Antistasi_yulakia.yulakia\mapInfo.hpp"
+	#include "Antistasi_Gulfcoast.Gulfcoast\mapInfo.hpp"
 };
