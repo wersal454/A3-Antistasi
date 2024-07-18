@@ -200,6 +200,18 @@
         file = "CUP_Reb_NAPA";
         description = $STR_A3AP_setupFactionsTab_napa_3cbf;
     };
+    class CUP_Reb_EM : CUP_Reb
+    {
+        name = "Eastern Militia";
+        file = "CUP_Reb_EM";
+        description = "A somewhat militarized militia using soviet technology.";
+    };
+    class CUP_Reb_WM : CUP_Base
+    {
+        name = "Western Militia";
+        file = "CUP_Reb_WM";
+        description = "A somewhat militarized militia using surplus or outdated NATO technology. Consider this a more forgiving start than most.";
+    };
     class CUP_TKC : CUP_Base
     {
         side = "Civ";
