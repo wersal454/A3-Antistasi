@@ -36,7 +36,7 @@ private _basic = ["I_E_Quadbike_01_F"];
 private _unarmedVehicles = ["B_T_MRAP_01_F"];
 private _armedVehicles = ["B_T_MRAP_01_hmg_F", "B_T_MRAP_01_hmg_F", "B_T_MRAP_01_gmg_F"];
 private _Trucks = ["I_E_Truck_02_transport_F", "I_E_Truck_02_F"];
-private _cargoTrucks = ["I_E_Truck_02_transport_F", "I_E_Truck_02_F"];
+private _cargoTrucks = ["I_E_Truck_02_transport_F", "I_E_Truck_02_F","I_E_UGV_01_F"];
 private _ammoTrucks = ["I_E_Truck_02_Ammo_F"];
 private _repairTrucks = ["I_E_Truck_02_Box_F","B_T_APC_Tracked_01_CRV_F"];
 private _fuelTrucks = ["I_E_Truck_02_fuel_F"];
@@ -44,9 +44,9 @@ private _medicalTrucks = ["I_E_Truck_02_medical_F"];
 private _lightAPCs = [];
 private _APCs = ["B_T_APC_Wheeled_01_cannon_F"];
 private _IFVs = ["I_E_APC_tracked_03_cannon_F","B_T_APC_Tracked_01_rcws_F"];
-private _airborneVehicles = ["I_E_APC_tracked_03_cannon_F"];
+private _airborneVehicles = ["I_E_APC_tracked_03_cannon_F","I_E_UGV_01_rcws_F"];
 private _tanks =  ["B_T_MBT_01_TUSK_F","B_T_MBT_01_cannon_F"];
-private _lightTanks = [];
+private _lightTanks = ["I_E_UGV_01_rcws_F"];
 private _aa = ["B_T_APC_Tracked_01_AA_F"];
 
 private _transportBoat = ["I_Boat_Transport_01_F"];
@@ -123,7 +123,7 @@ if (_hasWs) then {
     _lightAPCs pushBack "B_T_APC_Wheeled_01_command_lxWS";
     _staticAA pushBack "I_Tura_ZU23_lxWS";
     _aa pushBack "a3a_I_E_Truck_02_zu23_F";
-    _cargoTrucks = ["I_E_Truck_02_cargo_lxWS", "I_E_Truck_02_flatbed_lxWS"];
+    _cargoTrucks = ["I_E_Truck_02_cargo_lxWS", "I_E_Truck_02_flatbed_lxWS","I_E_UGV_01_F"];
 };
 
 ["mortarMagazineHE", "8Rnd_82mm_Mo_shells"] call _fnc_saveToTemplate;

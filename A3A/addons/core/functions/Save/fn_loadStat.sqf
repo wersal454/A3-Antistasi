@@ -673,6 +673,16 @@ if (_varName in specialVarLoads) then {
 
             publicVariable "revealedZones";
         };
+
+        case 'unlockedVehicleTypes': {
+            unlockedVehicleTypes = _varValue;
+
+            if (isNil "unlockedVehicleTypes") then {
+                unlockedVehicleTypes = [];
+            };
+
+            publicVariable "unlockedVehicleTypes";
+        };
     };
 } else {
     call compile format ["%1 = %2",_varName,_varValue];
