@@ -93,13 +93,6 @@ class CfgSounds
         titles[] = { 1, "" };
     };
 
-    class CRAMALARM
-	  {
-		  name = "CRAM_Alarm";
-		  sound[] = {EQPATHTOFOLDER(core,Sounds\Misc\CRAM_ALARM.ogg), 1.0, 1.0};
-		  titles[] = {0, ""};
-	  };
-
     class A3AP_UiSuccess 
     {
         name = "A3AP_UiSuccess";
