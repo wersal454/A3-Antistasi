@@ -204,13 +204,13 @@
     {
         name = "Eastern Militia";
         file = "CUP_Reb_EM";
-        description = "A somewhat militarized militia using soviet technology.";
+        description = "A generic militarized militia using surplus or outdated soviet technology. Consider this a more forgiving start than most.";
     };
-    class CUP_Reb_WM : CUP_Base
+    class CUP_Reb_WM : CUP_Reb
     {
         name = "Western Militia";
         file = "CUP_Reb_WM";
-        description = "A somewhat militarized militia using surplus or outdated NATO technology. Consider this a more forgiving start than most.";
+        description = "A generic militarized militia using surplus or outdated NATO technology. Consider this a more forgiving start than most.";
     };
     class CUP_TKC : CUP_Base
     {

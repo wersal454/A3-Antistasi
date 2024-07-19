@@ -46,8 +46,8 @@
 ///////////////////////////
 
 private _initialRebelEquipment = [
-    "CUP_srifle_Remington700", "CUP_arifle_Sa58V", "CUP_sgun_Saiga12K",
-    "CUP_5Rnd_762x51_M24", "CUP_15Rnd_Sa58_M", "CUP_5Rnd_B_Saiga12_Slug",
+    "CUP_srifle_Remington700", "CUP_arifle_SAIGA_MK03_Wood", "CUP_sgun_Saiga12K",
+    "CUP_5Rnd_762x51_M24", "CUP_10Rnd_762x39_SaigaMk03_M", "CUP_5Rnd_B_Saiga12_Slug",
     "CUP_hgun_TT", "CUP_hgun_Compact", "CUP_8Rnd_762x25_TT", "CUP_10Rnd_9x19_Compact",
     ["CUP_launch_RPG7V", 10], ["CUP_PG7V_M", 25],
     ["IEDUrbanSmall_Remote_Mag", 10], ["IEDLandSmall_Remote_Mag", 10], ["IEDUrbanBig_Remote_Mag", 3], ["IEDLandBig_Remote_Mag", 3],
