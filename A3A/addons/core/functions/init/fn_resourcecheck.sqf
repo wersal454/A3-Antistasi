@@ -300,9 +300,9 @@ while {true} do {
 		};
 
 		{
-			private _condition = compile _x#0;
+			private _condition = compile (_x#0);
 
-			private _alreadyUnlocked = (_x#1 in _vehicleTypesUnlocked);
+			private _alreadyUnlocked = ((_x#1) in _vehicleTypesUnlocked);
 			if (_alreadyUnlocked) then {continue};
 
 			if (call _condition) then {
