@@ -2,7 +2,7 @@
 
 class CfgPatches 
 {
-    class PATCHNAME(D37)
+    class ultimate_d37
     {
         name = COMPONENT_NAME;
         units[] = {};
