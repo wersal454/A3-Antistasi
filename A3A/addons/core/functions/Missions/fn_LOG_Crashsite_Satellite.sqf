@@ -93,9 +93,7 @@ if (_reconVehicle == "SpaceshipCapsule_01_wreck_F") then {
 };
 
 
-///new
 private _specOpsArray = if (_difficult) then {selectRandom (_faction get "groupSpecOpsRandom")} else {selectRandom ([_faction, "groupsTierSquads"] call SCRT_fnc_unit_flattenTier)};
-///new
 private _infantrySquadArray = selectRandom ([_faction, "groupsTierMedium"] call SCRT_fnc_unit_flattenTier);
 
 if (isNil "_reconVehicle" || {isNil "_cargoTruckClass"} || {isNil "_specOpsArray"}) exitWith {
@@ -154,7 +152,12 @@ private _rebelTaskText = format [
 
 ///checking if players reached minimum distance to start vfx or if time limit has passed
 private _missionstart = serverTime;
-waitUntil {sleep 1; (player distance2D _crashPosition) < 1500 || _missionstart >= serverTime + 600 };
+
+waitUntil {
+    sleep 60;
+    (call SCRT_fnc_misc_getRebelPlayers) inAreaArray [_crashPosition, 1500, 1500] isNotEqualTo [] || {_missionstart >= serverTime + 600 }
+};
+sleep 60; ///prep time
 ///
 
 _vehicles pushBack _reconVehicle;
