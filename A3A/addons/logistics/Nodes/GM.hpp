@@ -489,17 +489,6 @@ class gm_gm_vehicles_gm_air_gm_helicopters_gm_bo105_gm_bo105m_vbh_p3d : TRIPLES(
     {
         class Node1
         {
-            offset[] = {0,-0.57,-1.55};
-        };
-    };
-};
-
-class gm_gm_vehicles_gm_air_gm_helicopters_gm_bo105_gm_bo105m_vbh_p3d : TRIPLES(ADDON,Nodes,Base)
-{
-    class Nodes
-    {
-        class Node1
-        {
             offset[] = {0,0.4,-1.262};
         };
     };
