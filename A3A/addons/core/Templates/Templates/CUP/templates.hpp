@@ -202,15 +202,17 @@
     };
     class CUP_Reb_EM : CUP_Reb
     {
-        name = "Eastern Militia";
+        name = "Eastern Loyalists";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\CUP\images\flag_old_soviet_co.paa);
         file = "CUP_Reb_EM";
-        description = "A generic militarized militia using surplus or outdated soviet technology. Consider this a more forgiving start than most.";
+        description = "A generic militarized militia using surplus or outdated Soviet technology. Loyal to the East. Consider this a more forgiving start than most.";
     };
     class CUP_Reb_WM : CUP_Reb
     {
-        name = "Western Militia";
+        name = "Western Loyalists";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\CUP\images\flag_old_nato_co.paa);
         file = "CUP_Reb_WM";
-        description = "A generic militarized militia using surplus or outdated NATO technology. Consider this a more forgiving start than most.";
+        description = "A generic militarized militia using surplus or outdated NATO technology. Loyal to the West. Consider this a more forgiving start than most.";
     };
     class CUP_TKC : CUP_Base
     {

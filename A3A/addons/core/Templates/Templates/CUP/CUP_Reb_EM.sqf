@@ -2,11 +2,13 @@
 //   Rebel Information   //
 ///////////////////////////
 
-["name", "Eastern Militia"] call _fnc_saveToTemplate; 
+#include "..\..\..\script_component.hpp"
 
-["flag", "Flag_ARMEX_F"] call _fnc_saveToTemplate;
-["flagTexture", "cup\baseconfigs\cup_baseconfigs\data\flags\flag_napa_co.paa"] call _fnc_saveToTemplate;
-["flagMarkerType", "Flag_AltisColonial"] call _fnc_saveToTemplate;
+["name", "Eastern Loyalists"] call _fnc_saveToTemplate;
+
+["flag", "Flag_NATO_F"] call _fnc_saveToTemplate;
+["flagTexture", QPATHTOFOLDER(Templates\Templates\CUP\images\flag_old_soviet_co.paa)] call _fnc_saveToTemplate;
+["flagMarkerType", "a3u_flag_soviet_ea"] call _fnc_saveToTemplate;
 
 ["vehiclesBasic", ["CUP_C_TT650_TK_CIV"]] call _fnc_saveToTemplate;
 ["vehiclesLightUnarmed", ["a3u_cup_uaz_unarmed_convertible_1", "a3u_cup_uaz_unarmed_convertible_2", "CUP_B_UAZ_Open_CDF", "CUP_O_Hilux_unarmed_CHDKZ"]] call _fnc_saveToTemplate;

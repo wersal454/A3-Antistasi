@@ -2,11 +2,13 @@
 //   Rebel Information   //
 ///////////////////////////
 
-["name", "Western Militia"] call _fnc_saveToTemplate; 
+#include "..\..\..\script_component.hpp"
 
-["flag", "Flag_ARMEX_F"] call _fnc_saveToTemplate;
-["flagTexture", "cup\baseconfigs\cup_baseconfigs\data\flags\flag_napa_co.paa"] call _fnc_saveToTemplate;
-["flagMarkerType", "Flag_AltisColonial"] call _fnc_saveToTemplate;
+["name", "Western Loyalists"] call _fnc_saveToTemplate;
+
+["flag", "Flag_NATO_F"] call _fnc_saveToTemplate;
+["flagTexture", QPATHTOFOLDER(Templates\Templates\CUP\images\flag_old_nato_co.paa)] call _fnc_saveToTemplate;
+["flagMarkerType", "a3u_flag_nato_wa"] call _fnc_saveToTemplate;
 
 ["vehiclesBasic", ["CUP_C_TT650_TK_CIV"]] call _fnc_saveToTemplate;
 ["vehiclesLightUnarmed", ["CUP_B_LR_Transport_GB_W", "a3u_cup_m1025_unarmed_olive"]] call _fnc_saveToTemplate;
