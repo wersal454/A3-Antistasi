@@ -8850,6 +8850,12 @@
                 <Korean>배신자가 %2에서 %1과의 만남을 예약했습니다. 그가 우리에게 문제를 일으킬 만큼 충분한 정보를 제공하기 전에 그를 죽이십시오. %3 이전에 완료하십시오. 우린 이 만남이 어디서 일어날 지 모릅니다. 근처 차량 및 %1의 존재로 건물을 알아볼 수 있습니다.</Korean>
                 <French>Un traître a prévu de rencontrer %1 en %2. Tuez-le avant qu'il ne fournisse suffisamment d'informations pour nous causer des ennuis. Faites-le avant %3. Nous ne savons pas exactement où cette réunion aura lieu. Vous reconnaîtrez le bâtiment grâce à la présence d'Offroad et de %1 à proximité.</French>
             </Key>
+            <Key ID="STR_A3A_Missions_AS_Smasher_task_header">
+                <Original>Kill the Mutant</Original>
+            </Key>
+            <Key ID="STR_A3A_Missions_AS_Smasher_task_desc">
+                <Original>Reports from unknown sources suggest %1 Special Forces have engaged a rare Mutant in %2. Kill the Mutant before it causes major issues. Do this before %3. We don't know where this fight is happening.</Original>
+            </Key>
             <Key ID="STR_A3A_Missions_AS_RIV_Traitor_task_header">
                 <Original>Eliminate the Defector</Original>
                 <Russian>Устраните перебежчика</Russian>

@@ -390,6 +390,7 @@ class CfgFunctions
             file = QPATHTOFOLDER(functions\Missions);
             class AS_Ambush {};
             class AS_Official {};
+            class AS_Smasher {};
             class AS_specOP {};
             class AS_Traitor {};
             class CON_Outpost {};
