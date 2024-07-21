@@ -50,35 +50,8 @@ private _taskId = "AS" + str A3A_taskCount;
 // Wait until players are close enough to the city, the idea being that they will see the SF groups fighting the smasher (+ helps perf)
 waitUntil {
 	sleep 5;
-	((call SCRT_fnc_misc_getRebelPlayers) inAreaArray [_positionX, 500, 500] isNotEqualTo []) || {dateToNumber date > _dateLimitNum}
+	((call SCRT_fnc_misc_getRebelPlayers) inAreaArray [_positionX, 300, 300] isNotEqualTo []) || {dateToNumber date > _dateLimitNum}
 };
-
-// Spent a while re-writing the script to account for occ/inv just to realise... the invaders don't control cities! Well, it's here anyway
-// switch _faction do
-// {
-//     case A3A_faction_occ:
-//     {
-// 		_groupSide = [Invaders, A3A_faction_inv];
-//         _groupSmasher = createGroup (_groupSide#0);
-
-// 		if (_difficultX) then {
-// 			_smasher = [_groupSmasher, "WBK_Goliaph_3", _posTask, [], 0, "NONE"] call A3A_fnc_createUnit; // goliath (OPF)
-// 		} else {
-// 			_smasher = [_groupSmasher, "WBK_SpecialZombie_Smasher_3", _posTask, [], 0, "NONE"] call A3A_fnc_createUnit; // smasher (OPF)
-// 		};
-//     };
-//     case A3A_faction_inv:
-//     {
-// 		_groupSide = [Occupants, A3A_faction_Occ];
-//         _groupSmasher = createGroup (_groupSide#0);
-
-// 		if (_difficultX) then {
-// 			_smasher = [_groupSmasher, "WBK_Goliaph_1", _posTask, [], 0, "NONE"] call A3A_fnc_createUnit; // goliath (BLU)
-// 		} else {
-// 			_smasher = [_groupSmasher, "WBK_SpecialZombie_Smasher_2", _posTask, [], 0, "NONE"] call A3A_fnc_createUnit; // smasher (BLU)
-// 		};
-//     };
-// };
 
 private _smasher = ObjNull;
 private _groupSmasher = createGroup Invaders;
@@ -95,7 +68,7 @@ if (_difficultX) then {
 private _groupsSF = [];
 for "_i" from 0 to 3 do
 {
-	private _sfPos = _posTask getPos [random 30, random 360];
+	private _sfPos = _posTask getPos [random 10, random 360];
 	
 	private _typeGroup = selectRandom (_groupSFHash get "groupSpecOpsRandom");
 	private _groupSF = [_sfPos, _groupSFSide, _typeGroup, false, true] call A3A_fnc_spawnGroup;
@@ -111,6 +84,33 @@ for "_i" from 0 to 3 do
 	_groupsSF pushBack _groupSF;
 
 	uiSleep 1;
+};
+
+private _attackHeliVehicle = ObjNull;
+
+if (_difficultX) then {
+	private _heliType = selectRandom (_faction getOrDefault ["vehiclesHelisAttack", []]);
+
+	private _heliPos = _posTask getPos [random [1000, 2000, 3000], random 360]; // replace this with an airbase or outpost, etc
+
+	if (_heliType isEqualTo []) then {
+		_heliType = _faction getOrDefault ["vehiclesHelisLightAttack", []]
+	};
+
+	private _heliGroup = createGroup _groupSFSide;
+
+	private _attackHeli = [_heliPos, 0, _heliType, _groupSFSide] call A3A_fnc_spawnVehicle;
+	_attackHeliVehicle = (_attackHeli#0); // defined in outer scope first
+
+	{
+		[_x] join _heliGroup;
+	} forEach crew _attackHeliVehicle;
+
+	[_attackHeliVehicle, _heliGroup, _positionX] spawn A3A_fnc_attackHeli;
+
+	// _attackHeliVehicleWaypoint = _heliGroup addWaypoint [_smasher, 1];
+	// _attackHeliVehicleWaypoint setWaypointType "DESTROY";
+	// _attackHeliVehicleWaypoint setWaypointBehaviour "COMBAT";
 };
 
 // Wait until the smasher is dead or mission is expired
@@ -151,3 +151,7 @@ if (dateToNumber date > _dateLimitNum) then {
 } forEach _groupsSF;
 
 [_groupSmasher] spawn A3A_fnc_groupDespawner;
+
+[_heliGroup] spawn A3A_fnc_groupDespawner;
+
+[_attackHeliVehicle] spawn A3A_fnc_vehDespawner;

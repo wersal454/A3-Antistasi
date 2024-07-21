@@ -39,8 +39,8 @@ private _taskId = "AS" + str A3A_taskCount;
 	[teamPlayer,civilian],
 	_taskID,
 	[
-		format [localize "STR_A3A_Missions_AS_Zombies_task_header", _nameDest, _displayTime],
-		localize "STR_A3A_Missions_AS_Zombies_task_desc",
+		format [localize "STR_A3A_Missions_AS_Zombies_task_desc", _nameDest, _displayTime],
+		localize "STR_A3A_Missions_AS_Zombies_task_header",
 		_markerX
 	],
 	_positionX,
@@ -55,7 +55,7 @@ private _taskId = "AS" + str A3A_taskCount;
 // Wait until players are close enough to the city to trigger mission
 waitUntil {
 	sleep 5;
-	((call SCRT_fnc_misc_getRebelPlayers) inAreaArray [_positionX, 500, 500] isNotEqualTo []) || {dateToNumber date > _dateLimitNum}
+	((call SCRT_fnc_misc_getRebelPlayers) inAreaArray [_positionX, 300, 300] isNotEqualTo []) || {dateToNumber date > _dateLimitNum}
 };
 
 private _groupZombies = createGroup Invaders;
@@ -67,9 +67,9 @@ if (_difficultX) then {
 
 for "_i" from 0 to _zombieAmount do
 {
-	private _pos = _posTask getPos [random 30, random 360];
+	private _pos = _posTask getPos [random 10, random 360];
 
-	private _zombieType = selectRandom (A3A_faction_civ get "Special");
+	private _zombieType = (A3A_faction_civ get "unitSpecial");
 
 	private _zombie = [_groupZombies, _zombieType, _pos, [], 0, "NONE"] call A3A_fnc_createUnit;
 
@@ -80,7 +80,8 @@ for "_i" from 0 to _zombieAmount do
 waitUntil {
 	sleep 10;
 	private _aliveZombies = {alive _x} count units _groupZombies;
-	(_aliveZombies <= 0) || {dateToNumber date > _dateLimitNum}
+	private _aliveZombiesWin = (round (_zombieAmount / 3));
+	(_aliveZombies <= _aliveZombies) || {dateToNumber date > _dateLimitNum}
 };
 
 if (dateToNumber date > _dateLimitNum) then {
