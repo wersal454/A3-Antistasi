@@ -3,26 +3,33 @@ FIX_LINE_NUMBERS()
 
 params ["_markerX"];
 
-//Mission: Stop infestation, basically a punishment but with zombies and no civs (zombie modset)
+//Mission: Stop infestation, basically a punishment but with zombies (zombie modset)
 if (!isServer and hasInterface) exitWith {};
 
-private _difficultX = random 10 < tierWar;
-private _positionX = getMarkerPos _markerX;
-
-private _sideX = sidesX getVariable [_markerX,sideUnknown];
-private _faction = Faction(_sideX);
-
-if (_sideX isEqualTo teamPlayer) exitWith {
-	["AS"] remoteExec ["A3A_fnc_missionRequest",2];
-    Info("City is not player owned. Rerolling");
-};
-
 private _civNonHuman = Faction(civilian) getOrDefault ["attributeCivNonHuman", false];
-
 if !(_civNonHuman) exitWith {
 	["AS"] remoteExec ["A3A_fnc_missionRequest",2];
     Info("Current civ faction is not non-human. Rerolling");
 };
+
+private _sideX = sidesX getVariable [_markerX,sideUnknown];
+private _faction = Faction(_sideX);
+
+if (_sideX isNotEqualTo teamPlayer) exitWith {
+    Info("City is not player owned. Checking for suitable cities.");
+
+	private _citiesPlayer = citiesX select {sidesX getVariable [_x, sideUnknown] == teamPlayer};
+
+	if (_citiesPlayer isEqualTo []) then {
+		["AS"] remoteExec ["A3A_fnc_missionRequest",2];
+		Info("No suitable city was found. Rerolling");
+	} else {
+		_markerX = selectRandom _citiesPlayer;
+	};
+};
+
+private _difficultX = random 10 < tierWar;
+private _positionX = getMarkerPos _markerX;
 
 private _limit = if (_difficultX) then {
 	30 call SCRT_fnc_misc_getTimeLimit

@@ -19,6 +19,12 @@ if !(_civNonHuman) exitWith {
     Info("Current civ faction is not non-human. Rerolling");
 };
 
+private _hasZAC = ["WBK_ZombieCreatures"] call A3U_fnc_hasAddon;
+if (_hasZAC isEqualTo false) exitWith {
+	["AS"] remoteExec ["A3A_fnc_missionRequest",2];
+    Info("WBK Z&C is not present. Rerolling");
+};
+
 private _limit = if (_difficultX) then {
 	30 call SCRT_fnc_misc_getTimeLimit
 } else {
