@@ -8856,6 +8856,12 @@
             <Key ID="STR_A3A_Missions_AS_Smasher_task_desc">
                 <Original>Reports from unknown sources suggest %1 Special Forces have engaged a rare Mutant in %2. Kill the Mutant before it causes major issues. Do this before %3. We don't know where this fight is happening.</Original>
             </Key>
+            <Key ID="STR_A3A_Missions_AS_Zombies_task_header">
+                <Original>Stop City Infestation</Original>
+            </Key>
+            <Key ID="STR_A3A_Missions_AS_Zombies_task_desc">
+                <Original>%1 is in danger of becoming infested. If it falls, nobody will be able to live there in future. This will have permanent consequences, so we need to act quickly. Save %1 from infestation... Do this before %2.</Original>
+            </Key>
             <Key ID="STR_A3A_Missions_AS_RIV_Traitor_task_header">
                 <Original>Eliminate the Defector</Original>
                 <Russian>Устраните перебежчика</Russian>

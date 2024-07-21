@@ -393,6 +393,7 @@ class CfgFunctions
             class AS_Smasher {};
             class AS_specOP {};
             class AS_Traitor {};
+            class AS_Zombies {};
             class CON_Outpost {};
             class CON_MilAdmin {};
             class convoy {};

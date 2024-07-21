@@ -1,0 +1,121 @@
+#include "..\..\script_component.hpp"
+FIX_LINE_NUMBERS()
+
+params ["_markerX"];
+
+//Mission: Stop infestation, basically a punishment but with zombies and no civs (zombie modset)
+if (!isServer and hasInterface) exitWith {};
+
+private _difficultX = random 10 < tierWar;
+private _positionX = getMarkerPos _markerX;
+
+private _sideX = sidesX getVariable [_markerX,sideUnknown];
+private _faction = Faction(_sideX);
+
+if (_sideX isEqualTo teamPlayer) exitWith {
+	["AS"] remoteExec ["A3A_fnc_missionRequest",2];
+    Info("City is not player owned. Rerolling");
+};
+
+private _civNonHuman = Faction(civilian) getOrDefault ["attributeCivNonHuman", false];
+
+if !(_civNonHuman) exitWith {
+	["AS"] remoteExec ["A3A_fnc_missionRequest",2];
+    Info("Current civ faction is not non-human. Rerolling");
+};
+
+private _limit = if (_difficultX) then {
+	30 call SCRT_fnc_misc_getTimeLimit
+} else {
+	60 call SCRT_fnc_misc_getTimeLimit
+}; _limit params ["_dateLimitNum", "_displayTime"];
+
+private _radiusX = [_markerX] call A3A_fnc_sizeMarker;
+private _nameDest = [_markerX] call A3A_fnc_localizar;
+
+private _posTask = _positionX getPos [random 100, random 360];
+private _taskId = "AS" + str A3A_taskCount;
+[
+	[teamPlayer,civilian],
+	_taskID,
+	[
+		format [localize "STR_A3A_Missions_AS_Zombies_task_header", _nameDest, _displayTime],
+		localize "STR_A3A_Missions_AS_Zombies_task_desc",
+		_markerX
+	],
+	_positionX,
+	false,
+	0,
+	true,
+	"Kill",
+	true
+] call BIS_fnc_taskCreate;
+[_taskId, "AS", "CREATED"] remoteExecCall ["A3A_fnc_taskUpdate", 2];
+
+// Wait until players are close enough to the city to trigger mission
+waitUntil {
+	sleep 5;
+	((call SCRT_fnc_misc_getRebelPlayers) inAreaArray [_positionX, 500, 500] isNotEqualTo []) || {dateToNumber date > _dateLimitNum}
+};
+
+private _groupZombies = createGroup Invaders;
+private _zombieAmount = 15;
+
+if (_difficultX) then {
+	_zombieAmount = 30;
+};
+
+for "_i" from 0 to _zombieAmount do
+{
+	private _pos = _posTask getPos [random 30, random 360];
+
+	private _zombieType = selectRandom (A3A_faction_civ get "Special");
+
+	private _zombie = [_groupZombies, _zombieType, _pos, [], 0, "NONE"] call A3A_fnc_createUnit;
+
+	uiSleep 0.5;
+};
+
+// Wait until the zombies are dead or mission is expired
+waitUntil {
+	sleep 10;
+	private _aliveZombies = {alive _x} count units _groupZombies;
+	(_aliveZombies <= 0) || {dateToNumber date > _dateLimitNum}
+};
+
+if (dateToNumber date > _dateLimitNum) then {
+	[_taskId, "AS", "FAILED", true] call A3A_fnc_taskSetState;
+
+    destroyedSites = destroyedSites + [_markerX];
+    publicVariable "destroyedSites";
+
+    [_markerX] call A3A_fnc_destroyCity;
+    sidesX setVariable [_markerX, Invaders, true];
+    garrison setVariable [_markerX, [], true];
+    [_markerX] call A3A_fnc_mrkUpdate;
+} else {
+	[_taskId, "AS", "SUCCEEDED", true] call A3A_fnc_taskSetState;
+
+	if (_difficultX) then {
+		[0, 2000] remoteExec ["A3A_fnc_resourcesFIA",2];
+		[0, 20, _positionX] remoteExec ["A3A_fnc_citySupportChange",2];
+
+		{ 
+			[20, _x] call A3A_fnc_addScorePlayer;
+			[500, _x] call A3A_fnc_addMoneyPlayer;
+		} forEach (call SCRT_fnc_misc_getRebelPlayers);
+	} else {
+		[0, 1000] remoteExec ["A3A_fnc_resourcesFIA",2];
+		[0, 10, _positionX] remoteExec ["A3A_fnc_citySupportChange",2];
+
+		{ 
+			[10, _x] call A3A_fnc_addScorePlayer;
+			[250, _x] call A3A_fnc_addMoneyPlayer;
+		} forEach (call SCRT_fnc_misc_getRebelPlayers);
+	};
+
+};
+
+[_taskId, "AS", 1200, true] spawn A3A_fnc_taskDelete;
+
+[_groupZombies] spawn A3A_fnc_groupDespawner;
