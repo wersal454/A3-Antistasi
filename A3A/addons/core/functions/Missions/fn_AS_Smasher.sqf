@@ -59,44 +59,23 @@ waitUntil {
 	((call SCRT_fnc_misc_getRebelPlayers) inAreaArray [_positionX, 300, 300] isNotEqualTo []) || {dateToNumber date > _dateLimitNum}
 };
 
-private _smasher = ObjNull;
+if (dateToNumber date > _dateLimitNum) exitWith {};
+
+private _mutant = ObjNull;
 private _groupSmasher = createGroup Invaders;
 
 private _groupSFHash = A3A_faction_occ;
 private _groupSFSide = Occupants;
 
-if (_difficultX) then {
-	_smasher = [_groupSmasher, "WBK_Goliaph_3", _posTask, [], 0, "NONE"] call A3A_fnc_createUnit; // goliath (OPF)
-} else {
-	_smasher = [_groupSmasher, "WBK_SpecialZombie_Smasher_3", _posTask, [], 0, "NONE"] call A3A_fnc_createUnit; // smasher (OPF)
-};
-
 private _groupsSF = [];
-for "_i" from 0 to 3 do
-{
-	private _sfPos = _posTask getPos [random 10, random 360];
-	
-	private _typeGroup = selectRandom (_groupSFHash get "groupSpecOpsRandom");
-	private _groupSF = [_sfPos, _groupSFSide, _typeGroup, false, true] call A3A_fnc_spawnGroup;
-
-	// Set up SF group behaviour
-	{
-		[_x, ""] call A3A_fnc_NATOinit;
-		_x allowFleeing 0;
-		_x setUnitPos "UP";
-	} forEach units _groupSF;
-	[_groupSF, "Patrol_Area", 25, 50, 100, false, [], false] call A3A_fnc_patrolLoop;
-
-	_groupsSF pushBack _groupSF;
-
-	uiSleep 1;
-};
 
 private _attackHeliVehicle = ObjNull;
 
 if (_difficultX) then {
-	private _heliType = selectRandom (_faction getOrDefault ["vehiclesHelisAttack", []]);
+	_mutant = [_groupSmasher, "WBK_Goliaph_3", _posTask, [], 0, "NONE"] call A3A_fnc_createUnit; // goliath (OPF)
 
+	// Spawn attack helicopter
+	private _heliType = selectRandom (_faction getOrDefault ["vehiclesHelisAttack", []]);
 	private _heliPos = _posTask getPos [random [1000, 2000, 3000], random 360]; // replace this with an airbase or outpost, etc
 
 	if (_heliType isEqualTo []) then {
@@ -104,7 +83,6 @@ if (_difficultX) then {
 	};
 
 	private _heliGroup = createGroup _groupSFSide;
-
 	private _attackHeli = [_heliPos, 0, _heliType, _groupSFSide] call A3A_fnc_spawnVehicle;
 	_attackHeliVehicle = (_attackHeli#0); // defined in outer scope first
 
@@ -113,16 +91,34 @@ if (_difficultX) then {
 	} forEach crew _attackHeliVehicle;
 
 	[_attackHeliVehicle, _heliGroup, _positionX] spawn A3A_fnc_attackHeli;
+} else {
+	_mutant = [_groupSmasher, "WBK_SpecialZombie_Smasher_3", _posTask, [], 0, "NONE"] call A3A_fnc_createUnit; // smasher (OPF)
 
-	// _attackHeliVehicleWaypoint = _heliGroup addWaypoint [_smasher, 1];
-	// _attackHeliVehicleWaypoint setWaypointType "DESTROY";
-	// _attackHeliVehicleWaypoint setWaypointBehaviour "COMBAT";
+	// Spawn infantry SF groups to "fight" the mutant
+	for "_i" from 0 to 3 do
+	{
+		private _sfPos = _posTask getPos [random 10, random 360];
+		
+		private _typeGroup = selectRandom (_groupSFHash get "groupSpecOpsRandom");
+		private _groupSF = [_sfPos, _groupSFSide, _typeGroup, false, true] call A3A_fnc_spawnGroup;
+
+		// Set up SF group behaviour
+		{
+			[_x, ""] call A3A_fnc_NATOinit;
+			_x allowFleeing 0;
+			_x setUnitPos "UP";
+		} forEach units _groupSF;
+
+		_groupsSF pushBack _groupSF;
+
+		uiSleep 1;
+	};
 };
 
 // Wait until the smasher is dead or mission is expired
 waitUntil {
 	sleep 10;
-	!(alive _smasher) || {dateToNumber date > _dateLimitNum}
+	!(alive _mutant) || {dateToNumber date > _dateLimitNum}
 };
 
 if (dateToNumber date > _dateLimitNum) then {

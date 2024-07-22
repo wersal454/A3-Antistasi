@@ -65,6 +65,8 @@ waitUntil {
 	((call SCRT_fnc_misc_getRebelPlayers) inAreaArray [_positionX, 300, 300] isNotEqualTo []) || {dateToNumber date > _dateLimitNum}
 };
 
+if (dateToNumber date > _dateLimitNum) exitWith {};
+
 private _groupZombies = createGroup Invaders;
 private _zombieAmount = 15;
 

@@ -106,7 +106,9 @@ switch (_type) do {
 			if (_site in milAdministrationsX) then {
 				[[_site],"A3A_fnc_CON_MilAdmin"] remoteExec ["A3A_fnc_scheduler",2]
 			} else {
-				[[_site],"A3A_fnc_CON_Outpost"] remoteExec ["A3A_fnc_scheduler",2];
+				private _conMissions = ["A3A_fnc_CON_Outpost", 0.5, "A3A_fnc_CON_Outpost_Zombies", 0.5];
+				private _conMission = selectRandomWeighted _conMissions;
+				[[_site],_conMission] remoteExec ["A3A_fnc_scheduler",2];
 			};
 		};
 	};
