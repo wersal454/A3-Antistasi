@@ -308,7 +308,10 @@ while {true} do {
 
 			if (call _condition) then {
 				private _text = format["%1 is now unlocked in the Arms Dealer.", (_x#1)];
+
+				_vehicleTypesUnlocked pushBack (_x#1);
 				_vehicleTypesUnlockedNotify pushBack (_x#1);
+				
 				[_text, _fnc_scriptName] call A3U_fnc_log;
 			};
 		} forEach _conditions;
