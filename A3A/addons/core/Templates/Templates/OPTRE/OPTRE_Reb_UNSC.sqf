@@ -59,13 +59,13 @@ private _vehiclesCivCar = ["OPTRE_M12_CIV", "OPTRE_Genet"];
 ///////////////////////////
 
 private _initialRebelEquipment = [
-    "OPTRE_M7", "OPTRE_M393_DMR", "OPTRE_48Rnd_5x23mm_Mag", "OPTRE_15Rnd_762x51_Mag",
+    "OPTRE_MA5B", "OPTRE_M392_DMR", "OPTRE_60Rnd_762x51_Mag", "OPTRE_15Rnd_762x51_Mag",
     "OPTRE_M6G",
     "OPTRE_M6C",
     "OPTRE_8Rnd_127x40_AP_Mag","OPTRE_8Rnd_127x40_Mag","OPTRE_M9_Frag","SmokeShell",
     ["OPTRE_M41_SSR", 5], ["OPTRE_M41_Twin_HEAT", 10],
-    "OPTRE_ILCS_Rucksack_Black","OPTRE_UNSC_Rucksack","OPTRE_UNSC_Rucksack_Heavy",
-    "OPTRE_UNSC_M52D_Armor","OPTRE_UNSC_M52D_Armor_Demolitions","OPTRE_UNSC_M52D_Armor_Rifleman",
+    "OPTRE_UNSC_Rucksack","OPTRE_UNSC_Rucksack_Heavy","OPTRE_UNSC_Rucksack_Medic",
+    "OPTRE_UNSC_M52A_Armor_Rifleman_URB","OPTRE_UNSC_M52A_Armor_TL_URB","OPTRE_UNSC_M52A_Armor_Breacher_URB",
     "Binocular"
 ];
 

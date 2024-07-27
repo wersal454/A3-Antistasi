@@ -141,13 +141,13 @@ _loadoutData set ["NVGs", ["OPTRE_NVG"]];
 _loadoutData set ["binoculars", ["OPTRE_Binoculars"]];
 _loadoutData set ["rangefinders", ["OPTRE_Smartfinder"]];
 
-_loadoutData set ["traitorUniforms", ["OPTRE_UNSC_Army_Uniform_R_BLK"]];
-_loadoutData set ["traitorVests", ["OPTRE_UNSC_M52A_Armor_Breacher_URB", "OPTRE_UNSC_M52A_Armor1_URB"]];
-_loadoutData set ["traitorHats", ["OPTRE_UNSC_CH252_Helmet_URB"]];
+_loadoutData set ["traitorUniforms", ["OPTRE_Ins_ER_jacket_brown_surplus"]];
+_loadoutData set ["traitorVests", ["OPTRE_Vest_CMA_Light", "V_Chestrig_blk"]];
+_loadoutData set ["traitorHats", ["OPTRE_CPD_Cap"]];
 
-_loadoutData set ["officerUniforms", ["OPTRE_UNSC_Army_Uniform_BLKURB"]];
-_loadoutData set ["officerVests", ["OPTRE_UNSC_M52A_Armor_Sniper_URB", "V_Rangemaster_belt"]];
-_loadoutData set ["officerHats", ["OPTRE_PatrolCap_Navy"]];
+_loadoutData set ["officerUniforms", ["OPTRE_Ins_ER_jacket_od_surplus"]];
+_loadoutData set ["officerVests", ["OPTRE_Vest_CMA_Light", "V_Chestrig_blk"]];
+_loadoutData set ["officerHats", ["H_Beret_blk"]];
 
 _loadoutData set ["cloakUniforms", []];
 _loadoutData set ["cloakVests", []];
@@ -162,12 +162,12 @@ _loadoutData set ["glVests", []];
 _loadoutData set ["engVests", []];
 _loadoutData set ["vests", []];
 _loadoutData set ["backpacks", []];
-_loadoutData set ["longRangeRadios", ["OPTRE_ANPRC_515"]];
+_loadoutData set ["longRangeRadios", ["OPTRE_ANPRC_521_URF", "OPTRE_ANPRC_515"]];
 _loadoutData set ["atBackpacks", []];
 _loadoutData set ["slBackpacks", []];
 _loadoutData set ["helmets", []];
-_loadoutData set ["slHat", ["OPTRE_UNSC_CH252A_Black_Helmet"]];
-_loadoutData set ["sniHats", ["OPTRE_UNSC_CH252A_Black_Helmet"]];
+_loadoutData set ["slHat", ["OPTRE_Ins_URF_Helmet1", "OPTRE_CPD_CH251_URF"]];
+_loadoutData set ["sniHats", ["OPTRE_h_Booniehat_Grey"]];
 
 //Item *set* definitions. These are added in their entirety to unit loadouts. No randomisation is applied.
 _loadoutData set ["items_medical_basic", ["BASIC"] call A3A_fnc_itemset_medicalSupplies];
@@ -212,18 +212,18 @@ _loadoutData set ["goggles", []];
 ///////////////////////////////////////
 
 private _sfLoadoutData = _loadoutData call _fnc_copyLoadoutData;
-_sfLoadoutData set ["uniforms", ["OPTRE_MJOLNIR_Undersuit"]];
-_sfLoadoutData set ["vests", ["OPTRE_MJOLNIR_MkVBArmor", "OPTRE_MJOLNIR_MkVBArmor_MkV4"]];
-_sfLoadoutData set ["mgVests", ["OPTRE_MJOLNIR_MkVBArmor", "OPTRE_MJOLNIR_MkVBArmor_MkV4"]];
-_sfLoadoutData set ["medVests", ["OPTRE_MJOLNIR_MkVBArmor", "OPTRE_MJOLNIR_MkVBArmor_MkV4"]];
-_sfLoadoutData set ["glVests", ["OPTRE_MJOLNIR_MkVBArmor", "OPTRE_MJOLNIR_MkVBArmor_MkV4"]];
-_sfLoadoutData set ["backpacks", ["OPTRE_ANPRC_515_Spartan"]];
-_sfLoadoutData set ["slBackpacks", ["OPTRE_ANPRC_515_Spartan"]];
-_sfLoadoutData set ["atBackpacks", ["OPTRE_ANPRC_515_Spartan"]];
-_sfLoadoutData set ["longRangeRadios", ["OPTRE_ANPRC_515_Spartan"]];
-_sfLoadoutData set ["helmets", ["OPTRE_MJOLNIR_MkVBHelmet", "OPTRE_MJOLNIR_MkVBHelmet_UA_HUL", "OPTRE_MJOLNIR_EOD"]];
-_sfLoadoutData set ["slHat", ["OPTRE_MJOLNIR_CQC"]];
-_sfLoadoutData set ["sniHats", ["OPTRE_MJOLNIR_Commando", "OPTRE_MJOLNIR_Commando_HUL3"]];
+_sfLoadoutData set ["uniforms", ["OPTRE_Ins_BJ_Undersuit"]];
+_sfLoadoutData set ["vests", ["OPTRE_Ins_BJ_Armor"]];
+_sfLoadoutData set ["mgVests", ["OPTRE_Ins_BJ_Armor"]];
+_sfLoadoutData set ["medVests", ["OPTRE_Ins_BJ_Armor"]];
+_sfLoadoutData set ["glVests", ["OPTRE_Ins_BJ_Armor"]];
+_sfLoadoutData set ["backpacks", ["OPTRE_ILCS_Rucksack_Black"]];
+_sfLoadoutData set ["slBackpacks", ["OPTRE_ILCS_Rucksack_Heavy"]];
+_sfLoadoutData set ["atBackpacks", ["OPTRE_ILCS_Rucksack_Heavy"]];
+_sfLoadoutData set ["longRangeRadios", ["OPTRE_ANPRC_515"]];
+_sfLoadoutData set ["helmets", ["OPTRE_Ins_BJ_Helmet", "OPTRE_UNSC_CH252_Helmet2_Vacuum_URB", "OPTRE_UNSC_CH252_Helmet_Vacuum_URB_MED"]];
+_sfLoadoutData set ["slHat", ["OPTRE_CH255_Security_Advanced_Type_2_Helmet_Black"]];
+_sfLoadoutData set ["sniHats", ["OPTRE_FC_VX19_Helmet_Urban"]];
 
 _sfLoadoutData set ["slRifles", [
     ["OPTRE_BR55HB", "", "", "optre_br55hb_scope", ["OPTRE_36Rnd_95x40_Mag", "OPTRE_36Rnd_95x40_Mag", "OPTRE_36Rnd_95x40_Mag"], [], ""]
@@ -244,7 +244,7 @@ _sfLoadoutData set ["SMGs", [
     ["OPTRE_M45ATAC", "", "optre_m45_flashlight_green", "", [], [], ""]
 ]];
 _sfLoadoutData set ["machineGuns", [
-    ["OPTRE_M247H_Etilka", "", "", "", ["OPTRE_200Rnd_127x99_M247H_Etilka_Ball", "OPTRE_200Rnd_127x99_M247H_Etilka_Ball", "OPTRE_200Rnd_127x99_M247H_Etilka_Ball"], [], ""]
+    ["OPTRE_HMG38", "", "", "OPTRE_BR55HB_Scope", ["OPTRE_100Rnd_30x06_Mag", "OPTRE_100Rnd_30x06_Mag", "OPTRE_100Rnd_30x06_Mag"], [], ""]
 ]];
 _sfLoadoutData set ["marksmanRifles", [
     ["OPTRE_M393_DMR", "", "", "optre_m393_scope", ["OPTRE_15Rnd_762x51_Mag", "OPTRE_15Rnd_762x51_Mag", "OPTRE_15Rnd_762x51_Mag"], [], "bipod_01_f_blk"]
@@ -264,60 +264,45 @@ _sfLoadoutData set ["ATLaunchers", [["OPTRE_M41_SSR", "", "", "", ["OPTRE_M41_Tw
 /////////////////////////////////
 
 private _eliteLoadoutData = _loadoutData call _fnc_copyLoadoutData;
-if (["MA_Armor"] call A3U_fnc_hasAddon) then {
-    _eliteLoadoutData set ["uniforms", ["MA_M56S_BDU"]];
-    _eliteLoadoutData set ["slUniform", ["MA_M56S_BDU"]];
-    _eliteLoadoutData set ["vests", ["MA_M56R_Vest"]];
-    _eliteLoadoutData set ["mgVests", ["MA_M56R_CQB_Vest"]];
-    _eliteLoadoutData set ["medVests", ["MA_M56S_Medic_Vest"]];
-    _eliteLoadoutData set ["slVests", ["MA_M56S_Vest"]];
-    _eliteLoadoutData set ["glVests", ["MA_M56_CustomVest_1"]];
-    _eliteLoadoutData set ["engVests", ["MA_M56R_Vest_ODST_Radio"]];
-    _eliteLoadoutData set ["backpacks", ["MA_M56S_Rucksack"]];
-    _eliteLoadoutData set ["slBackpacks", ["MA_M56S_Rucksack_ODST_Radio"]];
-    _eliteLoadoutData set ["atBackpacks", ["OPTRE_ILCS_Rucksack_Heavy"]];
-    _eliteLoadoutData set ["helmets", ["MA_M56SR_Helmet_Black_Visor", "MA_M56SH_Helmet_Black_Visor"]];
-    _eliteLoadoutData set ["sniHats", ["MA_M56A_Helmet_Red_Visor"]];
-} else {
-    _eliteLoadoutData set ["uniforms", ["OPTRE_UNSC_ODST_Uniform"]];
-    _eliteLoadoutData set ["slUniform", ["OPTRE_UNSC_ODST_Uniform"]];
-    _eliteLoadoutData set ["vests", ["OPTRE_UNSC_M52D_Armor"]];
-    _eliteLoadoutData set ["mgVests", ["OPTRE_UNSC_M52D_Armor_Rifleman"]];
-    _eliteLoadoutData set ["medVests", ["OPTRE_UNSC_M52D_Armor_Medic"]];
-    _eliteLoadoutData set ["slVests", ["OPTRE_UNSC_M52D_Armor_Rifleman"]];
-    _eliteLoadoutData set ["glVests", ["OPTRE_UNSC_M52D_Armor_Rifleman"]];
-    _eliteLoadoutData set ["engVests", ["OPTRE_UNSC_M52D_Armor_Rifleman"]];
-    _eliteLoadoutData set ["backpacks", ["OPTRE_ILCS_Rucksack_Black"]];
-    _eliteLoadoutData set ["slBackpacks", ["OPTRE_ILCS_Rucksack_Medical"]];
-    _eliteLoadoutData set ["atBackpacks", ["OPTRE_ILCS_Rucksack_Heavy"]];
-    _eliteLoadoutData set ["helmets", ["OPTRE_UNSC_CH252D_Helmet"]];
-    _eliteLoadoutData set ["sniHats", ["OPTRE_UNSC_CH252A_Black_Helmet"]]; 
-};
+
+_eliteLoadoutData set ["uniforms", ["OPTRE_Ins_URF_Combat_Uniform", "OPTRE_Ins_URF_Combat_Flat_Uniform"]];
+_eliteLoadoutData set ["slUniform", ["OPTRE_Ins_ER_jacket_od_surplus"]];
+_eliteLoadoutData set ["vests", ["OPTRE_Ins_URF_Armor1"]];
+_eliteLoadoutData set ["mgVests", ["OPTRE_Ins_URF_Armor1_Flat"]];
+_eliteLoadoutData set ["medVests", ["OPTRE_Ins_URF_Woodland_Armor1_Flat"]];
+_eliteLoadoutData set ["slVests", ["OPTRE_Ins_URF_Woodland_Armor1_Flat"]];
+_eliteLoadoutData set ["glVests", ["OPTRE_Ins_URF_Armor1"]];
+_eliteLoadoutData set ["engVests", ["OPTRE_Ins_URF_Armor1"]];
+_eliteLoadoutData set ["backpacks", ["OPTRE_UNSC_Rucksack", "B_AssaultPack_khk", "B_FieldPack_oli"]];
+_eliteLoadoutData set ["slBackpacks", ["B_Kitbag_rgr"]];
+_eliteLoadoutData set ["atBackpacks", ["B_TacticalPack_blk"]];
+_eliteLoadoutData set ["helmets", ["OPTRE_Ins_URF_Helmet1", "OPTRE_Ins_URF_Helmet2"]];
+_eliteLoadoutData set ["sniHats", ["OPTRE_Ins_URF_Helmet4_Brown"]];
 
 _eliteLoadoutData set ["slRifles", [
-    ["OPTRE_BR55", "optre_ma5suppressor", "", "optre_br55hb_scope", ["OPTRE_36Rnd_95x40_Mag", "OPTRE_36Rnd_95x40_Mag", "OPTRE_36Rnd_95x40_Mag"], [], ""]
+    ["OPTRE_BR55", "", "", "optre_br55hb_scope", ["OPTRE_36Rnd_95x40_Mag", "OPTRE_36Rnd_95x40_Mag", "OPTRE_36Rnd_95x40_Mag"], [], ""]
 ]];
 _eliteLoadoutData set ["rifles", [
-    ["OPTRE_MA5C", "optre_ma5suppressor", "", "optre_ma5c_smartlink", ["OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag"], [], ""]
+    ["OPTRE_MA5C", "", "", "", ["OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag"], [], ""]
 ]];
 _eliteLoadoutData set ["carbines", [
-    ["OPTRE_MA37B", "optre_ma5suppressor", "", "", ["OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag"], [], ""]
+    ["OPTRE_MA37B", "", "", "", ["OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag"], [], ""]
 ]];
 _eliteLoadoutData set ["grenadeLaunchers", [
     ["OPTRE_M319N", "", "", "", ["M319_HE_Grenade_Shell", "M319_Smoke", "OPTRE_signalSmokeB"], [], ""]
 ]];
 _eliteLoadoutData set ["SMGs", [
-    ["OPTRE_M7", "optre_m7_silencer", "", "optre_m393_eotech", [], [], ""],
+    ["OPTRE_M7", "", "", "", [], [], ""],
     ["OPTRE_M45", "", "", "", [], [], ""]
 ]];
 _eliteLoadoutData set ["machineGuns", [
     ["OPTRE_M247", "", "", "", ["OPTRE_100Rnd_762x51_Box", "OPTRE_100Rnd_762x51_Box", "OPTRE_100Rnd_762x51_Box"], [], "bipod_01_F_blk"]
 ]];
 _eliteLoadoutData set ["marksmanRifles", [
-    ["OPTRE_M295_BMR", "optre_ma5suppressor", "", "optre_m393_acog", ["OPTRE_25Rnd_762x51_Mag", "OPTRE_25Rnd_762x51_Mag", "OPTRE_25Rnd_762x51_Mag"], [], ""]
+    ["OPTRE_M295_BMR", "", "", "optre_m393_acog", ["OPTRE_25Rnd_762x51_Mag", "OPTRE_25Rnd_762x51_Mag", "OPTRE_25Rnd_762x51_Mag"], [], ""]
 ]];
 _eliteLoadoutData set ["sniperRifles", [
-    ["OPTRE_SRS99C", "optre_srs99d_suppressor", "", "optre_srs99c_scope", [], [], ""]
+    ["OPTRE_SRS99C", "", "", "optre_srs99c_scope", [], [], ""]
 ]];
 _eliteLoadoutData set ["sidearms", [
     ["OPTRE_M6G", "", "optre_m6g_flashlight", "", [], [], ""]
@@ -331,19 +316,19 @@ _eliteLoadoutData set ["ATLaunchers", [["OPTRE_M41_SSR", "", "", "", ["OPTRE_M41
 /////////////////////////////////
 
 private _militaryLoadoutData = _loadoutData call _fnc_copyLoadoutData;
-_militaryLoadoutData set ["uniforms", ["OPTRE_FC_Marines_Uniform_BLK_L"]];
-_militaryLoadoutData set ["slUniform", ["OPTRE_FC_Marines_Uniform_BLK_L"]];
-_militaryLoadoutData set ["vests", ["OPTRE_UNSC_M52A_Armor_Rifleman_MAR"]];
-_militaryLoadoutData set ["mgVests", ["OPTRE_UNSC_M52A_Armor_MG_MAR"]];
-_militaryLoadoutData set ["medVests", ["OPTRE_UNSC_M52A_Armor_Corpsman_MAR"]];
-_militaryLoadoutData set ["slVests", ["OPTRE_UNSC_M52A_Armor_TL_MAR"]];
-_militaryLoadoutData set ["glVests", ["OPTRE_UNSC_M52A_Armor_Grenadier_MAR"]];
-_militaryLoadoutData set ["engVests", ["OPTRE_UNSC_M52A_Armor1_MAR"]];
-_militaryLoadoutData set ["backpacks", ["OPTRE_UNSC_Rucksack", "OPTRE_UNSC_Rucksack_Medic", "OPTRE_UNSC_Rucksack_Heavy"]];
-_militaryLoadoutData set ["slBackpacks", ["OPTRE_ILCS_Rucksack_Black"]];
-_militaryLoadoutData set ["atBackpacks", ["OPTRE_ILCS_Rucksack_Heavy"]];
-_militaryLoadoutData set ["helmets", ["OPTRE_UNSC_CH252_Helmet_MAR", "OPTRE_UNSC_CH252_Helmet2_MAR"]];
-_militaryLoadoutData set ["sniHats", ["OPTRE_UNSC_CH252A_Black_Helmet"]];
+_militaryLoadoutData set ["uniforms", ["OPTRE_Ins_URF_Combat_Uniform", "OPTRE_Ins_URF_Combat_Flat_Uniform"]];
+_militaryLoadoutData set ["slUniform", ["OPTRE_Ins_ER_jacket_od_surplus"]];
+_militaryLoadoutData set ["vests", ["OPTRE_Ins_URF_Armor1"]];
+_militaryLoadoutData set ["mgVests", ["OPTRE_Ins_URF_Armor1_Flat"]];
+_militaryLoadoutData set ["medVests", ["OPTRE_Ins_URF_Woodland_Armor1_Flat"]];
+_militaryLoadoutData set ["slVests", ["OPTRE_Ins_URF_Woodland_Armor1_Flat"]];
+_militaryLoadoutData set ["glVests", ["OPTRE_Ins_URF_Armor1"]];
+_militaryLoadoutData set ["engVests", ["OPTRE_Ins_URF_Armor1"]];
+_militaryLoadoutData set ["backpacks", ["OPTRE_UNSC_Rucksack", "B_AssaultPack_khk", "B_FieldPack_oli"]];
+_militaryLoadoutData set ["slBackpacks", ["B_Kitbag_rgr"]];
+_militaryLoadoutData set ["atBackpacks", ["B_TacticalPack_blk"]];
+_militaryLoadoutData set ["helmets", ["OPTRE_Ins_URF_Helmet1", "OPTRE_Ins_URF_Helmet2"]];
+_militaryLoadoutData set ["sniHats", ["OPTRE_Ins_URF_Helmet4_Brown"]];
 
 _militaryLoadoutData set ["slRifles", [
     ["OPTRE_BR55", "", "", "optre_br55hb_scope", ["OPTRE_36Rnd_95x40_Mag", "OPTRE_36Rnd_95x40_Mag", "OPTRE_36Rnd_95x40_Mag"], [], ""]
@@ -385,7 +370,7 @@ private _policeLoadoutData = _loadoutData call _fnc_copyLoadoutData;
 
 _policeLoadoutData set ["uniforms", ["OPTRE_CPD_Uniform", "OPTRE_CPD_Uniform_Rolled"]];
 _policeLoadoutData set ["vests", ["OPTRE_Vest_CPD_Light", "OPTRE_Vest_CPD_Heavy"]];
-_policeLoadoutData set ["helmets", ["OPTRE_CPD_CH251P", "OPTRE_UNSC_CH252_Helmet_URB"]];
+_policeLoadoutData set ["helmets", ["OPTRE_CPD_Cap", "OPTRE_CPD_Beret"]];
 
 _policeLoadoutData set ["SMGs", [
     ["OPTRE_MA37K", "", "", "", ["OPTRE_32Rnd_762x51_Mag"], [], ""]
@@ -399,23 +384,20 @@ _policeLoadoutData set ["sidearms", [
 ////////////////////////////////
 
 private _militiaLoadoutData = _loadoutData call _fnc_copyLoadoutData;
-_militiaLoadoutData set ["uniforms", ["OPTRE_FC_Marines_Uniform_L"]];
-_militiaLoadoutData set ["vests", ["OPTRE_FC_M52B_Armor_Rifleman", "OPTRE_FC_M52B_Armor_Light"]];
-_militiaLoadoutData set ["sniVests", ["OPTRE_FC_M52B_Armor_Sniper"]];
-_militiaLoadoutData set ["backpacks", ["OPTRE_UNSC_Rucksack"]];
-_militiaLoadoutData set ["slBackpacks", ["OPTRE_UNSC_Rucksack"]];
-_militiaLoadoutData set ["atBackpacks", ["OPTRE_UNSC_Rucksack"]];
-_militiaLoadoutData set ["helmets", ["OPTRE_FC_CH255_Helmet"]];
-_militiaLoadoutData set ["sniHats", ["OPTRE_FC_CH255_Helmet"]];
+_militiaLoadoutData set ["uniforms", ["OPTRE_Ins_ER_rolled_jean_orca", "OPTRE_Ins_ER_rolled_OD_blknblu", "OPTRE_Ins_ER_rolled_surplus_black", "OPTRE_Ins_ER_rolled_surplus_crimson", "OPTRE_Ins_ER_jacket_surplus_brown", "OPTRE_Ins_ER_jacket_surplus_redshirt"]];
+_militiaLoadoutData set ["vests", ["V_BandollierB_blk", "V_BandollierB_rgr", "V_Chestrig_blk", "V_Chestrig_rgr"]];
+_militiaLoadoutData set ["sniVests", ["V_TacVest_oli"]];
+_militiaLoadoutData set ["backpacks", ["B_FieldPack_oli", "B_TacticalPack_blk"]];
+_militiaLoadoutData set ["slBackpacks", ["B_Kitbag_rgr", "B_TacticalPack_rgr"]];
+_militiaLoadoutData set ["atBackpacks", ["B_Carryall_oli"]];
+_militiaLoadoutData set ["helmets", ["H_Shemag_olive", "H_Shemag_olive_hs", "H_Bandanna_sgg", "H_Bandanna_camo", "H_Watchcap_khk"]];
+_militiaLoadoutData set ["sniHats", ["H_Booniehat_khk_hs", "H_Booniehat_oli", "H_Cap_blk", "H_Cap_oli_hs"]];
 
 _militiaLoadoutData set ["rifles", [
-    ["OPTRE_MA5C", "", "", "", ["OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag"], [], ""]
+    ["OPTRE_M45", "", "", "", ["OPTRE_6Rnd_8Gauge_Pellets", "OPTRE_6Rnd_8Gauge_Slugs"], [], ""]
 ]];
 _militiaLoadoutData set ["carbines", [
-    ["OPTRE_MA5A", "", "", "", ["OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag", "OPTRE_32Rnd_762x51_Mag"], [], ""]
-]];
-_militiaLoadoutData set ["grenadeLaunchers", [
-    ["OPTRE_M319", "", "", "", ["M319_HE_Grenade_Shell", "M319_Smoke", "OPTRE_signalSmokeB"], [], ""]
+    ["OPTRE_M393S_DMR", "", "", "", ["OPTRE_15Rnd_762x51_Mag", "OPTRE_15Rnd_762x51_Mag_Tracer_Yellow", "OPTRE_15Rnd_762x51_Mag_Tracer"], [], ""]
 ]];
 _militiaLoadoutData set ["SMGs", [
     ["OPTRE_MA37K", "", "", "", ["OPTRE_32Rnd_762x51_Mag"], [], ""]
@@ -438,19 +420,19 @@ _militiaLoadoutData set ["ATLaunchers", [["OPTRE_M41_SSR", "", "", "", ["OPTRE_M
 //////////////////////////
 
 private _crewLoadoutData = _militaryLoadoutData call _fnc_copyLoadoutData;
-_crewLoadoutData set ["uniforms", ["OPTRE_UNSC_Navy_Uniform_Gray"]];
-_crewLoadoutData set ["vests", ["OPTRE_UNSC_M52A_Armor3_MAR"]];
-_crewLoadoutData set ["helmets", ["OPTRE_UNSC_CH252_Helmet2_Vacuum_URB"]];
+_crewLoadoutData set ["uniforms", ["OPTRE_Ins_URF_Combat_Uniform"]];
+_crewLoadoutData set ["vests", ["OPTRE_Ins_URF_Armor1"]];
+_crewLoadoutData set ["helmets", ["OPTRE_Ins_URF_Helmet2"]];
 _crewLoadoutData set ["carbines", [
     ["OPTRE_M7", "", "", "optre_m12_optic", ["OPTRE_60Rnd_5x23mm_Mag"], [], ""]
 ]];
 
 private _pilotLoadoutData = _militaryLoadoutData call _fnc_copyLoadoutData;
-_pilotLoadoutData set ["uniforms", ["OPTRE_UNSC_Navy_Uniform_Gray"]];
-_pilotLoadoutData set ["vests", ["OPTRE_UNSC_M52A_Armor2_URB"]];
-_pilotLoadoutData set ["helmets", ["OPTRE_FC_VX19_Helmet"]];
+_pilotLoadoutData set ["uniforms", ["OPTRE_Ins_URF_Combat_Uniform"]];
+_pilotLoadoutData set ["vests", ["OPTRE_Ins_URF_Armor1"]];
+_pilotLoadoutData set ["helmets", ["OPTRE_Ins_URF_Helmet2"]];
 _pilotLoadoutData set ["carbines", [
-    ["OPTRE_M7", "", "", "optre_m12_optic", ["OPTRE_60Rnd_5x23mm_Mag"], [], ""]
+    ["OPTRE_M6G", "", "", "", ["OPTRE_8Rnd_127x40_Mag_Tracer"], [], ""]
 ]];
 
 /////////////////////////////////

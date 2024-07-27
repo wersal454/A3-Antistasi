@@ -64,7 +64,7 @@ private _initialRebelEquipment = [
     "OPTRE_M6C",
     "OPTRE_8Rnd_127x40_AP_Mag","OPTRE_8Rnd_127x40_Mag","OPTRE_M9_Frag","SmokeShell",
     ["OPTRE_M41_SSR", 5], ["OPTRE_M41_Twin_HEAT", 10],
-    "OPTRE_ILCS_Rucksack_Black","OPTRE_UNSC_Rucksack","OPTRE_UNSC_Rucksack_Heavy",
+    "OPTRE_ILCS_Rucksack_Black","OPTRE_ILCS_Rucksack_Heavy","OPTRE_ILCS_Rucksack_Medical",
     "OPTRE_UNSC_M52D_Armor","OPTRE_UNSC_M52D_Armor_Demolitions","OPTRE_UNSC_M52D_Armor_Rifleman",
     "Binocular"
 ];

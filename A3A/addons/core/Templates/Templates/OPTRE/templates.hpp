@@ -16,21 +16,18 @@
         climate[] = {"arid", "temperate"};
         description = "The UNSC";
     };
-
     class OPTRE_UNSC_desert : OPTRE_UNSC
     {
         name = "UNSC Desert";
         file = "OPTRE_AI_UNSC_desert";
         climate[] = {"arid", "temperate"};
     };
-    
     class OPTRE_UNSC_snow : OPTRE_UNSC
     {
         name = "UNSC Snow";
         file = "OPTRE_AI_UNSC_snow";
         climate[] = {"arctic"};
     };
-
     class OPTRE_UNSC_tropical : OPTRE_UNSC
     {
         name = "UNSC Tropical";
@@ -47,13 +44,19 @@
         file = "OPTRE_AI_Covenant";
         description = "The Covenant (With OPTRE elites)";
     };
-
     class OPTRE_Cov_Grunts : OPTRE_Cov
     {
         requiredAddons[] = {"OPTRE_Core", "OPTRE_FC_Core", "WBK_Halo_Alients"};
         name = "Covenant (WBK Elites)";
         file = "OPTRE_AI_Covenant_Grunts";
         description = "The Covenant (With Webknights elites and grunts)";
+    };
+    class OPTRE_Ins : OPTRE_Cov
+    {
+        flagTexture = QPATHTOFOLDER(Templates\Templates\OPTRE\images\flag_insurrection_ca.paa);
+        name = "Insurrection";
+        file = "OPTRE_AI_Insurrection";
+        description = "Generic insurrectionists, as an alternative to Covenant.";
     };
 
     class OPTRE_Reb : OPTRE_Base
