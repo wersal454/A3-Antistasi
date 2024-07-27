@@ -142,11 +142,13 @@ switch (_mode) do
         private _displayBM = findDisplay A3A_IDD_BLACKMARKETVEHICLEDIALOG;
         private _bmTable = _displayBM displayCtrl A3A_IDC_SETUP_BMTABLE;
 
-        private _vehicleTypes = ["All", "Artillery", "APC", "AA", "UAV", "Tank", "Statics", "Helicopters", "Planes", "Armed Car", "Unarmed Car", "Boat"];
+        private _vehicleTypes = [localize "STR_antistasi_dialogs_vehicle_tab_all", localize "STR_antistasi_dialogs_vehicle_tab_arty", localize "STR_antistasi_dialogs_vehicle_tab_apc", localize "STR_antistasi_dialogs_vehicle_tab_AA",
+        localize "STR_antistasi_dialogs_vehicle_tab_uav", localize "STR_antistasi_dialogs_vehicle_tab_tank",localize "STR_antistasi_dialogs_vehicle_tab_statics", localize "STR_antistasi_dialogs_vehicle_tab_heli", 
+        localize "STR_antistasi_dialogs_vehicle_tab_plane", localize "STR_antistasi_dialogs_vehicle_tab_armedcar", localize "STR_antistasi_dialogs_vehicle_tab_unarmedcar", localize "STR_antistasi_dialogs_vehicle_tab_boat"];
         private _vals = ["all", "artillery", "apc", "aa", "uav", "tank", "statics", "heli", "plane", "armedcar", "unarmedcar", "boat"];
 
         private _valsCtrl = _bmTable;
-        _valsCtrl ctrlSetPosition [GRID_W * -30.4, GRID_H*-17.9, GRID_W*125, GRID_H*5];
+        /* _valsCtrl ctrlSetPosition [GRID_W * -30.4, GRID_H*-17.9, GRID_W*125, GRID_H*5]; */
         _valsCtrl ctrlCommit 0;
         {
             private _index = _valsCtrl lbAdd (_vehicleTypes#_forEachIndex);
