@@ -1,11 +1,11 @@
 params [
-    ["_side", Invaders],
-    ["_origin", "CSAT_carrier"],
     ["_target", ""],
-    ["_pool", "attack"],
     ["_vehCount", 5],
-    ["_delay", 5],
+    ["_origin", "CSAT_carrier"],
     ["_modifiers", ["specops"]]
+    ["_delay", 30],
+    ["_side", Invaders],
+    ["_pool", "attack"],
 ];
 
 private _data = [
