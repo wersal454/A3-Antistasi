@@ -294,23 +294,29 @@ while {true} do {
 
 	if (isTraderQuestCompleted) then {
 		private _vehicleTypesUnlocked = unlockedVehicleTypes;
+		private _vehicleTypesUnlockedNotify = [];
 
 		if (isNil "_vehicleTypesUnlocked") then {
 			_vehicleTypesUnlocked = [];
 		};
 
 		{
-			private _condition = compile _x#0;
+			private _condition = compile (_x#0);
 
-			private _alreadyUnlocked = (_x#1 in _vehicleTypesUnlocked);
+			private _alreadyUnlocked = ((_x#1) in _vehicleTypesUnlocked);
 			if (_alreadyUnlocked) then {continue};
 
 			if (call _condition) then {
 				private _text = format["%1 is now unlocked in the Arms Dealer.", (_x#1)];
+
 				_vehicleTypesUnlocked pushBack (_x#1);
+				_vehicleTypesUnlockedNotify pushBack (_x#1);
+				
 				[_text, _fnc_scriptName] call A3U_fnc_log;
 			};
 		} forEach _conditions;
+
+		if (_vehicleTypesUnlockedNotify isEqualTo []) exitWith {false};
 
 		private _unlockedMessages = "The following vehicles have been unlocked at the Arms Dealer.<br/>"; // To-Do: Localize
 
