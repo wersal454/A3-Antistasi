@@ -35,6 +35,7 @@ class CfgFunctions
             class guardDog {};
             class hasRadio {};
             class HeliDoors {};
+            class PodsDoors {};
             class help {};
             class hideInBuilding {};
             class inmuneConvoy {};

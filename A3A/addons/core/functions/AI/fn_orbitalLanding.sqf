@@ -65,25 +65,26 @@ if (_podseats != 1) then {
 
 	_pod allowDamage true;
 
-	_pod animateDoor ['door_R', 1];
-	_pod animateDoor ["Door_rear_source", 1, true];
+	sleep 0.45;
+	[_pod, "open"] spawn A3A_fnc_PodsDoors;
+
 	[_pod] call A3A_fnc_smokeCoverAuto;
 };
 
 
 if (_podseats >= _groupcount) then {
-private _second = false;
-{
-  if (_second) then {
-    _x action ["Eject", _pod];
-    unassignVehicle _x;
-    _second = false;
-  } else {
-    _second = true;
-    _x leaveVehicle _pod;
-  };
-  private _second = true;
-} forEach units _groupX;
+	private _second = false;
+	{
+  	if (_second) then {
+    	_x action ["Eject", _pod];
+    	unassignVehicle _x;
+    	_second = false;
+  	} else {
+    	_second = true;
+    	_x leaveVehicle _pod;
+  	};
+  	private _second = true;
+	} forEach units _groupX;
 };
 sleep 2;
 private _SafeMovePos = [];
@@ -91,6 +92,7 @@ if (_podseats < _groupcount) then {
 	if (_podseats == 1) then {
 		{
 			_podX = typeOf _pod createVehicle position _x;
+			[_podX, _pod, _dist, _x, _positionX, _posOrigin] spawn A3A_fnc_orbitalLandingSinglePod;
 			sleep 2;
 		} forEach units _groupX;
 	} else {

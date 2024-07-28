@@ -28,7 +28,10 @@ _podX allowDamage true;
 
 _x allowDamage true;
 
-sleep 1.75;
+sleep 0.45;
+[_podX, "open"] spawn A3A_fnc_PodsDoors;
+
+sleep 1.55;
 
 _x action ["Eject", _podX];
 _x leaveVehicle _podX;
