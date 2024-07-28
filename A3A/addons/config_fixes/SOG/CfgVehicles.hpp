@@ -171,10 +171,29 @@ class CfgVehicles
 	class vn_o_air_mig21_hcas;
 	class vn_o_air_mig21_mr;
 
+	class vn_o_armor_btr50pk_01_nva65;
+	class vn_o_armor_btr50pk_03_nva65;
+	class vn_o_armor_btr50pk_02_nva65;
+
+
+
 	//class vn_b_boat_12_01; ///no way to make no insignia or I didn't found one
 	//class vn_b_boat_13_01; ///no way to make no insignia or I didn't found one
 	//other vehicles don't need to change anything, since they already spawn with no insignias
 	////
+
+	class vn_o_armor_btr50pk_01_nva65_noinsignia : vn_o_armor_btr50pk_01_nva65
+    {
+       textureList[] = {"btr50_19",1,"btr50_13",1,"btr50_07",1,"btr50_01",1};
+    };
+	class vn_o_armor_btr50pk_03_nva65_noinsignia : vn_o_armor_btr50pk_03_nva65
+    {
+       textureList[] = {"btr50_19",1,"btr50_13",1,"btr50_07",1,"btr50_01",1};
+    };
+	class vn_o_armor_btr50pk_02_nva65_noinsignia : vn_o_armor_btr50pk_02_nva65
+    {
+       textureList[] = {"btr50_19",1,"btr50_13",1,"btr50_07",1,"btr50_01",1};
+    };
 
 	///little bird
 	class vn_b_air_oh6a_07_noinsignia : vn_b_air_oh6a_07
@@ -528,7 +547,8 @@ class CfgVehicles
 	class vn_b_air_uh1b_02_05_noinsignia : vn_b_air_uh1b_02_05
 	{
         textureList[] = {"uh1c_05",1,"uh1c_04",1,"uh1c_17",1,"uh1c_18",1,"uh1c_01",0,"uh1c_21",0};
-    };
+		hiddenSelectionsTextures[] = {"vn\air_f_vietnam\uh1\data\vn_air_uh1_c_ext_01_05_co.paa","vn\air_f_vietnam\uh1\data\vn_air_uh1_c_ext_02_05_co.paa","a3\data_f\clear_empty.paa","a3\data_f\clear_empty.paa","a3\data_f\clear_empty.paa"};
+	};
 	////B
 
 	////C
@@ -598,6 +618,7 @@ class CfgVehicles
 	class vn_b_air_uh1d_01_01_noinsignia : vn_b_air_uh1d_01_01
 	{
         textureList[] = {"uh1d_30",1,"uh1d_32",0,"uh1d_01",0};
+		hiddenSelectionsTextures[] = {"vn\air_f_vietnam\uh1\data\vn_air_uh1_d_ext_01_co.paa","vn\air_f_vietnam\uh1\data\vn_air_uh1_d_ext_02_co.paa","a3\data_f\clear_empty.paa","a3\data_f\clear_empty.paa","a3\data_f\clear_empty.paa"};
     };
 	class vn_b_air_uh1d_02_01_noinsignia : vn_b_air_uh1d_02_01
 	{
