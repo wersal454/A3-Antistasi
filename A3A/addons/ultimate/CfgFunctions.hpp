@@ -33,6 +33,9 @@ class CfgFunctions
         {
             file = QPATHTOFOLDER(functions\REINF);
             class blackMarketVehiclePrice {};
+            class invaderComeback {};
+            class setInvaderState {};
+            class simpleAttack {};
         };
         class patches
         {
