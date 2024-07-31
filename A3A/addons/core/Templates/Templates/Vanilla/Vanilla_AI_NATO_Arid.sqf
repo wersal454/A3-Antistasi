@@ -57,8 +57,10 @@ private _planesCAS = ["B_Plane_CAS_01_dynamicLoadout_F","B_UAV_02_dynamicLoadout
 private _planesAA = ["B_Plane_CAS_01_dynamicLoadout_F","B_UAV_02_dynamicLoadout_F"];
 
 private _planesTransport = [];
+private _gunship = [];
 if (_hasApex) then {
     _planesTransport pushback "B_T_VTOL_01_infantry_F";
+    _gunship pushback "B_T_VTOL_01_armed_F";
 };
 
 private _transportHelicopters = ["B_Heli_Transport_01_F"];
@@ -205,6 +207,7 @@ if (_hasCSLA) then {
     _policeVehs append ["CSLA_CIV_ADA1600VB","CSLA_CIV_Sarka1200PO","CSLA_CIV_Sarka1200VB","CSLA_AZU_VB"];
 };
 
+["vehiclesPlanesGunship", _gunship] call _fnc_saveToTemplate;
 ["vehiclesTransportBoats", _transportBoat] call _fnc_saveToTemplate;
 ["vehiclesMilitiaTrucks", _militiaTrucks] call _fnc_saveToTemplate;
 ["vehiclesMilitiaLightArmed", _militiaLightArmed] call _fnc_saveToTemplate;
@@ -221,6 +224,7 @@ if (_hasCSLA) then {
 ["vehiclesBasic", _basic] call _fnc_saveToTemplate;
 ["vehiclesTanks", _tanks] call _fnc_saveToTemplate;
 ["uavsPortable", _uavsPortable] call _fnc_saveToTemplate;
+
 ["vehiclesHelisTransport", _transportHelicopters] call _fnc_saveToTemplate;
 ["vehiclesPolice", _policeVehs] call _fnc_saveToTemplate;
 ["vehiclesHelisLightAttack", _helisLightAttack] call _fnc_saveToTemplate;
