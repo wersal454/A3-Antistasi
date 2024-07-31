@@ -1,6 +1,6 @@
 /*  
-Maintainer: John Jordan
-    Create air attack force
+Maintainer: wersal
+    Create orbital attack force
 
 Scope: Server or HC
 Environment: Scheduled (sleeps between unit spawns)
