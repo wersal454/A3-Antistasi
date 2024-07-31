@@ -123,7 +123,7 @@ if (_airBase != "") then            // uh, is that a thing
         [-(_data#0), _side, _resPool] remoteExec ["A3A_fnc_addEnemyResources", 2];
 
         ServerInfo_1("Spawn performed: Orbital vehicles %1", _data#1 apply {typeOf _x});
-    }else{
+    } else {
 
         private _data = [_side, _airBase, _targPos, _resPool, _airCount, _attackCount, _tier, _troops] call A3A_fnc_createAttackForceAir;
         _resourcesSpent = _resourcesSpent + _data#0;
