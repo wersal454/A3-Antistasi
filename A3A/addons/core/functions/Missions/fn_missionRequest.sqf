@@ -102,7 +102,7 @@ switch (_type) do {
 		} else {
 			private _milAdmins = _possibleMarkers select {_x in milAdministrationsX };
 			private _site = if (_milAdmins isNotEqualTo []) then {selectRandom _milAdmins} else {selectRandom _possibleMarkers};
-			private _frontlineSite = selectRandom _possibleFrontlineMarkers ///if (_possibleFrontlineMarkers isNotEqualTo []) then {} else {selectRandom _possibleMarkers};
+			private _frontlineSite = selectRandom _possibleFrontlineMarkers; //if (_possibleFrontlineMarkers isNotEqualTo []) then {} else {selectRandom _possibleMarkers};
 			if (_site in milAdministrationsX) then {
 				[[_site],"A3A_fnc_CON_MilAdmin"] remoteExec ["A3A_fnc_scheduler",2]
 			} else {
