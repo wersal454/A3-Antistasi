@@ -31,7 +31,7 @@ private _vehiclesLightArmed = ["LIB_Kfz1_MG42_sernyt"];
 ["vehiclesLightAPCs", ["LIB_SdKfz251_FFV_w","LIB_SdKfz251_w"]] call _fnc_saveToTemplate;
 ["vehiclesAPCs", ["LIB_SdKfz_7_AA_w", "LIB_SdKfz251_FFV_w","LIB_SdKfz251_w"]] call _fnc_saveToTemplate;
 ["vehiclesIFVs", ["LIB_PzKpfwIV_H_w", "LIB_StuG_III_G_w"]] call _fnc_saveToTemplate;
-["vehiclesTanks", ["LIB_PzKpfwV_w", "LIB_PzKpfwVI_E_w"]] call _fnc_saveToTemplate;
+["vehiclesTanks", ["LIB_PzKpfwV_w", "LIB_PzKpfwV_w", "LIB_PzKpfwV_w", "LIB_PzKpfwVI_E_w", "LIB_PzKpfwVI_B_w"]] call _fnc_saveToTemplate;
 ["vehiclesAA", ["LIB_FlakPanzerIV_Wirbelwind_w"]] call _fnc_saveToTemplate;
 ["vehiclesAirborne", ["LIB_SdKfz251_w"]] call _fnc_saveToTemplate;
 private _vehiclesLightTanks = ["LIB_StuG_III_G_w"]; 
