@@ -21,7 +21,7 @@
 
 ["vehiclesBasic", ["LIB_GazM1_SOV"]] call _fnc_saveToTemplate;
 ["vehiclesLightUnarmed", ["LIB_Willys_MB","LIB_Willys_MB_Hood"]] call _fnc_saveToTemplate;
-["vehiclesLightArmed",["LIB_Scout_M3"]] call _fnc_saveToTemplate;
+private _vehiclesLightArmed = ["LIB_Scout_M3"]; 
 ["vehiclesTrucks", ["LIB_US6_Tent","LIB_US6_Open"]] call _fnc_saveToTemplate;
 ["vehiclesCargoTrucks", ["LIB_US6_Open_Cargo","LIB_US6_Tent_Cargo"]] call _fnc_saveToTemplate;
 ["vehiclesAmmoTrucks", ["LIB_US6_Ammo"]] call _fnc_saveToTemplate;
@@ -31,10 +31,21 @@
 ["vehiclesLightAPCs", ["LIB_Scout_M3_FFV","LIB_Scout_M3"]] call _fnc_saveToTemplate;
 ["vehiclesAPCs", ["LIB_Scout_M3_FFV","LIB_SOV_M3_Halftrack"]] call _fnc_saveToTemplate;
 ["vehiclesIFVs", ["LIB_SU85", "LIB_T34_76"]] call _fnc_saveToTemplate;
-["vehiclesTanks", ["LIB_T34_85","LIB_JS2_43"]] call _fnc_saveToTemplate;
+private _vehiclesTanks = ["LIB_T34_85","LIB_T34_85","LIB_T34_85","LIB_JS2_43"];
 ["vehiclesAA", ["LIB_Zis5v_61K"]] call _fnc_saveToTemplate;
 ["vehiclesAirborne", ["LIB_Scout_M3_FFV"]] call _fnc_saveToTemplate;
-["vehiclesLightTanks",  ["LIB_T34_76"]] call _fnc_saveToTemplate;
+private _vehiclesLightTanks = ["LIB_T34_76"]; 
+
+if (isClass (configFile >> "CfgPatches" >> "FA_WW2_Armored_Cars")) then {
+    _vehiclesLightArmed append ["FA_BA64","FA_BA10M"]; 
+};
+if (isClass (configFile >> "CfgPatches" >> "FA_WW2_Tanks")) then {
+    _vehiclesLightTanks append ["FA_T26","FA_T26"];
+	_vehiclesTanks append ["FA_KV1"];
+};
+["vehiclesLightArmed", _vehiclesLightArmed] call _fnc_saveToTemplate;
+["vehiclesLightTanks", _vehiclesLightTanks] call _fnc_saveToTemplate;
+["vehiclesTanks", _vehiclesTanks] call _fnc_saveToTemplate;
 
 ["vehiclesTransportBoats", ["LIB_LCA"]] call _fnc_saveToTemplate;
 ["vehiclesGunBoats", []] call _fnc_saveToTemplate;
