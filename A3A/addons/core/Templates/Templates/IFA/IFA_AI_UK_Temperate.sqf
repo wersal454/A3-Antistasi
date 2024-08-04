@@ -21,7 +21,7 @@
 
 ["vehiclesBasic", ["LIB_UK_Willys_MB"]] call _fnc_saveToTemplate;
 ["vehiclesLightUnarmed", ["LIB_UK_Willys_MB","LIB_UK_Willys_MB_Hood"]] call _fnc_saveToTemplate;
-["vehiclesLightArmed",["LIB_UK_Willys_MB_M1919","LIB_UniversalCarrier"]] call _fnc_saveToTemplate;
+private _vehiclesLightArmed = ["LIB_UK_Willys_MB_M1919","LIB_UniversalCarrier"]; 
 ["vehiclesTrucks", ["LIB_US_GMC_Tent","LIB_US_GMC_Open"]] call _fnc_saveToTemplate;
 ["vehiclesCargoTrucks", ["LIB_US_GMC_Tent","LIB_US_GMC_Open"]] call _fnc_saveToTemplate;
 ["vehiclesAmmoTrucks", ["LIB_US_GMC_Ammo"]] call _fnc_saveToTemplate;
@@ -34,7 +34,16 @@
 ["vehiclesTanks", ["LIB_M4A4_FIREFLY"]] call _fnc_saveToTemplate;
 ["vehiclesAA", ["LIB_Zis5v_61K"]] call _fnc_saveToTemplate;
 ["vehiclesAirborne", ["LIB_UniversalCarrier"]] call _fnc_saveToTemplate;
-["vehiclesLightTanks",  ["LIB_Cromwell_Mk4"]] call _fnc_saveToTemplate;
+private _vehiclesLightTanks = ["LIB_Cromwell_Mk4"]; 
+
+if (isClass (configFile >> "CfgPatches" >> "FA_WW2_Armored_Cars")) then {
+    _vehiclesLightArmed append ["FA_DaimlerMk2"]; 
+};
+if (isClass (configFile >> "CfgPatches" >> "FA_WW2_Tanks")) then {
+    _vehiclesLightTanks append ["FA_ValentineMk3","FA_ValentineMk3"];
+};
+["vehiclesLightArmed", _vehiclesLightArmed] call _fnc_saveToTemplate;
+["vehiclesLightTanks", _vehiclesLightTanks] call _fnc_saveToTemplate;
 
 ["vehiclesTransportBoats", ["LIB_LCVP"]] call _fnc_saveToTemplate;
 ["vehiclesGunBoats", ["LIB_LCM3_Armed", "LIB_LCI"]] call _fnc_saveToTemplate;
