@@ -7,6 +7,8 @@ private _hasArtOfWar = "aow" in A3A_enabledDLC;
 private _hasGM = "gm" in A3A_enabledDLC;
 private _hasCSLA = "csla" in A3A_enabledDLC;
 private _hasRF = "rf" in A3A_enabledDLC;
+private _hasSOG = "vn" in A3A_enabledDLC;
+private _hasSPE = "spe" in A3A_enabledDLC;
 
 //////////////////////////////
 //   Civilian Information   //
@@ -95,6 +97,23 @@ if (_hasRF) then {
     _civFuel append ["a3a_civ_Pickup_fuel_rf", 0.1];
 };
 
+if (_hasSOG) then {
+    _civBoat append ["vn_c_boat_01_04", 0.5 ,"vn_c_boat_01_00", 0.5,"vn_c_boat_01_03", 0.5,"vn_c_boat_01_01", 0.5,"vn_c_boat_01_02", 0.5,"vn_c_boat_02_03", 0.5,"vn_c_boat_02_04", 0.5,
+    "vn_c_boat_02_00", 0.5,"vn_c_boat_02_01", 0.5,"vn_c_boat_02_02", 0.5,"vn_c_boat_08_02", 0.5,"vn_c_boat_08_01", 0.5,"vn_c_boat_07_02", 0.5,"vn_c_boat_07_01"];
+    _civHelicopter append ["vn_o_air_mi2_02_02_noinsignia","vn_b_air_uh1b_01_09","vn_b_air_uh1d_04_09"];
+    _civPlanes append ["vnx_i_air_ac119_02_01_noinsignia"];
+    _civIndustrial append ["vn_c_car_04_01", 0.3];
+    _civCarsWithWeights append ["vn_c_bicycle_01", 0.05, "vn_c_car_01_01", 0.2, "vn_c_car_03_01", 0.2, "vn_c_car_02_01", 0.2, "vn_c_wheeled_m151_02", 0.3, "vn_c_wheeled_m151_01", 0.2, 
+    "vn_c_car_01_02", 0.4];
+};
+
+if (_hasSPE) then {
+    _civMedical append ["SPE_FFI_OpelBlitz_Ambulance_noinsignia", 0.1];
+    _civRepair append ["SPE_FFI_OpelBlitz_Repair_noinsignia", 0.1];
+    _civFuel append ["SPE_FFI_OpelBlitz_Fuel_noinsignia", 0.1];
+    _civIndustrial append ["SPE_FFI_OpelBlitz_noinsignia", 0.2,"SPE_FFI_OpelBlitz_Open_noinsignia",0.2];
+};
+
 ["vehiclesCivCar", _civCarsWithWeights] call _fnc_saveToTemplate;
 ["vehiclesCivHeli", _civHelicopter] call _fnc_saveToTemplate;
 ["vehiclesCivIndustrial", _civIndustrial] call _fnc_saveToTemplate;
@@ -106,7 +125,8 @@ if (_hasRF) then {
 
 ["animations", [
     ["gm_pl_army_uaz469_cargo", ["RoadPrioritySign_01_unhide",0,"FrontLight_02_Cover_unhide",0,"windshield",0,"windows_unhide",0.3,"cover_hoops_unhide",0,"spare_wheel_unhide",0.3,"antenna_01_unhide",0,"antenna_02_unhide",0,"FogLights_01_unhide",0.3,"mirrors_01_unhide",0.3,"doors_unhide",0.3]],
-    ["gm_ge_army_iltis_cargo", ["radio_01_unhide",0,"radio_02_unhide",0,"cover_hoops_unhide",0.4,"cover_doors_unhide",0.4,"windshield",0.4,"doorBag_unhide",0.3,"beacon_01_org_unhide",0,"beacon_01_blu_unhide",0,"coldWeatherKit_unhide",0.4]]
+    ["gm_ge_army_iltis_cargo", ["radio_01_unhide",0,"radio_02_unhide",0,"cover_hoops_unhide",0.4,"cover_doors_unhide",0.4,"windshield",0.4,"doorBag_unhide",0.3,"beacon_01_org_unhide",0,"beacon_01_blu_unhide",0,"coldWeatherKit_unhide",0.4]],
+    #include "..\vehicleAnimations\vehicleAnimations_SOG.sqf"
 ]] call _fnc_saveToTemplate;
 
 ["variants", [
@@ -203,6 +223,31 @@ if (_hasWs) then {
 };
 if (_hasRF) then {
     _faces append ["Pilot1_Head_rf","Pilot2_Head_rf"];
+};
+if (_hasSPE) then {
+   _faces append [
+    "SPE_Wolf",
+    "SPE_Vasiliev",
+    "SPE_Elliot",
+    "SPE_Klimakov",
+    "SPE_Grishka",
+    "SPE_OBrien",
+    "SPE_Seppmeyer",
+    "SPE_Kuzmin",
+    "SPE_Connors",
+    "SPE_Walter",
+    "SPE_Neumann",
+    "SPE_Krueger",
+    "SPE_Oberst",
+    "SPE_Arnold",
+    "SPE_Ivanych",
+    "SPE_DAgostino",
+    "SPE_Hauptmann",
+    "SPE_Jeppson",
+    "SPE_boyartsev",
+    "SPE_bykov",
+    "SPE_Davidson"
+   ];
 };
 ["faces", _faces] call _fnc_saveToTemplate;
 
@@ -348,6 +393,87 @@ if (_hasWs && {(toLowerANSI worldName) in ["sefrouramal", "takistan"]}) then {
     "U_lxWS_Tak_03_A",
     "U_lxWS_Tak_03_B",
     "U_lxWS_Tak_03_C"
+  ];
+};
+
+if (_hasSOG) then {
+  _dlcUniforms append [
+    "vn_b_uniform_seal_06_07",
+    "vn_b_uniform_seal_06_01",
+    "vn_b_uniform_seal_05_07",
+    "vn_b_uniform_seal_05_01",
+    "vn_b_uniform_seal_04_01",
+    "vn_b_uniform_seal_03_01",
+    "vn_b_uniform_seal_02_07",
+    "vn_b_uniform_seal_02_01",
+    "vn_b_uniform_seal_01_01"
+  ];
+};
+
+if (_hasSPE) then {
+  _dlcUniforms append [
+    "U_SPE_CIV_Swetr_5_vest",
+    "U_SPE_CIV_Swetr_5",
+    "U_SPE_CIV_Swetr_4_vest",
+    "U_SPE_CIV_Swetr_4",
+    "U_SPE_CIV_Swetr_3_vest",
+    "U_SPE_CIV_Swetr_3",
+    "U_SPE_CIV_Swetr_2_vest",
+    "U_SPE_CIV_Swetr_2",
+    "U_SPE_CIV_Swetr_1_vest",
+    "U_SPE_CIV_Swetr_1",
+    "U_SPE_CIV_pak2_grijs_swetr",
+    "U_SPE_CIV_pak2_grijs_tie",
+    "U_SPE_CIV_pak2_grijs",
+    "U_SPE_CIV_pak2_bruin_swetr",
+    "U_SPE_CIV_pak2_bruin_tie",
+    "U_SPE_CIV_pak2_bruin",
+    "U_SPE_CIV_pak2_zwart_swetr",
+    "U_SPE_CIV_pak2_zwart_alt",
+    "U_SPE_CIV_pak2_zwart_tie_alt",
+    "U_SPE_CIV_pak2_zwart_tie",
+    "U_SPE_CIV_pak2_zwart",
+    "U_SPE_CIV_Citizen_7_trop",
+    "U_SPE_CIV_Citizen_7_tie",
+    "U_SPE_CIV_Citizen_7",
+    "U_SPE_CIV_Citizen_6_trop",
+    "U_SPE_CIV_Citizen_6_tie",
+    "U_SPE_CIV_Citizen_6",
+    "U_SPE_CIV_Citizen_5_trop",
+    "U_SPE_CIV_Citizen_5_tie",
+    "U_SPE_CIV_Citizen_5",
+    "U_SPE_CIV_Citizen_4_trop",
+    "U_SPE_CIV_Citizen_4_tie",
+    "U_SPE_CIV_Citizen_4",
+    "U_SPE_CIV_Citizen_3_trop",
+    "U_SPE_CIV_Citizen_3_tie",
+    "U_SPE_CIV_Citizen_3",
+    "U_SPE_CIV_Citizen_2_trop",
+    "U_SPE_CIV_Citizen_2_tie",
+    "U_SPE_CIV_Citizen_2",
+    "U_SPE_CIV_Citizen_1_trop",
+    "U_SPE_CIV_Citizen_1_tie",
+    "U_SPE_CIV_Citizen_1"
+  ];
+  _workerUniforms append [
+    "U_SPE_CIV_Worker_4_trop",
+    "U_SPE_CIV_Worker_4_tie",
+    "U_SPE_CIV_Worker_4",
+    "U_SPE_CIV_Worker_3_trop",
+    "U_SPE_CIV_Worker_3_tie",
+    "U_SPE_CIV_Worker_3",
+    "U_SPE_CIV_Worker_2_trop",
+    "U_SPE_CIV_Worker_2_tie",
+    "U_SPE_CIV_Worker_2",
+    "U_SPE_CIV_Worker_1_trop",
+    "U_SPE_CIV_Worker_1_tie",
+    "U_SPE_CIV_Worker_1",
+    "U_SPE_CIV_Worker_Coverall_3_trop",
+    "U_SPE_CIV_Worker_Coverall_3",
+    "U_SPE_CIV_Worker_Coverall_2_trop",
+    "U_SPE_CIV_Worker_Coverall_2",
+    "U_SPE_CIV_Worker_Coverall_1_trop",
+    "U_SPE_CIV_Worker_Coverall_1"
   ];
 };
 
@@ -500,6 +626,54 @@ if (_hasRF) then {
     "H_Helmet_HardHat_Blue_RF",
     "H_Helmet_HardHat_Black_RF"
 ];
+};
+
+if (_hasSOG) then {
+  _dlchats append [
+    "vn_b_headband_02",
+    "vn_b_headband_04",
+    "vn_c_headband_01",
+    "vn_c_headband_02",
+    "vn_b_headband_01",
+    "vn_b_headband_08",
+    "vn_b_headband_05",
+    "vn_c_headband_03",
+    "vn_c_headband_04",
+    "vn_b_headband_03",
+    "vn_o_pl_cap_01_01",
+    "vn_o_pl_cap_02_01",
+    "vn_o_pl_cap_02_02",
+    "vn_o_boonie_vc_01_01",
+    "vn_o_boonie_vc_01_02",
+    "vn_b_boonie_02_09",
+    "vn_b_boonie_02_01",
+    "vn_b_boonie_02_03",
+    "vn_b_boonie_06_01",
+    "vn_b_boonie_06_02",
+    "vn_b_boonie_07_01",
+    "vn_b_boonie_07_02",
+    "vn_b_boonie_08_01",
+    "vn_b_boonie_08_02",
+    "vn_b_bandana_02",
+    "vn_b_bandana_05",
+    "vn_b_bandana_04",
+    "vn_b_bandana_01",
+    "vn_b_bandana_03"
+  ];
+};
+
+if (_hasSOG) then {
+  _dlchats append [
+    "H_SPE_CIV_Worker_Cap_1",
+    "H_SPE_CIV_Worker_Cap_2",
+    "H_SPE_CIV_Worker_Cap_3",
+    "H_SPE_CIV_Fedora_Cap_3",
+    "H_SPE_CIV_Fedora_Cap_4",
+    "H_SPE_CIV_Fedora_Cap_2",
+    "H_SPE_CIV_Fedora_Cap_1",
+    "H_SPE_CIV_Fedora_Cap_6",
+    "H_SPE_CIV_Fedora_Cap_5"
+  ];
 };
 
 ["headgear", _civHats + _dlchats] call _fnc_saveToTemplate;

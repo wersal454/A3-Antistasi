@@ -10,6 +10,7 @@ private _hasArtOfWar = "aow" in A3A_enabledDLC;
 private _hasGM = "gm" in A3A_enabledDLC;
 private _hasCSLA = "csla" in A3A_enabledDLC;
 private _hasRF = "rf" in A3A_enabledDLC;
+private _hasSOG = "vn" in A3A_enabledDLC;
 
 //////////////////////////
 //   Side Information   //
@@ -57,18 +58,10 @@ private _planesCAS = ["O_Plane_CAS_02_dynamicLoadout_F","O_UAV_02_dynamicLoadout
 private _planesAA = ["O_Plane_CAS_02_dynamicLoadout_F","O_UAV_02_dynamicLoadout_F"];
 
 private _planesTransport = [];
-if (_hasApex) then {
-	_planesTransport pushback "O_T_VTOL_02_infantry_dynamicLoadout_F";
-    _planesCAS append ["O_T_VTOL_02_infantry_dynamicLoadout_F","O_T_UAV_04_CAS_F"];
-    _planesAA pushback "O_T_VTOL_02_infantry_dynamicLoadout_F";
-};
+private _gunship = [];
 
 private _lightHelicopters = ["O_Heli_Light_02_unarmed_F"];
 private _transportHelicopters = ["O_Heli_Light_02_unarmed_F"];
-
-if (_hasHelicopters) then {
-    _transportHelicopters = ["O_Heli_Transport_04_covered_F", "O_Heli_Transport_04_bench_F"]; 
-};
 
 ["vehiclesHelisTransport", _transportHelicopters] call _fnc_saveToTemplate;
 private _lightAttackHelicopters = ["O_Heli_Light_02_dynamicLoadout_F"];
@@ -89,15 +82,7 @@ private _militiaLightArmed = ["B_G_Offroad_01_armed_F"];
 private _militiaCars = ["B_G_Offroad_01_F"];
 private _militiaAPCs = ["O_APC_Wheeled_02_rcws_v2_F"];
 
-private _policeVehs = if (_hasContact) then {
-    ["B_GEN_Offroad_01_covered_F", "B_GEN_Offroad_01_comms_F", "B_GEN_Offroad_01_gen_F"]
-} else {
-    ["B_GEN_Offroad_01_gen_F"]
-};
-
-if (_hasLawsOfWar) then {
-    _policeVehs append ["B_GEN_Van_02_vehicle_F","B_GEN_Van_02_transport_F"];
-};
+private _policeVehs = ["B_GEN_Offroad_01_gen_F"];
 
 ["staticMGs", ["I_HMG_02_high_F","O_HMG_01_high_F"]] call _fnc_saveToTemplate;
 ["staticAT", ["O_static_AT_F","O_GMG_01_high_F"]] call _fnc_saveToTemplate;
@@ -105,32 +90,8 @@ private _staticAA = ["O_static_AA_F"];
 ["staticMortars", ["O_Mortar_01_F"]] call _fnc_saveToTemplate;
 private _howitzers = [];
 
-if (_hasApex) then {
-    _planesTransport pushback "O_T_VTOL_02_infantry_dynamicLoadout_F";
-    _lightUnarmed pushBack "O_LSV_02_unarmed_F";
-    _lightArmed append ["O_LSV_02_AT_F", "O_LSV_02_armed_F"];
-    _militiaCars pushBack "I_C_Offroad_02_unarmed_F";
-    _militiaLightArmed pushBack "a3a_Offroad_02_LMG_black_F";
-    _transportBoat pushBack "I_C_Boat_Transport_02_F";
-};
-
-if (_hasRF) then {
-    _lightUnarmed append ["O_Pickup_rf","O_Pickup_Comms_rf"];
-    _militiaLightArmed pushBack "O_G_Pickup_hmg_rf";
-    _militiaCars append ["O_Pickup_rf","O_Pickup_Comms_rf"];
-    _uavsPortable pushBack "O_UAV_RC40_SENSOR_RF";
-    _howitzers pushBack "O_TwinMortar_RF";
-    _policeVehs append ["a3a_police_Pickup_rf", "B_GEN_Pickup_covered_rf", "a3a_police_Pickup_comms_rf"];
-};
-
 private _radar = [];
 private _SAM = [];
-if (_hasJets) then {
-	_planesCAS pushback "O_Plane_Fighter_02_F";
-	_planesAA pushback "O_Plane_Fighter_02_Stealth_F";
-	_radar pushback "O_Radar_System_02_F";
-	_SAM pushback "O_SAM_System_04_F";
-};
 
 ["mortarMagazineHE", "8Rnd_82mm_Mo_shells"] call _fnc_saveToTemplate;
 ["mortarMagazineSmoke", "8Rnd_82mm_Mo_Smoke_white"] call _fnc_saveToTemplate;
@@ -141,22 +102,39 @@ if (_hasJets) then {
 ["minefieldAT", ["ATMine"]] call _fnc_saveToTemplate;
 ["minefieldAPERS", ["APERSMine", "APERSBoundingMine"]] call _fnc_saveToTemplate;
 
+if (_hasJets) then {
+	#include "..\DLC_content\vehicles\Jets\Vanilla_CSAT_Arid.sqf"
+};
+
+if (_hasHelicopters) then {
+    #include "..\DLC_content\vehicles\Helicopters\Vanilla_CSAT_Arid.sqf"
+};
+
+if (_hasContact) then {
+    #include "..\DLC_content\vehicles\Contact\police_offroad.sqf"
+};
+
+if (_hasLawsOfWar) then {
+    #include "..\DLC_content\vehicles\Lawsofwar\police_van.sqf"
+};
+
+if (_hasApex) then {
+    #include "..\DLC_content\vehicles\Apex\Vanilla_CSAT_Arid.sqf"
+};
+
+if (_hasRF) then {
+    #include "..\DLC_content\vehicles\RF\Vanilla_CSAT_Arid.sqf"
+};
+
 if (_hasTanks) then {
-    _tanks append ["O_MBT_04_cannon_F", "O_MBT_04_command_F"];
+    #include "..\DLC_content\vehicles\Tanks\Vanilla_CSAT_Arid.sqf"
 };
 
 if (_hasWs) then {
-    _aa pushBack "O_SFIA_Truck_02_aa_lxWS";
-    _staticAA pushBack "O_SFIA_ZU23_lxWS";
-    _Airborne pushback "O_APC_Wheeled_02_hmg_lxWS";
-    _cargoTrucks = ["O_Truck_02_cargo_lxWS", "O_Truck_02_flatbed_lxWS","O_UGV_01_F"];
-    _lightAPCs = ["O_APC_Wheeled_02_hmg_lxWS","O_APC_Wheeled_02_unarmed_lxWS"];
-    _militiaAPCs = ["O_APC_Wheeled_02_hmg_lxWS","O_APC_Wheeled_02_unarmed_lxWS"];
-    _IFVs pushBack "O_APC_Tracked_02_30mm_lxWS";
-    _lightHelicopters pushBack "B_ION_Heli_Light_02_unarmed_lxWS";
-    _lightAttackHelicopters pushBack "a3a_ION_Heli_Light_02_dynamicLoadout_lxWS";
+    #include "..\DLC_content\vehicles\WS\Vanilla_CSAT_Arid.sqf"
 };
 
+["vehiclesPlanesGunship", _gunship] call _fnc_saveToTemplate;
 ["vehiclesTransportBoats", _transportBoat] call _fnc_saveToTemplate;
 ["staticHowitzers", _howitzers] call _fnc_saveToTemplate;
 ["vehiclesAA", _aa] call _fnc_saveToTemplate;
@@ -184,53 +162,14 @@ if (_hasWs) then {
 #include "Vanilla_Vehicle_Attributes.sqf"
 
 ["animations", [
-    ["O_SFIA_Truck_02_aa_lxWS", ["shield_hide",0.3,"hideCrates",0.3,"hideSpareWheel",0.3,"hideRoofRack",1,"hideBeacon_1",0,"hideBumper",0.3,"hideWindowProtector",0.3]],
-    ["O_SFIA_ZU23_lxWS", ["shield_hide", 0.5]],
-    ["O_Pickup_rf", ["hide_bullbar",0.3,"hide_fuel_tank",1,"hide_snorkel",0.3,"hide_antenna",0.3,"hide_trunk_cover",1,"hide_trunk_door",0.3,"trunk_door_open",0.3,"hide_armor_window_armor_top",1,"window_armor_hatch_L_rot",0.3,"window_armor_hatch_R_rot",0,"door_F_L_open",0,"door_F_R_open",0,"door_R_L_open",0,"door_R_R_open",0,"hide_rack",0.3,"hide_rack_spotlights",0.3,"hide_frame",0.3,"hide_sidesteps",0.3]],
-    ["O_Pickup_Comms_rf", ["hide_rack",0.3,"hide_rack_antenna",0.3,"hide_frame",0.3,"hide_frame_full",0.3,"hide_frame_full_panel",0.3,"hide_box",0.3,"hide_box_door",0.3,"hide_trunk_door",0.3,"trunk_door_open",0,"box_door_open",0,"hide_police",1,"hide_Services",1,"BeaconsServicesStart",0,"hide_bullbar",0.3,"hide_snorkel",0.3,"hide_antenna",0.3,"hide_armor_window_armor_top",1,"window_armor_hatch_L_rot",0,"window_armor_hatch_R_rot",0,"door_F_L_open",0,"door_F_R_open",0,"door_R_L_open",0,"door_R_R_open",0,"hide_rack_spotlights",0.3,"hide_sidesteps",0.3]],
-    ["O_TwinMortar_RF", ["hide_door_l",0.3,"hide_door_r",0.3]],
-    ["O_MBT_02_railgun_F", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showLog",0.3]],
-    ["O_MBT_04_command_F", ["showCamonetHull", 0.3, "showCamonetTurret", 0.3]],
-    ["O_MBT_04_cannon_F", ["showCamonetHull", 0.3, "showCamonetTurret", 0.3]],
-    ["O_MBT_02_cannon_F", ["showCamonetHull", 0.3, "showCamonetTurret", 0.3, "showLog", 0.4]],
-    ["O_APC_Wheeled_02_hmg_lxWS", ["mg_hide_armor_front",0.3,"mg_hide_armor_rear",0.3,"mg_Hide_Rail",0.3,"showCanisters",0.3,"showTools",0.3,"showCamonetHull",0.3,"showSLATHull",0.3]],
-    ["O_APC_Wheeled_02_unarmed_lxWS", ["showCanisters",0.3,"showTools",0.3,"showCamonetHull",0.3,"showSLATHull",0.3]],
-    ["O_APC_Wheeled_02_rcws_v2_F", ["showCanisters",0.3,"showTools",0.3,"showCamonetHull",0.3,"showSLATHull",0.3]],
-    ["O_LSV_02_armed_F", ["Unarmed_Doors_Hide",0.3]],
-    ["O_LSV_02_unarmed_F", ["Unarmed_Doors_Hide",0.3]],
-    ["O_LSV_02_AT_F", ["Unarmed_Doors_Hide",0.3]],
-    ["I_C_Offroad_02_unarmed_F", ["hideLeftDoor",0.3,"hideRightDoor",0.3,"hideRearDoor",0.3,"hideBullbar",0.3,"hideFenders",0.3,"hideHeadSupportRear",0.3,"hideHeadSupportFront",0.3,"hideRollcage",0.3,"hideSeatsRear",0,"hideSpareWheel",0.3]],
-    ["a3a_Offroad_02_LMG_black_F", ["hideLeftDoor",0.3,"hideRightDoor",0.3,"hideRearDoor",0.3,"hideFenders",0.3,"hideHeadSupportFront",0.3,"hideSpareWheel",0.3]],
-    ["O_APC_Tracked_02_cannon_F", ["showTracks",0.3,"showCamonetHull",0.3,"showSLATHull",0.3]],
-    ["O_APC_Tracked_02_30mm_lxWS", ["showTracks",0.3,"showCamonetHull",0.3,"showSLATHull",0.3]],
-    ["O_APC_Tracked_02_AA_F", ["showTracks",0.3,"showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3]]
+    #include "..\vehicleAnimations\vehicleAnimations_Vanilla.sqf",
+    #include "..\vehicleAnimations\vehicleAnimations_WS.sqf",
+    #include "..\vehicleAnimations\vehicleAnimations_RF.sqf"
 ]] call _fnc_saveToTemplate;
 
 ["variants", [
-    ["Land_Pod_Heli_Transport_04_covered_F", ["Black",1]],
-    ["O_SFIA_Truck_02_aa_lxWS", ["Opfor",1]],
-    ["O_SFIA_ZU23_lxWS", ["hex",1, "SFIA",0]],
-    ["I_Truck_02_MRL_F", ["Opfor", 1, "Indep",0]],
-    ["O_Heli_Transport_04_bench_F", ["Black", 0.3, "Opfor", 0.7]],
-    ["O_Heli_Transport_04_covered_F", ["Black", 0.3, "Opfor", 0.7]],
-    ["O_Heli_Attack_02_dynamicLoadout_F", ["Black", 0.3, "Opfor", 0.7]],
-    ["O_LSV_02_armed_F", ["Black", 0.3, "Arid",0.7]],
-    ["O_LSV_02_unarmed_F", ["Black", 0.3, "Arid",0.7]],
-    ["O_LSV_02_AT_F", ["Black", 0.3, "Arid",0.7]],
-    ["a3a_Offroad_02_LMG_black_F", ["Black", 0.4, "Brown", 0.6]],
-    ["I_C_Offroad_02_unarmed_F", ["Black", 0.4, "Brown", 0.6]],
-    ["O_MBT_02_railgun_F", ["Grey", 0.4, "Hex", 0.6]],
-    ["O_MBT_04_command_F", ["Grey", 0.4, "Hex", 0.6]],
-    ["O_MBT_04_cannon_F", ["Grey", 0.4, "Hex", 0.6]],
-    ["O_MBT_02_cannon_F", ["Grey", 0.4, "Hex", 0.6]],
-    ["O_APC_Tracked_02_30mm_lxWS", ["Grey", 0.4, "Hex", 0.6]],
-    ["O_APC_Wheeled_02_hmg_lxWS", ["Hex", 0.7, "Black", 0.3]],
-    ["O_APC_Wheeled_02_unarmed_lxWS", ["Hex", 0.7, "Black", 0.3]],
-    ["B_ION_Heli_Light_02_unarmed_lxWS", ["Opfor",0.6, "Black", 0.2 , "Blackcustom", 0.2 ,"ION_BLACK", 0]],
-    ["a3a_ION_Heli_Light_02_dynamicLoadout_lxWS", ["Opfor",0.6, "Black", 0.2 , "Blackcustom", 0.2 ,"ION_BLACK", 0]],
-    ["O_Heli_Light_02_unarmed_F", ["Opfor",0.6, "Black", 0.2 , "Blackcustom", 0.2]],
-    ["O_Heli_Light_02_dynamicLoadout_F", ["Opfor",0.6, "Black", 0.2 , "Blackcustom", 0.2]],
-    ["O_T_VTOL_02_infantry_dynamicLoadout_F", ["Hex", 1]]
+    #include "..\vehicleVariants\Vanilla_CSAT_Arid\Vanilla_CSAT_Arid.sqf",
+    #include "..\vehicleVariants\Vanilla_CSAT_Arid\WS_CSAT_Arid.sqf"
 ]] call _fnc_saveToTemplate;
 
 /////////////////////
@@ -245,17 +184,12 @@ private _faces = [
 ];
 if (_hasWs) then {
     _faces append [
-        "CamoHead_Persian_01_F", 
-        "CamoHead_Persian_02_F", 
-        "CamoHead_Persian_03_F", 
-        "lxWS_African_Head_01", 
-        "lxWS_African_Head_02", 
-        "lxWS_African_Head_05",
-        "lxWS_African_Head_04",
-        "lxWS_Said_Head",
-        "lxWS_African_Head_Old",
-        "lxWS_African_Head_Old_Bard",
-        "lxWS_African_Head_03"
+        #include "..\DLC_content\faces\WS\WS_african.sqf"
+    ];
+};
+if (_hasSOG) then {
+    _faces append [
+        #include "..\DLC_content\faces\SOG\SOG_faces_persian.sqf"
     ];
 };
 ["faces", _faces] call _fnc_saveToTemplate;
@@ -285,7 +219,7 @@ _loadoutData set ["lightATLaunchers", [
 _loadoutData set ["ATLaunchers", []];
 
 if (_hasTanks) then {
-    (_loadoutData get "lightATLaunchers") append [
+    (_loadoutData get "ATLaunchers") append [
         ["launch_O_Vorona_brown_F", "", "", "", ["Vorona_HEAT", "Vorona_HEAT"], [], ""],
         ["launch_O_Vorona_brown_F", "", "", "", ["Vorona_HEAT", "Vorona_HE"], [], ""]
     ];
@@ -316,10 +250,9 @@ _loadoutData set ["watches", ["ItemWatch"]];
 _loadoutData set ["compasses", ["ItemCompass"]];
 _loadoutData set ["radios", ["ItemRadio"]];
 _loadoutData set ["gpses", ["ItemGPS"]];
+_loadoutData set ["NVGs", ["NVGoggles_OPFOR"]];
 if (_hasApex) then {
-    _loadoutData set ["NVGs", ["NVGoggles_OPFOR","O_NVGoggles_hex_F"]];
-} else {
-    _loadoutData set ["NVGs", ["NVGoggles_OPFOR"]];
+   (_loadoutData get "NVGs") pushBack "O_NVGoggles_hex_F";
 };
 _loadoutData set ["binoculars", ["Binocular"]];
 _loadoutData set ["rangefinders", ["Rangefinder"]];
@@ -399,10 +332,10 @@ _loadoutData set ["glasses", [
     "G_Sport_Greenblack"
 ]];
 
+_loadoutData set ["goggles", ["G_Lowprofile"]];
+
 if (_hasContact) then {
-    _loadoutData set ["goggles", ["G_Lowprofile", "G_AirPurifyingRespirator_02_black_F" , "G_AirPurifyingRespirator_02_sand_F"]];
-} else {
-    _loadoutData set ["goggles", ["G_Lowprofile"]];
+    (_loadoutData get "goggles") append ["G_AirPurifyingRespirator_02_black_F" , "G_AirPurifyingRespirator_02_sand_F"];
 };
 if (_hasWs) then {
     (_loadoutData get "goggles") pushBack "G_Combat_lxWS";
@@ -1086,6 +1019,47 @@ if (_hasRF) then {
     ];
 };
 
+if (_hasSOG) then {
+    (_policeLoadoutData get "SMGs") append [
+        ["vn_vz61","","","",["vn_vz61_mag","vn_vz61_mag","vn_vz61_t_mag","vn_vz61_t_mag"], [], ""],
+        ["vn_type64_f_smg","","","",["vn_type64_smg_mag","vn_type64_smg_mag","vn_type64_smg_t_mag","vn_type64_smg_t_mag"], [], ""],
+        ["vn_type64_smg","","","",["vn_type64_smg_mag","vn_type64_smg_mag","vn_type64_smg_t_mag","vn_type64_smg_t_mag"], [], ""],
+        ["vn_mpu","vn_s_mpu","","",["vn_mpu_mag","vn_mpu_mag","vn_mpu_t_mag","vn_mpu_t_mag"], [], ""],
+        ["vn_mpu","","","",["vn_mpu_mag","vn_mpu_mag","vn_mpu_t_mag","vn_mpu_t_mag"], [], ""],
+        ["vn_m1897","","","",["vn_m1897_buck_mag","vn_m1897_buck_mag","vn_m1897_fl_mag","vn_m1897_fl_mag"], [], ""],
+        ["vn_izh54_shorty","","","",["vn_izh54_so_mag","vn_izh54_so_mag","vn_izh54_so_mag","vn_izh54_so_mag"], [], ""],
+        ["vn_izh54","","","",["vn_izh54_mag","vn_izh54_mag","vn_izh54_mag","vn_izh54_mag"], [], ""]
+    ];
+    (_policeLoadoutData get "sidearms") append [
+        ["vn_vz61_p","","","",["vn_vz61_mag","vn_vz61_mag","vn_vz61_t_mag","vn_vz61_t_mag"], [], ""],
+        ["vn_type64","","","",["vn_type64_mag","vn_type64_mag","vn_type64_mag","vn_type64_mag"], [], ""],
+        ["vn_tt33","","","",["vn_tt33_mag","vn_tt33_mag","vn_tt33_mag","vn_tt33_mag"], [], ""],
+        ["vn_ppk","vn_s_ppk","","",["vn_ppk_mag","vn_ppk_mag","vn_ppk_mag","vn_ppk_mag"], [], ""],
+        ["vn_ppk","","","",["vn_ppk_mag","vn_ppk_mag","vn_ppk_mag","vn_ppk_mag"], [], ""],
+        ["vn_fkb1_pm","","","",["vn_ppk_mag","vn_ppk_mag","vn_ppk_mag","vn_ppk_mag"], [], ""],
+        ["vn_pm","vn_s_pm","","",["vn_ppk_mag","vn_ppk_mag","vn_ppk_mag","vn_ppk_mag"], [], ""],
+        ["vn_pm","","","",["vn_ppk_mag","vn_ppk_mag","vn_ppk_mag","vn_ppk_mag"], [], ""],
+        ["vn_p38","vn_s_ppk","","",["vn_p38_mag","vn_p38_mag","vn_p38_mag","vn_p38_mag"], [], ""],
+        ["vn_p38","","","",["vn_p38_mag","vn_p38_mag","vn_p38_mag","vn_p38_mag"], [], ""],
+        ["vn_m10","vn_s_mk22","","",["vn_m10_mag","vn_m10_mag","vn_m10_mag","vn_m10_mag"], [], ""],
+        ["vn_m10","","","",["vn_m10_mag","vn_m10_mag","vn_m10_mag","vn_m10_mag"], [], ""],
+        ["vn_mk22","vn_s_mk22","","",["vn_s_mk22","vn_s_mk22","vn_s_mk22","vn_s_mk22"], [], ""],
+        ["vn_mk22","","","",["vn_s_mk22","vn_s_mk22","vn_s_mk22","vn_s_mk22"], [], ""],
+        ["vn_m712","","","",["vn_m712_mag","vn_m712_mag","vn_m712_mag","vn_m712_mag"], [], ""],
+        ["vn_mx991_m1911","vn_s_m1911","","",["vn_m1911_mag","vn_m1911_mag","vn_m1911_mag","vn_m1911_mag"], [], ""],
+        ["vn_mx991_m1911","","","",["vn_m1911_mag","vn_m1911_mag","vn_m1911_mag","vn_m1911_mag"], [], ""],
+        ["vn_m1911","vn_s_m1911","","",["vn_m1911_mag","vn_m1911_mag","vn_m1911_mag","vn_m1911_mag"], [], ""],
+        ["vn_m1911","","","",["vn_m1911_mag","vn_m1911_mag","vn_m1911_mag","vn_m1911_mag"], [], ""],
+        ["vn_m1895","vn_s_m1895","","",["vn_m1895_mag","vn_m1895_mag","vn_m1895_mag","vn_m1895_mag"], [], ""],
+        ["vn_m1895","","","",["vn_m1895_mag","vn_m1895_mag","vn_m1895_mag","vn_m1895_mag"], [], ""],
+        ["vn_izh54_p","","","",["vn_izh54_so_mag","vn_izh54_so_mag","vn_izh54_so_mag","vn_izh54_so_mag"], [], ""],
+        ["vn_hp","vn_s_hp","","",["vn_hp_mag","vn_hp_mag","vn_hp_mag","vn_hp_mag"], [], ""],
+        ["vn_hp","","","",["vn_hp_mag","vn_hp_mag","vn_hp_mag","vn_hp_mag"], [], ""],
+        ["vn_hd","","","",["vn_hd_mag","vn_hd_mag","vn_hd_mag","vn_hd_mag"], [], ""],
+        ["vn_p38s","","","",["vn_m10_mag","vn_m10_mag","vn_m10_mag","vn_m10_mag"], [], ""]
+    ];
+};
+
 ////////////////////////////////
 //    Militia Loadout Data    //
 ////////////////////////////////
@@ -1243,6 +1217,47 @@ if (_hasRF) then {
     ];
 };
 
+if (_hasSOG) then {
+    _militiaLoadoutData set "slRifles" append [
+        ["vn_sks_gl","","","",["vn_sks_mag","vn_sks_mag","vn_sks_mag","vn_sks_t_mag"],["vn_22mm_m22_smoke_mag","vn_22mm_lume_mag","vn_22mm_cs_mag","vn_22mm_m19_wp_mag","vn_22mm_m60_frag_mag","vn_22mm_m60_heat_mag"],""],
+        ["vn_kbkg_gl","","","",["vn_type56_mag","vn_type56_mag","vn_type56_t_mag","vn_kbkg_t_mag"],["vn_20mm_dgn_wp_mag","vn_20mm_f1n60_frag_mag","vn_20mm_kgn_frag_mag","vn_20mm_pgn60_heat_mag","vn_20mm_pgn60_heat_mag"],""]
+    ];
+    _rifles append [
+        ["vn_type56","","vn_b_type56","",["vn_type56_mag","vn_type56_mag","vn_type56_t_mag","vn_type56_t_mag"],[],""],
+        ["vn_type56","","","",["vn_type56_mag","vn_type56_mag","vn_type56_t_mag","vn_type56_t_mag"],[],""],
+        ["vn_kbkg","","","",["vn_type56_mag","vn_type56_mag","vn_type56_t_mag","vn_type56_t_mag"],[],""],
+        ["vn_ak_01","","","",["vn_type56_mag","vn_type56_mag","vn_type56_t_mag","vn_type56_t_mag"],[],""]
+    ];
+    _grenadeLaunchers append [
+        ["vn_sks_gl","","","",["vn_sks_mag","vn_sks_mag","vn_sks_mag","vn_sks_t_mag"],["vn_22mm_cs_mag","vn_22mm_m19_wp_mag","vn_22mm_m60_frag_mag","vn_22mm_m60_heat_mag"],""],
+        ["vn_m4956_gl","","","",["vn_m4956_10_mag","vn_m4956_10_mag","vn_m4956_10_t_mag","vn_m4956_10_t_mag"],["vn_22mm_cs_mag","vn_22mm_he_mag","vn_22mm_m19_wp_mag","vn_22mm_m9_heat_mag"],""],
+        ["vn_kbkg_gl","","","",["vn_type56_mag","vn_type56_mag","vn_type56_t_mag","vn_kbkg_t_mag"],["vn_20mm_dgn_wp_mag","vn_20mm_f1n60_frag_mag","vn_20mm_kgn_frag_mag","vn_20mm_pgn60_heat_mag","vn_20mm_pgn60_heat_mag"],""]
+    ];
+    _marksmanRifles append [
+        ["vn_sks","","vn_b_sks","vn_o_3x_sks",["vn_sks_mag","vn_sks_mag","vn_sks_t_mag","vn_sks_t_mag"],[],""],
+        ["vn_sks","","","vn_o_3x_sks",["vn_sks_mag","vn_sks_mag","vn_sks_t_mag","vn_sks_t_mag"],[],""],
+        ["vn_m4956","","vn_b_m4956","vn_o_4x_m4956",["vn_m4956_10_mag","vn_m4956_10_mag","vn_m4956_10_t_mag","vn_m4956_10_t_mag"],[],""],
+        ["vn_m4956","","","vn_o_4x_m4956",["vn_m4956_10_mag","vn_m4956_10_mag","vn_m4956_10_t_mag","vn_m4956_10_t_mag"],[],""]
+    ];
+    _mgs append [
+        ["vn_rpd_shorty","","","",["vn_rpd_125_mag","vn_rpd_125_mag","vn_rpd_100_mag","vn_rpd_100_mag"],[],""],
+        ["vn_rpd_shorty_01","","","",["vn_rpd_125_mag","vn_rpd_125_mag","vn_rpd_100_mag","vn_rpd_100_mag"],[],""],
+        ["vn_rpd","","","",["vn_rpd_125_mag","vn_rpd_125_mag","vn_rpd_100_mag","vn_rpd_100_mag"],[],""],
+        ["vn_pk","","","",["vn_pk_100_mag","vn_pk_100_mag","vn_pk_100_mag","vn_pk_100_mag"],[],""],
+        ["vn_dp28","","","",["vn_pk_100_mag","vn_pk_100_mag","vn_pk_100_mag","vn_pk_100_mag"],[],""]
+    ];
+    (_militiaLoadoutData get "sniperRifles") append [
+        ["vn_vz54","","","vn_o_3x_vz54",["vn_m38_mag","vn_m38_mag","vn_m38_mag","vn_m38_t_mag"],[],"vn_b_camo_vz54"],
+        ["vn_vz54","","","vn_o_3x_vz54",["vn_m38_mag","vn_m38_mag","vn_m38_mag","vn_m38_t_mag"],[],""],
+        ["vn_m9130","","vn_b_m38","vn_o_3x_m9130",["vn_m38_mag","vn_m38_mag","vn_m38_mag","vn_m38_t_mag"],[],"vn_b_camo_m9130"],
+        ["vn_m9130","","","vn_o_3x_m9130",["vn_m38_mag","vn_m38_mag","vn_m38_mag","vn_m38_t_mag"],[],"vn_b_camo_m9130"],
+        ["vn_m9130","","","vn_o_3x_m9130",["vn_m38_mag","vn_m38_mag","vn_m38_mag","vn_m38_t_mag"],[],""],
+        ["vn_k98k","","vn_b_k98k","vn_o_1_5x_k98k",["vn_k98k_mag","vn_k98k_mag","vn_k98k_t_mag","vn_k98k_t_mag"],[],"vn_b_camo_k98k"],
+        ["vn_k98k","","","vn_o_1_5x_k98k",["vn_k98k_mag","vn_k98k_mag","vn_k98k_t_mag","vn_k98k_t_mag"],[],"vn_b_camo_k98k"],
+        ["vn_k98k","","","vn_o_1_5x_k98k",["vn_k98k_mag","vn_k98k_mag","vn_k98k_t_mag","vn_k98k_t_mag"],[],""]
+    ];
+};
+
 _militiaLoadoutData set ["machineGuns", _mgs];
 _militiaLoadoutData set ["marksmanRifles", _marksmanRifles];
 _militiaLoadoutData set ["uniforms", _uniforms];
@@ -1267,6 +1282,21 @@ private _pilotLoadoutData = _militaryLoadoutData call _fnc_copyLoadoutData;
 _pilotLoadoutData set ["uniforms", ["U_O_PilotCoveralls","U_O_PilotCoveralls"]];
 _pilotLoadoutData set ["vests", ["V_BandollierB_khk"]];
 _pilotLoadoutData set ["helmets", ["H_CrewHelmetHeli_O", "H_PilotHelmetHeli_O"]];
+
+if (_hasSOG) then {
+     (_loadoutData get "lightATLaunchers") append [
+        ["vn_m72", "", "", "", ["vn_m72_mag"], [], ""],
+        ["vn_rpg7", "", "", "", ["vn_rpg7_mag","vn_rpg7_mag","vn_rpg7_mag"], [], ""],
+        ["vn_rpg2", "", "", "", ["vn_rpg2_fuze_mag","vn_rpg2_fuze_mag","vn_rpg2_mag"], [], ""]
+    ];
+    (_loadoutData get "ATLaunchers") append [
+        ["vn_m20a1b1_01", "", "", "", ["vn_m20a1b1_wp_mag", "vn_m20a1b1_heat_mag", "vn_m20a1b1_heat_mag"], [], ""]
+    ];
+    (_loadoutData get "AALaunchers") append [
+        ["vn_sa7b", "", "", "", ["vn_sa7b_mag"], [], ""],
+        ["vn_sa7", "", "", "", ["vn_sa7_mag"], [], ""]
+    ];
+};
 
 if (_hasRF) then {
     (_sfLoadoutData get "slRifles") append [

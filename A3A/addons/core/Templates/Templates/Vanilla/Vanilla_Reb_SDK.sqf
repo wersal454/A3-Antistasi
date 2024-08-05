@@ -11,6 +11,9 @@ private _hasKart = "kart" in A3A_enabledDLC;
 private _hasGM = "gm" in A3A_enabledDLC;
 private _hasCSLA = "csla" in A3A_enabledDLC;
 private _hasRF = "rf" in A3A_enabledDLC;
+private _hasSOG = "vn" in A3A_enabledDLC;
+private _hasSPE = "spe" in A3A_enabledDLC;
+
 ///////////////////////////
 //   Rebel Information   //
 ///////////////////////////
@@ -28,7 +31,7 @@ private _VehTruck = ["I_C_Van_01_transport_F"];
 private _vehiclesAt = ["I_G_Offroad_01_AT_F", "I_C_Offroad_02_AT_F"];
 private _vehicleAA = [];
 
-["vehiclesBoat", ["I_C_Boat_Transport_02_F" , "I_SDV_01_F" , "I_Boat_Armed_01_minigun_F" , "O_Boat_Armed_01_hmg_F"]] call _fnc_saveToTemplate;
+private _vehiclesBoat = ["I_C_Boat_Transport_02_F" , "I_SDV_01_F" , "I_Boat_Armed_01_minigun_F" , "O_Boat_Armed_01_hmg_F"];
 
 private _vehiclePlane = ["C_Plane_Civil_01_F","C_Plane_Civil_01_racing_F"];
 
@@ -120,6 +123,42 @@ if (_hasCSLA) then {
     _CivBoat pushback "CSLA_lodka";
 };
 
+if (_hasSOG) then {
+    _staticMG append ["vn_b_army_static_m2_scoped_high","vn_o_pl_static_mg42_high","vn_o_kr_static_sgm_high_01","vn_o_kr_static_m1910_high_01","vn_i_fank_70_static_rpd_high","vn_i_fank_71_static_m60_high","vn_i_fank_71_static_m2_high","vn_i_fank_71_static_m1919a4_high",
+    "vn_i_fank_70_static_dshkm_high_01","vn_i_fank_70_static_dp28_high","vn_i_static_m1919a4_high","vn_i_static_m2_high","vn_i_static_m60_high","vn_i_fank_70_static_dshkm_high_02","vn_i_fank_70_static_sgm_high_01"];
+    _staticAT append ["vn_o_pl_static_d44","vn_o_pl_static_at3","vn_i_fank_70_static_type56rr","vn_i_fank_71_static_m40a1rr","vn_i_static_tow","vn_i_static_m101_01"];
+    _staticAA append ["vn_o_nva_navy_static_v11m","vn_o_pl_static_zpu4","vn_i_static_m45","vn_i_fank_70_static_l60mk3","vn_i_fank_71_static_l70mk2","vn_i_fank_70_static_zgu1_01"];
+    if (isClass (configFile >> "cfgVehicles" >> "vnx_b_air_ac119_02_01")) then {
+	    _vehiclePlane pushBack "vnx_i_air_ac119_02_01_noinsignia";
+    };
+    _vehiclesCivCar append ["vn_c_car_01_01","vn_c_car_03_01","vn_c_car_02_01","vn_c_wheeled_m151_02","vn_c_wheeled_m151_01","vn_c_car_01_02"];
+    _CivTruck append ["vn_c_car_04_01"];
+    _VehTruck append ["vn_o_wheeled_z157_01", "vn_o_wheeled_z157_02","vn_b_wheeled_m54_01_aus_army","vn_b_wheeled_m54_02_aus_army"];
+    _vehiclesLightUnarmed append ["vn_b_wheeled_lr2a_02_aus_army","vn_b_wheeled_lr2a_01_aus_army","vn_b_wheeled_m151_01_aus_army","vn_b_wheeled_m151_02_aus_army","vn_o_wheeled_btr40_01_noinsignia"];
+    _vehiclesLightArmed append ["vn_b_wheeled_m151_mg_03_noinsignia","vn_b_wheeled_m151_mg_02_noinsignia","vn_b_wheeled_m151_mg_04_noinsignia","vn_o_wheeled_btr40_mg_02_noinsignia","vn_o_wheeled_btr40_mg_01_noinsignia","vn_o_wheeled_btr40_mg_04_noinsignia","vn_b_wheeled_lr2a_mg_02_aus_army_noinsignia","vn_b_wheeled_lr2a_mg_01_aus_army_noinsignia","vn_o_car_04_mg_01_kr","vn_o_wheeled_z157_mg_01_nvam"];
+    _vehiclesAt append ["vn_o_wheeled_btr40_mg_05_noinsignia","vn_b_wheeled_m151_mg_05_noinsignia","vn_b_wheeled_m151_mg_06_aus_army","vn_b_wheeled_lr2a_mg_03_aus_army_noinsignia"];
+    _vehiclesBasic append ["vn_b_wheeled_m274_01_03","vn_c_bicycle_01","vn_c_bicycle_02"];
+    _vehicleAA append ["vn_o_armor_btr50pk_02_nva65_noinsignia","vn_o_wheeled_z157_mg_02","vn_o_wheeled_btr40_mg_03_noinsignia"];
+    _CivBoat append ["vn_c_boat_01_00","vn_c_boat_02_00","vn_c_boat_08_01","vn_c_boat_07_01"];
+    _vehiclesBoat append ["vn_b_boat_12_03","vn_b_boat_10_01","vn_b_boat_09_01","vn_o_boat_01_mg_00","vn_o_boat_02_mg_00"];
+    _civHelicopters append ["vn_b_air_uh1b_01_09","vn_b_air_uh1d_04_09","vn_o_air_mi2_02_02_noinsignia"];
+};
+
+if (_hasSPE) then {
+    _staticMG append ["SPE_ST_MG34_Lafette_Deployed","SPE_ST_MG42_Lafette_Deployed","SPE_GER_SearchLight","SPE_FR_M1919A6_Bipod","SPE_FR_M1919_M2_Trench_Deployed"];
+    _staticAT append ["SPE_ST_FlaK_36","SPE_ST_Pak40","SPE_ST_leFH18_AT","SPE_FR_57mm_M1"];
+    _staticAA append ["SPE_ST_FlaK_36_AA","SPE_ST_FlaK_38"];
+    _CivTruck append ["SPE_FFI_OpelBlitz_noinsignia","SPE_FFI_OpelBlitz_Open_noinsignia"];
+    _VehTruck append ["SPE_FR_M3_Halftrack_Unarmed_Open_noinsignia","SPE_FR_M3_Halftrack_Unarmed_noinsignia","SPE_FR_M3_Halftrack_noinsignia"];
+    //_vehiclesCivCar append []; probaly untill 1.1
+    //_vehiclesLightUnarmed append []; untill 1.1
+    //_vehiclesLightArmed append []; untill 1.1
+    //_vehiclesBasic append [];
+   // _vehiclesAt append []; probaly untill 1.1
+    _vehicleAA append ["SPE_FR_M16_Halftrack_noinsignia","SPE_OpelBlitz_Flak38_noinsignia"];
+};
+
+["vehiclesBoat", _vehiclesBoat] call _fnc_saveToTemplate;
 ["staticMGs", _staticMG] call _fnc_saveToTemplate;
 ["staticAT", _staticAT] call _fnc_saveToTemplate;
 ["vehiclesCivHeli", _civHelicopters] call _fnc_saveToTemplate;
@@ -273,6 +312,233 @@ if (_hasApex) then {
     _initialRebelEquipment append [["launch_RPG32_F", 2], ["RPG32_F", 6]];
 };
 
+if (_hasSOG) then {
+    _initialRebelEquipment append [
+        "vn_vz54",
+        "vn_m38_mag",
+        "vn_vz61",
+        "vn_vz61_mag",
+        "vn_sks",
+        "vn_b_sks",
+        "vn_sks_mag",
+        "vn_mk1_udg",
+        "vn_mk1_udg_mag",
+        "vn_m9130",
+        "vn_b_m38",
+        "vn_m38_mag",
+        "vn_m38",
+        "vn_m36",
+        "vn_b_m36",
+        "vn_m36_mag",
+        "vn_m1903",
+        "vn_b_m1903",
+        "vn_m1903_mag",
+        "vn_m1897",
+        "vn_m1897_buck_mag",
+        "vn_m1897_fl_mag",
+        "vn_b_m1897",
+        "vn_m1891",
+        "vn_m1_garand",
+        "vn_b_m1_garand",
+        "vn_m1_garand_mag",
+        "vn_k98k",
+        "vn_b_k98k",
+        "vn_k98k_mag",
+        "vn_izh54_shorty",
+        "vn_izh54_so_mag",
+        "vn_izh54",
+        "vn_izh54_mag",
+        "vn_m_wrench_01",
+        "vn_vz61_p",
+        "vn_vz61_mag",
+        "vn_tt33",
+        "vn_tt33_mag",
+        "vn_m_typeivaxe_01",
+        "vn_m_shovel_01",
+        "vn_ppk",
+        "vn_ppk_mag",
+        "vn_pm_mag",
+        "vn_fkb1_pm",
+        "vn_p38",
+        "vn_p38_mag",
+        "vn_mx991_red",
+        "vn_mx991",
+        "vn_m10",
+        "vn_m10_mag",
+        "vn_mk22",
+        "vn_mk22_mag",
+        "vn_m_mk2_knife_01",
+        "vn_m_machete_01",
+        "vn_m_machete_02",
+        "vn_m712",
+        "vn_m712_mag",
+        "vn_m_m51_etool_01",
+        "vn_mx991_m1911",
+        "vn_m1911_mag",
+        "vn_m1911",
+        "vn_m1895",
+        "vn_m1895_mag",
+        "vn_m_vc_knife_01",
+        "vn_m_fighting_knife_01",
+        "vn_izh54_p",
+        "vn_hp",
+        "vn_hp_mag",
+        "vn_m_hammer",
+        "vn_fkb1_red",
+        "vn_fkb1",
+        "vn_m_fishing_rod_01",
+        "vn_m_bolo_01",
+        "vn_m_bayo_m16",
+        "vn_m_bayo_m14",
+        "vn_m_bayo_m4956",
+        "vn_m_bayo_m1897",
+        "vn_m_bayo_carbine",
+        "vn_m_axe_fire",
+        "vn_m_axe_01",
+        "vn_p38s",
+        "vn_m10_mag",
+        "vn_m72",
+        "vn_m72_mag",
+        ["vn_m20a1b1_01",3],
+        ["vn_m20a1b1_heat_mag",5],
+        ["vn_m20a1b1_wp_mag",5],
+        "vn_m127",
+        "vn_m127_mag",
+        "vn_m128_mag",
+        "vn_m129_mag",
+        ["vn_rpg7",3],
+        ["vn_rpg7_mag",5],
+        ["vn_rpg2",3],
+        ["vn_rpg2_mag",5],
+        ["vn_rpg2_fuze_mag",5],
+        ["vn_satchelcharge_02_throw_mag",10],
+        "vn_v40_grenade_mag",
+        "vn_t67_grenade_mag",
+        "vn_molotov_grenade_mag",
+        ["vn_mine_gboard_range_mag",5],
+        ["vn_mine_punji_03_mag",5],
+        ["vn_mine_punji_02_mag",5],
+        ["vn_mine_punji_05_mag",5],
+        ["vn_mine_punji_01_mag",5],
+        ["vn_mine_punji_04_mag",5],
+        ["vn_mine_tripwire_arty_mag",5],
+        ["vn_mine_tripwire_f1_04_mag",5],
+        ["vn_mine_tripwire_f1_02_mag",5],
+        ["vn_mine_satchel_remote_02_mag",5],
+        ["vn_mine_tm57_mag",5],
+        ["vn_mine_pot_mag",5],
+        ["vn_mine_pot_range_mag",5],
+        ["vn_mine_chicom_no8_mag",5],
+        ["vn_mine_mortar_range_mag",5],
+        ["vn_mine_tripwire_m49_04_mag",5],
+        ["vn_mine_tripwire_m49_02_mag",5],
+        ["vn_mine_m18_wp_mag",5],
+        ["vn_mine_m18_wp_range_mag",5],
+        ["vn_mine_m18_wp_fuze10_mag",5],
+        ["vn_mine_m18_x3_mag",5],
+        ["vn_mine_m18_x3_range_mag",5],
+        ["vn_mine_m18_mag",5],
+        ["vn_mine_m18_range_mag",5],
+        ["vn_mine_m18_fuze10_mag",5],
+        ["vn_mine_m16_mag",5],
+        ["vn_mine_tripwire_m16_04_mag",5],
+        ["vn_mine_tripwire_m16_02_mag",5],
+        ["vn_mine_m15_mag",5],
+        ["vn_mine_m14_mag",5],
+        ["vn_mine_limpet_01_mag",5],
+        ["vn_mine_limpet_02_mag",5],
+        ["vn_mine_lighter_mag",5],
+        ["vn_mine_jerrycan_mag",5],
+        ["vn_mine_jerrycan_range_mag",5],
+        ["vn_mine_dh10_mag",5],
+        ["vn_mine_dh10_range_mag",5],
+        ["vn_mine_cartridge_mag",5],
+        ["vn_mine_bike_mag",5],
+        ["vn_mine_bike_range_mag",5],
+        ["vn_mine_bangalore_mag",5],
+        ["vn_mine_ammobox_range_mag",5],
+        ["vn_mine_m112_remote_mag",5],
+        "vn_b_item_wiretap",
+        "vn_b_item_trapkit",
+        "vn_camera_01",
+        "vn_mk21_binocs",
+        "vn_m19_binocs_grey",
+        "vn_m19_binocs_grn",
+        "vn_b_item_compass",
+        "vn_b_item_compass_sog",
+        "vn_b_item_watch",
+        "vn_o_pack_02",
+        "vn_o_pack_01",
+        "vn_o_pack_08"
+    ];
+};
+
+if (_hasSPE) then {
+    _initialRebelEquipment append [
+        "SPE_M1903A3_Springfield",
+        "SPE_ACC_M1905_Bayo",
+        "SPE_ACC_GL_M1",
+        "SPE_ACC_M1_Bayo",
+        "SPE_5Rnd_762x63",
+        "SPE_K98_Late",
+        "SPE_ACC_GW_SB_Empty",
+        "SPE_ACC_K98_Bayo",
+        "SPE_5Rnd_792x57",
+        "SPE_K98",
+        "SPE_Fusil_Mle_208_12_Sawedoff",
+        "SPE_Fusil_Mle_208_12",
+        "SPE_2Rnd_12x65_Slug",
+        "SPE_2Rnd_12x65_Pellets",
+        "SPE_2Rnd_12x65_No4_Buck",
+        "SPE_Rauchsichtzeichen_Orange",
+        "SPE_NBK39b",
+        "SPE_NB39",
+        "SPE_US_M18_Yellow",
+        "SPE_US_M18_Violet",
+        "SPE_US_M18_Red",
+        "SPE_US_M18_Green",
+        "SPE_US_M15",
+        "SPE_Handrauchzeichen_Yellow",
+        "SPE_Handrauchzeichen_Violet",
+        "SPE_Handrauchzeichen_Red",
+        "SPE_US_M18",
+        "SPE_US_AN_M14",
+        "SPE_US_Mk_1",
+        "SPE_US_Mk_2_Yellow",
+        "SPE_US_Mk_2",
+        "SPE_Shg24_Frag",
+        "SPE_US_Mk_3",
+        "SPE_M39",
+        "SPE_Shg24",
+        ["SPE_Shg24x7",20],
+        ["SPE_US_TNT_4pound_mag",5],
+        ["SPE_US_TNT_half_pound_mag",5],
+        ["SPE_TMI_42_MINE_mag",3],
+        ["SPE_STMI_MINE_mag",5],
+        ["SPE_SMI_35_1_MINE_mag",3],
+        ["SPE_SMI_35_MINE_mag",5],
+        ["SPE_SMI_35_Pressure_MINE_mag",5],
+        ["SPE_Shg24x7_Improvised_Mine_mag",5],
+        ["SPE_shumine_42_MINE_mag",5],
+        ["SPE_US_M3_MINE_mag",5],
+        ["SPE_US_M3_Pressure_MINE_mag",5],
+        ["SPE_US_Bangalore_mag",5],
+        ["SPE_US_M1A1_ATMINE_mag",5],
+        ["SPE_Ladung_Big_MINE_mag",5],
+        ["SPE_Ladung_Small_MINE_mag",5],
+        "SPE_US_ItemCompass",
+        "SPE_GER_ItemCompass",
+        "SPE_GER_ItemCompass_deg",
+        "SPE_US_ItemWatch",
+        "SPE_GER_ItemWatch",
+        "SPE_GER_Headset",
+        "B_SPE_FFI_Gasbag",
+        "B_SPE_CIV_musette",
+        "B_SPE_CIV_satchel"
+    ];
+};
+
+
 if (A3A_hasTFAR) then {_initialRebelEquipment append ["tf_microdagr","tf_anprc154"]};
 if (A3A_hasTFAR && startWithLongRangeRadio) then {_initialRebelEquipment append ["tf_anprc155","tf_anprc155_coyote"]};
 if (A3A_hasTFARBeta) then {_initialRebelEquipment append ["TFAR_microdagr","TFAR_anprc154"]};
@@ -424,6 +690,132 @@ if (_hasRF) then {
         "U_C_HeliPilotCoveralls_Black_RF"
     ];
 };
+
+if (_hasSOG) then {
+    _dlcUniforms append [
+        "vn_o_uniform_nva_navy_04",
+        "vn_o_uniform_nva_navy_03",
+        "vn_o_uniform_nva_navy_02",
+        "vn_o_uniform_nva_navy_01",
+        "vn_o_uniform_vc_mf_04_07",
+        "vn_o_uniform_vc_mf_03_07",
+        "vn_b_uniform_seal_06_02",
+        "vn_b_uniform_seal_06_05",
+        "vn_b_uniform_seal_06_07",
+        "vn_b_uniform_seal_06_01",
+        "vn_b_uniform_seal_06_06",
+        "vn_b_uniform_seal_05_02",
+        "vn_b_uniform_seal_05_05",
+        "vn_b_uniform_seal_05_07",
+        "vn_b_uniform_seal_05_01",
+        "vn_b_uniform_seal_05_06",
+        "vn_b_uniform_seal_04_01",
+        "vn_b_uniform_seal_03_01",
+        "vn_b_uniform_seal_02_02",
+        "vn_b_uniform_seal_02_05",
+        "vn_b_uniform_seal_02_07",
+        "vn_b_uniform_seal_02_01",
+        "vn_b_uniform_seal_02_06",
+        "vn_b_uniform_seal_01_02",
+        "vn_b_uniform_seal_01_05",
+        "vn_b_uniform_seal_01_07",
+        "vn_b_uniform_seal_01_01",
+        "vn_b_uniform_seal_01_06",
+        "vn_o_uniform_nva_air_01",
+        "vn_b_uniform_sog_02_05",
+        "vn_b_uniform_sog_02_02",
+        "vn_b_uniform_sog_02_06",
+        "vn_b_uniform_sog_02_04",
+        "vn_b_uniform_sog_02_01",
+        "vn_b_uniform_sog_02_03",
+        "vn_b_uniform_sog_01_05",
+        "vn_b_uniform_macv_06_01",
+        "vn_b_uniform_macv_05_07",
+        "vn_b_uniform_macv_04_01",
+        "vn_b_uniform_macv_04_07",
+        "vn_b_uniform_macv_02_01",
+        "vn_b_uniform_macv_02_07",
+        "vn_b_uniform_macv_01_03"
+    ];
+};
+
+if (_hasSPE) then {
+    _dlcUniforms append [
+    "U_SPE_US_Tank_Crew2",
+    "U_SPE_US_Tank_Crew_camo",
+    "U_SPE_US_Tank_Crew",
+    "U_SPE_US_HBT44_late_roll",
+    "U_SPE_US_HBT44_late",
+    "U_SPE_US_HBT44_trop",
+    "U_SPE_US_HBT44_FrogSkin_Jungle_trop",
+    "U_SPE_US_Pilot_lthr",
+    "U_SPE_FR_Tank_Crew2",
+    "U_SPE_FR_HBT_Uniform_Trop",
+    "U_SPE_FR_Tank_Crew3",
+    "U_SPE_FR_Tank_Crew",
+    "U_SPE_CIV_Swetr_5_vest",
+    "U_SPE_CIV_Swetr_5",
+    "U_SPE_CIV_Swetr_4_vest",
+    "U_SPE_CIV_Swetr_4",
+    "U_SPE_CIV_Swetr_3_vest",
+    "U_SPE_CIV_Swetr_3",
+    "U_SPE_CIV_Swetr_2_vest",
+    "U_SPE_CIV_Swetr_2",
+    "U_SPE_CIV_Swetr_1_vest",
+    "U_SPE_CIV_Swetr_1",
+    "U_SPE_CIV_pak2_grijs_swetr",
+    "U_SPE_CIV_pak2_grijs_tie",
+    "U_SPE_CIV_pak2_grijs",
+    "U_SPE_CIV_pak2_bruin_swetr",
+    "U_SPE_CIV_pak2_bruin_tie",
+    "U_SPE_CIV_pak2_bruin",
+    "U_SPE_CIV_pak2_zwart_swetr",
+    "U_SPE_CIV_pak2_zwart_alt",
+    "U_SPE_CIV_pak2_zwart_tie_alt",
+    "U_SPE_CIV_pak2_zwart_tie",
+    "U_SPE_CIV_pak2_zwart",
+    "U_SPE_CIV_Citizen_7_trop",
+    "U_SPE_CIV_Citizen_7_tie",
+    "U_SPE_CIV_Citizen_7",
+    "U_SPE_CIV_Citizen_6_trop",
+    "U_SPE_CIV_Citizen_6_tie",
+    "U_SPE_CIV_Citizen_6",
+    "U_SPE_CIV_Citizen_5_trop",
+    "U_SPE_CIV_Citizen_5_tie",
+    "U_SPE_CIV_Citizen_5",
+    "U_SPE_CIV_Citizen_4_trop",
+    "U_SPE_CIV_Citizen_4_tie",
+    "U_SPE_CIV_Citizen_4",
+    "U_SPE_CIV_Citizen_3_trop",
+    "U_SPE_CIV_Citizen_3_tie",
+    "U_SPE_CIV_Citizen_3",
+    "U_SPE_CIV_Citizen_2_trop",
+    "U_SPE_CIV_Citizen_2_tie",
+    "U_SPE_CIV_Citizen_2",
+    "U_SPE_CIV_Citizen_1_trop",
+    "U_SPE_CIV_Citizen_1_tie",
+    "U_SPE_CIV_Citizen_1",
+    "U_SPE_CIV_Worker_4_trop",
+    "U_SPE_CIV_Worker_4_tie",
+    "U_SPE_CIV_Worker_4",
+    "U_SPE_CIV_Worker_3_trop",
+    "U_SPE_CIV_Worker_3_tie",
+    "U_SPE_CIV_Worker_3",
+    "U_SPE_CIV_Worker_2_trop",
+    "U_SPE_CIV_Worker_2_tie",
+    "U_SPE_CIV_Worker_2",
+    "U_SPE_CIV_Worker_1_trop",
+    "U_SPE_CIV_Worker_1_tie",
+    "U_SPE_CIV_Worker_1",
+    "U_SPE_CIV_Worker_Coverall_3_trop",
+    "U_SPE_CIV_Worker_Coverall_3",
+    "U_SPE_CIV_Worker_Coverall_2_trop",
+    "U_SPE_CIV_Worker_Coverall_2",
+    "U_SPE_CIV_Worker_Coverall_1_trop",
+    "U_SPE_CIV_Worker_Coverall_1"
+    ];
+};
+
 ["uniforms", _rebUniforms + _dlcUniforms] call _fnc_saveToTemplate;
 
 private _headgear = [
@@ -619,6 +1011,85 @@ if (_hasRF) then {
     ];
 };
 
+if (_hasSOG) then {
+    _dlcheadgear append [
+        "vn_c_conehat_01",
+        "vn_c_conehat_02",
+        "vn_o_helmet_tsh3_01",
+        "vn_o_helmet_tsh3_02",
+        "vn_b_headband_02",
+        "vn_b_headband_04",
+        "vn_c_headband_01",
+        "vn_c_headband_02",
+        "vn_b_headband_01",
+        "vn_b_headband_08",
+        "vn_b_headband_05",
+        "vn_c_headband_03",
+        "vn_c_headband_04",
+        "vn_b_headband_03",
+        "vn_o_pl_cap_01_01",
+        "vn_o_pl_cap_02_01",
+        "vn_o_pl_cap_02_02",
+        "vn_o_boonie_vc_01_01",
+        "vn_o_boonie_vc_01_02",
+        "vn_b_boonie_01_02",
+        "vn_b_boonie_01_05",
+        "vn_b_boonie_01_04",
+        "vn_b_boonie_01_07",
+        "vn_b_boonie_01_09",
+        "vn_b_boonie_01_01",
+        "vn_b_boonie_01_08",
+        "vn_b_boonie_01_06",
+        "vn_b_boonie_01_03",
+        "vn_b_boonie_05_02",
+        "vn_b_boonie_05_05",
+        "vn_b_boonie_05_04",
+        "vn_b_boonie_05_07",
+        "vn_b_boonie_05_09",
+        "vn_b_boonie_04_05",
+        "vn_b_boonie_04_04",
+        "vn_b_boonie_04_07",
+        "vn_b_boonie_04_09",
+        "vn_b_boonie_04_01",
+        "vn_b_boonie_03_02",
+        "vn_b_boonie_03_05",
+        "vn_b_boonie_03_04",
+        "vn_b_boonie_03_07",
+        "vn_b_boonie_03_09",
+        "vn_b_boonie_03_03",
+        "vn_b_boonie_02_09",
+        "vn_b_boonie_06_01",
+        "vn_b_boonie_06_02",
+        "vn_b_boonie_07_01",
+        "vn_b_boonie_07_02",
+        "vn_b_boonie_08_01",
+        "vn_b_boonie_08_02",
+        "vn_b_bandana_02",
+        "vn_b_bandana_05",
+        "vn_b_bandana_04",
+        "vn_b_bandana_07",
+        "vn_b_bandana_01",
+        "vn_b_bandana_08",
+        "vn_b_bandana_06",
+        "vn_b_bandana_03"
+    ];
+};
+
+if (_hasSPE) then {
+    _dlcheadgear append [
+        "H_SPE_CIV_Worker_Cap_1",
+        "H_SPE_CIV_Worker_Cap_2",
+        "H_SPE_CIV_Worker_Cap_3",
+        "H_SPE_CIV_Fedora_Cap_3",
+        "H_SPE_CIV_Fedora_Cap_4",
+        "H_SPE_CIV_Fedora_Cap_2",
+        "H_SPE_CIV_Fedora_Cap_1",
+        "H_SPE_CIV_Fedora_Cap_6",
+        "H_SPE_CIV_Fedora_Cap_5"
+    ];
+};
+
+
 ["headgear", _headgear + _dlcheadgear] call _fnc_saveToTemplate;
 
 /////////////////////
@@ -718,6 +1189,18 @@ if (_hasLawsOfWar) then {
     _loadoutData set ["facewearCLSA", []];
 };
 
+if (_hasSOG) then {
+    _loadoutData set ["facewearSOG", ["vn_b_acc_towel_02","vn_b_acc_towel_01","vn_b_spectacles_tinted","vn_g_glasses_01","vn_b_acc_rag_02","vn_b_acc_rag_01","vn_o_scarf_01_01","vn_b_scarf_01_01","vn_o_scarf_01_02","vn_o_scarf_01_03","vn_o_scarf_01_04","vn_b_scarf_01_03","vn_o_poncho_01_01","vn_o_acc_goggles_02","vn_b_acc_goggles_01","vn_o_acc_goggles_01","vn_o_bandana_g","vn_o_bandana_b","vn_b_bandana_a","vn_b_aviator"]];
+} else {
+    _loadoutData set ["facewearSOG", []];
+};
+
+if (_hasSPE) then {
+    _loadoutData set ["facewearSPE", ["G_SPE_GER_Headset","G_SPE_Sunglasses_US_Yellow","G_SPE_Sunglasses_US_Red","G_SPE_Pipe_Sir_Winston","G_SPE_Sunglasses_GER_Red","G_SPE_Sunglasses_GER_Brown","G_SPE_Polar_Goggles","G_SPE_SWDG_Goggles","G_SPE_Dust_Goggles","G_SPE_Ful_Vue","G_SPE_Ful_Vue_Reinforced","G_SPE_Dust_Goggles_2","G_SPE_Dienst_Brille","G_SPE_Cigarette_Strike_Outs","G_SPE_Cigarette_Grundstein","G_SPE_Cigarette_Belomorkanal","G_SPE_Cigar_Moza","G_SPE_Binoculars"]];
+} else {
+    _loadoutData set ["facewearSPE", []];
+};
+
 _loadoutData set ["items_medical_basic", ["BASIC"] call A3A_fnc_itemset_medicalSupplies];
 _loadoutData set ["items_medical_standard", ["STANDARD"] call A3A_fnc_itemset_medicalSupplies];
 _loadoutData set ["items_medical_medic", ["MEDIC"] call A3A_fnc_itemset_medicalSupplies];
@@ -729,7 +1212,7 @@ _loadoutData set ["items_miscEssentials", [] call A3A_fnc_itemset_miscEssentials
 
 private _squadLeaderTemplate = {
     ["uniforms"] call _fnc_setUniform;
-    [selectRandomWeighted [[], 1.25, "glasses", 1, "goggles", 0.75, "facemask", 1, "balaclavas", 1, "argoFacemask", 1 , "facewearWS", 0.75, "facewearContact", 0.3, "facewearLawsOfWar", 0.5, "facewearGM", 0.3, "facewearCLSA", 0.2]] call _fnc_setFacewear;
+    [selectRandomWeighted [[], 1.25, "glasses", 1, "goggles", 0.75, "facemask", 1, "balaclavas", 1, "argoFacemask", 1 , "facewearWS", 0.75, "facewearContact", 0.3, "facewearLawsOfWar", 0.5, "facewearGM", 0.3, "facewearCLSA", 0.2,"facewearSOG", 0.3]] call _fnc_setFacewear;
 
     ["items_medical_standard"] call _fnc_addItemSet;
     ["items_miscEssentials"] call _fnc_addItemSet;
@@ -742,7 +1225,7 @@ private _squadLeaderTemplate = {
 
 private _riflemanTemplate = {
     ["uniforms"] call _fnc_setUniform;
-    [selectRandomWeighted [[], 1.25, "glasses", 1, "goggles", 0.75, "facemask", 1, "balaclavas", 1, "argoFacemask", 1 , "facewearWS", 0.75, "facewearContact", 0.3, "facewearLawsOfWar", 0.5, "facewearGM", 0.3, "facewearCLSA", 0.2]] call _fnc_setFacewear;
+    [selectRandomWeighted [[], 1.25, "glasses", 1, "goggles", 0.75, "facemask", 1, "balaclavas", 1, "argoFacemask", 1 , "facewearWS", 0.75, "facewearContact", 0.3, "facewearLawsOfWar", 0.5, "facewearGM", 0.3, "facewearCLSA", 0.2,"facewearSOG", 0.3]] call _fnc_setFacewear;
     
     ["items_medical_standard"] call _fnc_addItemSet;
     ["items_miscEssentials"] call _fnc_addItemSet;

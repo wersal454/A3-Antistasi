@@ -265,6 +265,7 @@ if (_type == "CASDIVE") then
             _plane setVariable ["diveParams", [1000, 600, 200, 55, 15, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
         };
         ///S.O.G. nickel steel
+        case "vnx_b_air_ac119_04_01_noinsignia";
         case "vnx_b_air_ac119_04_01":
         {
             _loadout = ["vn_bomb_15000_blu82_dc_parachute_mag_x1"]; //"vn_v_launcher_mk24"
@@ -272,12 +273,14 @@ if (_type == "CASDIVE") then
             _plane setVariable ["diveParams", [1200, 800, 170, 55, 20, [3, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
         };
         ///S.O.G.
+        case "vn_b_air_f4c_at_noinsignia";
         case "vn_b_air_f4c_at":
         {
             _loadout = ["","","vn_bomb_500_mk82_he_mag_x1","vn_bomb_750_blu1b_fb_mag_x1","","","","","","",""];
             _plane setVariable ["bombRacks", ["vn_bomb_mk82_he_launcher","vn_bomb_blu1b_750_fb_launcher"]];
             _plane setVariable ["diveParams", [1000, 600, 170, 55, 15, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
         };
+        case "vn_b_air_f100d_at_noinsignia";
         case "vn_b_air_f100d_at":
         {
             _loadout = ["","","vn_fuel_f100_335_mag","vn_fuel_f100_335_mag","vn_bomb_500_blu1b_fb_mag_x1","vn_bomb_500_mk82_he_mag_x1"];
@@ -285,6 +288,7 @@ if (_type == "CASDIVE") then
             _plane setVariable ["bombRacks", ["vn_bomb_blu1b_500_fb_launcher", "vn_bomb_mk82_he_launcher"]];
             _plane setVariable ["diveParams", [1000, 600, 170, 55, 15, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
         };
+        case "vn_o_air_mig19_at_noinsignia";
         case "vn_o_air_mig19_at":
         {
             _loadout = ["","","vn_bomb_500_fab250_he_mag_x1","vn_bomb_500_fab250_he_mag_x1"];
@@ -292,6 +296,7 @@ if (_type == "CASDIVE") then
             _plane setVariable ["bombRacks", ["vn_bomb_500_fab250_he_mag_x1"]];
             _plane setVariable ["diveParams", [1000, 600, 170, 55, 15, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
         };
+        case "vn_o_air_mig21_cas_noinsignia";
         case "vn_o_air_mig21_cas":
         {
             _loadout = ["vn_bomb_500_fab250_he_mag_x1","vn_bomb_500_fab250_he_mag_x1","vn_gunpod_gsh23l_v_200_mag"];
@@ -463,12 +468,14 @@ if (_type == "CASDIVE") then
             _plane setVariable ["diveParams", [1200, 350, 110, 55, 15, [3, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
         };
         // SPE planes
+        case "SPE_FW190F8_noinsignia";
         case "SPE_FW190F8": {
             _loadout = ["SPE_250Rnd_MG151","SPE_250Rnd_MG151","SPE_400Rnd_MG131","SPE_400Rnd_MG131","SPE_1Rnd_SC50","SPE_1Rnd_SC50","SPE_1Rnd_SC500","SPE_1Rnd_SC50","SPE_1Rnd_SC50"];
             _plane setVariable ["mainGun", "SPE_2xMG151"];
             _plane setVariable ["bombRacks", ["SPE_SC500_Bomb_Mount","SPE_SC50_Bomb_Mount"]];
             _plane setVariable ["diveParams", [1200, 300, 110, 55, 15, [0, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
         };
+        case "SPE_P47_noinsignia";
         case "SPE_P47": {
             _loadout = ["SPE_425rnd_M2_P47","SPE_425rnd_M2_P47","SPE_425rnd_M2_P47","SPE_425rnd_M2_P47","SPE_425rnd_M2_P47","SPE_425rnd_M2_P47","SPE_425rnd_M2_P47","SPE_425rnd_M2_P47","SPE_3Rnd_M8_P47","SPE_3Rnd_M8_P47","SPE_1Rnd_US_500lb","SPE_1Rnd_US_500lb","SPE_1Rnd_US_500lb"];
             _plane setVariable ["mainGun", "SPE_8xM2_P47"];
