@@ -53,7 +53,7 @@ private _civUniforms = [
 	"U_SPE_CIV_Citizen_1_tie",
 	"U_SPE_CIV_Citizen_2_tie",
 	"U_SPE_CIV_Citizen_3_tie",
-	"U_SPE_CIV_Citizen_4_ties",
+	"U_SPE_CIV_Citizen_4_tie",
 	"U_SPE_CIV_Citizen_5_tie",
 	"U_SPE_CIV_Citizen_6_tie",
 	"U_SPE_CIV_Citizen_7_tie",

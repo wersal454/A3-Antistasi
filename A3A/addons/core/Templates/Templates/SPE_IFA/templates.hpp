@@ -44,7 +44,7 @@
 	
     class SPE_Base
     {
-        requiredAddons[] = {"ww2_spe_assets_c_characters_germans_c"};
+        requiredAddons[] = {"ww2_spe_assets_c_characters_germans_c","JK_US_Air_F_DC3"};
         basepath = QPATHTOFOLDER(Templates\Templates\SPE_IFA);
         logo = QPATHTOFOLDER(Templates\Templates\SPE_IFA\spe_logo.paa);
         priority = 19;

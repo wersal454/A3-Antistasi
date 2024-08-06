@@ -42,7 +42,7 @@
 
 ["vehiclesPlanesCAS", ["SPE_FW190F8"]] call _fnc_saveToTemplate;
 ["vehiclesPlanesAA", ["SPE_FW190F8"]] call _fnc_saveToTemplate;
-["vehiclesPlanesTransport", ["SPE_FW190F8"]] call _fnc_saveToTemplate;
+["vehiclesPlanesTransport", ["JK_B_C47_F"]] call _fnc_saveToTemplate;
 
 ["vehiclesHelisLight", []] call _fnc_saveToTemplate;
 ["vehiclesHelisTransport", []] call _fnc_saveToTemplate;
