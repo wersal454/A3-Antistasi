@@ -52,12 +52,12 @@
         forceDLC[] = {"spe"};
     };
 	
-    class SPE_US : SPE_Base
+    class SPE_USA : SPE_Base
     {
         side = "Inv";
         flagTexture = QPATHTOFOLDER(Templates\Templates\SPE_IFA\flag_us.paa);
-        name = "SPE US";
-        file = "SPE_AI_US";
+        name = "SPE USA";
+        file = "SPE_AI_USA";
     };
 
     class SPE_WEH : SPE_Base
