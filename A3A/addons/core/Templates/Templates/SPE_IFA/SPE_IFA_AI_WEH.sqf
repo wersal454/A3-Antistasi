@@ -19,19 +19,19 @@
 ["surrenderCrate", "SPE_Weaponcrate_MP40_GER"] call _fnc_saveToTemplate;
 ["equipmentBox", "Box_NATO_Equip_F"] call _fnc_saveToTemplate;
 
-["vehiclesBasic", ["LIB_Kfz1"]] call _fnc_saveToTemplate;
-["vehiclesLightUnarmed", ["LIB_Kfz1", "LIB_Kfz1_Hood"]] call _fnc_saveToTemplate;
-["vehiclesLightArmed", ["LIB_Kfz1_MG42", "LIB_SdKfz251", "SPE_ST_OpelBlitz_Flak38"]] call _fnc_saveToTemplate;
-["vehiclesTrucks", ["SPE_ST_OpelBlitz_Open", "SPE_ST_OpelBlitz", "LIB_SdKfz_7"]] call _fnc_saveToTemplate;
-["vehiclesCargoTrucks", ["SPE_ST_OpelBlitz_Open"]] call _fnc_saveToTemplate;
-["vehiclesAmmoTrucks", ["SPE_ST_OpelBlitz_Ammo", "LIB_SdKfz_7_Ammo"]] call _fnc_saveToTemplate;
-["vehiclesRepairTrucks", ["SPE_ST_OpelBlitz_Repair"]] call _fnc_saveToTemplate;
-["vehiclesFuelTrucks", ["SPE_ST_OpelBlitz_Fuel"]] call _fnc_saveToTemplate;
-["vehiclesMedical", ["SPE_ST_OpelBlitz_Ambulance"]] call _fnc_saveToTemplate;
+["vehiclesBasic", ["SPE_GER_R200_Unarmed"]] call _fnc_saveToTemplate;
+["vehiclesLightUnarmed", ["SPE_GER_R200_Unarmed", "SPE_GER_R200_Hood"]] call _fnc_saveToTemplate;
+["vehiclesLightArmed", ["SPE_GER_R200_MG34", "LIB_SdKfz251", "SPE_ST_OpelBlitz_Flak38"]] call _fnc_saveToTemplate;
+["vehiclesTrucks", ["SPE_OpelBlitz_Open", "SPE_OpelBlitz", "LIB_SdKfz_7"]] call _fnc_saveToTemplate;
+["vehiclesCargoTrucks", ["SPE_OpelBlitz_Open"]] call _fnc_saveToTemplate;
+["vehiclesAmmoTrucks", ["SPE_OpelBlitz_Ammo", "LIB_SdKfz_7_Ammo"]] call _fnc_saveToTemplate;
+["vehiclesRepairTrucks", ["SPE_OpelBlitz_Repair"]] call _fnc_saveToTemplate;
+["vehiclesFuelTrucks", ["SPE_OpelBlitz_Fuel"]] call _fnc_saveToTemplate;
+["vehiclesMedical", ["SPE_OpelBlitz_Ambulance"]] call _fnc_saveToTemplate;
 ["vehiclesLightAPCs", ["SPE_SdKfz250_1", "LIB_SdKfz251"]] call _fnc_saveToTemplate;
 ["vehiclesAPCs", ["LIB_SdKfz251_FFV", "SPE_PzKpfwIII_J"]] call _fnc_saveToTemplate;
-["vehiclesIFVs", ["SPE_PzKpfwIII_N", "SPE_PzKpfwIII_M", "SPE_PzKpfwIII_L"]] call _fnc_saveToTemplate;
-["vehiclesTanks", ["SPE_PzKpfwVI_H1", "LIB_PzKpfwV", "SPE_PzKpfwIV_G"]] call _fnc_saveToTemplate;
+["vehiclesIFVs", ["SPE_PzKpfwIII_N", "SPE_PzKpfwIII_M", "SPE_PzKpfwIII_L", "SPE_StuG_III_G_Early", "SPE_StuG_III_G_Late", "SPE_StuG_III_G_SKB", "SPE_StuH_42"]] call _fnc_saveToTemplate;
+["vehiclesTanks", ["SPE_PzKpfwVI_H1", "SPE_PzKpfwV_G", "SPE_PzKpfwIV_G", "SPE_Jagdpanther_G1"]] call _fnc_saveToTemplate;
 ["vehiclesAA", ["SPE_ST_OpelBlitz_Flak38", "LIB_SdKfz_7_AA", "LIB_FlakPanzerIV_Wirbelwind"]] call _fnc_saveToTemplate;
 ["vehiclesAirborne", ["SPE_SdKfz250_1"]] call _fnc_saveToTemplate;
 ["vehiclesLightTanks",  ["SPE_PzKpfwIII_J"]] call _fnc_saveToTemplate;
@@ -58,12 +58,12 @@
 ["uavsPortable", []] call _fnc_saveToTemplate;
 
 //Config special vehicles
-["vehiclesMilitiaLightArmed", ["LIB_Kfz1_MG42_sernyt"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaLightArmed", ["SPE_ST_R200_MG34"]] call _fnc_saveToTemplate;
 ["vehiclesMilitiaTrucks", ["SPE_ST_OpelBlitz_Open"]] call _fnc_saveToTemplate;
-["vehiclesMilitiaCars", ["LIB_Kfz1_sernyt"]] call _fnc_saveToTemplate;
+["vehiclesMilitiaCars", ["SPE_ST_R200_Unarmed"]] call _fnc_saveToTemplate;
 ["vehiclesMilitiaAPCs", ["SPE_SdKfz250_1"]] call _fnc_saveToTemplate;
 
-["vehiclesPolice", ["LIB_Kfz1_sernyt"]] call _fnc_saveToTemplate;
+["vehiclesPolice", ["SPE_Milice_R200_Unarmed"]] call _fnc_saveToTemplate;
 
 ["staticMGs", ["SPE_MG42_Lafette_trench_Deployed", "SPE_MG34_Lafette_Trench_Deployed"]] call _fnc_saveToTemplate;
 ["staticAT", ["SPE_leFH18_AT", "SPE_Pak40"]] call _fnc_saveToTemplate;
@@ -113,7 +113,11 @@ _loadoutData set ["grenadeLaunchers", [
 ["SPE_K98_GW", "SPE_ACC_GW_SB_Empty", "", "", ["SPE_5Rnd_792x57", "SPE_5Rnd_792x57", "SPE_5Rnd_792x57_t"], ["SPE_1Rnd_G_PZGR_40", "SPE_1Rnd_G_SPRGR_30", "SPE_1Rnd_G_FLGR", "SPE_1Rnd_G_NBGR_42"], ""]
 ]];
 _loadoutData set ["SMGs", [
-["SPE_MP40", "", "", "", ["SPE_32Rnd_9x19", "SPE_32Rnd_9x19", "SPE_32rnd_9x19_t"], [], ""]
+["SPE_MP40", "", "", "", ["SPE_32Rnd_9x19", "SPE_32Rnd_9x19", "SPE_32rnd_9x19_t"], [], ""],
+["SPE_MP40", "", "", "", ["SPE_32Rnd_9x19", "SPE_32Rnd_9x19", "SPE_32rnd_9x19_t"], [], ""],
+["SPE_MP40", "", "", "", ["SPE_32Rnd_9x19", "SPE_32Rnd_9x19", "SPE_32rnd_9x19_t"], [], ""],
+["SPE_MP35", "", "", "", ["SPE_32Rnd_MP35_9x19", "SPE_32rnd_MP35_9x19_t"], [], ""],
+["SPE_MP35", "", "", "", ["SPE_24Rnd_MP35_9x19", "SPE_24rnd_MP35_9x19_t"], [], ""]
 ]];
 _loadoutData set ["machineGuns", [
 ["SPE_MG42", "", "", "", ["SPE_50Rnd_792x57", "SPE_50Rnd_792x57", "SPE_50Rnd_792x57_SMK"], [], ""],
@@ -121,6 +125,7 @@ _loadoutData set ["machineGuns", [
 ]];
 _loadoutData set ["marksmanRifles", [
 ["SPE_K98ZF39", "", "", "", ["SPE_5Rnd_792x57_SMK", "SPE_5Rnd_792x57_SMK", "SPE_5Rnd_792x57_t"], [], ""],
+["SPE_FG42_E", "", "", "", ["SPE_20Rnd_792x57", "SPE_20Rnd_792x57_SMK", "SPE_20Rnd_792x57_t"], [], ""],
 ["SPE_K98ZF39", "", "", "", ["SPE_5Rnd_792x57_SMK", "SPE_5Rnd_792x57_SMK", "SPE_5Rnd_792x57_t"], [], ""]
 ]];
 _loadoutData set ["sniperRifles", [
