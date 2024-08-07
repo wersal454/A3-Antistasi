@@ -189,18 +189,22 @@ class SPE_CCKW_353_Open : TRIPLES(ADDON,Nodes,Base)
         class Node1
         {
             offset[] = {0,0.35,-0.7};
+			seats[] = {1,2,7,10};
         };
         class Node2
         {
             offset[] = {0,-0.45,-0.7};
+			seats[] = {5,6};
         };
         class Node3
         {
             offset[] = {0,-1.25,-0.7};
+			seats[] = {3,4};
         };
         class Node4
         {
             offset[] = {0,-2.05,-0.7};
+			seats[] = {8,9};
         };
     };
 };
@@ -214,6 +218,7 @@ class SPE_US_G503_MB_Ambulance : TRIPLES(ADDON,Nodes,Base)
         class Node1
         {
             offset[] = {0,-0.7,-0.37};
+			seats[] = {1,2,3,4,5};
         };
         class Node2
         {
@@ -229,6 +234,7 @@ class SPE_US_G503_MB_Open : TRIPLES(ADDON,Nodes,Base)
         class Node1
         {
             offset[] = {0,-1.03,-0.775};
+			seats[] = {1,2};
         };
     };
 };
