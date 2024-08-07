@@ -181,3 +181,56 @@ class SPE_US_M3_Halftrack : TRIPLES(ADDON,Nodes,Base)
     };
 };
 class SPE_FR_M3_Halftrack : SPE_US_M3_Halftrack {};
+
+class SPE_CCKW_353_Open : TRIPLES(ADDON,Nodes,Base)
+{
+        class Nodes
+    {
+        class Node1
+        {
+            offset[] = {0,0.35,-0.7};
+        };
+        class Node2
+        {
+            offset[] = {0,-0.45,-0.7};
+        };
+        class Node3
+        {
+            offset[] = {0,-1.25,-0.7};
+        };
+        class Node4
+        {
+            offset[] = {0,-2.05,-0.7};
+        };
+    };
+};
+class SPE_CCKW_353 : SPE_CCKW_353_Open {};
+class SPE_CCKW_353_M2 : SPE_CCKW_353_Open {};
+
+class SPE_US_G503_MB_Ambulance : TRIPLES(ADDON,Nodes,Base)
+{
+        class Nodes
+    {
+        class Node1
+        {
+            offset[] = {0,-0.7,-0.37};
+        };
+        class Node2
+        {
+            offset[] = {0,-1.5,-0.37};
+        };
+    };
+};
+
+class SPE_US_G503_MB_Open : TRIPLES(ADDON,Nodes,Base)
+{
+        class Nodes
+    {
+        class Node1
+        {
+            offset[] = {0,-1.03,-0.775};
+        };
+    };
+};
+class SPE_US_G503_MB_Armoured : SPE_US_G503_MB_Open {};
+class SPE_US_G503_MB : SPE_US_G503_MB_Open {};
