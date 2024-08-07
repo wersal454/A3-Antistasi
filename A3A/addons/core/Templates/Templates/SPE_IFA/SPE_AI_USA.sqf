@@ -34,7 +34,12 @@
 ["vehiclesTanks", ["SPE_M4A0_75_Early", "SPE_M4A0_75", "SPE_M4A1_76", "SPE_M4A1_75", "SPE_M4A0_composite", "SPE_M4A0_105", "SPE_M4A1_75_erla", "SPE_M4A3_105", "SPE_M4A3_75", "SPE_M4A3_76"]] call _fnc_saveToTemplate;
 ["vehiclesAA", ["SPE_US_M16_Halftrack"]] call _fnc_saveToTemplate;
 ["vehiclesAirborne", ["SPE_M20_AUC"]] call _fnc_saveToTemplate;
-["vehiclesLightTanks",  ["SPE_M8_LAC_ringMount", "SPE_M8_LAC"]] call _fnc_saveToTemplate;
+private _vehiclesLightTanks = ["SPE_M8_LAC_ringMount", "SPE_M8_LAC"];
+
+if (isClass (configFile >> "CfgPatches" >> "MWB_M24Chaffee")) then {
+    _vehiclesLightTanks append ["MWB_M24Chaffee"];
+};
+["vehiclesLightTanks", _vehiclesLightTanks] call _fnc_saveToTemplate;
 
 ["vehiclesTransportBoats", ["I_G_Boat_Transport_01_F"]] call _fnc_saveToTemplate;
 ["vehiclesGunBoats", ["I_G_Boat_Transport_01_F"]] call _fnc_saveToTemplate;
