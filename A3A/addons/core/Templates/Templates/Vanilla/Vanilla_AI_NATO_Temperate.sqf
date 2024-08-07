@@ -89,7 +89,7 @@ if (_hasContact) then {
 };
 
 if (_hasLawsOfWar) then {
-    _policeVehs append ["B_GEN_Van_02_vehicle_F","B_GEN_Van_02_transport_F"];
+    #include "..\DLC_content\vehicles\Lawsofwar\police_van.sqf"
 };
 
 private _staticMG = ["B_G_HMG_02_high_F", "B_HMG_01_high_F"];

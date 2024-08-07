@@ -201,7 +201,7 @@ if (_hasSPE) then {
 
 ["variants", [
     #include "..\vehicleVariants\Vanilla_AAF\CSLA_AAF.sqf",
-    #include "..\vehicleVariants\Vanilla_AAF\GM_police.sqf",
+    #include "..\vehicleVariants\GM_police.sqf",
     #include "..\vehicleVariants\Vanilla_AAF\RF_AAF.sqf",
     #include "..\vehicleVariants\Vanilla_AAF\SPE_AAF.sqf",
     #include "..\vehicleVariants\Vanilla_AAF\Vanilla_AAF.sqf",

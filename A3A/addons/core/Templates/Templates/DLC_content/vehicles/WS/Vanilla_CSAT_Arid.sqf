@@ -7,3 +7,4 @@ _militiaAPCs = ["O_APC_Wheeled_02_hmg_lxWS","O_APC_Wheeled_02_unarmed_lxWS"];
 _IFVs pushBack "O_APC_Tracked_02_30mm_lxWS";
 _lightHelicopters pushBack "B_ION_Heli_Light_02_unarmed_lxWS";
 _lightAttackHelicopters pushBack "a3a_ION_Heli_Light_02_dynamicLoadout_lxWS";
+_uavsPortable pushBack "O_UAV_02_lxWS";
