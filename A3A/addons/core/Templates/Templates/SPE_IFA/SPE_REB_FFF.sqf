@@ -128,7 +128,7 @@ private _rebUniforms = [
 /////////////////////
 
 ["faces", ["LivonianHead_6","SPE_Arnold","SPE_Connors","SPE_Davidson","SPE_Elliot","SPE_Oberst","SPE_Seppmeyer","SPE_Walter","WhiteHead_01","WhiteHead_02","WhiteHead_05","WhiteHead_06","WhiteHead_07","WhiteHead_08","WhiteHead_12","WhiteHead_15","WhiteHead_18"]] call _fnc_saveToTemplate;
-["voices", ["Male01FRE","Male02FRE","Male03FRE"]] call _fnc_saveToTemplate;
+["voices", ["Male01FRE","Male02FRE","Male03FRE","SPE_Male01FRE","SPE_Male02FRE"]] call _fnc_saveToTemplate;
 
 //////////////////////////
 //       Loadouts       //
