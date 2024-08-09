@@ -1,3 +1,13 @@
+params [
+  ["_unit", player]
+];
+
+if (isNil "storedWorldName") then {
+	switch (toLowerANSI worldName) do {
+		private _unitName = (getText (configFile >> "CfgVehicles" >> typeOf _unit >> "displayName"));
+	};
+};
+/*
 if (isNil "storedWorldName") then {
 	switch (toLowerANSI worldName) do {
 		case "cup_chernarus_a3":
@@ -46,5 +56,6 @@ if (isNil "storedWorldName") then {
 		};
 	};
 };
-
+*/
 storedWorldName
+
