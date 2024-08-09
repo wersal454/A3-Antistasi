@@ -3,39 +3,34 @@
 //////////////////////////    
 
 ["vehiclesCivCar", [
-    "LIB_GazM1", 1
-    , "LIB_GazM1_dirty", 1
-    , "LIB_GazM1_SOV_camo_sand", 1
-    , "LIB_GazM1_SOV", 1
-    , "LIB_Willys_MB", 1
-    , "LIB_Willys_MB_Hood", 1
+    "SPE_GER_R200_Unarmed", 1
     ]] call _fnc_saveToTemplate;
 
 ["vehiclesCivIndustrial", [
-    "LIB_Zis5v", 1
+    "SPE_OpelBlitz_Open", 1
 ]] call _fnc_saveToTemplate;
 
 ["vehiclesCivBoat", [
-    "B_Boat_Transport_01_F", 0.7
+    "O_G_Boat_Transport_01_F", 0.1
 ]] call _fnc_saveToTemplate;
 
 ["vehiclesCivRepair", [
-    "LIB_Zis6_Parm", 0.1
+    "SPE_OpelBlitz_Repair", 0.1
 ]] call _fnc_saveToTemplate;
 
 ["vehiclesCivMedical", [
-    "LIB_Zis5v_Med", 0.1
+    "SPE_OpelBlitz_Ambulance", 0.1
 ]] call _fnc_saveToTemplate;
 
 ["vehiclesCivFuel", [
-    "LIB_Zis5v_Fuel", 0.1
+    "SPE_OpelBlitz_Fuel", 0.1
 ]] call _fnc_saveToTemplate;
 
 /////////////////////
 ///  Identities   ///
 /////////////////////
 
-["faces", ["LivonianHead_6","SPE_Connors","SPE_Ivanych","SPE_OBrien","SPE_Vasiliev","WhiteHead_02","WhiteHead_04","WhiteHead_05","WhiteHead_09","WhiteHead_11","WhiteHead_13","WhiteHead_20","WhiteHead_21"]] call _fnc_saveToTemplate;
+["faces", ["LivonianHead_6","SPE_Arnold","SPE_Connors","SPE_Davidson","SPE_Elliot","SPE_Oberst","SPE_Seppmeyer","SPE_Walter","WhiteHead_01","WhiteHead_02","WhiteHead_05","WhiteHead_06","WhiteHead_07","WhiteHead_08","WhiteHead_12","WhiteHead_15","WhiteHead_18"]] call _fnc_saveToTemplate;
 ["voices", ["Male01FRE","Male02FRE","Male03FRE","SPE_Male01FRE","SPE_Male02FRE"]] call _fnc_saveToTemplate;
 
 //////////////////////////
@@ -44,60 +39,66 @@
 
 private _civUniforms = [
     "U_SPE_CIV_Citizen_1",
-    "U_SPE_CIV_Citizen_1_tie",
-    "U_SPE_CIV_Citizen_1_trop",
     "U_SPE_CIV_Citizen_2",
-    "U_SPE_CIV_Citizen_2_tie",
-    "U_SPE_CIV_Citizen_2_trop",
     "U_SPE_CIV_Citizen_3",
-    "U_SPE_CIV_Citizen_3_tie",
     "U_SPE_CIV_Citizen_4",
-    "U_SPE_CIV_Citizen_4_tie",
-    "U_SPE_CIV_Citizen_4_trop",
     "U_SPE_CIV_Citizen_5",
-    "U_SPE_CIV_Citizen_5_tie",
-    "U_SPE_CIV_Citizen_5_trop",
     "U_SPE_CIV_Citizen_6",
-    "U_SPE_CIV_Citizen_6_tie",
-    "U_SPE_CIV_Citizen_6_trop",
     "U_SPE_CIV_Citizen_7",
-    "U_SPE_CIV_Citizen_7_tie",
-    "U_SPE_CIV_Citizen_7_trop"
+    "U_SPE_CIV_Swetr_1",
+	"U_SPE_CIV_Swetr_2",
+	"U_SPE_CIV_Swetr_3",
+	"U_SPE_CIV_Swetr_4",
+	"U_SPE_CIV_Swetr_5",
+	"U_SPE_CIV_Citizen_1_tie",
+	"U_SPE_CIV_Citizen_2_tie",
+	"U_SPE_CIV_Citizen_3_tie",
+	"U_SPE_CIV_Citizen_4_tie",
+	"U_SPE_CIV_Citizen_5_tie",
+	"U_SPE_CIV_Citizen_6_tie",
+	"U_SPE_CIV_Citizen_7_tie",
+	"U_SPE_CIV_Citizen_1_trop",
+	"U_SPE_CIV_Citizen_2_trop",
+	"U_SPE_CIV_Citizen_3_trop",
+	"U_SPE_CIV_Citizen_4_trop",
+	"U_SPE_CIV_Citizen_5_trop",
+	"U_SPE_CIV_Citizen_6_trop",
+	"U_SPE_CIV_Citizen_7_trop"
 ];
 
 private _pressUniforms = [
-    "U_SPE_CIV_pak2_bruin",
-    "U_SPE_CIV_pak2_bruin_swetr",
-    "U_SPE_CIV_pak2_bruin_tie",
-    "U_SPE_CIV_pak2_grijs",
-    "U_SPE_CIV_pak2_grijs_swetr",
-    "U_SPE_CIV_pak2_grijs_tie",
-    "U_SPE_CIV_pak2_zwart",
+    "U_SPE_CIV_pak2_zwart_tie",
+    "U_SPE_CIV_pak2_zwart_tie_alt",
     "U_SPE_CIV_pak2_zwart_alt",
     "U_SPE_CIV_pak2_zwart_swetr",
-    "U_SPE_CIV_pak2_zwart_tie",
-    "U_SPE_CIV_pak2_zwart_tie_alt"
+	"U_SPE_CIV_pak2_zwart",
+	"U_SPE_CIV_pak2_bruin",
+	"U_SPE_CIV_pak2_bruin_tie",
+	"U_SPE_CIV_pak2_bruin_swetr",
+	"U_SPE_CIV_pak2_grijs",
+	"U_SPE_CIV_pak2_grijs_tie",
+	"U_SPE_CIV_pak2_grijs_swetr"
     ];            //Uniforms given to Press/Journalists
 
 private _workerUniforms = [
-    "U_SPE_CIV_Worker_1",
-    "U_SPE_CIV_Worker_1_tie",
-    "U_SPE_CIV_Worker_1_trop",
-    "U_SPE_CIV_Worker_2",
-    "U_SPE_CIV_Worker_2_tie",
-    "U_SPE_CIV_Worker_2_trop",
-    "U_SPE_CIV_Worker_3",
-    "U_SPE_CIV_Worker_3_tie",
-    "U_SPE_CIV_Worker_3_trop",
-    "U_SPE_CIV_Worker_4",
-    "U_SPE_CIV_Worker_4_tie",
-    "U_SPE_CIV_Worker_4_trop",
     "U_SPE_CIV_Worker_Coverall_1",
-    "U_SPE_CIV_Worker_Coverall_1_trop",
     "U_SPE_CIV_Worker_Coverall_2",
-    "U_SPE_CIV_Worker_Coverall_2_trop",
     "U_SPE_CIV_Worker_Coverall_3",
-    "U_SPE_CIV_Worker_Coverall_3_trop"
+    "U_SPE_CIV_Worker_1",
+    "U_SPE_CIV_Worker_2",
+    "U_SPE_CIV_Worker_3",
+    "U_SPE_CIV_Worker_4",
+    "U_SPE_CIV_Worker_Coverall_1_trop",
+    "U_SPE_CIV_Worker_Coverall_2_trop",
+    "U_SPE_CIV_Worker_Coverall_3_trop",
+    "U_SPE_CIV_Worker_1_trop",
+	"U_SPE_CIV_Worker_2_trop",
+	"U_SPE_CIV_Worker_3_trop",
+	"U_SPE_CIV_Worker_4_trop",
+	"U_SPE_CIV_Worker_1_tie",
+	"U_SPE_CIV_Worker_2_tie",
+	"U_SPE_CIV_Worker_3_tie",
+	"U_SPE_CIV_Worker_4_tie"
     ];           //Uniforms given to Workers at Factories/Resources
 
 ["uniforms", _civUniforms + _pressUniforms + _workerUniforms] call _fnc_saveToTemplate;          //Uniforms given to the Arsenal, Allowed for Undercover and given to Rebel Ai that go Undercover
@@ -106,10 +107,13 @@ _civHats = [
     "H_SPE_CIV_Fedora_Cap_1",
     "H_SPE_CIV_Fedora_Cap_2",
     "H_SPE_CIV_Fedora_Cap_3",
+    "H_SPE_CIV_Fedora_Cap_4",
     "H_SPE_CIV_Fedora_Cap_5",
     "H_SPE_CIV_Fedora_Cap_6",
+    "H_SPE_CIV_Worker_Cap_1",
     "H_SPE_CIV_Worker_Cap_2",
-    "H_SPE_CIV_Worker_Cap_3"
+	"H_SPE_CIV_Worker_Cap_3",
+	"H_SPE_CIV_Worker_Cap_4"
     ];
 
 ["headgear", _civHats] call _fnc_saveToTemplate;            //Headgear given to Normal Civs, Workers, Undercover Rebels.
@@ -121,9 +125,9 @@ _loadoutData set ["uniforms", _civUniforms];
 _loadoutData set ["pressUniforms", _pressUniforms];
 _loadoutData set ["workerUniforms", _workerUniforms];
 _loadoutData set ["helmets", _civHats];
-_loadoutData set ["pressHelmets", ["H_SPE_CIV_Fedora_Cap_1","H_SPE_CIV_Fedora_Cap_2","H_SPE_CIV_Fedora_Cap_3","H_SPE_CIV_Fedora_Cap_4","H_SPE_CIV_Fedora_Cap_5"]];
-_loadoutData set ["workerHelmets", ["","H_SPE_CIV_Worker_Cap_1","H_SPE_CIV_Worker_Cap_2","H_SPE_CIV_Worker_Cap_3"]];
-_loadoutData set ["facewear", ["G_SPE_Cigarette_Belomorkanal","G_SPE_Cigarette_Grundstein","G_SPE_Dienst_Brille","G_SPE_Pipe_Sir_Winston"]];
+_loadoutData set ["pressHelmets", ["H_SPE_CIV_Worker_Cap_1","H_SPE_CIV_Worker_Cap_2","H_SPE_CIV_Worker_Cap_3","H_SPE_CIV_Worker_Cap_4"]];
+_loadoutData set ["workerHelmets", ["H_SPE_CIV_Worker_Cap_1","H_SPE_CIV_Worker_Cap_2","H_SPE_CIV_Worker_Cap_3","H_SPE_CIV_Worker_Cap_4"]];
+_loadoutData set ["facewear", ["G_SPE_Ful_Vue_Reinforced","G_SPE_Pipe_Sir_Winston","G_SPE_Ful_Vue","G_SPE_Dienst_Brille","G_SPE_Cigarette_Strike_Outs"]];
 
 _loadoutData set ["maps", ["ItemMap"]];
 
