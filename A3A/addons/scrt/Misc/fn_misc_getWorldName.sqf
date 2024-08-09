@@ -1,5 +1,4 @@
 
-/*
 if (isNil "storedWorldName") then {
 	switch (toLowerANSI worldName) do {
 		case "cup_chernarus_a3":
@@ -48,6 +47,5 @@ if (isNil "storedWorldName") then {
 		};
 	};
 };
-*/
 storedWorldName
 
