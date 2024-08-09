@@ -398,6 +398,10 @@
                 <Korean>엑세게르메노스.\n표준 적군 게릴라 팩션입니다.</Korean>
                 <French>Exegerménos.\nFaction de guérilla ennemie standard.</French>
             </Key>
+            <Key ID="STR_A3AP_setupFactionsTab_separatistsCSLA">
+                <Original>Separatists.\nStandard enemy guerilla faction.</Original>
+                <Russian>Separatists.\nСтандартная вражеская повстанческая фракция.</Russian>
+            </Key>
             <Key ID="STR_A3AP_setupFactionsTab_le">
                 <Original>L'Ensemble.\nFormer Syndikat branch.</Original>
                 <Russian>L'Ensemble.\nОдна из бывших ветвей Синдиката.</Russian>
