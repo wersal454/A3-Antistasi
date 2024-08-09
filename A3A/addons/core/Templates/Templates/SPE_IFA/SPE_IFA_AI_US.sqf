@@ -56,7 +56,7 @@ if (isClass (configFile >> "CfgPatches" >> "MWB_M24Chaffee")) then {
 
 ["vehiclesArtillery", ["SPE_M4A1_T34_Calliope", "SPE_M4A3_T34_Calliope"]] call _fnc_saveToTemplate;
 ["magazines", createHashMapFromArray [
-["SPE_M4A1_T34_Calliope", ["SPE_60Rnd_M8"],
+["SPE_M4A1_T34_Calliope", ["SPE_60Rnd_M8"]],
 ["SPE_M4A3_T34_Calliope", ["SPE_60Rnd_M8"]]
 ]] call _fnc_saveToTemplate;
 
