@@ -41,9 +41,16 @@ if (isClass (configFile >> "CfgPatches" >> "MWB_M24Chaffee")) then {
 };
 ["vehiclesLightTanks", _vehiclesLightTanks] call _fnc_saveToTemplate;
 
-["vehiclesTransportBoats", ["I_G_Boat_Transport_01_F"]] call _fnc_saveToTemplate;
-["vehiclesGunBoats", ["I_G_Boat_Transport_01_F"]] call _fnc_saveToTemplate;
+private _vehiclesTransportBoats = ["I_G_Boat_Transport_01_F"];
+private _vehiclesGunBoats = ["I_G_Boat_Transport_01_F"];
 ["vehiclesAmphibious", []] call _fnc_saveToTemplate;
+
+if (isClass (configFile >> "CfgPatches" >> "WW2_SPEX_Assets_c_Vehicles_Boats_c")) then {
+    _vehiclesTransportBoats = ["SPEX_LCVP"];
+	_vehiclesGunBoats = ["SPEX_LCVP"];
+};
+["vehiclesTransportBoats", _vehiclesTransportBoats] call _fnc_saveToTemplate;
+["vehiclesGunBoats", _vehiclesGunBoats] call _fnc_saveToTemplate;
 
 ["vehiclesPlanesCAS", ["SPE_P47"]] call _fnc_saveToTemplate;
 ["vehiclesPlanesAA", ["SPE_P47"]] call _fnc_saveToTemplate;
