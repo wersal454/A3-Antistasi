@@ -11,6 +11,7 @@ private _hasGM = "gm" in A3A_enabledDLC;
 private _hasCSLA = "csla" in A3A_enabledDLC;
 private _hasRF = "rf" in A3A_enabledDLC;
 private _hasSOG = "vn" in A3A_enabledDLC;
+private _hasSPE = "spe" in A3A_enabledDLC;
 
 //////////////////////////
 //   Side Information   //
@@ -98,7 +99,7 @@ private _SAM = [];
 ["minefieldAPERS", ["APERSMine", "APERSBoundingMine"]] call _fnc_saveToTemplate;
 
 if (_hasHelicopters) then {
-    #include "..\DLC_content\vehicles\Helicopters\police_offroad.sqf"
+    #include "..\DLC_content\vehicles\Helicopters\Vanilla_CSAT_Temparate.sqf"
 };
 
 if (_hasContact) then {
@@ -110,23 +111,23 @@ if (_hasLawsOfWar) then {
 };
 
 if (_hasApex) then {
-    #include "..\DLC_content\vehicles\Apex\police_offroad.sqf"
+    #include "..\DLC_content\vehicles\Apex\Vanilla_CSAT_Temparate.sqf"
 };
 
 if (_hasJets) then {
-	#include "..\DLC_content\vehicles\Jets\police_offroad.sqf"
+	#include "..\DLC_content\vehicles\Jets\Vanilla_CSAT_Temparate.sqf"
 };
 
 if (_hasRF) then {
-    #include "..\DLC_content\vehicles\RF\police_offroad.sqf"
+    #include "..\DLC_content\vehicles\RF\Vanilla_CSAT_Temparate.sqf"
 };
 
 if (_hasTanks) then {
-    #include "..\DLC_content\vehicles\Tanks\police_offroad.sqf"
+    #include "..\DLC_content\vehicles\Tanks\Vanilla_CSAT_Temparate.sqf"
 };
 
 if (_hasWs) then {
-    #include "..\DLC_content\vehicles\WS\police_offroad.sqf"
+    #include "..\DLC_content\vehicles\WS\Vanilla_CSAT_Temparate.sqf"
 };
 
 ["vehiclesPlanesGunship", _gunship] call _fnc_saveToTemplate;
@@ -170,8 +171,16 @@ if (_hasWs) then {
 /////////////////////
 
 ["voices", ["Male01CHI","Male02CHI","Male03CHI"]] call _fnc_saveToTemplate;
-["faces", ["AsianHead_A3_01","AsianHead_A3_02","AsianHead_A3_03","AsianHead_A3_04","AsianHead_A3_05","AsianHead_A3_06","AsianHead_A3_07"]] call _fnc_saveToTemplate;
+private _faces = ["AsianHead_A3_01","AsianHead_A3_02","AsianHead_A3_03","AsianHead_A3_04","AsianHead_A3_05","AsianHead_A3_06","AsianHead_A3_07"];
 
+if (_hasSOG) then {
+    _faces append [
+        #include "..\DLC_content\faces\SOG\SOG_faces_asian.sqf",
+        #include "..\DLC_content\faces\SOG\SOG_faces_vietnam.sqf"
+    ];
+};
+
+["faces", _faces] call _fnc_saveToTemplate;
 ["insignia", ["GryffinRegiment", "", ""]] call _fnc_saveToTemplate;
 ["milInsignia", ["CSAT_ScimitarRegiment", "", ""]] call _fnc_saveToTemplate;
 
@@ -229,6 +238,10 @@ _loadoutData set ["rangefinders", ["Rangefinder"]];
 _loadoutData set ["officerUniforms", ["U_O_T_Officer_F"]];
 _loadoutData set ["officerVests", ["V_BandollierB_ghex_F"]];
 _loadoutData set ["officerHats", ["H_Beret_blk", "H_Beret_CSAT_01_F", "H_MilCap_ghex_F"]];
+
+if (_hasArtOfWar) then {
+	#include "..\DLC_content\gear\Artofwar\Vanilla_CSAT.sqf"
+};
 
 _loadoutData set ["cloakUniforms", ["U_O_T_FullGhillie_tna_F", "U_O_FullGhillie_lsh", "U_O_T_Sniper_F"]];
 _loadoutData set ["cloakVests", ["V_HarnessO_ghex_F", "V_BandollierB_ghex_F", "V_TacVest_oli"]];
@@ -596,7 +609,7 @@ _pilotLoadoutData set ["helmets", ["H_CrewHelmetHeli_O", "H_PilotHelmetHeli_O"]]
 //
 
 if (_hasArtOfWar) then {
-	#include "..\DLC_content\gear\Artofwar\Vanilla_CSAT_Temparate.sqf"
+	#include "..\DLC_content\gear\Artofwar\Vanilla_CSAT.sqf"
 };
 
 if (_hasLawsOfWar) then {

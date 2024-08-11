@@ -1,5 +1,4 @@
 (_loadoutData get "AALaunchers") append [
-    ["gm_fim43_oli", "", "", "", ["gm_1Rnd_70mm_he_m585_fim43"], [], ""],
     ["gm_fim43_oli", "", "", "", ["gm_1Rnd_70mm_he_m585_fim43"], [], ""]
 ];
 

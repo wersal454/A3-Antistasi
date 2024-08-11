@@ -20,9 +20,9 @@ _helmets append ["H_MilCap_gen_F","H_Beret_gen_F"];
 (_policeLoadoutData get "vests") pushBack "V_TacVest_gen_F";
 (_policeLoadoutData get "uniforms") append ["U_B_GEN_Soldier_F", "U_B_GEN_Commander_F"];
 
-_vests append ["V_TacChestrig_oli_F", "V_PlateCarrier1_rgr_noflag_F"];
-_hVests pushBack "V_PlateCarrier2_rgr_noflag_F";
-_glVests pushBack "V_PlateCarrier2_rgr_noflag_F";
+(_militaryLoadoutData get "vests") append ["V_TacChestrig_oli_F", "V_PlateCarrier1_rgr_noflag_F"];
+(_militaryLoadoutData get "Hvests") pushBack "V_PlateCarrier2_rgr_noflag_F";
+(_militaryLoadoutData get "glVests") pushBack "V_PlateCarrier2_rgr_noflag_F";
 
 
 

@@ -145,6 +145,11 @@ if (_hasSPE) then {
     #include "..\DLC_content\vehicles\SPE\Vanilla_AAF.sqf"
 };
 
+//If CUP
+if (isClass (configFile >> "cfgVehicles" >> "CUP_ZSU23_Base")) then {
+    #include "..\MOD_content\CUP\Vanilla_AAF\Vehicles_AAF.sqf"
+};
+
 ["vehiclesPlanesGunship", _gunship] call _fnc_saveToTemplate;
 ["vehiclesGunBoats", _gunBoat] call _fnc_saveToTemplate;
 ["vehiclesTransportBoats", _transportBoat] call _fnc_saveToTemplate;
@@ -196,7 +201,8 @@ if (_hasSPE) then {
     #include "..\vehicleAnimations\vehicleAnimations_GMX_AAF.sqf",
     #include "..\vehicleAnimations\vehicleAnimations_CSLA.sqf",
     #include "..\vehicleAnimations\vehicleAnimations_SOG.sqf",
-    #include "..\vehicleAnimations\vehicleAnimations_SPE.sqf"
+    #include "..\vehicleAnimations\vehicleAnimations_SPE.sqf",
+    #include "..\MOD_content\CUP\Vehicles_Animations.sqf"
 ]] call _fnc_saveToTemplate;
 
 ["variants", [
@@ -205,7 +211,8 @@ if (_hasSPE) then {
     #include "..\vehicleVariants\Vanilla_AAF\RF_AAF.sqf",
     #include "..\vehicleVariants\Vanilla_AAF\SPE_AAF.sqf",
     #include "..\vehicleVariants\Vanilla_AAF\Vanilla_AAF.sqf",
-    #include "..\vehicleVariants\Vanilla_AAF\WS_AAF.sqf"
+    #include "..\vehicleVariants\Vanilla_AAF\WS_AAF.sqf",
+    #include "..\MOD_content\CUP\Vanilla_AAF\Vehicles_variants.sqf"
 ]] call _fnc_saveToTemplate;
 
 /////////////////////
@@ -687,6 +694,13 @@ if (_hasSOG) then {
 if (_hasSPE) then {
     #include "..\DLC_content\gear\SPE\Vanilla_AAF.sqf"
     #include "..\DLC_content\weapons\SPE\Vanilla_AAF.sqf"
+};
+
+//////mod content
+//If CUP
+if (isClass (configFile >> "cfgVehicles" >> "CUP_ZSU23_Base")) then {
+    #include "..\MOD_content\CUP\Vanilla_AAF\Gear_AAF.sqf"
+    #include "..\MOD_content\CUP\Vanilla_AAF\Weapons_AAF.sqf"
 };
 
 /////////////////////////////////

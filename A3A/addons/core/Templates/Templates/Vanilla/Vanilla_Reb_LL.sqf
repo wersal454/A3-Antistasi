@@ -54,109 +54,43 @@ private _staticMortars = ["I_G_Mortar_01_F"];
 ["breachingExplosivesAPC", [["DemoCharge_Remote_Mag", 1]]] call _fnc_saveToTemplate;
 ["breachingExplosivesTank", [["SatchelCharge_Remote_Mag", 1], ["DemoCharge_Remote_Mag", 2]]] call _fnc_saveToTemplate;
 
-if (_hasRF) then {
-    _vehiclesCivCar append ["C_Pickup_rf", "C_Pickup_covered_rf"];
-    _civHelicopters append ["C_Heli_EC_01A_civ_RF", "C_Heli_EC_01_civ_RF","C_Heli_EC_04_rescue_RF"];
-    _vehiclesLightArmed append ["a3u_black_Pickup_mmg_alt_rf", "a3u_black_Pickup_mmg_frame_rf","I_G_Pickup_hmg_rf"];
-    _vehiclesLightUnarmed append ["I_G_Pickup_rf"];
-    _vehicleAA pushBack "B_Pickup_aat_rf";
-    _staticMortars pushBack "I_G_CommandoMortar_RF";
+if (_hasKart) then {
+  #include "..\DLC_content\vehicles\Kart\Rebel_kart.sqf" 
 };
-
 if (_hasApex) then {
-    _vehiclesCivCar pushBack "C_Offroad_02_unarmed_F";
-    _vehiclesLightUnarmed pushBack "I_C_Offroad_02_unarmed_F";
-    _vehiclesLightArmed pushBack "I_C_Offroad_02_LMG_F";
-    _vehiclesAt pushBack "I_C_Offroad_02_AT_F";
-    _CivBoat append ["C_Boat_Transport_02_F", "C_Scooter_Transport_01_F"];
-};
-
-if (_hasLawsOfWar) then {
-    _CivTruck append ["C_Van_02_vehicle_F", "C_Van_02_transport_F"];
-    _VehTruck append ["I_G_Van_02_transport_F", "I_G_Van_02_vehicle_F"];
+  #include "..\DLC_content\vehicles\Apex\Vanilla_FIA.sqf"  
 };
 
 if (_hasContact) then {
-    _vehiclesCivCar append ["C_Offroad_01_covered_F", "C_Offroad_01_comms_F", "C_Tractor_01_F"];
+  #include "..\DLC_content\vehicles\Contact\Vanilla_FIA.sqf" 
+};
+
+if (_hasLawsOfWar) then {
+  #include "..\DLC_content\vehicles\LawsOfwar\Vanilla_FIA.sqf"  
 };
 
 if (_hasWs) then {
-    _CivTruck append ["C_Truck_02_cargo_lxWS", "C_Truck_02_flatbed_lxWS"];
-    _vehiclesCivCar append ["C_Offroad_lxWS","C_Truck_02_racing_lxWS"];
-    _vehiclesLightUnarmed pushBack "I_G_Offroad_01_armor_base_lxWS";
-    _vehiclesLightArmed pushBack "I_G_Offroad_01_armor_armed_lxWS";
-    _vehiclesAt pushBack "I_G_Offroad_01_armor_AT_lxWS";
-    _vehicleAA pushBack "I_Tura_Truck_02_aa_lxWS";
-    _staticAA = ["I_Tura_ZU23_lxWS"];
-};
-
-if (_hasKart) then {
-    _vehiclesCivCar pushBack "C_Kart_01_F";
+  #include "..\DLC_content\vehicles\WS\Vanilla_FIA.sqf"  
 };
 
 if (_hasGM) then {
-    _staticMG append ["gm_dk_army_mg3_aatripod", "gm_gc_army_dshkm_aatripod", "gm_gc_bgs_searchlight_01"];
-    _staticAT append ["gm_ge_army_milan_launcher_tripod", "gm_gc_army_fagot_launcher_tripod", "gm_gc_army_spg9_tripod"];
-    _civHelicopters append ["gm_gc_civ_mi2p", "gm_ge_adak_bo105m_vbh"];
-    _vehiclePlane append ["gm_gc_civ_l410s_passenger", "gm_gc_civ_l410s_salon" , "gm_ge_airforce_do28d2_noinsignia"];
-    _vehiclesCivCar append ["gm_ge_civ_typ1200","gm_gc_civ_p601","gm_ge_civ_typ253","gm_ge_civ_w123","gm_xx_civ_bicycle_01","gm_ge_dbp_bicycle_01_ylw"];
-    _CivTruck append ["gm_gc_civ_ural375d_cargo", "gm_ge_civ_u1300l", "gm_ge_civ_typ247", "gm_ge_civ_typ251"];
-    _VehTruck append ["gm_pl_army_ural4320_cargo","gm_ge_army_kat1_451_container","gm_dk_army_u1300l_container","gm_ge_army_kat1_451_cargo"];
-    _vehiclesLightUnarmed append ["gm_ge_army_iltis_cargo","gm_pl_army_uaz469_cargo"];
-    _vehiclesLightArmed append ["gm_pl_army_uaz469_dshkm","gm_ge_army_iltis_mg3"];
-    _vehiclesAt append ["gm_gc_army_uaz469_spg9_noinsignia","gm_ge_army_iltis_milan"];
-    _vehiclesBasic append ["gm_ge_army_k125"];
+  #include "..\DLC_content\vehicles\GM\Vanilla_FIA.sqf"
 };
 
 if (_hasCSLA) then {
-    _staticMG append ["AFMC_M2h", "AFMC_M2l","CSLA_UK59L_Stat","CSLA_UK59T_Stat"];
-    _staticAT append ["AFMC_TOW_Stat", "CSLA_T21_Stat","CSLA_9K113_Stat"];
-    _staticAA pushback "CSLA_PLdvK59_Stat";
-    _vehiclePlane pushBack "CSLA_CIV_An2_1";
-    _vehiclesCivCar append ["CSLA_CIV_Sarka1200","CSLA_CIV_ADA1600","CSLA_CIV_AZU","CSLA_civ_CATOR"];
-    _CivTruck append ["CSLA_CIV_V3S"];
-    _VehTruck append ["CSLA_F813o_noinsignia", "CSLA_F813_noinsignia"];
-    _vehiclesLightUnarmed append ["US85_M1008c","US85_M1008","US85_M1025_ua","US85_M1043_ua","FIA_AZU_para","CSLA_AZU_para_noinsignia","CSLA_AZU_R2_noinsignia","CSLA_AZU_noinsignia"];
-    _vehiclesLightArmed append ["US85_M1025_M2","US85_M1025_M60","US85_M1043_M2","US85_M1043_M60","US85_M998SFGT","FIA_AZU_DSKM"];
-    _vehiclesAt pushback "FIA_AZU_T21";
-    _vehiclesBasic append ["CSLA_CIV_JARA250","US85_TT650"];
-    _vehicleAA pushBack "CSLA_PLdvK59V3S";
-    _CivBoat pushback "CSLA_lodka";
+  #include "..\DLC_content\vehicles\CSLA\Vanilla_FIA.sqf"  
+};
+
+if (_hasRF) then {
+  #include "..\DLC_content\vehicles\RF\Vanilla_FIA.sqf" 
 };
 
 if (_hasSOG) then {
-    _staticMG append ["vn_b_army_static_m2_scoped_high","vn_o_pl_static_mg42_high","vn_o_kr_static_sgm_high_01","vn_o_kr_static_m1910_high_01","vn_i_fank_70_static_rpd_high","vn_i_fank_71_static_m60_high","vn_i_fank_71_static_m2_high","vn_i_fank_71_static_m1919a4_high",
-    "vn_i_fank_70_static_dshkm_high_01","vn_i_fank_70_static_dp28_high","vn_i_static_m1919a4_high","vn_i_static_m2_high","vn_i_static_m60_high","vn_i_fank_70_static_dshkm_high_02","vn_i_fank_70_static_sgm_high_01"];
-    _staticAT append ["vn_o_pl_static_d44","vn_o_pl_static_at3","vn_i_fank_70_static_type56rr","vn_i_fank_71_static_m40a1rr","vn_i_static_tow","vn_i_static_m101_01"];
-    _staticAA append ["vn_o_nva_navy_static_v11m","vn_o_pl_static_zpu4","vn_i_static_m45","vn_i_fank_70_static_l60mk3","vn_i_fank_71_static_l70mk2","vn_i_fank_70_static_zgu1_01"];
-    if (isClass (configFile >> "cfgVehicles" >> "vnx_b_air_ac119_02_01")) then {
-	    _vehiclePlane pushBack "vnx_i_air_ac119_02_01_noinsignia";
-    };
-    _vehiclesCivCar append ["vn_c_car_01_01","vn_c_car_03_01","vn_c_car_02_01","vn_c_wheeled_m151_02","vn_c_wheeled_m151_01","vn_c_car_01_02"];
-    _CivTruck append ["vn_c_car_04_01"];
-    _VehTruck append ["vn_o_wheeled_z157_01", "vn_o_wheeled_z157_02","vn_b_wheeled_m54_01_aus_army","vn_b_wheeled_m54_02_aus_army"];
-    _vehiclesLightUnarmed append ["vn_b_wheeled_lr2a_02_aus_army","vn_b_wheeled_lr2a_01_aus_army","vn_b_wheeled_m151_01_aus_army","vn_b_wheeled_m151_02_aus_army","vn_o_wheeled_btr40_01_noinsignia"];
-    _vehiclesLightArmed append ["vn_b_wheeled_m151_mg_03_noinsignia","vn_b_wheeled_m151_mg_02_noinsignia","vn_b_wheeled_m151_mg_04_noinsignia","vn_o_wheeled_btr40_mg_02_noinsignia","vn_o_wheeled_btr40_mg_01_noinsignia","vn_o_wheeled_btr40_mg_04_noinsignia","vn_b_wheeled_lr2a_mg_02_aus_army_noinsignia","vn_b_wheeled_lr2a_mg_01_aus_army_noinsignia","vn_o_car_04_mg_01_kr","vn_o_wheeled_z157_mg_01_nvam"];
-    _vehiclesAt append ["vn_o_wheeled_btr40_mg_05_noinsignia","vn_b_wheeled_m151_mg_05_noinsignia","vn_b_wheeled_m151_mg_06_aus_army","vn_b_wheeled_lr2a_mg_03_aus_army_noinsignia"];
-    _vehiclesBasic append ["vn_b_wheeled_m274_01_03","vn_c_bicycle_01","vn_c_bicycle_02"];
-    _vehicleAA append ["vn_o_armor_btr50pk_02_nva65_noinsignia","vn_o_wheeled_z157_mg_02","vn_o_wheeled_btr40_mg_03_noinsignia"];
-    _CivBoat append ["vn_c_boat_01_00","vn_c_boat_02_00","vn_c_boat_08_01","vn_c_boat_07_01"];
-    _vehiclesBoat append ["vn_b_boat_12_03","vn_b_boat_10_01","vn_b_boat_09_01","vn_o_boat_01_mg_00","vn_o_boat_02_mg_00"];
-    _civHelicopters append ["vn_b_air_uh1b_01_09","vn_b_air_uh1d_04_09","vn_o_air_mi2_02_02_noinsignia"];
+  #include "..\DLC_content\vehicles\SOG\Vanilla_FIA.sqf"
 };
 
 if (_hasSPE) then {
-    _staticMG append ["SPE_ST_MG34_Lafette_Deployed","SPE_ST_MG42_Lafette_Deployed","SPE_GER_SearchLight","SPE_FR_M1919A6_Bipod","SPE_FR_M1919_M2_Trench_Deployed"];
-    _staticAT append ["SPE_ST_FlaK_36","SPE_ST_Pak40","SPE_ST_leFH18_AT","SPE_FR_57mm_M1"];
-    _staticAA append ["SPE_ST_FlaK_36_AA","SPE_ST_FlaK_38"];
-    _CivTruck append ["SPE_FFI_OpelBlitz_noinsignia","SPE_FFI_OpelBlitz_Open_noinsignia"];
-    _VehTruck append ["SPE_FR_M3_Halftrack_Unarmed_Open_noinsignia","SPE_FR_M3_Halftrack_Unarmed_noinsignia","SPE_FR_M3_Halftrack_noinsignia"];
-    //_vehiclesCivCar append []; probaly untill 1.1
-    //_vehiclesLightUnarmed append []; untill 1.1
-    //_vehiclesLightArmed append []; untill 1.1
-    //_vehiclesBasic append [];
-   // _vehiclesAt append []; probaly untill 1.1
-    _vehicleAA append ["SPE_FR_M16_Halftrack_noinsignia","SPE_OpelBlitz_Flak38_noinsignia"];
+  #include "..\DLC_content\vehicles\SPE\Vanilla_FIA.sqf"
 };
 
 ["vehiclesBoat", _vehiclesBoat] call _fnc_saveToTemplate;
@@ -181,14 +115,7 @@ if (_hasSPE) then {
 //////////////////////////////////////
 
 ["variants", [
-    ["I_Heli_light_03_dynamicLoadout_F", ["Green",1]],
-    ["I_APC_Wheeled_03_cannon_F", ["Guerilla_01",0.5, "Guerilla_02",0.5, "Guerilla_03",0.5, "Indep",0, "Indep_03",0, "Indep_02",0]],
-    ["I_LT_01_AA_F", ["Indep_Olive",1]],
-    ["I_LT_01_scout_F", ["Indep_Olive",1]],
-    ["I_LT_01_cannon_F", ["Indep_Olive",1]],
-    ["I_LT_01_AT_F", ["Indep_Olive",1]],
-    #include "..\vehicleAnimations\vehicleAnimations_SOG.sqf",
-    #include "..\vehicleAnimations\vehicleAnimations_SPE.sqf"
+  #include "..\vehicleVariants\Vanilla_FIA.sqf"
 ]] call _fnc_saveToTemplate;
 
 #include "Vanilla_Reb_Vehicle_Attributes.sqf"
@@ -206,338 +133,9 @@ private _initialRebelEquipment = [
     "B_FieldPack_oli","B_FieldPack_blk","B_FieldPack_khk",
     "V_BandollierB_blk","V_BandollierB_cbr","V_BandollierB_rgr","V_BandollierB_khk","V_BandollierB_oli","V_Rangemaster_belt",
     "Binocular",
-    "acc_flashlight","acc_flashlight_smg_01","acc_flashlight_pistol"
+    "acc_flashlight","acc_flashlight_smg_01","acc_flashlight_pistol","B_FieldPack_blk","B_AssaultPack_blk",
+    ["launch_RPG32_F", 2], ["RPG32_F", 6]
 ];
-
-if (_hasRF) then {
-    _initialRebelEquipment append ["srifle_h6_tan_rf","10Rnd_556x45_AP_Stanag_red_Tan_RF","10Rnd_556x45_AP_Stanag_Tan_RF","10Rnd_556x45_AP_Stanag_green_Tan_RF"];
-};
-
-if (_hasLawsOfWar) then {
-    _initialRebelEquipment append [
-        "V_Pocketed_olive_F", 
-        "V_Pocketed_coyote_F", 
-        "V_Pocketed_black_F",
-        "V_Plain_crystal_F",
-        "B_LegStrapBag_black_F", 
-        "V_LegStrapBag_coyote_F",
-        "V_LegStrapBag_olive_F",
-        "V_Safety_blue_F",
-        "V_Safety_orange_F",
-        "V_Safety_yellow_F"
-    ];
-};
-
-if (_hasApex) then {
-    _initialRebelEquipment append [
-        "V_BandollierB_ghex_F",
-        "V_TacChestrig_cbr_F",
-        "V_TacChestrig_grn_F",
-        "V_TacChestrig_oli_F"
-    ];
-};
-
-
-if (_hasGM) then {
-    _initialRebelEquipment append [
-        "gm_pm_blk",
-        "gm_8Rnd_9x18mm_B_pst_pm_blk",
-        "gm_photocamera_01_blk",
-        "gm_df7x40_blk",
-        "gm_ge_army_conat2",
-        "gm_gc_compass_f73",
-        "gm_watch_kosei_80",
-        "gm_handgrenade_conc_dm51","gm_handgrenade_conc_dm51a1","gm_handgrenade_frag_dm41","gm_handgrenade_frag_dm41a1","gm_handgrenade_frag_dm51","gm_handgrenade_frag_dm51a1","gm_handgrenade_frag_m26",
-        "gm_handgrenade_frag_m26a1", "gm_handgrenade_frag_rgd5",
-        "gm_smokeshell_blk_gc","gm_smokeshell_blu_gc","gm_smokeshell_grn_gc","gm_smokeshell_org_gc","gm_smokeshell_red_gc","gm_smokeshell_wht_gc","gm_smokeshell_yel_gc","gm_smokeshell_grn_dm21",
-        "gm_smokeshell_red_dm23","gm_smokeshell_wht_dm25","gm_smokeshell_yel_dm26","gm_smokeshell_org_dm32",
-        ["gm_explosive_petn_charge", 10], ["gm_explosive_plnp_charge", 10],
-        "gm_boltcutter",
-        ["gm_rpg7_wud", 3], 
-        ["gm_1Rnd_40mm_heat_pg7v_rpg7", 9],
-        ["gm_1Rnd_40mm_heat_pg7vl_rpg7", 9]
-    ];
-};
-
-private _backpacks = [];
-if (_hasLawsOfWar) then {
-    _backpacks append [
-        "B_Messenger_Black_F", 
-        "B_Messenger_Coyote_F", 
-        "B_Messenger_Gray_F",
-        "B_Messenger_Olive_F"
-    ];
-} else {
-    _backpacks append ["B_FieldPack_blk","B_AssaultPack_blk"];
-};
-
-if (_hasArtOfWar) then {
-    _backpacks append [
-        "B_CivilianBackpack_01_Everyday_Astra_F",
-        "B_CivilianBackpack_01_Everyday_Black_F",
-        "B_CivilianBackpack_01_Everyday_Vrana_F",
-        "B_CivilianBackpack_01_Sport_Blue_F",
-        "B_CivilianBackpack_01_Sport_Green_F",
-        "B_CivilianBackpack_01_Sport_Red_F"
-    ];
-};
-
-if (_hasGM) then {
-    _backpacks append [
-        "gm_ge_army_backpack_medic_80_oli",
-        "gm_ge_backpack_satchel_80_blk",
-        "gm_ge_backpack_satchel_80_san"
-    ];
-};
-
-_initialRebelEquipment append _backpacks;
-
-if (_hasContact) then {
-    _initialRebelEquipment append [
-        "sgun_HunterShotgun_01_F",
-        "sgun_HunterShotgun_01_sawedoff_F",
-        "2Rnd_12Gauge_Pellets",
-        "2Rnd_12Gauge_Slug"
-    ];
-};
-
-if (_hasApex) then {
-    _initialRebelEquipment append [
-        "hgun_Pistol_01_F",
-        "10Rnd_9x21_Mag",
-        ["launch_RPG7_F", 3], 
-        ["RPG7_F", 9]
-    ];
-} else {
-    _initialRebelEquipment append [["launch_RPG32_F", 2], ["RPG32_F", 6]];
-};
-
-if (_hasSOG) then {
-    _initialRebelEquipment append [
-        "vn_vz54",
-        "vn_m38_mag",
-        "vn_vz61",
-        "vn_vz61_mag",
-        "vn_sks",
-        "vn_b_sks",
-        "vn_sks_mag",
-        "vn_mk1_udg",
-        "vn_mk1_udg_mag",
-        "vn_m9130",
-        "vn_b_m38",
-        "vn_m38_mag",
-        "vn_m38",
-        "vn_m36",
-        "vn_b_m36",
-        "vn_m36_mag",
-        "vn_m1903",
-        "vn_b_m1903",
-        "vn_m1903_mag",
-        "vn_m1897",
-        "vn_m1897_buck_mag",
-        "vn_m1897_fl_mag",
-        "vn_b_m1897",
-        "vn_m1891",
-        "vn_m1_garand",
-        "vn_b_m1_garand",
-        "vn_m1_garand_mag",
-        "vn_k98k",
-        "vn_b_k98k",
-        "vn_k98k_mag",
-        "vn_izh54_shorty",
-        "vn_izh54_so_mag",
-        "vn_izh54",
-        "vn_izh54_mag",
-        "vn_m_wrench_01",
-        "vn_vz61_p",
-        "vn_vz61_mag",
-        "vn_tt33",
-        "vn_tt33_mag",
-        "vn_m_typeivaxe_01",
-        "vn_m_shovel_01",
-        "vn_ppk",
-        "vn_ppk_mag",
-        "vn_pm_mag",
-        "vn_fkb1_pm",
-        "vn_p38",
-        "vn_p38_mag",
-        "vn_mx991_red",
-        "vn_mx991",
-        "vn_m10",
-        "vn_m10_mag",
-        "vn_mk22",
-        "vn_mk22_mag",
-        "vn_m_mk2_knife_01",
-        "vn_m_machete_01",
-        "vn_m_machete_02",
-        "vn_m712",
-        "vn_m712_mag",
-        "vn_m_m51_etool_01",
-        "vn_mx991_m1911",
-        "vn_m1911_mag",
-        "vn_m1911",
-        "vn_m1895",
-        "vn_m1895_mag",
-        "vn_m_vc_knife_01",
-        "vn_m_fighting_knife_01",
-        "vn_izh54_p",
-        "vn_hp",
-        "vn_hp_mag",
-        "vn_m_hammer",
-        "vn_fkb1_red",
-        "vn_fkb1",
-        "vn_m_fishing_rod_01",
-        "vn_m_bolo_01",
-        "vn_m_bayo_m16",
-        "vn_m_bayo_m14",
-        "vn_m_bayo_m4956",
-        "vn_m_bayo_m1897",
-        "vn_m_bayo_carbine",
-        "vn_m_axe_fire",
-        "vn_m_axe_01",
-        "vn_p38s",
-        "vn_m10_mag",
-        "vn_m72",
-        "vn_m72_mag",
-        ["vn_m20a1b1_01",3],
-        ["vn_m20a1b1_heat_mag",5],
-        ["vn_m20a1b1_wp_mag",5],
-        "vn_m127",
-        "vn_m127_mag",
-        "vn_m128_mag",
-        "vn_m129_mag",
-        ["vn_rpg7",3],
-        ["vn_rpg7_mag",5],
-        ["vn_rpg2",3],
-        ["vn_rpg2_mag",5],
-        ["vn_rpg2_fuze_mag",5],
-        ["vn_satchelcharge_02_throw_mag",10],
-        "vn_v40_grenade_mag",
-        "vn_t67_grenade_mag",
-        "vn_molotov_grenade_mag",
-        ["vn_mine_gboard_range_mag",5],
-        ["vn_mine_punji_03_mag",5],
-        ["vn_mine_punji_02_mag",5],
-        ["vn_mine_punji_05_mag",5],
-        ["vn_mine_punji_01_mag",5],
-        ["vn_mine_punji_04_mag",5],
-        ["vn_mine_tripwire_arty_mag",5],
-        ["vn_mine_tripwire_f1_04_mag",5],
-        ["vn_mine_tripwire_f1_02_mag",5],
-        ["vn_mine_satchel_remote_02_mag",5],
-        ["vn_mine_tm57_mag",5],
-        ["vn_mine_pot_mag",5],
-        ["vn_mine_pot_range_mag",5],
-        ["vn_mine_chicom_no8_mag",5],
-        ["vn_mine_mortar_range_mag",5],
-        ["vn_mine_tripwire_m49_04_mag",5],
-        ["vn_mine_tripwire_m49_02_mag",5],
-        ["vn_mine_m18_wp_mag",5],
-        ["vn_mine_m18_wp_range_mag",5],
-        ["vn_mine_m18_wp_fuze10_mag",5],
-        ["vn_mine_m18_x3_mag",5],
-        ["vn_mine_m18_x3_range_mag",5],
-        ["vn_mine_m18_mag",5],
-        ["vn_mine_m18_range_mag",5],
-        ["vn_mine_m18_fuze10_mag",5],
-        ["vn_mine_m16_mag",5],
-        ["vn_mine_tripwire_m16_04_mag",5],
-        ["vn_mine_tripwire_m16_02_mag",5],
-        ["vn_mine_m15_mag",5],
-        ["vn_mine_m14_mag",5],
-        ["vn_mine_limpet_01_mag",5],
-        ["vn_mine_limpet_02_mag",5],
-        ["vn_mine_lighter_mag",5],
-        ["vn_mine_jerrycan_mag",5],
-        ["vn_mine_jerrycan_range_mag",5],
-        ["vn_mine_dh10_mag",5],
-        ["vn_mine_dh10_range_mag",5],
-        ["vn_mine_cartridge_mag",5],
-        ["vn_mine_bike_mag",5],
-        ["vn_mine_bike_range_mag",5],
-        ["vn_mine_bangalore_mag",5],
-        ["vn_mine_ammobox_range_mag",5],
-        ["vn_mine_m112_remote_mag",5],
-        "vn_b_item_wiretap",
-        "vn_b_item_trapkit",
-        "vn_camera_01",
-        "vn_mk21_binocs",
-        "vn_m19_binocs_grey",
-        "vn_m19_binocs_grn",
-        "vn_b_item_compass",
-        "vn_b_item_compass_sog",
-        "vn_b_item_watch",
-        "vn_o_pack_02",
-        "vn_o_pack_01",
-        "vn_o_pack_08"
-    ];
-};
-
-if (_hasSPE) then {
-    _initialRebelEquipment append [
-        "SPE_M1903A3_Springfield",
-        "SPE_ACC_M1905_Bayo",
-        "SPE_ACC_GL_M1",
-        "SPE_ACC_M1_Bayo",
-        "SPE_5Rnd_762x63",
-        "SPE_K98_Late",
-        "SPE_ACC_GW_SB_Empty",
-        "SPE_ACC_K98_Bayo",
-        "SPE_5Rnd_792x57",
-        "SPE_K98",
-        "SPE_Fusil_Mle_208_12_Sawedoff",
-        "SPE_Fusil_Mle_208_12",
-        "SPE_2Rnd_12x65_Slug",
-        "SPE_2Rnd_12x65_Pellets",
-        "SPE_2Rnd_12x65_No4_Buck",
-        "SPE_Rauchsichtzeichen_Orange",
-        "SPE_NBK39b",
-        "SPE_NB39",
-        "SPE_US_M18_Yellow",
-        "SPE_US_M18_Violet",
-        "SPE_US_M18_Red",
-        "SPE_US_M18_Green",
-        "SPE_US_M15",
-        "SPE_Handrauchzeichen_Yellow",
-        "SPE_Handrauchzeichen_Violet",
-        "SPE_Handrauchzeichen_Red",
-        "SPE_US_M18",
-        "SPE_US_AN_M14",
-        "SPE_US_Mk_1",
-        "SPE_US_Mk_2_Yellow",
-        "SPE_US_Mk_2",
-        "SPE_Shg24_Frag",
-        "SPE_US_Mk_3",
-        "SPE_M39",
-        "SPE_Shg24",
-        ["SPE_Shg24x7",20],
-        ["SPE_US_TNT_4pound_mag",5],
-        ["SPE_US_TNT_half_pound_mag",5],
-        ["SPE_TMI_42_MINE_mag",3],
-        ["SPE_STMI_MINE_mag",5],
-        ["SPE_SMI_35_1_MINE_mag",3],
-        ["SPE_SMI_35_MINE_mag",5],
-        ["SPE_SMI_35_Pressure_MINE_mag",5],
-        ["SPE_Shg24x7_Improvised_Mine_mag",5],
-        ["SPE_shumine_42_MINE_mag",5],
-        ["SPE_US_M3_MINE_mag",5],
-        ["SPE_US_M3_Pressure_MINE_mag",5],
-        ["SPE_US_Bangalore_mag",5],
-        ["SPE_US_M1A1_ATMINE_mag",5],
-        ["SPE_Ladung_Big_MINE_mag",5],
-        ["SPE_Ladung_Small_MINE_mag",5],
-        "SPE_US_ItemCompass",
-        "SPE_GER_ItemCompass",
-        "SPE_GER_ItemCompass_deg",
-        "SPE_US_ItemWatch",
-        "SPE_GER_ItemWatch",
-        "SPE_GER_Headset",
-        "B_SPE_FFI_Gasbag",
-        "B_SPE_CIV_musette",
-        "B_SPE_CIV_satchel"
-    ];
-};
-
 
 if (A3A_hasTFAR) then {_initialRebelEquipment append ["tf_microdagr","tf_anprc154"]};
 if (A3A_hasTFAR && startWithLongRangeRadio) then {_initialRebelEquipment append ["tf_anprc155","tf_anprc155_coyote"]};
@@ -558,264 +156,6 @@ private _rebUniforms = [
 ];
 
 private _dlcUniforms = [];
-
-if (_hasContact) then {
-    _dlcUniforms append [
-        "U_I_L_Uniform_01_camo_F",
-        "U_I_L_Uniform_01_tshirt_black_F",
-        "U_I_L_Uniform_01_tshirt_olive_F",
-        "U_I_L_Uniform_01_tshirt_skull_F",
-        "U_I_L_Uniform_01_tshirt_sport_F",
-        "U_I_L_Uniform_01_deserter_F",
-        "U_C_E_LooterJacket_01_F"
-    ];
-};
-if (_hasWs) then {
-    _dlcUniforms append [
-        "U_lxWS_ION_Casual1",
-        "U_lxWS_ION_Casual2",
-        "U_lxWS_ION_Casual3",
-        "U_lxWS_ION_Casual4",
-        "U_lxWS_ION_Casual5",
-        "U_lxWS_SFIA_deserter",
-        "U_lxWS_Djella_02_Brown",
-        "U_lxWS_Djella_02_Grey",
-/*         "U_lxWS_Djella_02_Green", */
-        "U_lxWS_Djella_02_Sand"
-    ];
-};
-if (_hasApex) then {
-    _dlcUniforms append [
-        "U_I_C_Soldier_Bandit_1_F",
-        "U_I_C_Soldier_Bandit_2_F",
-        "U_I_C_Soldier_Bandit_3_F",
-        "U_I_C_Soldier_Bandit_4_F",
-        "U_I_C_Soldier_Bandit_5_F",
-        "U_I_C_Soldier_Camo_F",
-        "U_I_C_Soldier_Para_1_F",
-        "U_I_C_Soldier_Para_2_F",
-        "U_I_C_Soldier_Para_3_F",
-        "U_I_C_Soldier_Para_4_F",
-        "U_I_C_Soldier_Para_5_F"
-    ];
-};
-if (_hasLawsOfWar) then {
-    _dlcUniforms append [
-        "U_C_ConstructionCoverall_Black_F",
-        "U_C_ConstructionCoverall_Blue_F",
-        "U_C_ConstructionCoverall_Red_F",
-        "U_C_ConstructionCoverall_Vrana_F",
-        "U_BG_Guerilla1_2_F",
-        "U_C_Paramedic_01_F"
-    ];
-};
-if (_hasArtOfWar) then {
-    _dlcUniforms append [
-        "U_C_ArtTShirt_01_v1_F",
-        "U_C_ArtTShirt_01_v2_F",
-        "U_C_ArtTShirt_01_v3_F",
-        "U_C_ArtTShirt_01_v4_F",
-        "U_C_ArtTShirt_01_v5_F",
-        "U_C_ArtTShirt_01_v6_F"
-    ];
-};
-
-if (_hasGM) then {
-    _dlcUniforms append [
-        "gm_gc_civ_uniform_man_04_80_gry",
-        "gm_gc_civ_uniform_man_04_80_blu",
-        "gm_ge_dbp_uniform_suit_80_blu",
-        "gm_gc_civ_uniform_man_03_80_gry",
-        "gm_gc_civ_uniform_man_03_80_grn",
-        "gm_gc_civ_uniform_man_03_80_blu",
-        "gm_pl_airforce_uniform_pilot_80_gry",
-        "gm_gc_airforce_uniform_pilot_80_blu",
-        "gm_gc_civ_uniform_pilot_80_blk",
-        "gm_xx_army_uniform_fighter_04_wdl",
-        "gm_xx_army_uniform_fighter_01_oli",
-        "gm_xx_army_uniform_fighter_01_alp",
-        "gm_xx_army_uniform_fighter_01_m84",
-        "gm_xx_army_uniform_fighter_02_wdl",
-        "gm_xx_army_uniform_fighter_02_oli",
-        "gm_xx_army_uniform_fighter_03_blk",
-        "gm_xx_army_uniform_fighter_03_brn",
-        "gm_xx_army_uniform_fighter_04_grn",
-        "gm_ge_uniform_pilot_commando_rolled_oli",
-        "gm_ge_uniform_pilot_commando_rolled_gry",
-        "gm_ge_uniform_pilot_commando_rolled_blk",
-        "gm_ge_uniform_pilot_commando_oli",
-        "gm_ge_uniform_pilot_commando_gry",
-        "gm_ge_uniform_pilot_commando_blk",
-        "gm_ge_ff_uniform_man_80_orn",
-        "gm_ge_army_uniform_soldier_parka_80_win",
-        "gm_dk_army_uniform_soldier_84_win",
-        "gm_ge_civ_uniform_blouse_80_gry",
-        "gm_gc_civ_uniform_man_02_80_brn",
-        "gm_gc_civ_uniform_man_01_80_blu",
-        "gm_gc_civ_uniform_man_01_80_blk"
-    ];
-};
-
-if (_hasCSLA) then {
-    _dlcUniforms append [
-        "FIA_uniwld11",
-        "FIA_uniwld",
-        "FIA_uniwld1",
-        "FIA_uniwld10",
-        "FIA_uniwld3",
-        "FIA_uniwld4",
-        "FIA_uniwld6",
-        "FIA_uniwld7",
-        "FIA_uniWld8",
-        "FIA_uniWld9"
-      ];
-};
-
-if (_hasRF) then {
-    _dlcUniforms append [
-        "U_IG_Guerrilla_RF",
-        "U_IG_leader_RF",
-        "U_C_PilotJacket_brown_RF",
-        "U_C_PilotJacket_open_brown_RF",
-        "U_C_PilotJacket_lbrown_RF",
-        "U_C_PilotJacket_open_lbrown_RF",
-        "U_C_PilotJacket_black_RF",
-        "U_C_PilotJacket_open_black_RF",
-        "U_C_FirefighterFatigues_RF",
-        "U_C_FirefighterFatigues_RolledUp_RF",
-        "U_C_HeliPilotCoveralls_Yellow_RF",
-        "U_C_HeliPilotCoveralls_Green_RF",
-        "U_C_HeliPilotCoveralls_Rescue_RF",
-        "U_C_HeliPilotCoveralls_Blue_RF",
-        "U_C_HeliPilotCoveralls_Black_RF"
-    ];
-};
-
-if (_hasSOG) then {
-    _dlcUniforms append [
-        "vn_o_uniform_nva_navy_04",
-        "vn_o_uniform_nva_navy_03",
-        "vn_o_uniform_nva_navy_02",
-        "vn_o_uniform_nva_navy_01",
-        "vn_o_uniform_vc_mf_04_07",
-        "vn_o_uniform_vc_mf_03_07",
-        "vn_b_uniform_seal_06_02",
-        "vn_b_uniform_seal_06_05",
-        "vn_b_uniform_seal_06_07",
-        "vn_b_uniform_seal_06_01",
-        "vn_b_uniform_seal_06_06",
-        "vn_b_uniform_seal_05_02",
-        "vn_b_uniform_seal_05_05",
-        "vn_b_uniform_seal_05_07",
-        "vn_b_uniform_seal_05_01",
-        "vn_b_uniform_seal_05_06",
-        "vn_b_uniform_seal_04_01",
-        "vn_b_uniform_seal_03_01",
-        "vn_b_uniform_seal_02_02",
-        "vn_b_uniform_seal_02_05",
-        "vn_b_uniform_seal_02_07",
-        "vn_b_uniform_seal_02_01",
-        "vn_b_uniform_seal_02_06",
-        "vn_b_uniform_seal_01_02",
-        "vn_b_uniform_seal_01_05",
-        "vn_b_uniform_seal_01_07",
-        "vn_b_uniform_seal_01_01",
-        "vn_b_uniform_seal_01_06",
-        "vn_o_uniform_nva_air_01",
-        "vn_b_uniform_sog_02_05",
-        "vn_b_uniform_sog_02_02",
-        "vn_b_uniform_sog_02_06",
-        "vn_b_uniform_sog_02_04",
-        "vn_b_uniform_sog_02_01",
-        "vn_b_uniform_sog_02_03",
-        "vn_b_uniform_sog_01_05",
-        "vn_b_uniform_macv_06_01",
-        "vn_b_uniform_macv_05_07",
-        "vn_b_uniform_macv_04_01",
-        "vn_b_uniform_macv_04_07",
-        "vn_b_uniform_macv_02_01",
-        "vn_b_uniform_macv_02_07",
-        "vn_b_uniform_macv_01_03"
-    ];
-};
-
-if (_hasSPE) then {
-    _dlcUniforms append [
-    "U_SPE_US_Tank_Crew2",
-    "U_SPE_US_Tank_Crew_camo",
-    "U_SPE_US_Tank_Crew",
-    "U_SPE_US_HBT44_late_roll",
-    "U_SPE_US_HBT44_late",
-    "U_SPE_US_HBT44_trop",
-    "U_SPE_US_HBT44_FrogSkin_Jungle_trop",
-    "U_SPE_US_Pilot_lthr",
-    "U_SPE_FR_Tank_Crew2",
-    "U_SPE_FR_HBT_Uniform_Trop",
-    "U_SPE_FR_Tank_Crew3",
-    "U_SPE_FR_Tank_Crew",
-    "U_SPE_CIV_Swetr_5_vest",
-    "U_SPE_CIV_Swetr_5",
-    "U_SPE_CIV_Swetr_4_vest",
-    "U_SPE_CIV_Swetr_4",
-    "U_SPE_CIV_Swetr_3_vest",
-    "U_SPE_CIV_Swetr_3",
-    "U_SPE_CIV_Swetr_2_vest",
-    "U_SPE_CIV_Swetr_2",
-    "U_SPE_CIV_Swetr_1_vest",
-    "U_SPE_CIV_Swetr_1",
-    "U_SPE_CIV_pak2_grijs_swetr",
-    "U_SPE_CIV_pak2_grijs_tie",
-    "U_SPE_CIV_pak2_grijs",
-    "U_SPE_CIV_pak2_bruin_swetr",
-    "U_SPE_CIV_pak2_bruin_tie",
-    "U_SPE_CIV_pak2_bruin",
-    "U_SPE_CIV_pak2_zwart_swetr",
-    "U_SPE_CIV_pak2_zwart_alt",
-    "U_SPE_CIV_pak2_zwart_tie_alt",
-    "U_SPE_CIV_pak2_zwart_tie",
-    "U_SPE_CIV_pak2_zwart",
-    "U_SPE_CIV_Citizen_7_trop",
-    "U_SPE_CIV_Citizen_7_tie",
-    "U_SPE_CIV_Citizen_7",
-    "U_SPE_CIV_Citizen_6_trop",
-    "U_SPE_CIV_Citizen_6_tie",
-    "U_SPE_CIV_Citizen_6",
-    "U_SPE_CIV_Citizen_5_trop",
-    "U_SPE_CIV_Citizen_5_tie",
-    "U_SPE_CIV_Citizen_5",
-    "U_SPE_CIV_Citizen_4_trop",
-    "U_SPE_CIV_Citizen_4_tie",
-    "U_SPE_CIV_Citizen_4",
-    "U_SPE_CIV_Citizen_3_trop",
-    "U_SPE_CIV_Citizen_3_tie",
-    "U_SPE_CIV_Citizen_3",
-    "U_SPE_CIV_Citizen_2_trop",
-    "U_SPE_CIV_Citizen_2_tie",
-    "U_SPE_CIV_Citizen_2",
-    "U_SPE_CIV_Citizen_1_trop",
-    "U_SPE_CIV_Citizen_1_tie",
-    "U_SPE_CIV_Citizen_1",
-    "U_SPE_CIV_Worker_4_trop",
-    "U_SPE_CIV_Worker_4_tie",
-    "U_SPE_CIV_Worker_4",
-    "U_SPE_CIV_Worker_3_trop",
-    "U_SPE_CIV_Worker_3_tie",
-    "U_SPE_CIV_Worker_3",
-    "U_SPE_CIV_Worker_2_trop",
-    "U_SPE_CIV_Worker_2_tie",
-    "U_SPE_CIV_Worker_2",
-    "U_SPE_CIV_Worker_1_trop",
-    "U_SPE_CIV_Worker_1_tie",
-    "U_SPE_CIV_Worker_1",
-    "U_SPE_CIV_Worker_Coverall_3_trop",
-    "U_SPE_CIV_Worker_Coverall_3",
-    "U_SPE_CIV_Worker_Coverall_2_trop",
-    "U_SPE_CIV_Worker_Coverall_2",
-    "U_SPE_CIV_Worker_Coverall_1_trop",
-    "U_SPE_CIV_Worker_Coverall_1"
-    ];
-};
-
 
 ["uniforms", _rebUniforms + _dlcUniforms] call _fnc_saveToTemplate;
 
@@ -869,227 +209,6 @@ private _headgear = [
 
 private _dlcheadgear = [];
 
-if (_hasContact) then {
-    _dlcheadgear append [
-        "H_Booniehat_mgrn",
-        "H_Booniehat_taiga",
-        "H_Tank_eaf_F",
-        "H_MilCap_grn",
-        "H_MilCap_taiga",
-        "H_Hat_Tinfoil_F"
-    ];
-};
-if (_hasWs) then {
-    _dlcheadgear append [
-        "lxWS_H_Bandanna_blk_hs",
-        "H_Cap_headphones_ion_lxws",
-        "lxWS_H_CapB_rvs_blk_ION",
-        "lxWS_H_Headset",
-        "H_Beret_Headset_lxWS"
-    ];
-};
-if (_hasApex) then {
-    _dlcheadgear append [
-        "H_Helmet_Skate"
-    ];
-};
-if (_hasLawsOfWar) then {
-    _dlcheadgear append [
-        "H_EarProtectors_black_F",
-        "H_EarProtectors_orange_F",
-        "H_EarProtectors_red_F",
-        "H_EarProtectors_white_F",
-        "H_EarProtectors_yellow_F",
-        "U_C_Paramedic_01_F",///
-        "H_Construction_basic_black_F",
-        "H_Construction_basic_orange_F",
-        "H_Construction_basic_red_F",
-        "H_Construction_basic_vrana_F",
-        "H_Construction_basic_white_F",
-        "H_Construction_basic_yellow_F",///
-        "H_Construction_earprot_black_F",
-        "H_Construction_earprot_orange_F",
-        "H_Construction_earprot_red_F",
-        "H_Construction_earprot_vrana_F",
-        "H_Construction_earprot_white_F",
-        "H_Construction_earprot_yellow_F",///
-        "H_Construction_headset_black_F",
-        "H_Construction_headset_orange_F",
-        "H_Construction_headset_red_F",
-        "H_Construction_headset_vrana_F",
-        "H_Construction_headset_white_F",
-        "H_Construction_headset_yellow_F",///
-        "H_HeadBandage_clean_F",
-        "H_HeadBandage_stained_F",
-        "H_HeadBandage_bloody_F",
-        "H_HeadSet_black_F",
-        "H_HeadSet_orange_F",
-        "H_HeadSet_red_F",
-        "H_HeadSet_white_F",
-        "H_HeadSet_yellow_F",
-        "H_Hat_Safari_olive_F",
-        "H_Hat_Safari_sand_F",
-        "H_WirelessEarpiece_F"
-    ];
-};
-
-if (_hasGM) then {
-    _dlcheadgear append [
-        "gm_ge_headgear_beret_blk",
-        "gm_ge_headgear_beret_un",
-        "gm_ge_headgear_beret_mrb",
-        "gm_ge_headgear_hat_boonie_trp",
-        "gm_ge_headgear_hat_boonie_flk",
-        "gm_dk_headgear_hat_boonie_m84",
-        "gm_ge_headgear_hat_boonie_oli",
-        "gm_ge_headgear_hat_boonie_wdl",
-        "gm_ge_headgear_crewhat_80_blk",
-        "gm_gc_army_headgear_crewhat_80_blk",
-        "gm_ge_headgear_headset_crew_oli",
-        "gm_ge_headgear_beret_crew_blk",
-        "gm_gc_headgear_fjh_model4_oli",
-        "gm_gc_headgear_fjh_model4_wht",
-        "gm_xx_headgear_headwrap_01_trp",
-        "gm_xx_headgear_headwrap_01_flk",
-        "gm_xx_headgear_headwrap_01_blk",
-        "gm_xx_headgear_headwrap_01_blu",
-        "gm_xx_headgear_headwrap_01_smp",
-        "gm_xx_headgear_headwrap_crew_01_trp",
-        "gm_xx_headgear_headwrap_crew_01_flk",
-        "gm_xx_headgear_headwrap_crew_01_blk",
-        "gm_xx_headgear_headwrap_crew_01_smp",
-        "gm_xx_headgear_headwrap_crew_01_grn",
-        "gm_xx_headgear_headwrap_crew_01_m84",
-        "gm_xx_headgear_headwrap_crew_01_oli",
-        "gm_xx_headgear_headwrap_01_frog",
-        "gm_xx_headgear_headwrap_01_grn",
-        "gm_xx_headgear_headwrap_01_m84",
-        "gm_xx_headgear_headwrap_01_moro",
-        "gm_xx_headgear_headwrap_01_oli",
-        "gm_xx_headgear_headwrap_01_str",
-        "gm_xx_headgear_headwrap_01_wht",
-        "gm_xx_headgear_headwrap_01_dino",
-        "gm_ge_headgear_winterhat_80_oli",
-        "gm_ge_headgear_hat_beanie_blk",
-        "gm_ge_headgear_hat_beanie_crew_blk"
-    ];
-};
-
-if (_hasCSLA) then {
-    _dlcheadgear append [
-        "AFMC_booniehatLizard",
-        "US85_hat",
-        "FIA_hat85Gn",
-        "FIA_hat85bGn",
-        "FIA_hat85Mlok",
-        "FIA_hat85bMlok",
-        "FIA_Hairs_Brown",
-        "FIA_capBk",
-        "FIA_capGn",
-        "FIA_cap",
-        "FIA_capMlok",
-        "CSLA_RadiovkaBk",
-        "CSLA_RadiovkaGy",
-        "FIA_Radiovka",
-        "FIA_Usanka",
-        "FIA_Hairs_Silver",
-        "CSLA_BudajkaBk",
-        "CSLA_BudajkaGy",
-        "FIA_Budajka"
-    ];
-};
-
-if (_hasRF) then {
-    _dlcheadgear append [
-        "H_Helmet_HardHat_White_RF",
-        "H_Helmet_HardHat_Yellow_RF",
-        "H_Helmet_HardHat_Green_RF",
-        "H_Helmet_HardHat_Red_RF",
-        "H_Helmet_HardHat_Orange_RF",
-        "H_Helmet_HardHat_Blue_RF",
-        "H_Helmet_HardHat_Black_RF",
-        "H_Cap_marshal_blue_RF"
-    ];
-};
-
-if (_hasSOG) then {
-    _dlcheadgear append [
-        "vn_c_conehat_01",
-        "vn_c_conehat_02",
-        "vn_o_helmet_tsh3_01",
-        "vn_o_helmet_tsh3_02",
-        "vn_b_headband_02",
-        "vn_b_headband_04",
-        "vn_c_headband_01",
-        "vn_c_headband_02",
-        "vn_b_headband_01",
-        "vn_b_headband_08",
-        "vn_b_headband_05",
-        "vn_c_headband_03",
-        "vn_c_headband_04",
-        "vn_b_headband_03",
-        "vn_o_pl_cap_01_01",
-        "vn_o_pl_cap_02_01",
-        "vn_o_pl_cap_02_02",
-        "vn_o_boonie_vc_01_01",
-        "vn_o_boonie_vc_01_02",
-        "vn_b_boonie_01_02",
-        "vn_b_boonie_01_05",
-        "vn_b_boonie_01_04",
-        "vn_b_boonie_01_07",
-        "vn_b_boonie_01_09",
-        "vn_b_boonie_01_01",
-        "vn_b_boonie_01_08",
-        "vn_b_boonie_01_06",
-        "vn_b_boonie_01_03",
-        "vn_b_boonie_05_02",
-        "vn_b_boonie_05_05",
-        "vn_b_boonie_05_04",
-        "vn_b_boonie_05_07",
-        "vn_b_boonie_05_09",
-        "vn_b_boonie_04_05",
-        "vn_b_boonie_04_04",
-        "vn_b_boonie_04_07",
-        "vn_b_boonie_04_09",
-        "vn_b_boonie_04_01",
-        "vn_b_boonie_03_02",
-        "vn_b_boonie_03_05",
-        "vn_b_boonie_03_04",
-        "vn_b_boonie_03_07",
-        "vn_b_boonie_03_09",
-        "vn_b_boonie_03_03",
-        "vn_b_boonie_02_09",
-        "vn_b_boonie_06_01",
-        "vn_b_boonie_06_02",
-        "vn_b_boonie_07_01",
-        "vn_b_boonie_07_02",
-        "vn_b_boonie_08_01",
-        "vn_b_boonie_08_02",
-        "vn_b_bandana_02",
-        "vn_b_bandana_05",
-        "vn_b_bandana_04",
-        "vn_b_bandana_07",
-        "vn_b_bandana_01",
-        "vn_b_bandana_08",
-        "vn_b_bandana_06",
-        "vn_b_bandana_03"
-    ];
-};
-
-if (_hasSPE) then {
-    _dlcheadgear append [
-        "H_SPE_CIV_Worker_Cap_1",
-        "H_SPE_CIV_Worker_Cap_2",
-        "H_SPE_CIV_Worker_Cap_3",
-        "H_SPE_CIV_Fedora_Cap_3",
-        "H_SPE_CIV_Fedora_Cap_4",
-        "H_SPE_CIV_Fedora_Cap_2",
-        "H_SPE_CIV_Fedora_Cap_1",
-        "H_SPE_CIV_Fedora_Cap_6",
-        "H_SPE_CIV_Fedora_Cap_5"
-    ];
-};
-
 ["headgear", _headgear + _dlcheadgear] call _fnc_saveToTemplate;
 
 /////////////////////
@@ -1097,7 +216,7 @@ if (_hasSPE) then {
 /////////////////////
 
 ["voices", ["Male01POL", "Male02POL", "Male03POL"]] call _fnc_saveToTemplate;
-["faces", [
+private _faces = [
     "LivonianHead_1", "LivonianHead_2", "LivonianHead_3", "LivonianHead_4",
     "LivonianHead_5", "LivonianHead_6", "LivonianHead_7", "LivonianHead_8",
     "LivonianHead_9", "LivonianHead_10",
@@ -1105,7 +224,34 @@ if (_hasSPE) then {
     "WhiteHead_06", "WhiteHead_07", "WhiteHead_08", "WhiteHead_10", "WhiteHead_11",
     "WhiteHead_13", "WhiteHead_15", "WhiteHead_16", "WhiteHead_17", "WhiteHead_18",
     "WhiteHead_19", "WhiteHead_20", "WhiteHead_21"
-]] call _fnc_saveToTemplate;
+];
+["faces", _faces] call _fnc_saveToTemplate;
+
+if (_hasSPE) then {
+  _faces append [
+    #include "..\DLC_content\faces\SPE\SPE_white.sqf"
+  ];
+};
+if (_hasSOG) then {
+  _faces append [
+    #include "..\DLC_content\faces\SOG\SOG_faces_nocamowhite.sqf"
+  ];
+};
+if (_hasRF) then {
+  _faces append [
+    #include "..\DLC_content\faces\RF\RF_white.sqf"
+  ];
+};
+if (_hasGM) then {
+  _faces append [
+    #include "..\DLC_content\faces\GM\GM_white.sqf"
+  ];
+};
+if (_hasWS) then {
+  _faces append [
+    #include "..\DLC_content\faces\WS\WS_white.sqf"
+  ];
+};
 
 //////////////////////////
 //       Loadouts       //
@@ -1115,13 +261,7 @@ private _loadoutData = call _fnc_createLoadoutData;
 _loadoutData set ["maps", ["ItemMap"]];
 _loadoutData set ["watches", ["ItemWatch"]];
 _loadoutData set ["compasses", ["ItemCompass"]];
-
-if (_hasWs) then {
-    _loadoutData set ["binoculars", ["Binocular","Camera_lxWS"]];
-} else {
-    _loadoutData set ["binoculars", ["Binocular"]];
-};
-
+_loadoutData set ["binoculars", ["Binocular"]];
 _loadoutData set ["uniforms", _rebUniforms + _dlcUniforms]; ///check this one
 
 _loadoutData set ["glasses", ["G_Lady_Blue","G_Shades_Black", "G_Shades_Blue", "G_Shades_Green", "G_Shades_Red", "G_Aviator", "G_Spectacles", "G_Spectacles_Tinted", "G_Sport_BlackWhite", "G_Sport_Blackyellow", "G_Sport_Greenblack", "G_Sport_Checkered", "G_Sport_Red", "G_Squares", "G_Squares_Tinted"]];
@@ -1129,90 +269,51 @@ _loadoutData set ["goggles", ["G_Lowprofile"]];
 _loadoutData set ["facemask", ["G_Bandanna_blk", "G_Bandanna_oli", "G_Bandanna_khk", "G_Bandanna_tan", "G_Bandanna_beast", "G_Bandanna_shades", "G_Bandanna_sport", "G_Bandanna_aviator"]];
 _loadoutData set ["balaclavas", ["G_Balaclava_blk", "G_Balaclava_BlueStrips", "G_Balaclava_Flecktarn", "G_Balaclava_Halloween_01", "G_Balaclava_lowprofile", "G_Balaclava_oli", "G_Balaclava_Flames1", "G_Balaclava_Scarecrow_01", "G_Balaclava_Skull1", "G_Balaclava_Tropentarn"]];
 _loadoutData set ["argoFacemask", ["G_Bandanna_BlueFlame1", "G_Bandanna_BlueFlame2", "G_Bandanna_CandySkull", "G_Bandanna_OrangeFlame1", "G_Bandanna_RedFlame1", "G_Bandanna_Skull1", "G_Bandanna_Syndikat1", "G_Bandanna_Syndikat2","G_Bandanna_Skull2", "G_Bandanna_Vampire_01"]];
-
+_loadoutData set ["facewearWS", []];
+_loadoutData set ["facewearContact", []];
+_loadoutData set ["facewearLawsOfWar", []];
+_loadoutData set ["facewearGM", []];
+_loadoutData set ["facewearCLSA", []];
+_loadoutData set ["facewearSOG", []];
+_loadoutData set ["facewearSPE", []];
 if (_hasWs) then {
-    _loadoutData set ["facewearWS", ["G_Balaclava_blk_lxWS", "G_Balaclava_oli_lxWS", "G_Balaclava_snd_lxWS", "G_Combat_lxWS", "G_Headset_lxWS"]];
-} else {
-    _loadoutData set ["facewearWS", []];
+    #include "..\DLC_content\gear\WS\Vanilla_FIA.sqf"
 };
 
 if (_hasRF) then {
-    (_loadoutData get "facemask") pushBack "G_Bandanna_yellow_RF";
-    (_loadoutData get "glasses") append ["G_Glasses_black_RF","G_Glasses_white_RF"];
+    #include "..\DLC_content\gear\RF\Vanilla_FIA.sqf"
 };
 
 if (_hasContact) then {
-    _loadoutData set ["facewearContact", ["G_Blindfold_01_black_F", "G_Blindfold_01_white_F", "G_RegulatorMask_F"]];
-} else {
-    _loadoutData set ["facewearContact", []];
+    #include "..\DLC_content\gear\Contact\Vanilla_FIA.sqf"
+};
+
+if (_hasApex) then {
+    #include "..\DLC_content\gear\Apex\Vanilla_FIA.sqf"
 };
 
 if (_hasLawsOfWar) then {
-    _loadoutData set ["facewearLawsOfWar", ["G_Respirator_blue_F", "G_Respirator_white_F", "G_Respirator_yellow_F", "G_EyeProtectors_F", "G_EyeProtectors_Earpiece_F", "G_WirelessEarpiece_F"]];
-} else {
-    _loadoutData set ["facewearLawsOfWar", []];
+    #include "..\DLC_content\gear\Lawsofwar\Vanilla_FIA.sqf"
 };
 
 if (_hasGM) then {
-    _loadoutData set ["facewearGM", [
-        "gm_ge_facewear_acidgoggles",
-        "gm_ge_facewear_dustglasses",
-        "gm_gc_army_facewear_dustglasses",
-        "gm_ge_facewear_m65",
-        "gm_gc_army_facewear_schm41m",
-        "gm_ge_facewear_glacierglasses",
-        "gm_xx_facewear_scarf_01_trp",
-        "gm_xx_facewear_scarf_01_flk",
-        "gm_xx_facewear_scarf_01_blk",
-        "gm_xx_facewear_scarf_01_blu",
-        "gm_xx_facewear_scarf_01_pt1",
-        "gm_xx_facewear_scarf_01_pt3",
-        "gm_xx_facewear_scarf_01_frog",
-        "gm_xx_facewear_scarf_01_grn",
-        "gm_xx_facewear_scarf_01_gry",
-        "gm_xx_facewear_scarf_01_m84",
-        "gm_xx_facewear_scarf_02_blk",
-        "gm_xx_facewear_scarf_01_grn",
-        "gm_xx_facewear_scarf_01_oli",
-        "gm_xx_facewear_scarf_01_wht",
-        "gm_xx_facewear_scarf_01_moro",
-        "gm_xx_facewear_scarf_01_oli",
-        "gm_xx_facewear_scarf_01_red",
-        "gm_xx_facewear_scarf_01_pt2",
-        "gm_xx_facewear_scarf_01_str",
-        "gm_xx_facewear_scarf_01_wht",
-        "gm_ge_facewear_stormhood_blk",
-        "gm_ge_facewear_stormhood_dustglasses_blk",
-        "gm_ge_facewear_stormhood_brd",
-        "gm_ge_facewear_sunglasses"
-        ]
-    ];
-} else {
-    _loadoutData set ["facewearGM", []];
+    #include "..\DLC_content\gear\GM\Vanilla_FIA.sqf"
 };
 
-if (_hasLawsOfWar) then {
-    _loadoutData set ["facewearCLSA", ["CSLA_glsPlscSpring"]];
-} else {
-    _loadoutData set ["facewearCLSA", []];
+if (_hasCSLA) then {
+    #include "..\DLC_content\gear\CSLA\Vanilla_FIA.sqf"
+};
+
+if (_hasArtOfWar) then {
+    #include "..\DLC_content\gear\Artofwar\Vanilla_FIA.sqf"
 };
 
 if (_hasSOG) then {
-    _loadoutData set ["facewearSOG", ["vn_b_acc_towel_02","vn_b_acc_towel_01","vn_b_spectacles_tinted","vn_g_glasses_01","vn_b_acc_rag_02","vn_b_acc_rag_01","vn_o_scarf_01_01","vn_b_scarf_01_01","vn_o_scarf_01_02","vn_o_scarf_01_03","vn_o_scarf_01_04","vn_b_scarf_01_03","vn_o_poncho_01_01","vn_o_acc_goggles_02","vn_b_acc_goggles_01","vn_o_acc_goggles_01","vn_o_bandana_g","vn_o_bandana_b","vn_b_bandana_a","vn_b_aviator"]];
-} else {
-    _loadoutData set ["facewearSOG", []];
+    #include "..\DLC_content\gear\SOG\Vanilla_FIA.sqf"
 };
 
 if (_hasSPE) then {
-    _loadoutData set ["facewearSPE", ["G_SPE_GER_Headset","G_SPE_Sunglasses_US_Yellow","G_SPE_Sunglasses_US_Red","G_SPE_Pipe_Sir_Winston","G_SPE_Sunglasses_GER_Red","G_SPE_Sunglasses_GER_Brown","G_SPE_Polar_Goggles","G_SPE_SWDG_Goggles","G_SPE_Dust_Goggles","G_SPE_Ful_Vue","G_SPE_Ful_Vue_Reinforced","G_SPE_Dust_Goggles_2","G_SPE_Dienst_Brille","G_SPE_Cigarette_Strike_Outs","G_SPE_Cigarette_Grundstein","G_SPE_Cigarette_Belomorkanal","G_SPE_Cigar_Moza","G_SPE_Binoculars"]];
-} else {
-    _loadoutData set ["facewearSPE", []];
-};
-
-if (_hasSPE) then {
-    _loadoutData set ["facewearSPE", ["G_SPE_GER_Headset","G_SPE_Sunglasses_US_Yellow","G_SPE_Sunglasses_US_Red","G_SPE_Pipe_Sir_Winston","G_SPE_Sunglasses_GER_Red","G_SPE_Sunglasses_GER_Brown","G_SPE_Polar_Goggles","G_SPE_SWDG_Goggles","G_SPE_Dust_Goggles","G_SPE_Ful_Vue","G_SPE_Ful_Vue_Reinforced","G_SPE_Dust_Goggles_2","G_SPE_Dienst_Brille","G_SPE_Cigarette_Strike_Outs","G_SPE_Cigarette_Grundstein","G_SPE_Cigarette_Belomorkanal","G_SPE_Cigar_Moza","G_SPE_Binoculars"]];
-} else {
-    _loadoutData set ["facewearSPE", []];
+    #include "..\DLC_content\gear\SPE\Vanilla_FIA.sqf"
 };
 
 _loadoutData set ["items_medical_basic", ["BASIC"] call A3A_fnc_itemset_medicalSupplies];

@@ -101,7 +101,7 @@
 ["C_IDAP_Offroad_lxWS",["HideAntenna",0.3,"HideSnorkel",0.3,"HideDoor3",0.3,"HideTarp",0.3,"HideFrame",0.3,"HideConstruction",0.3,"HideServices",1,"HideDoor1",0.3,"HideDoor2",0.3,"HideBackpacks",0.3,"HideBumper1",0.3,"HideBumper2",0.3,"hidePolice",1,"BeaconsStart",1,"BeaconsServicesStart",1]],
 ["C_IDAP_Truck_02_cargo_lxWS",["hideCrates",0.3,"hideSpareWheel",0.3,"hideRoofRack",0.3,"hideBeacon_1",0.3,"hideBumper",0.3,"hideWindowProtector",0.3]],
 ["C_IDAP_Truck_02_flatbed_lxWS",["hideSpareWheel",0.3,"hideRoofRack",0.3,"hideBeacon_1",0.3,"hideBumper",0.3,"hideWindowProtector",0.3]],
-["C_IDAP_Truck_02_racing_lxWS",["hideSpareWheel",0.3,"hideRoofRack",0.3,"hideBeacon_1",0.3,"hideBumper",0.3,"hideWindowProtector",0.3]]
+["C_IDAP_Truck_02_racing_lxWS",["hideSpareWheel",0.3,"hideRoofRack",0.3,"hideBeacon_1",0.3,"hideBumper",0.3,"hideWindowProtector",0.3]],
 //AU
 ["a3a_I_E_Truck_02_zu23_F", ["shield_hide",0.3,"hideCrates",0.3,"hideSpareWheel",0.3,"hideRoofRack",1,"hideBeacon_1",0,"hideBumper",0.3,"hideWindowProtector",0.3]],
 
@@ -109,3 +109,5 @@
 ["APC_Wheeled_01_atgm_base_lxWS", ["showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
 ["APC_Wheeled_01_mortar_base_lxWS",["showBags",0.3,"showCamonetHull",0.3,"showCamonetTurret",0.3,"showSLATHull",0.3,"showSLATTurret",0.3]],
 
+["O_SFIA_APC_Wheeled_02_hmg_lxWS", ["mg_hide_armor_front",0.3,"mg_hide_armor_rear",0.3,"mg_Hide_Rail",0.3,"showBags",0.3,"showCanisters",0.3,"showTools",0.3,"showCamonetHull",0.3,"showSLATHull",0.3]],
+["O_SFIA_APC_Wheeled_02_unarmed_lxWS", ["showBags",0.3,"showCanisters",0.3,"showTools",0.3,"showCamonetHull",0.3,"showSLATHull",0.3]]

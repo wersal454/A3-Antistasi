@@ -11,6 +11,7 @@ private _hasGM = "gm" in A3A_enabledDLC;
 private _hasCSLA = "csla" in A3A_enabledDLC;
 private _hasRF = "rf" in A3A_enabledDLC;
 private _hasSOG = "vn" in A3A_enabledDLC;
+private _hasSPE = "spe" in A3A_enabledDLC;
 
 //////////////////////////
 //   Side Information   //
@@ -255,7 +256,7 @@ _loadoutData set ["officerVests", ["V_TacVest_khk"]];
 _loadoutData set ["officerHats", ["H_MilCap_ocamo", "H_Beret_CSAT_01_F"]];
 
 if (_hasArtOfWar) then {
-	#include "..\DLC_content\gear\Artofwar\Vanilla_CSAT_Arid.sqf"
+	#include "..\DLC_content\gear\Artofwar\Vanilla_CSAT.sqf"
 };
 _loadoutData set ["cloakUniforms", ["U_O_FullGhillie_ard", "U_O_FullGhillie_sard", "U_O_GhillieSuit"]];
 _loadoutData set ["cloakVests", ["V_HarnessO_brn", "V_TacVest_khk"]];
@@ -373,7 +374,7 @@ _sfLoadoutData set ["machineGuns",  [
     ["LMG_Zafir_F", "", "acc_pointer_IR", "optic_NVS", ["150Rnd_762x54_Box", "150Rnd_762x54_Box_Tracer"], [], ""]
 ]];
 
-_sfLoadoutData set ["marksmanRifles" [
+_sfLoadoutData set ["marksmanRifles", [
     ["srifle_DMR_01_F", "muzzle_snds_B", "", "optic_DMS", [], [], "bipod_02_F_hex"],
     ["srifle_DMR_01_F", "muzzle_snds_B", "", "optic_NVS", [], [], "bipod_02_F_hex"],
     ["srifle_DMR_01_F", "muzzle_snds_B", "", "optic_Arco", [], [], "bipod_02_F_hex"],
@@ -634,12 +635,10 @@ if (_hasCSLA) then {
 };
 
 if (_hasSOG) then {
-    #include "..\DLC_content\gear\SOG\Vanilla_CSAT_Arid.sqf"
     #include "..\DLC_content\weapons\SOG\Vanilla_CSAT_Arid.sqf"
 };
 
 if (_hasGM) then {
-    #include "..\DLC_content\gear\GM\Vanilla_CSAT_Arid.sqf"
     #include "..\DLC_content\weapons\GM\Vanilla_CSAT_Arid.sqf"
 };
 

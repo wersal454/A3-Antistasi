@@ -22,4 +22,4 @@ _helmets append ["H_MilCap_gen_F","H_Beret_gen_F"];
 (_policeLoadoutData get "vests") pushBack "V_TacVest_gen_F";
 (_policeLoadoutData get "uniforms") append ["U_B_GEN_Soldier_F", "U_B_GEN_Commander_F"];
 
-(_militaryLoadoutData  get "vests") pushBack "V_TacChestrig_cbr_F";
+(_militaryLoadoutData get "vests") pushBack "V_TacChestrig_cbr_F";

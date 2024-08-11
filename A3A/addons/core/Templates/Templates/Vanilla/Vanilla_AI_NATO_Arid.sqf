@@ -11,6 +11,7 @@ private _hasGM = "gm" in A3A_enabledDLC;
 private _hasCSLA = "csla" in A3A_enabledDLC;
 private _hasRF = "rf" in A3A_enabledDLC;
 private _hasSOG = "vn" in A3A_enabledDLC;
+private _hasSPE = "spe" in A3A_enabledDLC;
 
 //////////////////////////
 //   Side Information   //
@@ -217,9 +218,9 @@ private _faces = ["AfricanHead_01","AfricanHead_02","AfricanHead_03","Barklem",
 "WhiteHead_22_l","WhiteHead_22_sa","WhiteHead_22_a"
 ];
 if (_hasSPE) then {
-   _faces append [
+    _faces append [
         #include "..\DLC_content\faces\SPE\SPE_white.sqf"
-   ];
+    ];
 };
 if (_hasSOG) then {
     _faces append [
@@ -227,7 +228,7 @@ if (_hasSOG) then {
         #include "..\DLC_content\faces\SOG\SOG_faces_white.sqf",
         #include "..\DLC_content\faces\SOG\SOG_faces_african.sqf",
         #include "..\DLC_content\faces\SOG\SOG_faces_russian.sqf",
-        #include "..\DLC_content\faces\SOG\SOG_faces_tanoa.sqf",
+        #include "..\DLC_content\faces\SOG\SOG_faces_tanoa.sqf"
     ];
 };
 if (_hasRF) then {
@@ -313,7 +314,7 @@ _loadoutData set ["officerVests", ["V_Rangemaster_belt"]];
 _loadoutData set ["officerHats", ["H_MilCap_mcamo", "H_Beret_Colonel", "H_Beret_02"]];
 
 if (_hasArtOfWar) then {
-	#include "..\DLC_content\gear\Artofwar\Vanilla_NATO_Arid.sqf"
+	#include "..\DLC_content\gear\Artofwar\Vanilla_NATO.sqf"
 };
 _loadoutData set ["cloakUniforms", ["U_B_FullGhillie_ard", "U_B_FullGhillie_sard", "U_B_GhillieSuit"]];
 _loadoutData set ["cloakVests", ["V_Chestrig_khk"]];
@@ -854,7 +855,6 @@ _pilotLoadoutData set ["helmets", ["H_CrewHelmetHeli_B", "H_PilotHelmetHeli_B"]]
 
 //
 if (_hasMarksman) then {
-    #include "..\DLC_content\gear\Marksman\Vanilla_NATO_Arid.sqf"
     #include "..\DLC_content\weapons\Marksman\Vanilla_NATO_Arid.sqf"
 };
 
@@ -872,11 +872,6 @@ if (_hasContact) then {
     #include "..\DLC_content\weapons\Contact\Vanilla_NATO_Arid.sqf"
 };
 
-if (_hasCSLA) then {
-    #include "..\DLC_content\gear\Contact\Vanilla_NATO_Arid.sqf"
-    #include "..\DLC_content\weapons\Contact\Vanilla_NATO_Arid.sqf"
-};
-
 if (_hasRF) then {
     #include "..\DLC_content\gear\RF\Vanilla_NATO_Arid.sqf"
     #include "..\DLC_content\weapons\RF\Vanilla_NATO_Arid.sqf"
@@ -887,7 +882,7 @@ if (_hasWs) then {
     #include "..\DLC_content\weapons\WS\Vanilla_NATO_Arid.sqf"
 };
 
-if (_haGM) then {
+if (_hasGM) then {
     #include "..\DLC_content\gear\GM\Vanilla_NATO_Arid.sqf"
     #include "..\DLC_content\weapons\GM\Vanilla_NATO_Arid.sqf"
 };

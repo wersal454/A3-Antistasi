@@ -84,3 +84,4 @@
 ["US85_MH60FFAR", ["addWinch",0.5]],
 ["US85_UH60", ["addESSS",0.5,"addWinch",0.5]],
 ["US85_UH60M240", ["addWinch",0.5]]
+
