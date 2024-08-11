@@ -21,7 +21,7 @@
 
 ["vehiclesBasic", ["LIB_DAK_Kfz1"]] call _fnc_saveToTemplate;
 ["vehiclesLightUnarmed", ["LIB_DAK_Kfz1","LIB_DAK_Kfz1_Hood"]] call _fnc_saveToTemplate;
-["vehiclesLightArmed",["LIB_DAK_Kfz1_MG42"]] call _fnc_saveToTemplate;
+private _vehiclesLightArmed = ["LIB_DAK_Kfz1_MG42"]; 
 ["vehiclesTrucks", ["LIB_DAK_OpelBlitz_Open","LIB_DAK_OpelBlitz_Tent","LIB_DAK_SdKfz_7"]] call _fnc_saveToTemplate;
 ["vehiclesCargoTrucks", ["LIB_DAK_OpelBlitz_Open","LIB_DAK_SdKfz_7"]] call _fnc_saveToTemplate;
 ["vehiclesAmmoTrucks", ["LIB_DAK_OpelBlitz_Ammo", "LIB_DAK_SdKfz_7_Ammo"]] call _fnc_saveToTemplate;
@@ -35,6 +35,11 @@
 ["vehiclesAA", ["LIB_DAK_FlakPanzerIV_Wirbelwind"]] call _fnc_saveToTemplate;
 ["vehiclesAirborne", ["LIB_DAK_SdKfz251"]] call _fnc_saveToTemplate;
 ["vehiclesLightTanks",  ["LIB_DAK_PzKpfwIV_H"]] call _fnc_saveToTemplate;
+
+if (isClass (configFile >> "CfgPatches" >> "FA_WW2_Armored_Cars")) then {
+    _vehiclesLightArmed append ["FA_Sdkfz234_4"]; 
+};
+["vehiclesLightArmed", _vehiclesLightArmed] call _fnc_saveToTemplate;
 
 ["vehiclesTransportBoats", ["LIB_LCA"]] call _fnc_saveToTemplate;
 ["vehiclesGunBoats", []] call _fnc_saveToTemplate;

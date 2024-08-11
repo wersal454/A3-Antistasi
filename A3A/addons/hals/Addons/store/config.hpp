@@ -483,7 +483,6 @@ class cfgHALsStore
 				"riflegrenadesspe",
 				"muzzlesspe",
 				"magazinesspe", 
-				"pointersspe",
 				"specialweaponsspe",
 				"navigationspe",
 				"miscspe",
