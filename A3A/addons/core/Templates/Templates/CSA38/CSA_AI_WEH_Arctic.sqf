@@ -31,7 +31,7 @@
 ["vehiclesLightAPCs", ["LIB_SdKfz251_FFV_w","LIB_SdKfz251_w"]] call _fnc_saveToTemplate;
 ["vehiclesAPCs", ["LIB_SdKfz_7_AA_w", "LIB_SdKfz251_FFV_w","LIB_SdKfz251_w"]] call _fnc_saveToTemplate;
 ["vehiclesIFVs", ["LIB_PzKpfwIV_H_w", "LIB_StuG_III_G_w", "CSA38_pzIIID_W", "CSA38_pzIVC_W"]] call _fnc_saveToTemplate;
-["vehiclesTanks", ["LIB_PzKpfwV_w", "LIB_PzKpfwVI_E_w"]] call _fnc_saveToTemplate;
+["vehiclesTanks", ["LIB_PzKpfwV_w", "LIB_PzKpfwV_w", "LIB_PzKpfwV_w", "LIB_PzKpfwVI_E_w", "LIB_PzKpfwVI_B_w"]] call _fnc_saveToTemplate;
 ["vehiclesAA", ["LIB_FlakPanzerIV_Wirbelwind_w"]] call _fnc_saveToTemplate;
 ["vehiclesAirborne", ["LIB_SdKfz251_w"]] call _fnc_saveToTemplate;
 ["vehiclesLightTanks",  ["CSA38_pzkpfwIA_W","CSA38_pzkpfwI_W","CSA38_pzII_W","CSA38_ltm35_W","CSA38_ltm38_W","CSA38_ltm38_FR2_W"]] call _fnc_saveToTemplate;

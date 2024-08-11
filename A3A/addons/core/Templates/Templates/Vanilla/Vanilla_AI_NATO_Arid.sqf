@@ -161,6 +161,7 @@ if (_hasCSLA) then {
 ["vehiclesBasic", _basic] call _fnc_saveToTemplate;
 ["vehiclesTanks", _tanks] call _fnc_saveToTemplate;
 ["uavsPortable", _uavsPortable] call _fnc_saveToTemplate;
+
 ["vehiclesHelisTransport", _transportHelicopters] call _fnc_saveToTemplate;
 ["vehiclesPolice", _policeVehs] call _fnc_saveToTemplate;
 ["vehiclesHelisLightAttack", _helisLightAttack] call _fnc_saveToTemplate;
