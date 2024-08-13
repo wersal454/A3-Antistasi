@@ -30,10 +30,12 @@ switch (true) do {
     //vanilla
     case (_editorCat isEqualTo "EdSubcat_Cars"): { 0 };
     case (_editorCat in ["EdSubcat_Tanks","EdSubcat_APCs","EdSubcat_AAs","EdSubcat_Artillery"]): { 1 };
-    case (_editorCat in ["EdSubcat_Helicopters","EdSubcat_Planes"]): { 2 };
-    case (_editorCat isEqualTo "EdSubcat_Boats"): { 3 };
-    case (_editorCat isEqualTo "EdSubcat_Turrets"): { 4 };
-    case (_class isKindOf "staticWeapon"): {4}; //some non-vanilla artillery is statics
+    case (_editorCat in ["EdSubcat_Helicopters"]): { 2 };
+    case (_editorCat in ["EdSubcat_Planes"]): { 3 };
+    case (getNumber (configOf _class >> "vtol") > 0): { 4 };
+    case (_editorCat isEqualTo "EdSubcat_Boats"): { 5 };
+    case (_editorCat isEqualTo "EdSubcat_Turrets"): { 6 };
+    case (_class isKindOf "staticWeapon"): {6}; //some non-vanilla artillery is statics
 
     //rhs
     case (_editorCat in ["rhs_EdSubcat_car","rhs_EdSubcat_truck","rhs_EdSubcat_mrap"]): {0};
