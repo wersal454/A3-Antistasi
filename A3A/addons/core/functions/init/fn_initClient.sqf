@@ -27,7 +27,7 @@ hasHeadlessClients = false;     //check if has headless clients
 //enables Discord Rich Presence if game client uses English language and mod is turned on
 private _richPresenceFunc = missionNamespace getVariable "DiscordRichPresence_fnc_update";
 private _isEnglish = ((localize "STR_antistasi_dialogs_generic_button_yes_text") isEqualTo "Yes");
-isDiscordRichPresenceActive = if (isNil "_richPresenceFunc" || {!_isEnglish}) then {false} else {true};
+isDiscordRichPresenceActive = if (isNil "_richPresenceFunc") then {false} else {true};
 Info_1("Discord Rich Presence: %1", str isDiscordRichPresenceActive);
 
 //Disables rabbits and snakes, because they cause the log to be filled with "20:06:39 Ref to nonnetwork object Agent 0xf3b4a0c0"

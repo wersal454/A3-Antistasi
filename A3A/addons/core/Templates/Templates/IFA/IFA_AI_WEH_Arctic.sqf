@@ -21,7 +21,7 @@
 
 ["vehiclesBasic", ["LIB_Kfz1_w"]] call _fnc_saveToTemplate;
 ["vehiclesLightUnarmed", ["LIB_Kfz1_w","LIB_Kfz1_Hood_w"]] call _fnc_saveToTemplate;
-["vehiclesLightArmed",["LIB_Kfz1_MG42_sernyt"]] call _fnc_saveToTemplate;
+private _vehiclesLightArmed = ["LIB_Kfz1_MG42_sernyt"]; 
 ["vehiclesTrucks", ["LIB_OpelBlitz_Open_Y_Camo_w","LIB_OpelBlitz_Tent_G_Camo_w","LIB_SdKfz_7_w"]] call _fnc_saveToTemplate;
 ["vehiclesCargoTrucks", ["LIB_OpelBlitz_Open_Y_Camo_w","LIB_SdKfz_7_w"]] call _fnc_saveToTemplate;
 ["vehiclesAmmoTrucks", ["LIB_OpelBlitz_Ammo_w"]] call _fnc_saveToTemplate;
@@ -31,10 +31,19 @@
 ["vehiclesLightAPCs", ["LIB_SdKfz251_FFV_w","LIB_SdKfz251_w"]] call _fnc_saveToTemplate;
 ["vehiclesAPCs", ["LIB_SdKfz_7_AA_w", "LIB_SdKfz251_FFV_w","LIB_SdKfz251_w"]] call _fnc_saveToTemplate;
 ["vehiclesIFVs", ["LIB_PzKpfwIV_H_w", "LIB_StuG_III_G_w"]] call _fnc_saveToTemplate;
-["vehiclesTanks", ["LIB_PzKpfwV_w", "LIB_PzKpfwVI_E_w"]] call _fnc_saveToTemplate;
+["vehiclesTanks", ["LIB_PzKpfwV_w", "LIB_PzKpfwV_w", "LIB_PzKpfwV_w", "LIB_PzKpfwVI_E_w", "LIB_PzKpfwVI_B_w"]] call _fnc_saveToTemplate;
 ["vehiclesAA", ["LIB_FlakPanzerIV_Wirbelwind_w"]] call _fnc_saveToTemplate;
 ["vehiclesAirborne", ["LIB_SdKfz251_w"]] call _fnc_saveToTemplate;
-["vehiclesLightTanks",  ["LIB_StuG_III_G_w"]] call _fnc_saveToTemplate;
+private _vehiclesLightTanks = ["LIB_StuG_III_G_w"]; 
+
+if (isClass (configFile >> "CfgPatches" >> "FA_WW2_Armored_Cars")) then {
+    _vehiclesLightArmed append ["FA_BA64_Captured","FA_Sdkfz231", "FA_Sdkfz234", "FA_Sdkfz234_4", "FA_Sdkfz231"]; 
+};
+if (isClass (configFile >> "CfgPatches" >> "FA_WW2_Tanks")) then {
+    _vehiclesLightTanks append ["FA_Panzer2","FA_Pz38t"];
+};
+["vehiclesLightArmed", _vehiclesLightArmed] call _fnc_saveToTemplate;
+["vehiclesLightTanks", _vehiclesLightTanks] call _fnc_saveToTemplate;
 
 ["vehiclesTransportBoats", ["LIB_LCA"]] call _fnc_saveToTemplate;
 ["vehiclesGunBoats", []] call _fnc_saveToTemplate;
