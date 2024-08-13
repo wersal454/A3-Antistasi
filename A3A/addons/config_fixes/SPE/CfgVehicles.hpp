@@ -42,6 +42,7 @@ class CfgVehicles
 
 	class SPE_M18_Hellcat;
 	class SPE_M4A1_T34_Calliope_Direct;
+	class SPE_M4A1_T34_Calliope;
 
 	class SPE_FR_M10_DLV;
 	class SPE_FR_M4A0_75_Early_DLV;
@@ -176,10 +177,10 @@ class CfgVehicles
 		textureList[] = {};
 		hiddenSelectionsTextures[] = {"\WW2\SPE_Assets_t\Vehicles\Tanks_t\PzKpfwIV\pz4_hull_camo6_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_t\PzKpfwIV\pz4_turret_camo6_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_t\PzKpfwIV\pz4_wheels_camo6_co.paa","\a3\data_f\clear_empty.paa"};
 	};
-	/* class SPE_Nashorn_noinsignia : SPE_Nashorn
+	class SPE_Nashorn_noinsignia : SPE_Nashorn
     {
-		animationList[] = {"markings_hide_source",1}
-	}; */
+		hiddenSelectionsTextures[] = {"WW2\SPE_Assets_t\Vehicles\Tanks_t\Nashorn\Nashorn_Lower_Hull_co.paa","WW2\SPE_Assets_t\Vehicles\Tanks_t\Nashorn\Nashorn_Upper_Hull_co.paa","WW2\SPE_Assets_t\Vehicles\Tanks_t\Nashorn\Nashorn_Gun_co.paa","WW2\SPE_Assets_t\Vehicles\Tanks_t\Nashorn\Nashorn_Wheels_co.paa","\a3\data_f\clear_empty.paa"};
+	};
 	
 	class SPE_PzKpfwIII_J_DLV_noinsignia : SPE_PzKpfwIII_J_DLV
     {
@@ -206,10 +207,10 @@ class CfgVehicles
 		textureList[] = {};
 		hiddenSelectionsTextures[] = {"\WW2\SPE_Assets_t\Vehicles\Tanks_t\PzKpfwIV\pz4_hull_camo6_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_t\PzKpfwIV\pz4_turret_camo6_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_t\PzKpfwIV\pz4_wheels_camo6_co.paa","\a3\data_f\clear_empty.paa"};
 	};
-	/* class SPE_Nashorn_DLV_noinsignia : SPE_Nashorn_DLV
+	class SPE_Nashorn_DLV_noinsignia : SPE_Nashorn_DLV
     {
-		animationList[] = {"markings_hide_source",1}
-	}; */
+		hiddenSelectionsTextures[] = {"WW2\SPE_Assets_t\Vehicles\Tanks_t\Nashorn\Nashorn_Lower_Hull_co.paa","WW2\SPE_Assets_t\Vehicles\Tanks_t\Nashorn\Nashorn_Upper_Hull_co.paa","WW2\SPE_Assets_t\Vehicles\Tanks_t\Nashorn\Nashorn_Gun_co.paa","WW2\SPE_Assets_t\Vehicles\Tanks_t\Nashorn\Nashorn_Wheels_co.paa","\a3\data_f\clear_empty.paa"};
+	};
 	class SPE_OpelBlitz_Flak38_noinsignia : SPE_OpelBlitz_Flak38
 	{
 		hiddenSelectionsTextures[] = {"\WW2\SPE_Assets_t\Vehicles\Trucks_t\OpelBlitz\opel_exterior_gelb_co.paa","\WW2\SPE_Assets_t\Vehicles\Trucks_t\OpelBlitz\opel_under_gelb_co.paa","\WW2\SPE_Assets_t\Vehicles\Trucks_t\OpelBlitz\opel_bed_gelb_co.paa","\WW2\SPE_Assets_t\Vehicles\Trucks_t\OpelBlitz\opel_cab_gelb_co.paa","\WW2\SPE_Assets_t\Vehicles\Trucks_t\OpelBlitz\opel_wheels_gelb_co.paa","\WW2\SPE_Assets_t\Vehicles\Staticweapons_t\Flak_38\flak_38_01_01_gelb_co.paa","\WW2\SPE_Assets_t\Vehicles\Staticweapons_t\Flak_38\flak_38_02_01_gelb_co.paa","\WW2\SPE_Assets_t\Vehicles\Staticweapons_t\Flak_38\flak_38_03_01_gelb_co.paa","\WW2\SPE_Assets_t\Vehicles\Staticweapons_t\Flak_38\flak_38_05_01_gelb_co.paa","\WW2\SPE_Assets_t\Vehicles\Trucks_t\OpelBlitz\Opel_Flak_Frame_gelb_co.paa","\WW2\SPE_Assets_t\Vehicles\Trucks_t\OpelBlitz\opel_interior_gelb_co.paa","\a3\data_f\clear_empty.paa"};
@@ -275,6 +276,10 @@ class CfgVehicles
 		hiddenSelectionsTextures[] = {"\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\m18\m18_hull_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\m18\m18_turret_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\m18\m18_suspension_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\m18\m18_interior_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\m18\m18_stowage_co.paa","\a3\data_f\clear_empty.paa","\a3\data_f\clear_empty.paa"};
 	};
 	class SPE_M4A1_T34_Calliope_Direct_noinsignia : SPE_M4A1_T34_Calliope_Direct
+    {
+		hiddenSelectionsTextures[] = {"\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\M4A1\M4A1_E_Hull_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\M4A1\M4A1_75Turret_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\M4A1\M4A1_Wheels_co.paa","\a3\data_f\clear_empty.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\Calliope\Calliope_co.paa","\a3\data_f\clear_empty.paa"};
+	};
+	class SPE_M4A1_T34_Calliope_noinsignia : SPE_M4A1_T34_Calliope
     {
 		hiddenSelectionsTextures[] = {"\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\M4A1\M4A1_E_Hull_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\M4A1\M4A1_75Turret_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\M4A1\M4A1_Wheels_co.paa","\a3\data_f\clear_empty.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\Calliope\Calliope_co.paa","\a3\data_f\clear_empty.paa"};
 	};
@@ -494,7 +499,7 @@ class CfgVehicles
 		hiddenSelectionsTextures[] = {"\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\M4A1\M4A1_E_Hull_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_U1_t\M4A0\M4A0_e_Turret_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\M4A1\M4A1_Wheels_co.paa","\a3\data_f\clear_empty.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\Calliope\Calliope_co.paa","\a3\data_f\clear_empty.paa"};
 	};
 
-	class SPE_FR_M4A0_105__DLVnoinsignia : SPE_FR_M4A0_105
+	class SPE_FR_M4A0_105_DLVnoinsignia : SPE_FR_M4A0_105
 	{
 		hiddenSelectionsTextures[] = {"\WW2\SPE_Assets_t\Vehicles\Tanks_U1_t\M4A3\M4A3_L_Hull_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_U1_t\M4A3\M4A3_Turret_co.paa","\WW2\SPE_Assets_t\Vehicles\Tanks_2_t\M4A1\M4A1_Wheels_co.paa","\a3\data_f\clear_empty.paa","\a3\data_f\clear_empty.paa",""};
 	};

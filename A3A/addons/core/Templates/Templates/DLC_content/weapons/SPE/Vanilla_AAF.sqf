@@ -24,7 +24,7 @@
     ["SPE_M1918A2_erla_BAR","","","",["SPE_20Rnd_762x63","SPE_20Rnd_762x63_M1","SPE_20Rnd_762x63_M2_AP"],[],"SPE_M1918A2_BAR_Bipod"],
     ["SPE_M1918A0_BAR","","","",["SPE_20Rnd_762x63","SPE_20Rnd_762x63_M1","SPE_20Rnd_762x63_M2_AP"],[],""],
     ["SPE_FG42_E","","","",["SPE_20Rnd_792x57","SPE_20Rnd_792x57_t2","SPE_20Rnd_792x57_SMK","SPE_20Rnd_792x57_sS","SPE_20Rnd_792x57_t"],[],""],
-    ["SPE_FG42_E","","","SPE_Optic_ZFG42",["SPE_20Rnd_792x57","SPE_20Rnd_792x57_t2","SPE_20Rnd_792x57_SMK","SPE_20Rnd_792x57_sS","SPE_20Rnd_792x57_t"],[],""],
+    ["SPE_FG42_E","","","SPE_Optic_ZFG42",["SPE_20Rnd_792x57","SPE_20Rnd_792x57_t2","SPE_20Rnd_792x57_SMK","SPE_20Rnd_792x57_sS","SPE_20Rnd_792x57_t"],[],""]
 ];
 (_militiaLoadoutData get "marksmanRifles") append [
     ["SPE_M1903A3_Springfield","SPE_ACC_M1_Bayo","","",["SPE_5Rnd_762x63","SPE_5Rnd_762x63_M1","SPE_5Rnd_762x63_t","SPE_5Rnd_762x63_M2_AP","SPE_8Rnd_762x63","SPE_8Rnd_762x63_M1","SPE_8Rnd_762x63_t","SPE_8Rnd_762x63_M2_AP"],[],""],

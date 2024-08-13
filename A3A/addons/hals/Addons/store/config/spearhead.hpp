@@ -645,15 +645,12 @@
 			ITEM(H_SPE_ST_Helmet3_OS, 100, MISC_STOCK);
 			ITEM(H_SPE_ST_Helmet3, 100, MISC_STOCK);
 			ITEM(H_SPE_ST_Helmet4_OS, 100, MISC_STOCK);
-			ITEM(H_SPE_ST_Helmet4, 100, MISC_STOCK);
 			ITEM(H_SPE_ST_Helmet5_OS, 100, MISC_STOCK);
 			ITEM(H_SPE_ST_Helmet5, 100, MISC_STOCK);
 			ITEM(H_SPE_ST_Helmet6_OS, 100, MISC_STOCK);
 			ITEM(H_SPE_ST_Helmet6, 100, MISC_STOCK);
 			ITEM(H_SPE_ST_Helmet_OS, 100, MISC_STOCK);
-			ITEM(H_SPE_ST_Helmet, 100, MISC_STOCK);
 			ITEM(H_SPE_ST_Helmet2_OS, 100, MISC_STOCK);
-			ITEM(H_SPE_ST_Helmet2, 100, MISC_STOCK);
 			ITEM(H_SPE_GER_ST_M40_cap_2, 100, MISC_STOCK);
 			ITEM(H_SPE_GER_ST_M40_Pz_cap_2, 100, MISC_STOCK);
 			ITEM(H_SPE_GER_ST_M40_Pz_cap_Offz_2, 100, MISC_STOCK);
@@ -713,7 +710,6 @@
 			ITEM(H_SPE_GER_M40_LW, 100, MISC_STOCK);
 			ITEM(H_SPE_GER_LW_Cap, 100, MISC_STOCK);
 			ITEM(H_SPE_GER_FSJ_M38_Helmet_Wire_camo, 100, MISC_STOCK);
-			ITEM(H_SPE_GER_FSJ_M38_Helmet_Wire_camot, 100, MISC_STOCK);
 			ITEM(H_SPE_GER_FSJ_M38_Helmet_Wire, 100, MISC_STOCK);
 			ITEM(H_SPE_GER_FSJ_M38_Helmet_BB_camo, 100, MISC_STOCK);
 			ITEM(H_SPE_GER_FSJ_M38_Helmet_BB_erla, 100, MISC_STOCK);
@@ -741,22 +737,10 @@
 
 			ITEM(H_SPE_FR_Adrian_net_ns, 100, MISC_STOCK);
 			ITEM(H_SPE_FR_Adrian_net, 100, MISC_STOCK);
-			ITEM(H_SPE_FR_Adrian_Medic_ns, 100, MISC_STOCK);
-			ITEM(H_SPE_FR_Adrian_Medic, 100, MISC_STOCK);
-			ITEM(H_SPE_FR_Adrian_ns, 100, MISC_STOCK);
 			ITEM(H_SPE_FR_Adrian_cover_ns, 100, MISC_STOCK);
 			ITEM(H_SPE_FR_Adrian_cover, 100, MISC_STOCK);
 			ITEM(H_SPE_FFI_Adrian_ns, 100, MISC_STOCK);
 			ITEM(H_SPE_FFI_Adrian, 100, MISC_STOCK);
-			ITEM(H_SPE_US_AB_Helmet_Net, 100, MISC_STOCK);
-			ITEM(H_SPE_US_AB_Helmet_Net, 100, MISC_STOCK);
-			ITEM(H_SPE_US_AB_Helmet_Net, 100, MISC_STOCK);
-			ITEM(H_SPE_US_AB_Helmet_Net, 100, MISC_STOCK);
-			ITEM(H_SPE_US_AB_Helmet_Net, 100, MISC_STOCK);
-			ITEM(H_SPE_US_AB_Helmet_Net, 100, MISC_STOCK);
-			ITEM(H_SPE_US_AB_Helmet_Net, 100, MISC_STOCK);
-			ITEM(H_SPE_US_AB_Helmet_Net, 100, MISC_STOCK);
-			ITEM(H_SPE_US_AB_Helmet_Net, 100, MISC_STOCK);
 		};
 
 		class uniformsspe 
@@ -876,9 +860,6 @@
 			ITEM(U_SPE_GER_LW_pilot_trop_alt, 50, MISC_STOCK);
 			ITEM(U_SPE_GER_LW_pilot_trop, 50, MISC_STOCK);
 			ITEM(U_SPE_GER_LW_pilot, 50, MISC_STOCK);
-			ITEM(U_SPE_GER_Unterofficer_HBT, 50, MISC_STOCK);
-			ITEM(U_SPE_GER_MG_schutze_HBT, 50, MISC_STOCK);
-			ITEM(U_SPE_GER_Schutze_HBT, 50, MISC_STOCK);
 			ITEM(U_SPE_GER_Art_unterofficer, 50, MISC_STOCK);
 			ITEM(U_SPE_GER_Art_schutze, 50, MISC_STOCK);
 			ITEM(U_SPE_GER_Unterofficer, 50, MISC_STOCK);
@@ -1018,7 +999,6 @@
 			ITEM(U_SPE_US_HBT44_tuck_Half_late, 50, MISC_STOCK);
 			ITEM(U_SPE_US_HBT44_tuck_late_roll, 50, MISC_STOCK);
 			ITEM(U_SPE_US_HBT44_tuck_late, 50, MISC_STOCK);
-			ITEM(U_SPE_US_HBT44_late_roll, 50, MISC_STOCK);
 			ITEM(U_SPE_US_HBT44_tuck_Half, 50, MISC_STOCK);
 			ITEM(U_SPE_US_HBT44_tuck_roll, 50, MISC_STOCK);
 			ITEM(U_SPE_US_HBT44_tuck_Med, 50, MISC_STOCK);
@@ -1028,7 +1008,6 @@
 			ITEM(U_SPE_US_HBT44_tuck_FrogSkin_Jungle, 50, MISC_STOCK);
 			ITEM(U_SPE_US_Tank_Coverall_Legging, 50, MISC_STOCK);
 			ITEM(U_SPE_US_Private_trop, 50, MISC_STOCK);
-			ITEM(U_SPE_US_Private_1st, 50, MISC_STOCK);
 			ITEM(U_SPE_US_Rangers_late, 50, MISC_STOCK);
 			ITEM(U_SPE_US_AB_Uniform_M42_padded_flag_roll_knife, 50, MISC_STOCK);
 			ITEM(U_SPE_US_AB_Uniform_M42_padded_flag_roll, 50, MISC_STOCK);
@@ -1141,7 +1120,6 @@
 			ITEM(U_SPE_ST_Soldier_E44_Unbloused, 50, MISC_STOCK);
 			ITEM(U_SPE_ST_Soldier_E44_Camo3, 50, MISC_STOCK);
 			ITEM(U_SPE_ST_Soldier_E44_Camo5, 50, MISC_STOCK);
-			ITEM(U_SPE_ST_Soldier_E44_Camo, 50, MISC_STOCK);
 			ITEM(U_SPE_ST_Soldier_E44_Boots_rolled, 50, MISC_STOCK);
 			ITEM(U_SPE_ST_Soldier_E44_Boots, 50, MISC_STOCK);
 			ITEM(U_SPE_ST_Soldier_E44_Camo4, 50, MISC_STOCK);
@@ -1363,7 +1341,6 @@
 			ITEM(V_SPE_US_Vest_Garand_45, 50, MISC_STOCK);
 			ITEM(V_SPE_US_Vest_Garand_mk2, 50, MISC_STOCK);
 			ITEM(V_SPE_US_Vest_Garand_map, 50, MISC_STOCK);
-			ITEM(V_SPE_US_Vest_Garand_M43, 50, MISC_STOCK);
 			ITEM(V_SPE_US_Vest_Garand_eng, 50, MISC_STOCK);
 			ITEM(V_SPE_US_Vest_Garand_gp, 50, MISC_STOCK);
 			ITEM(V_SPE_US_Vest_Garand, 50, MISC_STOCK);
@@ -1657,7 +1634,6 @@
 			ITEM(B_SPE_US_Backpack_roll, 100, MISC_STOCK);
 			ITEM(B_SPE_US_Backpack_Bandoleer, 200, MISC_STOCK);
 			ITEM(B_SPE_US_Backpack, 50, MISC_STOCK);
-			ITEM(B_SPE_US_M2Flamethrower, 1000, MISC_STOCK);
 			ITEM(B_SPE_US_M36_Bandoleer, 75, MISC_STOCK);
 			ITEM(B_SPE_US_M36, 100, MISC_STOCK);
 			ITEM(B_SPE_US_RocketBag_Empty, 200, MISC_STOCK);
@@ -1683,7 +1659,6 @@
 			ITEM(B_SPE_GER_Radio, 500, MISC_STOCK);
 			ITEM(B_SPE_GER_Radio_battery, 500, MISC_STOCK);
 			ITEM(B_SPE_GER_LW_Paradrop, 300, MISC_STOCK);
-			ITEM(B_SPE_GER_Flammenwerfer_41, 1000, MISC_STOCK);
 			ITEM(B_SPE_GER_Belt_bag, 20, MISC_STOCK);
 			ITEM(B_SPE_GER_Belt_bag_zelt_trop, 20, MISC_STOCK);
 			ITEM(B_SPE_GER_Belt_bag_zelt, 20, MISC_STOCK);
@@ -1711,7 +1686,6 @@
 			ITEM(B_SPE_US_Backpack_M7_rear, 35, MISC_STOCK);
 			ITEM(B_SPE_US_Backpack_M7_side_bandoleer, 35, MISC_STOCK);
 			ITEM(B_SPE_US_Backpack_M7_side, 35, MISC_STOCK);
-			ITEM(B_SPE_US_Backpack_rolll, 35, MISC_STOCK);
 			ITEM(B_SPE_US_M36_Rope, 35, MISC_STOCK);
 			ITEM(B_SPE_US_M36_Rocketbag, 35, MISC_STOCK);
 			ITEM(B_SPE_US_M36_landing_m6, 35, MISC_STOCK);
@@ -1724,7 +1698,7 @@
 			ITEM(B_SPE_US_M36_roll, 35, MISC_STOCK);
 			ITEM(B_SPE_US_M36_Bandoleer_mk2, 35, MISC_STOCK);
 			ITEM(B_SPE_US_M36_Bandoleer_duplet, 35, MISC_STOCK);
-			ITEM(B_SPE_US_T5_M6, 200, MISC_STOCK);
+			ITEM(B_SPE_US_T5_M6, 200, MISC_STOCK);//
 			ITEM(B_SPE_US_T5_M7, 200, MISC_STOCK);
 			ITEM(B_SPE_US_T5_erla, 200, MISC_STOCK);
 			ITEM(B_SPE_ST_ammo_Belt_bag_zelt_camo, 35, MISC_STOCK);
