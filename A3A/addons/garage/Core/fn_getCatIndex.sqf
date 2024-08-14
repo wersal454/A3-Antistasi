@@ -28,6 +28,8 @@ _class in [_vtol]; */
 //case (getNumber (configOf _vehicle >> "isUav") > 0): { 2 };
 private _editorCat = cfgEditorCat(_class);
 switch (true) do {
+    //filter blacklist first
+    case (_class in HR_GRG_blacklistVehicles): { -2 };
     //vanilla
     case (_editorCat isEqualTo "EdSubcat_Cars" && (getNumber (configOf _vehicle >> "isUav") == 0)): { 0 };
     case (_editorCat in ["EdSubcat_Tanks","EdSubcat_APCs","EdSubcat_AAs","EdSubcat_Artillery"]): { 1 };
