@@ -49,7 +49,7 @@ if (_vehicle isKindOf "Air" || typeOf _vehicle in (_faction get "vehiclesDropPod
             if(_x distance2D _landPos < 20) exitWith { _landPos = [0, 0, 0] };
         } forEach _landPosBlacklist;
         
-        if (typeOf _vehicle in (_faction get "vehiclesDropPod") ) exitwith {
+        if (typeOf _vehicle in (_faction get "vehiclesDropPod") ) exitWith {
             [_vehicle, _cargoGroup, _posDestination, _posOrigin] spawn A3A_fnc_OrbitalLanding; // , _crewGroup
         };
         {
