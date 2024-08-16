@@ -155,7 +155,7 @@ private _missionstart = serverTime;
 
 waitUntil {
     sleep 60;
-    (call SCRT_fnc_misc_getRebelPlayers) inAreaArray [_crashPosition, 1500, 1500] isNotEqualTo [] || {_missionstart >= serverTime + 600 }
+    (call SCRT_fnc_misc_getRebelPlayers) inAreaArray [_crashPosition, 1500, 1500] isNotEqualTo [] || {_missionStart >= serverTime + 600 }
 };
 sleep 60; ///prep time
 ///
