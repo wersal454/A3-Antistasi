@@ -151,7 +151,7 @@ private _rebelTaskText = format [
 [_taskId, "LOG", "CREATED"] remoteExecCall ["A3A_fnc_taskUpdate", 2];
 
 ///checking if players reached minimum distance to start vfx or if time limit has passed
-private _missionstart = serverTime;
+private _missionStart = serverTime;
 
 waitUntil {
     sleep 60;
