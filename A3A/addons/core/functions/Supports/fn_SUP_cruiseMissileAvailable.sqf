@@ -3,7 +3,7 @@ FIX_LINE_NUMBERS()
 
 params ["_target", "_side", "_maxSpend", "_availTypes"];
 
-if(tierWar < 6) exitWith {-1}; don't forget to uncommnet it
+if(tierWar < 6) exitWith {-1};
 if !(allowUnfairSupports) exitWith {-1};
 private _loadedTemplate = if (_side isEqualTo Occupants) then {A3A_Occ_template} else {A3A_Inv_template};
 if (toLower _loadedTemplate isEqualTo "VN") exitWith {-1}; //dont allow with VN
