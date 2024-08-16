@@ -619,6 +619,13 @@ class Params
         texts[] = {$STR_params_helmetLossChance_0,$STR_params_helmetLossChance_1,$STR_params_helmetLossChance_2,$STR_params_helmetLossChance_3};
         default = 33;
     };
+    class helmetLossSound
+    {
+        title = $STR_params_helmetLossSound;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 1;
+    };
     class reviveKitsEnabled
     {
         title = $STR_params_reviveKitsEnabled;
