@@ -165,12 +165,13 @@ private _rebelTaskText = format [
 [_taskId, "LOG", "CREATED"] remoteExecCall ["A3A_fnc_taskUpdate", 2];
 
 ///checking if players reached minimum distance to start vfx or if time limit has passed
-private _missionstart = serverTime;
+private _missionStart = serverTime;
 waitUntil {
     sleep 60;
-    (call SCRT_fnc_misc_getRebelPlayers) inAreaArray [_crashPosition, 1500, 1500] isNotEqualTo [] || {_missionstart >= serverTime + 600 }
+    (call SCRT_fnc_misc_getRebelPlayers) inAreaArray [_crashPosition, 1500, 1500] isNotEqualTo [] || {_missionStart >= serverTime + 600 }
 };
 sleep 60; ///prep time
+
 ///
 
 // This is the "crashing" vehicle, hence dummy
