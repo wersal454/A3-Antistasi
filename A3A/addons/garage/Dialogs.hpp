@@ -147,7 +147,7 @@ class HR_GRG_VehicleSelect
             tooltip = $STR_HR_GRG_Generic_Armored;
             action = "[1] call HR_GRG_fnc_switchCategory;";
         };
-         class HR_GRG_BttnHeli: HR_GRG_BttnCars
+        class HR_GRG_BttnHeli: HR_GRG_BttnCars
         {
             idc = HR_GRG_IDC_BttnHeli;
             y = SCREEN_TOP + 8 * GRID_NOUISCALE_H;

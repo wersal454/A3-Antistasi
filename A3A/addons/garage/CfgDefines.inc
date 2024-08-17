@@ -22,16 +22,16 @@
 #define HR_GRG_IDC_CatArmored 1700101
 #define HR_GRG_IDC_CatUnmanned 1700102
 #define HR_GRG_IDC_CatHeli 1700103
-#define HR_GRG_IDC_CatPlane 1700104
-#define HR_GRG_IDC_CatVTOL 1700105
+#define HR_GRG_IDC_CatVTOL 1700104
+#define HR_GRG_IDC_CatPlane 1700105
 #define HR_GRG_IDC_CatBoat 1700106
 #define HR_GRG_IDC_CatStatic 1700107
 #define HR_GRG_IDC_BttnCars 1700108
 #define HR_GRG_IDC_BttnArmor 1700109
 #define HR_GRG_IDC_BttnUnmanned 1700110
 #define HR_GRG_IDC_BttnHeli 1700111
-#define HR_GRG_IDC_BttnPlane 1700112
-#define HR_GRG_IDC_BttnVTOL 1700113
+#define HR_GRG_IDC_BttnVTOL 1700112
+#define HR_GRG_IDC_BttnPlane 1700113
 #define HR_GRG_IDC_BttnBoats 1700114
 #define HR_GRG_IDC_BttnStatics 1700115
 
