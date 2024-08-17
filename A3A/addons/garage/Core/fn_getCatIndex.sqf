@@ -24,14 +24,15 @@ params [["_class", "_vehicle", [""]]];
 if ( !isClass (configFile >> "CfgVehicles" >> _class) ) exitWith { Error_1("Invalid Input: %1", _class); -1 };
 
 /* _vtol = "getNumber (_x >> 'vtol') >= 0" configClasses (configFile >> "CfgVehicles");
-_class in [_vtol]; */
+_class in [_vtol]; */ 
+//&& (getNumber (configOf _vehicle >> "isUav") == 0)
 //case (getNumber (configOf _vehicle >> "isUav") > 0): { 2 };
 private _editorCat = cfgEditorCat(_class);
 switch (true) do {
     //filter blacklist first
     case (_class in HR_GRG_blacklistVehicles): { -2 };
     //vanilla
-    case (_editorCat isEqualTo "EdSubcat_Cars" && (getNumber (configOf _vehicle >> "isUav") == 0)): { 0 };
+    case (_editorCat isEqualTo "EdSubcat_Cars"): { 0 };
     case (_editorCat in ["EdSubcat_Tanks","EdSubcat_APCs","EdSubcat_AAs","EdSubcat_Artillery"]): { 1 };
     case (_editorCat in ["EdSubcat_Helicopters"]): { 2 };
     case (getNumber (configOf _vehicle >> "vtol") > 0): { 3 };
