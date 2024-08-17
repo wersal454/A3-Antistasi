@@ -50,7 +50,7 @@ _gunship addEventHandler
         };
         if(_weapon == "UK3CB_Factions_AC47_M134_LSV_3" || _weapon == "UK3CB_Factions_AC47_M134_LSV_2" || _weapon == "UK3CB_Factions_AC47_M134_LSV") then ///probably delete this check and pretend that every maingun on every gunship is the same
         {
-            _target = (_target vectorAdd [0,0,5]) apply {_x + (random 5) - 5};
+            _target = (_target vectorAdd [0,0,7.5]) apply {_x + (random 0.8) - 0.4};
             private _speed = (speed _projectile)/3.6;
             private _dir = vectorNormalized (_target vectorDiff (getPosASL _projectile));
             _projectile setVelocity (_dir vectorMultiply _speed);
@@ -150,8 +150,7 @@ private _mainGunnerList = [];
             {
                 private _muzzle = if(_belt select ((_i - 1) % 3)) then {"HE"} else {"AP"};
                 _gunner forceWeaponFire [_muzzle, "close"];
-				[_gunship, "UK3CB_Factions_AC47_M134_LSV_2"] call BIS_fnc_fire;
-				[_gunship, "UK3CB_Factions_AC47_M134_LSV_3"] call BIS_fnc_fire;
+				[_gunship, "UK3CB_Factions_AC47_M134_LSV"] call BIS_fnc_fire;
                 _gunshots = _gunshots - 1;
             };
             if(_rocketShots > 0) then
@@ -235,6 +234,276 @@ private _mainGunnerList = [];
     };
 };
 
+private _heavyGunnerList = [];
+[_gunship, _heavyGunnerList, _heavyGunner, _supportName] spawn
+{
+    #include "..\..\script_component.hpp"
+    FIX_LINE_NUMBERS()
+    params ["_gunship", "_heavyGunnerList", "_heavyGunner", "_supportName"];
+
+    private _fnc_executeFireOrder =
+    {
+        Debug_1("Fireorder %1 recieved", _this);
+        params ["_gunner", "_target", "_gunshots", "_belt", "_rocketShots"];
+        private _gunship = vehicle _gunner;
+        private _steps = _gunshots max _rocketShots;
+
+        //Calculate used ammo
+        private _rocketsLeft = _gunship getVariable ["Rockets", 0];
+        _rocketsLeft = _rocketsLeft - _rocketShots;
+        if(_rocketsLeft <= 0) then {_gunship setVariable ["OutOfAmmo", true]};
+        _gunship setVariable ["Rockets", _rocketsLeft];
+
+        private _HEUsed = {_x} count _belt;
+        private _APUsed = 3 - _HEUsed;
+
+        private _APLeft = _gunship getVariable ["AP_Ammo", 0];
+        _APLeft = _APLeft - ((_APUsed/3) * _gunshots);
+        _gunship setVariable ["AP_Ammo", _APLeft];
+
+        private _HELeft = _gunship getVariable ["HE_Ammo", 0];
+        _HELeft = _HELeft - ((_HEUsed/3) * _gunshots);
+        _gunship setVariable ["HE_Ammo", _HELeft];
+
+        if(_HELeft <= 0 || _APLeft <= 0) then
+        {
+            _gunship setVariable ["OutOfAmmo", true];
+        };
+
+        _gunship setVariable ["currentTarget", _target];
+
+        _gunner reveal [_target, 3];
+        _gunner doTarget _target;
+        _gunner doWatch _target;
+
+        //Simulate targeting time (cause the fucking AI does not targets for real)
+        sleep 0.2;
+
+        for "_i" from 1 to _steps do
+        {
+            if(_gunshots > 0) then
+            {
+                private _muzzle = if(_belt select ((_i - 1) % 3)) then {"HE"} else {"AP"};
+                _gunner forceWeaponFire [_muzzle, "close"];
+				[_gunship, "UK3CB_Factions_AC47_M134_LSV_2"] call BIS_fnc_fire;
+                _gunshots = _gunshots - 1;
+            };
+            if(_rocketShots > 0) then
+            {
+                _gunner forceWeaponFire ["rockets_Skyfire", "Burst"];
+                _rocketShots = _rocketShots - 1;
+            };
+            sleep 0.05;
+        };
+        _gunner doTarget objNull;
+        _gunner doWatch objNull;
+        _gunship setVariable ["currentTarget", nil];
+    };
+
+    while {_gunship getVariable ["IsActive", false]} do
+    {
+        if(isNull (_gunship getVariable ["currentTarget", objNull])) then
+        {
+            //Currently not firing
+            private _targetList = server getVariable [format ["%1_targets", _supportName], []];
+            if(count _targetList > 0) then
+            {
+                Debug("Gunship | Using priority list");
+                //Priority target, execute first
+                private _target = _targetList#0#0#0;
+                private _supportMarker = format ["%1_coverage", _supportName];
+                if
+                (
+                    ((_target distance2D (getMarkerPos _supportMarker)) < 350) &&
+                    {(_target isKindOf "Man" && {[_target] call A3A_fnc_canFight}) ||
+                    {(_target isKindOf "AllVehicles") && (alive _target)}}
+                ) then
+                {
+                    //Target active
+                    if(_target isKindOf "LandVehicle") then
+                    {
+                        if(_target isKindOf "Tank") then
+                        {
+                            [_heavyGunner, _target, 24, [false, false, false], 0] call _fnc_executeFireOrder;
+                        }
+                        else
+                        {
+                            [_heavyGunner, _target, 24, [false, true, false], 8] call _fnc_executeFireOrder;
+                        };
+                    }
+                    else
+                    {
+                        [_heavyGunner, _target, 24, [true, true, true], 4] call _fnc_executeFireOrder;
+                    };
+                }
+                else
+                {
+                    //Target eliminated, remove from list
+                    _targetList deleteAt 0;
+                    server setVariable [format ["%1_targets", _supportName], _targetList, true];
+                };
+            }
+            else
+            {
+                if(count _heavyGunnerList > 0) then
+                {
+                    Debug("Gunship | Using target list");
+                    private _targetParams = _heavyGunnerList deleteAt 0;
+                    _targetParams params ["_target", "_gunshots", "_belt", "_rocketShots"];
+                    if
+                    (
+                        (_target isKindOf "Man" && {[_target] call A3A_fnc_canFight}) ||
+                        {_target isKindOf "AllVehicles" && (alive _target)}
+                    ) then
+                    {
+                        [_heavyGunner, _target, _gunshots, _belt, _rocketShots] call _fnc_executeFireOrder;
+                    };
+                }
+                else
+                {
+                    _gunship setVariable ["CurrentlyFiring", false];
+                };
+            };
+        };
+        sleep 1;
+    };
+};
+
+private _thirdGunnerList = [];
+[_gunship, _thirdGunnerList, _thirdGunner, _supportName] spawn
+{
+    #include "..\..\script_component.hpp"
+    FIX_LINE_NUMBERS()
+    params ["_gunship", "_thirdGunnerList", "_thirdGunner", "_supportName"];
+
+    private _fnc_executeFireOrder =
+    {
+        Debug_1("Fireorder %1 recieved", _this);
+        params ["_gunner", "_target", "_gunshots", "_belt", "_rocketShots"];
+        private _gunship = vehicle _gunner;
+        private _steps = _gunshots max _rocketShots;
+
+        //Calculate used ammo
+        private _rocketsLeft = _gunship getVariable ["Rockets", 0];
+        _rocketsLeft = _rocketsLeft - _rocketShots;
+        if(_rocketsLeft <= 0) then {_gunship setVariable ["OutOfAmmo", true]};
+        _gunship setVariable ["Rockets", _rocketsLeft];
+
+        private _HEUsed = {_x} count _belt;
+        private _APUsed = 3 - _HEUsed;
+
+        private _APLeft = _gunship getVariable ["AP_Ammo", 0];
+        _APLeft = _APLeft - ((_APUsed/3) * _gunshots);
+        _gunship setVariable ["AP_Ammo", _APLeft];
+
+        private _HELeft = _gunship getVariable ["HE_Ammo", 0];
+        _HELeft = _HELeft - ((_HEUsed/3) * _gunshots);
+        _gunship setVariable ["HE_Ammo", _HELeft];
+
+        if(_HELeft <= 0 || _APLeft <= 0) then
+        {
+            _gunship setVariable ["OutOfAmmo", true];
+        };
+
+        _gunship setVariable ["currentTarget", _target];
+
+        _gunner reveal [_target, 3];
+        _gunner doTarget _target;
+        _gunner doWatch _target;
+
+        //Simulate targeting time (cause the fucking AI does not targets for real)
+        sleep 0.2;
+
+        for "_i" from 1 to _steps do
+        {
+            if(_gunshots > 0) then
+            {
+                private _muzzle = if(_belt select ((_i - 1) % 3)) then {"HE"} else {"AP"};
+                _gunner forceWeaponFire [_muzzle, "close"];
+				[_gunship, "UK3CB_Factions_AC47_M134_LSV_3"] call BIS_fnc_fire;
+                _gunshots = _gunshots - 1;
+            };
+            if(_rocketShots > 0) then
+            {
+                _gunner forceWeaponFire ["rockets_Skyfire", "Burst"];
+                _rocketShots = _rocketShots - 1;
+            };
+            sleep 0.05;
+        };
+        _gunner doTarget objNull;
+        _gunner doWatch objNull;
+        _gunship setVariable ["currentTarget", nil];
+    };
+
+    while {_gunship getVariable ["IsActive", false]} do
+    {
+        if(isNull (_gunship getVariable ["currentTarget", objNull])) then
+        {
+            //Currently not firing
+            private _targetList = server getVariable [format ["%1_targets", _supportName], []];
+            if(count _targetList > 0) then
+            {
+                Debug("Gunship | Using priority list");
+                //Priority target, execute first
+                private _target = _targetList#0#0#0;
+                private _supportMarker = format ["%1_coverage", _supportName];
+                if
+                (
+                    ((_target distance2D (getMarkerPos _supportMarker)) < 350) &&
+                    {(_target isKindOf "Man" && {[_target] call A3A_fnc_canFight}) ||
+                    {(_target isKindOf "AllVehicles") && (alive _target)}}
+                ) then
+                {
+                    //Target active
+                    if(_target isKindOf "LandVehicle") then
+                    {
+                        if(_target isKindOf "Tank") then
+                        {
+                            [_thirdGunner, _target, 24, [false, false, false], 0] call _fnc_executeFireOrder;
+                        }
+                        else
+                        {
+                            [_thirdGunner, _target, 24, [false, true, false], 8] call _fnc_executeFireOrder;
+                        };
+                    }
+                    else
+                    {
+                        [_thirdGunner, _target, 24, [true, true, true], 4] call _fnc_executeFireOrder;
+                    };
+                }
+                else
+                {
+                    //Target eliminated, remove from list
+                    _targetList deleteAt 0;
+                    server setVariable [format ["%1_targets", _supportName], _targetList, true];
+                };
+            }
+            else
+            {
+                if(count _thirdGunnerList > 0) then
+                {
+                    Debug("Gunship | Using target list");
+                    private _targetParams = _thirdGunnerList deleteAt 0;
+                    _targetParams params ["_target", "_gunshots", "_belt", "_rocketShots"];
+                    if
+                    (
+                        (_target isKindOf "Man" && {[_target] call A3A_fnc_canFight}) ||
+                        {_target isKindOf "AllVehicles" && (alive _target)}
+                    ) then
+                    {
+                        [_thirdGunner, _target, _gunshots, _belt, _rocketShots] call _fnc_executeFireOrder;
+                    };
+                }
+                else
+                {
+                    _gunship setVariable ["CurrentlyFiring", false];
+                };
+            };
+        };
+        sleep 1;
+    };
+};
+
 _gunship setVariable ["AP_Ammo", 20000]; //change variables later
 _gunship setVariable ["HE_Ammo", 20000]; //change variables later
 _gunship setVariable ["Rockets", 3000]; //delete this one
@@ -251,7 +520,7 @@ while {_lifeTime > 0} do
     ) then
     ///if !(_gunship getVariable ["CurrentlyFiring", false]) then
     {
-        private _targets = _suppCenter nearEntities [["Man", "LandVehicle", "Helicopter", "Plane", "Ship"], 400];
+        private _targets = _suppCenter nearEntities [["Man", "LandVehicle", "Helicopter", "Plane", "Ship"], 600];
         _targets = _targets select
         {
             if(_x isKindOf "Man") then
@@ -273,6 +542,8 @@ while {_lifeTime > 0} do
                 {
                     //Fast moving helicopter, use minigun against it
                     _mainGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 0];
+                    _heavyGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 0];
+                    _thirdGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 0];
                 }
                 else
                 {
@@ -280,6 +551,8 @@ while {_lifeTime > 0} do
                     {
                         //parked or grounded plane, use minigun against it
                         _mainGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 0];
+                        _heavyGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 0];
+                        _thirdGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 0];
                     }
                     else
                     {
@@ -289,6 +562,8 @@ while {_lifeTime > 0} do
                             {
                                 //MBT, breach with AP ammo
                                 _mainGunnerList pushBack [_target, 24, _antiTankBelt, 0];
+                                _heavyGunnerList pushBack [_target, 24, _antiTankBelt, 0];
+                                _thirdGunnerList pushBack [_target, 24, _antiTankBelt, 0];
                             }
                             else
                             {
@@ -296,11 +571,15 @@ while {_lifeTime > 0} do
                                 {
                                     //APC, use mainly AP and rarely rockets
                                     _mainGunnerList pushBack [_target, 18, _antiAPCBelt, 4];
+                                    _heavyGunnerList pushBack [_target, 18, _antiAPCBelt, 4];
+                                    _thirdGunnerList pushBack [_target, 18, _antiAPCBelt, 4];
                                 }
                                 else
                                 {
                                     //Any kind of light vehicle, destroy with rockets and mixed belt
                                     _mainGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 8];
+                                    _heavyGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 8];
+                                    _thirdGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 8];
                                 };
                             };
                         }
@@ -310,6 +589,8 @@ while {_lifeTime > 0} do
                             {
                                 //boat,probably light,use rockets and mixed belt
                                 _mainGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 0];
+                                _heavyGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 0];
+                                _thirdGunnerList pushBack [_target, 12, _antiLightVehicleBelt, 0];
                             }
                             else
                             {
@@ -318,6 +599,8 @@ while {_lifeTime > 0} do
                                 private _rockets = 0;
                                 if(count _nearUnits > 2) then {_rockets = 4};
                                 _mainGunnerList pushBack [_target, 6, _antiInfBelt, _rockets];
+                                _heavyGunnerList pushBack [_target, 8, _antiInfBelt, _rockets];
+                                _thirdGunnerList pushBack [_target, 10, _antiInfBelt, _rockets];
                             };
                         };
                     }; 
