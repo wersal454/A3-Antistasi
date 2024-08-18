@@ -92,8 +92,8 @@ switch (_type) do {
 
 	case "CON": {
 		//find apropriate sites
-		_possibleMarkers = [outposts + milAdministrationsX + resourcesX + (controlsX select {isOnRoad (getMarkerPos _x)})] call _findIfNearAndHostile;
-		private _possibleFrontlineMarkers = [outposts + resourcesX select {[_x] call A3A_fnc_isFrontline}] call _findIfNearAndHostile;
+		_possibleMarkers = [outposts + milAdministrationsX + seaports + factories + resourcesX + (controlsX select {isOnRoad (getMarkerPos _x)})] call _findIfNearAndHostile;
+		private _possibleFrontlineMarkers = (airportsX + milbases + outposts + seaports + factories + resourcesX) select {[_x] call A3A_fnc_isFrontline}/*  call _findIfNearAndHostile */; ///////need to figure that one out
 		if (count _possibleMarkers == 0) then {
 			if (!_silent) then {
 				[petros, "globalChat", localize "STR_chats_mission_request_no_CON"] remoteExec ["A3A_fnc_commsMP",_requester];

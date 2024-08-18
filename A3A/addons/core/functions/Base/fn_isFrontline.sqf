@@ -4,7 +4,7 @@ private ["_positionX","_mrkENY"];
 
 private _isFrontier = false;
 private _sideX = sidesX getVariable [_markerX,sideUnknown];
-private _mrkENY = (airportsX + outposts + seaports + milbases) select {sidesX getVariable [_x,sideUnknown] != _sideX};
+private _mrkENY = (airportsX + outposts + seaports + milbases) select {sidesX getVariable [_x,sideUnknown] != _sideX && != teamPlayer}; /// != teamPlayer debetable
 
 if (count _mrkENY > 0) then {
 	private _positionX = getMarkerPos _markerX;
