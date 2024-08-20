@@ -41,7 +41,7 @@ class gm_weferlingen_winter {
 	buildObjects[] = {
 		BUILDABLES_HISTORIC,
 		BUILDABLES_ARCTIC,
-		BUILDABLES_MOBILAZATION,
+		BUILDABLES_GM,,
 		BUILDABLES_UNIVERSAL
 	};
 };
