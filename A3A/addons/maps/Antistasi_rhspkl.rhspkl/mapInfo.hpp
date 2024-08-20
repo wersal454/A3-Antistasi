@@ -24,9 +24,9 @@ class rhspkl {
 	};
 	climate = "tropical";
 	buildObjects[] = {
-		BUILDABLES_HISTORIC
-		BUILDABLES_MODERN_GREEN
-		BUILDABLES_TROPIC
+		BUILDABLES_HISTORIC,
+		BUILDABLES_MODERN_GREEN,
+		BUILDABLES_TROPIC,
 		BUILDABLES_UNIVERSAL
 	};
     // Needs to be re-done when possible

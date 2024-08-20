@@ -37,10 +37,10 @@ class sehreno {
 	};
 	climate = "temperate";
 	buildObjects[] = {
-		BUILDABLES_HISTORIC
-		BUILDABLES_MODERN_GREEN
-		BUILDABLES_TEMPERATE
-		BUILDABLES_JBAD
+		BUILDABLES_HISTORIC,
+		BUILDABLES_MODERN_GREEN,
+		BUILDABLES_TEMPERATE,
+		BUILDABLES_JBAD,
 		BUILDABLES_UNIVERSAL
 	};
     // Needs to be re-done when possible

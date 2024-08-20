@@ -84,8 +84,8 @@ class StaszowWinter {
 	};
 	climate = "arctic";
 	buildObjects[] = {
-		BUILDABLES_HISTORIC
-		BUILDABLES_ARCTIC
+		BUILDABLES_HISTORIC,
+		BUILDABLES_ARCTIC,
 		BUILDABLES_UNIVERSAL
 	};
     // Needs to be re-done when possible

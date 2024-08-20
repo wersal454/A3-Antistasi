@@ -84,8 +84,8 @@ class Staszow {
 	};
 	climate = "temperate";
 	buildObjects[] = {
-		BUILDABLES_HISTORIC
-		BUILDABLES_TEMPERATE
+		BUILDABLES_HISTORIC,
+		BUILDABLES_TEMPERATE,
 		BUILDABLES_UNIVERSAL
 	};
     // Needs to be re-done when possible

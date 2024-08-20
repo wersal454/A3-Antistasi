@@ -18,10 +18,10 @@ class optre_madrigal {
 	};
 	climate = "temperate";
 	buildObjects[] = {
-		BUILDABLES_HISTORIC
-		BUILDABLES_MODERN_GREEN
-		BUILDABLES_SCIFI
-		BUILDABLES_TEMPERATE
+		BUILDABLES_HISTORIC,
+		BUILDABLES_MODERN_GREEN,
+		BUILDABLES_SCIFI,
+		BUILDABLES_TEMPERATE,
 		BUILDABLES_UNIVERSAL
 	};
 	// Needs to be re-done when possible

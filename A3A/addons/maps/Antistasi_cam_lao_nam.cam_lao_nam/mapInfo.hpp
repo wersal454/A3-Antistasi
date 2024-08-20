@@ -22,9 +22,9 @@ class cam_lao_nam {
 	};
 	climate = "tropical";
 	buildObjects[] = {
-		BUILDABLES_HISTORIC
-		BUILDABLES_TROPIC
-		BUILDABLES_PRAIRIE
+		BUILDABLES_HISTORIC,
+		BUILDABLES_TROPIC,
+		BUILDABLES_PRAIRIE,
 		BUILDABLES_UNIVERSAL
 	};
 };

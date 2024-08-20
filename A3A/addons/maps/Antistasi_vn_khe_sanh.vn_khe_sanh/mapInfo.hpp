@@ -34,9 +34,9 @@ class vn_khe_sanh {
 	};
 	climate = "tropical";
 	buildObjects[] = {
-		BUILDABLES_HISTORIC
-		BUILDABLES_TROPIC
-		BUILDABLES_PRAIRIE
+		BUILDABLES_HISTORIC,
+		BUILDABLES_TROPIC,
+		BUILDABLES_PRAIRIE,
 		BUILDABLES_UNIVERSAL
 	};
 };

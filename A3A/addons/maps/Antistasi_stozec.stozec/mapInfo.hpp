@@ -100,8 +100,8 @@ class stozec {
 	};
 	climate = "temperate";
 	buildObjects[] = {
-		BUILDABLES_HISTORIC
-		BUILDABLES_TEMPERATE
+		BUILDABLES_HISTORIC,
+		BUILDABLES_TEMPERATE,
 		BUILDABLES_UNIVERSAL
 	};
 };

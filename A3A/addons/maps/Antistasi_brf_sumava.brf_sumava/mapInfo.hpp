@@ -21,9 +21,9 @@ class brf_sumava {
 	};
 	climate = "temperate";
 	buildObjects[] = {
-		BUILDABLES_HISTORIC
-		BUILDABLES_MODERN_GREEN
-		BUILDABLES_TEMPERATE
+		BUILDABLES_HISTORIC,
+		BUILDABLES_MODERN_GREEN,
+		BUILDABLES_TEMPERATE,
 		BUILDABLES_UNIVERSAL
 	};
 	// Needs a look over to see if vanilla objects are suitable

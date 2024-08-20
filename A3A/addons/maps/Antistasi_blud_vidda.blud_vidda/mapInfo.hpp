@@ -22,9 +22,9 @@ class blud_vidda {
 	};
 	climate = "temperate";
 	buildObjects[] = {
-		BUILDABLES_HISTORIC
-		BUILDABLES_MODERN_SAND
-		BUILDABLES_ARCTIC
+		BUILDABLES_HISTORIC,
+		BUILDABLES_MODERN_SAND,
+		BUILDABLES_ARCTIC,
 		BUILDABLES_UNIVERSAL
 	};
 	// Needs to be re-done when possible
