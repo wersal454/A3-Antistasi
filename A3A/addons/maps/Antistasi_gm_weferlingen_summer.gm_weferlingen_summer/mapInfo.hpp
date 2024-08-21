@@ -41,7 +41,7 @@ class gm_weferlingen_summer {
 	buildObjects[] = {
 		BUILDABLES_HISTORIC,
 		BUILDABLES_TEMPERATE,
-		BUILDABLES_GM,,
+		BUILDABLES_GM,
 		BUILDABLES_UNIVERSAL
 	};
 };
