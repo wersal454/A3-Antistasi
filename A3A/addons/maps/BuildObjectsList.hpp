@@ -23,13 +23,13 @@
 #define BUILDABLES_JBAD {"jbad_Wall_L_2m5", 100}, {"jbad_Wall_L_2m5_corner", 75}, {"jbad_Wall_L_2m5_gate", 75}, {"jbad_wall_l_5m", 150}, {"jbad_wall_L_5m_hole_big", 125}
 
 //cDLC Modifiers (For cDLC dependent maps)
-#define BUILDABLES_SPE
+#define BUILDABLES_SPE {"Land_SPE_Sandbag_Curve", 235}, {"Land_SPE_Sandbag_Long", 100}, {"Land_SPE_Sandbag_Long_Line", 50}, {"Land_SPE_Sandbag_Long_Thick", 200}, {"Land_SPE_Sandbag_Nest", 150}, {"Land_SPE_Sandbag_Short", 50}, {"Land_SPE_Sandbag_Short_Low", 35}, {"Land_SPE_Covered_Pallets_02", 20}, {"Land_SPE_Wood_TrenchLogWall_01_4m_v2", 50}, {"Land_SPE_Wood_TrenchLogWall_01_4m_v1", 30}, {"Land_SPE_Tent_02", 250}, {"Land_SPE_Straw_Bale_Stack_02", 425}, {"Land_SPE_Straw_Bale_Stack_01", 105}
 
-#define BUILDABLES_SOGPF
+#define BUILDABLES_SOGPF {"Land_vn_tent_02_04", 100}, {"Land_vn_b_trench_bunker_05_01", 50}, {"Land_vn_b_trench_bunker_06_02", 75}, {"Land_vn_b_tower_01", 150}, {"Land_vn_b_trench_45_02", 300}, {"Land_vn_b_trench_90_02", 300}, {"Land_vn_b_trench_20_02", 500}, {"Land_vn_b_trench_cross_02", 500}, {"Land_vn_b_trench_firing_04", 200}, {"Land_vn_b_trench_firing_01", 400}, {"Land_vn_b_mortarpit_01", 200}
 
-#define BUILDABLES_GM
+#define BUILDABLES_GM {"land_gm_sandbags_01_wall_02", 150}, {"land_gm_sandbags_02_bunker_high", 300}, {"land_gm_sandbags_01_round_01", 100}, {"land_gm_woodbunker_01_bags", 400}, {"land_gm_sandbags_01_wall_01", 100}
 
-#define BUILDABLES_WS
+#define BUILDABLES_WS {"Land_HBarrier_3_lxWS", 100}, {"Land_HBarrier_5_lxWS", 150}, {"Land_HBarrier_1_lxWS", 50}, {"Land_HBarrier_Big_lxWS", 300}, {"Land_HBarrierWall_corridor_lxWS", 250}, {"Land_HBarrierWall_corner_lxWS", 250}, {"Land_HBarrierWall6_lxWS", 450}, {"Land_HBarrierWall4_lxWS", 400}, {"Land_HBarrierTower_lxWS", 500}, {"Land_Mil_WallBig_4m_lxWS", 250}, {"Land_Mil_WallBig_Corner_lxWS", 200}, {"CamoNet_Sand_big_lxWS", 400}, {"CamoNet_Sand_lxWS", 250}
 
 //Ending Build List. (Universal Items)
 #define BUILDABLES_UNIVERSAL {"Land_GuardTower_02_F", 150}, {"Land_PortableLight_double_F", 50}, {"Land_LampShabby_F", 75}, {"Land_LampHarbour_F", 100}, {"Land_BarGate_F", 100}, {"Land_SandbagBarricade_01_half_F", 40}, {"Land_SandbagBarricade_01_hole_F", 40}, {"Land_SandbagBarricade_01_F", 40}, {"A3AU_RebHelipad_Square_F", 100}, {"A3AU_RebHelipad_Circle_F", 100}, {"Land_BagBunker_Large_F", 250}, {"Land_BagBunker_Small_F", 150}, {"Land_Bunker_02_light_double_F", 500}, {"Land_GuardBox_01_brown_F", 100}, {"Land_CzechHedgehog_01_new_F", 15}, {"Land_Razorwire_F", 15}

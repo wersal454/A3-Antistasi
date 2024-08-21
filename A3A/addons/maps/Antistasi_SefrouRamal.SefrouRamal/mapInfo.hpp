@@ -17,7 +17,6 @@ class sefrouramal {
 	climate = "arid";
 	buildObjects[] = {
 		BUILDABLES_HISTORIC,
-		BUILDABLES_MODERN_SAND,
 		BUILDABLES_ARID,
 		BUILDABLES_WS,
 		BUILDABLES_UNIVERSAL
