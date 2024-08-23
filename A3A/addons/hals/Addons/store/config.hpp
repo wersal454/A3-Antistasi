@@ -73,6 +73,7 @@ class cfgHALsStore
 		#include "config\nfts.hpp"
 		#include "config\fow.hpp"
 		#include "config\eaw.hpp"
+		#include "config\cwr.hpp"
 	};
 
 	class stores 
@@ -224,6 +225,7 @@ class cfgHALsStore
 			displayName = $STR_ARMS_DEALER_STORE;
 			categories[] = {
 				"riflesWs",
+				"launchersWs",
 				"sniperRiflesWs",
 				"mgWs",
 				"magazinesWs",
@@ -396,7 +398,13 @@ class cfgHALsStore
 				"opticsvn",
 				"underbarrelvn",
 				"magazinesvn",
-				"miscvn"
+				"miscvn",
+				"helmetsvn",
+				"uniformsvn",
+				"backpacksvn",
+				"vestsvn",
+				"facewearvn",
+				"untilityvn"
 			};
 		};
 		
@@ -475,10 +483,15 @@ class cfgHALsStore
 				"riflegrenadesspe",
 				"muzzlesspe",
 				"magazinesspe", 
-				"pointersspe",
 				"specialweaponsspe",
+				"navigationspe",
 				"miscspe",
-				"underbarrelspe"
+				"underbarrelspe",
+				"helmetsspe",
+				"uniformsspe",
+				"backpacksspe",
+				"vestsspe",
+				"facewearspe"
 			};
 		};
 		
@@ -649,8 +662,14 @@ class cfgHALsStore
 				"pointersgm", 
 				"muzzlesgm", 
 				"magazinesgm",
-				"underbarrelgm", 
-				"miscgm"
+				"underbarrelgm",
+				"navigationgm", 
+				"miscgm",
+				"helmetsgm",
+				"uniformsgm",
+				"backpacksgm",
+				"vestsgm",
+				"faceweargm"
 			};
 		};
 		
@@ -792,6 +811,22 @@ class cfgHALsStore
 				"magazineseaw", 
 				"specialweaponseaw",
 				"opticseaw",
+			};
+		};		
+		class cwrstock		
+		{
+			displayName = $STR_ARMS_DEALER_STORE;
+			categories[] = {
+				"handgunsCWR", 
+				"launchersCWR", 
+				"riflesCWR", 
+				"sniperRiflesCWR",
+				"specialWeaponsCWR", 
+				"mgCWR", 
+				"smgCWR", 
+				"launcherMagazinesCWR", 
+				"magazinesCWR", 
+				"opticsCWR"
 			};
 		};
 	};

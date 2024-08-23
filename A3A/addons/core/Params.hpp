@@ -38,8 +38,8 @@ class Params
     class limitedFT
     {
         title = $STR_params_allowFT;
-        values[] = {0,1};
-        texts[] = {$STR_params_allowFT_0, $STR_params_allowFT_1};
+        values[] = {0,1,2};
+        texts[] = {$STR_params_allowFT_0, $STR_params_allowFT_1,$STR_params_civ_traffic_none};
         default = 0;
     };
     class civTraffic
@@ -48,6 +48,13 @@ class Params
         values[] = {0,1,2,4};
         texts[] = {$STR_params_civ_traffic_none,$STR_params_civ_traffic_low,$STR_params_civ_traffic_medium,$STR_params_civ_traffic_high};
         default = 2;
+    };
+    class A3A_removeRestore
+    {
+        title = $STR_A3A_Params_removeRestore_title;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
     };
     class globalCivilianMax
     {
@@ -211,6 +218,20 @@ class Params
         texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
         default = 0;
     };
+    class blackMarketIgnoreRequirements
+    {
+        title = $STR_A3AU_blackmarket_ignore_requirements;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
+    class useDownedNotification
+    {
+        title = $STR_A3AU_use_downed_notification;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
     class staminaEnabled
     {
         title = $STR_A3AU_stamina_enabled;
@@ -228,8 +249,8 @@ class Params
     class swayEnabled
     {
         title = $STR_A3AU_sway_enabled;
-        values[] = {0,1};
-        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        values[] = {0,0.25,0.5,0.75,1};
+        texts[] = {"0%","25%","50%","75%","100%"};
         default = 1;
     };
 
@@ -498,6 +519,13 @@ class Params
         texts[] = {$STR_antistasi_dialogs_generic_button_no_text, $STR_antistasi_dialogs_generic_button_yes_text};
         default = 0;
     };
+    class enableSpectrumDevice
+    {
+        title = $STR_params_enableSpectrumDevice;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text, $STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
     class allowFuturisticSupports
     {
         attr[] = {"server"};
@@ -590,6 +618,13 @@ class Params
         values[] = {0,33,66,100};
         texts[] = {$STR_params_helmetLossChance_0,$STR_params_helmetLossChance_1,$STR_params_helmetLossChance_2,$STR_params_helmetLossChance_3};
         default = 33;
+    };
+    class helmetLossSound
+    {
+        title = $STR_params_helmetLossSound;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 1;
     };
     class reviveKitsEnabled
     {

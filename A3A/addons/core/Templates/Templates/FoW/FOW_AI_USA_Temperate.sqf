@@ -31,10 +31,15 @@
 ["vehiclesLightAPCs", ["LIB_US_Scout_M3","fow_v_lvta2_usa"]] call _fnc_saveToTemplate;
 ["vehiclesAPCs", ["LIB_US_M3_Halftrack","LIB_US_Scout_M3_FFV","fow_v_lvta2_usa"]] call _fnc_saveToTemplate;
 ["vehiclesIFVs", ["LIB_M8_Greyhound", "LIB_M3A3_Stuart", "fow_v_m5a1_usa"]] call _fnc_saveToTemplate;
-["vehiclesTanks", ["fow_v_m4a2_usa","LIB_M4A3_76"]] call _fnc_saveToTemplate;
+private _vehiclesTanks = ["fow_v_m4a2_usa","LIB_M4A3_76"];
 ["vehiclesAA", ["LIB_Zis5v_61K"]] call _fnc_saveToTemplate;
 ["vehiclesAirborne", ["LIB_US_Scout_M3"]] call _fnc_saveToTemplate;
 ["vehiclesLightTanks",  ["LIB_M3A3_Stuart", "fow_v_m5a1_usa"]] call _fnc_saveToTemplate;
+
+if (isClass (configFile >> "CfgPatches" >> "FA_WW2_Tanks")) then {
+    _vehiclesTanks append ["FA_M26"];
+};
+["vehiclesTanks", _vehiclesTanks] call _fnc_saveToTemplate;
 
 ["vehiclesTransportBoats", ["LIB_LCVP"]] call _fnc_saveToTemplate;
 ["vehiclesGunBoats", ["fow_usa_lcvp", "LIB_LCI"]] call _fnc_saveToTemplate;

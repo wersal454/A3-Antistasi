@@ -377,6 +377,8 @@ Info("Reading templates");
 
 } forEach (_saveData get "addonVics");
 
+Info("Generating black market vehicles list");
+[] call A3U_fnc_grabBlackMarketVehicles;
 call A3A_fnc_compileMissionAssets;
 
 { //broadcast the templates to the clients
@@ -539,6 +541,7 @@ private _vehicleResourceCosts = createHashMap;
 { _vehicleResourceCosts set [_x, 150] } forEach FactionGet(all, "vehiclesDropPod");
 { _vehicleResourceCosts set [_x, 250] } forEach FactionGet(all, "vehiclesPlanesCAS") + FactionGet(all, "vehiclesPlanesAA");
 { _vehicleResourceCosts set [_x, 250] } forEach FactionGet(all, "vehiclesHelisAttack");
+{ _vehicleResourceCosts set [_x, 250] } forEach FactionGet(all, "vehiclesPlanesCAS") + FactionGet(all, "vehiclesPlanesAA") + FactionGet(all, "vehiclesPlanesGunship");
 
 
 // Threat table

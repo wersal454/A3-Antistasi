@@ -7,7 +7,14 @@ class CfgFunctions
             file = QPATHTOFOLDER(functions\Ammunition);
             class grabForbiddenItems {};
             class removeForbiddenItems {};
+            class grabBlackMarketVehicles {};
             class removeUnlockedItems {};
+        };
+        class blackmarket
+        {
+            file = QPATHTOFOLDER(functions\blackmarket);
+            class hasRequirements {};
+            class sidesX {};
         };
         class cba
         {
@@ -21,6 +28,14 @@ class CfgFunctions
             class init {};
             class initZones {};
             class popup {};
+        };
+        class REINF
+        {
+            file = QPATHTOFOLDER(functions\REINF);
+            class blackMarketVehiclePrice {};
+            class invaderComeback {};
+            class setInvaderState {};
+            class simpleAttack {};
         };
         class patches
         {
@@ -45,6 +60,16 @@ class CfgFunctions
             class log {};
             class logisticsGrabSeats {};
             class weightTest {};
+        };
+        class zombie
+        {
+            file = QPATHTOFOLDER(functions\zombie);
+            class attackHeli {};
+            class spawnZombie {};
+            class spawnZombieCrater {};
+            class spawnZombieRoar {};
+            class spawnZombieWave {};
+            class spawnZombieWaves {};
         };
         class zones
         {

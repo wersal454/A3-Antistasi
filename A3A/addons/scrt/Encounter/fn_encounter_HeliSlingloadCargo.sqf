@@ -54,7 +54,7 @@ private _spawnPosition = selectRandom _potentialspawnPosition;
 
 private _actualspawnPosition = getMarkerPos _spawnPosition;
 
-private _HeliClass = selectRandom ((_faction get "vehiclesHelisLight") + (_faction get "vehiclesHelisTransport"));
+private _HeliClass = selectRandom (_faction get "vehiclesHelisTransport");
 private _ammoBoxType = _faction get "ammobox";
 
 if (_HeliClass == "") exitWith {
