@@ -41,7 +41,9 @@ if !(isServer) then {
     call A3A_fnc_initVarCommon;
 
     [] execVM QPATHTOFOLDER(Scripts\fn_advancedTowingInit.sqf);
-
+    [] execVM QPATHTOFOLDER(Scripts\aslr_client_init.sqf);/* AdvancedSlingLoadingRefactored\ */
+    [] execVM QPATHTOFOLDER(Scripts\AR_AdvancedRappelling\functions\fn_advancedRappellingInit.sqf);
+    [] execVM QPATHTOFOLDER(Scripts\Advanced_Urban_Rappelling_ACEFIX\functions\fn_advancedUrbanRappellingInit.sqf);
     Info("Running client JNA preload");
     ["Preload"] call jn_fnc_arsenal;
 
