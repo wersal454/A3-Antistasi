@@ -167,7 +167,7 @@ private _rebelTaskText = format [
 ///checking if players reached minimum distance to start vfx or if time limit has passed
 private _missionStart = serverTime;
 waitUntil {
-    sleep 60;
+    sleep 30;
     (call SCRT_fnc_misc_getRebelPlayers) inAreaArray [_crashPosition, 1500, 1500] isNotEqualTo [] || {_missionStart >= serverTime + 600 }
 };
 sleep 60; ///prep time
