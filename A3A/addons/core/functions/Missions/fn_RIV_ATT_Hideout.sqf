@@ -65,12 +65,12 @@ if(!(_radGrad > -0.25 && _radGrad < 0.25) || {isOnRoad _hideoutPosition || {surf
 	[_x, true] remoteExec ["hideObject", 0, true];
 } forEach nearestTerrainObjects [_hideoutPosition, [], 50, false, true];
 
-private _transferConvoyPossibleSpawnMarkers = (airportsX + milbases + outposts + seaports + factories + resourcesX) select {sidesX getVariable [_x, sideUnknown] == Invaders && _hideoutPosition distance2d (getMarkerPos _x) < 4000}; //
+/* private _transferConvoyPossibleSpawnMarkers = (airportsX + milbases + outposts + seaports + factories + resourcesX) select {sidesX getVariable [_x, sideUnknown] == Invaders && _hideoutPosition distance2d (getMarkerPos _x) < 4000}; //
 private _transferConvoySpawnPosMarker = selectRandom _transferConvoyPossibleSpawnMarkers;
 private _transferConvoySpawnPos = getMarkerPos (selectRandom _transferConvoyPossibleSpawnMarkers);
 if (_transferConvoySpawnPos isNotEqualTo []) exitWith {
     [[_marker],"A3A_fnc_RIV_ATT_Transfer"] remoteExec ["A3A_fnc_scheduler",2];
-};
+}; */
 
 //////////////////////////////////////////////
 //  Task        	                        //

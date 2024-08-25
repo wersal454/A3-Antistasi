@@ -71,13 +71,13 @@ _data params ["_resources", "_vehicles", "_crewGroups", "_cargoGroups"]; */
 
 // Prepare despawn conditions
 private _endTime = time + 2700;
-private _victory = false;
+//private _victory = false;
 /* private _soldiers = [];
 { _soldiers append units _x } forEach _cargoGroups; */
 
-waitUntil {sleep 1; dateToNumber date > _dateLimitNum or {sidesX getVariable [_markerX,sideUnknown] == teamPlayer} || {sidesX getVariable [_markerX,sideUnknown] == _oppositeside}};
+waitUntil {sleep 1; dateToNumber date > _dateLimitNum or {sidesX getVariable [_markerX,sideUnknown] == teamPlayer} /* || {sidesX getVariable [_markerX,sideUnknown] == _oppositeside} */};
 
-while {true} do
+/* while {true} do
 {
     private _markerSide = sidesX getVariable _markerX;
     if(_markerSide == _oppositeside) exitWith {
@@ -85,10 +85,10 @@ while {true} do
         _victory = true;
     };
 
-    /* private _curSoldiers = { !fleeing _x and _x call A3A_fnc_canFight } count _soldiers;
+    private _curSoldiers = { !fleeing _x and _x call A3A_fnc_canFight } count _soldiers;
     if (_curSoldiers < count _soldiers * 0.25) exitWith {
         //diag_log ("Small attack to %1 has been defeated, starting despawn routines", _markerX);
-    }; */
+    };
     if(_endTime < time) exitWith {
        // diag_log ("Small attack to %1 timed out, starting despawn routines", _markerX);
     };
@@ -96,7 +96,7 @@ while {true} do
     // Attempt to flip marker
     [_markerX, _markerSide] remoteExec ["A3A_fnc_zoneCheck", 2];
     sleep 30;
-};
+}; */
 
 /* { [_x] spawn A3A_fnc_VEHDespawner } forEach _vehicles;
 { [_x] spawn A3A_fnc_enemyReturnToBase } forEach _crewGroups;

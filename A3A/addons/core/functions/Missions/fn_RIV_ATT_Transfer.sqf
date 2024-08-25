@@ -6,6 +6,35 @@ params ["_marker"];
 //Mission: Prevent transfer of gear and vehicels to Rivals
 if (!isServer and hasInterface) exitWith {};
 
+private _positionX = getMarkerPos _marker;
+
+private _hideoutPosition = [
+    _positionX, //center
+    0, //minimal distance
+    300, //maximumDistance
+    0, //object distance
+    0, //water mode
+    0.3, //maximum terrain gradient
+    0, //shore mode
+    [], //blacklist positions
+    [_positionX, _positionX] //default position
+] call BIS_fnc_findSafePos;
+
+private _radGrad = [_hideoutPosition, 0] call BIS_fnc_terrainGradAngle;
+
+private _outOfBounds = _hideoutPosition findIf { (_x < 0) || {_x > worldSize}} != -1;
+
+private _InvBases = (airportsX + milbases + outposts + seaports + factories + resourcesX) select {sidesX getVariable [_x, sideUnknown] == Invaders};
+private _isTooCloseToOutposts = _InvBases findIf { _hideoutPosition distance2d (getMarkerPos _x) < 500 || _hideoutPosition inArea _x } != -1;
+private _CloseToOutposts = _InvBases findIf { _hideoutPosition distance2d (getMarkerPos _x) < 1000 || _hideoutPosition inArea _x } != -1;
+
+private _transferConvoyPossibleSpawnMarkers = _InvBases select {_hideoutPosition distance2d (getMarkerPos _x) < 4000}; //
+if (_transferConvoyPossibleSpawnMarkers isEqualTo []) exitWith {
+    [[_marker],"A3A_fnc_RIV_ATT_Hideout"] remoteExec ["A3A_fnc_scheduler",2];
+};
+private _transferConvoySpawnPosMarker = selectRandom _transferConvoyPossibleSpawnMarkers;
+private _transferConvoySpawnPos = getMarkerPos _transferConvoySpawnPosMarker;
+
 private _fnc_createLight = {
     params [["_position", []]];
     if (_position isEqualTo []) exitWith {};
@@ -32,52 +61,6 @@ private _faction = Faction(_sideX);
 private _isDifficult = if (random 10 < tierWar) then {true} else {false};
 
 Info_1("Is difficult: %1.", str _isDifficult);
-
-private _positionX = getMarkerPos _marker;
-
-private _hideoutPosition = [
-    _positionX, //center
-    0, //minimal distance
-    300, //maximumDistance
-    0, //object distance
-    0, //water mode
-    0.3, //maximum terrain gradient
-    0, //shore mode
-    [], //blacklist positions
-    [_positionX, _positionX] //default position
-] call BIS_fnc_findSafePos;
-
-private _radGrad = [_hideoutPosition, 0] call BIS_fnc_terrainGradAngle;
-
-private _outOfBounds = _hideoutPosition findIf { (_x < 0) || {_x > worldSize}} != -1;
-
-private _InvBases = (airportsX + milbases + outposts + seaports + factories + resourcesX) select {sidesX getVariable [_x, sideUnknown] == Invaders};
-private _isTooCloseToOutposts = _InvBases findIf { _hideoutPosition distance2d (getMarkerPos _x) < 500 || _hideoutPosition inArea _x } != -1;
-private _CloseToOutposts = _InvBases findIf { _hideoutPosition distance2d (getMarkerPos _x) < 1000 || _hideoutPosition inArea _x } != -1;
-
-private _transferConvoyPossibleSpawnMarkers = (airportsX + milbases + outposts + seaports + factories + resourcesX) select {sidesX getVariable [_x, sideUnknown] == Invaders && _hideoutPosition distance2d (getMarkerPos _x) < 4000}; //
-private _transferConvoySpawnPosMarker = selectRandom _transferConvoyPossibleSpawnMarkers;
-diag_log _transferConvoySpawnPosMarker;
-diag_log _transferConvoySpawnPosMarker;
-diag_log _transferConvoySpawnPosMarker;
-diag_log _transferConvoySpawnPosMarker;
-diag_log _transferConvoySpawnPosMarker;
-diag_log _transferConvoySpawnPosMarker;
-diag_log _transferConvoySpawnPosMarker;
-diag_log _transferConvoySpawnPosMarker;
-diag_log _transferConvoySpawnPosMarker;
-private _transferConvoySpawnPos = getMarkerPos (selectRandom _transferConvoyPossibleSpawnMarkers);
-diag_log _transferConvoySpawnPos;
-diag_log _transferConvoySpawnPos;
-diag_log _transferConvoySpawnPos;
-diag_log _transferConvoySpawnPos;
-diag_log _transferConvoySpawnPos;
-diag_log _transferConvoySpawnPos;
-diag_log _transferConvoySpawnPos;
-diag_log _transferConvoySpawnPos;
-if (_transferConvoySpawnPos isEqualTo []) exitWith {
-    [[_marker],"A3A_fnc_RIV_ATT_Hideout"] remoteExec ["A3A_fnc_scheduler",2];
-};
 
 //mitigation of negative terrain gradient
 if(!(_radGrad > -0.25 && _radGrad < 0.25) || {isOnRoad _hideoutPosition || {surfaceIsWater _hideoutPosition || {_outOfBounds || {_isTooCloseToOutposts}}}}) then {
@@ -115,17 +98,7 @@ _route = _route apply { _x select 0 };			// reduce to position array
 if (_route isEqualTo []) then { _route = [_posOrigin, _posDest] };
 
 //private _route = [_transferConvoySpawnPos, _hideoutPosition] call A3A_fnc_findPath;
-diag_log _hideoutPosition;
-diag_log _hideoutPosition;
-diag_log _hideoutPosition;
-diag_log _hideoutPosition;
-diag_log _hideoutPosition;
-diag_log _route;
-diag_log _route;
-diag_log _route;
-diag_log _route;
-diag_log _route;
-diag_log _route;
+
 //////////////////////////////////////////////
 //  Task        	                        //
 //////////////////////////////////////////////
@@ -462,12 +435,6 @@ if (dateToNumber date < _dateLimitNum) then {
     if (_route isEqualTo []) then { _route = [_posOrigin, _posDest] };
 
     //_route = _route select [_pathState#2, count _route];        // remove navpoints that we already passed while spawning
-    diag_log _route;
-    diag_log _route;
-    diag_log _route;
-    diag_log _route;
-    diag_log _route;
-    diag_log _route;
     // This array is used to share remaining convoy vehicles between threads
     reverse _convoyVehicles;
     reverse _markNames;

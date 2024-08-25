@@ -93,7 +93,9 @@ switch (_type) do {
 	case "CON": {
 		//find apropriate sites
 		_possibleMarkers = [outposts + milAdministrationsX + seaports + factories + resourcesX + (controlsX select {isOnRoad (getMarkerPos _x)})] call _findIfNearAndHostile;
-		private _possibleFrontlineMarkers = (airportsX + milbases + outposts + seaports + factories + resourcesX) select {[_x] call A3A_fnc_isFrontline}/*  call _findIfNearAndHostile */; ///////need to figure that one out
+		private _possibleMarkersForFrontline = [airportsX + milbases + outposts + seaports + factories + resourcesX] call _findIfNearAndHostile;
+		private _possibleFrontlineMarker = selectRandom _possibleMarkersForFrontline;
+		private _frontlineSite = [_possibleFrontlineMarker] call A3A_fnc_isFrontlineNoFia;
 		if (count _possibleMarkers == 0) then {
 			if (!_silent) then {
 				[petros, "globalChat", localize "STR_chats_mission_request_no_CON"] remoteExec ["A3A_fnc_commsMP",_requester];
@@ -102,12 +104,11 @@ switch (_type) do {
 		} else {
 			private _milAdmins = _possibleMarkers select {_x in milAdministrationsX };
 			private _site = if (_milAdmins isNotEqualTo []) then {selectRandom _milAdmins} else {selectRandom _possibleMarkers};
-			private _frontlineSite = selectRandom _possibleFrontlineMarkers; //if (_possibleFrontlineMarkers isNotEqualTo []) then {} else {selectRandom _possibleMarkers};
 			if (_site in milAdministrationsX) then {
-				[[_site],"A3A_fnc_CON_MilAdmin"] remoteExec ["A3A_fnc_scheduler",2]
+				[[_site],"A3A_fnc_CON_MilAdmin"] remoteExec ["A3A_fnc_scheduler",2];
 			} else {
-				if (_possibleFrontlineMarkers isNotEqualTo []) then {
-					[[_frontlineSite],"A3A_fnc_CON_Outpost_Compet"] remoteExec ["A3A_fnc_scheduler",2]; //better check is needed
+				if (_frontlineSite) then {
+					[[_possibleFrontlineMarker],"A3A_fnc_CON_Outpost_Compet"] remoteExec ["A3A_fnc_scheduler",2];
 				} else {
 					[[_site],"A3A_fnc_CON_Outpost"] remoteExec ["A3A_fnc_scheduler",2];
 				};

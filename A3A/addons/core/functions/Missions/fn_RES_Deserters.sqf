@@ -99,7 +99,7 @@ private _patrolVehgroup = _PatrolvehData select 2;
 } forEach _vehCrew;
 [_Patrolveh, _sideX] call A3A_fnc_AIVEHinit;
 
-private _stolenVehicleSpawnPos = [_spawnPos, 5, 30, 3, 0, 5, 0] call BIS_fnc_findSafePos;
+private _stolenVehicleSpawnPos = [_spawnPos, 5, 50, 3, 0, 5, 0] call BIS_fnc_findSafePos;
 private _stolenVehicle = createVehicle [_stolenVehicleType, _stolenVehicleSpawnPos, [], 0, "NONE"];
 [_stolenVehicle, teamPlayer] call A3A_fnc_AIVEHinit;
 //private _stolenVehgroup = group driver _StolenVehGroup;///not sure how to transfer command of units inside vehicle to player, so for now vehicle will stay empty
