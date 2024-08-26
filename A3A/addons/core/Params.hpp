@@ -162,6 +162,13 @@ class Params
         texts[] = {""};
         default = "";
     };
+    class victoryCondition
+    {
+        title = $STR_A3AU_victory_condition;
+        values[] = {0,1,2,3,4};
+        texts[] = {$STR_A3AU_normal_victory,$STR_A3AU_total_victory,$STR_A3AU_economic_victory,$STR_A3AU_logistical_victory,$STR_A3AU_political_victory};
+        default = 0;
+    };
     class cosmeticsEnabled
     {
         title = $STR_A3AU_cosmetics;
@@ -210,13 +217,6 @@ class Params
         values[] = {100, 300, 500, 1000, 1500, 2000};
         texts[] = {"100", "300", "500", "1000", "1500", "2000"};
         default = 500;
-    };
-    class totalVictory
-    {
-        title = $STR_A3AU_total_victory;
-        values[] = {0,1};
-        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
-        default = 0;
     };
     class blackMarketIgnoreRequirements
     {

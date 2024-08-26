@@ -57,7 +57,39 @@ class End1
 	title = $STR_end_mission_victory_generic_title;
 	subtitle = $STR_end_mission_victory_subtitle;
 	description = $STR_end_mission_victory_desc;
-	picture = "n_inf";
+	picture = "A3AU_Normal_Victory";
+	pictureColor[] = {0.0,0.5,0.0,1};
+};
+class totalVictory
+{
+	title = $STR_end_mission_total_victory_generic_title;
+	subtitle = $STR_end_mission_victory_subtitle;
+	description = $STR_end_mission_total_victory_desc;
+	picture = "A3AU_Total_Victory";
+	pictureColor[] = {0.0,0.5,0.0,1};
+};
+class economicVictory
+{
+	title = $STR_end_mission_economic_victory_generic_title;
+	subtitle = $STR_end_mission_economic_victory_subtitle;
+	description = $STR_end_mission_economic_victory_desc;
+	picture = "A3AU_Economic_Victory";
+	pictureColor[] = {0.0,0.5,0.0,1};
+};
+class logisticalVictory
+{
+	title = $STR_end_mission_logistical_victory_generic_title;
+	subtitle = $STR_end_mission_victory_subtitle;
+	description = $STR_end_mission_logistical_victory_desc;
+	picture = "A3AU_Logistical_Victory";
+	pictureColor[] = {0.0,0.5,0.0,1};
+};
+class politicalVictory
+{
+	title = $STR_end_mission_political_victory_generic_title;
+	subtitle = $STR_end_mission_victory_subtitle;
+	description = $STR_end_mission_political_victory_desc;
+	picture = "A3AU_Political_Victory";
 	pictureColor[] = {0.0,0.5,0.0,1};
 };
 class destroyedSites
