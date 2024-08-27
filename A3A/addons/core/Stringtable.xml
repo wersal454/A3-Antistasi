@@ -2719,7 +2719,7 @@
                 <Spanish>Ganarás el juego cuando la mayoría de la población apoye a tu facción y hayas conquistado todas las bases aéreas y bases militares.</Spanish>
                 <Polish>Wygrasz grę, gdy większość populacji poprze twoją frakcję i podbijesz wszystkie lotniska i bazy wojskowe.</Polish>
             </Key>
-            <Key ID="STR_antistasi_journal_entry_text_Default_total">airportsX + milbases + outposts + resourcesX + factories + seaports;
+            <Key ID="STR_antistasi_journal_entry_text_Default_total">
                 <Original>Total Victory Selected&lt;br/&gt;To complete this win condition, capture all outposts, resources, factories, seaports, military bases, and airports, and maintain more population support than your enemies.</Original>
                 <Russian>Выбрана полная победа&lt;br/&gt;Чтобы выполнить это условие победы, захватите все аванпосты, ресурсы, фабрики, морские порты, военные базы и аэропорты и поддерживайте большую поддержку населения, чем ваши враги.</Russian>
             </Key>
