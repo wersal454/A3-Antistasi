@@ -1566,6 +1566,22 @@
                 <Korean>승    리</Korean>
                 <French>V I C T O I R E</French>
             </Key>
+            <Key ID="STR_end_mission_total_victory_generic_title">
+                <Original>T O T A L   V I C T O R Y</Original>
+                <Russian>О Б Щ И Й   П О Б Е Д А</Russian>
+            </Key>
+            <Key ID="STR_end_mission_economic_victory_generic_title">
+                <Original>E C O N O M I C   V I C T O R Y</Original>
+                <Russian>Э К О Н О М И Ч Е С К И Й   П О Б Е Д А</Russian>
+            </Key>
+            <Key ID="STR_end_mission_logistical_victory_generic_title">
+                <Original>L O G I S T I C A L   V I C T O R Y</Original>
+                <Russian>Л О Г И С Т И К А   П О Б Е Д А</Russian>
+            </Key>
+            <Key ID="STR_end_mission_political_victory_generic_title">
+                <Original>P O L I T I C A L   V I C T O R Y</Original>
+                <Russian>П О Л И Т И Ч Е С К И Е   П О Б Е Д А</Russian>
+            </Key>
             <Key ID="STR_end_mission_victory_subtitle">
                 <Original>Country is under our control!</Original>
                 <Russian>Страна под нашим контролем!</Russian>
@@ -1573,12 +1589,36 @@
                 <Korean>이제 나라는 우리 것입니다!</Korean>
                 <French>Le pays est sous notre contrôle !</French>
             </Key>
+            <Key ID="STR_end_mission_economic_victory_subtitle">
+                <Original>The required funds have been secured!</Original>
+                <Russian>Необходимые средства были обеспечены.!</Russian>
+            </Key>
             <Key ID="STR_end_mission_victory_desc">
                 <Original>The population of the country loves you!&lt;br/&gt;The brave soldiers have proven their valour, and Petros, the elected new Prime Minister, could at last to have a nice holidays. A deserved rest and honor for all participated soldiers too.</Original>
                 <Russian>Население страны любит вас!&lt;br/&gt;Отважные солдаты доказали свою доблесть и Петрос, избранный новым премьер-министром, наконец-то сможет хорошо провести отпуск. Заслуженный отдых и почёт всем участвовавшим бойцам тоже.</Russian>
                 <Chinesesimp>全国人民都爱你!&lt;br/&gt;勇敢的士兵们已经证明了他们的英勇，当选的新总理Petros也终于可以过一个愉快的假期。所有参战士兵也得到了应有的休息和荣誉。</Chinesesimp>
                 <Korean>국민들이 당신들을 좋아합니다!&lt;br/&gt;용감한 군인들은 그들의 용기를 증명해냈고, 선출된 새 총리인 페트로스는 마침내 멋진 휴일을 보낼 수 있었습니다. 참가한 모든 병사들에게도 마땅히 휴식과 명예가 주어져야 합니다.</Korean>
                 <French>La population du pays vous aime!&lt;br/&gt;Les braves soldats ont prouvé leur courage, et Petros, le nouveau Premier ministre élu, a enfin pu passer de bonnes vacances. Un repos mérité et des honneurs pour tous les soldats qui y ont participé.</French>
+            </Key>
+            <Key ID="STR_end_mission_total_victory_desc">
+                <Original>You have completely decimated your enemies!&lt;br/&gt;The brave soldiers have proven their valour, and Petros, has been made the sole leader of the country!. You have shown your power and overwhelming strength in this region and deserve some well earned rest.</Original>
+                <English>You have completely decimated your enemies!&lt;br/&gt;The brave soldiers have proven their valour, and Petros, has been made the sole leader of the country!. You have shown your power and overwhelming strength in this region and deserve some well earned rest.</English>
+                <Russian>Вы полностью уничтожили своих врагов!&lt;br/&gt;Храбрые солдаты доказали свою доблесть, и Петрос стал единоличным лидером страны! Вы продемонстрировали свою мощь в этом регионе и заслуживаете отдых.</Russian>
+            </Key>
+            <Key ID="STR_end_mission_economic_victory_desc">
+                <Original>Your goals have been reached!&lt;br/&gt;After a long fight and struggle you have finally earned enough money to leave this region and live a comfortable life. take a good rest, the plane is leaving in an hour.</Original>
+                <English>Your goals have been reached!&lt;br/&gt;After a long fight and struggle you have finally earned enough money to leave this region and live a comfortable life. take a good rest, the plane is leaving in an hour.</English>
+                <Russian>Ваши цели достигнуты!&lt;br/&gt;После долгой борьбы, вы наконец заработали достаточно денег, чтобы покинуть этот регион и жить комфортной жизнью. Хорошенько отдохните, самолет вылетает через час.</Russian>
+            </Key>
+            <Key ID="STR_end_mission_political_victory_desc">
+                <Original>Most of the population of this country loves you!&lt;br/&gt;Petros, the elected new Prime Minister, had made some reforms and has gotten your enemies to back away from the conflict. &lt;br/&gt;Now you have some peace and quite but for how long?</Original>
+                <English>Most of the population of this country loves you!&lt;br/&gt;Petros, the elected new Prime Minister, had made some reforms and has gotten your enemies to back away from the conflict. &lt;br/&gt;Now you have some peace and quite but for how long?</English>
+                <Russian>Большая часть населения страны любит вас!&lt;br/&gt;Петрос, избранный новым премьер-министром, провел несколько реформ и заставил ваших врагов отступить. &lt;br/&gt;На данный момент всё спокойно, но надолго ли?</Russian>
+            </Key>
+            <Key ID="STR_end_mission_logistical_victory_desc">
+                <Original>You have successfully crippled your enemies!&lt;br/&gt;Their military bases and airports are now under your control, your enemies have backed away from the conflict and have closed their support corridors. Go have a rest soldier, you have earned it!</Original>
+                <English>You have successfully crippled your enemies!&lt;br/&gt;Their military bases and airports are now under your control, your enemies have backed away from the conflict and have closed their support corridors. Go have a rest soldier, you have earned it!</English>
+                <Russian>Вы успешно нанесли поражение своим врагам!&lt;br/&gt;Их военные базы и аэропорты теперь под вашим контролем, ваши враги отступили от конфликта и закрыли свои коридоры поддержки. &lt;br/&gt;Иди отдохни, солдат, ты это заслужил!</Russian>
             </Key>
             <Key ID="STR_end_mission_defeat_title">
                 <Original>Country is Destroyed</Original>
