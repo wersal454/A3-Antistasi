@@ -129,7 +129,7 @@ while {true} do {
 	} forEach citiesX;
 
 	if (_popKilled > (_popTotal / 3)) then {
-		isNil { ["ended", true] call A3A_fnc_writebackSaveVar };
+		isNil {["ended", true] call A3A_fnc_writebackSaveVar};
 		["destroyedSites",false,true] remoteExec ["BIS_fnc_endMission"];
 	};
 
@@ -138,8 +138,8 @@ while {true} do {
 		//Normal Victory
 		case 0:
         {
-            if ((_popReb > _popGov) && {({sidesX getVariable [_x,sideUnknown] == teamPlayer} count (airportsX + milbases)) == count (airportsX + milbases)}) then {
-				isNil { ["ended", true] call A3A_fnc_writebackSaveVar };
+            if ((_popReb > _popGov) && {({sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (airportsX + milbases)) isEqualTo count (airportsX + milbases)}) then {
+				isNil {["ended", true] call A3A_fnc_writebackSaveVar};
                 ["End1",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
             };
         };
@@ -148,8 +148,8 @@ while {true} do {
 		case 1:
         {
             private _victoryZones = airportsX + milbases + outposts + resourcesX + factories + seaports;
-            if ((_popReb > _popGov) && { ( {sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (_victoryZones) ) isEqualTo count (_victoryZones) } ) then {
-				isNil { ["ended", true] call A3A_fnc_writebackSaveVar };
+            if ((_popReb > _popGov) && {({sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (_victoryZones)) isEqualTo count (_victoryZones)}) then {
+				isNil {["ended", true] call A3A_fnc_writebackSaveVar};
                 ["totalVictory",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
             };
         };
@@ -159,7 +159,7 @@ while {true} do {
 		{
 			private _factionMoney = server getVariable "resourcesFIA";
 			if ((_factionMoney >= 2000000)) then {
-				isNil { ["ended", true] call A3A_fnc_writebackSaveVar };
+				isNil {["ended", true] call A3A_fnc_writebackSaveVar};
 				["economicVictory",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
 			};
 		};
@@ -168,7 +168,7 @@ while {true} do {
 		case 3:
 		{ 
 			private _victoryZonesLogistical = airportsX + milbases + seaports;
-			if ((_popReb > _popGov) && ( {sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (_victoryZonesLogistical) ) isEqualTo count (_victoryZonesLogistical)) then {
+			if (({sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (_victoryZonesLogistical) ) isEqualTo count (_victoryZonesLogistical)) then {
 				isNil { ["ended", true] call A3A_fnc_writebackSaveVar };
 				["logisticalVictory",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
 			};
@@ -177,9 +177,9 @@ while {true} do {
 		//Political Victory (Over 75% population Support)
 		case 4:
 		{ 
-			private _popMajority = _popTotal / 4;
-			if ((_popReb >= (_popMajority * 3)) ) then {
-				isNil { ["ended", true] call A3A_fnc_writebackSaveVar };
+			private _popMajority = _popTotal * 0.75;
+			if ((_popReb >= _popMajority)) then {
+				isNil {["ended", true] call A3A_fnc_writebackSaveVar};
 				["politicalVictory",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
 			};
 		};
