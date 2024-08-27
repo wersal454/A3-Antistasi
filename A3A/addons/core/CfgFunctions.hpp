@@ -41,7 +41,7 @@ class CfgFunctions
             class interrogate {};
             class isBuildingPosition {};
             class landThreatEval {};
-            class liberatedeserter {};
+            class liberateDeserter {};
             class liberaterefugee {};
             class liberatePOW {};
             class liberateFlee {};
