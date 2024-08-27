@@ -95,7 +95,7 @@ switch (_type) do {
 		_possibleMarkers = [outposts + milAdministrationsX + seaports + factories + resourcesX + (controlsX select {isOnRoad (getMarkerPos _x)})] call _findIfNearAndHostile;
 		private _possibleMarkersForFrontline = [airportsX + milbases + outposts + seaports + factories + resourcesX] call _findIfNearAndHostile;
 		private _possibleFrontlineMarker = selectRandom _possibleMarkersForFrontline;
-		private _frontlineSite = [_possibleFrontlineMarker] call A3A_fnc_isFrontlineNoFia;
+		private _frontlineSite = [_possibleFrontlineMarker] call A3A_fnc_isFrontlineNoFIA;
 		if (count _possibleMarkers == 0) then {
 			if (!_silent) then {
 				[petros, "globalChat", localize "STR_chats_mission_request_no_CON"] remoteExec ["A3A_fnc_commsMP",_requester];
