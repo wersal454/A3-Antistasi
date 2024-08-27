@@ -4,7 +4,7 @@ params ["_markerX"];
 if (isServer and hasInterface) exitWith{};
 
 private _zones = (outposts + seaports + resourcesX + factories);
-private _zonesFrontline = [_zones select {[_x] call A3A_fnc_isFrontlineNoFia}];
+private _zonesFrontline = [_zones select {[_x] call A3A_fnc_isFrontlineNoFIA}];
 if (_markerX in _zonesFrontline && !(_markerX in controlsX)) exitWith {
 	[[_markerX],"A3A_fnc_CON_Outpost_Compet"] remoteExec ["A3A_fnc_scheduler",2];
 };
