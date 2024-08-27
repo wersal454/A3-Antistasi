@@ -141,7 +141,7 @@ class CfgFunctions
             class vehicleBoxRestore {};
             class initPetros {};
             class isFrontline {};
-            class isFrontlineNoFia {};
+            class isFrontlineNoFIA {};
             class arePositionsConnected {};
             class joinMultipleGroups {};
             class localizar {};
