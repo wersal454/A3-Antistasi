@@ -5810,6 +5810,11 @@
                 <English>Victory Condition</English>
                 <Russian>Условие победы</Russian>
             </Key>
+            <Key ID="STR_A3AU_total_victory_deprecated">
+                <Original>Total Victory (deprecated)</Original>
+                <English>Total Victory (deprecated)</English>
+                <Russian>абсолютная победа (устарел)</Russian>
+            </Key>
             <Key ID="STR_A3AU_total_victory">
                 <Original>Total Victory</Original>
                 <English>Total Victory</English>

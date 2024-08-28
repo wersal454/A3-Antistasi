@@ -162,6 +162,13 @@ class Params
         texts[] = {""};
         default = "";
     };
+    class totalVictory //deprecated Dont Use
+    {
+        title = $STR_A3AU_total_victory_deprecated;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
     class victoryCondition
     {
         title = $STR_A3AU_victory_condition;
