@@ -11,6 +11,8 @@
 
 params ["_position"];
 
+if (disableTrader) exitWith {};
+
 traderObjects = [];
 
 traderMarker = createMarker ["TraderMarker", _position];
