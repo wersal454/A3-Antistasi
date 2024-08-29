@@ -5709,6 +5709,23 @@
                 <French>&lt;br/&gt;&lt;t size='0.8' color='#%1' shadow='1' shadowColor='#%2' valign='top'&gt;Appuyez sur &lt;t color='#%3'&gt;%4&lt;/t&gt; pour supprimer l'indice . +%5&lt;/t&gt;</French>
             </Key>
         </Container>
+        <Container name="A3A_enemyResponseTime">
+            <Key ID="STR_A3A_Params_generic_veryslow">
+                <Original>Very slow</Original>
+            </Key>
+            <Key ID="STR_A3A_Params_generic_slow">
+                <Original>Slow</Original>
+            </Key>
+            <Key ID="STR_A3A_Params_generic_fast">
+                <Original>Fast</Original>
+            </Key>
+            <Key ID="STR_A3A_Params_generic_veryfast">
+                <Original>Very fast</Original>
+            </Key>
+            <Key ID="STR_A3A_Params_enemyResponseTime_title">
+                <Original>Speed of enemy air responses</Original>
+            </Key>
+        </Container>
         <Container name="A3A_GCTracker">
             <Key ID="STR_A3A_GCTracker_tracker_title">
                 <Original>Garbage Cleaner Tracker</Original>
