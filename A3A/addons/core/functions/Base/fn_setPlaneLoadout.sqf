@@ -484,7 +484,8 @@ if (_type == "CASDIVE") then
             _plane setVariable ["diveParams", [1200, 350, 110, 55, 15, [3, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
         };
 		// Clone Wars Planes (3AS)
-        case "3AS_ARC_170_Yellow";
+        case "3AS_ARC_170_Red";
+		case "3AS_ARC_170_Yellow";
         case "3AS_ARC_170_Orange";
         case "3AS_ARC_170_Green";
         case "3AS_ARC_170_Blue":
@@ -1102,7 +1103,8 @@ if (_type == "CAS") then
             _plane setVariable ["diveParams", [1200, 350, 110, 55, 15, [3, 0]]];        // start (m), end (m), diveSpeed (m/s), dive start angle (deg), turnRate (deg/s), bombOffset (m)
         };
 	    // Clone Wars Planes (3AS)
-        case "3AS_ARC_170_Yellow";
+        case "3AS_ARC_170_Red";
+		case "3AS_ARC_170_Yellow";
         case "3AS_ARC_170_Orange";
         case "3AS_ARC_170_Green";
         case "3AS_ARC_170_Blue":
@@ -1168,7 +1170,6 @@ if (_type == "CAS") then
         case "3AS_Delta7_TANO";
         case "3AS_Delta7_ANI";
         case "3AS_Delta7_Blue";
-        case "3AS_Delta7_F";
         case "3AS_Delta7_Orange";
         case "3AS_Delta7_PLO";
         case "3AS_Delta7_Purple";
@@ -1627,7 +1628,8 @@ if (_type == "AA") then
             _loadout = ["LIB_1Rnd_SC250"];
         };
 	    // Clone Wars Planes (3AS)
-        case "3AS_ARC_170_Yellow";
+        case "3AS_ARC_170_Red";
+		case "3AS_ARC_170_Yellow";
         case "3AS_ARC_170_Orange";
         case "3AS_ARC_170_Green";
         case "3AS_ARC_170_Blue":
@@ -1684,7 +1686,6 @@ if (_type == "AA") then
         case "3AS_Delta7_TANO";
         case "3AS_Delta7_ANI";
         case "3AS_Delta7_Blue";
-        case "3AS_Delta7_F";
         case "3AS_Delta7_Orange";
         case "3AS_Delta7_PLO";
         case "3AS_Delta7_Purple";
