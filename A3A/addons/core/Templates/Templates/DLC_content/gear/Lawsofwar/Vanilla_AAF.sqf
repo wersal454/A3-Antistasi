@@ -9,7 +9,7 @@
 
 _helmets pushBack "H_PASGT_basic_blue_F";  //police
 
-(_militiaLoadoutData get "Hvests") pushBack "H_PASGT_basic_olive_F";
+(_militiaLoadoutData get "helmets") pushBack "H_PASGT_basic_olive_F";
 
 
 

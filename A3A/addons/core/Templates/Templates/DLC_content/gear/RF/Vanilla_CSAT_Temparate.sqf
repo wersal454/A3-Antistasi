@@ -8,8 +8,8 @@
 (_militaryLoadoutData get "helmets") append ["H_HelmetHeavy_Black_RF","H_HelmetHeavy_Simple_Black_RF","H_HelmetHeavy_VisorUp_Black_RF","H_HelmetHeavy_GHex_RF","H_HelmetHeavy_Simple_GHex_RF","H_HelmetHeavy_VisorUp_GHex_RF","H_HelmetB_plain_sb_tna_RF"];
 (_militaryLoadoutData get "Hvests") append ["V_TacVest_rig_oli_RF","V_TacVest_rig_blk_RF"];
 
-(_militaryLoadoutData get "helmets") pushBack "H_HelmetB_plain_sb_tna_RF";
-(_militaryLoadoutData get "Hvests") append ["V_TacVest_rig_oli_RF","V_TacVest_rig_blk_RF"];
+(_militiaLoadoutData get "helmets") pushBack "H_HelmetB_plain_sb_tna_RF";
+(_militiaLoadoutData get "Hvests") append ["V_TacVest_rig_oli_RF","V_TacVest_rig_blk_RF"];
 
 
 

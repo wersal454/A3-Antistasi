@@ -78,6 +78,15 @@ class Templates
         description = $STR_A3AP_setupFactionsTab_csat;
     };
 
+    class Vanilla_CSATandAAF : Vanilla_CSAT_Arid
+    {
+        name = "A3 CSAT&AAF";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Vanilla\flags\CSAT_AAF.paa);
+        file = "Vanilla_AI_CSAT&AAF";
+        climate[] = {"arid"};
+        description = $STR_A3AP_setupFactionsTab_csatandaaf;
+    };
+
     class Vanilla_CSAT_Temperate : Vanilla_CSAT_Arid
     {
         name = "A3 CSAT Temperate";
@@ -109,6 +118,38 @@ class Templates
         climate[] = {"tropical"};
     };
 
+    class Vanilla_NATOandAAF : Vanilla_NATO_Arid
+    {
+        name = "A3 NATO&AAF";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Vanilla\flags\NATO_AAF.paa);
+        file = "Vanilla_AI_NATO&AAF";
+        climate[] = {"arid"};
+        description = $STR_A3AP_setupFactionsTab_natoandaaf;
+    };
+
+    class Vanilla_NATOandLDF_Arid : Vanilla_Base
+    {
+        side = "Occ";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Vanilla\flags\NATO_LDF.paa);
+        name = "A3 NATO&LDF Arid";
+        file = "Vanilla_AI_NATO&LDF_Arid";
+        climate[] = {"arid"};
+        forceDLC[] = {"enoch"};
+        description = $STR_A3AP_setupFactionsTab_natoandldf;
+    };
+
+    class Vanilla_NATOandLDF_Temperate : Vanilla_Base
+    {
+        side = "Occ";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Vanilla\flags\NATO_LDF.paa);
+        name = "A3 NATO&LDF Temparate";
+        file = "Vanilla_AI_NATO&LDF_Temperate";
+        maps[] = {"enoch","vt7"};
+        climate[] = {"temperate"};
+        forceDLC[] = {"enoch"};
+        description = $STR_A3AP_setupFactionsTab_natoandldf;
+    };
+
     class Vanilla_LDF : Vanilla_Base
     {
         side = "Occ";
@@ -118,6 +159,7 @@ class Templates
         maps[] = {"enoch","vt7"};
         climate[] = {"temperate"};
         forceDLC[] = {"enoch"};
+        description = $STR_A3AP_setupFactionsTab_ldf;
     };
 
     class Vanilla_AAF : Vanilla_Base
@@ -164,7 +206,7 @@ class Templates
     class Vanilla_Remnants : Vanilla_Base
     {
         side = "Riv";
-        flagTexture = QPATHTOFOLDER(Templates\Templates\Vanilla\flag_aaf_torn_co.paa);
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Vanilla\flags\flag_aaf_torn_co.paa);
         name = "A3 AAF Remnants";
         file = "Vanilla_Riv_Remnants";
         climate[] = {"arid", "temperate", "arctic"}; ///arctic?

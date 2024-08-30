@@ -36,8 +36,8 @@ private _hasSPE = "spe" in A3A_enabledDLC;
 
 ["vehiclesBasic", ["O_Quadbike_01_F"]] call _fnc_saveToTemplate;
 
-private _lightUnarmed = ["O_MRAP_02_F"];
-private _lightArmed = ["O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F"];
+private _unarmedVehicles = ["O_MRAP_02_F"];
+private _armedVehicles = ["O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F"];
 ["vehiclesTrucks", ["O_Truck_02_transport_F", "O_Truck_02_covered_F", "O_Truck_03_transport_F", "O_Truck_03_covered_F"]] call _fnc_saveToTemplate;
 private _cargoTrucks = ["O_Truck_02_transport_F", "O_Truck_02_covered_F", "O_Truck_03_transport_F", "O_Truck_03_covered_F","O_UGV_01_F"];
 ["vehiclesAmmoTrucks", ["O_Truck_02_Ammo_F", "O_Truck_03_ammo_F"]] call _fnc_saveToTemplate;
@@ -47,7 +47,7 @@ private _cargoTrucks = ["O_Truck_02_transport_F", "O_Truck_02_covered_F", "O_Tru
 private _lightAPCs = ["O_APC_Wheeled_02_rcws_v2_F"];
 ["vehiclesAPCs", [ "O_APC_Wheeled_02_rcws_v2_F"]] call _fnc_saveToTemplate;
 private _IFVs = ["O_APC_Tracked_02_cannon_F"];
-private _Airborne = ["O_APC_Wheeled_02_rcws_v2_F","O_UGV_01_rcws_F"];
+private _airborneVehicles = ["O_APC_Wheeled_02_rcws_v2_F","O_UGV_01_rcws_F"];
 ["vehiclesLightTanks", ["O_UGV_01_rcws_F"]] call _fnc_saveToTemplate;
 private _tanks = ["O_MBT_02_cannon_F","O_MBT_02_railgun_F"];
 private _aa = ["O_APC_Tracked_02_AA_F"];
@@ -61,16 +61,16 @@ private _planesAA = ["O_Plane_CAS_02_dynamicLoadout_F","O_UAV_02_dynamicLoadout_
 private _planesTransport = [];
 private _gunship = [];
 
-private _lightHelicopters = ["O_Heli_Light_02_unarmed_F"];
+private _helisLight = ["O_Heli_Light_02_unarmed_F"];
 private _transportHelicopters = ["O_Heli_Light_02_unarmed_F"];
 
 ["vehiclesHelisTransport", _transportHelicopters] call _fnc_saveToTemplate;
-private _lightAttackHelicopters = ["O_Heli_Light_02_dynamicLoadout_F"];
+private _helisLightAttack = ["O_Heli_Light_02_dynamicLoadout_F"];
 ["vehiclesHelisAttack", ["O_Heli_Attack_02_dynamicLoadout_F"]] call _fnc_saveToTemplate;
 
 ["vehiclesArtillery", ["O_MBT_02_arty_F", "I_Truck_02_MRL_F"]] call _fnc_saveToTemplate;
 ["magazines", createHashMapFromArray [
-["I_Truck_02_MRL_F", ["12Rnd_230mm_rockets"]],
+["I_Truck_02_MRL_F", ["12Rnd_230mm_rockets", "12Rnd_230mm_rockets_cluster"]],
 ["O_MBT_02_arty_F",["32Rnd_155mm_Mo_shells_O", "2Rnd_155mm_Mo_Cluster_O", "6Rnd_155mm_Mo_mine_O"]]
 ]] call _fnc_saveToTemplate;
 
@@ -104,11 +104,11 @@ private _SAM = [];
 ["minefieldAPERS", ["APERSMine", "APERSBoundingMine"]] call _fnc_saveToTemplate;
 
 if (_hasJets) then {
-	#include "..\DLC_content\vehicles\Jets\Vanilla_CSAT_Arid.sqf"
+	#include "..\DLC_content\vehicles\Jets\Vanilla_CSAT.sqf"
 };
 
 if (_hasHelicopters) then {
-    #include "..\DLC_content\vehicles\Helicopters\Vanilla_CSAT_Arid.sqf"
+    #include "..\DLC_content\vehicles\Helicopters\Vanilla_CSAT.sqf"
 };
 
 if (_hasContact) then {
@@ -139,8 +139,8 @@ if (_hasWs) then {
 ["vehiclesTransportBoats", _transportBoat] call _fnc_saveToTemplate;
 ["staticHowitzers", _howitzers] call _fnc_saveToTemplate;
 ["vehiclesAA", _aa] call _fnc_saveToTemplate;
-["vehiclesLightUnarmed", _lightUnarmed] call _fnc_saveToTemplate;
-["vehiclesLightArmed", _lightArmed] call _fnc_saveToTemplate;
+["vehiclesLightUnarmed", _unarmedVehicles] call _fnc_saveToTemplate;
+["vehiclesLightArmed", _armedVehicles] call _fnc_saveToTemplate;
 ["staticAA", _staticAA] call _fnc_saveToTemplate;
 ["vehiclesMilitiaLightArmed", _militiaLightArmed] call _fnc_saveToTemplate;
 ["vehiclesMilitiaCars", _militiaCars] call _fnc_saveToTemplate;
@@ -150,15 +150,14 @@ if (_hasWs) then {
 ["vehicleSam", _SAM] call _fnc_saveToTemplate;
 ["vehiclesPlanesCAS", _planesCAS] call _fnc_saveToTemplate;
 ["vehiclesPlanesAA", _planesAA] call _fnc_saveToTemplate;
-["vehiclesPlanesTransport", _planesTransport] call _fnc_saveToTemplate;
 ["vehiclesIFVs", _IFVs] call _fnc_saveToTemplate;
-["vehiclesAirborne", _Airborne] call _fnc_saveToTemplate;
+["vehiclesAirborne", _airborneVehicles] call _fnc_saveToTemplate;
 ["vehiclesLightAPCs", _lightAPCs] call _fnc_saveToTemplate;
 ["vehiclesCargoTrucks", _cargoTrucks] call _fnc_saveToTemplate;
 ["vehiclesMilitiaAPCs", _militiaAPCs] call _fnc_saveToTemplate;
 ["vehiclesTanks", _tanks] call _fnc_saveToTemplate;
-["vehiclesHelisLight", _lightHelicopters] call _fnc_saveToTemplate;
-["vehiclesHelisLightAttack", _lightAttackHelicopters] call _fnc_saveToTemplate;
+["vehiclesHelisLight", _helisLight] call _fnc_saveToTemplate;
+["vehiclesHelisLightAttack", _helisLightAttack] call _fnc_saveToTemplate;
 
 #include "Vanilla_Vehicle_Attributes.sqf"
 
@@ -181,7 +180,7 @@ if (_hasWs) then {
 ["sfVoices", ["male01rus","male02rus","male03rus"]] call _fnc_saveToTemplate;
 
 private _faces = [
-    "PersianHead_A3_01","PersianHead_A3_02","PersianHead_A3_03"
+    "PersianHead_A3_01","PersianHead_A3_02","PersianHead_A3_03","PersianHead_A3_04_a","PersianHead_A3_04_l","PersianHead_A3_04_sa"
 ];
 if (_hasWs) then {
     _faces append [
@@ -544,7 +543,7 @@ _militiaLoadoutData set ["vests", ["V_Chestrig_khk","V_HarnessO_brn"]];
 _militiaLoadoutData set ["glVests", ["V_HarnessOGL_brn","V_TacVest_khk","V_TacVestIR_blk"]];
 _militiaLoadoutData set ["Hvests", ["V_TacVest_brn","V_TacVest_khk","V_TacVestIR_blk"]];
 _militiaLoadoutData set ["backpacks", ["B_TacticalPack_ocamo", "B_Carryall_ocamo", "B_FieldPack_ocamo", "B_Carryall_cbr", "B_Kitbag_cbr"]];
-_militiaLoadoutData set ["helmets", ["H_Cap_brn_SPECOPS", "H_Bandanna_cbr", "H_ShemagOpen_tan", "H_PASGT_basic_olive_F"]];
+_militiaLoadoutData set ["helmets", ["H_Cap_brn_SPECOPS", "H_Bandanna_cbr", "H_ShemagOpen_tan"]];
 
 _militiaLoadoutData set ["slRifles", [
     ["arifle_Katiba_GL_F", "", "acc_flashlight", "", ["30Rnd_65x39_caseless_green", "30Rnd_65x39_caseless_green", "30Rnd_65x39_caseless_green_mag_Tracer"], ["1Rnd_HE_Grenade_shell", "1Rnd_HE_Grenade_shell", "1Rnd_Smoke_Grenade_shell"], ""]
@@ -596,11 +595,11 @@ _pilotLoadoutData set ["vests", ["V_BandollierB_khk"]];
 _pilotLoadoutData set ["helmets", ["H_CrewHelmetHeli_O", "H_PilotHelmetHeli_O"]];
 
 if (_hasLawsOfWar) then {
-    #include "..\DLC_content\gear\Lawsofwar\Vanilla_CSAT_Arid.sqf"
+    #include "..\DLC_content\gear\Lawsofwar\Vanilla_CSAT.sqf"
 };
 
 if (_hasTanks) then {
-    #include "..\DLC_content\gear\Tanks\Vanilla_CSAT_Arid.sqf"
+    #include "..\DLC_content\gear\Tanks\Vanilla_CSAT.sqf"
     #include "..\DLC_content\weapons\Tanks\Vanilla_CSAT_Arid.sqf"
 };
 
@@ -630,12 +629,12 @@ if (_hasRF) then {
 };
 
 if (_hasCSLA) then {
-    #include "..\DLC_content\weapons\CSLA\Vanilla_CSAT_Arid.sqf"
-    #include "..\DLC_content\weapons\CSLA\Vanilla_CSAT_Arid.sqf"
+    #include "..\DLC_content\weapons\CSLA\Vanilla_CSAT.sqf"
+    #include "..\DLC_content\weapons\CSLA\Vanilla_CSAT.sqf"
 };
 
 if (_hasSOG) then {
-    #include "..\DLC_content\weapons\SOG\Vanilla_CSAT_Arid.sqf"
+    #include "..\DLC_content\weapons\SOG\Vanilla_CSAT.sqf"
 };
 
 if (_hasGM) then {

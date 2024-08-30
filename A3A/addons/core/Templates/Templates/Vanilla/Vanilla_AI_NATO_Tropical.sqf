@@ -102,7 +102,7 @@ private _SAM = [];
 ["minefieldAPERS", ["APERSMine"]] call _fnc_saveToTemplate;
 
 if (_hasHelicopters) then {
-    #include "..\DLC_content\vehicles\Helicopters\Vanilla_NATO_Tropical.sqf"
+    #include "..\DLC_content\vehicles\Helicopters\Vanilla_NATO.sqf"
 };
 
 if (_hasContact) then {
@@ -114,7 +114,7 @@ if (_hasLawsOfWar) then {
 };
 
 if (_hasJets) then {
-	#include "..\DLC_content\vehicles\Jets\Vanilla_NATO_Tropical.sqf"
+	#include "..\DLC_content\vehicles\Jets\Vanilla_NATO.sqf"
 };
 
 if (_hasApex) then {
@@ -200,7 +200,8 @@ if (_hasCSLA) then {
 ///  Identities   ///
 /////////////////////
 
-["voices", ["Male01ENG","Male02ENG","Male03ENG","Male04ENG","Male05ENG","Male06ENG","Male07ENG","Male08ENG","Male09ENG","Male10ENG","Male11ENG","Male12ENG","Male01ENGFRE","Male02ENGFRE"]] call _fnc_saveToTemplate;
+private _voices = ["Male01ENG","Male02ENG","Male03ENG","Male04ENG","Male05ENG","Male06ENG","Male07ENG","Male08ENG","Male09ENG","Male10ENG","Male11ENG","Male12ENG","Male01ENGFRE","Male02ENGFRE","Male01FRE","Male02FRE","Male03FRE"];
+private _sfVoices = ["Male01GRE","Male02GRE","Male03GRE","Male04GRE","Male05GRE","Male06GRE"];
 private _faces = ["AfricanHead_01","AfricanHead_02","AfricanHead_03","Barklem",
 "GreekHead_A3_05","GreekHead_A3_07","WhiteHead_01","WhiteHead_02",
 "WhiteHead_03","WhiteHead_04","WhiteHead_05","WhiteHead_06","WhiteHead_07",
@@ -210,12 +211,17 @@ private _faces = ["AfricanHead_01","AfricanHead_02","AfricanHead_03","Barklem",
 "WhiteHead_26", "WhiteHead_27", "WhiteHead_28", "WhiteHead_29", "WhiteHead_30", "WhiteHead_31", "WhiteHead_32",
 "TanoanHead_A3_02","TanoanHead_A3_04","TanoanHead_A3_03","TanoanHead_A3_05","TanoanHead_A3_07","TanoanHead_A3_01","TanoanHead_A3_06","TanoanHead_A3_09",
 "TanoanHead_A3_08","RussianHead_4","LivonianHead_5","LivonianHead_2","LivonianHead_9","RussianHead_1","LivonianHead_6","LivonianHead_3","RussianHead_3",
-"LivonianHead_1","RussianHead_2","LivonianHead_10","LivonianHead_8","LivonianHead_4","LivonianHead_7","RussianHead_5","Sturrock"
+"LivonianHead_1","RussianHead_2","LivonianHead_10","LivonianHead_8","LivonianHead_4","LivonianHead_7","RussianHead_5","Sturrock",
+"WhiteHead_22_l","WhiteHead_22_sa","WhiteHead_22_a"
 ];
 if (_hasSPE) then {
-   _faces append [
+    _faces append [
         #include "..\DLC_content\faces\SPE\SPE_white.sqf"
-   ];
+    ];
+    _voices append [
+        #include "..\DLC_content\voices\SPE_german.sqf",
+        #include "..\DLC_content\voices\SPE_french.sqf"
+    ];
 };
 if (_hasSOG) then {
     _faces append [
@@ -235,16 +241,20 @@ if (_hasGM) then {
     _faces append [
         #include "..\DLC_content\faces\GM\GM_white.sqf"
     ];
+    _voices append [
+        #include "..\DLC_content\voices\GM_german.sqf"
+    ];
 };
 if (_hasWS) then {
     _faces append [
         #include "..\DLC_content\faces\WS\WS_white.sqf"
     ];
 };
+
+["voices", _voices] call _fnc_saveToTemplate;
 ["sfVoices", ["Male01ENGB", "Male02ENGB", "Male03ENGB", "Male04ENGB", "Male05ENGB"]] call _fnc_saveToTemplate;
-["eliteVoices", ["Male01ENGB", "Male02ENGB", "Male03ENGB", "Male04ENGB",
-"Male05ENGB","Male01ENG","Male02ENG","Male03ENG","Male04ENG","Male05ENG","Male06ENG","Male07ENG",
-"Male08ENG","Male09ENG","Male10ENG","Male11ENG","Male12ENG","Male01ENGFRE","Male02ENGFRE"]] call _fnc_saveToTemplate;
+["eliteVoices", ["Male01ENG","Male02ENG","Male03ENG","Male04ENG","Male05ENG","Male06ENG","Male07ENG","Male08ENG","Male09ENG",
+"Male10ENG","Male11ENG","Male12ENG","Male01ENGFRE","Male02ENGFRE","Male01FRE","Male02FRE","Male03FRE","Male01POL","Male02POL","Male03POL"]] call _fnc_saveToTemplate;
 ["faces", _faces] call _fnc_saveToTemplate;
 ["insignia", ["111thID", "", ""]] call _fnc_saveToTemplate;
 ["sfInsignia", ["CTRG"]] call _fnc_saveToTemplate;
@@ -743,7 +753,7 @@ if (_hasMarksman) then {
 };
 
 if (_hasLawsOfWar) then {
-    #include "..\DLC_content\gear\Lawsofwar\Vanilla_NATO_Tropical.sqf"
+    #include "..\DLC_content\gear\Lawsofwar\Vanilla_NATO.sqf"
 };
 
 if (_hasApex) then {
@@ -767,7 +777,12 @@ if (_hasWs) then {
 };
 
 if (_hasGM) then {
-    #include "..\DLC_content\weapons\GM\Vanilla_NATO_Tropical.sqf"
+    #include "..\DLC_content\weapons\GM\Vanilla_NATO.sqf"
+};
+
+if (_hasSOG) then {
+    #include "..\DLC_content\gear\SOG\Vanilla_NATO.sqf"
+    #include "..\DLC_content\weapons\SOG\Vanilla_NATO.sqf"
 };
 //
 

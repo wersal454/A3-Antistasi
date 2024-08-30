@@ -9,6 +9,27 @@ class CfgMarkers
 		texture = QPATHTOFOLDER(Pictures\Markers\marker_aaf_torn_co.paa);
 	};
 
+	class a3a_flag_natoandaaf_co: flag_NATO 
+	{
+		name = "NATO&AAF";
+		icon = QPATHTOFOLDER(Pictures\Markers\NATO_AAF_Marker.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\NATO_AAF_Marker.paa);
+	};
+
+	class a3a_flag_natoandldf_co: flag_NATO 
+	{
+		name = "NATO&LDF";
+		icon = QPATHTOFOLDER(Pictures\Markers\NATO_LDF_Marker.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\NATO_LDF_Marker.paa);
+	};
+	
+	class a3a_flag_csatandaaf_co: flag_NATO 
+	{
+		name = "CSAT&AAF";
+		icon = QPATHTOFOLDER(Pictures\Markers\CSAT_AAF_Marker.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\CSAT_AAF_Marker.paa);
+	};
+
 	class a3a_flag_cdf: flag_NATO 
 	{
 		name = "CDF";

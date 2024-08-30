@@ -7,8 +7,8 @@
 
 (_militaryLoadoutData get "vests") pushBack "V_lxWS_TacVestIR_oli";
 
-(_militiaLoadoutData  get "helmets") pushBack "lxWS_H_PASGT_goggles_olive_F";
-(_militiaLoadoutData  get "vests") append ["V_lxWS_HarnessO_oli","V_lxWS_TacVestIR_oli"];
+(_militiaLoadoutData get "helmets") pushBack "lxWS_H_PASGT_goggles_olive_F";
+(_militiaLoadoutData get "vests") append ["V_lxWS_HarnessO_oli","V_lxWS_TacVestIR_oli"];
 
 
 

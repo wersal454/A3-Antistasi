@@ -34,7 +34,7 @@ private _hasSPE = "spe" in A3A_enabledDLC;
 
 private _basic = ["I_E_Quadbike_01_F"];
 private _unarmedVehicles = ["B_T_MRAP_01_F"];
-private _armedVehicles = ["B_T_MRAP_01_hmg_F", "B_T_MRAP_01_hmg_F", "B_T_MRAP_01_gmg_F"];
+private _armedVehicles = ["B_T_MRAP_01_hmg_F", "B_T_MRAP_01_gmg_F"];
 private _Trucks = ["I_E_Truck_02_transport_F", "I_E_Truck_02_F"];
 private _cargoTrucks = ["I_E_Truck_02_transport_F", "I_E_Truck_02_F","I_E_UGV_01_F"];
 private _ammoTrucks = ["I_E_Truck_02_Ammo_F"];
@@ -60,7 +60,7 @@ private _gunship = [];
 private _helisLight = ["I_E_Heli_light_03_unarmed_F", "B_Heli_Light_01_F"];
 private _transportHelicopters = ["B_Heli_Transport_01_camo_F"];
 private _helisLightAttack = ["I_E_Heli_light_03_dynamicLoadout_F", "B_Heli_Light_01_armed_F"];
-private _helisAttack = ["B_Heli_Attack_01_F"];
+private _helisAttack = ["B_Heli_Attack_01_dynamicLoadout_F"];
 
 private _artillery = ["B_T_MBT_01_arty_F", "I_E_Truck_02_MRL_F"];
 ["magazines", createHashMapFromArray [
@@ -313,7 +313,7 @@ _loadoutData set ["vests", []];
 _loadoutData set ["Hvests", []];
 _loadoutData set ["sniVests", []];
 _loadoutData set ["backpacks", []];
-_loadoutData set ["longRangeRadios", []];
+_loadoutData set ["longRangeRadios", ["B_RadioBag_01_eaf_F"]];
 _loadoutData set ["atBackpacks", []];
 _loadoutData set ["helmets", []];
 _loadoutData set ["slHat", ["H_Beret_EAF_01_F"]];

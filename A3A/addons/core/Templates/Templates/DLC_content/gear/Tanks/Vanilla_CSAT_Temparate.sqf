@@ -1,1 +1,0 @@
-(_crewLoadoutData get "helmets") pushBack "H_Tank_black_F"; //should probably delete that file since it's identical to csat_arid

@@ -17,9 +17,7 @@
     "G_SPE_Cigarette_Grundstein",
     "G_SPE_Cigarette_Belomorkanal",
     "G_SPE_Cigar_Moza",
-    "G_SPE_Binoculars",
-    "vn_o_bandana_b",
-    "vn_b_bandana_a"
+    "G_SPE_Binoculars"
 ];
 
 (_crewLoadoutData get "helmets") append ["H_SPE_US_Helmet_Tank_M1_OS","H_SPE_US_Helmet_Tank_M1_NS"];

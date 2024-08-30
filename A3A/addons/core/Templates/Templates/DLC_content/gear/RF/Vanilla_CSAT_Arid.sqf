@@ -8,8 +8,8 @@
 (_militaryLoadoutData get "helmets") append ["H_HelmetO_ocamo_sb_hex_RF","H_HelmetB_plain_sb_hex_RF"];
 (_militaryLoadoutData get "Hvests") pushBack "V_TacVest_rig_khk_RF";
 
-(_militaryLoadoutData get "helmets") pushBack "H_HelmetB_plain_sb_hex_RF";
-(_militaryLoadoutData get "Hvests") pushBack "V_TacVest_rig_khk_RF";
+(_militiaLoadoutData get "helmets") pushBack "H_HelmetB_plain_sb_hex_RF";
+(_militiaLoadoutData get "Hvests") pushBack "V_TacVest_rig_khk_RF";
 
 
 

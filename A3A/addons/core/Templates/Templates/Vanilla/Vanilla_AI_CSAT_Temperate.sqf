@@ -56,8 +56,8 @@ private _transportBoat = ["O_T_Boat_Transport_01_F"];
 private _planesCAS = ["O_Plane_CAS_02_dynamicLoadout_F","O_T_VTOL_02_infantry_dynamicLoadout_F","O_T_UAV_04_CAS_F"];
 private _planesAA = ["O_Plane_CAS_02_dynamicLoadout_F","O_T_VTOL_02_infantry_dynamicLoadout_F"];
 
-["vehiclesPlanesTransport", ["O_T_VTOL_02_infantry_dynamicLoadout_F"]] call _fnc_saveToTemplate;
-["vehiclesPlanesGunship", ["O_T_VTOL_02_infantry_dynamicLoadout_F"]] call _fnc_saveToTemplate;
+private _planesTransport = ["O_T_VTOL_02_infantry_dynamicLoadout_F"];
+private _gunship = ["O_T_VTOL_02_infantry_dynamicLoadout_F"];
 
 private _lightHelicopters = ["O_Heli_Light_02_unarmed_F"];
 private _transportHelicopters = ["O_Heli_Light_02_unarmed_F"];
@@ -100,7 +100,7 @@ private _SAM = [];
 ["minefieldAPERS", ["APERSMine", "APERSBoundingMine"]] call _fnc_saveToTemplate;
 
 if (_hasHelicopters) then {
-    #include "..\DLC_content\vehicles\Helicopters\Vanilla_CSAT_Temparate.sqf"
+    #include "..\DLC_content\vehicles\Helicopters\Vanilla_CSAT.sqf"
 };
 
 if (_hasContact) then {
@@ -116,7 +116,7 @@ if (_hasApex) then {
 };
 
 if (_hasJets) then {
-	#include "..\DLC_content\vehicles\Jets\Vanilla_CSAT_Temparate.sqf"
+	#include "..\DLC_content\vehicles\Jets\Vanilla_CSAT.sqf"
 };
 
 if (_hasRF) then {
@@ -614,11 +614,11 @@ if (_hasArtOfWar) then {
 };
 
 if (_hasLawsOfWar) then {
-    #include "..\DLC_content\gear\Lawsofwar\Vanilla_CSAT_Temparate.sqf"
+    #include "..\DLC_content\gear\Lawsofwar\Vanilla_CSAT.sqf"
 };
 
 if (_hasTanks) then {
-    #include "..\DLC_content\gear\Tanks\Vanilla_CSAT_Temparate.sqf"
+    #include "..\DLC_content\gear\Tanks\Vanilla_CSAT.sqf"
 };
 
 if (_hasMarksman) then {
@@ -641,7 +641,7 @@ if (_hasWs) then {
 };
 
 if (_hasCSLA) then {
-    #include "..\DLC_content\weapons\CSLA\Vanilla_CSAT_Temparate.sqf"
+    #include "..\DLC_content\weapons\CSLA\Vanilla_CSAT.sqf"
 };
 
 if (_hasGM) then {
@@ -649,7 +649,7 @@ if (_hasGM) then {
 };
 
 if (_hasSOG) then {
-    #include "..\DLC_content\weapons\SOG\Vanilla_CSAT_Temparate.sqf"
+    #include "..\DLC_content\weapons\SOG\Vanilla_CSAT.sqf"
 };
 //
 

@@ -14,7 +14,7 @@
 (_militaryLoadoutData get "sniHats") append ["H_HelmetB_plain_sb_khaki_RF", "H_HelmetB_plain_sb_mtp_RF"];
 
 (_militiaLoadoutData get "vests") append ["V_TacVest_rig_oli_RF", "V_TacVest_rig_blk_RF"];
-(_militiaLoadoutData get "atBackpacks") pushBack ["B_DuffleBag_MTP_RF"];
+(_militiaLoadoutData get "atBackpacks") pushBack "B_DuffleBag_MTP_RF";
 (_militiaLoadoutData get "helmets") append ["H_HelmetB_plain_sb_khaki_RF", "H_HelmetB_plain_sb_mtp_RF"];
 (_militiaLoadoutData get "sniHats") append ["H_HelmetB_plain_sb_khaki_RF", "H_HelmetB_plain_sb_mtp_RF"];
 
