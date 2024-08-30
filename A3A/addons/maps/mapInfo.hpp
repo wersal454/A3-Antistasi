@@ -50,5 +50,6 @@ class mapInfo {
 	#include "Antistasi_yulakia.yulakia\mapInfo.hpp"
 	#include "Antistasi_Gulfcoast.Gulfcoast\mapInfo.hpp"
 	#include "Antistasi_SPE_Mortain.SPE_Mortain\mapInfo.hpp"
+	#include "Antistasi_mehland.mehland\mapInfo.hpp"
 	#include "Antistasi_pulau.pulau\mapInfo.hpp"
 };
