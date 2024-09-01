@@ -182,6 +182,7 @@ if (_hasWs) then {
 private _faces = [
     "PersianHead_A3_01","PersianHead_A3_02","PersianHead_A3_03","PersianHead_A3_04_a","PersianHead_A3_04_l","PersianHead_A3_04_sa"
 ];
+private _sffaces = ["RussianHead_1","RussianHead_2","RussianHead_3","RussianHead_4","RussianHead_5"];
 if (_hasWs) then {
     _faces append [
         #include "..\DLC_content\faces\WS\WS_african.sqf"
@@ -191,9 +192,13 @@ if (_hasSOG) then {
     _faces append [
         #include "..\DLC_content\faces\SOG\SOG_faces_persian.sqf"
     ];
+    _sffaces append [
+        #include "..\DLC_content\faces\SOG\SOG_faces_russian.sqf"
+    ];
 };
 ["faces", _faces] call _fnc_saveToTemplate;
-["sfFaces", ["RussianHead_1","RussianHead_2","RussianHead_3","RussianHead_4","RussianHead_5"]] call _fnc_saveToTemplate;
+["sfFaces", _sffaces] call _fnc_saveToTemplate;
+["sfInsignia", ["Spetsnaz223rdDetachment", "", ""]] call _fnc_saveToTemplate;
 
 ["insignia", ["GryffinRegiment", "", ""]] call _fnc_saveToTemplate;
 ["milInsignia", ["CSAT_ScimitarRegiment", "", ""]] call _fnc_saveToTemplate;

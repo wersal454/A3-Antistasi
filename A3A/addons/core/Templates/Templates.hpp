@@ -17,6 +17,30 @@ class Templates
         equipFlags[] = {"vanilla"};
     };
 
+    class WS_CSATandSFIA : WS_Base
+    {
+        side = "Inv";
+        name = "WS CSAT&SFIA";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\WS\flags\CSAT_SFIA.paa);
+        file = "WS_AI_CSAT&SFIA";
+        maps[] = {"SefrouRamal", "takistan"};
+        forceDLC[] = {"ws"};
+        climate[] = {"arid"};
+        description = $STR_A3AP_setupFactionsTab_csatandsfia;
+    };
+
+    class WS_NATOandUNA : WS_Base
+    {
+        side = "Occ";
+        name = "WS NATO&UNA";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\WS\flags\NATO_UNA.paa);
+        file = "WS_AI_NATO&UNA";
+        maps[] = {"SefrouRamal", "takistan"};
+        forceDLC[] = {"ws"};
+        climate[] = {"arid"};
+        description = $STR_A3AP_setupFactionsTab_natoanduna;
+    };
+
     class WS_Civ : WS_Base
     {
         side = "Civ";

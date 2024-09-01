@@ -28,6 +28,21 @@ class CfgMarkers
 		name = "CSAT&AAF";
 		icon = QPATHTOFOLDER(Pictures\Markers\CSAT_AAF_Marker.paa);
 		texture = QPATHTOFOLDER(Pictures\Markers\CSAT_AAF_Marker.paa);
+	};
+
+	class a3a_flag_natoanduna_co: flag_NATO 
+	{
+		name = "NATO&UNA";
+		icon = QPATHTOFOLDER(Pictures\Markers\NATO_UNA_Marker.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\NATO_UNA_Marker.paa);
+	};
+
+	class a3a_flag_csatandsfia_co: flag_NATO 
+	{
+		name = "CSAT&SFIA";
+		icon = QPATHTOFOLDER(Pictures\Markers\CSAT_SFIA_Marker.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\CSAT_SFIA_Marker.paa);
+	};
 
 	class a3a_flag_LRI: flag_NATO 
 	{
