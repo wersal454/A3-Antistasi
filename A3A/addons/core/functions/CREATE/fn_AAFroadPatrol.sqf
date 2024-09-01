@@ -54,7 +54,12 @@ switch (true) do {
 			};
 			_typePatrol = "AIR";
 		} else {
-			_typeCar = selectRandom ((_faction get "vehiclesMilitiaLightArmed") + (_faction get "vehiclesMilitiaCars"));	
+			_typeCar = selectRandom ((_faction get "vehiclesMilitiaLightArmed") + (_faction get "vehiclesMilitiaCars"));
+			if(count (_faction get "vehiclesAirPatrol") > 0) then 
+			{
+				_typeCar = selectRandom (_faction get "vehiclesAirPatrol");
+				_typePatrol = "AIR";
+			};	
 		};
 	};
 
