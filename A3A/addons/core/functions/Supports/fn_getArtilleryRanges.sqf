@@ -1,7 +1,7 @@
-Examples:
+/* Examples:
     ["UK3CB_ADA_I_BM21", "rhs_mag_m21of_1"] call A3A_fnc_getArtilleryRanges;
     ["O_MBT_02_arty_F", "32Rnd_155mm_Mo_shells_O"] call A3A_fnc_getArtilleryRanges;
-*/
+ */
 
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
