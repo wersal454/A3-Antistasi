@@ -195,6 +195,17 @@ if (dateToNumber date < _dateLimitNum) then {
 
     _vehicles append [_truck, _lootContainer];
 
+    if (_isDifficult) then {
+        _truckPosition = position _truck;
+        private _prizeClass = selectRandom ((A3A_faction_riv get "vehiclesRivalsLightArmed") + (A3A_faction_riv get "vehiclesRivalsCars") + (A3A_faction_riv get "vehiclesRivalsAPCs") + (A3A_faction_riv get "vehiclesRivalsTanks") + (A3A_faction_riv get "vehiclesRivalsHelis"));
+        private _vehiclePosAndDir = [_truckPosition, _prizeClass, 50, true] call SCRT_fnc_common_findSafePositionForVehicle; 
+        private _prizeVehicle = createVehicle [_prizeClass, (_vehiclePosAndDir select 0), [], 0 , "CAN_COLLIDE"];
+        _prizeVehicle setDir (_vehiclePosAndDir select 1);
+        [_prizeVehicle, Rivals] call A3A_fnc_AIVEHinit;
+
+        _vehicles append [_prizeVehicle];
+    };
+
     Info_1("Loot container on %1 position.", str (position _lootContainer));
 
     {
