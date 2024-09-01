@@ -4,7 +4,7 @@ _basic append ["gm_ge_army_k125","gmx_aaf_brpz1_wdl","gm_gc_army_ural44202_noins
 _planesTransport append ["gmx_aaf_do28d2_wdl","gm_gc_airforce_l410t_noinsignia"];
 _helisLight append ["gmx_aaf_bo105m_vbh_wdl","gmx_aaf_bo105p1m_vbh_wdl","gmx_aaf_bo105p1m_vbh_swooper_wdl","gm_gc_airforce_mi2p_noinsignia","gm_gc_bgs_mi2p_noinsignia","gm_gc_airforce_mi2t_noinsignia"];
 _helisLightAttack append ["gmx_aaf_bo105p_pah1_wdl","gm_gc_airforce_mi2us_noinsignia","gm_gc_airforce_mi2urn_noinsignia","gm_gc_bgs_mi2us_noinsignia"];
-_helisAttack append ["gmx_aaf_bo105p_pah1a1_wdl","gm_pl_airforce_mi2urpg","gm_pl_airforce_mi2urs_noinsignia","gm_pl_airforce_mi2urp_noinsignia","gm_ge_army_bo105p_pah1a1_noinsignia"];
+_helisAttack append ["gmx_aaf_bo105p_pah1a1_wdl","gm_pl_airforce_mi2urpg_noinsignia","gm_pl_airforce_mi2urs_noinsignia","gm_pl_airforce_mi2urp_noinsignia","gm_ge_army_bo105p_pah1a1_noinsignia"];
 _transportHelicopters append ["gmx_aaf_ch53g_wdl","gmx_aaf_ch53gs_wdl"];
 _artillery append ["gm_pl_army_2s1","gm_pl_army_ural375d_mlrs","gmx_aaf_m109_wdl","gmx_aaf_kat1_463_mlrs_wdl"];
 _militiaAPCs append ["gm_gc_army_btr60pa_noinsignia","gm_gc_army_btr60pa_dshkm_noinsignia","gm_gc_army_btr60pb_noinsignia","gm_gc_army_btr60pu12_noinsignia","gm_pl_army_ot64a_noinsignia",

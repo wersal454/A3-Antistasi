@@ -7,7 +7,7 @@ _planesTransport append ["gm_gc_airforce_l410s_salon_noinsignia","gm_gc_airforce
 
 _helisLight append ["gm_gc_airforce_mi2p_noinsignia"];
 _helisLightAttack append ["gm_gc_airforce_mi2urn_noinsignia","gm_gc_airforce_mi2us_noinsignia"];
-_helisAttack append ["gm_gc_airforce_mi2urn_noinsignia"];
+_helisAttack append ["gm_gc_airforce_mi2urn_noinsignia","gm_pl_airforce_mi2urpg_noinsignia"];
 _transportHelicopters append ["gm_gc_airforce_mi2t_noinsignia"];
 
 _artillery append ["gm_gc_army_ural375d_mlrs_noinsignia","gm_gc_army_2s1_noinsignia","gm_gc_army_2p16_noinsignia"];

@@ -197,7 +197,7 @@ if (_hasSPE) then {
     #include "..\vehicleAnimations\vehicleAnimations_Vanilla.sqf",
     #include "..\vehicleAnimations\vehicleAnimations_WS.sqf",
     #include "..\vehicleAnimations\vehicleAnimations_RF.sqf",
-    //#include "..\vehicleAnimations\vehicleAnimations_GM_desert.sqf", need to hide camo branches
+    #include "..\vehicleAnimations\vehicleAnimations_GM_desert.sqf",
     #include "..\vehicleAnimations\vehicleAnimations_CSLA.sqf",
     #include "..\vehicleAnimations\vehicleAnimations_SOG.sqf",
     #include "..\vehicleAnimations\vehicleAnimations_SPE.sqf"

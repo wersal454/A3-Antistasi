@@ -7,7 +7,10 @@
 ["CUP_O_BTR80_CAMO_RU",["RU_Green",1]],
 ["CUP_O_BTR90_RU",["Russia_Green",1]],
 ["CUP_B_GR9_DYN_GB",["AAF",1]],
-["CUP_O_Ka50_DL_RU",["SLA",1]]
+["CUP_O_Ka50_DL_RU",["SLA",1]],
+["CUP_B_Mi171Sh_CDF",["CIV_GREEN",1]],
+["CUP_O_Mi8_RU",["CIV_GREEN",1]],
+["CUP_B_Challenger2_Woodland_BAF",["woodlandGreen",1]]
 
 
 

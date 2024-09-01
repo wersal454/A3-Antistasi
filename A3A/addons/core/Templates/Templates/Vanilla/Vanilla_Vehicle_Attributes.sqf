@@ -56,6 +56,7 @@
     ["gm_ge_army_luchsa2_win", ["cost", 75], ["threat", 120]],
     ["gm_ge_army_luchsa2_un", ["cost", 75], ["threat", 120]],
 
+    //GM IFVs are all too fragile to get the full value
     ["gm_gc_army_bmp1sp2_noinsignia", ["cost", 120], ["threat", 150]],
     ["gm_ge_army_marder1a1plus_noinsignia", ["cost", 120], ["threat", 150]],
     ["gm_ge_army_marder1a1a_noinsignia", ["cost", 120], ["threat", 150]],

@@ -121,12 +121,6 @@
 
 
 
-
-
-
-
-
-
 (_militiaLoadoutData get "slRifles") append [
     ["arifle_SPAR_02_blk_F","muzzle_snds_M","acc_pointer_IR","optic_ERCO_blk_F",["30Rnd_556x45_Stanag_red","30Rnd_556x45_Stanag_red","30Rnd_556x45_Stanag_Tracer_Red"],[],""],
     ["arifle_SPAR_02_snd_F","muzzle_snds_m_snd_F","acc_pointer_IR","optic_ERCO_snd_F",["30Rnd_556x45_Stanag_red","30Rnd_556x45_Stanag_red","30Rnd_556x45_Stanag_Tracer_Red"],[],""],
@@ -164,9 +158,9 @@
     ["arifle_SPAR_03_blk_F","","acc_pointer_IR","optic_SOS",["20Rnd_762x51_Mag","20Rnd_762x51_Mag","20Rnd_762x51_Mag"],[],"bipod_01_F_snd"]
 ];
 (_militiaLoadoutData get "machineGuns") append [
-    ["LMG_03_F", "muzzle_snds_H_MG_F", "acc_pointer_IR", "optic_ERCO_blk_F", ["200Rnd_556x45_Box_F", "200Rnd_556x45_Box_F", "200Rnd_556x45_Box_Tracer_F"], [], ""],
-    ["LMG_03_F", "muzzle_snds_H_MG_F", "acc_pointer_IR", "optic_MRCO", ["200Rnd_556x45_Box_F", "200Rnd_556x45_Box_F", "200Rnd_556x45_Box_Tracer_F"], [], ""],
-    ["LMG_03_F", "muzzle_snds_H_MG_F", "acc_pointer_IR", "optic_Hamr", ["200Rnd_556x45_Box_F", "200Rnd_556x45_Box_F", "200Rnd_556x45_Box_Tracer_F"], [], ""],
+    ["LMG_03_F", "muzzle_snds_H_MG_blk_F", "acc_pointer_IR", "optic_ERCO_blk_F", ["200Rnd_556x45_Box_F", "200Rnd_556x45_Box_F", "200Rnd_556x45_Box_Tracer_F"], [], ""],
+    ["LMG_03_F", "muzzle_snds_H_MG_blk_F", "acc_pointer_IR", "optic_MRCO", ["200Rnd_556x45_Box_F", "200Rnd_556x45_Box_F", "200Rnd_556x45_Box_Tracer_F"], [], ""],
+    ["LMG_03_F", "muzzle_snds_H_MG_blk_F", "acc_pointer_IR", "optic_Hamr", ["200Rnd_556x45_Box_F", "200Rnd_556x45_Box_F", "200Rnd_556x45_Box_Tracer_F"], [], ""],
     ["arifle_SPAR_02_snd_F","muzzle_snds_m_snd_F","acc_pointer_IR","optic_ERCO_snd_F",["150Rnd_556x45_Drum_Green_Mag_F","150Rnd_556x45_Drum_Green_Mag_F","150Rnd_556x45_Drum_Green_Mag_Tracer_F"],[],"bipod_01_F_snd"],
     ["arifle_SPAR_02_snd_F","muzzle_snds_m_snd_F","acc_pointer_IR","optic_MRCO",["150Rnd_556x45_Drum_Green_Mag_F","150Rnd_556x45_Drum_Green_Mag_F","150Rnd_556x45_Drum_Green_Mag_Tracer_F"],[],"bipod_01_F_snd"],
     ["arifle_SPAR_02_snd_F","muzzle_snds_m_snd_F","acc_pointer_IR","optic_Hamr",["150Rnd_556x45_Drum_Green_Mag_F","150Rnd_556x45_Drum_Green_Mag_F","150Rnd_556x45_Drum_Green_Mag_Tracer_F"],[],"bipod_01_F_snd"],

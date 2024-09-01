@@ -41,11 +41,5 @@
 ["gm_gc_airforce_mi2p_noinsignia",["gm_gc_brb",1]],
 ["gm_gc_airforce_mi2t_noinsignia",["gm_gc_brb",1]],
 ["gm_gc_airforce_mi2urn_noinsignia",["gm_gc_brb",1]],
-["gm_gc_airforce_mi2us_noinsignia",["gm_gc_brb",1]],
-
-["gm_gc_airforce_mi2p_noinsignia",["gm_gc_brb",1]],
-["gm_gc_airforce_mi2p_noinsignia",["gm_gc_brb",1]],
-["gm_gc_airforce_mi2p_noinsignia",["gm_gc_brb",1]],
-["gm_gc_airforce_mi2p_noinsignia",["gm_gc_brb",1]],
-["gm_gc_airforce_mi2p_noinsignia",["gm_gc_brb",1]]
+["gm_gc_airforce_mi2us_noinsignia",["gm_gc_brb",1]]
 
