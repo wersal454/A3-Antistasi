@@ -28,7 +28,7 @@
 #include "..\script_component.hpp"
 #include "\a3\ui_f\hpp\definedikcodes.inc"
 params [
-    ["_class", "", [""]]
+    ["_class", "", [""]] //"_vehicles"
     , ["_callBackPlace", {}]
     , ["_callBackCheck", {[false]}]
     , ["_callBackArgs", []]
