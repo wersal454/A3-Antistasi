@@ -57,7 +57,7 @@ switch (true) do {
     case (_class isKindOf "Helicopter"): { 2 };
     case (_class isKindOf "Plane"): { 4 };
     case (_class isKindOf "Ship"): { 5 };
-    case (_class isKindOf "Static"): { 6 };
+    //case (_class isKindOf "Static"): { 6 };
 
     default { -1 };
 };
