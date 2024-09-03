@@ -15,7 +15,7 @@
 		[player, ObjNull, 0.25] call A3A_fnc_donateMoneyPercentage; - sends money to faction
 	
 	Return:
-		_return <true>
+		_return <true> (if does not return true the script has failed)
 */
 
 params [
