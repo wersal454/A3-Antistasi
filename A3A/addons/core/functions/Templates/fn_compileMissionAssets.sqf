@@ -93,6 +93,7 @@ Info("Identifying vehicle types");
 //Occ&Inv X vehicles
 //Antistasi Ultimate stuff
 setVar("vehiclesDropPod", OccAndInv("vehiclesDropPod"));
+setVar("vehiclesSDV", OccAndInv("vehiclesSDV"));
 ///
 setVar("vehiclesPolice", OccAndInv("vehiclesPolice"));
 setVar("vehiclesAttack", OccAndInv("vehiclesAttack"));

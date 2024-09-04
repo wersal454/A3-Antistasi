@@ -41,6 +41,7 @@ class CfgFunctions
             class interrogate {};
             class isBuildingPosition {};
             class landThreatEval {};
+            class liberateDeserter {};
             class liberaterefugee {};
             class liberatePOW {};
             class liberateFlee {};
@@ -140,6 +141,7 @@ class CfgFunctions
             class vehicleBoxRestore {};
             class initPetros {};
             class isFrontline {};
+            class isFrontlineNoFIA {};
             class arePositionsConnected {};
             class joinMultipleGroups {};
             class localizar {};
@@ -396,6 +398,7 @@ class CfgFunctions
             class AS_Zombies {};
             class CON_Outpost_Zombies {};
             class CON_Outpost {};
+            class CON_Outpost_Compet {};
             class CON_MilAdmin {};
             class convoy {};
             class DES_Antenna {};
@@ -412,6 +415,7 @@ class CfgFunctions
             class LOG_Helicrash {};;
             class missionRequest {};
             class REP_Antenna {};
+            class RES_Deserters {};
             class RES_Prisoners {};
             class RES_Refugees {};
             class RES_Informer {};
@@ -420,6 +424,7 @@ class CfgFunctions
             class RIV_ENC_Rivals {};
             class RIV_ATT_Cell {};
             class RIV_ATT_Hideout {};
+            class RIV_ATT_Transfer {};
             class RIV_AS_Traitor {};
             class RIV_SUPP_Salvage {};
             class RIV_RES_Prisoners {};
@@ -526,6 +531,8 @@ class CfgFunctions
             class garrisonDialog {};
             class postmortem {};
             class reDress {};
+            class reDressInv {};
+            class reDressOcc {};
             class reinfPlayer {};
             class spawnHCGroup {};
             class vehiclePrice {};
