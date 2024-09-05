@@ -13,8 +13,7 @@ Arguments:
     <INTEGER> Total number of vehicles to create
     <INTEGER> Number of attack/support vehicles to create
     <INTEGER> Optional, tier modifier to apply to vehicle selection (Default: 0)
-    <BOOL> Optional, true to only use tanks (Default: false)
-//    <STRING> Optional, troop type to use (Default: "Normal")
+    <STRING> Optional, troop type to use (Default: "Normal")
 
 Return array:
     <SCALAR> Resources spent
@@ -25,7 +24,7 @@ Return array:
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-params ["_side", "_base", "_target", "_resPool", "_vehCount", "_vehAttackCount", ["_tierMod", 0], ["_tanksOnly", false]];
+params ["_side", "_base", "_target", "_resPool", "_vehCount", "_vehAttackCount", ["_tierMod", 0]];
 private _targpos = if (_target isEqualType []) then { _target } else { markerPos _target };
 private _transportRatio = 1 - _vehAttackCount / _vehCount;
 
@@ -35,7 +34,7 @@ private _crewGroups = [];
 private _cargoGroups = [];
 
 private _transportPool = [_side, tierWar+_tierMod] call A3A_fnc_getVehiclesGroundTransport;
-private _supportPool = [_side, tierWar+_tierMod, _tanksOnly] call A3A_fnc_getVehiclesGroundSupport;
+private _supportPool = [_side, tierWar+_tierMod] call A3A_fnc_getVehiclesGroundSupport;
 
 private _numTransports = 0;
 private _isTransport = _vehAttackCount < _vehCount;            // normal case, first vehicle should be a transport

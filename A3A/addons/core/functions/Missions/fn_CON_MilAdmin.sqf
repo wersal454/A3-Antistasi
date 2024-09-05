@@ -4,7 +4,7 @@ FIX_LINE_NUMBERS()
 params ["_marker"];
 
 //Mission: Capture military administration
-if (isServer and hasInterface) exitWith{};
+if (!isServer and hasInterface) exitWith{};
 
 private _difficultX = if (random 10 < tierWar) then {true} else {false};
 private _milAdministrationPos = getMarkerPos _marker;

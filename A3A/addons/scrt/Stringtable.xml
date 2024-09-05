@@ -8686,14 +8686,6 @@
                 <Korean>%1의 은신처 위치 %2이(가) 발견되었습니다. 이제 행동할 시간입니다. 가서 무기 보급품을 파괴하거나 훔치십시오(본부로 전달). 자원이 없다면 이 지역에서 우리를 상대로 어떠한 작전도 수행할 수 없을 것입니다. %3 이전에 완료하십시오.</Korean>
                 <French>L'emplacement de la cachette %1 %2 a été trouvé, il est temps d'agir - allez-y et détruisez ou volez (livrez au QG) leur cache d'armes. Sans ressources, ils ne pourront pas mener d'opération secrète contre nous dans cette zone particulière. Faites-le avant %3.</French>
             </Key>
-            <Key ID="STR_RIV_ATT_transfer_header">
-                <Original>Prevent Invaders transfering valuable cargo to Rivals</Original>
-                <Russian>Предотвратите передачу  Захватчиками ценного груза Соперникам</Russian>
-            </Key>
-            <Key ID="STR_RIV_ATT_transfer_text">
-                <Original>We found out that the Invaders are going to transfer %1 valuable cargo at %2. Go there and stop the transfer. After the transmission is disrupted, %1 will stop conducting operations in this area. Do this before %3.</Original>
-                <Russian>Мы выяснили что Захватчики собираются передать %1 ценный груз в %2 идите туда и остановите передачу. После срыва передачи, %1 перестанут их проводить в этой зоне. Сделайте это до %3.</Russian>
-            </Key>
             <Key ID="STR_trader_quest_header">
                 <Original>Find the Arms Dealer</Original>
                 <Russian>Найти торговца оружием</Russian>
@@ -8777,30 +8769,6 @@
                 <Chinesesimp>%1 正在扰乱我们在该地区的行动。 去那里，在 %2 之前占领它。</Chinesesimp>
                 <Korean>%1은(는) 해당 지역에서의 우리 작전을 방해하고 있습니다. 해당 지역으로 가서 %2 이전까지 점령하십시오.</Korean>
                 <French>Un %1 perturbe nos opérations dans la région. Allez-y et capturez-le avant %2.</French>
-            </Key>
-            <Key ID="STR_CON_Outpost_resources_compet_task">
-                <Original>Resource Acquisition at the frontline</Original>
-                <Russian>Захват ресурсов на передовой</Russian>
-            </Key>
-            <Key ID="STR_CON_Outpost_resources_compet_desc">
-                <Original>A %1 would be a fine addition to our cause. Go there and capture it before %2. %3 Sent their troups as well</Original>
-                <Russian>%1 был бы прекрасным дополнением к нашему общему делу. Отправляйтесь туда и захватите его до %2. %3 также отправила туда свои войска</Russian>
-            </Key>
-            <Key ID="STR_CON_Outpost_controls_compet_task">
-                <Original>Destroy Roadblock at the frontline</Original>
-                <Russian>Уничтожьте блокпост на передовой</Russian>
-            </Key>
-            <Key ID="STR_CON_Outpost_controls_compet_desc">
-                <Original>A %1 interferes with our operations in the area. Go there and destroy it before %2. %3 Sent their troups as well</Original>
-                <Russian>%1 мешает нашим операциям в окрестностях. Отправляйтесь туда и уничтожьте его до %2. %3 также отправила туда свои войска</Russian>
-            </Key>
-            <Key ID="STR_CON_Outpost_outposts_compet_task">
-                <Original>Frontline Struggle</Original>
-                <Russian>Борьба на передовой</Russian>
-            </Key>
-            <Key ID="STR_CON_Outpost_outposts_compet_desc">
-                <Original>A %1 is disturbing our operations in the area. Go there and capture it before %2. %3 Sent their troups as well</Original>
-                <Russian>%1 мешает нашим операциям в окрестностях. Отправляйтесь туда и уничтожьте его до %2. %3 также отправила туда свои войска</Russian>
             </Key>
             <Key ID="STR_CON_MilAdmin_task">
                 <Original>Seize Administration</Original>
@@ -9259,14 +9227,6 @@
                 <Chinesesimp>我们的一群战俘在 %1 等待处决。 我们必须在 %2 之前营救他们。 把他们带到总部。</Chinesesimp>
                 <Korean>%1에서 처형 대기 중인 포로가 있습니다. %2 이전까지 그들을 구출해야 합니다. 그들을 본부로 데려오십시오.</Korean>
                 <French>Un groupe de prisonniers de guerre attend d'être exécuté à %1. Nous devons les sauver avant %2. Amenez-les au QG.</French>
-            </Key>
-            <Key ID="STR_A3A_Missions_RES_Deserters_task_header">
-                <Original>Deresters Rescue</Original>
-                <Russian>Спасите дезертиров</Russian>
-            </Key>
-            <Key ID="STR_A3A_Missions_RES_Deserters_task_desc">
-                <Original>A group of enemy deserters is hiding in %1, they are hunted by enemy group. We must rescue them before %2. Bring them to HQ.</Original>
-                <Russian>Группа вражеских дезертиров прячется в %1, их преследует вражеская группа. Мы должны спасти их до %2. Привезите их в штаб. </Russian>
             </Key>
             <Key ID="STR_A3A_Missions_RIV_RES_Prisoners_task_header">
                 <Original>Rescue Prisoners</Original>

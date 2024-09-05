@@ -83,8 +83,8 @@ if (_sideX == Invaders) then {
 		if !(_taskId call BIS_fnc_taskCompleted) then
 		{
 			// Needs rework
-            private _reveal = [_positionX , Invaders] call A3A_fnc_calculateSupportCallReveal;
-            [getPos _house, 4, ["QRF"], Invaders, _reveal] remoteExec ["A3A_fnc_createSupport", 2];
+            //private _reveal = [_positionX , Invaders] call A3A_fnc_calculateSupportCallReveal;
+            //[getPos _house, 4, ["QRF"], Invaders, _reveal] remoteExec ["A3A_fnc_createSupport", 2];
 		};
 	};
 } else {
