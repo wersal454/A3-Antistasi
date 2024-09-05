@@ -204,6 +204,19 @@ if (_side != teamPlayer) then
 	}];
 };
 
+/* if(_veh isKindOf "Air") then
+{
+    //Start airspace control script if opposite faction enters
+    _veh addEventHandler ["GetIn", {
+		params ["_veh", "_role", "_unit"];
+		if((side (group _unit) == Invaders) || (side (group _unit) == Occupants) && {isPlayer _unit}) then
+		{
+			// TODO: check this isn't spammed
+			[_veh] spawn A3A_fnc_airspaceControl;
+		};
+    }];
+}; */
+
 if(_veh isKindOf "Air") then
 {
     //Start airspace control script if rebel player enters

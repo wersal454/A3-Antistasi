@@ -21,6 +21,8 @@ private _hasLawsOfWar = "orange" in A3A_enabledDLC;
 //       Vehicles       //
 //////////////////////////
 
+["vehiclesSDV", ["O_SDV_01_F"]] call _fnc_saveToTemplate;
+
 ["ammobox", "O_R_supplyCrate_F"] call _fnc_saveToTemplate;     
 ["surrenderCrate", "Box_RUS_Wps_F"] call _fnc_saveToTemplate; 
 ["equipmentBox", "Box_RUS_Equip_F"] call _fnc_saveToTemplate; 

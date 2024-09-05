@@ -2,7 +2,7 @@
 FIX_LINE_NUMBERS()
 
 //Mission: Catch airdrop
-if (!isServer and hasInterface) exitWith{};
+if (isServer and hasInterface) exitWith{};
 
 params ["_markerX"];
 
