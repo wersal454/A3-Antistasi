@@ -59,11 +59,6 @@ class HR_GRG_VehicleSelect
             idc = HR_GRG_IDC_CatHeli;
             onMouseButtonClick = "_this call HR_GRG_fnc_selectionChange;";
         };
-        class HR_GRG_ListVTOL: HR_GRG_ListCars
-        {
-            idc = HR_GRG_IDC_CatVTOL;
-            onMouseButtonClick = "_this call HR_GRG_fnc_selectionChange;";
-        };
         class HR_GRG_ListPlane: HR_GRG_ListCars
         {
             idc = HR_GRG_IDC_CatPlane;
@@ -79,6 +74,11 @@ class HR_GRG_VehicleSelect
             idc = HR_GRG_IDC_CatStatic;
             onMouseButtonClick = "_this call HR_GRG_fnc_selectionChange;";
         };
+        /* class HR_GRG_ListVTOL: HR_GRG_ListCars
+        {
+            idc = HR_GRG_IDC_CatVTOL;
+            onMouseButtonClick = "_this call HR_GRG_fnc_selectionChange;";
+        }; */
 
         // Bottom left buttons
         class HR_GRG_ButtonsControlsGroup: HR_GRG_RscControlsGroup
@@ -155,38 +155,38 @@ class HR_GRG_VehicleSelect
             tooltip = $STR_HR_GRG_Generic_Heli;
             action = "[2] call HR_GRG_fnc_switchCategory;";
         };
-        class HR_GRG_BttnVTOL: HR_GRG_BttnCars
+        class HR_GRG_BttnPlane: HR_GRG_BttnCars
+        {
+            idc = HR_GRG_IDC_BttnPlane;
+            y = SCREEN_TOP + 12 * GRID_NOUISCALE_H;
+            text = PlaneIcon;
+            tooltip = $STR_HR_GRG_Generic_Plane;
+            action = "[3] call HR_GRG_fnc_switchCategory;";
+        };
+        class HR_GRG_BttnBoats: HR_GRG_BttnCars
+        {
+            idc = HR_GRG_IDC_BttnBoats;
+            y = SCREEN_TOP + 16 * GRID_NOUISCALE_H;
+            text = BoatIcon;
+            tooltip = $STR_HR_GRG_Generic_Boat;
+            action = "[4] call HR_GRG_fnc_switchCategory;";
+        };
+        class HR_GRG_BttnStatics: HR_GRG_BttnCars
+        {
+            idc = HR_GRG_IDC_BttnStatics;
+            y = SCREEN_TOP + 20 * GRID_NOUISCALE_H;
+            text = StaticIcon;
+            tooltip = $STR_HR_GRG_Generic_Static;
+            action = "[5] call HR_GRG_fnc_switchCategory;";
+        };
+        /* class HR_GRG_BttnVTOL: HR_GRG_BttnCars
         {
             idc = HR_GRG_IDC_BttnVTOL;
             y = SCREEN_TOP + 12 * GRID_NOUISCALE_H;
             text = VTOLIcon;
             tooltip = $STR_HR_GRG_Generic_VTOL;
             action = "[3] call HR_GRG_fnc_switchCategory;";
-        };
-        class HR_GRG_BttnPlane: HR_GRG_BttnCars
-        {
-            idc = HR_GRG_IDC_BttnPlane;
-            y = SCREEN_TOP + 16 * GRID_NOUISCALE_H;
-            text = PlaneIcon;
-            tooltip = $STR_HR_GRG_Generic_Plane;
-            action = "[4] call HR_GRG_fnc_switchCategory;";
-        };
-        class HR_GRG_BttnBoats: HR_GRG_BttnCars
-        {
-            idc = HR_GRG_IDC_BttnBoats;
-            y = SCREEN_TOP + 20 * GRID_NOUISCALE_H;
-            text = BoatIcon;
-            tooltip = $STR_HR_GRG_Generic_Boat;
-            action = "[5] call HR_GRG_fnc_switchCategory;";
-        };
-        class HR_GRG_BttnStatics: HR_GRG_BttnCars
-        {
-            idc = HR_GRG_IDC_BttnStatics;
-            y = SCREEN_TOP + 24 * GRID_NOUISCALE_H;
-            text = StaticIcon;
-            tooltip = $STR_HR_GRG_Generic_Static;
-            action = "[6] call HR_GRG_fnc_switchCategory;";
-        };
+        }; */
 
         //vehicle extras buttons
         class HR_GRG_BttnMounts: HR_GRG_RscActivePictureKeepAspect

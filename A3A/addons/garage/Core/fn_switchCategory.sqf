@@ -43,15 +43,15 @@ _newCtrl = _disp displayCtrl (HR_GRG_IDC_CatCar + _index);
 _newCtrl ctrlEnable true;
 _newCtrl ctrlShow true;
 //case 2: {localize "STR_HR_GRG_Generic_Unmanned"};
+//case 3: {localize "STR_HR_GRG_Generic_VTOL"};
 //update category text
 private _text = switch _index do {
     case 0: {localize "STR_HR_GRG_Generic_Cars"};
     case 1: {localize "STR_HR_GRG_Generic_Armored"};
     case 2: {localize "STR_HR_GRG_Generic_Heli"};
-    case 3: {localize "STR_HR_GRG_Generic_VTOL"};
-    case 4: {localize "STR_HR_GRG_Generic_Plane"};
-    case 5: {localize "STR_HR_GRG_Generic_Boat"};
-    case 6: {localize "STR_HR_GRG_Generic_Static"};
+    case 3: {localize "STR_HR_GRG_Generic_Plane"};
+    case 4: {localize "STR_HR_GRG_Generic_Boat"};
+    case 5: {localize "STR_HR_GRG_Generic_Static"};
     default {""};
 };
 _textCtrl = _disp displayCtrl HR_GRG_IDC_CatText;
