@@ -5840,6 +5840,46 @@
                 <English>Logistical Victory</English>
                 <Russian>Логистическая победа</Russian>
             </Key>
+            <Key ID="STR_A3AU_hr_loss">
+                <Original>Lose HR on death</Original>
+                <Russian>Логистическая победа</Russian>
+            </Key>
+            <Key ID="STR_A3AU_no_hr_loss">
+                <Original>Disabled</Original>
+                <Russian>Неполноценный</Russian>
+            </Key>
+            <Key ID="STR_A3AU_yes_hr_loss">
+                <Original>Enabled</Original>
+                <Russian>Включено</Russian>
+            </Key>
+            <Key ID="STR_A3AU_yes_hr_loss_w_msg">
+                <Original>Enabled (with sidechat alerts)</Original>
+                <Russian>Включено (с оповещениями в боковом чате)</Russian>
+            </Key>
+            <Key ID="STR_A3AU_loss_condition">
+                <Original>Loss Conditions</Original>
+                <Russian>Условия проигрыша</Russian>
+            </Key>
+            <Key ID="STR_A3AU_loss_condition_pop_death">
+                <Original>Population death</Original>
+                <Russian>Смерть населения</Russian>
+            </Key>
+            <Key ID="STR_A3AU_loss_condition_hr">
+                <Original>Human Resource loss</Original>
+                <Russian>Потери человеческих ресурсов</Russian>
+            </Key>
+            <Key ID="STR_A3AU_loss_condition_money">
+                <Original>Financial Loss</Original>
+                <Russian>Финансовые потери</Russian>
+            </Key>
+            <Key ID="STR_A3AU_loss_condition_all">
+                <Original>HARDCORE</Original>
+                <Russian>ХАРДКОР</Russian>
+            </Key>
+            <Key ID="STR_commander_menu_victory_type_normal">
+                <Original></Original>
+                <Russian></Russian>
+            </Key>
             <Key ID="STR_A3AU_blackmarket_ignore_requirements">
                 <Original>Ignore Black Market Vehicle Requirements</Original>
                 <English>Ignore Black Market Vehicle Requirements</English>
