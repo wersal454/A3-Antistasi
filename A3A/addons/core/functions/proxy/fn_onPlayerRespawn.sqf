@@ -71,7 +71,29 @@ if (side group _newUnit == teamPlayer) then
 			_x setVariable ["owner", _newUnit, true];
 		};
 	} forEach (units group _newUnit);
+	
+	switch (loseHROnDeath) do
+	{
+		//no HR loss on death
+		case 0:
+		{
+		};
+		
+		//no chat msg on player death
+		case 1:
+		{
+			[-1,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+			call A3A_fnc_checkLossCondition;
+		};
 
+		//chat msg on player death
+		case 2:
+		{
+			[-1,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+   			petros sideChat (localize "STR_chats_player_kia");
+			call A3A_fnc_checkLossCondition;
+		};
+	};
 
 	disableUserInput false;
 	if (_oldUnit == theBoss) then
