@@ -2960,6 +2960,10 @@
                 <Korean>연막탄 탄막 전개 시작. 도달 예정 시간 30초.</Korean>
                 <French>Lancement du barrage de fumigènes. Temps estimé à 30 secondes.</French>
             </Key>
+            <Key ID="STR_chats_barrage_smoke">
+                <Original>Player killed in action.</Original>
+                <Russian>Солдат погиб в бою.</Russian>
+            </Key>
             <Key ID="STR_chats_airdrop_pilot_smoke">
                 <Original>This is the pilot. I see your smoke in the drop zone. I'm about to paradrop my cargo on %1 position, please wait.</Original>
                 <Russian>Пилот на связи. Вижу дым в зоне высадки. Я скоро выброшу груз на парашюте на %1 позицию, ожидайте.</Russian>
@@ -4220,6 +4224,34 @@
                 <Chinesesimp>在地图上点击想要的位置，在那里建立雷区。</Chinesesimp>
                 <Korean>지도에 원하는 위치를 클릭하여 지뢰지대를 생성합니다.</Korean>
                 <French>Cliquez sur la position souhaitée sur la carte pour construire un champ de mines à cet endroit.</French>
+            </Key>
+            <Key ID="STR_A3AU_victory_condition_check">
+                <Original>Victory Condition check&lt;br/&gt;</Original>
+                <Russian>Проверка условий победы&lt;br/&gt;</Russian>
+            </Key>
+            <Key ID="STR_A3AU_victory_condition_not_met">
+                <Original>The selected victory condition requirements were not met.</Original>
+                <Russian>Выбранные условия победы не были выполнены.</Russian>
+            </Key>
+            <Key ID="STR_A3AU_victory_type_normal">
+                <Original>Normal Victory</Original>
+                <Russian>Нормальная победа</Russian>
+            </Key>
+            <Key ID="STR_A3AU_victory_type_total">
+                <Original>Total Victory</Original>
+                <Russian>Полная победа</Russian>
+            </Key>
+            <Key ID="STR_A3AU_victory_type_economic">
+                <Original>Economic Victory</Original>
+                <Russian>Экономическая победа</Russian>
+            </Key>
+            <Key ID="STR_A3AU_victory_type_logistical">
+                <Original>Logistical Victory</Original>
+                <Russian>Логистическая победа</Russian>
+            </Key>
+            <Key ID="STR_A3AU_victory_type_political">
+                <Original>Political Victory</Original>
+                <Russian>Политическая победа</Russian>
             </Key>
         </Container>
         <Container name="skip_time_rest">
@@ -7445,6 +7477,14 @@
                 <Chinesesimp>使用这个选项来保存你当前的游戏。 最重要的数据以“侠盗猎车手”的风格保存。</Chinesesimp>
                 <Korean>현재 게임을 저장하려면 이 옵션을 사용하십시오. ""GTA"" 방식으로 가장 중요한 데이터를 저장합니다.</Korean>
                 <French>Cette option permet de sauvegarder le jeu en cours. Les données les plus importantes sont sauvegardées à la manière de "Grand Theft Auto".</French>
+            </Key>
+            <Key ID="STR_commander_menu_victory_check_button">
+                <Original>CHECK VICTORY</Original>
+                <Russian>ПРОВЕРИТЬ ПОБЕДУ</Russian>
+            </Key>
+            <Key ID="STR_commander_menu_victory_check_button_tooltip">
+                <Original>Use this option to check if you have achieved the victory conditions and ends mission if you have.</Original>
+                <Russian>Используйте эту опцию, чтобы проверить, выполнили ли вы условия победы, и завершить миссию, если да.</Russian>
             </Key>
             <Key ID="STR_commander_menu_personal_save_button">
                 <Original>PERSONAL SAVE</Original>
