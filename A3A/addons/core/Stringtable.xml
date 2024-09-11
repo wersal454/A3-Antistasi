@@ -5876,10 +5876,6 @@
                 <Original>HARDCORE</Original>
                 <Russian>ХАРДКОР</Russian>
             </Key>
-            <Key ID="STR_commander_menu_victory_type_normal">
-                <Original></Original>
-                <Russian></Russian>
-            </Key>
             <Key ID="STR_A3AU_blackmarket_ignore_requirements">
                 <Original>Ignore Black Market Vehicle Requirements</Original>
                 <English>Ignore Black Market Vehicle Requirements</English>

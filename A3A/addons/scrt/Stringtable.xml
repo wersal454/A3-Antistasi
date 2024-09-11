@@ -4253,6 +4253,14 @@
                 <Original>Political Victory</Original>
                 <Russian>Политическая победа</Russian>
             </Key>
+            <Key ID="STR_A3AU_victory_condition_missing_money">
+                <Original>&lt;br/&gt;Missing: %1 %2</Original>
+                <Russian>&lt;br/&gt;Отсутствующий: %1 %2</Russian>
+            </Key>
+            <Key ID="STR_A3AU_victory_condition_missing_support">
+                <Original>&lt;br/&gt;Population Support&lt;br/&gt;Total: %1&lt;br/&gt;Government Support: %2&lt;br/&gt;Rebel Support: %3</Original>
+                <Russian>&lt;br/&gt;Поддержка населения&lt;br/&gt;Общий: %1&lt;br/&gt;Государственная поддержка: %2&lt;br/&gt;Поддержка повстанцев: %3</Russian>
+            </Key>
         </Container>
         <Container name="skip_time_rest">
             <Key ID="STR_params_rest_button">

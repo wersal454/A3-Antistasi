@@ -5,16 +5,24 @@ private _factionMoney = server getVariable ["resourcesFIA",0];
 private _hr = server getVariable ["hr",0];
 private _victoryZones = airportsX + milbases + outposts + resourcesX + factories + seaports;
 private _victoryZonesLogistical = airportsX + milbases + seaports;
-private _popMajority = _popTotal * 0.75;
 private _popTotal = 0;
 private _popKilled = 0;
+private _missingMoney = ((2000000 - _factionMoney) call BIS_fnc_numberText) splitString " " joinString ",";
+private _popReb = 0;
+private _popGov = 0;
 
-private _cityData = server getVariable _city;
-_cityData params ["_numCiv", "_numVeh", "_supportGov", "_supportReb"];
-_popTotal = _popTotal + _numCiv;
-if (_city in destroyedSites) then { _popKilled = _popKilled + _numCiv; continue };
-_popReb = _popReb + (_numCiv * (_supportReb / 100));
-_popGov = _popGov + (_numCiv * (_supportGov / 100));
+{
+    private _city = _x;
+    private _cityData = server getVariable _city;
+    _cityData params ["_numCiv", "_numVeh", "_supportGov", "_supportReb"];
+
+    _popTotal = _popTotal + _numCiv;
+    if (_city in destroyedSites) then { _popKilled = _popKilled + _numCiv; continue };
+
+    _popReb = _popReb + (_numCiv * (_supportReb / 100));
+    _popGov = _popGov + (_numCiv * (_supportGov / 100));
+    private _popMajority = _popTotal * 0.75;
+} forEach citiesX;
 
 switch (lossCondition) do
 {

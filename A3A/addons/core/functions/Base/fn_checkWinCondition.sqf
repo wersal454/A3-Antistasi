@@ -5,16 +5,24 @@ private _factionMoney = server getVariable ["resourcesFIA",0];
 private _hr = server getVariable ["hr",0];
 private _victoryZones = airportsX + milbases + outposts + resourcesX + factories + seaports;
 private _victoryZonesLogistical = airportsX + milbases + seaports;
-private _popMajority = _popTotal * 0.75;
 private _popTotal = 0;
 private _popKilled = 0;
-private _cityData = server getVariable _city;
+private _missingMoney = ((2000000 - _factionMoney) call BIS_fnc_numberText) splitString " " joinString ",";
+private _popReb = 0;
+private _popGov = 0;
 
-_cityData params ["_numCiv", "_numVeh", "_supportGov", "_supportReb"];
-_popTotal = _popTotal + _numCiv;
-if (_city in destroyedSites) then { _popKilled = _popKilled + _numCiv; continue };
-_popReb = _popReb + (_numCiv * (_supportReb / 100));
-_popGov = _popGov + (_numCiv * (_supportGov / 100));
+{
+    private _city = _x;
+    private _cityData = server getVariable _city;
+    _cityData params ["_numCiv", "_numVeh", "_supportGov", "_supportReb"];
+
+    _popTotal = _popTotal + _numCiv;
+    if (_city in destroyedSites) then { _popKilled = _popKilled + _numCiv; continue };
+
+    _popReb = _popReb + (_numCiv * (_supportReb / 100));
+    _popGov = _popGov + (_numCiv * (_supportGov / 100));
+    private _popMajority = _popTotal * 0.75;
+} forEach citiesX;
 
 switch (victoryCondition) do
 {
@@ -25,7 +33,7 @@ switch (victoryCondition) do
             isNil {["ended", true] call A3A_fnc_writebackSaveVar};
             ["End1",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
         }else{
-            isNil { [format [localize "STR_A3AU_victory_condition_check" + localize "STR_A3AU_victory_type_normal"],localize "STR_A3AU_victory_condition_not_met", true] call A3A_fnc_customHint };
+            isNil { [format [localize "STR_A3AU_victory_condition_check" + localize "STR_A3AU_victory_type_normal"], localize "STR_A3AU_victory_condition_not_met", true] call A3A_fnc_customHint };
         };
     };
 
@@ -47,7 +55,7 @@ switch (victoryCondition) do
             isNil {["ended", true] call A3A_fnc_writebackSaveVar};
             ["economicVictory",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
         }else{
-            isNil { [format [localize "STR_A3AU_victory_condition_check" + localize "STR_A3AU_victory_type_economic"],localize "STR_A3AU_victory_condition_not_met", true] call A3A_fnc_customHint };
+            isNil { [format [localize "STR_A3AU_victory_condition_check" + localize "STR_A3AU_victory_type_economic"],format [localize "STR_A3AU_victory_condition_not_met" + localize "STR_A3AU_victory_condition_missing_money", _missingMoney, A3A_faction_civ get "currencySymbol"], true] call A3A_fnc_customHint };
         };
     };
 
@@ -69,7 +77,7 @@ switch (victoryCondition) do
             isNil {["ended", true] call A3A_fnc_writebackSaveVar};
             ["politicalVictory",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
         }else{
-            isNil { [format [localize "STR_A3AU_victory_condition_check" + localize "STR_A3AU_victory_type_political"],localize "STR_A3AU_victory_condition_not_met", true] call A3A_fnc_customHint };
+            isNil { [format [localize "STR_A3AU_victory_condition_check" + localize "STR_A3AU_victory_type_political"],format [localize "STR_A3AU_victory_condition_not_met" + localize "STR_A3AU_victory_condition_missing_support",_popTotal,_popGov,_popReb], true] call A3A_fnc_customHint };
         };
     };
 
