@@ -1,7 +1,7 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 if (isDedicated) exitWith {};
-params ["_newUnit","_oldUnit"];
+params ["_newUnit","_oldUnit","_unit"];
 
 if (isNull _oldUnit) exitWith {};
 
@@ -81,19 +81,151 @@ if (side group _newUnit == teamPlayer) then
 		
 		//no chat msg on player death
 		case 1:
-		{
-			[-1,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-			call A3A_fnc_checkLossCondition;
-		};
+        {
+			switch (tierWar) do
+			{
+				case 1:
+				{
+					call A3A_fnc_checkLossCondition;
+				};
+
+				case 2:
+				{
+					[-1,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 3:
+				{
+					[-1,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 4:
+				{
+					[-5,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 5:
+				{
+					[-5,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 6:
+				{
+					[-5,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 7:
+				{
+					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 8:
+				{
+					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 9:
+				{
+					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 10:
+				{
+					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+					call A3A_fnc_checkLossCondition;
+				};
+
+				default {diag_log format["War tier was not recognized. Condition given: %1", tierWar]};
+			};
+        };
 
 		//chat msg on player death
 		case 2:
-		{
-			[-1,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-   			petros sideChat (localize "STR_chats_player_kia");
-			call A3A_fnc_checkLossCondition;
-		};
-	};
+        {
+			switch (tierWar) do
+			{
+				case 1:
+				{
+					call A3A_fnc_checkLossCondition;
+				};
+
+				case 2:
+				{
+					[-1,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+                	[petros, format[localize "STR_chats_player_kia",-1]] remoteExec ["globalChat"];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 3:
+				{
+					[-1,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+                	[petros, format[localize "STR_chats_player_kia",-1]] remoteExec ["globalChat"];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 4:
+				{
+					[-5,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+                	[petros, format[localize "STR_chats_player_kia",-5]] remoteExec ["globalChat"];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 5:
+				{
+					[-5,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+                	[petros, format[localize "STR_chats_player_kia",-5]] remoteExec ["globalChat"];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 6:
+				{
+					[-5,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+                	[petros, format[localize "STR_chats_player_kia",-5]] remoteExec ["globalChat"];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 7:
+				{
+					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+                	[petros, format[localize "STR_chats_player_kia",-10]] remoteExec ["globalChat"];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 8:
+				{
+					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+                	[petros, format[localize "STR_chats_player_kia",-10]] remoteExec ["globalChat"];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 9:
+				{
+					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+                	[petros, format[localize "STR_chats_player_kia",-10]] remoteExec ["globalChat"];
+					call A3A_fnc_checkLossCondition;
+				};
+				
+				case 10:
+				{
+					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+                	[petros, format[localize "STR_chats_player_kia",-10]] remoteExec ["globalChat"];
+					call A3A_fnc_checkLossCondition;
+				};
+
+				default {diag_log format["War tier was not recognized. Condition given: %1", tierWar]};
+			};
+        };
+
+		default {diag_log format["Lose HR on death num was not recognized. Condition given: %1", loseHROnDeath]};
+    };
 
 	disableUserInput false;
 	if (_oldUnit == theBoss) then
