@@ -1641,6 +1641,42 @@
                 <Korean>인도주의적 재앙이 나라를 망쳤고, 아무도 그 곳에서 살려고 하지 않습니다.</Korean>
                 <French>La catastrophe humanitaire a ruiné le pays, personne ne veut y vivre.</French>
             </Key>
+            <Key ID="STR_end_mission_no_hr_defeat_title">
+                <Original>No Manpower Left</Original>
+                <Russian>Не осталось рабочей силы</Russian>
+            </Key>
+            <Key ID="STR_end_mission_no_hr_defeat_subtitle">
+                <Original>Manpower reserves have been depleted.</Original>
+                <Russian>Людские резервы исчерпаны.</Russian>
+            </Key>
+            <Key ID="STR_end_mission_no_hr_defeat_desc">
+                <Original>You have lost too much manpower, no one is left to fight for the cause.</Original>
+                <Russian>Вы потеряли слишком много живой силы, некому больше бороться за дело.</Russian>
+            </Key>
+            <Key ID="STR_end_mission_financial_defeat_title">
+                <Original>Money Reserves Depleted</Original>
+                <Russian>Денежные резервы исчерпаны</Russian>
+            </Key>
+            <Key ID="STR_end_mission_financial_defeat_subtitle">
+                <Original>No money left in reserves.</Original>
+                <Russian>Денег в резервах не осталось.</Russian>
+            </Key>
+            <Key ID="STR_end_mission_financial_defeat_desc">
+                <Original>You have used all of the money you had in your reserves, you cannot buy any more gear to complete your mission.</Original>
+                <Russian>Вы использовали все деньги, которые были в ваших резервах, вы не можете больше покупать снаряжение для выполнения своей миссии.</Russian>
+            </Key>
+            <Key ID="STR_end_mission_hardcore_defeat_title">
+                <Original>H A R D C O R E   D E F E A T</Original>
+                <Russian>Х А Р Д К О Р Н О Е   П О Р А Ж Е Н И Е</Russian>
+            </Key>
+            <Key ID="STR_end_mission_hardcore_defeat_subtitle">
+                <Original>Maybe you are not ready for this.</Original>
+                <Russian>Возможно, вы не готовы к этому.</Russian>
+            </Key>
+            <Key ID="STR_end_mission_hardcore_defeat_desc">
+                <Original>you have tried to fight against all odds and yet you still failed. GG WP</Original>
+                <Russian>вы пытались бороться вопреки всему, но все равно потерпели неудачу. ГГ ВП</Russian>
+            </Key>
         </Container>
         <Container name="markers">
             <Key ID="STR_qrf_marker_mrap">
@@ -2246,6 +2282,10 @@
                 <Chinesesimp>车队任务需要附近有敌方设施，并在 3 公里范围内有通往闲置基地的道路。</Chinesesimp>
                 <Korean>호송 임무를 수행하려면 3km 이내의 평시 상태의 기지로 가는 도로 경로를 가진 인근의 적군 시설이 필요합니다.</Korean>
                 <French>Les missions de convoi nécessitent des installations ennemies proches, avec une route vers une base inactive dans un rayon de 3 km.</French>
+            </Key>
+            <Key ID="STR_chats_player_kia">
+                <Original>A player has been killed in action! (%1 HR)</Original>
+                <Russian>Игрок погиб в бою! (%1 HR)</Russian>
             </Key>
         </Container>
         <Container name="cut_texts">
@@ -4230,8 +4270,8 @@
                 <Russian>Проверка условий победы&lt;br/&gt;</Russian>
             </Key>
             <Key ID="STR_A3AU_victory_condition_not_met">
-                <Original>The selected victory condition requirements were not met.</Original>
-                <Russian>Выбранные условия победы не были выполнены.</Russian>
+                <Original>The selected victory condition requirements were not met.&lt;br/&gt;</Original>
+                <Russian>Выбранные условия победы не были выполнены.&lt;br/&gt;</Russian>
             </Key>
             <Key ID="STR_A3AU_victory_type_normal">
                 <Original>Normal Victory</Original>
@@ -4260,6 +4300,18 @@
             <Key ID="STR_A3AU_victory_condition_missing_support">
                 <Original>&lt;br/&gt;Population Support&lt;br/&gt;Total: %1&lt;br/&gt;Government Support: %2&lt;br/&gt;Rebel Support: %3</Original>
                 <Russian>&lt;br/&gt;Поддержка населения&lt;br/&gt;Общий: %1&lt;br/&gt;Государственная поддержка: %2&lt;br/&gt;Поддержка повстанцев: %3</Russian>
+            </Key>
+            <Key ID="STR_A3AU_victory_condition_total_victory_info">
+                <Original>&lt;br/&gt;Rebel Support: %1&lt;br/&gt;Government Support: %2&lt;br/&gt;Resources: %3 / %4&lt;br/&gt;Factories: %5 / %6&lt;br/&gt;Outposts: %7 / %8&lt;br/&gt;Seaports: %9 / %10&lt;br/&gt;Military Bases: %11 / %12&lt;br/&gt;Airports: %13 / %14</Original>
+                <Russian>&lt;br/&gt;Поддержка повстанцев: %1&lt;br/&gt;Государственная поддержка: %2&lt;br/&gt;Ресурсы: %3 / %4&lt;br/&gt;Заводы: %5 / %6&lt;br/&gt;Аванпосты: %7 / %8&lt;br/&gt;Морские порты: %9 / %10&lt;br/&gt;Военные базы: %11 / %12&lt;br/&gt;Аэропорты: %13 / %14</Russian>
+            </Key>
+            <Key ID="STR_A3AU_victory_condition_normal_victory_info">
+                <Original>&lt;br/&gt;Rebel Support: %1&lt;br/&gt;Government Support: %2&lt;br/&gt;Military Bases: %3 / %4&lt;br/&gt;Airports: %5 / %6</Original>
+                <Russian>&lt;br/&gt;Поддержка повстанцев: %1&lt;br/&gt;Государственная поддержка: %2&lt;br/&gt;Военные базы: %3 / %4&lt;br/&gt;Аэропорты: %5 / %6</Russian>
+            </Key>
+            <Key ID="STR_A3AU_victory_condition_logistical_victory_info">
+                <Original>&lt;br/&gt;Seaports: %1 / %2&lt;br/&gt;Military Bases: %3 / %4&lt;br/&gt;Airports: %5 / %6</Original>
+                <Russian>&lt;br/&gt;Морские порты: %1 / %2&lt;br/&gt;Военные базы: %3 / %4&lt;br/&gt;Аэропорты: %5 / %6</Russian>
             </Key>
         </Container>
         <Container name="skip_time_rest">

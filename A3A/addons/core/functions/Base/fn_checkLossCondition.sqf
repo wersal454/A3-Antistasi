@@ -10,6 +10,7 @@ private _popKilled = 0;
 private _missingMoney = ((2000000 - _factionMoney) call BIS_fnc_numberText) splitString " " joinString ",";
 private _popReb = 0;
 private _popGov = 0;
+private _popMajority = 0;
 
 {
     private _city = _x;
@@ -21,8 +22,9 @@ private _popGov = 0;
 
     _popReb = _popReb + (_numCiv * (_supportReb / 100));
     _popGov = _popGov + (_numCiv * (_supportGov / 100));
-    private _popMajority = _popTotal * 0.75;
 } forEach citiesX;
+
+_popMajority = _popTotal * 0.75;
 
 switch (lossCondition) do
 {
@@ -39,30 +41,30 @@ switch (lossCondition) do
     //no HR left ()
     case 1:
     {
-        if ((_hr <= 0)) then
+        if (_hr <= 0) then
         {
             isNil {["ended", true] call A3A_fnc_writebackSaveVar};
-            ["destroyedSites",false,true] remoteExec ["BIS_fnc_endMission"];
+            ["HRLoss",false,true] remoteExec ["BIS_fnc_endMission"];
         };
     };
 
     //faction has no money left
     case 2:
     {
-        if ((_factionMoney <= 0)) then
+        if (_factionMoney <= 0) then
         {
             isNil {["ended", true] call A3A_fnc_writebackSaveVar};
-            ["destroyedSites",false,true] remoteExec ["BIS_fnc_endMission"];
+            ["financialLoss",false,true] remoteExec ["BIS_fnc_endMission"];
         };
     };
 
     //hardcore (all loss conditions in one)
     case 3:
     {
-        if ((_factionMoney <= 0) || (_hr < 0) || (_popKilled > (_popTotal / 3))) then
+        if ((_factionMoney <= 0) || (_hr <= 0) || (_popKilled > (_popTotal / 3))) then
         {
             isNil {["ended", true] call A3A_fnc_writebackSaveVar};
-            ["destroyedSites",false,true] remoteExec ["BIS_fnc_endMission"];
+            ["hardcoreLoss",false,true] remoteExec ["BIS_fnc_endMission"];
         };
     };
 

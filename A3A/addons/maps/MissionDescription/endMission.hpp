@@ -97,6 +97,30 @@ class destroyedSites
 	title = $STR_end_mission_defeat_title;
 	subtitle = $STR_end_mission_defeat_subtitle;
 	description = $STR_end_mission_defeat_desc;
-	picture = "b_unknown";
+	picture = "A3AU_Population_Death";
+	pictureColor[] = {0.5,0.0,0.0,1};
+};
+class HRLoss
+{
+	title = $STR_end_mission_no_hr_defeat_title;
+	subtitle = $STR_end_mission_no_hr_defeat_subtitle;
+	description = $STR_end_mission_no_hr_defeat_desc;
+	picture = "A3AU_Human_Resource_Loss";
+	pictureColor[] = {0.5,0.0,0.0,1};
+};
+class financialLoss
+{
+	title = $STR_end_mission_financial_defeat_title;
+	subtitle = $STR_end_mission_financial_defeat_subtitle;
+	description = $STR_end_mission_financial_defeat_desc;
+	picture = "A3AU_Financial_Loss";
+	pictureColor[] = {0.5,0.0,0.0,1};
+};
+class hardcoreLoss
+{
+	title = $STR_end_mission_hardcore_defeat_title;
+	subtitle = $STR_end_mission_hardcore_defeat_subtitle;
+	description = $STR_end_mission_hardcore_defeat_desc;
+	picture = "A3AU_Hardcore_Loss";
 	pictureColor[] = {0.5,0.0,0.0,1};
 };
