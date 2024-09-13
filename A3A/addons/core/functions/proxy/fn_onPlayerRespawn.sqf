@@ -72,160 +72,75 @@ if (side group _newUnit == teamPlayer) then
 		};
 	} forEach (units group _newUnit);
 	
+	private _deathPenaltyNum = nil;
+	
 	switch (loseHROnDeath) do
 	{
 		//no HR loss on death
 		case 0:
 		{
+			call A3A_fnc_checkLossCondition;
 		};
 		
 		//no chat msg on player death
 		case 1:
         {
-			switch (tierWar) do
+			call A3A_fnc_checkLossCondition;
+
+			if(tierWar >= 7) exitWith
 			{
-				case 1:
-				{
-					call A3A_fnc_checkLossCondition;
-				};
+				[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+			};
 
-				case 2:
-				{
-					[-1,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 3:
-				{
-					[-1,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 4:
-				{
-					[-5,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 5:
-				{
-					[-5,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 6:
-				{
-					[-5,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 7:
-				{
-					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 8:
-				{
-					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 9:
-				{
-					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 10:
-				{
-					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-					call A3A_fnc_checkLossCondition;
-				};
+			if(tierWar >= 4) exitWith
+			{
+				[-5,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+			};
 
-				default {diag_log format["War tier was not recognized. Condition given: %1", tierWar]};
+			if(tierWar >= 2) exitWith
+			{
+				[-1,0] remoteExec ["A3A_fnc_resourcesFIA",2];
 			};
         };
 
 		//chat msg on player death
 		case 2:
         {
-			switch (tierWar) do
+			call A3A_fnc_checkLossCondition;
+
+			if(tierWar >= 7) exitWith
 			{
-				case 1:
-				{
-					call A3A_fnc_checkLossCondition;
-				};
+				[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+				_deathPenaltyNum = "-10";
+			};
 
-				case 2:
-				{
-					[-1,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-                	[petros, format[localize "STR_chats_player_kia",-1]] remoteExec ["globalChat"];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 3:
-				{
-					[-1,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-                	[petros, format[localize "STR_chats_player_kia",-1]] remoteExec ["globalChat"];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 4:
-				{
-					[-5,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-                	[petros, format[localize "STR_chats_player_kia",-5]] remoteExec ["globalChat"];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 5:
-				{
-					[-5,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-                	[petros, format[localize "STR_chats_player_kia",-5]] remoteExec ["globalChat"];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 6:
-				{
-					[-5,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-                	[petros, format[localize "STR_chats_player_kia",-5]] remoteExec ["globalChat"];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 7:
-				{
-					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-                	[petros, format[localize "STR_chats_player_kia",-10]] remoteExec ["globalChat"];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 8:
-				{
-					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-                	[petros, format[localize "STR_chats_player_kia",-10]] remoteExec ["globalChat"];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 9:
-				{
-					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-                	[petros, format[localize "STR_chats_player_kia",-10]] remoteExec ["globalChat"];
-					call A3A_fnc_checkLossCondition;
-				};
-				
-				case 10:
-				{
-					[-10,0] remoteExec ["A3A_fnc_resourcesFIA",2];
-                	[petros, format[localize "STR_chats_player_kia",-10]] remoteExec ["globalChat"];
-					call A3A_fnc_checkLossCondition;
-				};
+			if(tierWar >= 4) exitWith
+			{
+				[-5,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+				_deathPenaltyNum = "-5";
+			};
 
-				default {diag_log format["War tier was not recognized. Condition given: %1", tierWar]};
+			if(tierWar >= 2) exitWith
+			{
+				[-1,0] remoteExec ["A3A_fnc_resourcesFIA",2];
+				_deathPenaltyNum = "-1";
 			};
         };
 
 		default {diag_log format["Lose HR on death num was not recognized. Condition given: %1", loseHROnDeath]};
     };
+
+	private _warningText = nil;
+
+	if(((server getVariable ["hr",0]) <= 5) && (tierWar >= 2)) then {
+		_warningText = "<t font ='PuristaBold' align = 'center' size='0.8' color='#bd0000'>" + localize "STR_A3AU_respawn_warning" +"</t>"+"<br />"+"<t font ='PuristaSemibold' align = 'center' size='0.55' color='#ebebeb'>" + format [localize "STR_A3AU_respawn_warning_info", (A3A_faction_reb get "name"), ((server getVariable ["hr",0])-1)]+"</t>"+"<br />"+"<t font ='PuristaSemibold' align = 'center' size='0.4' color='#ebebeb'>" + format [localize "STR_chats_player_kia", _deathPenaltyNum]+"</t>";
+	};
+	
+	if(((server getVariable ["hr",0]) > 5) && (tierWar >= 2)) then {
+		_warningText = "<t font ='PuristaSemibold' align = 'center' size='0.5' color='#ebebeb'>" + format [localize "STR_chats_player_kia", _deathPenaltyNum]+"</t>";
+	};
+
+	[_warningText,0,safezoneY+0.05] spawn BIS_fnc_dynamicText;
 
 	disableUserInput false;
 	if (_oldUnit == theBoss) then
