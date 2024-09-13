@@ -1,7 +1,7 @@
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
 if (isDedicated) exitWith {};
-params ["_newUnit","_oldUnit","_unit"];
+params ["_newUnit","_oldUnit"];
 
 if (isNull _oldUnit) exitWith {};
 
