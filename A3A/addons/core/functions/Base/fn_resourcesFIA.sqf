@@ -45,14 +45,22 @@ if (_resourcesFIA > 0) then {_resourcesFIASim = "+"};
 switch (true) do {
 	case ((_hr != 0) && {_resourcesFIA != 0}): {
 		_textX = format [localize "STR_comms_res_FIA_1",_hr,_resourcesFIA,_hrSim,_resourcesFIASim,FactionGet(reb,"name"), A3A_faction_civ get "currencySymbol"];
+		if((server getVariable ["hr",0]) <= 10) then { 
+			_warningText = "<t font ='PuristaBold' align = 'center' size='0.8' color='#bd0000'>" + localize "STR_A3AU_respawn_warning" +"</t>"+"<br />"+"<t font ='PuristaSemibold' align = 'center' size='0.55' color='#ebebeb'>" + format [localize "STR_A3AU_HR_warning_info", (A3A_faction_reb get "name"), (server getVariable ["hr",0])]+"</t>";
+		};
 	};
 	case (_hr != 0): {
 		_textX = format [localize "STR_comms_res_FIA_2",_hr,_hrSim,FactionGet(reb,"name")];
+		if((server getVariable ["hr",0]) <= 10) then { 
+			_warningText = "<t font ='PuristaBold' align = 'center' size='0.8' color='#bd0000'>" + localize "STR_A3AU_respawn_warning" +"</t>"+"<br />"+"<t font ='PuristaSemibold' align = 'center' size='0.55' color='#ebebeb'>" + format [localize "STR_A3AU_HR_warning_info", (A3A_faction_reb get "name"), (server getVariable ["hr",0])]+"</t>";
+		};
 	};
 	case (_resourcesFIA != 5): {
 		_textX = format [localize "STR_comms_res_FIA_3",_hr,_resourcesFIA,_hrSim,_resourcesFIASim,FactionGet(reb,"name"), A3A_faction_civ get "currencySymbol"];
 	};
 };
+
+[_warningText,0,safezoneY+0.05] spawn BIS_fnc_dynamicText;
 
 if (_textX isEqualTo "") exitWith {};
  

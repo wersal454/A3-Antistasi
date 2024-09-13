@@ -132,10 +132,20 @@ if (side group _newUnit == teamPlayer) then
 
 	private _warningText = nil;
 
-	if(((server getVariable ["hr",0]) <= 5) && (tierWar >= 2)) then {
+	/*
+	Warning text:
+		WARNING!
+		(Player Faction) only has (HR-1) Respawns left!
+		A player has been killed in action (HR(NUM OF HR LOST))
+	*/
+	if(((server getVariable ["hr",0]) <= 10) && (tierWar >= 2)) then {
 		_warningText = "<t font ='PuristaBold' align = 'center' size='0.8' color='#bd0000'>" + localize "STR_A3AU_respawn_warning" +"</t>"+"<br />"+"<t font ='PuristaSemibold' align = 'center' size='0.55' color='#ebebeb'>" + format [localize "STR_A3AU_respawn_warning_info", (A3A_faction_reb get "name"), ((server getVariable ["hr",0])-1)]+"</t>"+"<br />"+"<t font ='PuristaSemibold' align = 'center' size='0.4' color='#ebebeb'>" + format [localize "STR_chats_player_kia", _deathPenaltyNum]+"</t>";
 	};
 	
+	/*
+	Warning text:
+		A player has been killed in action! (_deathPenaltyNum HR)
+	*/
 	if(((server getVariable ["hr",0]) > 5) && (tierWar >= 2)) then {
 		_warningText = "<t font ='PuristaSemibold' align = 'center' size='0.5' color='#ebebeb'>" + format [localize "STR_chats_player_kia", _deathPenaltyNum]+"</t>";
 	};

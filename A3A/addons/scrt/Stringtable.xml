@@ -4321,6 +4321,10 @@
                 <Original>%1 only has %2 Respawns left!</Original>
                 <Russian>У %1 осталось только %2 повторных появления!</Russian>
             </Key>
+            <Key ID="STR_A3AU_HR_warning_info">
+                <Original>%1 only has %2 HR left!</Original>
+                <Russian>У %1 осталось только %2 HR!</Russian>
+            </Key>
         </Container>
         <Container name="skip_time_rest">
             <Key ID="STR_params_rest_button">
