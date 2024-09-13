@@ -17,6 +17,21 @@ _resourcesFIAT = round (_resourcesFIAT + _resourcesFIA);
 if (_hrT < 0) then {_hrT = 0};
 if (_resourcesFIAT < 0) then {_resourcesFIAT = 0};
 
+switch (tierWar) do
+{
+	case 1:{if (_hrT > 200) then {_hrT = 200};};
+	case 2:{if (_hrT > 300) then {_hrT = 300};};
+	case 3:{if (_hrT > 400) then {_hrT = 400};};
+	case 4:{if (_hrT > 550) then {_hrT = 550};};
+	case 5:{if (_hrT > 700) then {_hrT = 700};};
+	case 6:{if (_hrT > 850) then {_hrT = 850};};
+	case 7:{if (_hrT > 1000) then {_hrT = 1000};};
+	case 8:{if (_hrT > 1200) then {_hrT = 1200};};
+	case 9:{if (_hrT > 1400) then {_hrT = 1400};};
+	case 10:{if (_hrT > 1600) then {_hrT = 1600};};
+	default {diag_log format["[Lose HR on Death] War tier was not recognized. Condition given: %1", tierWar]};
+};
+
 server setVariable ["hr",_hrT,true];
 server setVariable ["resourcesFIA",_resourcesFIAT,true];
 resourcesIsChanging = false;
