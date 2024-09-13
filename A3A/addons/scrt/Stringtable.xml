@@ -5026,6 +5026,10 @@
                 <Korean>반란군 팩션 초기 인력</Korean>
                 <French>Ressources humaines initiales de la faction rebelle</French>
             </Key>
+            <Key ID="STR_params_enable_HR_cap">
+                <Original>Enable HR cap</Original>
+                <Russian>Начальные людские ресурсы</Russian>
+            </Key>
             <Key ID="STR_params_newCarTowing">
                 <Original>Improved towing of wheeled vehicles</Original>
                 <Russian>Улучшенная буксировка колёсного транспорта</Russian>
@@ -6071,18 +6075,18 @@
                 <French>| %1 Aggr: %2 | %3 Aggr: %4 |</French>
             </Key>
             <Key ID="STR_info_bar_final_string_1">
-                <Original>Commander: %3 | %2 | HR: %1 / %10 | Money: %4 %9 %5 War Level: %6 | Undercover: %7 | Rally Point: %8&lt;/t&gt;</Original>
-                <Russian>Командир: %3 | %2 | HR: %1 / %10 | Деньги: %4 %9 %5 Уровень войны: %6 | Маскировка: %7 | Точка сбора: %8&lt;/t&gt;</Russian>
-                <Chinesesimp>指挥官: %3 | %2 | 人力: %1 / %10 | 钱: %4 %9 %5 战争等级: %6 | 伪装: %7 | 集结点: %8&lt;/t&gt;</Chinesesimp>
-                <Korean>지휘관: %3 | %2 | 인력: %1 / %10 | 자금: %4 %9 %5 전쟁 레벨: %6 | 위장: %7 | 집결 지점: %8&lt;/t&gt;</Korean>
-                <French>Commandant: %3 | %2 | HR: %1 / %10 | Argent: %4 %9 %5 Niveau de guerre: %6 | Sous couverture: %7 | Point de ralliement: %8</French>
+                <Original>Commander: %3 | %2 | HR: %1%10 | Money: %4 %9 %5 War Level: %6 | Undercover: %7 | Rally Point: %8&lt;/t&gt;</Original>
+                <Russian>Командир: %3 | %2 | HR: %1%10 | Деньги: %4 %9 %5 Уровень войны: %6 | Маскировка: %7 | Точка сбора: %8&lt;/t&gt;</Russian>
+                <Chinesesimp>指挥官: %3 | %2 | 人力: %1%10 | 钱: %4 %9 %5 战争等级: %6 | 伪装: %7 | 集结点: %8&lt;/t&gt;</Chinesesimp>
+                <Korean>지휘관: %3 | %2 | 인력: %1%10 | 자금: %4 %9 %5 전쟁 레벨: %6 | 위장: %7 | 집결 지점: %8&lt;/t&gt;</Korean>
+                <French>Commandant: %3 | %2 | HR: %1%10 | Argent: %4 %9 %5 Niveau de guerre: %6 | Sous couverture: %7 | Point de ralliement: %8</French>
             </Key>
             <Key ID="STR_info_bar_final_string_2">
-                <Original>%1 | HR: %2 / %11 | %3 Money: %4 %10 | Money: %5 %10 %6 War Level: %7 | Undercover: %8 | Rally Point: %9&lt;/t&gt;</Original>
-                <Russian>%1 | HR: %2 / %11 | Деньги %3: %4 %10 | Деньги: %5 %10 %6 Уровень войны: %7 | Маскировка: %8 | Точка сбора: %9&lt;/t&gt;</Russian>
-                <Chinesesimp>%1 | 人力: %2 / %11 | %3 钱: %4 %10 | 钱: %5 %10 %6 战争等级: %7 | 伪装: %8 | 集结点: %9&lt;/t&gt;</Chinesesimp>
-                <Korean>%1 | 인력: %2 / %11 | %3 자금: %4 %10 | 자금: %5 %10 %6 전쟁 레벨: %7 | 위장: %8 | 집결 지점: %9&lt;/t&gt;</Korean>
-                <French>%1 | HR: %2 / %11 | %3 Money: %4 %10 | Argent: %5 %10 %6 Niveau de guerre: %7 | Sous couverture: %8 | Point de ralliement: %9&lt;/t&gt;</French>
+                <Original>%1 | HR: %2%11 | %3 Money: %4 %10 | Money: %5 %10 %6 War Level: %7 | Undercover: %8 | Rally Point: %9&lt;/t&gt;</Original>
+                <Russian>%1 | HR: %2%11 | Деньги %3: %4 %10 | Деньги: %5 %10 %6 Уровень войны: %7 | Маскировка: %8 | Точка сбора: %9&lt;/t&gt;</Russian>
+                <Chinesesimp>%1 | 人力: %2%11 | %3 钱: %4 %10 | 钱: %5 %10 %6 战争等级: %7 | 伪装: %8 | 集结点: %9&lt;/t&gt;</Chinesesimp>
+                <Korean>%1 | 인력: %2%11 | %3 자금: %4 %10 | 자금: %5 %10 %6 전쟁 레벨: %7 | 위장: %8 | 집결 지점: %9&lt;/t&gt;</Korean>
+                <French>%1 | HR: %2%11 | %3 Money: %4 %10 | Argent: %5 %10 %6 Niveau de guerre: %7 | Sous couverture: %8 | Point de ralliement: %9&lt;/t&gt;</French>
             </Key>
             <Key ID="STR_info_bar_rivals_activity_1">
                 <Original>&lt;t color='#AE1330'&gt;Omnipresent&lt;/t&gt;</Original>

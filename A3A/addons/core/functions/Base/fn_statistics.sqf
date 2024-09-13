@@ -63,20 +63,22 @@ switch (gameMode) do {
 	};
 };
 
-private _hrM = nil;
-switch (tierWar) do
-{
-case 1:{_hrM = 200;};
-case 2:{_hrM = 300;};
-case 3:{_hrM = 400;};
-case 4:{_hrM = 550;};
-case 5:{_hrM = 700;};
-case 6:{_hrM = 850;};
-case 7:{_hrM = 1000;};
-case 8:{_hrM = 1200;};
-case 9:{_hrM = 1400;};
-case 10:{_hrM = 1600;};
-default {diag_log format["[Lose HR on Death] War tier was not recognized. Condition given: %1", tierWar]};
+private _hrM = "";
+if (limitHR isEqualTo true) then {
+	switch (tierWar) do
+	{
+		case 1:{_hrM = " / 200";};
+		case 2:{_hrM = " / 300";};
+		case 3:{_hrM = " / 400";};
+		case 4:{_hrM = " / 550";};
+		case 5:{_hrM = " / 700";};
+		case 6:{_hrM = " / 850";};
+		case 7:{_hrM = " / 1000";};
+		case 8:{_hrM = " / 1200";};
+		case 9:{_hrM = " / 1400";};
+		case 10:{_hrM = " / 1600";};
+		default {diag_log format["[Lose HR on Death] War tier was not recognized. Condition given: %1", tierWar]};
+	};
 };
 
 _aggrString = _aggrString + _rivalsActivityTxt;

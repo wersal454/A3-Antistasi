@@ -112,6 +112,13 @@ class Params
         texts[] = {"0","8","16","24","32","50"};
         default = 8;
     };
+    class limitHR
+    {
+        title = $STR_params_enable_HR_cap;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
     class A3A_idleTimeout
     {
         title = $STR_params_afk;
