@@ -128,64 +128,7 @@ while {true} do {
 		};
 	} forEach citiesX;
 
-	if (_popKilled > (_popTotal / 3)) then {
-		isNil {["ended", true] call A3A_fnc_writebackSaveVar};
-		["destroyedSites",false,true] remoteExec ["BIS_fnc_endMission"];
-	};
-
-	switch (victoryCondition) do
-	{
-		//Normal Victory
-		case 0:
-        {
-            if ((_popReb > _popGov) && {({sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (airportsX + milbases)) isEqualTo count (airportsX + milbases)}) then {
-				isNil {["ended", true] call A3A_fnc_writebackSaveVar};
-                ["End1",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
-            };
-        };
-
-		//Total Victory
-		case 1:
-        {
-            private _victoryZones = airportsX + milbases + outposts + resourcesX + factories + seaports;
-            if ((_popReb > _popGov) && {({sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (_victoryZones)) isEqualTo count (_victoryZones)}) then {
-				isNil {["ended", true] call A3A_fnc_writebackSaveVar};
-                ["totalVictory",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
-            };
-        };
-
-		//Economic Victory
-		case 2:
-		{
-			private _factionMoney = server getVariable "resourcesFIA";
-			if ((_factionMoney >= 2000000)) then {
-				isNil {["ended", true] call A3A_fnc_writebackSaveVar};
-				["economicVictory",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
-			};
-		};
-
-		//Logistical Victory
-		case 3:
-		{ 
-			private _victoryZonesLogistical = airportsX + milbases + seaports;
-			if (({sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (_victoryZonesLogistical) ) isEqualTo count (_victoryZonesLogistical)) then {
-				isNil { ["ended", true] call A3A_fnc_writebackSaveVar };
-				["logisticalVictory",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
-			};
-		};
-
-		//Political Victory (Over 75% population Support)
-		case 4:
-		{ 
-			private _popMajority = _popTotal * 0.75;
-			if ((_popReb >= _popMajority)) then {
-				isNil {["ended", true] call A3A_fnc_writebackSaveVar};
-				["politicalVictory",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
-			};
-		};
-
-		default {diag_log format["Victory condition was not recognized. Condition given: %1", victoryCondition]};
-	};
+	call A3A_fnc_checkWinCondition;
 
 	{
 		if (sidesX getVariable [_x,sideUnknown] == teamPlayer and {!(_x in destroyedSites)}) then
