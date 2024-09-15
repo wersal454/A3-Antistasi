@@ -41,7 +41,8 @@ switch (lossCondition) do
     //no HR left ()
     case 1:
     {
-        if (_hr <= 0) then
+        private _tierWarHRloss = missionNamespace getVariable ["A3U_setting_tierWarHRLoss",3];
+        if (_hr <= 0 && {(tierWar >= _tierWarHRloss)}) then 
         {
             isNil {["ended", true] call A3A_fnc_writebackSaveVar};
             ["HRLoss",false,true] remoteExec ["BIS_fnc_endMission"];
@@ -61,7 +62,7 @@ switch (lossCondition) do
     //hardcore (all loss conditions in one)
     case 3:
     {
-        if ((_factionMoney <= 0) || (_hr <= 0) || (_popKilled > (_popTotal / 3))) then
+        if ((_factionMoney <= 0) || {_hr <= 0} || {_popKilled > (_popTotal / 3)}) then
         {
             isNil {["ended", true] call A3A_fnc_writebackSaveVar};
             ["hardcoreLoss",false,true] remoteExec ["BIS_fnc_endMission"];
