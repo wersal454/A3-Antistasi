@@ -130,6 +130,10 @@ while {true} do {
 
 	call A3A_fnc_checkWinCondition;
 
+	if(lossCondition isNotEqualTo 1) then{
+		call A3A_fnc_checkLossCondition;
+	};
+
 	{
 		if (sidesX getVariable [_x,sideUnknown] == teamPlayer and {!(_x in destroyedSites)}) then
 		{

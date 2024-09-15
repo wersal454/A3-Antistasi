@@ -11,6 +11,7 @@ if ((isNil "_hr") or (isNil "_resourcesFIA")) exitWith {resourcesIsChanging = fa
 if ((floor _resourcesFIA == 0) and (floor _hr == 0)) exitWith {resourcesIsChanging = false};
 private _hrT = server getVariable "hr";
 private _resourcesFIAT = server getVariable "resourcesFIA";
+private _hrLimit = nil;
 
 _hrT = _hrT + _hr;
 _resourcesFIAT = round (_resourcesFIAT + _resourcesFIA);
@@ -18,21 +19,9 @@ _resourcesFIAT = round (_resourcesFIAT + _resourcesFIA);
 if (_hrT < 0) then {_hrT = 0};
 if (_resourcesFIAT < 0) then {_resourcesFIAT = 0};
 
-if (limitHR isEqualTo true) then {
-	switch (tierWar) do
-	{
-		case 1:{if (_hrT > 200) then {_hrT = 200};};
-		case 2:{if (_hrT > 300) then {_hrT = 300};};
-		case 3:{if (_hrT > 400) then {_hrT = 400};};
-		case 4:{if (_hrT > 550) then {_hrT = 550};};
-		case 5:{if (_hrT > 700) then {_hrT = 700};};
-		case 6:{if (_hrT > 850) then {_hrT = 850};};
-		case 7:{if (_hrT > 1000) then {_hrT = 1000};};
-		case 8:{if (_hrT > 1200) then {_hrT = 1200};};
-		case 9:{if (_hrT > 1400) then {_hrT = 1400};};
-		case 10:{if (_hrT > 1600) then {_hrT = 1600};};
-		default {diag_log format["[Lose HR on Death] War tier was not recognized. Condition given: %1", tierWar]};
-	};
+if(limitHR > 0) then {
+	_hrLimit = (((tierWar * 100) * (limitHR / 100)) + 100);
+	if (_hrT > _hrLimit) then {_hrT = _hrLimit};
 };
 
 server setVariable ["hr",_hrT,true];

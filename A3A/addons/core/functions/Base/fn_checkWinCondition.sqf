@@ -52,7 +52,7 @@ switch (victoryCondition) do
         if ((_popReb > _popGov) && {({sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (airportsX + milbases)) isEqualTo count (airportsX + milbases)}) then {
             isNil {["ended", true] call A3A_fnc_writebackSaveVar};
             ["End1",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
-        }else{
+        } else {
             isNil { [format [localize "STR_A3AU_victory_condition_check" + localize "STR_A3AU_victory_type_normal"],format [localize "STR_A3AU_victory_condition_not_met" + localize "STR_A3AU_victory_condition_normal_victory_info", (round _popReb),(round _popGov),_milbasesOwned,_milbasesTotal,_airportsOwned,_airportsTotal], true] call A3A_fnc_customHint };
         };
     };
@@ -63,7 +63,7 @@ switch (victoryCondition) do
         if ((_popReb > _popGov) && {({sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (_victoryZones)) isEqualTo count (_victoryZones)}) then {
             isNil {["ended", true] call A3A_fnc_writebackSaveVar};
             ["totalVictory",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
-        }else{
+        } else {
             isNil { [format [localize "STR_A3AU_victory_condition_check" + localize "STR_A3AU_victory_type_total"],format [localize "STR_A3AU_victory_condition_not_met" + localize "STR_A3AU_victory_condition_total_victory_info", (round _popReb),(round _popGov),_resourcesOwned,_resourcesTotal,_factoriesOwned,_factoriesTotal,_outpostsOwned,_outpostsTotal,_seaportsOwned,_seaportsTotal,_milbasesOwned,_milbasesTotal,_airportsOwned,_airportsTotal], true] call A3A_fnc_customHint };
         };
     };
@@ -74,7 +74,7 @@ switch (victoryCondition) do
         if (_factionMoney >= 2000000) then {
             isNil {["ended", true] call A3A_fnc_writebackSaveVar};
             ["economicVictory",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
-        }else{
+        } else {
             isNil { [format [localize "STR_A3AU_victory_condition_check" + localize "STR_A3AU_victory_type_economic"],format [localize "STR_A3AU_victory_condition_not_met" + localize "STR_A3AU_victory_condition_missing_money", _missingMoney, A3A_faction_civ get "currencySymbol"], true] call A3A_fnc_customHint };
         };
     };
@@ -85,7 +85,7 @@ switch (victoryCondition) do
         if (({sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count (_victoryZonesLogistical) ) isEqualTo count (_victoryZonesLogistical)) then {
             isNil { ["ended", true] call A3A_fnc_writebackSaveVar };
             ["logisticalVictory",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
-        }else{
+        } else {
             isNil { [format [localize "STR_A3AU_victory_condition_check" + localize "STR_A3AU_victory_type_logistical"],format [localize "STR_A3AU_victory_condition_not_met" + localize "STR_A3AU_victory_condition_logistical_victory_info",_seaportsOwned,_seaportsTotal,_milbasesOwned,_milbasesTotal,_airportsOwned,_airportsTotal], true] call A3A_fnc_customHint };
         };
     };
@@ -96,7 +96,7 @@ switch (victoryCondition) do
         if (_popReb >= _popMajority) then {
             isNil {["ended", true] call A3A_fnc_writebackSaveVar};
             ["politicalVictory",true,true,true,true] remoteExec ["BIS_fnc_endMission"];
-        }else{
+        } else {
             isNil { [format [localize "STR_A3AU_victory_condition_check" + localize "STR_A3AU_victory_type_political"],format [localize "STR_A3AU_victory_condition_not_met" + localize "STR_A3AU_victory_condition_missing_support",_popTotal,(round _popGov),(round _popReb)], true] call A3A_fnc_customHint };
         };
     };

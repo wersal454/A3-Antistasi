@@ -115,8 +115,8 @@ class Params
     class limitHR
     {
         title = $STR_params_enable_HR_cap;
-        values[] = {0,1};
-        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        values[] = {0,25,50,75,100,200};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,"x0.25","x0.5","x0.75","x1.0","x2.0"};
         default = 0;
     };
     class A3A_idleTimeout
@@ -277,7 +277,7 @@ class Params
     class swayEnabled
     {
         title = $STR_A3AU_sway_enabled;
-        values[] = {0,0.25,0.5,0.75,1};
+        values[] = {0,25,50,75,100};
         texts[] = {"0%","25%","50%","75%","100%"};
         default = 1;
     };

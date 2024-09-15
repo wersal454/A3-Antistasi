@@ -660,5 +660,5 @@ if (fatigueEnabled isEqualTo false) then {
 if (staminaEnabled isEqualTo false) then { 
 	player enableStamina false; 
 }; 
-
-player setCustomAimCoef swayEnabled;
+private _newWeaponSway = swayEnabled / 100;
+player setCustomAimCoef _newWeaponSway;
