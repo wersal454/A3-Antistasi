@@ -5853,8 +5853,8 @@
                 <Russian>Включено</Russian>
             </Key>
             <Key ID="STR_A3AU_yes_hr_loss_w_msg">
-                <Original>Enabled (with chat alerts)</Original>
-                <Russian>Включено (с оповещениями в чате)</Russian>
+                <Original>Enabled (with HUD alerts)</Original>
+                <Russian>Включено (с оповещениями HUD)</Russian>
             </Key>
             <Key ID="STR_A3AU_loss_condition">
                 <Original>Loss Conditions</Original>
