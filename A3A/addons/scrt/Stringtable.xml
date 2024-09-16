@@ -3136,6 +3136,14 @@
                 <Korean>공수 기계화 신속대응군</Korean>
                 <French>QRF aérienne mécanisée</French>
             </Key>
+            <Key ID="STR_notifiers_SUP_execute_QRFOrbital">
+                <Original>A %1 orbital QRF just dropped</Original>
+                <Russian>Орбитальный десант %1 приземлились</Russian>
+            </Key>
+            <Key ID="STR_notifiers_SUP_execute_QRFOrbital_marker">
+                <Original>Orbital QRF</Original>
+                <Russian>Орибальный СБР</Russian>
+            </Key>
             <Key ID="STR_notifiers_SUP_execute_airstrike">
                 <Original>%1 is about to execute an airstrike</Original>
                 <Russian>%1 собирается нанести авиаудар</Russian>
@@ -3457,6 +3465,10 @@
                 <Chinesesimp>%1 派出了一支机械化快速反应部队</Chinesesimp>
                 <Korean>%1이(가) 방금 공수 기계화 신속대응군을 보냈습니다</Korean>
                 <French>%1 vient d'envoyer une QRF mécanisée aéroportée</French>
+            </Key>
+            <Key ID="STR_notifiers_SUP_setup_QRFOrbital">
+                <Original>%1 just sent a orbital landing</Original>
+                <Russian>%1 отправили орбитальный десант</Russian>
             </Key>
             <Key ID="STR_notifiers_SUP_setup_wavedAttack">
                 <Original>%1 just sent a major attack wave</Original>
@@ -5050,6 +5062,10 @@
                 <Chinesesimp>[实验性]允许敌人使用未来支援</Chinesesimp>
                 <Korean>[실험용] 적군이 미래적인 지원을 사용하도록 허용</Korean>
                 <French>[Expérimental] Permettre à l'ennemi d'utiliser des supports futuristes</French>
+            </Key>
+            <Key ID="STR_params_allowFuturisticUnfairSupports">
+                <Original>[Experimental] Allow futuristic-unfair supports to be used by the enemy</Original>
+                <Russian>[Экспериментально] Разрешить использование противником футуристичной-несправедливой (несбалансированной) поддержки</Russian>
             </Key>
             <Key ID="STR_params_CrateOptions">
                 <Original>LOOT CRATE SETTINGS</Original>
