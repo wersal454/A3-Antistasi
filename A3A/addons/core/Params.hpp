@@ -327,8 +327,8 @@ class Params
     class settingsTimeMultiplier
     {
         title = $STR_params_timeMultiplier;
-        values[] = {1, 4, 6, 8, 12, 24};
-        texts[] = {$STR_params_timeMultiplier_0, $STR_params_timeMultiplier_1, $STR_params_timeMultiplier_2,$STR_params_timeMultiplier_3,$STR_params_timeMultiplier_4,$STR_params_timeMultiplier_5};
+        values[] = {1, 2, 3, 4, 6, 8, 12, 24};
+        texts[] = {$STR_params_timeMultiplier_0, $STR_params_timeMultiplier_1, $STR_params_timeMultiplier_2,$STR_params_timeMultiplier_3,$STR_params_timeMultiplier_4,$STR_params_timeMultiplier_5,$STR_params_timeMultiplier_6,$STR_params_timeMultiplier_7};
         default = 1;
     };
     class unflipPersonCount
