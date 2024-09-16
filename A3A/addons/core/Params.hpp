@@ -534,6 +534,14 @@ class Params
         texts[] = {$STR_antistasi_dialogs_generic_button_no_text, $STR_antistasi_dialogs_generic_button_yes_text};
         default = 0;
     };
+    class allowFuturisticUnfairSupports
+    {
+        attr[] = {"server"};
+        title = $STR_params_allowFuturisticUnfairSupports;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text, $STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
     class A3A_rebelGarrisonLimit
     {
         title = $STR_params_rebelGarrisonLimit;
