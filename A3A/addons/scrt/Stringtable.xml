@@ -4900,6 +4900,13 @@
                 <Korean>집결 지점은 몇 번 사용 가능합니까?</Korean>
                 <French>Combien de fois le point de ralliement peut-il être utilisé ?</French>
             </Key>
+            <Key ID="STR_params_rallyPointSpawnCountDisabled">
+                <Original>Rally points have been disabled</Original>
+                <Russian>Точки сбора отключены.</Russian>
+                <Chinesesimp>集结点已被禁用</Chinesesimp>
+                <Korean>집결 지점이 비활성화되었습니다.</Korean>
+                <French>Les points de rassemblement ont été désactivés</French>
+            </Key>
             <Key ID="STR_params_aiControlTime">
                 <Original>AI Control Time Limit (in seconds)</Original>
                 <Russian>Ограничение времени управления ИИ (в секундах)</Russian>

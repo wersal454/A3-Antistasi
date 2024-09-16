@@ -341,8 +341,8 @@ class Params
     class rallyPointSpawnCount
     {
         title = $STR_params_rallyPointSpawnCount;
-        values[] = {3, 5, 10, 15, 20, 30};
-        texts[] = {"3", "5", "10", "15", "20","30"};
+        values[] = {3, 5, 10, 15, 20, 30, 0};
+        texts[] = {"3", "5", "10", "15", "20", "30", $STR_params_afk_disabled};
         default = 10;
     };
     class aiControlTime
