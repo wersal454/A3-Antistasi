@@ -175,7 +175,14 @@ class Params
         values[] = {1,0};
         texts[] = {$STR_params_afk_enabled, $STR_params_afk_disabled};
         default = 1;
-    }
+    };
+    class enablePunishments
+    {
+        title = $STR_params_enablePunishments;
+        values[] = {1,0};
+        texts[] = {$STR_params_afk_enabled, $STR_params_afk_disabled};
+        default = 1;
+    };
     class zombiesUncapped
     {
         title = $STR_A3AU_uncap_zombie_spawn;

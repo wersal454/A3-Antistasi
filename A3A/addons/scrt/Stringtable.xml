@@ -4935,6 +4935,13 @@
                 <Korean>플레이어가 AI를 모집하도록 허용</Korean>
                 <French>Autoriser les joueurs à recruter l'IA</French>
             </Key>
+            <Key ID="STR_params_enablePunishments">
+                <Original>Enable invader punishments</Original>
+                <Russian>Включить наказания захватчиков</Russian>
+                <Chinesesimp>启用入侵者惩罚</Chinesesimp>
+                <Korean>침입자 처벌 활성화</Korean>
+                <French>Activer les sanctions contre les envahisseurs</French>
+            </Key>
             <Key ID="STR_params_deathPenalty">
                 <Original>Player penalty on death (How many money will be lost on death)</Original>
                 <Russian>Штраф игроку при смерти (Сколько денег будет потеряно при смерти)</Russian>
