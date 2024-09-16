@@ -169,6 +169,13 @@ class Params
         texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
         default = 1;
     };
+    class playerRecruitAI
+    {
+        title = $STR_params_playerRecruitAI;
+        values[] = {1,0};
+        texts[] = {$STR_params_afk_enabled, $STR_params_afk_disabled};
+        default = 1;
+    }
     class zombiesUncapped
     {
         title = $STR_A3AU_uncap_zombie_spawn;
