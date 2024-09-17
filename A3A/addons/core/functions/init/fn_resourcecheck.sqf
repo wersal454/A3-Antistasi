@@ -130,7 +130,7 @@ while {true} do {
 
 	call A3A_fnc_checkWinCondition;
 
-	if(lossCondition isNotEqualTo 1) then{
+	if (lossCondition isNotEqualTo 1) then {
 		call A3A_fnc_checkLossCondition;
 	};
 
