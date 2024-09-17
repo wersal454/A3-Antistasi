@@ -5716,6 +5716,9 @@
             <Key ID="STR_A3A_Params_generic_slow">
                 <Original>Slow</Original>
             </Key>
+            <Key ID="STR_A3A_Params_generic_default">
+                <Original>Default</Original>
+            </Key>
             <Key ID="STR_A3A_Params_generic_fast">
                 <Original>Fast</Original>
             </Key>
