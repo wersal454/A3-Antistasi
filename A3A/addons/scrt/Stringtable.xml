@@ -12413,11 +12413,11 @@
                 <French>Il faut regarder un joueur pour lui donner de l'argent.</French>
             </Key>
             <Key ID="STR_A3A_OrgPlayers_donateMoney_player">
-                <Original>You have donated 250%2 to %1.</Original>
-                <Russian>Вы подарили 250%2 игроку %1.</Russian>
-                <Chinesesimp>您已将 250%2 赠予玩家 %1。</Chinesesimp>
-                <Korean>%1에게 250%2을(를) 기부했습니다.</Korean>
-                <French>Vous avez fait un don de 250%2 à %1.</French>
+                <Original>You have donated %3%2 to %1.</Original>
+                <Russian>Вы подарили %3%2 игроку %1.</Russian>
+                <Chinesesimp>您已将 %3%2 赠予玩家 %1。</Chinesesimp>
+                <Korean>%1에게 %3%2을(를) 기부했습니다.</Korean>
+                <French>Vous avez fait un don de %3%2 à %1.</French>
             </Key>
             <Key ID="STR_A3A_OrgPlayers_membership_header">
                 <Original>Membership</Original>
