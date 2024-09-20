@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 FIX_LINE_NUMBERS()
 
-if(rallyPointSpawnCount isEqualTo 0) then  
+if(rallyPointSpawnCount isEqualTo 0) exitWith 
 { 
 	private _warningText = "<t font ='PuristaSemibold' align = 'center' shadow='1' shadowColor='#000000' size='0.8' color='#ebebeb'>" + localize "STR_params_rallyPointSpawnCountDisabled" +"</t>"; 
 	[_warningText,0,safezoneY+0.5] spawn BIS_fnc_dynamicText; 
