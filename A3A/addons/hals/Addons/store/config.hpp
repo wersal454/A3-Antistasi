@@ -74,6 +74,7 @@ class cfgHALsStore
 		#include "config\fow.hpp"
 		#include "config\eaw.hpp"
 		#include "config\cwr.hpp"
+		#include "config\ProjInfAD.hpp"
 	};
 
 	class stores 
@@ -828,6 +829,19 @@ class cfgHALsStore
 				"launcherMagazinesCWR", 
 				"magazinesCWR", 
 				"opticsCWR"
+			};
+		};
+		class ProjInf_Stock
+		{
+			displayName = $STR_ARMS_DEALER_STORE;
+			categories[] = {
+				"handgunsProjInfAD",
+				"riflesProjInfAD", 
+				"sniperRiflesProjInfAD",
+				"muzzlesProjInfAD",
+				"opticsProjInfAD",
+				"magazinesProjInfAD",
+				"underbarrelProjInfAD"
 			};
 		};
 	};

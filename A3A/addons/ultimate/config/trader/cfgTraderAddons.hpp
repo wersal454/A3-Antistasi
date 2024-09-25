@@ -262,3 +262,8 @@
         addons[] = {"sab_navallegends"};
         vehicles = "vehicles_navleg";
     };
+    class addons_ProjInfADCompat : addons_base
+    {
+        addons[] = {"bnae_core"};
+        weapons = "ProjInf_ADCompat";
+    };

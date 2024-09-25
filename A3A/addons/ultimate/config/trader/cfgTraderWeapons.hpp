@@ -142,3 +142,7 @@
         {
             prefix = "cwrstock";
         };
+        class ProjInf_ADCompat : weapons_base
+        {
+            prefix = "ProjInf_Stock"
+        };
