@@ -5804,6 +5804,11 @@
                 <English>Notify Players When Downed</English>
                 <Russian>Placeholder</Russian>
             </Key>
+            <Key ID="STR_A3AU_disable_trader">
+                <Original>Disable Arms Dealer</Original>
+                <English>Disable Arms Dealer</English>
+                <Russian>Placeholder</Russian>
+            </Key>
             <Key ID="STR_A3AU_stamina_enabled">
                 <Original>Enable Stamina (Vanilla)</Original>
                 <English>Enable Stamina (Vanilla)</English>
