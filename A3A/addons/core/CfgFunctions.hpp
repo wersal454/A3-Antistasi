@@ -185,6 +185,8 @@ class CfgFunctions
             class unlockVehicle {};
             class updateRebelStatics {};
             class zoneCheck {};
+            class checkWinCondition {};
+            class checkLossCondition {};
         };
 
         class Builder {
