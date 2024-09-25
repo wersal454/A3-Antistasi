@@ -234,12 +234,36 @@
                 <Korean>알티스군(AAF).\n퇴역되었고 구식이지만 여전히 효과적인 서방 장비를 광범위하게 효과적으로 사용하는 작지만 사기가 높은 군대입니다.</Korean>
                 <French>Forces armées d'Altis (AAF).\nPetite force, mais très motivée, qui utilise efficacement une large gamme d'équipements occidentaux déclassés et obsolètes, mais toujours efficaces.</French>
             </Key>
+            <Key ID="STR_A3AP_setupFactionsTab_ldf">
+                <Original>Livonian Defense Force (LDF).\nStructured around defending the tiny NATO member state's territory, the bulk of its forces consist of light infantry and motorised/mechanised elements. Its air force, while not significant, is still a sizeable presence to be reckoned with.</Original>
+                <Russian>Вооруженные Силы Ливонии (ВСЛ).\Основная часть её сил, созданных для защиты территории крошечного государства-члена НАТО, состоит из легкой пехоты и моторизованных подразделений. Ее военно-воздушные силы, хотя и не являются значительными, все же являются значительным контингентом, с которым следует считаться.</Russian>
+            </Key>
+            <Key ID="STR_A3AP_setupFactionsTab_natoandldf">
+                <Original>North Atlantic Treaty Organization and Livonian Defense Force (NATO and LDF).\nAfter successful combined training in Livonia, tension between CSAT and NATO increased. LDF decided to let NATO build more of their bases to increase their chances if their eastern neighbor will make it's move.</Original>
+                <Russian>Организация Североатлантического договора и Вооруженные Силы Ливонии (НАТО и ВСЛ).\После успешных совместных учений в Ливонии напряженность в отношениях между CSAT и НАТО возросла. Вооруженные силы Ливии решили позволить НАТО построить больше своих баз, чтобы увеличить свои шансы, если их восточный сосед начнёт действовать.</Russian>
+            </Key>
+            <Key ID="STR_A3AP_setupFactionsTab_csatandaaf">
+                <Original>Canton Protocol Strategic Alliance Treaty and Altis Armed Forces (CSAT and AAF).\nAfter NATO forces took over Altis archipelagos, AAF stroke deal with CSAT to return control of their islands, but at the cost of becoming their puppets and dragging their nation in the bigger conflict.</Original>
+                <Russian>Стратегический Альянс по Договору Гуанчжоу и Вооруженные силы Альтиса (CSAT и AAF).\После жестокой гражданской войны правительство Альтиса и армия остались в руинах. После переговоров с НАТО, AAF получат запрошенную поддержку, но ценой своей автономии.</Russian>
+            </Key>
+            <Key ID="STR_A3AP_setupFactionsTab_natoandaaf">
+                <Original>North Atlantic Treaty Organization and Altis Armed Forces (NATO and AAF).\nAfter brutal civil war, Altis government and militiraly were left in ruin. After negotiations with NATO, AAF will receive requested support, but at the cost of their autonomy.</Original>
+                <Russian>Организация Североатлантического договора и Вооруженные силы Альтиса (НАТО и AAF).\После жестокой гражданской войны правительство Альтиса и армия остались в руинах. После переговоров с НАТО, AAF получат запрошенную поддержку, но ценой своей автономии.</Russian>
+            </Key>
             <Key ID="STR_A3AP_setupFactionsTab_aaf_3cbf">
                 <Original>Altis Armed Forces (AAF).\nSmall, but highly motivated force which effectively uses a wide range of decomissioned and outdated yet still effective equipment around the world.</Original>
                 <Russian>Вооруженные силы Алтиса (AAF).\nНебольшая, но высокомотивированная сила, эффективно использующая широкий спектр хоть и выведенной из эксплуатации и устаревшей, но все еще эффективной номеклатуры вооружений со всего света.</Russian>
                 <Chinesesimp>阿尔蒂斯武装部队 (AAF)\n规模小但士气高涨的部队，能有效地使用各种退役的、过时的但仍然有效的各国装备。</Chinesesimp>
                 <Korean>알티스군(AAF).\n전 세계적으로 퇴역되었고 구식이지만 여전히 효과적인 서방 장비를 광범위하게 효과적으로 사용하는 작지만 사기가 높은 군대입니다.</Korean>
                 <French>Forces armées d'Altis (AAF).\nPetite, mais très motivée, force qui utilise efficacement une large gamme d'équipements déclassés et obsolètes, mais toujours efficaces, dans le monde entier.</French>
+            </Key>
+            <Key ID="STR_A3AP_setupFactionsTab_natoanduna">
+                <Original>North Atlantic Treaty Organization and United Nations Agency (NATO and UNA).\nAfter a series of attacks on UN peacekeepers within the Sefrou-Ramal region, some of which were seemingly perpetrated by elements of the SFIA, it was agreed that a NATO task force would provide support to ensure the safety of aid workers and UN staff in the region.</Original>
+                <Russian>Организация Североатлантического договора и Учреждение Организации Объединенных Наций (НАТО и ООН).\После серии нападений на миротворцев ООН в регионе Сефру-Рамаль, некоторые из которых, по всей видимости, были совершены боевиками SFIA, было решено, что оперативная группа НАТО окажет поддержку в обеспечении безопасности гуманитарных работников и персонала ООН в регионе.</Russian>
+            </Key>
+            <Key ID="STR_A3AP_setupFactionsTab_csatandsfia">
+                <Original>Canton Protocol Strategic Alliance Treaty and Sefrawi Freedom and Independence Army (CSAT and SFIA).\nAfter recent attacks by Tura forces on SFIA military bases and increasing presence of NATO forces to oversee UN peacekeeping operations, a decision was made by the Arganan government to station CSAT forces in Sefrou-Ramal to bolster regional security.</Original>
+                <Russian>Стратегический Альянс по Договору Гуанчжоу и Армия свободы и независимости Сефрауи (CSAT и SFIA).\После недавних нападений сил Тура на военные базы SFIA и увеличения присутствия сил НАТО для наблюдения за миротворческими операциями ООН правительство Арганы приняло решение разместить силы CSAT в Сефру-Рамале для укрепления региональной безопасности.</Russian>
             </Key>
             <Key ID="STR_A3AP_setupFactionsTab_tka">
                 <Original>Takistan Army (TKA).\nA mix of military and paramilitary forces using dated equipment all around the world.</Original>
@@ -3220,6 +3244,14 @@
                 <Korean>공수 기계화 신속대응군</Korean>
                 <French>QRF aérienne mécanisée</French>
             </Key>
+            <Key ID="STR_notifiers_SUP_execute_QRFOrbital">
+                <Original>A %1 orbital QRF just dropped</Original>
+                <Russian>Орбитальный десант %1 приземлились</Russian>
+            </Key>
+            <Key ID="STR_notifiers_SUP_execute_QRFOrbital_marker">
+                <Original>Orbital QRF</Original>
+                <Russian>Орибальный СБР</Russian>
+            </Key>
             <Key ID="STR_notifiers_SUP_execute_airstrike">
                 <Original>%1 is about to execute an airstrike</Original>
                 <Russian>%1 собирается нанести авиаудар</Russian>
@@ -3541,6 +3573,10 @@
                 <Chinesesimp>%1 派出了一支机械化快速反应部队</Chinesesimp>
                 <Korean>%1이(가) 방금 공수 기계화 신속대응군을 보냈습니다</Korean>
                 <French>%1 vient d'envoyer une QRF mécanisée aéroportée</French>
+            </Key>
+            <Key ID="STR_notifiers_SUP_setup_QRFOrbital">
+                <Original>%1 just sent a orbital landing</Original>
+                <Russian>%1 отправили орбитальный десант</Russian>
             </Key>
             <Key ID="STR_notifiers_SUP_setup_wavedAttack">
                 <Original>%1 just sent a major attack wave</Original>
@@ -5198,6 +5234,10 @@
                 <Chinesesimp>[实验性]允许敌人使用未来支援</Chinesesimp>
                 <Korean>[실험용] 적군이 미래적인 지원을 사용하도록 허용</Korean>
                 <French>[Expérimental] Permettre à l'ennemi d'utiliser des supports futuristes</French>
+            </Key>
+            <Key ID="STR_params_allowFuturisticUnfairSupports">
+                <Original>[Experimental] Allow futuristic-unfair supports to be used by the enemy</Original>
+                <Russian>[Экспериментально] Разрешить использование противником футуристичной-несправедливой (несбалансированной) поддержки</Russian>
             </Key>
             <Key ID="STR_params_CrateOptions">
                 <Original>LOOT CRATE SETTINGS</Original>

@@ -54,7 +54,15 @@ else
         };
         case ("QRFVEHAIRDROP"): 
         {
-            _text = format [localize "STR_notifiers_SUP_setup_QRFVehAirdrop", _sideName];
+            _text = format [localize "STR_notifiers_SUP_execute_QRFAirdrop", _sideName];
+        };
+        case ("QRFORBITAL"): 
+        {
+            _text = format [localize "STR_notifiers_SUP_execute_QRFOrbital", _sideName];
+        };
+        case ("TANK"):
+        {
+            _text = format [localize "STR_A3A_fn_support_showIntStpCll_TANK", _sideName];
         };
         case ("TANK"):
         {
