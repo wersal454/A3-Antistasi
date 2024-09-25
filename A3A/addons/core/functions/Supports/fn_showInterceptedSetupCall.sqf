@@ -64,6 +64,10 @@ else
         {
             _text = format [localize "STR_A3A_fn_support_showIntStpCll_TANK", _sideName];
         };
+        case ("TANK"):
+        {
+            _text = format [localize "STR_A3A_fn_support_showIntStpCll_TANK", _sideName];
+        };
         case ("AIRSTRIKE"):
         {
             _text = format [localize "STR_notifiers_SUP_setup_airstrike", _sideName];
