@@ -26,6 +26,7 @@
 
 ["vehiclesPlanesLargeCAS", []] call _fnc_saveToTemplate;
 ["vehiclesPlanesLargeAA", []] call _fnc_saveToTemplate;
+["vehiclesPlanesGunship", []] call _fnc_saveToTemplate;
 
 ["flares", ["F_40mm_white", "F_40mm_Red", "F_40mm_Yellow", "F_40mm_Green"]] call _fnc_saveToTemplate;
 
