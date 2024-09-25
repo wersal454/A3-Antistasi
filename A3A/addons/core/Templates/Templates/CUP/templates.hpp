@@ -259,3 +259,19 @@
         name = "CUP LDF";
         file = "CUP_AI_LDF";
     };
+
+    // NorAF
+    class CUP_FlexNorAF_Temperate : CUP_Base
+    {
+        side = "Occ"; // Inv, Occ, Reb, Riv, Civ
+        flagTexture = "\A3\ui_f\data\map\markers\flags\Norway_ca.paa"; // Path to an icon to be displayed in the select menu.
+        name = "CUP NorAF Temperate"; // Name shown in the select menu.
+        file = "CUP_FlexNorAF_Temperate"; // The template file name - .sqf, that gets appended automatically.
+        climate[] = {"temperate","tropical"}; // climate that the template can be selected on.
+    };
+    class CUP_FlexNorAF_Arctic : CUP_FlexNorAF_Temperate
+    {
+        name = "CUP NorAF Arctic"; // Name shown in the select menu.
+        file = "CUP_FlexNorAF_Arctic"; // The template file name - .sqf, that gets appended automatically.
+        climate[] = {"arctic"}; // climate that the template can be selected on.
+    };
