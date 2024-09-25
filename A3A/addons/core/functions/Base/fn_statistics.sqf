@@ -63,6 +63,14 @@ switch (gameMode) do {
 	};
 };
 
+private _hrMax = "";
+private _hrLimit = "";
+
+if (limitHR != 0) then {
+	_hrLimit = (((tierWar * 100) * (limitHR / 100)) + 100);
+	_hrMax = format[" / %1",_hrLimit]; 
+};
+
 _aggrString = _aggrString + _rivalsActivityTxt;
 
 if (_player != theBoss) then {
@@ -80,7 +88,8 @@ if (_player != theBoss) then {
 		tierWar, 
 		_ucovertxt, 
 		_rallytxt, 
-		A3A_faction_civ get "currencySymbol"
+		A3A_faction_civ get "currencySymbol",
+		_hrMax
 	];
 } else {
 	_textX = format [
@@ -94,7 +103,8 @@ if (_player != theBoss) then {
 		tierWar, 
 		_ucovertxt, 
 		_rallytxt, 
-		A3A_faction_civ get "currencySymbol"
+		A3A_faction_civ get "currencySymbol",
+		_hrMax
 	];
 };
 

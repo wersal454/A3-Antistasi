@@ -112,6 +112,13 @@ class Params
         texts[] = {"0","8","16","24","32","50"};
         default = 8;
     };
+    class limitHR
+    {
+        title = $STR_params_enable_HR_cap;
+        values[] = {0,25,50,75,100,200};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,"x0.25","x0.5","x0.75","x1.0","x2.0"};
+        default = 0;
+    };
     class A3A_idleTimeout
     {
         title = $STR_params_afk;
@@ -162,6 +169,34 @@ class Params
         texts[] = {""};
         default = "";
     };
+    class totalVictory //deprecated Dont Use
+    {
+        title = $STR_A3AU_total_victory_deprecated;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
+    class victoryCondition
+    {
+        title = $STR_A3AU_victory_condition;
+        values[] = {0,1,2,3,4};
+        texts[] = {$STR_A3AU_normal_victory,$STR_A3AU_total_victory,$STR_A3AU_economic_victory,$STR_A3AU_logistical_victory,$STR_A3AU_political_victory};
+        default = 0;
+    };
+    class lossCondition
+    {
+        title = $STR_A3AU_loss_condition;
+        values[] = {0,1,2,3};
+        texts[] = {$STR_A3AU_loss_condition_pop_death,$STR_A3AU_loss_condition_hr,$STR_A3AU_loss_condition_money,$STR_A3AU_loss_condition_all};
+        default = 0;
+    };
+    class loseHROnDeath
+    {
+        title = $STR_A3AU_hr_loss;
+        values[] = {0,1,2};
+        texts[] = {$STR_A3AU_no_hr_loss,$STR_A3AU_yes_hr_loss,$STR_A3AU_yes_hr_loss_w_msg};
+        default = 0;
+    };
     class cosmeticsEnabled
     {
         title = $STR_A3AU_cosmetics;
@@ -211,13 +246,6 @@ class Params
         texts[] = {"100", "300", "500", "1000", "1500", "2000"};
         default = 500;
     };
-    class totalVictory
-    {
-        title = $STR_A3AU_total_victory;
-        values[] = {0,1};
-        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
-        default = 0;
-    };
     class blackMarketIgnoreRequirements
     {
         title = $STR_A3AU_blackmarket_ignore_requirements;
@@ -256,7 +284,7 @@ class Params
     class swayEnabled
     {
         title = $STR_A3AU_sway_enabled;
-        values[] = {0,0.25,0.5,0.75,1};
+        values[] = {0,25,50,75,100};
         texts[] = {"0%","25%","50%","75%","100%"};
         default = 1;
     };

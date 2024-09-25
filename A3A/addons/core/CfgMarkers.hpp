@@ -1,6 +1,70 @@
 class CfgMarkers 
 {
 	class flag_NATO;
+	class n_inf;
+
+	class A3AU_Total_Victory : n_inf
+	{
+		name = "Total Victory Marker";
+		icon = QPATHTOFOLDER(Pictures\Markers\TotalVictory.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\TotalVictory.paa);
+	};
+
+	class A3AU_Normal_Victory : n_inf
+	{
+		name = "Normal Victory Marker";
+		icon = QPATHTOFOLDER(Pictures\Markers\NormalVictory.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\NormalVictory.paa);
+	};
+
+	class A3AU_Economic_Victory : n_inf
+	{
+		name = "Economic Victory Marker";
+		icon = QPATHTOFOLDER(Pictures\Markers\EconomicVictory.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\EconomicVictory.paa);
+	};
+
+	class A3AU_Logistical_Victory : n_inf
+	{
+		name = "Logistical Victory Marker";
+		icon = QPATHTOFOLDER(Pictures\Markers\LogisticalVictory.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\LogisticalVictory.paa);
+	};
+
+	class A3AU_Political_Victory : n_inf
+	{
+		name = "Political Victory Marker";
+		icon = QPATHTOFOLDER(Pictures\Markers\PoliticalVictory.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\PoliticalVictory.paa);
+	};
+
+	class A3AU_Population_Death : n_inf
+	{
+		name = "Population Death Marker";
+		icon = QPATHTOFOLDER(Pictures\Markers\popDeath.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\popDeath.paa);
+	};
+
+	class A3AU_Human_Resource_Loss : n_inf
+	{
+		name = "Human Resource Loss Marker";
+		icon = QPATHTOFOLDER(Pictures\Markers\HRLoss.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\HRLoss.paa);
+	};
+
+	class A3AU_Financial_Loss : n_inf
+	{
+		name = "Financial Loss Marker";
+		icon = QPATHTOFOLDER(Pictures\Markers\financialLoss.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\financialLoss.paa);
+	};
+
+	class A3AU_Hardcore_Loss : n_inf
+	{
+		name = "Hardcore Loss Marker";
+		icon = QPATHTOFOLDER(Pictures\Markers\hardcoreLoss.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\hardcoreLoss.paa);
+	};
 
 	class a3a_flag_aaf_torn_co: flag_NATO 
 	{
