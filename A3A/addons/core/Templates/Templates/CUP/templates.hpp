@@ -260,18 +260,27 @@
         file = "CUP_AI_LDF";
     };
 
-    // NorAF
-    class CUP_FlexNorAF_Temperate : CUP_Base
+    //CUP NorAF
+
+    class NorAF_Base : CUP_Base
     {
-        side = "Occ"; // Inv, Occ, Reb, Riv, Civ
-        flagTexture = "\A3\ui_f\data\map\markers\flags\Norway_ca.paa"; // Path to an icon to be displayed in the select menu.
-        name = "CUP NorAF Temperate"; // Name shown in the select menu.
-        file = "CUP_FlexNorAF_Temperate"; // The template file name - .sqf, that gets appended automatically.
-        climate[] = {"temperate","tropical"}; // climate that the template can be selected on.
+        requiredAddons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core", "Flex_CUP_NOR_Faction"};        // units, weapons, vehicles
+        //requiredAddons[] = {"CUP_AirVehicles_Core"};        // vehicles requires units & weapons
+        priority = 61;
     };
-    class CUP_FlexNorAF_Arctic : CUP_FlexNorAF_Temperate
+
+    class CUP_NorAF_Temperate : NorAF_Base
     {
-        name = "CUP NorAF Arctic"; // Name shown in the select menu.
-        file = "CUP_FlexNorAF_Arctic"; // The template file name - .sqf, that gets appended automatically.
-        climate[] = {"arctic"}; // climate that the template can be selected on.
+        side = "Occ";
+        flagTexture = "\A3\ui_f\data\map\markers\flags\Norway_ca.paa";
+        name = "CUP NorAF Temperate";
+        file = "CUP_AI_NorAF_Temperate";
+        climate[] = {"temperate","tropical"};
+    };
+
+    class CUP_NorAF_Arctic : CUP_NorAF_Temperate
+    {
+        name = "CUP NorAF Arctic";
+        file = "CUP_AI_NorAF_Arctic";
+        climate[] = {"arctic"};
     };

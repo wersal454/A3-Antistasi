@@ -104,8 +104,6 @@ if (isClass (configFile >> "CfgPatches" >> "F16_Norwegian_Reskin")) then {
 ["minefieldAT", ["CUP_Mine"]] call _fnc_saveToTemplate;
 ["minefieldAPERS", ["APERSMine"]] call _fnc_saveToTemplate;
 
-#include "CUP_FlexNorAF_Vehicle_Attributes.sqf"
-
 /////////////////////
 ///  Identities   ///
 /////////////////////
@@ -682,10 +680,10 @@ _militiaLoadoutData set ["slRifles", [
 
 ["CUP_arifle_AG36", "", "CUP_acc_Flashlight", "CUP_optic_G36DualOptics_3D", ["CUP_30Rnd_556x45_G36", "CUP_30Rnd_TE1_Green_Tracer_556x45_G36"], ["CUP_1Rnd_Smoke_M203"], ""],
 ["CUP_arifle_AG36_wdl", "", "CUP_acc_Flashlight", "CUP_optic_G36DualOptics_3D", ["CUP_30Rnd_556x45_G36", "CUP_30Rnd_TE1_Green_Tracer_556x45_G36"], ["CUP_1Rnd_Smoke_M203"], ""],
-["CUP_arifle_M4A1_BUIS_GL", "", "CUP_acc_Flashlight", "CUP_optic_G36DualOptics_3D", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_Smoke_M203"], ""],
-["CUP_arifle_M4A1_BUIS_camo_GL", "", "CUP_acc_Flashlight", "CUP_optic_G36DualOptics_3D", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_Smoke_M203"], ""],
-["CUP_arifle_M4A1_GL_carryhandle", "", "", "CUP_optic_G36DualOptics_3D", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_Smoke_M203"], ""],
-["CUP_arifle_M4A1_GL_carryhandle_camo", "", "", "CUP_optic_G36DualOptics_3D", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_Smoke_M203"], ""]
+["CUP_arifle_M4A1_BUIS_GL", "", "CUP_acc_Flashlight", "", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_Smoke_M203"], ""],
+["CUP_arifle_M4A1_BUIS_camo_GL", "", "CUP_acc_Flashlight", "", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_Smoke_M203"], ""],
+["CUP_arifle_M4A1_GL_carryhandle", "", "", "", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_Smoke_M203"], ""],
+["CUP_arifle_M4A1_GL_carryhandle_camo", "", "", "", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_Smoke_M203"], ""]
 ]];
 _militiaLoadoutData set ["rifles", [
 ["CUP_arifle_G36A", "", "CUP_acc_Flashlight", "CUP_optic_G36DualOptics_3D", ["CUP_30Rnd_556x45_G36", "CUP_30Rnd_TE1_Green_Tracer_556x45_G36"], [], ""],
@@ -698,15 +696,15 @@ _militiaLoadoutData set ["rifles", [
 _militiaLoadoutData set ["carbines", [
 ["CUP_arifle_M4A1_standard_short_black", "", "CUP_acc_Flashlight", "", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], [], ""],
 ["CUP_arifle_M4A1_standard_short_wdl", "", "CUP_acc_Flashlight", "", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], [], ""],
-["CUP_arifle_G36C_VFG_Carry", "", "CUP_acc_Flashlight", "", ["CUP_30Rnd_556x45_G36", "CUP_30Rnd_TE1_Green_Tracer_556x45_G36"], [], ""]
+["CUP_arifle_G36C_VFG_Carry", "", "CUP_acc_Flashlight", "CUP_optic_G36DualOptics_3D", ["CUP_30Rnd_556x45_G36", "CUP_30Rnd_TE1_Green_Tracer_556x45_G36"], [], ""]
 ]];
 _militiaLoadoutData set ["grenadeLaunchers", [
 ["CUP_arifle_AG36", "", "CUP_acc_Flashlight", "CUP_optic_G36DualOptics_3D", ["CUP_30Rnd_556x45_G36", "CUP_30Rnd_TE1_Green_Tracer_556x45_G36"], ["CUP_1Rnd_HE_M203"], ""],
 ["CUP_arifle_AG36_wdl", "", "CUP_acc_Flashlight", "CUP_optic_G36DualOptics_3D", ["CUP_30Rnd_556x45_G36", "CUP_30Rnd_TE1_Green_Tracer_556x45_G36"], ["CUP_1Rnd_HE_M203"], ""],
-["CUP_arifle_M4A1_BUIS_GL", "", "CUP_acc_Flashlight", "CUP_optic_G36DualOptics_3D", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_HE_M203"], ""],
-["CUP_arifle_M4A1_BUIS_camo_GL", "", "CUP_acc_Flashlight", "CUP_optic_G36DualOptics_3D", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_HE_M203"], ""],
-["CUP_arifle_M4A1_GL_carryhandle", "", "", "CUP_optic_G36DualOptics_3D", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_HE_M203"], ""],
-["CUP_arifle_M4A1_GL_carryhandle_camo", "", "", "CUP_optic_G36DualOptics_3D", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_HE_M203"], ""]
+["CUP_arifle_M4A1_BUIS_GL", "", "CUP_acc_Flashlight", "", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_HE_M203"], ""],
+["CUP_arifle_M4A1_BUIS_camo_GL", "", "CUP_acc_Flashlight", "", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_HE_M203"], ""],
+["CUP_arifle_M4A1_GL_carryhandle", "", "", "", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_HE_M203"], ""],
+["CUP_arifle_M4A1_GL_carryhandle_camo", "", "", "", ["CUP_30Rnd_556x45_Stanag", "CUP_30Rnd_556x45_Stanag_Tracer_Green"], ["CUP_1Rnd_HE_M203"], ""]
 ]];
 _militiaLoadoutData set ["SMGs", [
 ["CUP_smg_MP5A5", "", "CUP_acc_Flashlight_MP5", "", ["CUP_30Rnd_9x19_MP5", "CUP_30Rnd_Green_Tracer_9x19_MP5"], [], ""],
