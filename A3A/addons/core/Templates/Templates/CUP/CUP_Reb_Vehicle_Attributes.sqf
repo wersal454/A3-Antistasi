@@ -11,6 +11,9 @@
 
     // civ helicopters
     ["CUP_I_Merlin_HC3_PMC_Lux_3C", ["rebCost", 8000]],
+    
+    // jets
+    ["CUP_B_Su25_Dyn_CDF", ["rebCost", 20000]],
     // WM vehicles
     ["a3u_cup_lr_mg_wl", ["rebCost", 1000]],
     ["a3u_cup_m1025_m240_olive", ["rebCost", 2000]],
