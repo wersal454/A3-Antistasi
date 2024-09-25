@@ -645,6 +645,7 @@ class CfgFunctions
             class SUP_gunshipRoutinePelican {};
             class SUP_gunshipRoutineStarWarsHMP {};
             class SUP_gunshipRoutineStarWarsLAAT {};
+            class SUP_gunshipRoutine3CBAC47 {};
             class SUP_gunshipSpawn {};
             class SUP_mortar {};
             class SUP_mortarAvailable {};
