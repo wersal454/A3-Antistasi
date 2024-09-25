@@ -442,6 +442,7 @@ class CfgFunctions
             class addScorePlayer {};
             class addMoneyPlayer {};
             class donateMoney {};
+            class donateMoneyPercentage {};
             class isMember {};
             class makePlayerBossIfEligible {};
             class memberAdd {};

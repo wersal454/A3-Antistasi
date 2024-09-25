@@ -6493,11 +6493,11 @@
                 <French>Utilisez cette option pour supprimer le joueur que vous êtes en train de regarder de la liste des membres.</French>
             </Key>
             <Key ID="STR_antistasi_dialogs_donate_faction_title">
-                <Original>Donate 250 Money to faction</Original>
-                <Russian>Передать 250 денег фракции</Russian>
-                <Chinesesimp>捐250块给派系</Chinesesimp>
-                <Korean>팩션에 자금 250 기부</Korean>
-                <French>Faire un don de 250 euros à la faction</French>
+                <Original>Donate Money to faction</Original>
+                <Russian>Передать денег фракции</Russian>
+                <Chinesesimp>捐块给派系</Chinesesimp>
+                <Korean>팩션에 자금 기부</Korean>
+                <French>Faire un don de euros à la faction</French>
             </Key>
             <Key ID="STR_antistasi_dialogs_donate_faction_tooltip">
                 <Original>Donates your personal money to rebel faction. It will increase your prestige among rebels.</Original>
@@ -6507,11 +6507,11 @@
                 <French>Fait don de votre argent personnel à la faction rebelle. Cela augmentera votre prestige parmi les rebelles.</French>
             </Key>
             <Key ID="STR_antistasi_dialogs_donate_player_title">
-                <Original>Donate 250 money to player</Original>
-                <Russian>Передать 250 денег игроку</Russian>
-                <Chinesesimp>捐250钱给玩家</Chinesesimp>
-                <Korean>플레이어에게 자금 250 기부</Korean>
-                <French>Faire un don de 250 euros au joueur</French>
+                <Original>Donate Money to player</Original>
+                <Russian>Передать денег игроку</Russian>
+                <Chinesesimp>捐钱给玩家</Chinesesimp>
+                <Korean>플레이어에게 자금 기부</Korean>
+                <French>Faire un don de euros au joueur</French>
             </Key>
             <Key ID="STR_antistasi_dialogs_donate_player_tooltip">
                 <Original>Donates your personal money to player you're looking at.</Original>
@@ -12555,11 +12555,11 @@
                 <French>Vous avez moins de 250%1 à donner.</French>
             </Key>
             <Key ID="STR_A3A_OrgPlayers_donateMoney_success">
-                <Original>You have donated 250%1 to the cause. This will raise your status among our forces.</Original>
-                <Russian>Вы пожертвовали 250%1 на общее благо. Это поднимет вашу репутацию среди участников нашего движения.</Russian>
-                <Chinesesimp>已为该事业捐赠了 250%1。 这将提高你在我们部队中的地位。</Chinesesimp>
-                <Korean>250%1을(를) 기부하였습니다. 이 행위는 우리 군대에서 당신의 지위를 높일 것입니다.</Korean>
-                <French>Vous avez fait un don de 250%1 à la cause. Cela augmentera votre statut au sein de nos forces.</French>
+                <Original>You have donated %1%2 to the cause. This will raise your status among our forces.</Original>
+                <Russian>Вы пожертвовали %1%2 на общее благо. Это поднимет вашу репутацию среди участников нашего движения.</Russian>
+                <Chinesesimp>已为该事业捐赠了 %1%2。 这将提高你在我们部队中的地位。</Chinesesimp>
+                <Korean>%1%2을(를) 기부하였습니다. 이 행위는 우리 군대에서 당신의 지위를 높일 것입니다.</Korean>
+                <French>Vous avez fait un don de %1%2 à la cause. Cela augmentera votre statut au sein de nos forces.</French>
             </Key>
             <Key ID="STR_A3A_OrgPlayers_donateMoney_no_player">
                 <Original>You must be looking to a player in order to give him money.</Original>
@@ -12569,11 +12569,11 @@
                 <French>Il faut regarder un joueur pour lui donner de l'argent.</French>
             </Key>
             <Key ID="STR_A3A_OrgPlayers_donateMoney_player">
-                <Original>You have donated 250%2 to %1.</Original>
-                <Russian>Вы подарили 250%2 игроку %1.</Russian>
-                <Chinesesimp>您已将 250%2 赠予玩家 %1。</Chinesesimp>
-                <Korean>%1에게 250%2을(를) 기부했습니다.</Korean>
-                <French>Vous avez fait un don de 250%2 à %1.</French>
+                <Original>You have donated %3%2 to %1.</Original>
+                <Russian>Вы подарили %3%2 игроку %1.</Russian>
+                <Chinesesimp>您已将 %3%2 赠予玩家 %1。</Chinesesimp>
+                <Korean>%1에게 %3%2을(를) 기부했습니다.</Korean>
+                <French>Vous avez fait un don de %3%2 à %1.</French>
             </Key>
             <Key ID="STR_A3A_OrgPlayers_membership_header">
                 <Original>Membership</Original>

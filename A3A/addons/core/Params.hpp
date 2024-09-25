@@ -260,6 +260,13 @@ class Params
         texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
         default = 0;
     };
+    class disableTrader
+    {
+        title = $STR_A3AU_disable_trader;
+        values[] = {0,1};
+        texts[] = {$STR_antistasi_dialogs_generic_button_no_text,$STR_antistasi_dialogs_generic_button_yes_text};
+        default = 0;
+    };
     class staminaEnabled
     {
         title = $STR_A3AU_stamina_enabled;
@@ -503,6 +510,14 @@ class Params
         texts[] =  {"1.0x","1.1x","1.2x","1.3x","1.4x","1.5x","1.6x","1.7x","1.8x","1.9x","2.0x"};
         default = 12;
     };
+    class A3A_enemyResponseTime
+    {
+        attr[] = {"server"};
+        title = $STR_A3A_Params_enemyResponseTime_title;
+        values[] = {20,15,10,7,5};
+        texts[] =  {$STR_A3A_Params_generic_veryslow, $STR_A3A_Params_generic_slow, $STR_A3A_Params_generic_normal, $STR_A3A_Params_generic_fast, $STR_A3A_Params_generic_veryfast};
+        default = 10;
+    };
     class A3A_attackHQProximityMul
     {
         attr[] = {"server"};
@@ -613,7 +628,6 @@ class Params
         values[] = {1,0};
         texts[] = {$STR_antistasi_dialogs_generic_button_yes_text, $STR_antistasi_dialogs_generic_button_no_text};
         default = 1;
-
     };
     class allowUnlockedExplosives
     {
@@ -622,7 +636,6 @@ class Params
         values[] = {1,0};
         texts[] = {$STR_antistasi_dialogs_generic_button_yes_text,$STR_antistasi_dialogs_generic_button_no_text};
         default = 0;
-
     };
     class startWithLongRangeRadio
     {
