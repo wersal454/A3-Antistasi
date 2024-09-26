@@ -831,7 +831,7 @@ class cfgHALsStore
 				"opticsCWR"
 			};
 		};
-		class ProjInf_Stock
+		class projinf_stock
 		{
 			displayName = $STR_ARMS_DEALER_STORE;
 			categories[] = {
