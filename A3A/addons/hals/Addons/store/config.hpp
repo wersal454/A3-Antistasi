@@ -831,7 +831,7 @@ class cfgHALsStore
 				"opticsCWR"
 			};
 		};
-		class JCA_Arsenal_Stock
+		class jca_stock
 		{
 			displayName = $STR_ARMS_DEALER_STORE;
 			categories[] = {
