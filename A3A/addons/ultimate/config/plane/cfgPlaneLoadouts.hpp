@@ -276,6 +276,23 @@ class planeLoadouts
 			bombRacks[] = {"sab_fl_bomb_bay_weapon","sab_fl_fritzx_weapon"};
 			diveParams[] = {1000, 300, 100, 55, 15, {0,0}};
         };	
+        // FFP Finland
+        class ffp_jas39e
+        {
+            loadout[] = {"sfp_1x_rb98","sfp_1x_rb98","PylonMissile_1Rnd_Mk82_F","PylonMissile_1Rnd_Mk82_F","sfp_1rnd_bk90","sfp_1rnd_bk90"};
+            mainGun = "sfp_mauser_bk27_120rnd";
+			missileLauncher[] = {"sfp_rbs98_launcher"};
+            bombRacks[] = {"Mk82BombLauncher","sfp_bk90_launcher"};
+			diveParams[] = {1000, 300, 100, 55, 15, {0,0}};
+        };	
+        class ffp_jas39e_rb15
+        {
+            loadout[] = {"sfp_1x_rb98","sfp_1x_rb98","PylonMissile_1Rnd_Mk82_F","PylonMissile_1Rnd_Mk82_F","sfp_1rnd_bk90","sfp_1rnd_bk90"};
+            mainGun = "sfp_mauser_bk27_120rnd";
+			missileLauncher[] = {"sfp_rbs98_launcher"};
+            bombRacks[] = {"Mk82BombLauncher","sfp_bk90_launcher"};
+			diveParams[] = {1000, 300, 100, 55, 15, {0,0}};
+        };	
     };
 
     class CAS
@@ -596,6 +613,19 @@ class planeLoadouts
             mainGun = "LS93_Cannon";
             rocketLauncher[] = {"TS5_ProtonLauncher","TS5A_ProtonLauncher"};
         };
+        // FFP Finland
+        class ffp_jas39e
+        {
+            loadout[] = {"sfp_1x_rb98","sfp_1x_rb98","sfp_1x_rb75","sfp_1x_rb75","sfp_1x_rb75","sfp_1x_rb75"};
+            mainGun = "sfp_mauser_bk27_120rnd";
+			missileLauncher[] = {"sfp_rbs98_launcher", "sfp_rbs75_launcher"};
+        };	
+        class ffp_jas39e_rb15
+        {
+            loadout[] = {"sfp_1x_rb98","sfp_1x_rb98","sfp_1x_rb75","sfp_1x_rb75","sfp_1x_rb75","sfp_1x_rb75"};
+            mainGun = "sfp_mauser_bk27_120rnd";
+			missileLauncher[] = {"sfp_rbs98_launcher", "sfp_rbs75_launcher"};
+        };	
     };
    
     class AA
@@ -818,6 +848,21 @@ class planeLoadouts
 		class sab_sw_p38
         {
             mainGun = "sab_fl_4x_hmg_weapon";
+        };
+        // FFP Finland
+        class ffp_jas39e
+        {
+            loadout[] = {"sfp_1x_rb98","sfp_1x_rb98","sfp_1x_rb99","sfp_1x_rb99","sfp_1x_rb99","sfp_1x_rb99"};
+            mainGun = "sfp_mauser_bk27_120rnd";
+			missileLauncher[] = {"sfp_rbs98_launcher", "sfp_rbs99_launcher"};
+			diveParams[] = {1000, 600, 180, 55, 15, {0,0}};
+        };	
+        class ffp_jas39e_rb15
+        {
+            loadout[] = {"sfp_1x_rb98","sfp_1x_rb98","sfp_1x_rb99","sfp_1x_rb99","sfp_1x_rb99","sfp_1x_rb99"};
+            mainGun = "sfp_mauser_bk27_120rnd";
+			missileLauncher[] = {"sfp_rbs98_launcher", "sfp_rbs99_launcher"};
+			diveParams[] = {1000, 600, 180, 55, 15, {0,0}};
         };
     };
 };

@@ -74,6 +74,7 @@ class cfgHALsStore
 		#include "config\fow.hpp"
 		#include "config\eaw.hpp"
 		#include "config\cwr.hpp"
+		#include "config\ffp.hpp"
 	};
 
 	class stores 
@@ -828,6 +829,20 @@ class cfgHALsStore
 				"launcherMagazinesCWR", 
 				"magazinesCWR", 
 				"opticsCWR"
+			};
+		};
+		class ffpstock		
+		{
+			displayName = $STR_ARMS_DEALER_STORE;
+			categories[] = {
+				"handgunsffp", 
+				"mgffp", 
+				"riflesffp", 
+				"sniperriflesffp",
+				"launchersffp", 
+				"launchermagazinesffp",
+				"magazinesffp", 
+				"opticsffp"
 			};
 		};
 	};

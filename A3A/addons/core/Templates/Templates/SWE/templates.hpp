@@ -32,3 +32,20 @@
         file = "SFP_AI_SWE_Arctic";
         climate[] = {"arctic"};
     };
+
+    class FFP_Base : SFP_Base
+    {
+        requiredAddons[] = {"Finnish_Forces_Pack"};        // units, weapons, vehicles
+        basepath = QPATHTOFOLDER(Templates\Templates\SWE);
+        logo = "\ffp_config\data\flag\fin_flag_map_ca.paa"
+        priority = 90;
+    };
+
+    class FFP_Fin_Temperate : FFP_Base
+    {
+        side = "Occ";
+        flagTexture = "\ffp_config\data\flag\fin_flag_ca.paa";
+        name = "FFP Finland Temperate";
+        file = "FFP_AI_FIN_Temperate";
+        climate[] = {"temperate","tropical"};
+    };
