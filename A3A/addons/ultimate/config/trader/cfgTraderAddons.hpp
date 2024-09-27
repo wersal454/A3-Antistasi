@@ -262,3 +262,9 @@
         addons[] = {"sab_navallegends"};
         vehicles = "vehicles_navleg";
     };
+    class addons_hafm : addons_base
+    {
+        addons[] = {"HAFM_Acc"};
+        weapons = "weapons_hafm";
+        vehicles = "vehicles_hafm";
+    };

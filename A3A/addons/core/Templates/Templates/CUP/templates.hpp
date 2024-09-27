@@ -259,3 +259,18 @@
         name = "CUP LDF";
         file = "CUP_AI_LDF";
     };
+
+    class HAFM_Base : CUP_Base
+    {
+        requiredAddons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core", "HAFM_Acc"};        // units, weapons, vehicles
+        //requiredAddons[] = {"CUP_AirVehicles_Core"};        // vehicles requires units & weapons
+        priority = 61;
+    };
+
+    class CUP_HAFM : HAFM_Base
+    {
+        side = "Occ";
+        flagTexture = "\A3\ui_f\data\map\markers\flags\Greece_ca.paa";
+        name = "CUP HAFM";
+        file = "CUP_AI_HAFM";
+    };

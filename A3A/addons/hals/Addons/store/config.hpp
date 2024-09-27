@@ -830,5 +830,24 @@ class cfgHALsStore
 				"opticsCWR"
 			};
 		};
+		class hafmstock		
+		{
+			displayName = $STR_ARMS_DEALER_STORE;
+			categories[] = {
+				"handgunsHAFM", 
+				"smgHAFM", 
+				"mgHAFM", 
+				"riflesHAFM",
+				"sniperriflesHAFM", 
+				"launchersHAFM", 
+				"launchermagazinesHAFM", 
+				"muzzlesHAFM", 
+				"magazinesHAFM", 
+				"pointersHAFM",
+				"specialweaponsHAFM",
+				"opticsHAFM",
+				"underbarrelHAFM"
+			};
+		};
 	};
 };
