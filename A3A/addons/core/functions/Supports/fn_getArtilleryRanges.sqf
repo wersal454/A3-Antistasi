@@ -18,7 +18,9 @@ private _turretCfg = call {
     if (_idx == -1) exitWith {
         Error_1("Artillery turret not found on %1", _vehType);
         configFile >> "CfgVehicles" >> _vehType >> "Turrets" >> "MainTurret";
-	@@ -37,13 +41,44 @@ private _weaponCfg = configFile >> "CfgWeapons" >> _weapon;
+    };
+    _allTurrets # _idx;
+};
 
 // Assume that there's no speed override on weapon, probably true for arty
 private _initSpeed = getNumber (configFile >> "CfgMagazines" >> _shellType >> "initSpeed");

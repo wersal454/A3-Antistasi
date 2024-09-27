@@ -29,7 +29,7 @@ private _unitClassMap = _side call SCRT_fnc_unit_getUnitMap;
 private _baseUnitClass = switch (_side) do {
     case west: { "a3a_unit_west" };
     case east: { "a3a_unit_east" };
-    case opfor { "a3a_unit_riv" };
+    case opfor: { "a3a_unit_riv" };
     case independent: { "a3a_unit_reb" };
     case civilian: { "a3a_unit_civ" };
 };
