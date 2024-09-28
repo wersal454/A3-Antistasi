@@ -320,9 +320,9 @@ _sfLoadoutData set ["marksmanRifles", [
 ["CUP_arifle_HK417_20", "HAFM_Gem_762_muzzle", "HAFM_acc_PEQ15_side", "HAFM_Mark_Scope", ["CUP_20Rnd_762x51_HK417", "CUP_20Rnd_TE1_Red_Tracer_762x51_HK417"], [], "CUP_bipod_VLTOR_Modpod_black"],
 ["CUP_arifle_HK417_20", "HAFM_Gem_762_muzzle", "HAFM_acc_PEQ15_side", "CUP_optic_SB_11_4x20_PM", ["CUP_20Rnd_762x51_HK417", "CUP_20Rnd_TE1_Red_Tracer_762x51_HK417"], [], "CUP_bipod_VLTOR_Modpod_black"],
 
-["CUP_arifle_HK417_20", "HAFM_Gem_762_muzzle", "HAFM_acc_PEQ15_side", "HAFM_M110v2_scope", ["HAFM_20rnd_M110_762"], [], "CUP_bipod_VLTOR_Modpod_black"],
-["CUP_arifle_HK417_20", "HAFM_Gem_762_muzzle", "HAFM_acc_PEQ15_side", "HAFM_Mark_Scope", ["HAFM_20rnd_M110_762"], [], "CUP_bipod_VLTOR_Modpod_black"],
-["CUP_arifle_HK417_20", "HAFM_Gem_762_muzzle", "HAFM_acc_PEQ15_side", "CUP_optic_SB_11_4x20_PM", ["HAFM_20rnd_M110_762"], [], "CUP_bipod_VLTOR_Modpod_black"]
+["HAFM_M110_EMPTY", "HAFM_Gem_762_muzzle", "HAFM_acc_PEQ15_side", "HAFM_M110v2_scope", ["HAFM_20rnd_M110_762"], [], "CUP_bipod_VLTOR_Modpod_black"],
+["HAFM_M110_EMPTY", "HAFM_Gem_762_muzzle", "HAFM_acc_PEQ15_side", "HAFM_Mark_Scope", ["HAFM_20rnd_M110_762"], [], "CUP_bipod_VLTOR_Modpod_black"],
+["HAFM_M110_EMPTY", "HAFM_Gem_762_muzzle", "HAFM_acc_PEQ15_side", "CUP_optic_SB_11_4x20_PM", ["HAFM_20rnd_M110_762"], [], "CUP_bipod_VLTOR_Modpod_black"]
 ]];
 _sfLoadoutData set ["sniperRifles", [
 ["HAFM_M107_EMPTY", "", "", "HAFM_scope_optic_m107", ["HAFM_10rnd_M107"], [], ""],
