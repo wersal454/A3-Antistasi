@@ -95,6 +95,12 @@ if (isClass (configFile >> "CfgPatches" >> "XA_185")) then {
 
 #include "FFP_Vehicle_Attributes.sqf"
 
+//vehicle skins
+["variants", [
+    ["XA185_A1", ["Winter", 1]],
+    ["ffp_bv206", ["ib77_winter", 1]]
+]] call _fnc_saveToTemplate;
+
 /////////////////////
 ///  Identities   ///
 /////////////////////
@@ -235,11 +241,11 @@ _loadoutData set ["items_unarmed_extras", []];
 ///////////////////////////////////////
 
 private _sfLoadoutData = _loadoutData call _fnc_copyLoadoutData; 
-_sfLoadoutData set ["uniforms", ["ffp_m05w_uniform"]];
+_sfLoadoutData set ["uniforms", ["ffp_m05s_uniform", "sfp_m90s_uniform"]];
 _sfLoadoutData set ["vests", ["CUP_V_B_LBT_LBV_Black", "CUP_V_B_LBT_LBV_GRN", "CUP_V_B_LBT_LBV_OD"]];
 _sfLoadoutData set ["Hvests", ["CUP_V_B_LBT_LBV_Black", "CUP_V_B_LBT_LBV_GRN", "CUP_V_B_LBT_LBV_OD"]];
-_sfLoadoutData set ["backpacks", ["ffp_m05_backpack_small", "sfp_backpack_stridssack2000", "B_AssaultPack_rgr", "B_AssaultPack_khk", "B_Carryall_oli", "B_Kitbag_rgr"]];
-_sfLoadoutData set ["helmets", ["CUP_H_OpsCore_Green", "CUP_H_OpsCore_Green_NoHS", "CUP_H_OpsCore_Green_SF", "CUP_H_OpsCore_Tan", "CUP_H_OpsCore_Tan_NoHS", "CUP_H_OpsCore_Tan_SF"]];
+_sfLoadoutData set ["backpacks", ["ffp_m05_backpack_small", "sfp_backpack_stridssack2000", "B_AssaultPack_rgr", "B_Carryall_oli", "B_Kitbag_rgr"]];
+_sfLoadoutData set ["helmets", ["CUP_H_OpsCore_Green", "CUP_H_OpsCore_Green_NoHS", "CUP_H_OpsCore_Green_SF", "CUP_H_OpsCore_Black", "CUP_H_OpsCore_Black_NoHS", "CUP_H_OpsCore_Black_SF"]];
 _sfLoadoutData set ["binoculars", ["CUP_SOFLAM", "CUP_LRTV"]];
 
 _sfLoadoutData set ["lightATLaunchers", [
@@ -397,11 +403,11 @@ _sfLoadoutData set ["sidearms", [
 /////////////////////////////////
 
 private _eliteLoadoutData = _loadoutData call _fnc_copyLoadoutData; 
-_eliteLoadoutData set ["uniforms", ["ffp_m05w_uniform"]];
+_eliteLoadoutData set ["uniforms", ["ffp_m05s_uniform", "sfp_m90s_uniform"]];
 _eliteLoadoutData set ["vests", ["CUP_V_JPC_communications_rngr", "CUP_V_JPC_Fast_rngr", "CUP_V_B_JPC_OD_Light", "CUP_V_JPC_medical_rngr", "CUP_V_JPC_tl_rngr", "CUP_V_JPC_weapons_rngr", "CUP_V_JPC_communicationsbelt_rngr", "CUP_V_JPC_Fastbelt_rngr", "CUP_V_JPC_lightbelt_rngr", "CUP_V_JPC_medicalbelt_rngr", "CUP_V_JPC_tlbelt_rngr", "CUP_V_JPC_weaponsbelt_rngr"]];
 _eliteLoadoutData set ["Hvests", ["CUP_V_JPC_communications_rngr", "CUP_V_JPC_Fast_rngr", "CUP_V_B_JPC_OD_Light", "CUP_V_JPC_medical_rngr", "CUP_V_JPC_tl_rngr", "CUP_V_JPC_weapons_rngr", "CUP_V_JPC_communicationsbelt_rngr", "CUP_V_JPC_Fastbelt_rngr", "CUP_V_JPC_lightbelt_rngr", "CUP_V_JPC_medicalbelt_rngr", "CUP_V_JPC_tlbelt_rngr", "CUP_V_JPC_weaponsbelt_rngr"]];
-_eliteLoadoutData set ["backpacks", ["B_Kitbag_rgr", "ffp_m05_backpack_small", "B_Carryall_khk", "B_Carryall_oli"]];
-_eliteLoadoutData set ["helmets", ["CUP_H_OpsCore_Green", "CUP_H_OpsCore_Green_NoHS", "CUP_H_OpsCore_Tan", "CUP_H_OpsCore_Tan_NoHS"]];
+_eliteLoadoutData set ["backpacks", ["B_Kitbag_rgr", "ffp_m05_backpack_small", "B_Carryall_oli"]];
+_eliteLoadoutData set ["helmets", ["CUP_H_OpsCore_Green", "CUP_H_OpsCore_Green_NoHS"]];
 _eliteLoadoutData set ["binoculars", ["CUP_LRTV", "CUP_Vector21Nite"]];
 
 _eliteLoadoutData set ["lightATLaunchers", [
@@ -574,7 +580,7 @@ _eliteLoadoutData set ["sidearms", [
 /////////////////////////////////
 
 private _militaryLoadoutData = _loadoutData call _fnc_copyLoadoutData; 
-_militaryLoadoutData set ["uniforms", ["ffp_m05w_uniform"]];
+_militaryLoadoutData set ["uniforms", ["ffp_m05s_uniform", "sfp_m90s_uniform"]];
 _militaryLoadoutData set ["vests", ["ffp_m05combatvest", "ffp_m05combatvest_radio", "ffp_m05flak"]];
 _militaryLoadoutData set ["Hvests", ["ffp_m05combatvest_radio"]];
 _militaryLoadoutData set ["backpacks", ["B_AssaultPack_rgr", "B_AssaultPack_khk", "B_FieldPack_oli", "B_FieldPack_khk", "B_Kitbag_rgr", "B_TacticalPack_oli", "ffp_m05_backpack_small"]];
@@ -651,7 +657,7 @@ _militaryLoadoutData set ["sidearms", [
 ///////////////////////////////
 
 private _policeLoadoutData = _loadoutData call _fnc_copyLoadoutData; 
-_policeLoadoutData set ["uniforms", ["ffp_m05w_uniform"]];
+_policeLoadoutData set ["uniforms", ["ffp_m05s_uniform", "sfp_m90s_uniform"]];
 _policeLoadoutData set ["vests", ["V_TacVest_oli", "V_TacVest_blk"]];
 _policeLoadoutData set ["helmets", ["H_Beret_blk", "CUP_H_Beret_HIL"]];
 
@@ -674,7 +680,7 @@ _policeLoadoutData set ["sidearms", [
 ////////////////////////////////
 
 private _militiaLoadoutData = _loadoutData call _fnc_copyLoadoutData; 
-_militiaLoadoutData set ["uniforms", ["CUP_I_B_PMC_Unit_39", "CUP_U_O_SLA_Green"]];
+_militiaLoadoutData set ["uniforms", ["CUP_I_B_PMC_Unit_34", "CUP_U_B_BDUv2_Winter", "CUP_U_B_BDUv2_gloves_Winter", "CUP_U_B_BDUv2_dirty_Winter", "CUP_U_B_BDUv2_gloves_dirty_Winter"]];
 _militiaLoadoutData set ["vests", ["V_Chestrig_oli", "V_TacVest_oli"]];
 _militiaLoadoutData set ["Hvests", ["V_TacVest_oli"]];
 _militiaLoadoutData set ["backpacks", ["B_TacticalPack_oli", "B_FieldPack_oli", "B_AssaultPack_dgtl"]];
@@ -751,7 +757,7 @@ _militiaLoadoutData set ["sidearms", [
 
 
 private _crewLoadoutData = _militaryLoadoutData call _fnc_copyLoadoutData; 
-_crewLoadoutData set ["uniforms", ["ffp_m05w_uniform"]];
+_crewLoadoutData set ["uniforms", ["ffp_m05s_uniform", "sfp_m90s_uniform"]];
 _crewLoadoutData set ["vests", ["CUP_V_PMC_CIRAS_OD_Veh"]];
 _crewLoadoutData set ["helmets", ["CUP_H_CVC"]];
 
