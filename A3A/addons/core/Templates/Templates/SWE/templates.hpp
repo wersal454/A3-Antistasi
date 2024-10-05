@@ -35,7 +35,7 @@
 
     class FFP_Base : SFP_Base
     {
-        requiredAddons[] = {"Finnish_Forces_Pack"};        // units, weapons, vehicles
+        requiredAddons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core", "sfp_soldiers", "Finnish_Forces_Pack"};        // units, weapons, vehicles
         basepath = QPATHTOFOLDER(Templates\Templates\SWE);
         logo = "\ffp_config\data\flag\fin_flag_map_ca.paa";
         priority = 90;
