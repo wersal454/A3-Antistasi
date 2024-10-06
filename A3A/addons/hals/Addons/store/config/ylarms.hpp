@@ -3,9 +3,6 @@
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_ylarms", localize "STR_A3AU_handguns"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\handgun_ca.paa";
 
-			ITEM(Rep_QBS09YL_mod_cqb_sa, 450, PISTOL_STOCK); //Both are Shotgun secondaries.
-			ITEM(Rep_QBS09YL_base_cqb_sa, 450, PISTOL_STOCK); //
-			ITEM(YL_QCQ171_PDW, 500, PISTOL_STOCK); //Secondary SMG
 			ITEM(yl_92a_issued_base, 150, PISTOL_STOCK);
 			ITEM(yl_92a_LAB, 150, PISTOL_STOCK);
 			ITEM(yl_92a_RW_PA_bctriwpn, 350, PISTOL_STOCK); //Conversion Kit Version of QSZ-92A. It Allows more Optics and Pointers.
@@ -148,7 +145,6 @@
 			displayName = __EVAL(formatText ["%1 %2 %3 %4", localize "STR_A3AU_ylarms", localize "STR_A3AU_pointers", localize "STR_A3AU_and", localize "STR_A3AU_flashlights"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemAcc_ca.paa";
 
-			ITEM(YL_ACC_IR, 75, PN_STOCK);
 			ITEM(YL_ACC_SIDE_IR, 75, PN_STOCK);
 			ITEM(YL_qsz92_lssd_flashlight, 75, PN_STOCK);
 
@@ -212,7 +208,7 @@
 				stock = 50;
 			};
 
-			class HOLOSUN_510C_G_3XDOWN {
+			class HOLOSUN_510C_G_3XUP_2D {
 				price = 275;
 				stock = 50;
 			};
@@ -228,11 +224,6 @@
 			};
 
 			class YL_HOLOSUN_EPS_CARRY {
-				price = 250;
-				stock = 50;
-			};
-
-			class YL_HOLOSUN_EPS_CARRY_SW {
 				price = 250;
 				stock = 50;
 			};
@@ -335,41 +326,6 @@
 			};
 
 			class YL_92A_30Rnd_issued_Subsonic {
-				price = 30;
-				stock = MAGAZINE_STOCK;
-			};
-
-			class YL_Type64_30Rnd_762x25 {
-				price = 30;
-				stock = MAGAZINE_STOCK;
-			};
-
-			class YL_Type79_20Rnd_762x25_T {
-				price = 20;
-				stock = MAGAZINE_STOCK;
-			};
-
-			class YL_Type79_20Rnd_762x25_N {
-				price = 20;
-				stock = MAGAZINE_STOCK;
-			};
-
-			class YL_Type79_20Rnd_762x25 {
-				price = 20;
-				stock = MAGAZINE_STOCK;
-			};
-
-			class YL_Type79_30Rnd_762x25_T {
-				price = 30;
-				stock = MAGAZINE_STOCK;
-			};
-
-			class YL_Type79_30Rnd_762x25_N {
-				price = 30;
-				stock = MAGAZINE_STOCK;
-			};
-
-			class YL_Type79_30Rnd_762x25 {
 				price = 30;
 				stock = MAGAZINE_STOCK;
 			};
@@ -608,7 +564,7 @@
 		};
 
 		class underbarrelYLA{
-	     	displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_nfts", localize "STR_A3AU_muzzles"]);
+	     	displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_ylarms", localize "STR_A3AU_bipods"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemBipod_ca.paa";
 
 			ITEM(yl_191_bipod, 50, 20);
@@ -622,16 +578,20 @@
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_ylarms", localize "STR_A3AU_specialWeapons"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\primaryWeapon_ca.paa";
 
-			ITEM(Rep_QBS09YL_modA, 1000, RIFLE_STOCK);
-			ITEM(Rep_QBS09YL_mod_cqb, 200, RIFLE_STOCK);
-			ITEM(Rep_QBS09YL_modB, 200, RIFLE_STOCK);
+			ITEM(Rep_QBS09YL_mod_cqb_sa, 250, PISTOL_STOCK); //Both are Shotgun secondaries.
+			ITEM(Rep_QBS09YL_base_cqb_sa, 250, PISTOL_STOCK); //
+			ITEM(YL_QCQ171_PDW, 250, PISTOL_STOCK); //Secondary SMG
+
+			ITEM(Rep_QBS09YL_modA, 300, RIFLE_STOCK);
+			ITEM(Rep_QBS09YL_mod_cqb, 300, RIFLE_STOCK);
+			ITEM(Rep_QBS09YL_modB, 300, RIFLE_STOCK);
 			ITEM(Rep_QBS09YL_base_cqb, 300, RIFLE_STOCK);
-			ITEM(Rep_QBS09YL_base, 350, RIFLE_STOCK);
+			ITEM(Rep_QBS09YL_base, 300, RIFLE_STOCK);
 			ITEM(6Rnd_M1014_buck, 60, MAGAZINE_STOCK);
 			ITEM(6Rnd_QBS09_HE, 150, MAGAZINE_STOCK);
 			ITEM(6Rnd_M1014_PPA, 60, MAGAZINE_STOCK);
 			ITEM(6Rnd_M1014_slug, 75, MAGAZINE_STOCK);
 
-			ITEM(YL_QBZ191_EL, 3000, 5); //Fucking Awesome. Has a ridiculous amount of Impact. Might need to be tested more.
+			ITEM(YL_QBZ191_EL, 3000, 5); //Fucking AWESOME. Has a ridiculous amount of Impact. Might need to be tested more.
 			ITEM(YL_30rnd_58x42_EL_Mag, 450, MAGAZINE_STOCK); //2000 m/s rounds lmao. Basically playing Starsim. For Electormagnetic Gun Above.
 		};

@@ -74,6 +74,7 @@ class cfgHALsStore
 		#include "config\fow.hpp"
 		#include "config\eaw.hpp"
 		#include "config\cwr.hpp"
+		#include "config\ylarms.hpp"
 	};
 
 	class stores 
