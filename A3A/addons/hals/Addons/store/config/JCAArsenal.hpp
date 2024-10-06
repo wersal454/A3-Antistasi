@@ -17,6 +17,18 @@
 			displayName = __EVAL(formatText ["%1 %2", localize "STR_A3AU_JCA_ARSENAL", localize "STR_A3AU_rifles"]);
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\primaryWeapon_ca.paa";
 
+			ITEM(JCA_arifle_M16A4_black_F, 1100, RIFLE_STOCK); //Has less accuracy than the M4A1.
+			ITEM(JCA_arifle_M16A4_olive_F, 1100, RIFLE_STOCK);
+			ITEM(JCA_arifle_M16A4_sand_F, 1100, RIFLE_STOCK);
+
+			ITEM(JCA_arifle_M16A4_FG_black_F, 1100, RIFLE_STOCK);
+			ITEM(JCA_arifle_M16A4_FG_olive_F, 1100, RIFLE_STOCK);
+			ITEM(JCA_arifle_M16A4_FG_sand_F, 1100, RIFLE_STOCK);
+
+			ITEM(JCA_arifle_M16A4_GL_black_F, 1750, RIFLE_STOCK); //Only reducing price on this by 50 since it's a GL.
+			ITEM(JCA_arifle_M16A4_GL_olive_F, 1750, RIFLE_STOCK);
+			ITEM(JCA_arifle_M16A4_GL_sand_F, 1750, RIFLE_STOCK);
+
 			ITEM(JCA_arifle_M4A1_short_black_F, 1200, RIFLE_STOCK);
 			ITEM(JCA_arifle_M4A1_short_olive_F, 1200, RIFLE_STOCK);
 			ITEM(JCA_arifle_M4A1_short_sand_F, 1200, RIFLE_STOCK);
