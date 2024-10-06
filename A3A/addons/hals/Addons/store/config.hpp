@@ -830,5 +830,22 @@ class cfgHALsStore
 				"opticsCWR"
 			};
 		};
+		class ylarmsstock		
+		{
+			displayName = $STR_ARMS_DEALER_STORE;
+			categories[] = {
+				"handgunsYLA",
+				"riflesYLA", 
+				"sniperRiflesYLA",
+				"mgYLA", 
+				"smgYLA", 
+				"pointersYLA",
+				"muzzlesYLA", 
+				"opticsYLA",
+				"magazinesYLA",
+				"underbarrelYLA",
+				"specialWeaponsYLA"
+			};
+		};
 	};
 };
