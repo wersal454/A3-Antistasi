@@ -116,6 +116,13 @@ class CfgMarkers
 
 	};
 
+	class a3a_flag_FIN: flag_NATO 
+	{
+		name = "Finland";
+		icon = QPATHTOFOLDER(Pictures\Markers\marker_fin_co.paa); 
+		texture = QPATHTOFOLDER(Pictures\Markers\marker_fin_co.paa);
+	};
+
 	class a3a_flag_cdf: flag_NATO 
 	{
 		name = "CDF";
