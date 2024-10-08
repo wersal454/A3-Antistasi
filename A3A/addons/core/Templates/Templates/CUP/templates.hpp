@@ -263,6 +263,10 @@
     class HAFM_Base : CUP_Base
     {
         requiredAddons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core", "HAFM_Acc"};        // units, weapons, vehicles
+    //CUP NorAF
+    class NorAF_Base : CUP_Base
+    {
+        requiredAddons[] = {"CUP_Creatures_People_Civil_Russia", "CUP_BaseConfigs", "CUP_AirVehicles_Core", "Flex_CUP_NOR_Faction"};        // units, weapons, vehicles
         //requiredAddons[] = {"CUP_AirVehicles_Core"};        // vehicles requires units & weapons
         priority = 61;
     };
@@ -273,4 +277,18 @@
         flagTexture = "\A3\ui_f\data\map\markers\flags\Greece_ca.paa";
         name = "CUP HAFM";
         file = "CUP_AI_HAFM";
+    class CUP_NorAF_Temperate : NorAF_Base
+    {
+        side = "Occ";
+        flagTexture = "\A3\ui_f\data\map\markers\flags\Norway_ca.paa";
+        name = "CUP NorAF Temperate";
+        file = "CUP_AI_NorAF_Temperate";
+        climate[] = {"temperate","tropical"};
+    };
+
+    class CUP_NorAF_Arctic : CUP_NorAF_Temperate
+    {
+        name = "CUP NorAF Arctic";
+        file = "CUP_AI_NorAF_Arctic";
+        climate[] = {"arctic"};
     };

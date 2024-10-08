@@ -37,3 +37,5 @@
 #include "vehicles_flyleg.hpp"
 #include "vehicles_scrtwpns.hpp"
 #include "vehicles_hafm.hpp"
+#include "vehicles_NorAF.hpp"
+#include "vehicles_NorAFF16.hpp"

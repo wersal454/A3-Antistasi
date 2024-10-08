@@ -312,6 +312,21 @@ class planeLoadouts
             missileLauncher[] = {"CUP_Vmlauncher_AIM120_veh", "Missile_AGM_02_Plane_CAS_01_F"};
             diveParams[] = {1200, 600, 180, 55, 15, {0,0}};
         };	
+
+        //CUP NorAF
+        class Flex_CUP_NOR_F35B
+        {
+            loadout[] = {"","","","PylonMissile_1Rnd_BombCluster_03_F","CUP_PylonPod_1Rnd_Mk82_M","","CUP_PylonPod_1Rnd_Mk82_M","PylonMissile_1Rnd_BombCluster_03_F","","",""};
+            bombRacks[] = {"CUP_Vblauncher_Mk82_veh", "BombCluster_03_F"};
+            diveParams[] = {1000, 300, 100, 55, 15, {0,0}};
+        };
+        class F16C_NATO50
+        {
+            loadout[] = {"","","FIR_CBU87_P_1rnd_M","FIR_GBU56_P_1rnd_M","","FIR_SniperXR_HTS_P_1rnd_M","FIR_GBU56_P_1rnd_M","FIR_CBU87_P_1rnd_M","",""};
+            mainGun = "FIR_M61A2";
+            bombRacks[] = {"FIR_CBU87", "FIR_GBU56"};
+            diveParams[] = {1000, 300, 100, 55, 15, {0,0}};
+        };
     };
 
     class CAS
@@ -662,6 +677,21 @@ class planeLoadouts
             loadout[] = {"CUP_PylonPod_1Rnd_AIM_120_AMRAAM_M","PylonRack_1Rnd_Missile_AGM_02_F","","PylonRack_1Rnd_Missile_AGM_02_F","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_M"};
             mainGun = "HAFM_DEFA_554_MG";
             missileLauncher[] = {"HAFM_GBU12_Launcher"};
+
+        //CUP NorAF
+        class Flex_CUP_NOR_F35B
+        {
+            loadout[] = {"","","","CUP_PylonPod_1Rnd_GBU12_M","CUP_PylonPod_1Rnd_GBU12_M","","CUP_PylonPod_1Rnd_GBU12_M","CUP_PylonPod_1Rnd_GBU12_M","","",""};
+            bombRacks[] = {"CUP_Vblauncher_GBU12_veh"};
+            diveParams[] = {1000, 300, 100, 55, 15, {0,0}};
+        };
+        class F16C_NATO50
+        {
+            loadout[] = {"","","FIR_AGM65L_P_1rnd_M","FIR_GBU56_P_1rnd_M","","FIR_SniperXR_HTS_P_1rnd_M","FIR_GBU56_P_1rnd_M","FIR_AGM65L_P_1rnd_M","",""};
+            mainGun = "FIR_M61A2";
+            bombRacks[] = {"FIR_GBU56"};
+            missileLauncher[] = {"FIR_AGM65"};
+            diveParams[] = {1000, 300, 100, 55, 15, {0,0}};
         };
     };
    
@@ -907,5 +937,19 @@ class planeLoadouts
             missileLauncher[] = {"CUP_Vmlauncher_AIM120_veh","CUP_Vmlauncher_AIM9L_veh_1Rnd"};
             diveParams[] = {1000, 600, 180, 55, 15, {0,0}};
         };
+
+        //CUP NorAF
+        class Flex_CUP_NOR_F35B //I Pray For Whoever Goes Up Against This
+        {
+            loadout[] = {"CUP_PylonPod_1Rnd_AIM_9L_LAU_Sidewinder_M",,"CUP_PylonPod_1Rnd_AIM_120_AMRAAM_M","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_M","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_INT_M","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_INT_M","CUP_PylonWeapon_220Rnd_TE1_Red_Tracer_GAU22_M","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_INT_M","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_INT_M","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_M","CUP_PylonPod_1Rnd_AIM_120_AMRAAM_M","CUP_PylonPod_1Rnd_AIM_9L_LAU_Sidewinder_M"};
+            mainGun = "CUP_Vacannon_GAU22_veh";
+            missileLauncher[] = {"CUP_Vmlauncher_AIM9L_veh_1Rnd","CUP_Vmlauncher_AIM120_veh"};
+        };
+        class F16C_NATO50
+        {
+            loadout[] = {"FIR_AIM120_P_1rnd_M","FIR_AIM9X_P_1rnd_M","FIR_AIM120_P_1rnd_M","","","FIR_Empty_P_1rnd_M","","FIR_AIM120_P_1rnd_M","FIR_AIM9X_P_1rnd_M","FIR_AIM120_P_1rnd_M"};
+            mainGun = "FIR_M61A2";
+            missileLauncher[] = {"FIR_AIM120","FIR_AIM9X"};
+        }
     };
 };
