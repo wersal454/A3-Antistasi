@@ -352,7 +352,7 @@ Debug_1("Extra equip mod paths: %1", A3A_extraEquipMods);
 Info("Reading templates");
 
 {
-    private _side = [west, east, resistance, civilian, opfor] # _forEachIndex;
+    private _side = [west, east, resistance, civilian] # _forEachIndex;
     Info_2("Loading template %1 for side %2", _x, _side);
 
 	private _cfg = configFile/"A3A"/"Templates"/_x;
