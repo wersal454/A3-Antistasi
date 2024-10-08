@@ -78,7 +78,7 @@ private _allDefinitions = _faction get "loadouts";
 } forEach _allDefinitions;
 
 #if __A3_DEBUG__
-    [_faction, opfor, _file] call A3A_fnc_TV_verifyAssets;
+    [_faction, east, _file] call A3A_fnc_TV_verifyAssets;
 #endif
 
 _faction;
