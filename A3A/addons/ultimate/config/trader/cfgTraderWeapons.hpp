@@ -142,6 +142,9 @@
         {
             prefix = "cwrstock";
         };
+        class weapons_hafm : weapons_base
+        {
+            prefix = "hafmstock";
         class weapons_projinf : weapons_base
         {
             prefix = "projinf_stock"
