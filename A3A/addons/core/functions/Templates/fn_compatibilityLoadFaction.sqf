@@ -17,11 +17,11 @@ params ["_file", "_side"];
 
 Info_2("Compatibility loading template: '%1' as side %2", _file, _side);
 
-private _factionDefaultFile = ["EnemyDefaults","EnemyDefaults","RebelDefaults","CivilianDefaults"] #([west, east, independent, civilian, opfor] find _side);
+private _factionDefaultFile = ["EnemyDefaults","EnemyDefaults","RebelDefaults","CivilianDefaults"] #([west, east, independent, civilian] find _side);
 _factionDefaultFile = QPATHTOFOLDER(Templates\Templates\FactionDefaults) + "\" + _factionDefaultFile + ".sqf";
 
 private _faction = [[_factionDefaultFile,_file]] call A3A_fnc_loadFaction;
-private _factionPrefix = ["occ", "inv", "reb", "civ", "riv"] #([west, east, independent, civilian, opfor] find _side);
+private _factionPrefix = ["occ", "inv", "reb", "civ"] #([west, east, independent, civilian] find _side);
 missionNamespace setVariable ["A3A_faction_" + _factionPrefix, _faction];
 [_faction, _factionPrefix] call A3A_fnc_compileGroups;
 
@@ -29,7 +29,6 @@ private _unitClassMap = _side call SCRT_fnc_unit_getUnitMap;
 private _baseUnitClass = switch (_side) do {
     case west: { "a3a_unit_west" };
     case east: { "a3a_unit_east" };
-    case opfor: { "a3a_unit_riv" };
     case independent: { "a3a_unit_reb" };
     case civilian: { "a3a_unit_civ" };
 };
