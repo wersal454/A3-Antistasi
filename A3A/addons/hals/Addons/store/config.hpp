@@ -75,6 +75,7 @@ class cfgHALsStore
 		#include "config\eaw.hpp"
 		#include "config\cwr.hpp"
 		#include "config\ProjInfAD.hpp"
+		#include "config\JCAArsenal.hpp"
 	};
 
 	class stores 
@@ -842,6 +843,19 @@ class cfgHALsStore
 				"opticsProjInfAD",
 				"magazinesProjInfAD",
 				"underbarrelProjInfAD"
+		class jca_stock
+		{
+			displayName = $STR_ARMS_DEALER_STORE;
+			categories[] = {
+				"handgunsJCA",
+				"riflesJCA", 
+				"sniperRiflesJCA", 
+				"smgJCA",
+				"underbarrelJCA",
+				"pointersJCA",
+				"muzzlesJCA",
+				"opticsJCA",
+				"magazinesJCA"
 			};
 		};
 	};
