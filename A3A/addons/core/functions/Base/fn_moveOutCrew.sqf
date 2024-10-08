@@ -46,7 +46,7 @@ if !(_owner isEqualTo "" || {getPlayerUID _player isEqualTo _owner}) exitWith { 
     [localize "STR_A3A_Base_moveOutCrew_header", localize "STR_A3A_Base_sellVehicle_err2"] remoteExecCall ["SCRT_fnc_misc_deniedHint",_player];
 };
 
-if ((side _vehicle ==  west) || (side _vehicle == east)/*  && alive driver _vehicle */) exitWith {  /// might need to add opfor here for rivals
+if ((side _vehicle ==  west) || (side _vehicle == east)/*  && alive driver _vehicle */) exitWith {
     [localize "STR_A3A_Base_moveOutCrew_header", localize "STR_A3A_Base_moveOutCrew_err0"] remoteExecCall ["SCRT_fnc_misc_deniedHint",_player];
 };
 
