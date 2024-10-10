@@ -84,7 +84,10 @@ class CfgFunctions
             file = QPATHTOFOLDER(functions\D37\D37_dome);
             class guidanceLaws {};
             class handleDome {};
+            class handleMissile {};
             class handleTargets {};
+            class handleUAV {};
+            class initMissile {};
             class initShells {};
             class pickTarget {};
             class postInitEH {postInit	= 1;};
@@ -95,6 +98,8 @@ class CfgFunctions
             file = QPATHTOFOLDER(functions\D37\D37_cram);
             class handleCRAM {};
             class handleCRAMinit {};
+            class handleTargets {};
+            class initShells {};
             class pickTargetCRAM {};
             class postInit {postInit = 1;};
         };
