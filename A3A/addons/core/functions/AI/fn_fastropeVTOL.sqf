@@ -125,11 +125,10 @@ _driver action ["VectoringUp", _veh];
 if (alive _veh && canMove _veh) then
 {
 	[_veh] call A3A_fnc_smokeCoverAuto;
-	//{
+	{
 	_veh setVelocity [0,0,0];
 	_veh setVectorUp [0,0,1];
-	[_veh] call AR_Rappel_All_Cargo;
-	/* [_veh,_x,_xRef,_yRef] spawn
+	[_veh,_x,_xRef,_yRef] spawn
 		{
 		private ["_veh","_unit","_d","_xRef","_yRef"];
 		_veh = _this select 0;
@@ -159,7 +158,7 @@ if (alive _veh && canMove _veh) then
 		sleep 0.5;
 		};
 	sleep (2 + random 2);
-	} forEach units _groupX; */
+	} forEach units _groupX;
 };
 
 _driver action ["VTOLVectoringCancel", _veh];
