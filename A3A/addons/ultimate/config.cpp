@@ -18,6 +18,19 @@ class CfgPatches
 
 #include "CfgFunctions.hpp"
 
+class cfgWeapons
+{
+    class ItemRadio;
+    #include "patches\cfgWeapons.hpp"
+};
+
+class cfgVehicles
+{
+    class Item_Base_F;
+    class Thing;
+    #include "patches\cfgVehicles.hpp"
+};
+
 class RscBackPicture;
 class RscEditLCD;
 class HiddenButton;
