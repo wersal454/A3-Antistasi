@@ -8,7 +8,7 @@ private _outArray = _initializedShells;
 	//Placed here because two crams may initialize the same entity twice
 	if(_x in _initializedShells) then {continue};
 	_outArray pushback _x;
-	
+
 	_x spawn {
 		_x = _this;
 		_isCruiseMissile = _x isKindOf "ammo_Missile_CruiseBase";
@@ -25,7 +25,7 @@ private _outArray = _initializedShells;
 			if(_isCruiseMissile) then {
 				_entities = _entities select {!(_x isKindOf "ammo_Missile_CruiseBase")};
 			};
-		
+
 			if(count _entities > 0) then {
 				_mine = createMine ["APERSMine", getPosATL _x, [], 0];
 				_mine setDamage 1;

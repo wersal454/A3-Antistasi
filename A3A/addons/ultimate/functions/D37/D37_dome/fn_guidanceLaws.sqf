@@ -15,11 +15,9 @@ if(_loft and ((vectorDir _missile) select 2) < 0.65) then {
 	_currentDir = vectorDir _missile;
 	_currZDir = _currentDir select 2;
 	_targetDir = 0.9;
-
 	_timeToUp = 1;
 	_diff = _targetDir - _currZDir;
 	_step = _diff / _timeToUp;
-
 	_time = time;
 	while{(time - _time) < 8 or (_missile distance _target) < 1500} do {
 		_currentDir = vectorDir _missile;
@@ -136,7 +134,7 @@ while {alive _target and alive _missile} do {
 			_rotation = _LOS vectorCrossProduct _relVelocity;
 			_distance = _LOS vectorDotProduct _LOS;
 			_rotation = _rotation vectorMultiply (1/_distance);
-			
+
 			//Desired accelleration to intercept
 			_leadAcc = (_relVelocity vectorMultiply _N) vectorCrossProduct _rotation;
 			_guidVel = (_leadAcc vectorMultiply _increment) vectorAdd _velA;
@@ -166,7 +164,7 @@ if(alive _missile) then {
 	if(alive _target) then {
 		sleep random 1;
 	};
-	
+
 	deletevehicle _missile;
 	_mine = createMine ["DemoCharge_F", getPosATL _missile, [], 0];
 	_mine setDamage 1;

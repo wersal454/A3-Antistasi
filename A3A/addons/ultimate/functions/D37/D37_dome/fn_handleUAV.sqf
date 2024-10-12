@@ -34,8 +34,8 @@ _UAV spawn {
 				private _target = _x getVariable ["_chosenTarget", objNull];
 				if (_target == _UAV) then {
 					//Cleanup
-					["_targetedShells", _UAV, "remove"] call IRON_DOME37_fnc_handleTargets;
-					["_initializedShells", _UAV, "remove"] call IRON_DOME37_fnc_handleTargets;
+					["_targetedShells", _UAV, "remove"] call A3U_fnc_handleTargets;
+					["_initializedShells", _UAV, "remove"] call A3U_fnc_handleTargets;
 					
 					//_UAV setDamage 1; <-- causes the relict to become NOID..etc and basically makes the missile fire on it again
                     _mine = createMine ["APERSMine", getPosATL _UAV, [], 0];

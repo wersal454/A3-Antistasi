@@ -29,7 +29,7 @@ while{alive _missile} do {
     if(alive _target) then {
         _missile setVariable ["guidance", true, true];
         _missile setVariable ["_chosenTarget", _target, true];
-        [_missile, _target, _parameters, _boost, _skipSpeed] spawn IRON_DOME37_fnc_guidanceLaws;
+        [_missile, _target, _parameters, _boost, _skipSpeed] spawn A3U_fnc_guidanceLaws;
         //systemChat format ["GUIDING:%1 TO:%2", _missile, _target];
     };
     
@@ -41,7 +41,7 @@ while{alive _missile} do {
             _guidanceEnabled = false;
 
             //Targetable again
-            ["_targetedShells", _target, "remove"] call IRON_DOME37_fnc_handleTargets;
+            ["_targetedShells", _target, "remove"] call A3U_fnc_handleTargets;
             break;
         };
         sleep 0.5;
@@ -118,7 +118,7 @@ while{alive _missile} do {
 
             //SAVE
             if(!isNull _target) then {
-				["_targetedShells", _target, "add"] call IRON_DOME37_fnc_handleTargets;
+				["_targetedShells", _target, "add"] call A3U_fnc_handleTargets;
 			};
 
             //Small delay to let the guidance stop

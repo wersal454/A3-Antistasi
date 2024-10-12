@@ -4,14 +4,6 @@ if(!isServer) exitWith {};
 if(is3DEN) exitWith {};
 if !(allowCRAMIRONDOME) exitWith {};
 
-//Stops previous dome script, starts new one
-_unit setVariable ["DomeInit", false, true];
-waitUntil {(_unit getVariable ["DomeRunning", false]) == false};
-_unit setVariable ["DomeInit", true, true];
-
-//Save values
-_unit setVariable ["DomeRunning", true, true];
-
 private _isInitialized = (_unit getVariable ["cramInit", false]);
 if(_isInitialized) exitWith {};
 _unit setVariable ["cramInit", true, true];
@@ -69,7 +61,15 @@ _unit addAction ["Change targeting mode", {
 {
 	_x setSkill 1;
 }foreach crew _unit;
-private _sideOwner = side _unit;
+
+/* private _friendlyentities = [];
+private _side = side _unit;
+addMissionEventHandler ["ArtilleryShellFired", {
+	params ["_vehicle", "_weapon", "_ammo", "_gunner", "_instigator", "_artilleryTarget", "_targetPosition", "_shell"];
+	if (side _gunner == _side) then {
+		_friendlyentities = pushBack _shell;
+	};
+}]; */ ///untill 2.18 is released
 
 //Performance optimizations
 _emptyLoops = 0;
@@ -77,74 +77,24 @@ _delay = 0.1;
 _unit setVehicleRadar 1;
 _wep = currentweapon _unit;
 
-//If a new dome is initialized
-private _isActive = true;
-private _timeActive = time;
-
-private _entities = [];
-private _targetedShells = [];
-private _distance = 1800;
-private _ignored = [];
-
-
 //Main loop
-while {alive _unit and (someAmmo _unit) and _isActive} do {
-	if(time - _timeActive > 5) then {
-		_isActive = _unit getVariable ["DomeInit",true];
-		_timeActive = time;
-
-		//Purge dead shells in _ignored
-		_ignored = _ignored select {alive _x};
+while {alive _unit} do {
+	//[2675fa44080# 80: tracer_red.p3d,"air","unknown",["activeradar","datalink"]]
+	_list = getSensorTargets _unit;
+	_list = _list select {
+		typeOf (_x # 0) == "CRAM_Fake_PlaneTGT";
 	};
+	/* _list = _list select {
+		_x !in _friendlyentities;
+	}; */ ///untill 2.18 is released
+	_entities = [];
+	{
+		_entities pushback (_x # 0);
+	}foreach _list;
+	_entities = _entities select {(getPosATL _x # 2) > 10};
+	_list = _entities;
 
-	private _tgtLogic = _unit getVariable ["_tgtLogic", 0];
-	private _entities = [];
-	private _targetedShells = [];
-	private _target = objNull;
-
-	//Optimized detection, shells are now initialized on creation
-	_entities = missionNamespace getVariable ["_initializedShells", []];
-	_targetedShells = missionNamespace getVariable ["_targetedShells", []];
-
-	//Only consider the close ones
-	_entities = _entities select {_x distance2D _unit < _distance};
-
-	//Disregard same side
-	//_entities = _entities select {!(sideOwner == (_x getVariable ["sideShell", civilian]))};
-	
-	//Disregard already targetted
-	_entities = _entities select {!(_x in _targetedShells)};
-
-	//Disregard ignored
-	_entities = _entities select {!(_x in _ignored)};
-
-	//Pick a target
-	if(count _entities > 0) then {
-		//IMPROVED LOGIC TO STOP OUTGOING TARGETS
-		{
-			private _vVer = (velocity _x) select 2;
-			private _dist = _x distance2D _unit;
-			if(_vVer > 50 and _dist < 300) then {
-				_ignored pushBack _x;
-				private _id = (_entities find _x);
-				if(_id != -1) then {
-					_entities deleteAt _id;
-				};
-			}; 
-		}forEach _entities;
-
-		if(count _entities > 0) then {
-			_target = [_entities, _unit, _tgtLogic] call CRAM37_fnc_pickTarget;
-			private _objs = attachedObjects _target;
-			if (count _objs == 0) then {
-				_target = objNull;
-			} else {
-				_target = _objs select 0;
-			};
-		};
-	};
-
-	if(!isNull _target) then {
+	if(count _list > 0) then {
 		_delay = 0.05;
 		_emptyLoops = 0;
 		if(_unit getVariable ["alarmEnabled",false]) then {
@@ -158,28 +108,32 @@ while {alive _unit and (someAmmo _unit) and _isActive} do {
 			};
 		};
 
-		_time = time;
-		_unit doTarget _target;
-		_shell = attachedTo _target;
-		
-		waitUntil{_unit aimedAtTarget [_target, _wep] > 0.2 or (time - _time) > 0.7};
-		for "_i" from 1 to 100 do {
-			if(!alive _shell) exitWith {};
-			if((_i % 20) == 0) then {
-				_unit doTarget _target;
-			};
-			
-			[_unit, _wep, [0]] call BIS_fnc_fire;
-			sleep 0.015; 
-		};
+		_tgtLogic = _unit getVariable ["_tgtLogic", 1];
+		_target = [_list, _unit, _tgtLogic] call A3U_fnc_pickTargetCRAM;
+		if(!isNull _target) then {
+			_time = time;
+			_unit doTarget _target;
+			_shell = attachedTo _target;
 
+			waitUntil{_unit aimedAtTarget [_target, _wep] > 0.65 or (time - _time) > 1.25};
+			for "_i" from 1 to 100 do {
+				if(!alive _shell) exitWith {};
+				if((_i % 20) == 0) then {
+					_unit doTarget _target;
+				};
+
+				[_unit, _wep, [0]] call BIS_fnc_fire;
+				sleep 0.01;
+			};
+		} else {
+			_unit doTarget objNull;
+		};
 	} else {
-		_unit doTarget objNull;
 		//Lowers the amount of checks per second when nothing is found
 		_delay = 0.1;
 		_emptyLoops = (_emptyLoops + 1);
 		if(_emptyLoops == 50) then {
-			_delay = 0.35;
+			_delay = 0.5;
 			_unit doTarget objNull;
 		};
 	};

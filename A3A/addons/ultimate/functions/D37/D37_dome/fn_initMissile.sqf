@@ -37,8 +37,8 @@ _shell spawn {
 					_mine setDamage 1;
 
 					//Cleanup
-					["_targetedShells", _shell, "remove"] call IRON_DOME37_fnc_handleTargets;
-					["_initializedShells", _shell, "remove"] call IRON_DOME37_fnc_handleTargets;
+					["_targetedShells", _shell, "remove"] call A3U_fnc_handleTargets;
+					["_initializedShells", _shell, "remove"] call A3U_fnc_handleTargets;
 					//deletevehicle _x; //Entity whose target is the _shell aka the missile
 					deletevehicle _shell;
 					break;
@@ -49,8 +49,8 @@ _shell spawn {
 	};
 
 	if(!isNull _shell) then {
-		["_targetedShells", _shell, "remove"] call IRON_DOME37_fnc_handleTargets;
-		["_initializedShells", _shell, "remove"] call IRON_DOME37_fnc_handleTargets;
+		["_targetedShells", _shell, "remove"] call A3U_fnc_handleTargets;
+		["_initializedShells", _shell, "remove"] call A3U_fnc_handleTargets;
 	};
 };
 
