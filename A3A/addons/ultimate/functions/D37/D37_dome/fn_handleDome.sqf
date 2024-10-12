@@ -1,10 +1,9 @@
 private _unit       = param[0];
-private _distance   = param[1, 7200];
+private _distance   = param[1, 4500];
 private _tgtLogic 	= param[2, 1];
 //Speed, guidance, N, ignore direct, time to max, delay between shots
 private _weaponPar	= param[3, [420/3.6, 0, 4, false, 14, 0.75]];
 private _typeArray 	= param[4, ["ShellBase","SubmunitionBase"]];
-
 
 if !(allowCRAMIRONDOME) exitWith {};
 
@@ -15,7 +14,7 @@ _unit setVariable ["DomeInit", true, true];
 
 //Save values
 _unit setVariable ["WeaponsPar", _weaponPar, true];
-_unit setVariable ["DomeRunning", true, true];
+_unit setVariable ["DomeRunning", true];
 
 if(!isServer) exitWith {};
 
@@ -78,7 +77,7 @@ _unit addAction ["Toggle alarm", {
 }, nil, 9, false, false, "", "!(_this in _target)", 10];
 
 //Change logic
-_unit setVariable ["_tgtLogic", _tgtLogic, true];
+_unit setVariable ["_tgtLogic", _tgtLogic];
 _unit addAction ["Change targeting mode", {
 	params ["_target", "_caller", "_actionId", "_arguments"];
 	_tgtLogic = _target getVariable ["_tgtLogic", 0];
@@ -105,8 +104,13 @@ _unit addAction ["Change targeting mode", {
 	_id = owner _caller;
 	["Logic changed to: " + _out] remoteExec ["hint", _id];
 
-	_target setVariable	["_tgtLogic", _tgtLogic, true];
+	_target setVariable	["_tgtLogic", _tgtLogic];
 }, nil, 10, false, false, "", "!(_this in _target)", 10];
+
+//Makes it better 
+{
+	_x setSkill 1;
+}foreach crew _unit;
 
 //Performance optimizations
 private _emptyLoops = 0;
@@ -116,10 +120,8 @@ private _delay = 0.5;
 private _needsAiming 	= _weaponPar select 3;
 private _shotsDelay		= _weaponPar select 5;
 
-/*
 //Main loop
 _loops = ((count _typeArray) - 1);
-*/
 
 //If a new dome is initialized
 private _isActive = true;
@@ -143,7 +145,7 @@ while {alive _unit and (someAmmo _unit) and _isActive} do {
 		_timeActive = time;
 
 		//Purge dead shells in _ignored
-		_ignored = _ignored select {alive _x and !unitIsUAV _x};
+		_ignored = _ignored select {alive _x};
 	};
 
 	_tgtLogic = _unit getVariable ["_tgtLogic", 0];
@@ -169,27 +171,15 @@ while {alive _unit and (someAmmo _unit) and _isActive} do {
 	if(count _entities > 0) then {
 		//IMPROVED LOGIC TO STOP OUTGOING TARGETS
 		{
-			if(unitIsUAV _x) then {
-				private _side = side _x;
-				private _alt = (getPosATL _x) select 2;
-				if(_side == side _unit or _alt < 4) then {
-					_ignored pushBack _x;
-					private _id = (_entities find _x);
-					if(_id != -1) then {
-						_entities deleteAt _id;
-					};
+			private _vVer = (velocity _x) select 2;
+			private _dist = _x distance2D _unit;
+			if(_vVer > 50 and _dist < 300) then {
+				_ignored pushBack _x;
+				private _id = (_entities find _x);
+				if(_id != -1) then {
+					_entities deleteAt _id;
 				};
-			} else {
-				private _vVer = (velocity _x) select 2;
-				private _dist = _x distance2D _unit;
-				if(_vVer > 50 and _dist < 300) then {
-					_ignored pushBack _x;
-					private _id = (_entities find _x);
-					if(_id != -1) then {
-						_entities deleteAt _id;
-					};
-				}; 
-			};
+			}; 
 		}forEach _entities;
 
 		if(count _entities > 0) then {
@@ -216,10 +206,11 @@ while {alive _unit and (someAmmo _unit) and _isActive} do {
 				_unit setVariable ["alarmplaying",true,true];
 
 				{
-					_x say3D ["cramalarm", 800 ,1,false,0];
+					_x say3D ["CRAMALARM", 800 ,1,false,0];
 				}forEach _alarms;
 
-				_unit say3D ["cramalarm",1500,1,false,0];
+				_unit say3D ["CRAMALARM",1500,1,false,0];
+				playSound3D ["D37\Sound\cramalarm.ogg", _unit];	// alarm
 				_unit spawn {
 					sleep 90;
 					_this setVariable ["alarmplaying",false,true];

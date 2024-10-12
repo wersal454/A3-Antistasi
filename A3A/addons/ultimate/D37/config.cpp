@@ -16,7 +16,16 @@ class CfgPatches
     };
 };
 
-#include "CfgSounds.hpp" 
+class CfgSounds
+{
+	sounds[] = {};
+	class cramalarm
+	{
+		name = "cramalarm";
+		sound[] = {"D37\Sound\cramalarm.ogg", 1.0, 1.0};
+		titles[] = {0, ""};
+	};
+};
 #include "CfgVehicles.hpp"
 
 class cfgWeapons

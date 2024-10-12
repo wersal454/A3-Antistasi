@@ -72,8 +72,8 @@ _unit addAction ["Change targeting mode", {
 private _sideOwner = side _unit;
 
 //Performance optimizations
-_emptyLoops = 0;
-_delay = 0.1;
+private _emptyLoops = 0;
+private _delay = 0.5;
 _unit setVehicleRadar 1;
 _wep = currentweapon _unit;
 
@@ -97,7 +97,7 @@ while {alive _unit and (someAmmo _unit) and _isActive} do {
 		_ignored = _ignored select {alive _x};
 	};
 
-	private _tgtLogic = _unit getVariable ["_tgtLogic", 0];
+	private _tgtLogic = _unit getVariable ["_tgtLogic", 1];
 	private _entities = [];
 	private _targetedShells = [];
 	private _target = objNull;
@@ -150,7 +150,7 @@ while {alive _unit and (someAmmo _unit) and _isActive} do {
 		if(_unit getVariable ["alarmEnabled",false]) then {
 			if (!(_unit getVariable ["alarmplaying",false])) then {
 				_unit setVariable ["alarmplaying",true,true];
-				_unit say3D ["CRAMALARM",1000,1,false,0];
+				_unit say3D ["cramalarm",1000,1,false,0];
 				_unit spawn {
 					sleep 10;
 					_this setVariable ["alarmplaying",false,true];
