@@ -1,10 +1,10 @@
 class CfgSounds
 {
 	sounds[] = {};
-	class CRAM_ALARM
+	class cramalarm
 	{
-		name = "CRAM_ALARM";
-		sound[] = {"Sound\CRAM_ALARM.ogg", 1.0, 1.0};
+		name = "cramalarm";
+		sound[] = {"cramalarm.ogg", 1.0, 1.0};
 		titles[] = {0, ""};
 	};
 };

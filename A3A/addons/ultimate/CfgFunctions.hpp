@@ -98,8 +98,9 @@ class CfgFunctions
             file = QPATHTOFOLDER(functions\D37\D37_cram);
             class handleCRAM {};
             class handleCRAMinit {};
-            class handleTargets {};
-            class initShells {};
+            class handleTargetsCRAM {};
+            class initMissileCRAM {};
+            class initShellsCRAM {};
             class pickTargetCRAM {};
             class postInit {postInit = 1;};
         };

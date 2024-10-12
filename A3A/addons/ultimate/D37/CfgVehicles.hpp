@@ -4,6 +4,48 @@ class cfgVehicles
     class Thing;
 	
     class AllVehicles;
+	
+	class Air: AllVehicles {};
+	class Plane: Air {
+		class Eventhandlers;
+	};
+	class Helicopter: Air {
+		class Eventhandlers;
+	};
+	/* class Helicopter_Base_F: Helicopter {
+		class Eventhandlers: Eventhandlers {
+			class D37_dome {
+				init = "_this call A3U_fnc_handleUAV;";
+			};
+		};
+	};
+
+		
+	class UAV: Plane {
+		class Eventhandlers: Eventhandlers {
+			class D37_dome {
+				init = "_this call A3U_fnc_handleUAV;";
+			};
+		};
+	}; */
+
+	class Plane_Base_F: Plane {};
+	class Plane_Fighter_01_Base_F: Plane_Base_F {};
+	class B_Plane_Fighter_01_F: Plane_Fighter_01_Base_F 
+	{
+		class EventHandlers {};
+	};
+
+	class CRAM_Fake_PlaneTGT: B_Plane_Fighter_01_F 
+	{
+		//model = "\A3\Structures_F\Mil\Helipads\HelipadEmpty_F.p3d";
+		class EventHandlers: EventHandlers 
+		{
+			init = "(_this select 0) hideObjectGlobal true;";
+		};
+		scope = 1;
+	};
+
 	class Land: AllVehicles {};
 	class LandVehicle: Land {};
 	class StaticWeapon: LandVehicle {};
@@ -51,7 +93,7 @@ class cfgVehicles
 		{
 			class DOME37 
 			{
-				init = "[_this select 0, 4400, 1, [420/3.6, 0, 4, false, 14, 1]] spawn A3U_fnc_handleDome;";
+				init = "[_this select 0, 2800, 1] spawn A3U_fnc_handleDome;";
 			};
 		};
 	};
@@ -336,24 +378,5 @@ class cfgVehicles
 				init = "[_this select 0, 2800, 2] spawn A3U_fnc_handleCRAM;";
 			};
 		};
-	};
-
-    class Air: AllVehicles {};
-	class Plane: Air {};
-	class Plane_Base_F: Plane {};
-	class Plane_Fighter_01_Base_F: Plane_Base_F {};
-	class B_Plane_Fighter_01_F: Plane_Fighter_01_Base_F 
-	{
-		class EventHandlers {};
-	};
-
-	class CRAM_Fake_PlaneTGT: B_Plane_Fighter_01_F 
-	{
-		//model = "\A3\Structures_F\Mil\Helipads\HelipadEmpty_F.p3d";
-		class EventHandlers: EventHandlers 
-		{
-			init = "(_this select 0) hideObjectGlobal true;";
-		};
-		scope = 1;
 	};
 };

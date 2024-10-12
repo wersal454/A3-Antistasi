@@ -26,6 +26,7 @@ class cfgWeapons
     class LauncherCore;
 	class MissileLauncher: LauncherCore {};
 	class weapon_rim116Launcher: MissileLauncher {
+		reloadTime = 0.75;
 		magazines[] += {"magazine_Missile_dome_x21"};
 	};
 };
@@ -33,14 +34,31 @@ class cfgWeapons
 class cfgAmmo 
 {
 	class MissileCore;
-	class MissileBase: MissileCore {};
+	class MissileBase: MissileCore {
+		class EventHandlers;
+	};
 	class ammo_Missile_ShortRangeAABase: MissileBase {};
 	class ammo_Missile_rim116: ammo_Missile_ShortRangeAABase {};
-
 	class ammo_Missile_dome: ammo_Missile_rim116 {
-		thrust = 40;
+		thrust = 10;
 		thrustTime = 34;
 		timeToLive = 34;
+	};
+
+	class ammo_Missile_AntiRadiationBase: MissileBase {
+		class EventHandlers:EventHandlers {
+			class D37_Dome {
+				init = "_this call A3U_fnc_initMissile";
+			};
+		};
+	};
+
+	class ammo_Missile_CruiseBase: MissileBase {
+		class EventHandlers:EventHandlers {
+			class D37_Dome {
+				init = "_this call A3U_fnc_initMissile";
+			};
+		};
 	};
 };
 
