@@ -49,35 +49,30 @@ _ps0 attachTo [_object, [0, 0, 1]];
 _ps1 attachTo [_object, [0, 0, 1]];
 _ps2 attachTo [_object, [0, 0, 1]];
 
-sleep 11;
+//setAperture 5;
+waitUntil {sleep 0.1; getPos _object select 2 < 2500};
+playSound3D [QPATHTOFOLDER(Sounds\Misc\Sonic.ogg), _object, false, getPosASL _object, 5, 1, 7000];
 
-if (typeOf _object in (_faction get "vehiclesDropPod") ) then {
-
-	setAperture 10;
-	waitUntil {sleep 0.1; getPos _object select 2 < 2500};
-	playSound3D [QPATHTOFOLDER(Sounds\Misc\Sonic.ogg), _object, false, getPosASL _object, 5, 1, 7000];
-
-	player spawn {
-		for "_i" from 0 to 200 do {
-			_vx = vectorup _this select 0;
-			_vy = vectorup _this select 1;
-			_vz = vectorup _this select 2;
-			_coef = 0.01 - (0.0001 * _i);
-			_this setvectorup [
-			_vx+(-_coef+random (2*_coef)),
-			_vy+(-_coef+random (2*_coef)),
-			_vz+(-_coef+random (2*_coef))
-		];
-		sleep (0.01 + random 0.01);
-		};
+player spawn {
+	for "_i" from 0 to 200 do {
+		_vx = vectorup _this select 0;
+		_vy = vectorup _this select 1;
+		_vz = vectorup _this select 2;
+		_coef = 0.01 - (0.0001 * _i);
+		_this setvectorup [
+		_vx+(-_coef+random (2*_coef)),
+		_vy+(-_coef+random (2*_coef)),
+		_vz+(-_coef+random (2*_coef))
+	];
+	sleep (0.01 + random 0.01);
 	};
-
-	sleep 0.5;
-
-	setAperture 0;
 };
 
-waitUntil { sleep 0.01; getPos _object select 2 < 2 }; ///0.01 because we don't wanna bounce
+sleep 0.5;
+
+//setAperture 0;
+
+waitUntil { sleep 0.01; getPos _object select 2 < 7 }; ///0.01 because we don't wanna bounce
 
 deleteVehicle _ps0;
 deleteVehicle _ps1;
