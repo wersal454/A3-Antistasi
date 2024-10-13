@@ -58,9 +58,8 @@ if (staminaEnabled isEqualTo false) then {
 	_unit enableStamina false;
 };
 
-if (swayEnabled isEqualTo false) then {
-	_unit setCustomAimCoef 0;
-};
+private _newWeaponSway = swayEnabled / 100;
+player setCustomAimCoef _newWeaponSway;
 
 private _timeX = aiControlTime;
 

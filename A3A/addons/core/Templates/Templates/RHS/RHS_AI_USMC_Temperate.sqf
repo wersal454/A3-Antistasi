@@ -13,6 +13,8 @@
 //       Vehicles       //
 //////////////////////////
 
+["vehiclesDropPod", ["SpaceshipCapsule_01_F"]] call _fnc_saveToTemplate; 
+
 ["ammobox", "B_supplyCrate_F"] call _fnc_saveToTemplate;     //Don't touch or you die a sad and lonely death!
 ["surrenderCrate", "Box_NATO_Wps_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
 ["equipmentBox", "Box_NATO_Equip_F"] call _fnc_saveToTemplate; //Changeing this from default will require you to define logistics attachement offset for the box type
@@ -41,6 +43,13 @@
 ["vehiclesPlanesCAS", ["RHS_A10"]] call _fnc_saveToTemplate;
 ["vehiclesPlanesAA", ["rhsusf_f22"]] call _fnc_saveToTemplate;
 ["vehiclesPlanesTransport", ["RHS_C130J"]] call _fnc_saveToTemplate;
+
+private _gunship = [];
+/// "USAF_AC130U"   USAF gunship
+if (isClass (configFile >> "cfgVehicles" >> "USAF_AC130U")) then {
+	_gunship pushBack "USAF_AC130U";
+};
+["vehiclesPlanesGunship", _gunship] call _fnc_saveToTemplate;
 
 ["vehiclesHelisTransport", ["rhsusf_CH53E_USMC", "rhsusf_CH53E_USMC_GAU21", "RHS_UH1Y", "RHS_UH1Y_UNARMED"]] call _fnc_saveToTemplate;
 ["vehiclesHelisLight", ["RHS_UH1Y_UNARMED"]] call _fnc_saveToTemplate;
