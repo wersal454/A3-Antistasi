@@ -35,6 +35,7 @@ class CfgFunctions
             class guardDog {};
             class hasRadio {};
             class HeliDoors {};
+            class PodsDoors {};
             class help {};
             class hideInBuilding {};
             class inmuneConvoy {};
@@ -51,6 +52,7 @@ class CfgFunctions
             class napalmParticles {};
             class nearEnemy {};
             class orbitalLanding {};
+            class orbitalLandingSinglePod {};
             class paradrop {};
             class rearmCall {};
             class recallGroup {};
@@ -183,6 +185,8 @@ class CfgFunctions
             class unlockVehicle {};
             class updateRebelStatics {};
             class zoneCheck {};
+            class checkWinCondition {};
+            class checkLossCondition {};
         };
 
         class Builder {
@@ -443,6 +447,7 @@ class CfgFunctions
             class addScorePlayer {};
             class addMoneyPlayer {};
             class donateMoney {};
+            class donateMoneyPercentage {};
             class isMember {};
             class makePlayerBossIfEligible {};
             class memberAdd {};
@@ -640,6 +645,7 @@ class CfgFunctions
             class SUP_gunshipRoutinePelican {};
             class SUP_gunshipRoutineStarWarsHMP {};
             class SUP_gunshipRoutineStarWarsLAAT {};
+            class SUP_gunshipRoutine3CBAC47 {};
             class SUP_gunshipSpawn {};
             class SUP_mortar {};
             class SUP_mortarAvailable {};
@@ -659,6 +665,9 @@ class CfgFunctions
             class SUP_SAM {};
             class SUP_SAMAvailable {};
             class SUP_SAMRoutine {};
+            class SUP_tank {};
+            class SUP_tankAvailable {};
+            class SUP_tankRoutine {};
             class SUP_UAV {};
             class SUP_UAVRoutine {};
             class SUP_QRFVehAirdrop {};

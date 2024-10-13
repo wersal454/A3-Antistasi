@@ -113,7 +113,8 @@ if (_airBase != "") then            // uh, is that a thing
     };
     private _troops = ["Normal", "SpecOps"] select ("specops" in _modifiers);
     ServerDebug_3("Attempting to spawn %1 air vehicles including %2 attack from %3", _airCount, _attackCount, _airbase);
-    if (typeOf _vehicleType == "vehiclesDropPod") then {
+    private _roll = round (random 100);
+    if (allowFuturisticSupports && _roll <= 25) then {
 
         private _data = [_side, _airBase, _targPos, _resPool, _airCount, _attackCount, _tier, _troops] call A3A_fnc_createAttackForceOrbital;
         _resourcesSpent = _resourcesSpent + _data#0;
@@ -123,7 +124,7 @@ if (_airBase != "") then            // uh, is that a thing
         [-(_data#0), _side, _resPool] remoteExec ["A3A_fnc_addEnemyResources", 2];
 
         ServerInfo_1("Spawn performed: Orbital vehicles %1", _data#1 apply {typeOf _x});
-    }else{
+    } else {
 
         private _data = [_side, _airBase, _targPos, _resPool, _airCount, _attackCount, _tier, _troops] call A3A_fnc_createAttackForceAir;
         _resourcesSpent = _resourcesSpent + _data#0;
