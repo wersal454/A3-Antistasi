@@ -27,8 +27,7 @@ Example:
 FIX_LINE_NUMBERS()
 
 params[
-    ["_tab","_vehicles"],
-    ["_params",[]]
+    ["_tab","_vehicles"],["_params",[]]
 ];
 
 private _display = findDisplay A3A_IDD_BUYVEHICLEDIALOG;

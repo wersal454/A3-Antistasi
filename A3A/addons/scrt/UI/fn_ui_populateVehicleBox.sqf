@@ -10,7 +10,7 @@ private _vehicleClasses = [];
 private _isCivilian = false;
 
 switch (_category) do {
-    case "civall": {
+    case "civilian": {
         private _civilianVehicles = 
 			(A3A_faction_reb get 'vehiclesCivCar') +
 			(A3A_faction_reb get 'vehiclesCivTruck') +
@@ -63,7 +63,7 @@ switch (_category) do {
 		_isCivilian = true;
 		_vehicleClasses = _civilianVehicles;
     };
-	case "militaryall": {
+	case "military": {
 		private _militaryVehicles = 
 			(A3A_faction_reb get 'vehiclesBasic') + 
 			(A3A_faction_reb get 'vehiclesTruck') + 
