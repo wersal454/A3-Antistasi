@@ -316,11 +316,11 @@ if (!_busy) then {
 						_veh setDir (_spawnParameter select 1);
 						_veh allowDamage false;
 						_veh enableSimulation false;
+						sleep 0.5;
+						_veh enableSimulation true;
+						_veh allowDamage true;
 					};
 				/* }; */
-				sleep 0.2;
-				_veh enableSimulation true;
-				_veh allowDamage true;
 				_vehiclesX pushBack _veh;
 				[_veh, _sideX] call A3A_fnc_AIVEHinit;
 				
