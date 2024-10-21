@@ -75,6 +75,7 @@ class cfgHALsStore
 		#include "config\eaw.hpp"
 		#include "config\cwr.hpp"
 		#include "config\ffp.hpp"
+		#include "config\ylarms.hpp"
 		#include "config\ProjInfAD.hpp"
 		#include "config\JCAArsenal.hpp"
 	};
@@ -845,6 +846,8 @@ class cfgHALsStore
 				"launchermagazinesffp",
 				"magazinesffp", 
 				"opticsffp"
+        };
+    };
 		class hafmstock		
 		{
 			displayName = $STR_ARMS_DEALER_STORE;
@@ -862,6 +865,25 @@ class cfgHALsStore
 				"specialweaponsHAFM",
 				"opticsHAFM",
 				"underbarrelHAFM"
+        };
+    };
+		class ylarmsstock		
+		{
+			displayName = $STR_ARMS_DEALER_STORE;
+			categories[] = {
+				"handgunsYLA",
+				"riflesYLA", 
+				"sniperRiflesYLA",
+				"mgYLA", 
+				"smgYLA", 
+				"pointersYLA",
+				"muzzlesYLA", 
+				"opticsYLA",
+				"magazinesYLA",
+				"underbarrelYLA",
+				"specialWeaponsYLA"
+        };
+    };
 		class projinf_stock
 		{
 			displayName = $STR_ARMS_DEALER_STORE;
@@ -873,6 +895,8 @@ class cfgHALsStore
 				"opticsProjInfAD",
 				"magazinesProjInfAD",
 				"underbarrelProjInfAD"
+        };
+    };
 		class jca_stock
 		{
 			displayName = $STR_ARMS_DEALER_STORE;
