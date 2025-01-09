@@ -143,14 +143,14 @@ switch (toLowerANSI _convoyType) do ///why? toLowerANSI
         _textX = format [localize "STR_A3A_Missions_AS_Convoy_task_dest_money",_nameOrigin,_displayTime,_nameDest];
         _taskTitle = localize "STR_A3A_Missions_AS_Convoy_task_header_money";
         _taskIcon = "truck";
-        _typeVehObj = selectRandom (_faction getOrDefault ["vehiclesSupply", FactionGet(reb, "vehiclesCivSupply"), true]);
+        _typeVehObj = selectRandom (_faction getOrDefault ["vehiclesCivSupply", _faction getOrDefault ["vehiclesCargoTrucks", _faction get "vehiclesTrucks", true], true]);
     };
     case "supplies":
     {
         _textX = format [localize "STR_A3A_Missions_AS_Convoy_task_dest_supplies",_nameOrigin,_displayTime,_nameDest,FactionGet(reb,"name")];
         _taskTitle = localize "STR_A3A_Missions_AS_Convoy_task_header_supplies";
         _taskIcon = "truck";
-        _typeVehObj = selectRandom (_faction getOrDefault ["vehiclesSupply", FactionGet(reb, "vehiclesCivSupply"), true]);
+        _typeVehObj = selectRandom (_faction getOrDefault ["vehiclesCivSupply", _faction getOrDefault ["vehiclesCargoTrucks", _faction get "vehiclesTrucks", true], true]);
     };
 };
 //_typeVehObj = selectRandom (if (tierWar < 5) then {FactionGet(_sideshort, "vehiclesMilitiaCargoTrucks")} else {_faction get "vehiclesTrucks"});
@@ -246,7 +246,6 @@ sleep 2;
 private _objText = if (_difficult) then {localize "STR_marker_convoy_objective_space"} else {localize "STR_marker_convoy_objective"};
 private _vehObj = [_typeVehObj, _objText] call _fnc_spawnConvoyVehicle;
 private _supObj = objNull;
-private _objectiveIsCargo = (_vehObj call A3A_Logistics_fnc_getVehCapacity) > 0;
 
 if (_convoyType isEqualTo "Prisoners") then
 {
@@ -276,52 +275,27 @@ if (_convoyType isEqualTo "Reinforcements") then
     _soldiers append (units _groupEsc);
     _reinforcementsX append (units _groupEsc);
 };
-if (_convoyType == "Money") then
+if (_convoyType in ["Money", "Supplies"]) then
 {
-    if (_objectiveIsCargo) then {
-        // * put a supply container in the truck so it can be identified more easily as the objective vehicle
-            // * put a supply container in the truck so it can be identified more easily as the objective vehicle
-        _supObj = "A3AU_moneyCrate_small_01" createVehicle (position _vehObj);
-        
-        private _canLoad = [_vehObj, _supObj] call A3A_Logistics_fnc_canLoad;        
-        if (_canLoad isEqualType []) then {
+    {
+        // put a supply container in the supply / money truck so it can be identified more easily as the objective vehicle
+        _supObj = _x createVehicle (position _vehObj);
+        private _canLoad = [_vehObj, _supObj] call A3A_Logistics_fnc_canLoad;
+        if (_canLoad isEqualType -1) then {
+            deleteVehicle _supObj; 
+            continue 
+        } else {
             clearMagazineCargoGlobal _supObj;
             clearWeaponCargoGlobal _supObj;
             clearItemCargoGlobal _supObj;
             clearBackpackCargoGlobal _supObj;
-            _supObj setDamage 0.75;
-            _supObj lockInventory true; // * don't want pesky inquisitive players to know there's not actually anything in here lol
+            _supObj setDamage 0.75; // vanilla supply crates are ridiculously strong. Would make destroying (instead of stealing) the cargo way too hard / resource intensive
+            _supObj lockInventory true; // don't want pesky inquisitive players to know there's not actually anything in here lol
             _supObj call A3A_Logistics_fnc_addLoadAction;
             (_canLoad + [true]) call A3A_Logistics_fnc_load;
+            break
         };
-    };
-    _vehObj setVariable ["A3A_reported", true, true];
-};
-if (_convoyType == "Supplies") then
-{
-    if (_objectiveIsCargo) then {
-        // * put a supply container in the truck so it can be identified more easily as the objective vehicle
-        {
-            _supObj = _x createVehicle (position _vehObj);
-        
-            // * try to load a large container, then fall back to small box if we can't load large container
-            private _canLoad = [_vehObj, _supObj] call A3A_Logistics_fnc_canLoad;
-            if (_canLoad isEqualType -1) then {
-                deleteVehicle _supObj; 
-                continue 
-            } else {
-                clearMagazineCargoGlobal _supObj;
-                clearWeaponCargoGlobal _supObj;
-                clearItemCargoGlobal _supObj;
-                clearBackpackCargoGlobal _supObj;
-                _supObj setDamage 0.75; // vanilla supply crates are ridiculously strong. Would make destroying (instead of stealing) the cargo way too hard / resource intensive
-                _supObj lockInventory true; // don't want pesky inquisitive players to know there's not actually anything in here lol
-                _supObj call A3A_Logistics_fnc_addLoadAction;
-                (_canLoad + [true]) call A3A_Logistics_fnc_load;
-                break
-            };
-        } forEach [selectRandom ["Land_PaperBox_01_open_boxes_F", "Land_PaperBox_01_open_water_F", "Land_PaperBox_01_small_stacked_F", "Land_WaterBottle_01_stack_F", "Land_FoodSacks_01_cargo_white_idap_F"], "Land_PaperBox_01_small_closed_white_med_F"];
-    };
+    } forEach ["CargoNet_01_box_F", _faction get "ammobox", _faction get "equipmentBox"];
     _vehObj setVariable ["A3A_reported", true, true];
 };
 if (_convoyType isEqualTo "Ammunition") then
@@ -549,27 +523,10 @@ if (_convoyType isEqualTo "Reinforcements") then
 
 if (_convoyType isEqualTo "Money") then
 {
-    private _objectiveObj = objNull;
-    private _driver = objNull;
-if (_objectiveIsCargo) then {
-        _objectiveObj = _supObj;
-        _driver = driver attachedTo _supObj;
-        _vehObj addEventHandler ["Killed", {
-            params ["_vehicle", "_killer", "_instigator", "_useEffects"];
-            private _cargoItem = _vehicle call A3A_Logistics_fnc_getCargo select 0;
-            _cargoItem setDamage 1;
-            deleteVehicle _cargoItem;
-
-        }];
-    } else {
-        _objectiveObj = _vehObj;
-        _driver = driver _vehObj;
-    };
-
-    waitUntil {sleep 1; (time > _timeout) or (_objectiveObj distance _posDest < _arrivalDist) or (not alive _objectiveObj) or (side group _driver != _sideX)};
-    if ((time > _timeout) or (_objectiveObj distance _posDest < _arrivalDist) or (not alive _objectiveObj)) then
+    waitUntil {sleep 1; (time > _timeout) or (_supObj distance _posDest < _arrivalDist) or (not alive _supObj) or (side group driver _supObj != _sideX)};
+    if ((time > _timeout) or (_supObj distance _posDest < _arrivalDist) or (not alive _supObj)) then
     {
-        if ((time > _timeout) or (_objectiveObj distance _posDest < _arrivalDist)) then
+        if ((time > _timeout) or (_supObj distance _posDest < _arrivalDist)) then
         {
             [false, true, -200, -10, 0, 0, "money"] call _fnc_applyResults;
         }
@@ -581,16 +538,16 @@ if (_objectiveIsCargo) then {
     }
     else
     {
-        waitUntil {sleep 2; (_objectiveObj distance _posHQ < 50) or (not alive _objectiveObj) or (time > _timeout)};
-        if ((not alive _objectiveObj) or (time > _timeout)) then
+        waitUntil {sleep 2; (_supObj distance _posHQ < 50) or (not alive _supObj) or (time > _timeout)};
+        if ((not alive _supObj) or (time > _timeout)) then
         {
             [true, false, 400*_bonus, 5*_bonus, 5, 60, "money"] call _fnc_applyResults;
         };
-        if (_objectiveObj distance _posHQ < 50) then
+        if (_supObj distance _posHQ < 50) then
         {
             [true, false, 400*_bonus, 10*_bonus, 10, 120, "money"] call _fnc_applyResults;
             [0,5000*_bonus] remoteExec ["A3A_fnc_resourcesFIA",2];
-            {if (_x distance _objectiveObj < 500) then {
+            {if (_x distance _supObj < 500) then {
                 [10*_bonus,_x] call A3A_fnc_addScorePlayer;
                 [25*_bonus,_x] call A3A_fnc_addMoneyPlayer;
             }} forEach (call SCRT_fnc_misc_getRebelPlayers);
@@ -601,38 +558,21 @@ if (_objectiveIsCargo) then {
 
 if (_convoyType isEqualTo "Supplies") then
 {
-    private _objectiveObj = objNull;
-    private _driver = objNull;
-if (_objectiveIsCargo) then {
-        _objectiveObj = _supObj;
-        _driver = driver attachedTo _supObj;
-        _vehObj addEventHandler ["Killed", {
-            params ["_vehicle", "_killer", "_instigator", "_useEffects"];
-            private _cargoItem = _vehicle call A3A_Logistics_fnc_getCargo select 0;
-            _cargoItem setDamage 1;
-            deleteVehicle _cargoItem;
-
-        }];
-    } else {
-        _objectiveObj = _vehObj;
-        _driver = driver _vehObj;
-    };
-    
-    waitUntil {sleep 1; (time > _timeout) or (_objectiveObj distance _posDest < _arrivalDist) or (not alive _objectiveObj) or (side group _driver != _sideX)};
-    if (not alive _objectiveObj) then
+    waitUntil {sleep 1; (time > _timeout) or (_supObj distance _posDest < _arrivalDist) or (not alive _supObj) or (side group driver _supObj != _sideX)};
+    if (not alive _supObj) then
     {
         [false, false, 0, -10, 0, 0, "supply"] call _fnc_applyResults;
     }
     else
     {
-        if (side group _driver != _sideX) then
+        if (side group driver _supObj != _sideX) then
         {
-            waitUntil {sleep 1; (_objectiveObj distance _posDest < _arrivalDist) or (not alive _objectiveObj) or (time > _timeout)};
-            if (_objectiveObj distance _posDest < _arrivalDist) then
+            waitUntil {sleep 1; (_supObj distance _posDest < _arrivalDist) or (not alive _supObj) or (time > _timeout)};
+            if (_supObj distance _posDest < _arrivalDist) then
             {
 		[true, false, 200*_bonus, 10*_bonus, 5, 120, "supply"] call _fnc_applyResults;
                 [0,15*_bonus,_mrkDest] remoteExec ["A3A_fnc_citySupportChange",2];
-                {if (_x distance _objectiveObj < 500) then {
+                {if (_x distance _supObj < 500) then {
                     [10*_bonus,_x] call A3A_fnc_addScorePlayer;
                     [25*_bonus,_x] call A3A_fnc_addMoneyPlayer;
                 }} forEach (call SCRT_fnc_misc_getRebelPlayers);
@@ -649,7 +589,7 @@ if (_objectiveIsCargo) then {
             [15*_bonus,0,_mrkDest] remoteExec ["A3A_fnc_citySupportChange",2];
         };
     };
-    if (alive _supObj) then {deleteVehicle _supObj};
+    deleteVehicle _supObj;
 };
 
 [_taskId, "CONVOY", _taskState] call A3A_fnc_taskSetState;
