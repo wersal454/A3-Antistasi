@@ -523,7 +523,7 @@ if (_convoyType isEqualTo "Reinforcements") then
 
 if (_convoyType isEqualTo "Money") then
 {
-    waitUntil {sleep 1; (time > _timeout) or (_supObj distance _posDest < _arrivalDist) or (not alive _supObj) or (side group driver _supObj != _sideX)};
+    waitUntil {sleep 1; (time > _timeout) or (_supObj distance _posDest < _arrivalDist) or (not alive _supObj) or (side group driver attachedTo _supObj != _sideX)};
     if ((time > _timeout) or (_supObj distance _posDest < _arrivalDist) or (not alive _supObj)) then
     {
         if ((time > _timeout) or (_supObj distance _posDest < _arrivalDist)) then
@@ -558,14 +558,14 @@ if (_convoyType isEqualTo "Money") then
 
 if (_convoyType isEqualTo "Supplies") then
 {
-    waitUntil {sleep 1; (time > _timeout) or (_supObj distance _posDest < _arrivalDist) or (not alive _supObj) or (side group driver _supObj != _sideX)};
+    waitUntil {sleep 1; (time > _timeout) or (_supObj distance _posDest < _arrivalDist) or (not alive _supObj) or (side group driver attachedTo _supObj != _sideX)};
     if (not alive _supObj) then
     {
         [false, false, 0, -10, 0, 0, "supply"] call _fnc_applyResults;
     }
     else
     {
-        if (side group driver _supObj != _sideX) then
+        if (side group driver attachedTo _supObj != _sideX) then
         {
             waitUntil {sleep 1; (_supObj distance _posDest < _arrivalDist) or (not alive _supObj) or (time > _timeout)};
             if (_supObj distance _posDest < _arrivalDist) then
