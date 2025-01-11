@@ -8,11 +8,8 @@ params ["_mrkDest", "_mrkOrigin", ["_convoyType", ""], ["_resPool", "legacy"], [
 
 private _difficult = if (random 10 < tierWar) then {true} else {false};
 private _sideX = if (sidesX getVariable [_mrkOrigin,sideUnknown] == Occupants) then {Occupants} else {Invaders};
-private _milFaction = Faction(_sideX);
+private _faction = Faction(_sideX);
 private _rebFaction = Faction(teamPlayer);
-private _civFaction = Faction(civilian);
-private _civDisabled = (_civFaction getOrDefault ["attributeLowCiv", false] || {_civFaction getOrDefault ["attributeCivNonHuman", false]});
-
 
 private _posSpawn = getMarkerPos _mrkOrigin;			// used for spawning infantry before moving them into vehicles
 private _posHQ = getMarkerPos respawnTeamPlayer;
@@ -142,15 +139,15 @@ switch (toLowerANSI _convoyType) do ///why? toLowerANSI
     {
         _textX = format [localize "STR_A3A_Missions_AS_Convoy_task_dest_money",_nameOrigin,_displayTime,_nameDest];
         _taskTitle = localize "STR_A3A_Missions_AS_Convoy_task_header_money";
-        _taskIcon = "truck";
-        _typeVehObj = selectRandom (_faction getOrDefault ["vehiclesCivSupply", _faction getOrDefault ["vehiclesCargoTrucks", _faction get "vehiclesTrucks", true], true]);
+        _taskIcon = "takeoff"; ///"truck" icon doesn't exist
+        _typeVehObj = selectRandom (_rebFaction getOrDefault ["vehiclesCivSupply", _faction getOrDefault ["vehiclesCargoTrucks", _faction get "vehiclesTrucks", true], false]);
     };
     case "supplies":
     {
         _textX = format [localize "STR_A3A_Missions_AS_Convoy_task_dest_supplies",_nameOrigin,_displayTime,_nameDest,FactionGet(reb,"name")];
         _taskTitle = localize "STR_A3A_Missions_AS_Convoy_task_header_supplies";
-        _taskIcon = "truck";
-        _typeVehObj = selectRandom (_faction getOrDefault ["vehiclesCivSupply", _faction getOrDefault ["vehiclesCargoTrucks", _faction get "vehiclesTrucks", true], true]);
+        _taskIcon = "box";
+        _typeVehObj = selectRandom ((_rebFaction getOrDefault ["vehiclesCivSupply", _faction getOrDefault ["vehiclesCargoTrucks", _faction get "vehiclesTrucks", true], false]) + (_faction get "vehiclesMedical"));
     };
 };
 //_typeVehObj = selectRandom (if (tierWar < 5) then {FactionGet(_sideshort, "vehiclesMilitiaCargoTrucks")} else {_faction get "vehiclesTrucks"});
@@ -277,9 +274,9 @@ if (_convoyType isEqualTo "Reinforcements") then
 };
 if (_convoyType in ["Money", "Supplies"]) then
 {
-    {
+    if !(_vehObj in (_rebFaction getOrDefault ["vehiclesCivSupply", []])) then {
         // put a supply container in the supply / money truck so it can be identified more easily as the objective vehicle
-        _supObj = _x createVehicle (position _vehObj);
+        _supObj = "CargoNet_01_box_F" createVehicle (position _vehObj);
         private _canLoad = [_vehObj, _supObj] call A3A_Logistics_fnc_canLoad;
         if (_canLoad isEqualType -1) then {
             deleteVehicle _supObj; 
@@ -295,7 +292,7 @@ if (_convoyType in ["Money", "Supplies"]) then
             (_canLoad + [true]) call A3A_Logistics_fnc_load;
             break
         };
-    } forEach ["CargoNet_01_box_F", _faction get "ammobox", _faction get "equipmentBox"];
+    };
     _vehObj setVariable ["A3A_reported", true, true];
 };
 if (_convoyType isEqualTo "Ammunition") then
@@ -523,10 +520,20 @@ if (_convoyType isEqualTo "Reinforcements") then
 
 if (_convoyType isEqualTo "Money") then
 {
-    waitUntil {sleep 1; (time > _timeout) or (_supObj distance _posDest < _arrivalDist) or (not alive _supObj) or (side group driver attachedTo _supObj != _sideX)};
-    if ((time > _timeout) or (_supObj distance _posDest < _arrivalDist) or (not alive _supObj)) then
+    private _objectiveObj = objNull;
+    private _driver = objNull;
+    if (count (_vehObj call A3A_Logistics_fnc_getCargo) > 0) then {
+        _objectiveObj = _supObj;
+        _driver = driver attachedTo _supObj;
+    } else {
+        _objectiveObj = _vehObj;
+        _driver = driver _vehObj;
+    };
+
+    waitUntil {sleep 1; (time > _timeout) or (_objectiveObj distance _posDest < _arrivalDist) or (not alive _objectiveObj) or (side group _driver != _sideX)};
+    if ((time > _timeout) or (_objectiveObj distance _posDest < _arrivalDist) or (not alive _objectiveObj)) then
     {
-        if ((time > _timeout) or (_supObj distance _posDest < _arrivalDist)) then
+        if ((time > _timeout) or (_objectiveObj distance _posDest < _arrivalDist)) then
         {
             [false, true, -200, -10, 0, 0, "money"] call _fnc_applyResults;
         }
@@ -538,16 +545,16 @@ if (_convoyType isEqualTo "Money") then
     }
     else
     {
-        waitUntil {sleep 2; (_supObj distance _posHQ < 50) or (not alive _supObj) or (time > _timeout)};
-        if ((not alive _supObj) or (time > _timeout)) then
+        waitUntil {sleep 2; (_objectiveObj distance _posHQ < 50) or (not alive _objectiveObj) or (time > _timeout)};
+        if ((not alive _objectiveObj) or (time > _timeout)) then
         {
             [true, false, 400*_bonus, 5*_bonus, 5, 60, "money"] call _fnc_applyResults;
         };
-        if (_supObj distance _posHQ < 50) then
+        if (_objectiveObj distance _posHQ < 50) then
         {
             [true, false, 400*_bonus, 10*_bonus, 10, 120, "money"] call _fnc_applyResults;
             [0,5000*_bonus] remoteExec ["A3A_fnc_resourcesFIA",2];
-            {if (_x distance _supObj < 500) then {
+            {if (_x distance _objectiveObj < 500) then {
                 [10*_bonus,_x] call A3A_fnc_addScorePlayer;
                 [25*_bonus,_x] call A3A_fnc_addMoneyPlayer;
             }} forEach (call SCRT_fnc_misc_getRebelPlayers);
@@ -558,21 +565,31 @@ if (_convoyType isEqualTo "Money") then
 
 if (_convoyType isEqualTo "Supplies") then
 {
-    waitUntil {sleep 1; (time > _timeout) or (_supObj distance _posDest < _arrivalDist) or (not alive _supObj) or (side group driver attachedTo _supObj != _sideX)};
-    if (not alive _supObj) then
+    private _objectiveObj = objNull;
+    private _driver = objNull;
+    if (count (_vehObj call A3A_Logistics_fnc_getCargo) > 0) then {
+        _objectiveObj = _supObj;
+        _driver = driver attachedTo _supObj;
+    } else {
+        _objectiveObj = _vehObj;
+        _driver = driver _vehObj;
+    };
+    
+    waitUntil {sleep 1; (time > _timeout) or (_objectiveObj distance _posDest < _arrivalDist) or (not alive _objectiveObj) or (side group _driver != _sideX)};
+    if (not alive _objectiveObj) then
     {
         [false, false, 0, -10, 0, 0, "supply"] call _fnc_applyResults;
     }
     else
     {
-        if (side group driver attachedTo _supObj != _sideX) then
+        if (side group _driver != _sideX) then
         {
-            waitUntil {sleep 1; (_supObj distance _posDest < _arrivalDist) or (not alive _supObj) or (time > _timeout)};
-            if (_supObj distance _posDest < _arrivalDist) then
+            waitUntil {sleep 1; (_objectiveObj distance _posDest < _arrivalDist) or (not alive _objectiveObj) or (time > _timeout)};
+            if (_objectiveObj distance _posDest < _arrivalDist) then
             {
 		[true, false, 200*_bonus, 10*_bonus, 5, 120, "supply"] call _fnc_applyResults;
                 [0,15*_bonus,_mrkDest] remoteExec ["A3A_fnc_citySupportChange",2];
-                {if (_x distance _supObj < 500) then {
+                {if (_x distance _objectiveObj < 500) then {
                     [10*_bonus,_x] call A3A_fnc_addScorePlayer;
                     [25*_bonus,_x] call A3A_fnc_addMoneyPlayer;
                 }} forEach (call SCRT_fnc_misc_getRebelPlayers);
@@ -589,7 +606,7 @@ if (_convoyType isEqualTo "Supplies") then
             [15*_bonus,0,_mrkDest] remoteExec ["A3A_fnc_citySupportChange",2];
         };
     };
-    deleteVehicle _supObj;
+    if (alive _supObj) then {deleteVehicle _supObj};
 };
 
 [_taskId, "CONVOY", _taskState] call A3A_fnc_taskSetState;
