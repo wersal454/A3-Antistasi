@@ -115,7 +115,7 @@ switch (toLowerANSI _convoyType) do
         _textX = format [localize "STR_A3A_Missions_AS_Convoy_task_dest_money",_nameOrigin,_displayTime,_nameDest];
         _taskTitle = localize "STR_A3A_Missions_AS_Convoy_task_header_money";
         _taskIcon = "truck";
-        _typeVehObj = selectRandom (FactionGet(reb, "vehiclesCivSupply"));
+        _typeVehObj = selectRandom (FactionGet(reb, "vehiclesCivSupply"));////aaaaa
     };
     case "supplies":
     {
