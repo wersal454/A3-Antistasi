@@ -41,15 +41,3 @@ _dlchats append [
   "vn_b_bandana_01",
   "vn_b_bandana_03"
 ];
-
-_workerHelmets append [
-    "H_SPE_CIV_Worker_Cap_1",
-    "H_SPE_CIV_Worker_Cap_2",
-    "H_SPE_CIV_Worker_Cap_3",
-    "H_SPE_CIV_Fedora_Cap_3",
-    "H_SPE_CIV_Fedora_Cap_4",
-    "H_SPE_CIV_Fedora_Cap_2",
-    "H_SPE_CIV_Fedora_Cap_1",
-    "H_SPE_CIV_Fedora_Cap_6",
-    "H_SPE_CIV_Fedora_Cap_5"
-];

@@ -627,7 +627,7 @@ _militaryLoadoutData set ["vests", ["V_Chestrig_khk","V_HarnessO_brn","V_lxWS_Ha
 _militaryLoadoutData set ["glVests", ["V_HarnessOGL_brn","V_TacVest_khk","V_TacVestIR_blk"]];
 _militaryLoadoutData set ["Hvests", ["V_TacVest_brn","V_TacVest_khk","V_TacVestIR_blk","V_lxWS_TacVestIR_oli"]];
 _militaryLoadoutData set ["backpacks", ["B_TacticalPack_ocamo", "B_Carryall_ocamo", "B_FieldPack_ocamo", "B_Carryall_cbr", "B_Kitbag_cbr"]];
-_militaryLoadoutData set ["helmets", ["H_HelmetO_ocamo", "H_HelmetLeaderO_ocamo","H_Cap_brn_SPECOPS", "H_Bandanna_cbr", "H_ShemagOpen_tan","lxWS_H_bmask_base","lxWS_H_bmask_hex"]];
+_militaryLoadoutData set ["helmets", ["H_HelmetO_ocamo", "H_HelmetLeaderO_ocamo","H_Cap_brn_SPECOPS", "H_Bandanna_cbr", "H_ShemagOpen_tan","lxWS_H_bmask_base","lxWS_H_bmask_hex","lxWS_H_ssh40_black","lxWS_H_ssh40_green","lxWS_H_ssh40_sand"]];
 _militaryLoadoutData set ["binoculars", ["Rangefinder"]];
 
 _militaryLoadoutData set ["slRifles", [

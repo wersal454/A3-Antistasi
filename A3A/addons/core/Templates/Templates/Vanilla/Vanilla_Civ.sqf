@@ -292,6 +292,8 @@ private _dlchats = [];
 
 ["headgear", _civHats + _dlchats] call _fnc_saveToTemplate;
 
+private _pressHelmets = [];
+
 private _loadoutData = call _fnc_createLoadoutData;
 
 if (_hasCSLA) then {
@@ -342,7 +344,7 @@ _loadoutData set ["workerUniforms", _workerUniforms];
 _loadoutData set ["pressVests", ["V_Press_F"]];
 _loadoutData set ["helmets", _civHats + _dlchats];
 _loadoutData set ["workerHelmets", _workerHelmets];
-_loadoutData set ["pressHelmets", ["H_Cap_press"]];
+_loadoutData set ["pressHelmets", _pressHelmets];
 _loadoutData set ["maps", ["ItemMap"]];
 _loadoutData set ["watches", ["ItemWatch"]];
 _loadoutData set ["compasses", ["ItemCompass"]];

@@ -12,16 +12,8 @@
 (_militaryLoadoutData get "Hvests") pushBack "V_lxWS_TacVestIR_oli";
 (_militaryLoadoutData get "vests") pushBack "V_lxWS_HarnessO_oli";
 
+(_militiaLoadoutData get "helmets") append ["lxWS_H_ssh40_black","lxWS_H_ssh40_green","lxWS_H_ssh40_sand"];
 (_militiaLoadoutData get "Hvests") pushBack "V_lxWS_TacVestIR_oli";
 (_militiaLoadoutData get "vests") pushBack "V_lxWS_HarnessO_oli";
 (_militiaLoadoutData get "uniforms") pushBack "U_O_LCF_noInsignia_hex_lxws";
-
-
-
-
-
-
-
-
-
 

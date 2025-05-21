@@ -2,10 +2,7 @@ _initialRebelEquipment append [
     "V_BandollierB_ghex_F",
     "V_TacChestrig_cbr_F",
     "V_TacChestrig_grn_F",
-    "V_TacChestrig_oli_F"
-];
-
-_initialRebelEquipment append [
+    "V_TacChestrig_oli_F",
     "hgun_Pistol_01_F",
     "10Rnd_9x21_Mag",
     ["launch_RPG7_F", 3], 

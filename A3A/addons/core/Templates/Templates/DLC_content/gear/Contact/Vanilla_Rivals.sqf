@@ -34,4 +34,6 @@ _vests append ["V_SmershVest_01_F", "V_SmershVest_01_radio_F"];
 
 _heavyVests append ["V_CarrierRigKBT_01_EAF_F", "V_CarrierRigKBT_01_Olive_F","V_CarrierRigKBT_01_light_Olive_F","V_CarrierRigKBT_01_heavy_Olive_F"];
 
-
+(_loadoutData get "fullmask") append [
+	"G_RegulatorMask_F"
+];

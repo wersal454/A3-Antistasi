@@ -38,11 +38,7 @@
     "gm_ge_headgear_headset_crew_oli",
     "gm_ge_headgear_beret_crew_blk",
     "gm_xx_headgear_headwrap_crew_01_grn",
-    "gm_ge_headgear_hat_beanie_crew_blk"
-];
-
-(_loadoutData get "headgear") append [        
-	"gm_ge_headgear_headset_crew_oli",
+    "gm_ge_headgear_hat_beanie_crew_blk",
     "gm_gc_headgear_fjh_model4_oli",
     "gm_ge_headgear_m92_cover_glasses_oli",
     "gm_ge_headgear_m92_cover_oli"

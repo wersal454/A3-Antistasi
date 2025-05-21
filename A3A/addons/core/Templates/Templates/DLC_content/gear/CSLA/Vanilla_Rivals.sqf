@@ -107,5 +107,6 @@ _crewhelmets append ["US85_helmetDH132", "US85_helmetDH132G", "US85_helmetDH132G
 
 _backpacks append ["US85_bpSf","FIA_bpPack", "US85_bpAlice"];
 
-
-
+(_loadoutData get "facewear") append [
+    "CSLA_glsPlscSpring"
+];

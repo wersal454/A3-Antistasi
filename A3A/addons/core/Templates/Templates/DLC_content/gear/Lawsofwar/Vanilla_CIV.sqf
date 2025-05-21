@@ -52,3 +52,5 @@ _workerHelmets append [
 ];
 
 (_loadoutData get "pressHelmets") append ["H_PASGT_basic_blue_press_F", "H_PASGT_neckprot_blue_press_F"];
+
+_pressHelmets append ["H_PASGT_basic_blue_press_F", "H_PASGT_neckprot_blue_press_F"];

@@ -8,3 +8,4 @@ _tanks append ["US85_M1A1","US85_M1IP","CSLA_T72_noinsignia","CSLA_T72M_noinsign
 _helis append ["US85_MH60M134","US85_UH60M240","CSLA_Mi17_noinsignia","CSLA_Mi17mg_noinsignia"];
 _apc append ["AFMC_LAV25","AFMC_M113A1_noinsignia","AFMC_M113A2ext_noinsignia","AFMC_M113A1_Mk19_noinsignia","CSLA_BVP1_noinsignia","CSLA_MU90_noinsignia","CSLA_OT62_noinsignia",
 "CSLA_OT64C_noinsignia","CSLA_OT65A_noinsignia","FIA_BTR40_noinsignia","FIA_BTR40_DSKM_noinsignia","US85_M113A1_TOW","CSLA_OT62D_noinsignia"];
+_trucks append ["CSLA_FIA_V3S_des"];

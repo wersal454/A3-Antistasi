@@ -225,12 +225,9 @@ _loadoutData set ["headgear", [
 	"FIA_Budajka"
 ]];
 
-_loadoutData set ["maps", ["ItemMap"]];
 _loadoutData set ["watches", ["CSLA_Prim_enl"]];
 _loadoutData set ["compasses", ["ItemCompass"]];
 _loadoutData set ["maps", ["ItemMap"]];
-_loadoutData set ["watches", ["ItemWatch"]];
-_loadoutData set ["compasses", ["ItemCompass"]];
 _loadoutData set ["radios", ["ItemRadio"]];
 _loadoutData set ["gpses", []];
 _loadoutData set ["NVGs", ["CSLA_nokto"]];

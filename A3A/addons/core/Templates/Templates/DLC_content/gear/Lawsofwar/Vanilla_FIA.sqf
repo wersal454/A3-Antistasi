@@ -8,10 +8,7 @@ _initialRebelEquipment append [
     "V_LegStrapBag_olive_F",
     "V_Safety_blue_F",
     "V_Safety_orange_F",
-    "V_Safety_yellow_F"
-];
-
-_initialRebelEquipment append [
+    "V_Safety_yellow_F",
     "B_Messenger_Black_F", 
     "B_Messenger_Coyote_F", 
     "B_Messenger_Gray_F",

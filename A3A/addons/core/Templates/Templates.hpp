@@ -601,7 +601,92 @@ class Templates
         name = "CSLA Desert";
         file = "CSLA_AI_CSLA_Desert";
     };
-	
+    //***************************** Ultimate *****************************
+	class Ultimate_base : Vanilla_Base
+    {
+	    logo = "a3\ui_f\data\logos\arma3_expansion_ca.paa";        
+        basepath = QPATHTOFOLDER(Templates\Templates\Ultimate);
+        priority = 50;
+        equipFlags[] = {"vanilla"};
+        climate[] = {"arid","temperate","tropical","arctic"};
+    };
+    /* class Ultimate_Blufor : Ultimate_base
+    {
+        side = "Occ";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_BLUFOR.paa);
+        name = "BLUFOR";
+        file = "Ultimate_Blufor_DEPRECATED";
+    }; */
+    /* class Ultimate_Opfor : Ultimate_base
+    {
+        side = "Inv";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_OPFOR.paa);
+        name = "OPFOR";
+        file = "Ultimate_Opfor_DEPRECATED";
+    }; */
+    class Ultimate_Blufor_alt : Ultimate_base
+    {
+        side = "Occ";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_BLUFOR.paa);
+        name = "BLUFOR alt";
+        file = "Ultimate_Blufor_alt";
+        //description = $STR_A3AP_setupFactionsTab_exegermenos;
+    };
+    class Ultimate_Blufor_alt2 : Ultimate_base
+    {
+        side = "Occ";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_BLUFOR.paa);
+        name = "BLUFOR alt2";
+        file = "Ultimate_Blufor_alt2";
+        //description = $STR_A3AP_setupFactionsTab_exegermenos;
+    };
+    class Ultimate_Opfor_alt : Ultimate_base
+    {
+        side = "Inv";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_OPFOR.paa);
+        name = "OPFOR alt";
+        file = "Ultimate_Opfor_alt";
+        //description = $STR_A3AP_setupFactionsTab_exegermenos;
+    };
+    class Ultimate_Opfor_alt2 : Ultimate_base
+    {
+        side = "Inv";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_OPFOR.paa);
+        name = "OPFOR alt2";
+        file = "Ultimate_Opfor_alt2";
+        //description = $STR_A3AP_setupFactionsTab_exegermenos;
+    };
+    class Ultimate_Civ : Ultimate_base
+    {
+        side = "Civ";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_Civ.paa);
+        name = "CIV";
+        file = "Ultimate_Civ";
+        //description = $STR_A3AP_setupFactionsTab_exegermenos;
+    };
+    class Ultimate_Rivals : Ultimate_base
+    {
+        side = "Riv";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_RIVALS.paa);
+        name = "RIVALS";
+        file = "Ultimate_Rivals";
+        //description = $STR_A3AP_setupFactionsTab_exegermenos;
+    };
+    class Ultimate_Rivals_alt : Ultimate_base
+    {
+        side = "Riv";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_RIVALS.paa);
+        name = "RIVALS alt";
+        file = "Ultimate_Rivals_alt";
+        //description = $STR_A3AP_setupFactionsTab_exegermenos;
+    };
+    class Ultimate_Indfor : Ultimate_base
+    {
+        side = "Reb";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_INDFOR.paa);
+        name = "INDFOR";
+        file = "Ultimate_Indfor";
+    };
     // ***************************** CUP *****************************
 
     #include "Templates\CUP\templates.hpp"	

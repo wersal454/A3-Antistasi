@@ -151,10 +151,7 @@ _initialRebelEquipment append [
     "vn_m19_binocs_grn",
     "vn_b_item_compass",
     "vn_b_item_compass_sog",
-    "vn_b_item_watch"
-];
-
-_initialRebelEquipment append [
+    "vn_b_item_watch",
     "vn_o_pack_02",
     "vn_o_pack_01",
     "vn_o_pack_08"

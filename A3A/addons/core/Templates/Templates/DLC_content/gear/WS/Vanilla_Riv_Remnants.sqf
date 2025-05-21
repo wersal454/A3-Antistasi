@@ -30,6 +30,13 @@ _helmets append [
 _crewhelmets append ["lxWS_H_Tank_tan_F", "lxWS_H_HelmetCrew_I"];
 
 
+(_loadoutData get "facewear") append [
+    "G_Combat_lxWS"
+];
+
+(_loadoutData get "fullmask") append [
+	"G_Balaclava_blk_lxWS","G_Balaclava_oli_lxWS"
+];
 
 
 

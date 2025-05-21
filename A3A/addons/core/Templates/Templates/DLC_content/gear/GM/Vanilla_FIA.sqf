@@ -14,10 +14,7 @@ _initialRebelEquipment append [
     "gm_boltcutter",
     ["gm_rpg7_wud", 3], 
     ["gm_1Rnd_40mm_heat_pg7v_rpg7", 9],
-    ["gm_1Rnd_40mm_heat_pg7vl_rpg7", 9]
-];
-
-_initialRebelEquipment append [
+    ["gm_1Rnd_40mm_heat_pg7vl_rpg7", 9],
     "gm_ge_army_backpack_medic_80_oli",
     "gm_ge_backpack_satchel_80_blk",
     "gm_ge_backpack_satchel_80_san"

@@ -10,7 +10,7 @@ class CfgPatches
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_Data_F_AoW_Loadorder","air_f_vietnam_04"};
+        requiredAddons[] = {"A3_Data_F_AoW_Loadorder","air_f_vietnam_04","wheeled_f_vietnam_02_c"};
         author = AUTHOR;
         authors[] = { AUTHORS };
         authorUrl = "";

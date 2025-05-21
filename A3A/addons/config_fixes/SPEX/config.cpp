@@ -10,7 +10,7 @@ class CfgPatches
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_Data_F_AoW_Loadorder","ww2_spex_assets_c_characters_americans_c"};
+        requiredAddons[] = {"A3_Data_F_AoW_Loadorder","ww2_spex_assets_c_characters_americans_c","ww2_spe_assets_c_characters_germans_c"};
         author = AUTHOR;
         authors[] = { AUTHORS };
         authorUrl = "";

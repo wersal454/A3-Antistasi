@@ -38,8 +38,13 @@ _vests pushback "V_lxWS_HarnessO_oli";
 
 _heavyVests pushBack "V_lxWS_TacVestIR_oli";
 
+(_loadoutData get "facewear") append [
+    "G_Combat_lxWS"
+];
 
-
+(_loadoutData get "fullmask") append [
+	"G_Balaclava_blk_lxWS","G_Balaclava_oli_lxWS","G_Balaclava_snd_lxWS"
+];
 
 
 

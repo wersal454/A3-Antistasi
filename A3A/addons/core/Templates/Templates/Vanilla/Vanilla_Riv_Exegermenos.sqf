@@ -273,7 +273,7 @@ _loadoutData set ["facewear", [
 	"G_Bandanna_blk"
 ]];
 
-_loadoutData set ["fullmask", [	"G_Balaclava_combat", "G_Balaclava_lowprofile", "G_Balaclava_blk"]];
+_loadoutData set ["fullmask", ["G_Balaclava_combat", "G_Balaclava_lowprofile", "G_Balaclava_blk"]];
 
 _loadoutData set ["headgear", [
     "H_Shemag_olive",

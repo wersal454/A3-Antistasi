@@ -54,10 +54,7 @@ _initialRebelEquipment append [
     "SPE_GER_ItemCompass",
     "SPE_GER_ItemCompass_deg",
     "SPE_US_ItemWatch",
-    "SPE_GER_ItemWatch"
-];
-
-_initialRebelEquipment append [
+    "SPE_GER_ItemWatch",
     "B_SPE_FFI_Gasbag",
     "B_SPE_CIV_musette",
     "B_SPE_CIV_satchel"
