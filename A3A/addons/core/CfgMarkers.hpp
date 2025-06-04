@@ -280,4 +280,23 @@ class CfgMarkers
 		icon = QPATHTOFOLDER(Pictures\Markers\Marker_GSB2022.paa);
 		texture = QPATHTOFOLDER(Pictures\Markers\Marker_GSB2022.paa);
 	};
+
+	class a3u_flag_BLUFOR : flag_NATO 
+	{
+		name = "BLUFOR";
+		icon = QPATHTOFOLDER(Pictures\Markers\BLUFOR.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\BLUFOR.paa);
+	};
+	class a3u_flag_OPFOR : flag_NATO 
+	{
+		name = "OPFOR";
+		icon = QPATHTOFOLDER(Pictures\Markers\OPFOR.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\OPFOR.paa);
+	};
+	class a3u_flag_INDFOR : flag_NATO 
+	{
+		name = "INDFOR";
+		icon = QPATHTOFOLDER(Pictures\Markers\INDFOR.paa);
+		texture = QPATHTOFOLDER(Pictures\Markers\INDFOR.paa);
+	};
 };

@@ -601,7 +601,68 @@ class Templates
         name = "CSLA Desert";
         file = "CSLA_AI_CSLA_Desert";
     };
-	
+    //***************************** Ultimate templates *****************************
+    class Ultimate_Base : Vanilla_Base
+    {
+        basepath = QPATHTOFOLDER(Templates\Templates\Ultimate);
+        priority = 50;
+    };
+	class Ultimate_Blufor_alt : Ultimate_Base
+    {
+        side = "Occ";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_BLUFOR.paa);
+        name = "BLUFOR (alt)";
+        file = "Ultimate_Blufor_alt";
+    };
+    class Ultimate_Blufor_alt2 : Ultimate_Base
+    {
+        side = "Occ";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_BLUFOR.paa);
+        name = "BLUFOR (alt2)";
+        file = "Ultimate_Blufor_alt2";
+    };
+    class Ultimate_Opfor_alt : Ultimate_Base
+    {
+        side = "Inv";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_OPFOR.paa);
+        name = "OPFOR (alt)";
+        file = "Ultimate_Opfor_alt";
+    };
+    class Ultimate_Opfor_alt2 : Ultimate_Base
+    {
+        side = "Inv";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_OPFOR.paa);
+        name = "OPFOR (alt2)";
+        file = "Ultimate_Opfor_alt2";
+    };
+    class Ultimate_Indfor : Ultimate_Base
+    {
+        side = "Reb";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_INDFOR.paa);
+        name = "INDFOR";
+        file = "Ultimate_Indfor";
+    };
+    class Ultimate_Civ : Ultimate_Base
+    {
+        side = "Civ";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_CIV.paa);
+        name = "CIV";
+        file = "Ultimate_Civ";
+    };
+    class Ultimate_Rivals : Ultimate_Base
+    {
+        side = "Riv";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_RIVALS.paa);
+        name = "RIVALS";
+        file = "Ultimate_Rivals";
+    };
+    class Ultimate_Rivals_alt : Ultimate_Base
+    {
+        side = "Riv";
+        flagTexture = QPATHTOFOLDER(Templates\Templates\Ultimate\flags\Ultimate_RIVALS.paa);
+        name = "RIVALS (alt)";
+        file = "Ultimate_Rivals_alt";
+    };
     // ***************************** CUP *****************************
 
     #include "Templates\CUP\templates.hpp"	

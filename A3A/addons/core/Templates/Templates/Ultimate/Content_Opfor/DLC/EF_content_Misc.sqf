@@ -1,0 +1,2 @@
+(_policeLoadoutData get "vests") append ["EF_V_CCR_Rifleman_Black","EF_V_CCR_Scout_Black","EF_V_CCR_Support_Black","EF_V_CCR_TL_Black","EF_V_AAV_Black"];
+(_policeLoadoutData get "helmets") append ["EF_H_Cap_Navy"];
