@@ -155,6 +155,26 @@ private _slItems = ["Laserbatteries", "Laserbatteries", "Laserbatteries"];
 private _eeItems = ["ToolKit", "MineDetector"];
 private _mmItems = [];
 
+private _baseClassCellLeaderArray = [];
+private _baseClassMercenaryArray = [];
+private _baseClassEnforcerArray = [];
+private _baseClassPartisanArray = [];
+private _baseClassMinutemanArray = [];
+private _baseClassMedicArray = [];
+private _baseClassSaboteurArray = [];
+private _baseClassExplosivesExpertArray = [];
+private _baseClassATArray = [];
+private _baseClassAAArray = [];
+private _baseClassOppressorArray = [];
+private _baseClassSharpshooterArray = [];
+
+// ================== Специальные роли ==================
+
+private _baseClassCrewArray = [];
+private _baseClassPilotArray = [];
+private _baseClassCommanderArray = [];
+private _baseClassUnarmedArray = [];
+
 #include "Content_Rivals\Ultimate_content_Rivals.sqf"
 
 if (A3A_hasACE) then {

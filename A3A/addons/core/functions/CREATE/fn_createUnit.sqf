@@ -36,67 +36,55 @@ params ["_group", "_type", "_position", ["_markers", []], ["_placement", 0], ["_
 private _unitDefinition = A3A_customUnitTypes getVariable [_type, []];
 
 if !(_unitDefinition isEqualTo []) exitWith {
-	_unitDefinition params ["_loadouts", "_traits",  "_unitProperties", "_unitClass"];
+    _unitDefinition params ["_loadouts", "_traits", "_unitProperties", "_unitClass"];
     private _canSkip = false;
 
     {
-        if (_x select 0 isEqualTo "baseClass") then
-		{
-            _unitClass = _x select 1; // grab the classname
-			if (_unitClass isEqualType []) then
-			{
-				if ((_unitClass select 0) isEqualType []) exitWith
-				{
-					private _weights = ((_x select 1) select 1);
-
-					private _units = ((_x select 1) select 0);
-
-					_unitClass = _units selectRandomWeighted _weights; // grab a random classname, weighted
-					
-					// [_units, _weights] call A3U_fnc_weightTest; // Only for debug. Don't forget to comment before updating, it's probably very intensive
-				};
-				_unitClass = selectRandom (_x select 1); // grab a random classname
-			};
+        if (_x select 0 isEqualTo "baseClass") then {
+            private _classData = _x select 1;
+            
+            // Обработка массива классов
+            if (_classData isEqualType []) then {
+                // Выбираем случайный класс из массива
+                _unitClass = selectRandom _classData;
+            } else {
+                // Используем одиночный класс
+                _unitClass = _classData;
+            };
         };
-        if (_x select 2 isEqualTo true) then
-		{
+        if (_x select 2 isEqualTo true) then {
             _canSkip = true;
         };
-    } forEach _traits; // grab all data from base class trait
+    } forEach _traits;
 
-	private _unit = _group createUnit [_unitClass, _position, _markers, _placement, _special];
-    [_unit] joinSilent _group; // normally, this command is literally pointless. But when we're mixing base classes (e.g opfor) but spawning them as blufor (swap enemy sides selection), it'll make them fight each other unless we do this
+    private _unit = _group createUnit [_unitClass, _position, _markers, _placement, _special];
+    [_unit] joinSilent _group;
 
-    if (_canSkip isEqualTo false) then {
-	    _unit setUnitLoadout selectRandom _loadouts;
+    if (!_canSkip) then {
+        _unit setUnitLoadout selectRandom _loadouts;
     };
-	_unit setVariable ["unitType", _type, true];
+    _unit setVariable ["unitType", _type, true];
 
-	private _identity = if (isNil "_identity") then {
-		[Faction(side _unit), _type] call A3A_fnc_createRandomIdentity;
-	} else {
-		_identity;
-	};
-	[_unit, _identity] call A3A_fnc_setIdentity;
+    private _identity = if (isNil "_identity") then {
+        [Faction(side _unit), _type] call A3A_fnc_createRandomIdentity;
+    } else {
+        _identity
+    };
+    [_unit, _identity] call A3A_fnc_setIdentity; ///to not randomize idententity antistati way, need to pass some parameter 
 
-	//it's very fragile and non-extensible (adding second bool or string value into template will break this)
-	{
-		switch (true) do {
-			case (_x isEqualType true): {
-				_unit setVariable ["isRival", _x, true];
-			};
-			case (_x isEqualType ""): {
-				_unit setVariable ["unitPrefix", _x, true];
-			};
-		};	
-	} forEach _unitProperties;
+    {
+        switch (true) do {
+            case (_x isEqualType true): { _unit setVariable ["isRival", _x, true] };
+            case (_x isEqualType ""): { _unit setVariable ["unitPrefix", _x, true] };
+        };
+    } forEach _unitProperties;
 
-	{
+    {
         if (_x select 0 isNotEqualTo "baseClass") then {
             _unit setUnitTrait _x;
         };
-	} forEach _traits;
-	_unit
+    } forEach _traits;
+    _unit
 };
 
 private _unit = _group createUnit [_type, _position, _markers, _placement, _special];

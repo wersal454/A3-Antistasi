@@ -8,8 +8,8 @@ _repairTrucks append ["gm_gc_army_ural4320_repair","gm_gc_bgs_ural4320_repair","
 _fuelTrucks append ["gm_gc_army_ural375d_refuel","gm_gc_bgs_ural375d_refuel","gm_pl_army_ural375d_refuel"];
 _medicalTrucks append ["gm_gc_army_ural375d_medic","gm_gc_bgs_ural375d_medic","gm_pl_army_ural375d_medic"];
 _lightAPCs append ["gm_gc_army_brdm2","gm_gc_army_brdm2rkh","gm_gc_army_btr60pa","gm_gc_army_btr60pa_dshkm","gm_pl_army_brdm2"];
-_APCs append ["gm_gc_army_btr60pb","gm_pl_army_ot64a"];
-_IFVs append ["gm_gc_army_bmp1sp2","gm_pl_army_bmp1sp2"];
+_APCs append ["gm_gc_army_btr60pb","gm_pl_army_ot64a","gm_gc_army_brdm2_9p133","gm_pl_army_brdm2_9p133"];
+_IFVs append ["gm_gc_army_bmp1sp2","gm_pl_army_bmp1sp2","gm_gc_army_bmp1p"];
 _airborneVehicles append ["gm_gc_army_brdm2","gm_gc_army_brdm2rkh","gm_gc_army_btr60pa","gm_gc_army_btr60pa_dshkm","gm_pl_army_brdm2"];
 _tanks append ["gm_gc_army_t55a","gm_gc_army_t55ak","gm_gc_army_t55am2","gm_gc_army_t55am2b","gm_pl_army_t55a","gm_pl_army_t55ak"];
 _lightTanks append ["gm_gc_army_pt76b","gm_gc_army_t55","gm_pl_army_pt76b","gm_pl_army_t55"];
@@ -54,7 +54,8 @@ _minefieldAPERS append ["gm_minestatic_ap_pfm1"];
 _baseClassSquadLeaderArray append ["gm_gc_army_squadleader_mpiak74n_80_str","gm_gc_army_squadleader_mpiak74n_80_win",
 "gm_gc_army_sf_squadleader_mpikms72_80_str","gm_gc_army_sf_squadleader_mpikms72_80_win","gm_gc_bgs_sf_squadleader_hk33_80_str",
 "gm_pl_army_squadleader_akm_80_moro","gm_pl_army_squadleader_akm_80_autumn_moro","gm_pl_army_squadleader_akm_80_win",
-"gm_pl_army_sf_squadleader_akmn_80_moro","gm_pl_army_sf_squadleader_akmn_80_win"];
+"gm_pl_army_sf_squadleader_akmn_80_moro","gm_pl_army_sf_squadleader_akmn_80_win","gm_gc_army_squadleader_mpiak74n_90_str",
+"gm_gc_army_squadleader_mpiak74n_90_win","gm_gc_army_sf_squadleader_mpikms72_90_str","gm_gc_army_sf_squadleader_mpikms72_90_win"];
 _baseClassRiflemanArray append ["gm_gc_army_antitank_assistant_mpiak74n_rpg7_80_str","gm_gc_army_machinegunner_assistant_mpiak74n_lmgrpk_80_str","gm_gc_army_machinegunner_assistant_mpiak74n_pk_80_str",
 "gm_gc_army_paratrooper_mpiaks74n_80_str","gm_gc_army_rifleman_mpiak74n_80_str","gm_gc_army_antitank_assistant_mpiak74n_rpg7_80_win",
 "gm_gc_army_machinegunner_assistant_mpiak74n_lmgrpk_80_win","gm_gc_army_machinegunner_assistant_mpiak74n_pk_80_win",
@@ -65,46 +66,66 @@ _baseClassRiflemanArray append ["gm_gc_army_antitank_assistant_mpiak74n_rpg7_80_
 "gm_pl_army_machinegunner_assistant_akm_rpk_80_autumn_moro","gm_pl_army_machinegunner_assistant_akm_pk_80_autumn_moro","gm_pl_army_paratrooper_pm63_80_autumn_moro",
 "gm_pl_army_engineer_akm_80_autumn_moro","gm_pl_army_rifleman_akm_80_autumn_moro","gm_pl_army_antitank_assistant_akm_rpg7_80_win","gm_pl_army_machinegunner_assistant_akm_rpk_80_win",
 "gm_pl_army_machinegunner_assistant_akm_pk_80_win","gm_pl_army_paratrooper_pm63_80_win","gm_pl_army_rifleman_akm_80_win","gm_pl_army_sf_rifleman_akmn_80_moro",
-"gm_pl_army_sf_rifleman_pm63_80_moro","gm_pl_army_sf_rifleman_akmn_80_win","gm_pl_army_sf_rifleman_pm63_80_win"];
+"gm_pl_army_sf_rifleman_pm63_80_moro","gm_pl_army_sf_rifleman_akmn_80_win","gm_pl_army_sf_rifleman_pm63_80_win","gm_gc_army_antitank_assistant_mpiak74n_rpg7_90_str",
+"gm_gc_army_machinegunner_assistant_mpiak74n_lmgrpk74_90_str","gm_gc_army_machinegunner_assistant_mpiak74n_pk_90_str","gm_gc_army_paratrooper_mpiaks74n_90_str",
+"gm_gc_army_rifleman_mpiak74n_90_str","gm_gc_army_antitank_assistant_mpiak74n_rpg7_90_win","gm_gc_army_machinegunner_assistant_mpiak74n_lmgrpk74_90_win",
+"gm_gc_army_machinegunner_assistant_mpiak74n_pk_90_win","gm_gc_army_paratrooper_mpiaks74n_90_win","gm_gc_army_rifleman_mpiak74n_90_win",
+"gm_gc_army_sf_rifleman_mpikms72_90_str","gm_gc_army_sf_rifleman_pm63_90_str","gm_gc_army_sf_rifleman_mpikms72_90_win","gm_gc_army_sf_rifleman_pm63_90_win"];
 _baseClassRadiomanArray append ["gm_gc_army_radioman_mpiak74n_80_str","gm_gc_army_radioman_mpiak74n_80_win","gm_gc_army_sf_radioman_mpikms72_80_str",
 "gm_gc_army_sf_radioman_mpikms72_80_win","gm_pl_army_radioman_akm_80_moro","gm_pl_army_radioman_akm_80_autumn_moro","gm_pl_army_radioman_akm_80_win",
-"gm_pl_army_sf_radioman_akmn_80_moro","gm_pl_army_sf_radioman_akmn_80_win"];
+"gm_pl_army_sf_radioman_akmn_80_moro","gm_pl_army_sf_radioman_akmn_80_win","gm_gc_army_radioman_mpiak74n_90_str","gm_gc_army_sf_radioman_mpikms72_90_str",
+"gm_gc_army_sf_radioman_mpikms72_90_win"];
 _baseClassMedicArray append ["gm_gc_army_medic_mpiak74n_80_str","gm_gc_army_medic_mpiak74n_80_win","gm_pl_army_medic_akm_80_moro",
-"gm_pl_army_medic_akm_80_autumn_moro","gm_pl_army_medic_akm_80_win"];
+"gm_pl_army_medic_akm_80_autumn_moro","gm_pl_army_medic_akm_80_win","gm_gc_army_medic_mpiak74n_90_str",
+"gm_gc_army_medic_mpiak74n_90_win"];
 _baseClassEngineerArray append ["gm_gc_army_engineer_mpiaks74n_80_str","gm_gc_army_engineer_mpiaks74n_80_win","gm_gc_army_sf_engineer_mpikms72_80_str",
-"gm_gc_army_sf_engineer_mpikms72_80_win","gm_pl_army_engineer_akm_80_win","gm_pl_army_sf_engineer_pm63_80_moro","gm_pl_army_sf_engineer_pm63_80_win"];
+"gm_gc_army_sf_engineer_mpikms72_80_win","gm_pl_army_engineer_akm_80_win","gm_pl_army_sf_engineer_pm63_80_moro",
+"gm_pl_army_sf_engineer_pm63_80_win","gm_gc_army_engineer_mpiaks74n_90_str","gm_gc_army_sf_engineer_mpikms72_90_str",
+"gm_gc_army_sf_engineer_mpikms72_90_win"];
 _baseClassExplosivesArray append ["gm_gc_army_demolition_mpiaks74n_80_str","gm_gc_army_demolition_mpiaks74n_80_win",
 "gm_gc_army_sf_demolition_pm63_80_str","gm_gc_army_sf_demolition_pm63_80_win","gm_gc_bgs_sf_demolition_pm63_80_str",
 "gm_pl_army_demolition_akm_80_moro","gm_pl_army_demolition_akm_80_autumn_moro","gm_pl_army_demolition_akm_80_win",
-"gm_pl_army_sf_demolition_pm63_80_moro","gm_pl_army_sf_demolition_pm63_80_win"];
+"gm_pl_army_sf_demolition_pm63_80_moro","gm_pl_army_sf_demolition_pm63_80_win","gm_gc_army_demolition_mpiaks74n_90_str",
+"gm_gc_army_demolition_mpiaks74n_90_win","gm_gc_army_sf_demolition_pm63_90_str","gm_gc_army_sf_demolition_pm63_90_win"];
 _baseClassGrenadierArray append ["gm_pl_army_grenadier_akm_pallad_80_moro","gm_pl_army_grenadier_pallad_d_80_moro",
 "gm_pl_army_grenadier_akm_pallad_80_autumn_moro","gm_pl_army_grenadier_pallad_d_80_autumn_moro","gm_pl_army_grenadier_akm_pallad_80_win",
 "gm_pl_army_grenadier_pallad_d_80_win","gm_pl_army_sf_grenadier_akm_pallad_80_moro","gm_pl_army_sf_grenadier_akm_pallad_80_win"];
 _baseClassLATArray append ["gm_gc_army_antitank_mpiak74n_rpg18_80_str","gm_gc_army_antitank_mpiak74n_rpg18_80_win",
-"gm_gc_army_sf_antitank_mpikms72_rpg18_80_str","gm_gc_army_sf_antitank_mpikms72_rpg18_80_win"];
+"gm_gc_army_sf_antitank_mpikms72_rpg18_80_str","gm_gc_army_sf_antitank_mpikms72_rpg18_80_win","gm_gc_army_antitank_mpiak74n_rpg18_90_str",
+"gm_gc_army_antitank_mpiak74n_rpg18_90_win","gm_gc_army_sf_antitank_mpikms72_rpg18_90_str","gm_gc_army_sf_antitank_mpikms72_rpg18_90_win"];
 _baseClassATArray append ["gm_gc_army_antitank_mpiak74n_rpg7_80_str","gm_gc_army_antitank_mpiak74n_rpg7_80_win",
 "gm_gc_army_sf_antitank_mpikms72_rpg7_80_str","gm_gc_army_sf_antitank_mpikms72_rpg7_80_win","gm_pl_army_antitank_akm_rpg7_80_moro",
 "gm_pl_army_antitank_akm_rpg7_80_autumn_moro","gm_pl_army_antitank_akm_rpg7_80_win","gm_pl_army_sf_antitank_akmn_rpg7_80_moro",
-"gm_pl_army_sf_antitank_akmn_rpg7_80_win"];
+"gm_pl_army_sf_antitank_akmn_rpg7_80_win","gm_gc_army_antitank_mpiak74n_rpg7_90_str","gm_gc_army_antitank_mpiak74n_rpg7_90_win",
+"gm_gc_army_sf_antitank_mpikms72_rpg7_90_str","gm_gc_army_sf_antitank_mpikms72_rpg7_90_win"];
 _baseClassAAArray append ["gm_gc_army_antiair_mpiak74n_9k32m_80_str","gm_gc_army_antiair_mpiak74n_9k32m_80_win","gm_gc_army_sf_antiair_pm63_9k32m_80_str",
 "gm_gc_army_sf_antiair_pm63_9k32m_80_win","gm_pl_army_antiair_akm_9k32m_80_moro","gm_pl_army_antiair_akm_9k32m_80_autumn_moro",
-"gm_pl_army_antiair_akm_9k32m_80_win","gm_pl_army_sf_antiair_pm63_9k32m_80_moro","gm_pl_army_sf_antiair_pm63_9k32m_80_win"];
+"gm_pl_army_antiair_akm_9k32m_80_win","gm_pl_army_sf_antiair_pm63_9k32m_80_moro","gm_pl_army_sf_antiair_pm63_9k32m_80_win",
+"gm_gc_army_antiair_mpiak74n_9k32m_90_str","gm_gc_army_antiair_mpiak74n_9k32m_90_win","gm_gc_army_sf_antiair_pm63_9k32m_90_str",
+"gm_gc_army_sf_antiair_pm63_9k32m_90_win"];
 _baseClassMachineGunnerArray append ["gm_gc_army_machinegunner_lmgrpk_80_str","gm_gc_army_machinegunner_pk_80_str","gm_gc_army_machinegunner_lmgrpk_80_win","gm_gc_army_machinegunner_pk_80_win",
 "gm_gc_army_sf_machinegunner_lmgrpk_80_str","gm_gc_army_sf_machinegunner_lmgrpk_80_win","gm_pl_army_machinegunner_rpk_80_moro",
 "gm_pl_army_machinegunner_pk_80_moro","gm_pl_army_machinegunner_rpk_80_autumn_moro","gm_pl_army_machinegunner_pk_80_autumn_moro",
-"gm_pl_army_machinegunner_rpk_80_win","gm_pl_army_machinegunner_pk_80_win","gm_pl_army_sf_machinegunner_rpk_80_moro","gm_pl_army_sf_machinegunner_rpk_80_win"];
+"gm_pl_army_machinegunner_rpk_80_win","gm_pl_army_machinegunner_pk_80_win","gm_pl_army_sf_machinegunner_rpk_80_moro",
+"gm_pl_army_sf_machinegunner_rpk_80_win","gm_gc_army_machinegunner_lmgrpk74_90_str","gm_gc_army_machinegunner_pk_90_str",
+"gm_gc_army_machinegunner_lmgrpk74_90_win","gm_gc_army_machinegunner_pk_90_win","gm_gc_army_sf_machinegunner_lmgrpk_90_str",
+"gm_gc_army_sf_machinegunner_lmgrpk_90_win"];
 _baseClassMarksmanArray append ["gm_gc_army_marksman_svd_80_str","gm_gc_army_marksman_svd_80_win","gm_gc_army_sf_marksman_svd_80_str",
 "gm_gc_army_sf_marksman_svd_80_win","gm_gc_bgs_sf_marksman_svd_80_str","gm_pl_army_marksman_svd_80_moro","gm_pl_army_marksman_svd_80_autumn_moro",
-"gm_pl_army_marksman_svd_80_win","gm_pl_army_sf_marksman_svd_80_moro","gm_pl_army_sf_marksman_svd_80_win"];
+"gm_pl_army_marksman_svd_80_win","gm_pl_army_sf_marksman_svd_80_moro","gm_pl_army_sf_marksman_svd_80_win","gm_gc_army_marksman_svd_90_str",
+"gm_gc_army_marksman_svd_90_win","gm_gc_army_sf_marksman_svd_90_str","gm_gc_army_sf_marksman_svd_90_win"];
 _baseClassSniperArray append ["gm_gc_army_marksman_svd_80_str","gm_gc_army_marksman_svd_80_win","gm_gc_army_sf_marksman_svd_80_str",
 "gm_gc_army_sf_marksman_svd_80_win","gm_gc_bgs_sf_marksman_svd_80_str","gm_pl_army_marksman_svd_80_moro","gm_pl_army_marksman_svd_80_autumn_moro",
-"gm_pl_army_marksman_svd_80_win","gm_pl_army_sf_marksman_svd_80_moro","gm_pl_army_sf_marksman_svd_80_win"];
+"gm_pl_army_marksman_svd_80_win","gm_pl_army_sf_marksman_svd_80_moro","gm_pl_army_sf_marksman_svd_80_win","gm_gc_army_marksman_svd_90_str",
+"gm_gc_army_marksman_svd_90_win","gm_gc_army_sf_marksman_svd_90_str","gm_gc_army_sf_marksman_svd_90_win"];
 _baseClassPatrolSniperArray append ["gm_gc_army_marksman_svd_80_str","gm_gc_army_marksman_svd_80_win","gm_gc_army_sf_marksman_svd_80_str",
 "gm_gc_army_sf_marksman_svd_80_win","gm_gc_bgs_sf_marksman_svd_80_str","gm_pl_army_marksman_svd_80_moro","gm_pl_army_marksman_svd_80_autumn_moro",
-"gm_pl_army_marksman_svd_80_win","gm_pl_army_sf_marksman_svd_80_moro","gm_pl_army_sf_marksman_svd_80_win"];
+"gm_pl_army_marksman_svd_80_win","gm_pl_army_sf_marksman_svd_80_moro","gm_pl_army_sf_marksman_svd_80_win","gm_gc_army_marksman_svd_90_str",
+"gm_gc_army_marksman_svd_90_win","gm_gc_army_sf_marksman_svd_90_str","gm_gc_army_sf_marksman_svd_90_win"];
 _baseClassPatrolSpotterArray append ["gm_gc_army_marksman_svd_80_str","gm_gc_army_marksman_svd_80_win","gm_gc_army_sf_marksman_svd_80_str",
 "gm_gc_army_sf_marksman_svd_80_win","gm_gc_bgs_sf_marksman_svd_80_str","gm_pl_army_marksman_svd_80_moro","gm_pl_army_marksman_svd_80_autumn_moro",
-"gm_pl_army_marksman_svd_80_win","gm_pl_army_sf_marksman_svd_80_moro","gm_pl_army_sf_marksman_svd_80_win"];
+"gm_pl_army_marksman_svd_80_win","gm_pl_army_sf_marksman_svd_80_moro","gm_pl_army_sf_marksman_svd_80_win","gm_gc_army_marksman_svd_90_str",
+"gm_gc_army_marksman_svd_90_win","gm_gc_army_sf_marksman_svd_90_str","gm_gc_army_sf_marksman_svd_90_win"];
 // ================== Специальные роли ==================
 _baseClassPoliceArray append ["gm_ge_army_militarypolice_p1_80_oli","gm_ge_army_militarypolice_p1_parka_80_ols","gm_ge_army_militarypolice_p1_parka_80_win"];
 
@@ -398,7 +419,9 @@ _RifleOptics append ["gm_maglite_3d_ris_blk"];
 (_loadoutData get "officerVests") append [
 	"gm_gc_army_vest_80_belt_str",
 	"gm_gc_army_vest_80_rifleman_str",
-	"gm_pl_army_vest_80_crew_gry"
+	"gm_pl_army_vest_80_crew_gry",
+	"gm_gc_army_vest_bespa_90_officer_str",
+	"gm_gc_army_vest_bespa_90_officer_win"
 ];
 (_loadoutData get "officerHats") append [
 	"gm_gc_headgear_beret_officer_blk",
@@ -423,7 +446,11 @@ _RifleOptics append ["gm_maglite_3d_ris_blk"];
 	"gm_pl_army_uniform_soldier_autumn_80_moro",
 	"gm_pl_army_uniform_soldier_rolled_80_moro",
 	"gm_pl_army_uniform_soldier_rolled_80_frog",
-	"gm_pl_army_uniform_soldier_80_win"
+	"gm_pl_army_uniform_soldier_80_win",
+	"gm_gc_army_uniform_soldier_rolled_90_str",
+	"gm_gc_army_uniform_soldier_rolled_90_sgr",
+	"gm_gc_army_uniform_soldier_90_str",
+	"gm_gc_army_uniform_soldier_90_sgr"
 ];
 (_loadoutData get "slUniforms") append [
 	"gm_gc_army_uniform_soldier_80_blk",
@@ -451,7 +478,37 @@ _RifleOptics append ["gm_maglite_3d_ris_blk"];
 	"gm_pl_army_vest_80_mg_gry",
 	"gm_pl_army_vest_80_marksman_gry",
 	"gm_pl_army_vest_80_rifleman_gry",
-	"gm_pl_army_vest_80_rifleman_smg_gry"
+	"gm_pl_army_vest_80_rifleman_smg_gry",
+	"gm_gc_army_vest_bespa_80_none_str",
+	"gm_gc_army_vest_bespa_80_none_win",
+	"gm_gc_army_vest_bespa_80_belt_str",
+	"gm_gc_army_vest_bespa_80_belt_win",
+	"gm_gc_army_vest_bespa_80_rifleman_str",
+	"gm_gc_army_vest_bespa_80_rifleman_win",
+	"gm_gc_army_vest_bespa_90_belt_str",
+	"gm_gc_army_vest_bespa_90_belt_win",
+	"gm_gc_army_vest_bespa_90_rifleman_str",
+	"gm_gc_army_vest_bespa_90_rifleman_win"
+];
+
+(_loadoutData get "Hvests") append [
+	"gm_gc_army_vest_bespa_80_leader_str",
+	"gm_gc_army_vest_bespa_80_leader_win",
+	"gm_pl_army_vest_armor_01_akm_80_bg",
+	"gm_pl_army_vest_armor_01_akm_80_frog",
+	"gm_pl_army_vest_armor_01_akm_80_oli",
+	"gm_pl_army_vest_armor_01_akm_80_str",
+	"gm_pl_army_vest_armor_01_akm_80_win",
+	"gm_gc_army_vest_bespa_80_lmg_str",
+	"gm_gc_army_vest_bespa_80_lmg_win",
+	"gm_gc_army_vest_bespa_80_at_str",
+	"gm_gc_army_vest_bespa_80_at_win",
+	"gm_gc_army_vest_bespa_90_leader_str",
+	"gm_gc_army_vest_bespa_90_leader_win",
+	"gm_gc_army_vest_bespa_90_lmg_str",
+	"gm_gc_army_vest_bespa_90_lmg_win",
+	"gm_gc_army_vest_bespa_90_at_str",
+	"gm_gc_army_vest_bespa_90_at_win"
 ];
 (_loadoutData get "sniVests") append [
 	"gm_pl_army_vest_80_marksman_gry"
@@ -495,7 +552,14 @@ _RifleOptics append ["gm_maglite_3d_ris_blk"];
 	"gm_pl_headgear_wz67_cover_win",
 	"gm_ge_headgear_psh77_oli",
 	"gm_ge_headgear_psh77_up_oli",
-	"gm_ge_headgear_psh77_down_oli"
+	"gm_ge_headgear_psh77_down_oli",
+	"gm_gc_army_headgear_m86",
+	"gm_gc_army_headgear_m86_net",
+	"gm_gc_army_headgear_m86_cover_str",
+	"gm_gc_army_headgear_m86_cover_win",
+	"gm_gc_army_headgear_hat_90_bg",
+	"gm_gc_army_headgear_hat_90_str",
+	"gm_gc_army_headgear_hat_90_sgr"
 ];
 (_loadoutData get "slHat") append [
 	"gm_gc_headgear_beret_blk",
@@ -523,7 +587,10 @@ _RifleOptics append ["gm_maglite_3d_ris_blk"];
 	"gm_pl_headgear_wz67_cover_win",
 	"gm_ge_headgear_psh77_oli",
 	"gm_ge_headgear_psh77_up_oli",
-	"gm_ge_headgear_psh77_down_oli"
+	"gm_ge_headgear_psh77_down_oli",
+	"gm_gc_army_headgear_hat_90_bg",
+	"gm_gc_army_headgear_hat_90_str",
+	"gm_gc_army_headgear_hat_90_sgr"
 ];
 (_loadoutData get "sniHats") append [
 	"gm_xx_headgear_headwrap_01_grn",
@@ -531,7 +598,7 @@ _RifleOptics append ["gm_maglite_3d_ris_blk"];
 ];
 
 // Аксессуары
-(_loadoutData get "glasses") append ["gm_gc_army_facewear_dustglasses"];
+(_loadoutData get "glasses") append ["gm_gc_army_facewear_dustglasses","gm_ge_facewear_dustglasses_relaxed"];
 (_loadoutData get "goggles") append ["gm_gc_army_facewear_schm41m","gm_headgear_foliage_summer_forest_01","gm_headgear_foliage_summer_forest_02","gm_headgear_foliage_summer_forest_03","gm_headgear_foliage_summer_forest_04","gm_ge_facewear_m65","gm_headgear_foliage_summer_grass_01","gm_headgear_foliage_summer_grass_02","gm_headgear_foliage_summer_grass_03","gm_headgear_foliage_summer_grass_04","gm_xx_facewear_scarf_01_trp","gm_xx_facewear_scarf_01_flk","gm_xx_facewear_scarf_01_blk","gm_xx_facewear_scarf_01_blu","gm_xx_facewear_scarf_01_pt3","gm_xx_facewear_scarf_01_pt1","gm_xx_facewear_scarf_01_frog","gm_xx_facewear_scarf_01_grn","gm_xx_facewear_scarf_01_gry","gm_xx_facewear_scarf_01_m84","gm_xx_facewear_scarf_02_blk","gm_xx_facewear_scarf_02_grn","gm_xx_facewear_scarf_02_oli","gm_xx_facewear_scarf_02_wht","gm_xx_facewear_scarf_01_moro","gm_xx_facewear_scarf_01_oli","gm_xx_facewear_scarf_01_red","gm_xx_facewear_scarf_01_pt2","gm_xx_facewear_scarf_01_str","gm_xx_facewear_scarf_01_wht"];
 
 // Дополнительные предметы для специализаций

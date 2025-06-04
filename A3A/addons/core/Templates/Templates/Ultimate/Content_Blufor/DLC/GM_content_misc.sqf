@@ -72,6 +72,9 @@
 ];
 
 _UZIoptics = ["","gm_ls45_ir_uziclaw_blk","gm_ls45_red_uziclaw_blk"];
+_MPmuzzle = ["","gm_suppressor_hknavy_9mm_gry","gm_suppressor_kacnavy_9mm_blk","gm_suppressor_kacnavyk_9mm_blk","gm_suppressor_kacnavysd_9mm_blk","gm_suppressor_tgpp_9mm_blk"];
+_GMWESTERNOptics = ["","gm_zpp_stanagClaw_blk","gm_streamlight_sl20_stanagClaw_blk","gm_streamlight_sl20_stanagClaw_brn","gm_blits_stanagClaw_blk","gm_blits_stanagClaw_oli","gm_diavari_da_stanagClaw_blk","gm_diavari_da_stanagClaw_oli","gm_zf10x42_stanagClaw_blk","gm_zf10x42_stanagClaw_oli","gm_feroz24_stanagClaw_blk","gm_feroz24_stanagClaw_oli","gm_feroz51_stanagClaw_oli","gm_lsminiv_ir_stanagClaw_blk","gm_lsminiv_red_stanagClaw_blk","gm_ls1500_ir_stanagClaw_blk","gm_ls1500_red_stanagClaw_blk","gm_ls45_ir_stanagClaw_blk","gm_ls45_red_stanagClaw_blk","gm_maglite_3d_stanagClaw_blk","gm_colt4x20_stanagClaw_blk","gm_rv_stanagClaw_blk","gm_rv_stanagClaw_oli"];
+_MPMattachemnts = ["","gm_surefire_l60_wht_surefire_blk","gm_surefire_l60_ir_surefire_blk","gm_surefire_l60_red_surefire_blk","gm_surefire_l72_grn_surefire_blk","gm_surefire_l72_red_surefire_blk","gm_surefire_l75_ir_surefire_blk"];
 
 (_policeLoadoutData get "SMGs") append [
 	["gm_mp2a1_blk","gm_suppressor_m10_9mm_blk","",_UZIoptics,["gm_32Rnd_9x19mm_AP_DM91_mp2_blk","gm_32Rnd_9x19mm_B_DM11_mp2_blk","gm_32Rnd_9x19mm_B_DM51_mp2_blk","gm_32Rnd_9x19mm_B_DM51_mp2_blk"],[],""],

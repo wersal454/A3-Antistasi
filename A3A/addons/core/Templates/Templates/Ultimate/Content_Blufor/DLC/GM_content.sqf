@@ -1,6 +1,6 @@
 _basic append ["gm_dk_army_m113a1dk_command","gm_dk_army_bibera0","gm_ge_army_m113a1g_command","gm_ge_army_u1300l_firefighter",
 "gm_ge_army_typ247_firefighter","gm_ge_army_k125","gm_ge_army_bibera0","gm_ge_bgs_k125","gm_ge_army_bicycle_01_oli",
-"gm_ge_bgs_bicycle_01_grn"];
+"gm_ge_bgs_bicycle_01_grn","gm_ge_army_fuchsa1_jammer"];
 _unarmedVehicles append ["gm_ge_army_iltis_cargo"];
 _armedVehicles append ["gm_ge_army_iltis_milan","gm_ge_army_iltis_mg3"];
 _Trucks append ["gm_dk_army_u1300l_container","gm_ge_army_u1300l_container","gm_ge_army_kat1_451_cargo"];
@@ -8,13 +8,14 @@ _cargoTrucks append ["gm_dk_army_u1300l_container","gm_ge_army_kat1_454_cargo","
 _ammoTrucks append ["gm_ge_army_kat1_454_reammo"];
 _repairTrucks append ["gm_dk_army_m113a1dk_engineer","gm_dk_army_bpz2a0","gm_ge_army_fuchsa0_engineer","gm_ge_army_bpz2a0"];
 _fuelTrucks append ["gm_ge_army_kat1_451_refuel"];
-_medicalTrucks append ["gm_dk_army_m113a1dk_medic","gm_ge_army_m113a1g_medic"];
+_medicalTrucks append ["gm_dk_army_m113a1dk_medic","gm_ge_army_m113a1g_medic","gm_ge_army_fuchsa0_medic"];
 _lightAPCs append ["gm_ge_army_luchsa1","gm_ge_army_luchsa2","gm_ge_army_fuchsa0_engineer","gm_ge_army_fuchsa0_reconnaissance"];
 _APCs append ["gm_dk_army_m113a1dk_apc","gm_ge_army_m113a1g_apc","gm_ge_army_m113a1g_apc_milan"];
 _IFVs append ["gm_dk_army_m113a2dk","gm_ge_army_marder1a1plus","gm_ge_army_marder1a1a","gm_ge_army_marder1a2"];
 _airborneVehicles append ["gm_ge_army_fuchsa0_command", "gm_ge_army_fuchsa0_reconnaissance"];
-_tanks append ["gm_dk_army_Leopard1a3","gm_ge_army_Leopard1a1a2","gm_ge_army_Leopard1a3","gm_ge_army_Leopard1a3a1","gm_ge_army_Leopard1a5"];
-_lightTanks append ["gm_ge_army_Leopard1a1","gm_ge_army_Leopard1a1a1"];
+_tanks append ["gm_dk_army_Leopard1a3","gm_ge_army_Leopard1a1a2","gm_ge_army_Leopard1a3","gm_ge_army_Leopard1a3a1","gm_ge_army_Leopard1a5","gm_ge_army_Leopard1a4",
+"gm_dk_army_Leopard1a5dk1","gm_dk_army_Leopard1a5dk1_dozer"];
+_lightTanks append ["gm_ge_army_Leopard1a1","gm_ge_army_Leopard1a1a1","gm_ge_army_rakjpz2"];
 _aa append ["gm_ge_army_gepard1a1"];
 
 _transportBoat append ["O_Boat_Transport_01_F","O_Lifeboat"];
@@ -32,7 +33,7 @@ _helisAttack append ["gm_ge_army_bo105p_pah1a1"];
 
 _airPatrol append ["gm_ge_army_bo105m_vbh","gm_ge_army_bo105p1m_vbh","gm_ge_army_bo105p1m_vbh_swooper","gm_ge_bgs_bo105m_vbh","gm_ge_army_bo105p_pah1","gm_ge_army_bo105p_pah1a1"];
 
-_artillery append ["gm_dk_army_m109","gm_ge_army_kat1_463_mlrs","gm_ge_army_m109g"];
+_artillery append ["gm_dk_army_m109","gm_ge_army_kat1_463_mlrs","gm_ge_army_m109g","gm_ge_army_m113a1g_mortar"];
 
 _militiaLightArmed append ["gm_ge_army_iltis_mg3"];
 _militiaTrucks append ["gm_dk_army_typ247_cargo","gm_ge_army_typ247_cargo"];
@@ -576,8 +577,8 @@ private _MGbipods = ["","gm_g8_bipod_blk"];
 (_loadoutData get "heavyExplosives") append ["gm_explosive_petn_charge"];
 
 // Гранаты
-(_loadoutData get "antiInfantryGrenades") append ["gm_handgrenade_frag_dm51", "gm_handgrenade_frag_dm51a1"];
-(_loadoutData get "smokeGrenades") append ["gm_smokeshell_wht_dm25"];
+(_loadoutData get "antiInfantryGrenades") append ["gm_handgrenade_frag_dm51", "gm_handgrenade_frag_dm51a1","gm_handgrenade_frag_m56"];
+(_loadoutData get "smokeGrenades") append ["gm_smokeshell_wht_dm25","gm_smokeshell_wht_m77"];
 (_loadoutData get "signalsmokeGrenades") append ["gm_smokeshell_grn_dm21", "gm_smokeshell_red_dm23", "gm_smokeshell_yel_dm26", "gm_smokeshell_org_dm32"];
 
 // Базовое снаряжение
@@ -819,7 +820,8 @@ private _MGbipods = ["","gm_g8_bipod_blk"];
 	"gm_dk_army_vest_m00_wdl",
 	"gm_dk_army_vest_54_crew",
 	"gm_dk_army_vest_54_machinegunner",
-	"gm_dk_army_vest_54_rifleman"
+	"gm_dk_army_vest_54_rifleman",
+	"gm_pl_army_vest_armor_01_akm_80_blu"
 ];
 (_loadoutData get "Hvests") append [
 	"gm_ge_army_vest_type18_dpm",
@@ -854,7 +856,8 @@ private _MGbipods = ["","gm_g8_bipod_blk"];
 	"gm_dk_army_vest_m00_win_rifleman",
 	"gm_dk_army_vest_m00_wdl_rifleman",
 	"gm_dk_army_vest_54_machinegunner",
-	"gm_dk_army_vest_54_rifleman"
+	"gm_dk_army_vest_54_rifleman",
+	"gm_pl_army_vest_armor_01_akm_80_blu"
 ];
 (_loadoutData get "sniVests") append [
 	"gm_ge_army_vest_80_belt",
@@ -1032,7 +1035,8 @@ private _MGbipods = ["","gm_g8_bipod_blk"];
 	"gm_ge_headgear_sidecap_80_m62_oli",
 	"gm_ge_headgear_winterhat_80_oli",
 	"gm_ge_headgear_hat_beanie_blk",
-	"gm_ge_headgear_hat_beanie_crew_blk"
+	"gm_ge_headgear_hat_beanie_crew_blk",
+	"gm_gc_army_headgear_m86_cover_blu"
 ];
 (_loadoutData get "slHat") append [
 	"gm_ge_headgear_beret_red_antiair",
@@ -1073,7 +1077,7 @@ private _MGbipods = ["","gm_g8_bipod_blk"];
 ];
 
 // Аксессуары
-(_loadoutData get "glasses") append ["gm_ge_facewear_glacierglasses","gm_ge_facewear_stormhood_blk","gm_ge_facewear_stormhood_dustglasses_blk","gm_ge_facewear_stormhood_brd","gm_ge_facewear_sunglasses"];
+(_loadoutData get "glasses") append ["gm_ge_facewear_glacierglasses","gm_ge_facewear_stormhood_blk","gm_ge_facewear_stormhood_dustglasses_blk","gm_ge_facewear_stormhood_brd","gm_ge_facewear_sunglasses","gm_gc_army_facewear_dustglasses","gm_ge_facewear_dustglasses_relaxed"];
 (_loadoutData get "goggles") append ["gm_ge_facewear_acidgoggles","gm_ge_facewear_dustglasses","gm_headgear_foliage_summer_forest_01","gm_headgear_foliage_summer_forest_02","gm_headgear_foliage_summer_forest_03","gm_headgear_foliage_summer_forest_04","gm_ge_facewear_m65","gm_headgear_foliage_summer_grass_01","gm_headgear_foliage_summer_grass_02","gm_headgear_foliage_summer_grass_03","gm_headgear_foliage_summer_grass_04","gm_xx_facewear_scarf_01_trp","gm_xx_facewear_scarf_01_flk","gm_xx_facewear_scarf_01_blk","gm_xx_facewear_scarf_01_blu","gm_xx_facewear_scarf_01_pt3","gm_xx_facewear_scarf_01_pt1","gm_xx_facewear_scarf_01_frog","gm_xx_facewear_scarf_01_grn","gm_xx_facewear_scarf_01_gry","gm_xx_facewear_scarf_01_m84","gm_xx_facewear_scarf_02_blk","gm_xx_facewear_scarf_02_grn","gm_xx_facewear_scarf_02_oli","gm_xx_facewear_scarf_02_wht","gm_xx_facewear_scarf_01_moro","gm_xx_facewear_scarf_01_oli","gm_xx_facewear_scarf_01_red","gm_xx_facewear_scarf_01_pt2","gm_xx_facewear_scarf_01_str","gm_xx_facewear_scarf_01_wht"];
 
 // Дополнительные предметы для специализаций

@@ -154,10 +154,6 @@ private _backpacks = [];
 //    Misc Loadouts     //
 //////////////////////////
 
-if (isClass (configFile >> "cfgVehicles" >> "vnx_b_air_ac119_02_01")) then {
-	#include "..\MOD_content\Nickelsteel\gear\Vanilla_Rivals.sqf"
-};
-
 private _slItems = ["Laserbatteries", "Laserbatteries", "Laserbatteries"];
 private _eeItems = ["ToolKit", "MineDetector"];
 private _mmItems = [];
@@ -792,7 +788,7 @@ private _unitTypes = [
 	["Partisan", _partisanTemplate, [_baseClassPartisan], [_prefix, true]],
 	["Saboteur", _saboteurTemplate, [_baseClassSaboteur], [_prefix, true]],
 	["Medic", _medicTemplate, [["medic", true], _baseClassMedic], [_prefix, true]],
-	["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true], _baseClassExplosives], [_prefix, true]],
+	["ExplosivesExpert", _explosivesExpertTemplate, [["explosiveSpecialist", true], _baseClassExplosivesExpert], [_prefix, true]],
 	["SpecialistAT", _atTemplate, [_baseClassAT], [_prefix, true]],
 	["SpecialistAA", _aaTemplate, [_baseClassAA], [_prefix, true]],
 	["Oppressor", _oppressorTemplate, [_baseClassOppressor], [_prefix, true]],

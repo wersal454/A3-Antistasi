@@ -1043,7 +1043,7 @@ private _unitTypes = [
     ["Marksman", _marksmanTemplate, [_baseClassMarksman], [_prefix]],
     ["Sniper", _sniperTemplate, [_baseClassSniper], [_prefix]],
     ["PatrolSniper", _patrolSniperTemplate, [_baseClassPatrolSniper], [_prefix]],
-    ["PatrolSpotter", _patrolSpotterTemplate, [_baseClassPatrolSpotter], [_prefix]] 
+    ["PatrolSpotter", _patrolSpotterTemplate, [_baseClassPatrolSpotter], [_prefix]]
 ];
 
 [_prefix, _unitTypes, _loadoutData] call _fnc_generateAndSaveUnitsToTemplate;
