@@ -18,6 +18,7 @@ private _hasEF = "ef" in A3A_enabledDLC;
 ///////////////////////////
 //   Rebel Information   //
 ///////////////////////////
+#include "..\..\..\script_component.hpp"
 
 ["name", "INDFOR"] call _fnc_saveToTemplate;
 
@@ -93,7 +94,7 @@ private _voices = [];
 private _glasses = [];
 private _goggles = [];
 
-#include "Content_Indep\Ultimate_content_Indep.sqf"
+#include "Content_Indfor\Ultimate_content_Indfor.sqf"
 
 //////////////////////////
 //       Loadouts       //

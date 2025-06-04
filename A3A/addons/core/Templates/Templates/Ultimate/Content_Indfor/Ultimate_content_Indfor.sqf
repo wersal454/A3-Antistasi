@@ -23,7 +23,7 @@ if (_hasCSLA) then {
 if (_hasSOG) then {
     #include "DLC\SOG_content.sqf";
     if (isClass (configFile >> "cfgVehicles" >> "vnx_b_air_ac119_02_01")) then {
-	    #include "..\MOD_content\Nickelsteel\gear\Vanilla_FIA.sqf"
+	    #include "..\..\MOD_content\Nickelsteel\gear\Vanilla_FIA.sqf"
     };
 };
 

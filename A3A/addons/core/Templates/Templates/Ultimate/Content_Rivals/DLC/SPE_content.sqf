@@ -31,7 +31,7 @@ _voices append [
 	"SPE_Male02FRE","SPE_Male01FRE","SPE_Male02GER","SPE_Male01GER"
 ];
 
-_lightArmedVehicles append "SPE_Milice_R200_MG34_noinsignia","SPE_US_G503_MB_M1919_Armoured_noinsignia","SPE_US_G503_MB_M1919_noinsignia","SPE_US_G503_MB_M2_Armoured_noinsignia","SPE_US_G503_MB_M2_noinsignia","SPE_US_G503_MB_M2_PATROL_noinsignia","SPE_US_G503_MB_M1919_PATROL_noinsignia"[];
+_lightArmedVehicles append ["SPE_Milice_R200_MG34_noinsignia","SPE_US_G503_MB_M1919_Armoured_noinsignia","SPE_US_G503_MB_M1919_noinsignia","SPE_US_G503_MB_M2_Armoured_noinsignia","SPE_US_G503_MB_M2_noinsignia","SPE_US_G503_MB_M2_PATROL_noinsignia","SPE_US_G503_MB_M1919_PATROL_noinsignia"];
 _lightUnarmedVehicles append ["SPE_Milice_R200_Hood_noinsignia","SPE_Milice_R200_Unarmed_noinsignia","SPE_US_G503_MB_noinsignia","SPE_US_G503_MB_Armoured_noinsignia","SPE_US_G503_MB_Open_noinsignia"];
 _apc append ["SPE_FR_M3_Halftrack_Unarmed_Open_noinsignia","SPE_FR_M3_Halftrack_Unarmed_noinsignia","SPE_CCKW_353_noinsignia","SPE_CCKW_353_M2_noinsignia","SPE_CCKW_353_Open_noinsignia"];
 _tanks append ["SPE_PzKpfwIV_G_noinsignia","SPE_FR_M10_noinsignia","SPE_FR_M4A0_75_Early_noinsignia","SPE_FR_M4A0_75_mid_noinsignia","SPE_FR_M4A1_76_noinsignia","SPE_FR_M4A1_75_noinsignia","SPE_M18_Hellcat_noinsignia","SPE_M4A1_T34_Calliope_Direct_noinsignia",
@@ -147,7 +147,7 @@ _facewear append [
 	"G_SPE_Binoculars"
 ];
 
-_fullmask append [];
+//_fullmask append [];
 
 _headgear append [
 	"H_SPE_CIV_Worker_Cap_1",

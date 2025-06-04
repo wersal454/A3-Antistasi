@@ -2,37 +2,37 @@ if (_hasMarksman || _hasArtOfWar || _hasTanks || _hasJets || _hasHelicopters || 
 	#include "Vanilla_content.sqf";
 
     if (_hasApex) then {
-        #include "Apex_content.sqf";
+        #include "DLC\Apex_content.sqf";
     };
     if (_hasContact) then {
-        #include "Contact_content.sqf";
+        #include "DLC\Contact_content.sqf";
     };
 
     if (_hasWs) then {
-        #include "WS_content.sqf";
+        #include "DLC\WS_content.sqf";
     };
     if (_hasRF) then {
-        #include "RF_content.sqf";
+        #include "DLC\RF_content.sqf";
     };
     if (_hasEF) then {
-        #include "EF_content.sqf";
+        #include "DLC\EF_content.sqf";
     };
 };
 
 if (_hasCSLA) then {
-    #include "CSLA_content.sqf";
+    #include "DLC\CSLA_content.sqf";
 };
 
 if (_hasSOG) then {
-    #include "SOG_content.sqf";
+    #include "DLC\SOG_content.sqf";
 };
 
 if (_hasSPE) then {
-    #include "SPE_content.sqf";
+    #include "DLC\SPE_content.sqf";
 };
 
 if (_hasGM) then {
-    #include "GM_content.sqf";
+    #include "DLC\GM_content.sqf";
 };
 
 if (isClass (configFile >> "cfgVehicles" >> "OPTRE_M494")) then {

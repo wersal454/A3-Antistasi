@@ -97,7 +97,7 @@ _uniforms append [
 ];
 
 _pilotUniforms append [
-	"U_lxWS_SFIA_pilot_O",
+	"U_lxWS_SFIA_pilot_O"
 ];
 
 /////Helmets
