@@ -15,7 +15,7 @@
     Example:
 
     License: MIT
-*/
+*/ ////
 HR_GRG_Prefix = "Antistasi";
 
 // Condition for whether the player can override garage locks
