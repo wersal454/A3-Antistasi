@@ -41,6 +41,8 @@ else
     _airType = JET;
 };
 
+private _side = side _vehicle;
+
 //Select height and range for outposts, numbers are values for [CIV_HELI, MIL_HELI, JET]
 private _outpostDetectionRange = [300, 500, 750] select _airType;
 private _outpostDetectionHeight = [150, 250, 500] select _airType;
@@ -136,12 +138,12 @@ while {!(isNull _vehicle) && {alive _vehicle && {count (crew _vehicle) != 0}}} d
     _vehPos = getPosASL _vehicle;
 
     //Get all enemy airports and outposts to not search that much options
-    private _enemyAirports = airportsX select {sidesX getVariable [_x, sideUnknown] != teamPlayer};
-    private _enemyOutposts = (outposts + seaports) select {sidesX getVariable [_x, sideUnknown] != teamPlayer};
-    private _enemyMilbases = milbases select {sidesX getVariable [_x, sideUnknown] != teamPlayer};
+    private _enemyAirports = airportsX select {sidesX getVariable [_x, sideUnknown] != _side};
+    private _enemyOutposts = (outposts + seaports) select {sidesX getVariable [_x, sideUnknown] != _side};
+    private _enemyMilbases = milbases select {sidesX getVariable [_x, sideUnknown] != _side};
 
     //Check vehicles undercover status
-    if(_vehicleIsUndercover && {_vehicle getVariable ["NoFlyZoneDetected", ""] == ""}) then
+    if(_side isEqualTo teamPlayer && {_vehicleIsUndercover && {_vehicle getVariable ["NoFlyZoneDetected", ""] == ""}}) then
     {
         //Warnings will be issued before undercover is broken
 

@@ -214,19 +214,12 @@ if (_side != teamPlayer) then
 	}];
 };
 
-if (_veh isKindOf "Air") then {
-    /// add check for invaders/rivals/occupants
-	if (_side == Invaders || _side == Occupants || _side == Rivals) then {
-    	[_veh,_side] spawn A3A_fnc_airspaceControlAI;
-	};
-};
-
 if(_veh isKindOf "Air") then
 {
     //Start airspace control script if rebel player enters
     _veh addEventHandler ["GetIn", {
 		params ["_veh", "_role", "_unit"];
-		if((side (group _unit) == teamPlayer) && {isPlayer _unit}) then
+		if((side (group _unit) isNotEqualTo civilian)) then
 		{
 			// TODO: check this isn't spammed
 			[_veh] spawn A3A_fnc_airspaceControl;
