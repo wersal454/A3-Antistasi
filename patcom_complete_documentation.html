@@ -1,0 +1,4163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PatCom Ultra-Detailed Function Documentation v2.0</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --page-bg: #f5f5f5; /* Light page background */
+            --text-light: #333;
+            --text-dark: #555; /* Darker secondary text for better readability */
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #5dade2;
+            --secondary-color: #85929e;
+            --success-color: #58d68d;
+            --warning-color: #f7dc6f;
+            --danger-color: #ec7063;
+            --light-bg: #34495e;
+            --page-bg: #0a0d11; /* Very dark page background */
+            --text-light: #ffffff; /* Lighter text */
+            --text-dark: #e0e6ed; /* Lighter secondary text */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background-color: var(--page-bg);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            background: var(--secondary-color);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .nav-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: nowrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #darkModeToggle {
+            background: none;
+            border: 1px solid white;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #darkModeToggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Search and Filter */
+        .search-container {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: var(--box-shadow);
+        }
+
+        [data-theme="dark"] .search-container {
+            background: var(--light-bg);
+        }
+
+        .search-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #functionSearch {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        #categoryFilter {
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background: white;
+        }
+
+        .search-stats {
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        [data-theme="dark"] .search-stats {
+            color: var(--text-dark);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        .header .version-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--box-shadow);
+        }
+
+        [data-theme="dark"] .toc {
+            background: var(--light-bg);
+        }
+
+        .toc h2 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .toc-item {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .toc-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .toc-item h3 {
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        .toc-item p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        [data-theme="dark"] .toc-item p {
+            color: var(--text-dark);
+        }
+
+        [data-theme="dark"] .toc h2 {
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .toc-item h3 {
+            color: var(--text-light);
+        }
+
+        .toc-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .toc-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            scroll-margin-top: 100px;
+        }
+
+        [data-theme="dark"] .section {
+            background: var(--light-bg);
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .section h2 {
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .section h3 {
+            color: var(--text-light);
+        }
+
+        .section h2 {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 {
+            color: var(--secondary-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .function-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .function-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .code-block {
+            background: var(--light-bg);
+            border: 1px solid #e9ecef;
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        [data-theme="dark"] .code-block {
+            background: #2c3e50;
+            border-color: #555;
+            color: var(--text-light);
+        }
+
+        .code-snippet {
+            background: #e8f4f8;
+            border-left: 4px solid var(--primary-color);
+            padding: 8px 12px;
+            margin: 8px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+
+        [data-theme="dark"] .code-snippet {
+            background: #34495e;
+            color: var(--text-light);
+        }
+
+        .bullet-list {
+            margin-left: 20px;
+        }
+
+        .bullet-item {
+            margin-bottom: 8px;
+        }
+
+        .category-header {
+            font-size: 28px;
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin: 40px 0 20px 0;
+        }
+
+        .function-list {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        [data-theme="dark"] .function-list {
+            background: #34495e;
+        }
+
+        /* Statistics Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        .stat-card h3 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            opacity: 0.9;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #backToTop:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--secondary-color);
+            color: white;
+            margin-top: 40px;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .nav-bar .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+
+            .header h1 {
+                font-size: 2.2em;
+            }
+
+            .header p {
+                font-size: 1.1em;
+            }
+
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #functionSearch, #categoryFilter {
+                width: 100%;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav-bar, .search-container, #backToTop, #darkModeToggle {
+                display: none !important;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+            }
+
+            .section {
+                page-break-inside: avoid;
+                box-shadow: none !important;
+                border: 1px solid #ccc;
+            }
+
+            .code-block {
+                background: #f5f5f5 !important;
+                color: black !important;
+                border: 1px solid #ccc;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+
+        [data-theme="dark"] ::-webkit-scrollbar-track {
+            background: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="container">
+            <div class="nav-links">
+                <a href="#overview">📋 Overview</a>
+                <a href="#architecture">🏗️ Architecture</a>
+                <a href="#artillery">💥 Artillery</a>
+                <a href="#civilian">🏘️ Civilian</a>
+                <a href="#patcom-core">🎯 PatCom Core</a>
+                <a href="#integration">🔗 Integration</a>
+                <a href="#stats">📊 Statistics</a>
+            </div>
+            <div class="nav-controls">
+                <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🎯 PatCom System Documentation</h1>
+            <p>Ultra-Detailed Code Snippets for Every Function</p>
+            <div class="version-badge">Version 2.0 - Enhanced</div>
+        </header>
+
+        <!-- Search and Filter -->
+        <div class="search-container">
+            <div class="search-controls">
+                <input type="text" id="functionSearch" placeholder="🔍 Search functions...">
+                <select id="categoryFilter">
+                    <option value="all">📂 All Categories</option>
+                    <option value="artillery">💥 Artillery</option>
+                    <option value="civilian">🏘️ Civilian</option>
+                    <option value="patcom-core">🎯 PatCom Core</option>
+                </select>
+            </div>
+            <div class="search-stats" id="searchStats">
+                Showing all 44 functions (4 Artillery, 18 Civilian, 22 PatCom Core)
+            </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <section class="toc">
+            <h2>📖 Table of Contents</h2>
+            <div class="toc-grid">
+                <div class="toc-item">
+                    <h3>📋 System Overview</h3>
+                    <p>Architecture, features, and capabilities</p>
+                    <a href="#overview">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🏗️ Architecture</h3>
+                    <p>System design and data structures</p>
+                    <a href="#architecture">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>💥 Artillery</h3>
+                    <p>4 artillery control functions</p>
+                    <a href="#artillery">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🏘️ Civilian</h3>
+                    <p>17 civilian behavior functions</p>
+                    <a href="#civilian">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🎯 PatCom Core</h3>
+                    <p>22 patrol command functions</p>
+                    <a href="#patcom-core">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🔗 Integration</h3>
+                    <p>System integration and dependencies</p>
+                    <a href="#integration">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>📊 Statistics</h3>
+                    <p>System metrics and analytics</p>
+                    <a href="#stats">Jump to Section →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Overview -->
+        <section id="overview" class="section">
+            <h2 id="overview">📋 System Overview</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>43</h3>
+                    <p>Functions Documented</p>
+                </div>
+                <div class="stat-card">
+                    <h3>1,500+</h3>
+                    <p>Code Snippets</p>
+                </div>
+                <div class="stat-card">
+                    <h3>2,768</h3>
+                    <p>Documentation Lines</p>
+                </div>
+                <div class="stat-card">
+                    <h3>100%</h3>
+                    <p>Function Coverage</p>
+                </div>
+            </div>
+
+            <p>The PatCom (Patrol Commander) system is a comprehensive AI behavior management solution for Antistasi, providing intelligent patrol patterns, dynamic combat responses, and realistic civilian interactions. Every function includes detailed code examples showing exactly how it works.</p>
+
+            <h3>🎯 Key Features</h3>
+            <ul>
+                <li><strong>Dynamic AI Behavior</strong>: Context-aware patrol patterns that adapt to environment and threats</li>
+                <li><strong>Realistic Combat Response</strong>: Intelligent switching between patrol, attack, and defense modes</li>
+                <li><strong>Civilian Interaction System</strong>: Immersive civilian behaviors with dialogue and reactions</li>
+                <li><strong>Advanced Artillery Support</strong>: Coordinated fire missions with safety checks and reload management</li>
+                <li><strong>Modular Architecture</strong>: Clean separation of concerns with extensible design</li>
+                <li><strong>Performance Optimized</strong>: Efficient algorithms with minimal performance impact</li>
+                <li><strong>Comprehensive Validation</strong>: Multi-layer error checking and edge case handling</li>
+                <li><strong>Debug Visualization</strong>: 3D debug tools for AI pathfinding and state monitoring</li>
+            </ul>
+        </section>
+
+        <!-- Architecture -->
+        <section id="architecture" class="section">
+            <h2 id="architecture">🏗️ System Architecture</h2>
+
+            <p>The PatCom system uses a hierarchical architecture with clear separation between strategic command, tactical execution, and environmental interaction. Data flows through a structured pipeline from threat detection to behavioral response.</p>
+
+            <h3>📊 Architecture Overview</h3>
+            <div class="code-block">
+AI Behavior Pipeline:
+├── Threat Detection (fn_patrolGetEnemies)
+├── Command Logic (fn_patrolCommander)
+├── Behavior Execution (fn_patrolArea/fn_patrolAttack/fn_patrolDefend)
+├── Environmental Adaptation (fn_patrolHandleFormation)
+├── Static Weapon Management (fn_patrolArmStatics)
+└── Debug Visualization (fn_debugText3D/fn_debug3DPath)
+
+Civilian System:
+├── Ambient Population (fn_createAmbientCiv)
+├── Behavior Initialization (fn_civilianInitEH)
+├── Interaction Handling (fn_dialogCiv)
+├── Reaction System (fn_civilianFiredNearEH)
+└── Audio Management (fn_createCivilianTracks)
+
+Artillery System:
+├── Battery Registration (fn_artilleryAdd)
+├── Safety Validation (fn_artilleryDangerClose)
+├── Fire Mission Coordination (fn_artilleryFireMission)
+└── Weapon Management (fn_getReloadTime)
+            </div>
+        </section>
+
+        <h2 id="artillery" class="category-header">Artillery Functions</h2>
+    <div class="function-list">
+        <strong>Documented Functions:</strong> fn_artilleryAdd.sqf, fn_artilleryDangerClose.sqf, fn_artilleryFireMission.sqf, fn_getReloadTime.sqf
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_artilleryAdd.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Registers a group as an active artillery battery in the PATCOM system</div>
+            <div class="bullet-item">• Enables the group to participate in artillery fire missions called by the artillery fire mission system</div>
+            <div class="bullet-item">• Sets up the necessary variables for artillery coordination and state management</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Extracts group parameter: <span class="code-snippet">params ["_group"];</span></div>
+            <div class="bullet-item">• Marks the group as an artillery battery: <span class="code-snippet">_group setVariable ["PATCOM_ArtilleryBattery", true, true];</span></div>
+            <div class="bullet-item">• Initializes artillery busy state to false: <span class="code-snippet">_group setVariable ["PATCOM_ArtilleryBusy", false, true];</span></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Enables A3A_fnc_artilleryFireMission to select this group for fire missions</div>
+            <div class="bullet-item">• Allows the artillery battery to be discovered by battery scanning logic in fire mission function</div>
+            <div class="bullet-item">• Prepares group for artillery state management and coordination</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_artilleryDangerClose.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Checks if friendly AI units or friendly markers are within danger close proximity of an artillery target position</div>
+            <div class="bullet-item">• Prevents accidental friendly fire by detecting when artillery strikes would endanger friendly forces</div>
+            <div class="bullet-item">• Supports both unit-based proximity checks and strategic marker-based checks for occupied territories</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Extracts parameters for target position, radius, and side: <span class="code-snippet">params ["_targetPos", "_radius", "_side"];</span></div>
+            <div class="bullet-item">• Defines macro for all strategic markers: <span class="code-snippet">#define ALL_MARKERS (airportsX + milbases + outposts + factories + resourcesX + seaports)</span></div>
+            <div class="bullet-item">• Checks for friendly AI units within danger close radius: <span class="code-snippet">(groups _side) + (groups civilian)) findIf { (alive leader _x) && ((leader _x distance2D _targetPos) < _radius) } isNotEqualTo -1</span></div>
+            <div class="bullet-item">• Checks for friendly strategic markers at target position: <span class="code-snippet">ALL_MARKERS findIf { (sidesX getVariable[_x, sideUnknown] isEqualTo _side) && (_targetPos inArea _x) } isNotEqualTo -1</span></div>
+            <div class="bullet-item">• Returns true if danger close conditions are met, false otherwise: <span class="code-snippet">true;</span> or <span class="code-snippet">false;</span></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Forces A3A_fnc_artilleryFireMission to switch to safe munitions (smoke/flare) when danger close is detected</div>
+            <div class="bullet-item">• Prevents HE artillery strikes that could harm friendly forces</div>
+            <div class="bullet-item">• Triggers debug text display when danger close is detected in debug mode</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_artilleryFireMission.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Coordinates and executes artillery fire missions by selecting available batteries and managing the firing sequence</div>
+            <div class="bullet-item">• Handles ammunition selection, range verification, danger close checks, and multi-round firing with realistic reload times</div>
+            <div class="bullet-item">• Provides comprehensive artillery support for AI commanders calling in fire missions</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <div class="code-block">
+// Extract mission parameters
+params ["_targetPos", "_area", "_roundType", "_rounds", "_callerGroup"];
+
+// Get caller side and scan for available batteries
+private _batteryArray = [];
+private _side = side _callerGroup;
+
+// Find available artillery batteries not currently busy
+{
+    if !(_x getVariable ["PATCOM_ArtilleryBusy", false]) then {
+        {
+            private _veh = vehicle _x;
+            private _class = typeOf _veh;
+            if ((_class == "") || (gunner _veh != _x)) then { continue; };
+            private _artyChk = getNumber(configfile/"CfgVehicles"/_class/"artilleryScanner");
+            if (_artyChk isEqualTo 1) then {
+                if !(_veh in _batteryArray) then {
+                    _batteryArray pushBackUnique _veh;
+                };
+            };
+        } forEach (units _x);
+    };
+} forEach ((groups _side) select {_x getVariable ["PATCOM_ArtilleryBattery", false]});
+
+// Exit if no batteries available
+if (count _batteryArray == 0) exitWith {
+    If (PATCOM_DEBUG) then {
+        [leader _callerGroup, "NO SUPPORT AVAILABLE", 5, "Red"] call A3A_fnc_debugText3D;
+    };
+};
+
+// Select battery and get configuration
+private _selectedBattery = selectRandom _batteryArray;
+private _group = group (gunner _selectedBattery);
+private _batteryClass = (typeOf _selectedBattery);
+private _dayState = [] call A3A_fnc_getDayState;
+private _reloadTime = [_selectedBattery] call A3A_fnc_getReloadTime;
+
+// Set battery to busy
+_group setVariable ["PATCOM_ArtilleryBusy", true, true];
+
+// Check danger close
+if ([_targetPos, _area, _side] call A3A_fnc_artilleryDangerClose) then {
+    // Switch to safe munitions
+    if (_dayState == "EVENING" || {_dayState == "NIGHT"}) then {
+        _roundType = "FLARE";
+    } else {
+        _roundType = "SMOKE";
+    };
+};
+
+// Get faction artillery templates and ammunition
+private _faction = Faction(_side);
+if (_batteryClass in (_faction get "vehiclesArtillery")) then {
+    private _shellArray = _faction get "magazines" get _batteryClass;
+    _shellType = (_shellArray # 0);
+};
+// Handle mortar ammunition selection
+if (_batteryClass in (_faction get "staticMortars")) then {
+    switch (_roundType) do {
+        case "HE": { _shellType = _faction get "mortarMagazineHE"; };
+        case "SMOKE": { _shellType = _faction get "mortarMagazineSmoke"; };
+        case "FLARE": { _shellType = _faction get "mortarMagazineFlare"; };
+        default { _shellType = _faction get "mortarMagazineHE"; };
+    };
+};
+
+// Validate ammunition and range
+if (_shellType == "") exitWith {
+    ServerDebug_1("Unable to find ammoType for Classname - %1", _batteryClass);
+};
+if !(_targetPos inRangeOfArtillery [[_selectedBattery], _shellType]) exitWith {
+    If (PATCOM_DEBUG) then {
+        [leader _group, "OUT OF RANGE", 5, "Red"] call A3A_fnc_debugText3D;
+    };
+    _group setVariable ["PATCOM_ArtilleryBusy", false, true];
+};
+
+// Execute firing sequence
+[_group, _targetPos, _area, _selectedBattery, _shellType, _rounds, _reloadTime] spawn {
+    params ["_group", "_targetPos", "_area", "_selectedBattery", "_shellType", "_rounds", "_reloadTime"];
+
+    for "_i" from 1 to _rounds do {
+        private _finalTargetPos = [_targetPos, (random 50), _area, 0, 1, -1, 0] call A3A_fnc_getSafePos;
+        _selectedBattery doArtilleryFire [_finalTargetPos, _shellType, 1];
+        If (PATCOM_DEBUG) then {
+            [leader _group, "ROUND AWAY", 1, "Green"] call A3A_fnc_debugText3D;
+        };
+        sleep (_reloadTime + (2 + (random 4)));
+    };
+
+    sleep PATCOM_ARTILLERY_DELAY;
+    _group setVariable ["PATCOM_ArtilleryBusy", false, true];
+};
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Calls A3A_fnc_artilleryDangerClose for proximity safety checks</div>
+            <div class="bullet-item">• Calls A3A_fnc_getDayState for time-based munition selection</div>
+            <div class="bullet-item">• Calls A3A_fnc_getReloadTime for realistic firing intervals</div>
+            <div class="bullet-item">• Calls A3A_fnc_debugText3D for visual feedback in debug mode</div>
+            <div class="bullet-item">• Calls A3A_fnc_getSafePos for artillery spread calculations</div>
+            <div class="bullet-item">• Modifies PATCOM_ArtilleryBusy group variable to coordinate battery availability</div>
+            <div class="bullet-item">• Integrates with faction system for munition templates and vehicle configurations</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_getReloadTime.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Calculates the reload time for artillery weapons by examining the weapon's configuration data</div>
+            <div class="bullet-item">• Provides realistic firing intervals for artillery batteries based on their equipped weapons</div>
+            <div class="bullet-item">• Supports complex weapon configurations with multiple muzzles and fire modes</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <div class="code-block">
+// Extract unit parameter
+params ["_unit"];
+
+// Get vehicle and turret information
+private _vehicle = vehicle _unit;
+private _turretPath = _vehicle unitTurret _unit;
+private _state = weaponState [_vehicle, _turretPath, ""];
+
+// Extract weapon components
+_state params ["_weapon", "_muzzle", "_fireMode"];
+
+// Navigate weapon config hierarchy
+private _config = configFile >> "CfgWeapons" >> _weapon;
+
+if (_muzzle != _weapon) then {
+    _config = _config >> _muzzle;
+};
+
+if (_muzzle != _fireMode) then {
+    _config = _config >> _fireMode;
+};
+
+// Return reload time
+getNumber (_config >> "reloadTime")
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Provides reload timing data to A3A_fnc_artilleryFireMission for realistic firing sequences</div>
+            <div class="bullet-item">• Enables accurate simulation of artillery weapon characteristics</div>
+        </div>
+    </div>
+
+        <h2 id="civilian" class="category-header">Civilian Functions</h2>
+    <div class="function-list">
+        <strong>Documented Functions:</strong> fn_civilianFiredNearEH.sqf, fn_civilianInitEH.sqf, fn_civilianPanic.sqf, fn_createAmbientCiv.sqf, fn_createAmbientCivTraffic.sqf, fn_createCivilianTracks.sqf, fn_createMusicSource.sqf, fn_createResourceCiv.sqf, fn_createRoomLight.sqf, fn_destroyObject.sqf, fn_destroyObjectAction.sqf, fn_dialogCiv.sqf, fn_dialogCivAction.sqf, fn_dialogCivFinished.sqf, fn_getDayState.sqf, fn_unitAmbient.sqf, fn_unitAmbientPlay.sqf
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_civilianFiredNearEH.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Handles civilian panic response when gunfire is detected nearby</div>
+            <div class="bullet-item">• Provides realistic civilian behavior by triggering fear animations and sounds</div>
+            <div class="bullet-item">• Temporarily disrupts civilian routines and forces them to seek cover or flee</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <div class="code-block">
+// Extract event handler parameters
+params ["_unit", "_type", "_index"];
+
+// Remove event handler to prevent repeated triggers
+_unit removeEventHandler [_type, _index];
+
+// Trigger panic animation
+[_unit, "ApanPercMstpSnonWnonDnon_ApanPknlMstpSnonWnonDnon"] remoteExec ["switchMove"];
+
+// Spawn movement behavior in scheduled space
+[_unit] spawn {
+    params ["_unit"];
+    // Find safe retreat position
+    private _positionX = [getPosATL _unit, 100, 200, 0, 0, -1, 0] call A3A_fnc_getSafePos;
+    _unit doMove _positionX;
+    _unit forceWalk false;
+    _unit setSpeedMode "FULL";
+
+    // Wait for movement completion
+    sleep 60;
+
+    // Reset animation and speed
+    [_unit, ""] remoteExec ["switchMove"];
+    _unit setSpeedMode "LIMITED";
+    _unit forceWalk true;
+    // Re-add event handler
+    _unit addEventHandler["FiredNear", {
+        params ["_unit"];
+        [_unit, _thisEvent, _thisEventHandler] call A3A_fnc_civilianFiredNearEH;
+    }];
+};
+
+// Play panic sound with 35% chance
+if (random 1 > 0.35) then {
+    private _tracks = A3A_Civilian_Amb_Tracks get "Fear";
+    if (count _tracks > 0) then {
+        private _panicNoise = selectRandom _tracks;
+        [_unit, _panicNoise # 0] remoteExec ["say3D"];
+    } else {
+        Error("No Tracks found to make the unit scream");
+    };
+};
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Calls A3A_fnc_getSafePos for finding retreat positions</div>
+            <div class="bullet-item">• Modifies civilian movement patterns and animations temporarily</div>
+            <div class="bullet-item">• Integrates with A3A_Civilian_Amb_Tracks hashmap for audio assets</div>
+            <div class="bullet-item">• Prepares unit for re-triggering of the same event handler after recovery</div>
+        </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_civilianInitEH.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Initializes comprehensive event handlers and behaviors for civilian units</div>
+                <div class="bullet-item">• Sets up damage handling, death responses, and interaction capabilities</div>
+                <div class="bullet-item">• Configures civilian AI characteristics and faction-specific attributes</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Extract unit parameter
+params ["_unit"];
+
+// Disable AI targeting capabilities
+_unit setSkill 0;
+_unit disableAI "TARGET";
+_unit disableAI "AUTOTARGET";
+
+// Set identity using faction faces and no voice
+[_unit, createHashMapFromArray [["face", selectRandom (A3A_faction_civ get "faces")], ["speaker", "NoVoice"]]] call A3A_fnc_setIdentity;
+
+// Add comprehensive damage handling
+_unit addEventHandler ["HandleDamage", {
+    private _unit = _this select 0;
+    private _dam = _this select 2;
+    private _injurer = _this select 3;
+    private _proy = _this select 4;
+    if(!isNil "_injurer" && {isPlayer _injurer}) then {
+        _unit setVariable ["injuredByPlayer", _injurer, true];
+        _unit setVariable ["lastInjuredByPlayer", time, true];
+    };
+    if (_proy == "") then {
+        if (_dam > 0.95 and {!isPlayer _injurer}) then {_dam = 0.9};
+    };
+    _dam
+}];
+
+// Check for non-human civilian attribute
+private _civNotHuman = Faction(civilian) getOrDefault ["attributeCivNonHuman", false];
+
+if (_civNotHuman) exitWith {
+    _unit addEventHandler ["Killed", {
+        params ["_victim", "_killer"];
+        [_victim] spawn A3A_fnc_postmortem;
+    }];
+    ["civInit", [_unit]] call EFUNC(Events,triggerEvent);
+};
+
+// Add FiredNear event handler for human civilians
+_unit addEventHandler["FiredNear", {
+    params ["_unit"];
+    [_unit, _thisEvent, _thisEventHandler] call A3A_fnc_civilianFiredNearEH;
+}];
+
+// Add complex death event handler for reputation and mission tracking
+_unit addEventHandler ["Killed", {
+    params ["_victim", "_killer"];
+
+    if (time - (_victim getVariable ["lastInjuredByPlayer", 0]) < 120) then {
+        _killer = _victim getVariable ["injuredByPlayer", _killer];
+    };
+    if (isNull _killer) then {
+        _killer = _victim;
+    };
+
+    if (_victim == _killer) then {
+        _nul = [-1,-1,getPosATL _victim] remoteExec ["A3A_fnc_citySupportChange",2];
+    } else {
+        if (isPlayer _killer) then {
+            if (_victim getVariable "unitType" == FactionGet(civ, "unitWorker")) then {_killer addRating 1000};
+            [-10,_killer] call A3A_fnc_addScorePlayer;
+        };
+        _multiplier = 1;
+        if ((_victim getVariable "unitType") == FactionGet(civ, "unitPress")) then {_multiplier = 3};
+        switch (true) do {
+            case (side group _killer == teamPlayer): {
+                ServerDebug("aggroEvent | Rebels killed a civilian");
+                [Occupants, 10 * _multiplier, 60] remoteExec ["A3A_fnc_addAggression",2];
+                [1,0,getPosATL _victim] remoteExec ["A3A_fnc_citySupportChange",2];
+            };
+            case (side group _killer == Occupants): {
+                [Occupants, -5 * _multiplier, 60] remoteExec ["A3A_fnc_addAggression",2];
+                [0,1,getPosATL _victim] remoteExec ["A3A_fnc_citySupportChange",2];
+            };
+            case (side group _killer == Invaders): {
+                [-1,1,getPosATL _victim] remoteExec ["A3A_fnc_citySupportChange",2];
+            };
+        };
+    };
+
+    [_victim] spawn A3A_fnc_postmortem;
+}];
+
+// Trigger civilian initialization event
+["civInit", [_unit]] call EFUNC(Events,triggerEvent);
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Calls A3A_fnc_setIdentity for civilian appearance configuration</div>
+                <div class="bullet-item">• Calls A3A_fnc_postmortem for death processing</div>
+                <div class="bullet-item">• Calls A3A_fnc_addAggression for reputation system integration</div>
+                <div class="bullet-item">• Calls A3A_fnc_citySupportChange for civilian support mechanics</div>
+                <div class="bullet-item">• Calls A3A_fnc_addScorePlayer for player scoring system</div>
+                <div class="bullet-item">• Integrates with Events system for mission triggers</div>
+                <div class="bullet-item">• Modifies global variables like aggressionOccupants, aggressionInvaders, destroyedSites</div>
+                <div class="bullet-item">• Affects player rating and score systems</div>
+            </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_civilianPanic.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Triggers immediate civilian panic response without relying on firedNear event handler</div>
+                <div class="bullet-item">• Provides direct control over civilian fear behavior for scripted scenarios</div>
+                <div class="bullet-item">• Replicates the core panic mechanics used in event handler responses</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Extract unit parameter
+params ["_unit"];
+
+// Trigger panic animation
+[_unit, "ApanPercMstpSnonWnonDnon_ApanPknlMstpSnonWnonDnon"] remoteExec ["switchMove"];
+
+// Spawn movement behavior in scheduled space
+[_unit] spawn {
+    params ["_unit"];
+    // Find safe retreat position
+    private _positionX = [getPosATL _unit, 100, 200, 0, 0, -1, 0] call A3A_fnc_getSafePos;
+    _unit doMove _positionX;
+    _unit forceWalk false;
+    _unit setSpeedMode "FULL";
+
+    // Wait for movement completion
+    sleep 60;
+
+    // Reset animation and speed
+    [_unit, ""] remoteExec ["switchMove"];
+    _unit setSpeedMode "LIMITED";
+    _unit forceWalk true;
+};
+
+// Retrieve fear tracks from hashmap
+private _tracks = A3A_Civilian_Amb_Tracks get "Fear";
+if (count _tracks > 0) then {
+    private _panicNoise = selectRandom _tracks;
+    [_unit, _panicNoise # 0] remoteExec ["say3D"];
+} else {
+    Error("No Tracks found to make the unit scream");
+};
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Calls A3A_fnc_getSafePos for retreat position calculation</div>
+                <div class="bullet-item">• Integrates with A3A_Civilian_Amb_Tracks for audio assets</div>
+                <div class="bullet-item">• Temporarily modifies civilian movement patterns and animations</div>
+                <div class="bullet-item">• Provides foundation for scripted panic scenarios</div>
+            </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_createAmbientCiv.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Spawns comprehensive ambient civilian populations in city areas</div>
+                <div class="bullet-item">• Creates realistic civilian activities including press, workers, special units, and ambient behaviors</div>
+                <div class="bullet-item">• Manages civilian lifecycle with spawning, patrol assignment, and cleanup</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Validate server execution
+if (!isServer and hasInterface) exitWith {};
+
+// Check for destroyed site exclusion
+if (_markerX in destroyedSites) exitWith {};
+
+// Retrieve faction attributes
+private _lowCiv = Faction(civilian) getOrDefault ["attributeLowCiv", false];
+private _civNonHuman = Faction(civilian) getOrDefault ["attributeCivNonHuman", false];
+
+// Exit for low civilian or non-human settings
+if (_lowCiv) exitWith {};
+if ("seaport" in _markerX && {_civNonHuman}) exitWith {};
+
+// Get city ownership and faction
+private _sideX = sidesX getVariable [_markerX,sideUnknown];
+private _faction = Faction(_sideX);
+private _groupSide = civilian;
+
+// Calculate civilian population based on city data
+private _city = if (_positionX isEqualType "") then {_positionX} else {[citiesX, _positionX] call BIS_fnc_nearestPosition};
+private _cityData = server getVariable _city;
+private _numCiv = round (1.5 * sqrt (_cityData # 0) * (1 - tierWar / 20));
+
+// Cap civilian numbers
+if (_numCiv > maxCiviliansPerTown) then {
+    _numCiv = maxCiviliansPerTown;
+};
+
+// Handle rebel faction special case
+if (_faction isEqualTo A3A_faction_reb && {_civNonHuman}) exitWith {
+    // Spawn human civilians for rebels
+    for "_i" from 1 to _numCiv do {
+        private _groupX = createGroup _groupSide;
+        private _spawnPosition = [_positionX, 10, 150, 3, 0, -1, 0] call A3A_fnc_getSafePos;
+        private _civUnit = [_groupX, FactionGet(civ, "unitMan"), _spawnPosition, [],0, "NONE"] call A3A_fnc_createUnit;
+        _civUnit setPosATL _spawnPosition;
+        _civilianGroups pushBack _groupX;
+        _civilians pushBack _civUnit;
+        [_civUnit] spawn A3A_fnc_civilianInitEH;
+        [_groupX] call A3A_fnc_patrolLoop;
+    };
+    waitUntil {sleep 1;(spawner getVariable _spawnKey == 2)};
+    {if (alive _x) then {deleteVehicle _x};} forEach _civilians;
+    { deleteGroup _x } forEach _civilianGroups;
+    {deleteVehicle _x} forEach _soundSources;
+    {deleteVehicle _x} forEach _lightSources;
+};
+
+// Handle non-human civilians
+if (_civNonHuman) exitWith {
+    // Adjust spawn limits for zombies
+    if (maxCiviliansPerTown <= 10) then {
+        _numCiv = random [6, 8, 10];
+    };
+    if (zombiesUncapped isEqualTo true) then {
+        _numCiv = _numCiv * (selectRandom [2,3]);
+    };
+
+    // Set side based on city ownership for zombie aggression
+    switch _faction do {
+        case A3A_faction_occ : {
+            _groupSide = east;
+        };
+        case A3A_faction_inv : {
+            _groupSide = west;
+        };
+    };
+
+    // Spawn zombie/special units
+    for "_i" from 1 to _numCiv do {
+        private _groupX = createGroup _groupSide;
+        private _spawnPosition = [_positionX, 10, 30, 3, 0, -1, 0] call A3A_fnc_getSafePos;
+        private _civUnit = [_groupX, FactionGet(civ, "unitSpecial"), _spawnPosition, [],0, "NONE"] call A3A_fnc_createUnit;
+        _civUnit setPosATL _spawnPosition;
+        _civilianGroups pushBack _groupX;
+        _special pushBack _civUnit;
+        [_civUnit] spawn A3A_fnc_civilianInitEH;
+        [_groupX] call A3A_fnc_patrolLoop;
+    };
+
+    waitUntil {sleep 1;(spawner getVariable _spawnKey == 2)};
+    {if (alive _x) then {deleteVehicle _x};} forEach _civilians;
+    {if (alive _x) then {deleteVehicle _x};} forEach _special;
+    { deleteGroup _x } forEach _civilianGroups;
+    {deleteVehicle _x} forEach _soundSources;
+    {deleteVehicle _x} forEach _lightSources;
+};
+
+// Spawn press civilians randomly
+if (random 100 < ((aggressionOccupants) + (aggressionInvaders)) && {_civNonHuman isEqualTo false}) then {
+    private _spawnPosition = [_positionX, 10, 150, 3, 0, -1, 0] call A3A_fnc_getSafePos;
+    private _groupX = createGroup _groupSide;
+    _civilianGroups pushBack _groupX;
+    private _civPress = [_groupX, FactionGet(civ, "unitPress"), _spawnPosition, [],0, "NONE"] call A3A_fnc_createUnit;
+    [_civPress] spawn A3A_fnc_civilianInitEH;
+    _civilians pushBack _civPress;
+    [_groupX, "Patrol_Area", 5, 50, 300, false, [], false] call A3A_fnc_patrolLoop;
+};
+
+// Main civilian spawning loop
+for "_i" from 1 to _numCiv do {
+    if (count units civilian >= globalCivilianMax) exitWith {
+        Info("Global Civilian spawn limit reached! - Exiting");
+    };
+
+    private _posHouse = [];
+
+    // Handle building-based spawning
+    if (count _buildings > 0 && {_civNonHuman isEqualTo false}) then {
+        _building = selectRandom _buildings;
+        private _housePositions = [_building] call BIS_fnc_buildingPositions;
+        _buildings deleteAt (_buildings find _building);
+
+        if (!(_housePositions isEqualTo [])) then {
+            _posHouse = selectRandom _housePositions;
+        } else {
+            _posHouse = [_positionX, 10, 150, 3, 0, -1, 0] call A3A_fnc_getSafePos;
+        };
+
+        private _groupX = createGroup _groupSide;
+        private _civUnit = [_groupX, FactionGet(civ, "unitMan"), _posHouse, [], 0, "NONE"] call A3A_fnc_createUnit;
+        _civUnit setPosATL _posHouse;
+        _civilianGroups pushBack _groupX;
+        _civilians pushBack _civUnit;
+        [_civUnit] spawn A3A_fnc_civilianInitEH;
+        [_civUnit] call A3A_fnc_dialogCivAction;
+
+        // Add time-based activities
+        if (_dayState == "EVENING" || {_dayState == "NIGHT"}) then {
+            _light = [_building] call A3A_fnc_createRoomLight;
+            _lightSources pushBack _light;
+        };
+
+        if (_dayState == "MORNING") then {
+            if (4 > random 10) then {
+                private _soundSource = [_building] call A3A_fnc_createMusicSource;
+                _soundSources pushBack _soundSource;
+            };
+            _light = [_building] call A3A_fnc_createRoomLight;
+            _lightSources pushBack _light;
+        };
+
+        if (_dayState == "DAY") then {
+            if (7 > random 10) then {
+                private _soundSource = [_building] call A3A_fnc_createMusicSource;
+                _soundSources pushBack _soundSource;
+            };
+            [_groupX] call A3A_fnc_patrolLoop;
+        };
+
+    } else {
+        // Handle outdoor spawning
+        private _groupX = createGroup _groupSide;
+        private _spawnPosition = [_positionX, 10, 150, 3, 0, -1, 0] call A3A_fnc_getSafePos;
+        private _civUnit = [_groupX, FactionGet(civ, "unitMan"), _posHouse, [], 0, "NONE"] call A3A_fnc_createUnit;
+        _civUnit setPosATL _spawnPosition;
+        _civilianGroups pushBack _groupX;
+        _civilians pushBack _civUnit;
+        [_civUnit] spawn A3A_fnc_civilianInitEH;
+        [_civUnit] call A3A_fnc_dialogCivAction;
+        [_groupX] call A3A_fnc_patrolLoop;
+    };
+};
+
+// Cleanup on despawn
+waitUntil {sleep 1;(spawner getVariable _spawnKey == 2)};
+{if (alive _x) then {deleteVehicle _x};} forEach _civilians;
+{ deleteGroup _x } forEach _civilianGroups;
+{deleteVehicle _x} forEach _soundSources;
+{deleteVehicle _x} forEach _lightSources;
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Calls A3A_fnc_civilianInitEH for unit initialization</div>
+                <div class="bullet-item">• Calls A3A_fnc_dialogCivAction for interactive civilians</div>
+                <div class="bullet-item">• Calls A3A_fnc_createRoomLight for evening/night lighting</div>
+                <div class="bullet-item">• Calls A3A_fnc_createMusicSource for ambient audio</div>
+                <div class="bullet-item">• Calls A3A_fnc_patrolLoop for civilian movement patterns</div>
+                <div class="bullet-item">• Calls A3A_fnc_getSafePos for spawn position validation</div>
+                <div class="bullet-item">• Modifies destroyedSites array when resource facilities are destroyed</div>
+                <div class="bullet-item">• Integrates with global civilian population limits (globalCivilianMax)</div>
+            </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_createAmbientCivTraffic.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Generates realistic civilian vehicle traffic and parked vehicles in urban areas</div>
+                <div class="bullet-item">• Creates dynamic traffic patterns with moving vehicles and static parking</div>
+                <div class="bullet-item">• Manages vehicle lifecycle with spawning, behavior setup, and cleanup</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Server-side validation
+if (!isServer and hasInterface) exitWith {};
+
+// Check faction attributes for traffic disabling
+private _lowCiv = Faction(civilian) getOrDefault ["attributeLowCiv", false];
+private _civNonHuman = Faction(civilian) getOrDefault ["attributeCivNonHuman", false];
+
+// Exit for non-human civilians
+if (_lowCiv) exitWith {};
+if (_civNonHuman) exitWith {};
+if (_markerX in destroyedSites) exitWith {};
+
+// Retrieve city data and calculate traffic parameters
+private _dataX = server getVariable _markerX;
+private _numVeh = (_dataX#1);
+private _positionX = getMarkerPos (_markerX);
+private _numCiv = (_dataX#0);
+
+// Find suitable roads for vehicle placement
+private _roads = nearestTerrainObjects [getMarkerPos _markerX, ["MAIN ROAD", "ROAD", "TRACK"], 250, false, true];
+_roads = _roads select { !(getRoadInfo _x # 8) and (count roadsConnectedTo [_x, true] <= 2) and (count (_x nearRoads 10) < 2)};
+_roads = _roads call BIS_fnc_arrayShuffle;
+
+// Calculate traffic and parking counts
+_numCiv = 15 * sqrt _numCiv * (1 - tierWar / 20);
+private _numParked = _numCiv * (1/60) * civTraffic;
+private _numTraffic = _numCiv * (1/300) * civTraffic;
+
+// Adjust for time of day
+if ((daytime < 8) or (daytime > 21)) then {
+    _numParked = _numParked * 1.5;
+    _numTraffic = _numTraffic / 4;
+};
+
+// Cap vehicle counts
+_numParked = 1 max (round _numParked) min _maxRoads;
+_numTraffic = 1 max (round _numTraffic) min _maxRoads;
+
+// Spawn parked vehicles
+while {(spawner getVariable _spawnKey != 2) and (_countParked < _numParked)} do {
+    private _p1 = _roads select _countParked;
+    private _road = roadAt _p1;
+
+    if (!isNull _road) then {
+        if ((count (nearestObjects [_p1, ["Car", "Truck"], 5]) == 0) and !([50,1,_road,teamPlayer] call A3A_fnc_distanceUnits)) then {
+            private _roadcon = roadsConnectedTo [_road, true];
+            if (count _roadcon != 0) then {
+                private _p2 = getPosATL (_roadcon # 0);
+                _dirveh = _p1 getDir _p2;
+            };
+
+            private _width = 3 max (getRoadInfo _road # 1 / 2 - 1);
+            _pos = [_p1, _width, _dirveh + 90] call BIS_Fnc_relPos;
+            _typeVehX = selectRandomWeighted civVehiclesWeighted;
+
+            private _veh = _typeVehX createVehicle _pos;
+            _veh setDir _dirveh;
+            _veh setFuel random [0.10, 0.30, 0.50];
+
+            // Clear cargo and initialize
+            [_veh, true, true, true, true] call A3A_fnc_clearVehicleCargo;
+            _vehiclesX pushBack _veh;
+            [_veh, civilian] spawn A3A_fnc_AIVEHinit;
+            _veh setVariable ["originalPos", getPosATL _veh];
+        };
+    };
+
+    sleep 0.5;
+    _countParked = _countParked + 1;
+};
+
+// Handle boat spawning for coastal areas
+private _mrkMar = seaSpawn select {getMarkerPos _x inArea _markerX};
+if (count _mrkMar > 0) then {
+    for "_i" from 0 to (round (random 3)) do {
+        if (spawner getVariable _spawnKey != 2) then {
+            _typeVehX = selectRandomWeighted civBoatsWeighted;
+            private _spawnPosition = [(getMarkerPos (_mrkMar select 0)), 5, 50, 5, 2, 0, 0] call A3A_fnc_getSafePos;
+            if (_spawnPosition isEqualTo [0,0]) then {
+                Debug_1("%1 could not be spawned because no valid spawn position was found.", _typeVehX);
+                continue;
+            };
+
+            private _veh = _typeVehX createVehicle _spawnPosition;
+            _veh setDir (random 360);
+            [_veh, true, true, true, true] call A3A_fnc_clearVehicleCargo;
+            _vehiclesX pushBack _veh;
+            [_veh, civilian] spawn A3A_fnc_AIVEHinit;
+            _veh setVariable ["originalPos", getPosATL _veh];
+            sleep 1;
+        };
+    };
+};
+
+// Spawn moving traffic with fog check
+if ([_markerX,false] call A3A_fnc_fogCheck > 0.2) then {
+    while {(spawner getVariable _spawnKey != 2) and (_countTraffic < _numTraffic)} do {
+        private _p1 = selectRandom _roads;
+        private _road = roadAt _p1;
+
+        if (!isNull _road) then {
+            if (count (nearestObjects [_p1, ["Car", "Truck"], 5]) == 0) then {
+                private _groupP = createGroup civilian;
+                _groupsPatrol = _groupsPatrol + [_groupP];
+
+                private _roadcon = roadsConnectedto _road;
+                private _p2 = getPosATL (_roadcon select 0);
+                _dirveh = [_p1, _p2] call BIS_fnc_DirTo;
+
+                _typeVehX = selectRandomWeighted civVehiclesWeighted;
+                private _veh = _typeVehX createVehicle (getPosATL _p1);
+                _veh setDir _dirveh;
+
+                [_veh, true, true, true, true] call A3A_fnc_clearVehicleCargo;
+                _vehPatrol = _vehPatrol + [_veh];
+
+                private _civ = [_groupP, FactionGet(civ, "unitMan"), (getPosATL _p1), [],0, "NONE"] call A3A_fnc_createUnit;
+                [_civ] spawn A3A_fnc_civilianInitEH;
+                _civ moveInDriver _veh;
+                [_veh, civilian] call A3A_fnc_AIVEHInit;
+                _groupP addVehicle _veh;
+
+                _groupP setBehaviour "CARELESS";
+                _veh limitSpeed 50;
+
+                _posDestination = getPosATL (selectRandom (nearestTerrainObjects [getMarkerPos (selectRandom _patrolCities), ["ROAD", "TRACK"], 250, false, true]));
+                private _wp = _groupP addWaypoint [_posDestination,0];
+                _wp setWaypointType "MOVE";
+                _wp setWaypointSpeed "LIMITED";
+                _wp setWaypointTimeout [30, 45, 60];
+                _wp = _groupP addWaypoint [_positionX,1];
+                _wp setWaypointType "MOVE";
+                _wp setWaypointTimeout [30, 45, 60];
+                private _wp1 = _groupP addWaypoint [_positionX,2];
+                _wp1 setWaypointType "CYCLE";
+                _wp1 synchronizeWaypoint [_wp];
+            };
+        };
+        _countTraffic = _countTraffic + 1;
+        sleep 5;
+    };
+};
+
+// Handle demo car spawning
+if (spawner getVariable _spawnKey != 2) then {
+    [_markerX] call SCRT_fnc_rivals_trySpawnCarDemo;
+};
+
+// Cleanup vehicles on despawn
+waitUntil {sleep 1; (spawner getVariable _spawnKey == 2)};
+{
+    if (_x getVariable "ownerSide" == civilian) then {
+        if (_x distance2d (_x getVariable "originalPos") < 100) then { deleteVehicle _x }
+        else { [_x] spawn A3A_fnc_VEHdespawner };
+    };
+} forEach _vehiclesX;
+
+// Cleanup patrol groups
+{ [_x] spawn A3A_fnc_groupDespawner } forEach _groupsPatrol;
+{ [_x] spawn A3A_fnc_VEHdespawner } forEach _vehPatrol;
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Calls A3A_fnc_clearVehicleCargo for vehicle preparation</div>
+                <div class="bullet-item">• Calls A3A_fnc_AIVEHinit for vehicle AI setup</div>
+                <div class="bullet-item">• Calls A3A_fnc_citiesToCivPatrol for patrol route generation</div>
+                <div class="bullet-item">• Calls A3A_fnc_VEHdespawner for vehicle cleanup</div>
+                <div class="bullet-item">• Calls A3A_fnc_groupDespawner for group cleanup</div>
+                <div class="bullet-item">• Integrates with SCRT_fnc_rivals_trySpawnCarDemo for demo spawning</div>
+                <div class="bullet-item">• Modifies vehicle ownership tracking with ownerSide variable</div>
+            </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_createCivilianTracks.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Initializes the global civilian audio track database</div>
+                <div class="bullet-item">• Creates a hashmap containing categorized sound effects for civilian interactions</div>
+                <div class="bullet-item">• Provides centralized access to fear sounds and ambient animal noises</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Guard against duplicate initialization
+if !(isNil "A3A_Civilian_Amb_Tracks") exitWith {};
+
+// Create hashmap with Fear and Animals categories
+A3A_Civilian_Amb_Tracks = createHashMapFromArray [
+    ["Fear",
+        [
+            ["A3A_Audio_Civ_Fear1", 3],
+            ["A3A_Audio_Civ_Fear2", 6],
+            ["A3A_Audio_Civ_Fear3", 8],
+            ["A3A_Audio_Civ_Fear4", 8],
+            ["A3A_Audio_Civ_Fear5", 6],
+            ["A3A_Audio_Civ_Fear6", 7]
+        ]
+    ],
+    ["Animals",
+        [
+            ["A3A_Audio_Civ_Dog1", 7],
+            ["A3A_Audio_Civ_Dog2", 7],
+            ["A3A_Audio_Civ_Dog3", 7],
+            ["A3A_Audio_Civ_Dog4", 7],
+            ["A3A_Audio_Civ_Dog5", 7],
+            ["A3A_Audio_Civ_Dog6", 7],
+            ["A3A_Audio_Civ_Dog7", 7],
+            ["A3A_Audio_Civ_Dog8", 7],
+            ["A3A_Audio_Civ_Dog9", 8],
+            ["A3A_Audio_Civ_Dog10", 7],
+            ["A3A_Audio_Civ_Dog11", 7],
+            ["A3A_Audio_Civ_Dog12", 7],
+            ["A3A_Audio_Civ_Dog13", 7],
+            ["A3A_Audio_Civ_Dog14", 7],
+            ["A3A_Audio_Civ_Dog15", 7],
+            ["A3A_Audio_Civ_Dog16", 7],
+            ["A3A_Audio_Civ_Dog17", 8],
+            ["A3A_Audio_Civ_Dog18", 7],
+            ["A3A_Audio_Civ_Dog19", 7],
+            ["A3A_Audio_Civ_Dog20", 7]
+        ]
+    ]
+];
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Provides audio assets to A3A_fnc_civilianFiredNearEH for panic sounds</div>
+                <div class="bullet-item">• Provides audio assets to A3A_fnc_civilianPanic for fear responses</div>
+                <div class="bullet-item">• Enables categorized sound selection for different civilian behaviors</div>
+                <div class="bullet-item">• Sets global A3A_Civilian_Amb_Tracks variable for system-wide access</div>
+            </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_createMusicSource.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Creates persistent ambient music sources attached to buildings</div>
+                <div class="bullet-item">• Manages a continuous playlist of civilian music and radio broadcasts</div>
+                <div class="bullet-item">• Provides atmospheric audio enhancement for populated urban areas</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Validate ambient sound settings
+if (createAmbientSounds isEqualTo false) exitWith {};
+
+// Check faction attributes
+private _lowCiv = Faction(civilian) getOrDefault ["attributeLowCiv", false];
+private _civNonHuman = Faction(civilian) getOrDefault ["attributeCivNonHuman", false];
+
+if (_lowCiv) exitWith {};
+if (_civNonHuman) exitWith {};
+
+// Create radio item at building position
+private _radioItem = getPosATL _building;
+_radioItem set [2, ((_radioItem select 2) + 1)];
+private _musicSource = createVehicle ["Land_FMradio_F", _radioItem];
+
+// Define music track array with durations
+[_radioItem, _musicSource] spawn {
+    params ["_radioItem", "_musicSource", "_locationType"];
+    private _tracksPlayed = 1;
+    private _tracks =
+    [
+        ["A3A_Audio_Civ_Song1", 127],
+        ["A3A_Audio_Civ_Song2", 192],
+        ["A3A_Audio_Civ_Song3", 180],
+        ["A3A_Audio_Civ_Song4", 196],
+        ["A3A_Audio_Civ_Song5", 357],
+        ["A3A_Audio_Civ_Radio1", 240],
+        ["A3A_Audio_Civ_Radio2", 411],
+        ["A3A_Audio_Civ_Radio3", 246],
+        ["A3A_Audio_Civ_Radio4", 292],
+        ["A3A_Audio_Civ_Radio5", 189],
+        ["A3A_Audio_Civ_Radio6", 203]
+    ];
+
+    private _totalTracks = count _tracks;
+
+    // Add destroy action for player interaction
+    [_musicSource, 2] call A3A_fnc_destroyObjectAction;
+
+    // Continuous playback loop
+    while { (alive _musicSource) } do {
+        while { _tracksPlayed < _totalTracks } do {
+            private _track = selectRandom (_tracks);
+            private _trackDuration = (_track # 1) * 2;
+
+            [_musicSource, _track # 0] remoteExec ["say3D", [0, _musicSource], true];
+
+            sleep _trackDuration;
+
+            _tracksPlayed = _tracksPlayed + 1;
+
+            if not (alive _musicSource) exitWith {};
+        };
+        sleep (random 10);
+    };
+};
+
+// Return music source
+_musicSource
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Calls A3A_fnc_destroyObjectAction for interactive destruction</div>
+                <div class="bullet-item">• Provides continuous ambient audio for populated areas</div>
+                <div class="bullet-item">• Integrates with building-based spawning systems</div>
+                <div class="bullet-item">• Enables player interaction with music sources</div>
+            </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_createResourceCiv.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Spawns worker civilians at resource production facilities during daytime hours</div>
+                <div class="bullet-item">• Creates interactive workers that can be killed to disable resource production</div>
+                <div class="bullet-item">• Manages worker lifecycle with spawning, patrol assignment, and facility destruction detection</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Check for non-human civilian exclusion
+private _civNonHuman = Faction(civilian) getOrDefault ["attributeCivNonHuman", false];
+
+if ("seaport" in _markerX && {_civNonHuman}) exitWith {};
+
+// Validate daytime operation
+private _daystate = [] call A3A_fnc_getDayState;
+
+if (_markerX in destroyedSites) exitWith {
+    ServerDebug("_markerX in destroyedSites and civilian workers have not spawned.");
+    nil;
+};
+
+if !(_daystate == "DAY") exitWith {
+    ServerDebug("Civilian Workers are outside of working hours and have not spawned.");
+    nil;
+};
+
+// Create civilian group
+private _civs = [];
+private _groupX = createGroup civilian;
+private _positionX = getMarkerPos (_markerX);
+
+// Spawn worker units
+for "_i" from 1 to _maxResourceCivilians do {
+    private _spawnPosition = [_positionX, 10, 50, 2, 0, -1, 0] call A3A_fnc_getSafePos;
+    if (_spawnPosition isEqualTo [0,0]) then {
+        ServerDebug("Resource Civilian could not be spawned because no valid spawn position was found.");
+        continue;
+    };
+    private _civUnit = [_groupX, FactionGet(civ, "unitWorker"), _spawnPosition, [],0, "NONE"] call A3A_fnc_createUnit;
+    _civUnit setVariable ["markerX", _markerX, true];
+    _civs pushBack _civUnit;
+
+    // Add event handlers
+    [_civUnit] spawn A3A_fnc_civilianInitEH;
+
+    // Add facility destruction detection
+    _civUnit addEventHandler ["Killed",
+        {
+            if (({alive _x} count (units group (_this select 0))) == 0) then {
+                private _markerX = (_this select 0) getVariable "markerX";
+                private _nameX = [_markerX] call A3A_fnc_localizar;
+                destroyedSites pushBackUnique _markerX;
+                publicVariable "destroyedSites";
+                ["TaskFailed", ["", format [localize "STR_notifiers_resourcefactory_destoyed", _nameX]]] remoteExec ["BIS_fnc_showNotification",[teamPlayer, civilian]];
+            };
+        }
+    ];
+
+    sleep 0.5;
+};
+
+// Assign patrol behavior
+[_groupX] call A3A_fnc_patrolLoop;
+private _spawnedCivilians = [_groupX, _civs];
+_spawnedCivilians
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Calls A3A_fnc_getDayState for time validation</div>
+                <div class="bullet-item">• Calls A3A_fnc_createUnit for worker spawning</div>
+                <div class="bullet-item">• Calls A3A_fnc_civilianInitEH for unit initialization</div>
+                <div class="bullet-item">• Calls A3A_fnc_patrolLoop for worker movement</div>
+                <div class="bullet-item">• Calls A3A_fnc_localizar for facility naming</div>
+                <div class="bullet-item">• Modifies destroyedSites global array</div>
+                <div class="bullet-item">• Triggers mission notifications for facility destruction</div>
+                <div class="bullet-item">• Affects resource production capabilities</div>
+            </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_createRoomLight.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Creates atmospheric interior lighting for civilian buildings</div>
+                <div class="bullet-item">• Adds randomized warm-colored lights to enhance urban environments</div>
+                <div class="bullet-item">• Provides visual enhancement for evening and nighttime scenarios</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Check low civilian setting
+private _lowCiv = Faction(civilian) getOrDefault ["attributeLowCiv", false];
+
+if (_lowCiv) exitWith {};
+
+// Define color palette
+private _colours = [[255,217,66],[255,162,41],[221,219,206]];
+private _colour = _colours select (random((count _colours)-1));
+private _brightness = random 10 / 100;
+
+// Create light source
+private _light = "#lightpoint" createVehicle getPosATL _building;
+
+// Apply lighting properties
+[_light, _brightness] remoteExec ["setLightBrightness"];
+[_light, _colour] remoteExec ["setLightColor"];
+[_light, [_building, [1,1,1]]] remoteExec ["lightAttachObject"];
+
+_light
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Enhances visual atmosphere in populated civilian areas</div>
+                <div class="bullet-item">• Integrates with time-based spawning systems (evening/night)</div>
+                <div class="bullet-item">• Provides lighting context for ambient civilian activities</div>
+                <div class="bullet-item">• Supports building-based environmental enhancement</div>
+            </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_destroyObject.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Creates interactive hold-action for destroying objects like music sources</div>
+                <div class="bullet-item">• Provides player interaction mechanism for environmental object removal</div>
+                <div class="bullet-item">• Enables cleanup of spawned ambient objects</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Define hold action parameters
+params ["_object", "_time"];
+
+[
+    _object,
+    localize "STR_antistasi_actions_destroy_radio",
+    "\a3\ui_f\data\igui\cfg\simpletasks\types\destroy_ca.paa", "\a3\ui_f\data\igui\cfg\simpletasks\types\destroy_ca.paa",
+    "true", "true",
+    {},
+    {},
+    {
+        private _object = _target;
+        deleteVehicle _object;
+    },
+    {},
+    [], _time, nil, true, false
+] call BIS_fnc_holdActionAdd;
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Enables player interaction with ambient objects</div>
+                <div class="bullet-item">• Provides cleanup mechanism for spawned entities</div>
+                <div class="bullet-item">• Integrates with BIS_fnc_holdActionAdd for interaction system</div>
+            </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_destroyObjectAction.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Broadcasts destruction action to all clients for networked object removal</div>
+                <div class="bullet-item">• Ensures synchronized deletion of interactive objects across the network</div>
+                <div class="bullet-item">• Provides remote execution wrapper for object destruction</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Extract parameters
+params ["_object", "_time"];
+
+// Broadcast destruction action
+[_object, _time] remoteExecCall ["A3A_fnc_destroyObject", 0, _object];
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Calls A3A_fnc_destroyObject on all clients</div>
+                <div class="bullet-item">• Enables network-synchronized object removal</div>
+                <div class="bullet-item">• Supports JIP (Join In Progress) players</div>
+            </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_dialogCiv.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Adds localized hold-action for initiating civilian dialogue</div>
+                <div class="bullet-item">• Provides player interface for interacting with civilians</div>
+                <div class="bullet-item">• Triggers conversation mechanics with appropriate UI feedback</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Create hold action
+[
+    _unit,
+    localize "STR_antistasi_actions_talk_with_civ",
+    "\a3\ui_f\data\igui\cfg\simpletasks\types\unknown_ca", "\a3\ui_f\data\igui\cfg\simpletasks\types\talk_ca.paa",
+    "true", "true",
+    {
+        private _question = selectRandom [
+            localize "STR_antistasi_actions_talk_with_civ_question1",
+            localize "STR_antistasi_actions_talk_with_civ_question2",
+            localize "STR_antistasi_actions_talk_with_civ_question3"
+        ];
+
+        [_caller, _question] remoteExec ["globalChat", _caller];
+    },
+    {},
+    {
+        [_target, _caller] remoteExecCall ["A3A_fnc_dialogCivFinished", 2];
+    },
+    {
+        private _interruption = selectRandom [
+            localize "STR_antistasi_actions_talk_with_civ_interruption1",
+            localize "STR_antistasi_actions_talk_with_civ_interruption2"
+        ];
+
+        [_target, _interruption] remoteExec ["globalChat", _caller];
+    },
+    [], 2, nil, true, false
+] call BIS_fnc_holdActionAdd;
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Calls A3A_fnc_dialogCivFinished for conversation resolution</div>
+                <div class="bullet-item">• Provides localized text for different conversation states</div>
+                <div class="bullet-item">• Integrates with BIS_fnc_holdActionAdd for interaction system</div>
+            </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_dialogCivAction.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Manages server-side broadcasting and JIP handling for civilian dialogue actions</div>
+                <div class="bullet-item">• Ensures dialogue availability settings are respected</div>
+                <div class="bullet-item">• Provides centralized control over civilian interaction capabilities</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Validate dialogue allowance
+if !(allowCivDialog) exitWith {false};
+
+// Check faction attributes
+private _lowCiv = Faction(civilian) getOrDefault ["attributeLowCiv", false];
+private _civNonHuman = Faction(civilian) getOrDefault ["attributeCivNonHuman", false];
+
+if (_lowCiv || _civNonHuman) exitWith {false};
+
+if (!isServer && hasInterface) exitWith {
+    Error("Server-side function was not called on the server? Aborting");
+};
+
+// Broadcast dialogue action
+[_unit] remoteExecCall ["A3A_fnc_dialogCiv", 0, _unit];
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Calls A3A_fnc_dialogCiv on all clients</div>
+                <div class="bullet-item">• Enables network-synchronized dialogue interactions</div>
+                <div class="bullet-item">• Supports JIP players for dialogue actions</div>
+            </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_dialogCivFinished.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Processes civilian dialogue outcomes and determines success/failure</div>
+                <div class="bullet-item">• Handles intel revelation, mission spawning, and reputation consequences</div>
+                <div class="bullet-item">• Manages dialogue state to prevent repeated conversations</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Validate parameters
+if (_unit isEqualTo ObjNull || _caller isEqualTo ObjNull) exitWith {nil};
+
+// Check previous conversation status
+if (_unit getVariable ["A3U_civDialogHasSpoken", false]) exitWith {
+    private _failMessage = selectRandom [
+        localize "STR_antistasi_actions_talk_with_civ_fail_alreadyspoken1",
+        localize "STR_antistasi_actions_talk_with_civ_fail_alreadyspoken2"
+    ];
+
+    [_unit, _failMessage] remoteExec ["globalChat", _caller];
+};
+
+// Evaluate dialogue success criteria
+private _possibleMarkers = [citiesX, _unit, true] call A3A_fnc_findIfNearAndHostile;
+private _isDialogSuccessful = (captive _caller && (4 >= random 10) && (_possibleMarkers isNotEqualTo []));
+
+// Handle successful dialogue
+if (_isDialogSuccessful) exitWith {
+    private _roll = random 100;
+    private _missionInProgress = missionNamespace getVariable ["A3U_dialogCivMissionInProgress", false];
+
+    if (_roll > 50 && {_missionInProgress isEqualTo false}) then {
+        private _civRequestedMissions = ["A3A_fnc_RES_Refugees", "A3A_fnc_RES_Informer", "A3A_fnc_RES_Prisoners"];
+        if (tierWar >= 5) then {_civRequestedMissions pushBack "A3A_fnc_RES_Deserters"};
+
+        private _civResponse = "";
+        private _missionMarker = selectRandom _possibleMarkers;
+        private _civRequestedMission = selectRandom _civRequestedMissions;
+        switch (_civRequestedMission) do
+        {
+            case "A3A_fnc_RES_Refugees":
+            {
+                _civResponse = selectRandom [
+                    "STR_antistasi_actions_talk_with_civ_success_ref1",
+                    "STR_antistasi_actions_talk_with_civ_success_ref2"
+                ];
+            };
+            // ... (similar cases for other missions)
+        };
+
+        [_unit, (localize _civResponse)] remoteExec ["globalChat", _caller];
+        [[_missionMarker], _civRequestedMission] remoteExec ["A3A_fnc_scheduler",2];
+        missionNamespace setVariable ["A3U_dialogCivMissionInProgress", true, true];
+
+        // Handle zone revelation
+        if (hideEnemyMarkers) then {
+            if (30 >= (random 100)) then {
+                [
+                    {
+                        private _message = selectRandom [
+                            "STR_antistasi_actions_talk_with_civ_success_zone_reveal1",
+                            "STR_antistasi_actions_talk_with_civ_success_zone_reveal2"
+                        ];
+
+                        [(_this#0), (localize _message)] remoteExec ["globalChat", _caller];
+                    },
+                    [_unit],
+                    5
+                ] call CBA_fnc_waitAndExecute;
+
+                [1, "A civilian has revealed a zone"] call A3U_fnc_revealRandomZones;
+            };
+        };
+    } else {
+        // Handle intel revelation
+        private _intel = ["Civilian", Occupants] call A3A_fnc_selectIntel;
+        private _intelMessage = "";
+
+        switch (_intel) do
+        {
+            case 502: // dealer
+            {
+                _intelMessage = selectRandom [
+                    "STR_antistasi_actions_talk_with_civ_success_dealer1",
+                    "STR_antistasi_actions_talk_with_civ_success_dealer2"
+                ];
+            };
+            // ... (similar cases for other intel types)
+            default {_intelMessage = "STR_antistasi_actions_talk_with_civ_fail1"};
+        };
+
+        [_unit, (localize _intelMessage)] remoteExec ["globalChat", _caller];
+    };
+
+    _unit setVariable ["A3U_civDialogHasSpoken", true, true];
+
+    true
+};
+
+// Handle failed dialogue
+private _failMessage = selectRandom [
+    "STR_antistasi_actions_talk_with_civ_fail1",
+    "STR_antistasi_actions_talk_with_civ_fail2",
+    "STR_antistasi_actions_talk_with_civ_fail3"
+];
+
+if !(captive _caller) then {
+    _failMessage = selectRandom [
+        "STR_antistasi_actions_talk_with_civ_fail_notundercover1",
+        "STR_antistasi_actions_talk_with_civ_fail_notundercover2"
+    ];
+};
+
+[_unit, (localize _failMessage)] remoteExec ["globalChat", _caller];
+
+_unit setVariable ["A3U_civDialogHasSpoken", true, true];
+
+false
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Calls A3A_fnc_findIfNearAndHostile for threat assessment</div>
+                <div class="bullet-item">• Calls A3A_fnc_selectIntel for intelligence generation</div>
+                <div class="bullet-item">• Calls A3A_fnc_scheduler for mission activation</div>
+                <div class="bullet-item">• Calls A3U_fnc_revealRandomZones for map exploration</div>
+                <div class="bullet-item">• Modifies missionNamespace A3U_dialogCivMissionInProgress variable</div>
+                <div class="bullet-item">• Affects player reputation and intel availability</div>
+                <div class="bullet-item">• Integrates with mission spawning system</div>
+            </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_getDayState.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Determines the current time of day phase for environmental and behavioral logic</div>
+                <div class="bullet-item">• Provides standardized time categorization for civilian and ambient systems</div>
+                <div class="bullet-item">• Supports time-based conditional behaviors and spawning</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Retrieve current date and sun/moon state
+private _date = date;
+private _sunOrMoon = sunOrMoon;
+private _dayState = "";
+
+// Extract hour
+_hour = (_date#3);
+
+// Determine morning phase
+if ((_hour > 5) && (_hour < 7)) then {
+    _dayState = "MORNING";
+} else {
+    _dayState = "DAY";
+};
+
+// Adjust for evening/night based on sun visibility
+if(_sunOrMoon < 1) then {
+    _dayState = "EVENING";
+    if((_hour >= 23) || (_hour < 5)) then {
+        _dayState = "NIGHT";
+    };
+};
+
+if (_dayState == "") exitWith {"UNKNOWN"};
+
+_dayState
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Provides time context to A3A_fnc_createAmbientCiv for activity scheduling</div>
+                <div class="bullet-item">• Provides time context to A3A_fnc_createResourceCiv for worker spawning</div>
+                <div class="bullet-item">• Enables time-based ambient behaviors and spawning restrictions</div>
+                <div class="bullet-item">• Supports environmental adaptation in civilian systems</div>
+            </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_unitAmbient.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Adds realistic idle behaviors and ambient sounds to units</div>
+                <div class="bullet-item">• Creates lifelike NPC activities with animations and audio cues</div>
+                <div class="bullet-item">• Provides continuous background activity for populated areas</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Validate unit parameter
+if (_unit isEqualTo ObjNull) exitWith {ObjNull};
+
+// Spawn ambient behavior loop
+[_unit] spawn {
+    params ["_unit"];
+    // Define sound/animation combinations
+    private _ambientSounds =
+    [
+        ["A3A_Audio_Petros_Ambient_Sneeze", "Acts_Ambient_Gestures_Sneeze", 5],
+        ["A3A_Audio_Petros_Ambient_Coughing1", "Acts_Rifle_Operations_Zeroing", 7],
+        ["A3A_Audio_Petros_Ambient_Coughing2", "Acts_Rifle_Operations_Checking_Chamber", 6],
+        ["A3A_Audio_Petros_Ambient_Scratching", "", 0],
+        ["A3A_Audio_Petros_Ambient_Whistle1", "Acts_Ambient_Relax_1", 9],
+        ["A3A_Audio_Petros_Ambient_Whistle2", "Acts_Ambient_Relax_4", 10],
+        ["A3A_Audio_Petros_Ambient_Yawn1", "Acts_Ambient_Gestures_Tired", 11],
+        ["A3A_Audio_Petros_Ambient_Yawn2", "Acts_Ambient_Gestures_Yawn", 6],
+        ["A3A_Audio_Petros_Ambient_Humming", "Acts_Ambient_Stretching", 7],
+        ["A3A_Audio_Petros_Ambient_Sniffling", "Acts_Ambient_Cleaning_Nose", 4],
+        ["A3A_Audio_Petros_Ambient_ThroatClearing","Acts_Ambient_Relax_2", 12],
+        ["A3A_Audio_Petros_Ambient_Breathing", "Acts_Rifle_Operations_Checking_Chamber", 6]
+    ];
+
+    // Continuous loop while unit alive
+    while { (alive _unit) } do {
+        private _combo = selectRandom (_ambientSounds);
+
+        [_unit, _combo#0, _combo#1, _combo#2] call A3A_fnc_unitAmbientPlay;
+
+        sleep (random 1800);
+
+        if !(alive _unit) exitWith {};
+    };
+};
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Calls A3A_fnc_unitAmbientPlay for behavior execution</div>
+                <div class="bullet-item">• Provides continuous ambient activity for units</div>
+                <div class="bullet-item">• Enhances NPC realism with varied idle behaviors</div>
+            </div>
+        </div>
+
+        <div class="function-header">
+            <div class="function-name">Function Name: fn_unitAmbientPlay.sqf</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What it does:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Executes individual ambient sound and animation combinations</div>
+                <div class="bullet-item">• Provides the core playback mechanism for unit ambient behaviors</div>
+                <div class="bullet-item">• Handles synchronized audio-visual ambient actions</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it does that:</div>
+            <div class="code-block">
+// Extract behavior parameters
+params ["_unit", "_sound", "_animation", "_delay"];
+
+// Play sound globally
+[_unit, _sound] remoteExec ["say3D", 0];
+
+// Trigger animation
+[_unit, _animation] remoteExec ["playMoveNow", 0];
+
+// Wait for animation duration
+sleep _delay;
+
+// Reset to default animation
+[_unit, ""] remoteExec ["switchMove", 0];
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Where it leads:</div>
+            <div class="bullet-list">
+                <div class="bullet-item">• Provides atomic ambient behavior execution</div>
+                <div class="bullet-item">• Enables synchronized sound and animation playback</div>
+                <div class="bullet-item">• Supports varied idle behaviors for enhanced NPC realism</div>
+            </div>
+        </div>
+
+        <h2 id="patcom-core" class="category-header">Patcom Functions</h2>
+    <div class="function-list">
+        <strong>Documented Functions:</strong> fn_clearVehicleCargo.sqf, fn_debug3DPath.sqf, fn_debugText3D.sqf, fn_getSafePos.sqf, fn_patrolArea.sqf
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_clearVehicleCargo.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Removes specified types of cargo from vehicles</div>
+            <div class="bullet-item">• Provides selective cargo clearing for different item categories</div>
+            <div class="bullet-item">• Supports granular control over vehicle inventory management</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract parameters for vehicle and cargo clearing options
+params ["_veh", "_magazineCargo", "_weaponCargo", "_itemCargo", "_backpackCargo"];
+
+// Clear magazine cargo if requested
+if (_magazineCargo) then {
+    clearMagazineCargoGlobal _veh;
+};
+
+// Clear weapon cargo if requested
+if (_weaponCargo) then {
+    clearWeaponCargoGlobal _veh;
+};
+
+// Clear item cargo if requested
+if (_itemCargo) then {
+    clearItemCargoGlobal _veh;
+};
+
+// Clear backpack cargo if requested
+if (_backpackCargo) then {
+    clearBackpackCargoGlobal _veh;
+};
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Enables vehicle preparation in A3A_fnc_createAmbientCivTraffic for civilian vehicles</div>
+            <div class="bullet-item">• Supports vehicle initialization in traffic spawning systems</div>
+            <div class="bullet-item">• Provides cargo management for AI vehicle systems</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_debug3DPath.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Visualizes AI pathfinding routes in 3D space for debugging</div>
+            <div class="bullet-item">• Creates persistent visual indicators showing unit movement paths</div>
+            <div class="bullet-item">• Provides developer tools for understanding AI navigation behavior</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract unit and path array parameters
+params ["_Unit","_Array"];
+
+// Retrieve existing visual elements for cleanup
+private _ArrowA = _Unit getVariable ["ArrowA",[]];
+private _VisualA = _Unit getVariable ["VisualA",[]];
+
+// Clean up previous visualizations
+if (count _ArrowA > 0) then {
+    { _x call BIS_fnc_drawArrow; } foreach _ArrowA;
+};
+if (count _VisualA > 0) then {
+    { removeMissionEventHandler ["Draw3D",_x]; } foreach _VisualA;
+};
+
+// Process each path point
+{
+    private _Pos = _x;
+    _Pos set [2,1];
+    private _StartingPoint = _Pos;
+    private _NextPoint = (_Array # (_foreachindex + 1));
+
+    if !(isNil "_NextPoint") then {
+        _NextPoint set [2,1];
+        // Create 3D line visualization
+        private _ID = addMissionEventHandler ["Draw3D",
+            format ["drawLine3D [%1, %2, [0.9,0,0,0.5]];",_StartingPoint,_NextPoint]];
+        // Add waypoint icon
+        private _ID2 = addMissionEventHandler ["Draw3D",
+            format ["drawIcon3D ['a3\\ui_f\\data\\map\\mapcontrol\\waypoint_ca.paa', [1,1,1,0.8], %1, 1, 1, 0, '', 2, 0.05, 'PuristaMedium'];", _NextPoint]];
+        // Create arrow visualization
+        private _Arrow = [_StartingPoint, _NextPoint, [1,0,0,1], [1,1/5,5]] call BIS_fnc_drawArrow;
+        _ArrowA pushback _Arrow;
+        _VisualA pushback _ID;
+        _VisualA pushback _ID2;
+    };
+} foreach _Array;
+
+// Save visual references and setup cleanup
+_Unit setVariable ["ArrowA", _ArrowA];
+_Unit setVariable ["VisualA", _VisualA];
+
+if !(_Unit getVariable ["DEBUGSET", false]) then {
+    _Unit addEventHandler ["killed", { /* cleanup code */ }];
+    _Unit addEventHandler ["Deleted", { /* cleanup code */ }];
+    _Unit setVariable ["DEBUGSET",true];
+};
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Provides debugging visualization for AI pathfinding systems</div>
+            <div class="bullet-item">• Integrates with PathCalculated event handlers for real-time path display</div>
+            <div class="bullet-item">• Enables developer analysis of AI movement patterns</div>
+            <div class="bullet-item">• Calls BIS_fnc_drawArrow for arrow visualization</div>
+            <div class="bullet-item">• Uses Draw3D mission event handlers for persistent 3D display</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_debugText3D.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Displays temporary 3D text labels above units for debugging purposes</div>
+            <div class="bullet-item">• Provides visual feedback for AI states and behaviors during development</div>
+            <div class="bullet-item">• Supports multiple colors for different types of debug information</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract display parameters
+params ["_Unit", "_Text", ["_Timer", 10], ["_color", "Green"]];
+
+// Validate unit state
+if !(alive _Unit) exitWith {};
+if (isNil "_Unit") exitWith {};
+
+// Calculate expiration time
+private _TimerEXP = time + _Timer;
+
+// Set color values based on input
+private _red = 0.9; private _green = 0.9; private _blue = 0.9;
+if (_color == "Red") then { _red = 0.9; _green = 0; _blue = 0; };
+// ... (similar for other colors)
+
+// Create stacked event handler for 3D text rendering
+[(str _Unit), "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
+[(str _Unit), "onEachFrame",
+{
+    params ["_Unit", "_text", "_TimerEXP", "_red", "_green", "_blue"];
+    private _pos = getposATL _Unit;
+    _pos set [2,3];
+    drawIcon3D["", [_red,_green,_blue,1], _pos, 0, 0, 0, _text, 2, 0.04, "PuristaMedium", "center", false];
+
+    if (!(alive _Unit) || time > _TimerEXP) then {
+        [(str _Unit), "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
+    };
+},[_Unit,_text,_TimerEXP, _red, _green, _blue]] call BIS_fnc_addStackedEventHandler;
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Provides visual debugging feedback throughout the patcom system</div>
+            <div class="bullet-item">• Enables real-time monitoring of AI states and behaviors</div>
+            <div class="bullet-item">• Supports artillery fire mission status display</div>
+            <div class="bullet-item">• Supports patrol behavior debugging</div>
+            <div class="bullet-item">• Uses BIS_fnc_addStackedEventHandler for persistent frame-based rendering</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_getSafePos.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Finds safe spawn positions that meet specific terrain and environmental criteria</div>
+            <div class="bullet-item">• Prevents spawning in inappropriate locations like steep slopes, water, or near objects</div>
+            <div class="bullet-item">• Provides robust position validation for AI and civilian spawning systems</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract position generation parameters
+params ["_checkPos","_minDistance","_maxDistance","_objectProximity","_waterMode","_maxGradient","_shoreMode"];
+
+// Convert object positions to coordinates
+if (_checkPos isEqualType objNull) then {_checkPos = getPos _checkPos};
+
+// Set default maximum distance
+private _defaultMaxDistance = worldSize / 2;
+if (_maxDistance < 0) then {
+    _maxDistance = getNumber (configFile >> "CfgWorlds" >> worldName >> "safePositionRadius");
+    if (_maxDistance <= 0) then {_maxDistance = _defaultMaxDistance};
+};
+
+// Configure validation flags
+private _checkProximity = _objectProximity > 0;
+_shoreMode = _shoreMode != 0;
+private _gradientRadius = 1 max _objectProximity * 0.1;
+
+// Safety limit to prevent infinite loops
+private _Pass = true;
+for "_i" from 1 to 3000 do {
+    _Pass = true;
+
+    // Generate candidate position
+    _FinalResult = _checkPos getPos [(_minDistance + (random _maxdistance)), random 360];
+
+    // Validate terrain and proximity
+    if (_FinalResult isFlatEmpty [-1, -1, _maxGradient, _gradientRadius, _waterMode, _shoreMode] isEqualTo []) then {_Pass = false;};
+    if (_checkProximity && /* terrain object check */) then {_Pass = false;};
+    if !(lineIntersectsSurfaces [AGLtoASL _FinalResult, AGLtoASL _FinalResult vectorAdd [0, 0, 50], objNull, objNull, false, 1, "GEOM", "NONE"] isEqualTo []) then {_Pass = false};
+
+    if (_Pass) exitWith {};
+};
+
+// Fallback position generation if no suitable position found
+if !(_Pass) then {
+    if (_waterMode == 0) then {
+        _FinalResult = [[[_checkPos, _maxdistance]], ["water"]] call BIS_fnc_randomPos;
+    };
+    // ... (similar for other water modes)
+};
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Provides safe positions for A3A_fnc_civilianPanic retreat locations</div>
+            <div class="bullet-item">• Provides safe positions for A3A_fnc_createAmbientCiv civilian spawning</div>
+            <div class="bullet-item">• Provides safe positions for A3A_fnc_createResourceCiv worker spawning</div>
+            <div class="bullet-item">• Provides safe positions for A3A_fnc_createAmbientCivTraffic vehicle placement</div>
+            <div class="bullet-item">• Provides safe positions for artillery fire mission spread calculations</div>
+            <div class="bullet-item">• Enables robust position validation throughout the spawning systems</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolArea.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Manages area patrol behavior for AI groups with configurable parameters</div>
+            <div class="bullet-item">• Implements intelligent waypoint generation and patrol logic</div>
+            <div class="bullet-item">• Handles different behavior modes for civilian vs military units</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract patrol configuration parameters
+params ["_group", ["_minimumRadius", 50], ["_maximumRadius", 100], ["_maxPatrolDistance", -1], ["_fromCenter", false], ["_centerPos", []], ["_searchBuildings", false]];
+
+// Retrieve group home position and patrol parameters
+private _groupHomePosition = _group getVariable "PATCOM_Patrol_Home";
+private _patrolParams = _group getVariable "PATCOM_Patrol_Params";
+
+// Set appropriate combat modes for civilians vs military
+if ((side leader _group) == civilian) then {
+    [_group, "CARELESS", "NORMAL", "LINE", "BLUE", "AUTO"] call A3A_fnc_patrolSetCombatModes;
+} else {
+    [_group, "SAFE", "LIMITED", "COLUMN", "WHITE", "AUTO"] call A3A_fnc_patrolSetCombatModes;
+    _group setVariable ["PATCOM_Group_State", "CALM"];
+};
+
+// Display debug information
+if (PATCOM_DEBUG) then {
+    [leader _group, "PATROL AREA", 10, "White"] call A3A_fnc_debugText3D;
+};
+
+// Check for stuck waypoints after timeout
+if (_group getVariable "PATCOM_WaypointTime" < serverTime) exitWith {
+    [_group, _groupHomePosition, "MOVE", "PATCOM_PATROL_AREA", -1, _patrolParams # 1] call A3A_fnc_patrolCreateWaypoint;
+};
+
+// Validate current waypoint state
+if (currentWaypoint _group == count waypoints _group || waypointType [_group, currentWaypoint _group] != "MOVE") then {
+    // Implement building search with random chance
+    if (_searchBuildings && 15 > random 100) exitWith {
+        [_group] call A3A_fnc_patrolSearchBuilding;
+        [leader _group, "SEARCH BUILDING", 10, "Green"] call A3A_fnc_debugText3D;
+    };
+
+    // Enforce maximum patrol distance
+    if (_maxPatrolDistance != -1 && (leader _group) distance _groupHomePosition > _maxPatrolDistance) exitWith {
+        [_group, _groupHomePosition, "MOVE", "PATCOM_PATROL_AREA", -1, _patrolParams # 1] call A3A_fnc_patrolCreateWaypoint;
+    };
+
+    // Generate next waypoint from center or current position
+    private _nextWaypointPos = if (_fromCenter) then {
+        [_centerPos, _minimumRadius, _maximumRadius, 2, 0, -1, 0] call A3A_fnc_getSafePos;
+    } else {
+        [getPosATL (leader _group), _minimumRadius, _maximumRadius, 2, 0, -1, 0] call A3A_fnc_getSafePos;
+    };
+    [_group, _nextWaypointPos, "MOVE", "PATCOM_PATROL_AREA", -1, _patrolParams # 1] call A3A_fnc_patrolCreateWaypoint;
+};
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Calls A3A_fnc_patrolSetCombatModes for behavior configuration</div>
+            <div class="bullet-item">• Calls A3A_fnc_debugText3D for status visualization</div>
+            <div class="bullet-item">• Calls A3A_fnc_patrolCreateWaypoint for waypoint management</div>
+            <div class="bullet-item">• Calls A3A_fnc_patrolSearchBuilding for building investigation</div>
+            <div class="bullet-item">• Calls A3A_fnc_getSafePos for position generation</div>
+            <div class="bullet-item">• Modifies PATCOM_Group_State group variable</div>
+            <div class="bullet-item">• Integrates with patrol timeout and distance limit systems</div>
+        </div>
+    </div>
+
+    <h2 class="category-header">Complete Patcom Functions Documentation</h2>
+    <div class="function-list">
+        <strong>All 22 Patcom functions fully documented with ultra-detailed analysis:</strong><br>
+        fn_patrolArmStatics.sqf, fn_patrolAttack.sqf, fn_patrolBuildingEnterable.sqf, fn_patrolCivilianCommander.sqf,<br>
+        fn_patrolCommander.sqf, fn_patrolCreateWaypoint.sqf, fn_patrolDefend.sqf, fn_patrolEnterableBuildings.sqf,<br>
+        fn_patrolGetEnemies.sqf, fn_patrolGroupGarrison.sqf, fn_patrolGroupVariables.sqf, fn_patrolHandleFormation.sqf,<br>
+        fn_patrolInit.sqf, fn_patrolLoop.sqf, fn_patrolSearchBuilding.sqf, fn_patrolSetCombatModes.sqf, fn_patrolWater.sqf
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolArmStatics.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Searches for available static weapons near AI groups and assigns units to man them</div>
+            <div class="bullet-item">• Provides tactical advantage by utilizing defensive emplacements during combat</div>
+            <div class="bullet-item">• Manages static weapon assignment lifecycle including occupation and abandonment</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract group parameter
+params ["_group"];
+
+// Initialize assignment tracking
+private _assignedPairs = [];
+private _leader = leader _group;
+
+// Find nearby static weapons
+private _staticsNear = nearestObjects [_leader, ["StaticWeapon"], 150];
+
+// Filter working, uncrewed, available statics
+_staticsNear = _staticsNear select {alive _x};
+_staticsNear = _staticsNear select {(crew _x) isequalto []};
+_staticsNear = _staticsNear select {
+    ((_x getVariable ["lockedForAi", false]) == false) &&
+    ((_x getVariable ["PATCOM_STATIC_ASSIGNED", false]) == false) && (
+        (isNull attachedTo _x) ||
+        {!(_x in (attachedTo _x getVariable["ace_cargo_loaded", []]))}
+    )
+};
+
+// Exit if no statics available
+if (count _staticsNear == 0) exitWith {};
+
+// Get available units
+private _unitArray = units _group;
+_unitArray deleteAt (_unitArray find _leader);
+_unitArray = _unitArray select {isNull objectParent _x};
+
+// Exit if no units available
+if (count _unitArray == 0) exitWith {};
+
+// Assign units to nearby statics
+{
+    if (count _unitArray == 0) exitWith {};
+    private _unit = selectRandom _unitArray;
+    if (_unit distance2D _x < 100) then {
+        _assignedPairs pushback [_unit, _x, _group];
+        _unitArray deleteAt (_unitArray find _unit);
+    };
+} foreach _staticsNear;
+
+// Exit if no assignments made
+if (count _assignedPairs isEqualTo 0) exitWith {};
+
+// Process assignments asynchronously
+{
+    _x spawn {
+        params ["_unit", "_static", "_group"];
+
+        // Check static availability
+        private _assignedGunner = assignedGunner _static;
+        if ((isNull _assignedGunner) && ((_static getVariable ["PATCOM_STATIC_ASSIGNED", false]) == false)) then {
+            // Isolate unit temporarily
+            [_unit] joinSilent grpnull;
+            _static setVariable ["PATCOM_STATIC_ASSIGNED", true];
+            _unit setCombatBehaviour "SAFE";
+            _unit setUnitCombatMode "BLUE";
+
+            // Debug feedback
+            if (PATCOM_DEBUG) then {
+                [_unit, "STATIC FOUND", 5, "Green"] call A3A_fnc_debugText3D;
+            };
+
+            // Move unit to static
+            _unit doMove (getPosATL _static);
+            _unit assignAsGunner _static;
+            [_unit] orderGetIn true;
+
+            // Wait for unit to reach static
+            while {(alive _unit) && {_unit distance _static > 4}} do {
+                sleep 3;
+            };
+            _unit moveInGunner _static;
+            _unit setCombatBehaviour "AWARE";
+            _unit setUnitCombatMode "YELLOW";
+
+            // Register artillery if applicable
+            if (typeOf _static in FactionGet(all, "vehiclesArtillery")) then {
+                [_group] call A3A_fnc_artilleryAdd;
+            };
+
+            // Monitor static usage
+            [_unit, _static, _group] spawn {
+                params ["_unit", "_static", "_group"];
+                private _staticGreen = true;
+                private _statictime = PATCOM_AI_STATIC_ARM;
+
+                while {_staticGreen && {alive _unit} && {alive _static} && {!(isNull (gunner _static))} && {_unit distance2D (leader (group _unit)) < 500}} do {
+                    sleep 5;
+                    private _enemy = _unit findNearestEnemy _unit;
+                    if (!(isNull _enemy)) then {
+                        private _cansee = [_unit, "VIEW"] checkVisibility [eyePos _unit, eyePos _enemy];
+                        if (_cansee > 0) then {
+                            _statictime = _statictime + 3;
+                        } else {
+                            _statictime = _statictime - 5;
+                        };
+                    } else {
+                        _statictime = _statictime - 5;
+                    };
+
+                    if (_statictime < 1) then {
+                        _staticGreen = false;
+                    };
+                };
+
+                // Disengage from static
+                unassignVehicle _unit;
+                _unit leaveVehicle _static;
+                _static setVariable ["PATCOM_STATIC_ASSIGNED", false];
+                doGetOut _unit;
+                [_unit] joinSilent _group;
+            };
+        };
+    };
+} foreach _assignedPairs;
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Calls A3A_fnc_debugText3D for visual feedback during static assignment</div>
+            <div class="bullet-item">• Calls A3A_fnc_artilleryAdd when artillery statics are manned</div>
+            <div class="bullet-item">• Modifies PATCOM_STATIC_ASSIGNED static weapon variable</div>
+            <div class="bullet-item">• Temporarily creates single-unit groups during assignment process</div>
+            <div class="bullet-item">• Integrates with artillery fire mission system for static artillery</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolAttack.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Transitions AI groups into combat mode when enemies are detected</div>
+            <div class="bullet-item">• Generates attack waypoints targeting known enemy positions</div>
+            <div class="bullet-item">• Coordinates tactical assault behavior with appropriate combat settings</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract attack parameters
+params ["_group", "_knownEnemies", ["_minimumRadius", 25], ["_maximumRadius", 50], ["_objectDistance", 2], ["_waterMode", 0], ["_maxGradient", -1], ["_shoreMode", 0]];
+
+// Exit to previous orders if no enemies
+if (count _knownEnemies < 1) exitWith {
+    private _previousOrders = _group getVariable "PATCOM_Previous_Orders";
+    _group setVariable ["PATCOM_Current_Orders", _previousOrders];
+    _group setVariable ["PATCOM_Group_State", "CALM"];
+};
+
+// Set combat behavior modes
+[_group, "COMBAT", "FULL", "COLUMN", "RED", "AUTO"] call A3A_fnc_patrolSetCombatModes;
+
+// Debug display
+if (PATCOM_DEBUG) then {
+    [leader _group, "ATTACK", 10, "White"] call A3A_fnc_debugText3D;
+};
+
+// Enable static weapon checking
+if (PATCOM_AI_STATICS) then {
+    [_group] call A3A_fnc_patrolArmStatics;
+};
+
+// Set waypoint naming
+private _waypointName = "PATCOM_PATROL_ATTACK";
+
+// Create attack waypoint if needed
+if ((waypointType [_group, currentWaypoint _group] != "SAD") || ((waypointName [_group, currentWaypoint _group]) != _waypointName)) then {
+    private _targetGroup = selectRandom _knownEnemies;
+    private _nextWaypointPos = [getPosATL (leader _targetGroup), _minimumRadius, _maximumRadius, _objectDistance, _waterMode, _maxGradient, _shoreMode] call A3A_fnc_getSafePos;
+    [_group, _nextWaypointPos, "SAD", _waypointName, -1, 50] call A3A_fnc_patrolCreateWaypoint;
+};
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Calls A3A_fnc_patrolSetCombatModes for combat behavior setup</div>
+            <div class="bullet-item">• Calls A3A_fnc_debugText3D for attack state visualization</div>
+            <div class="bullet-item">• Calls A3A_fnc_patrolArmStatics for defensive positioning during combat</div>
+            <div class="bullet-item">• Calls A3A_fnc_getSafePos for attack waypoint positioning</div>
+            <div class="bullet-item">• Calls A3A_fnc_patrolCreateWaypoint for waypoint management</div>
+            <div class="bullet-item">• Modifies PATCOM_Previous_Orders and PATCOM_Current_Orders group variables</div>
+            <div class="bullet-item">• Modifies PATCOM_Group_State to "COMBAT"</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolBuildingEnterable.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Validates whether buildings can be entered by AI units</div>
+            <div class="bullet-item">• Checks building configuration and applies blacklist filtering</div>
+            <div class="bullet-item">• Ensures only appropriate buildings are used for garrison or search operations</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract building parameter
+params ["_house"];
+
+// Check building position availability
+private _enterable = !((_house buildingPos 0) isEqualTo [0,0,0]);
+
+// Apply blacklist filtering
+if (_enterable && !((count PATCOM_Building_Blacklist) == 0)) then {
+    if ((typeOf _house) in PATCOM_Building_Blacklist) then {
+        _enterable = false;
+    };
+};
+
+// Return validation result
+_enterable
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Provides validation for A3A_fnc_patrolEnterableBuildings building filtering</div>
+            <div class="bullet-item">• Ensures blacklisted buildings are excluded from AI operations</div>
+            <div class="bullet-item">• Supports building-based defensive and patrol operations</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolCivilianCommander.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Manages civilian group patrol behavior with specialized parameters</div>
+            <div class="bullet-item">• Applies civilian-specific movement and interaction rules</div>
+            <div class="bullet-item">• Maintains civilian AI within designated patrol boundaries</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract group parameter
+params ["_group"];
+
+// Retrieve patrol parameters
+private _patrolParams = _group getVariable "PATCOM_Patrol_Params";
+
+// Validate group existence
+if (count units _group <= 0) exitWith {};
+
+// Apply civilian-specific patrol
+if ((side leader _group) == civilian) then {
+    [_group, _patrolParams#1, _patrolParams#2, _patrolParams#3,_patrolParams#4,_patrolParams#5,_patrolParams#6,_patrolParams#7] call A3A_fnc_patrolArea;
+};
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Calls A3A_fnc_patrolArea for civilian patrol execution</div>
+            <div class="bullet-item">• Maintains civilian-specific patrol parameters and behavior</div>
+            <div class="bullet-item">• Integrates with civilian AI management system</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolCommander.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Main AI command logic coordinating patrol, defense, and attack behaviors</div>
+            <div class="bullet-item">• Processes enemy detection and dynamically switches between operational modes</div>
+            <div class="bullet-item">• Central hub for AI decision-making and state management</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract group parameter
+params ["_group"];
+
+// Validate group existence
+if (count units _group == 0) exitWith {
+    If (PATCOM_DEBUG) then {
+        ServerDebug_1("PATCOM | Group Eliminated, Exiting PATCOM Group: %1", _group);
+    };
+};
+
+// Get enemy data and patrol parameters
+private _knownEnemies = [_group] call A3A_fnc_patrolGetEnemies;
+private _patrolParams = _group getVariable "PATCOM_Patrol_Params";
+private _currentOrders = _patrolParams # 0;
+
+// Handle formations
+[leader _group] call A3A_fnc_patrolHandleFormation;
+
+// Check for enemy presence
+if (count _knownEnemies > 0) then {
+    if ((_currentOrders != "Patrol_Attack") && (_currentOrders != "Patrol_Water")) then {
+        _group setVariable ["PATCOM_Previous_Orders", _currentOrders];
+        _currentOrders = "Patrol_Attack";
+        _group setVariable ["PATCOM_Group_State", "COMBAT"];
+    };
+};
+
+// Debug logging
+If (PATCOM_DEBUG) then {
+    ServerDebug_3("PATCOM | Group: %1 | Current Orders: %2 | Group State: %3", _group, _currentOrders, _group getVariable "PATCOM_Group_State");
+};
+
+// Route to appropriate behavior handlers
+if (_currentOrders == "Patrol_Attack") exitWith {
+    [_group, _knownEnemies] call A3A_fnc_patrolAttack;
+};
+
+if (_currentOrders == "Patrol_Defend") exitWith {
+    [_group, _patrolParams#1, _patrolParams#2, _patrolParams#4, _patrolParams#5] call A3A_fnc_patrolDefend;
+};
+
+if (_currentOrders == "Patrol_Area") exitWith {
+    [_group, _patrolParams#1, _patrolParams#2, _patrolParams#3, _patrolParams#4, _patrolParams#5, _patrolParams#6] call A3A_fnc_patrolArea;
+};
+
+if (_currentOrders == "Patrol_Water") exitWith {
+    [_group, _patrolParams#1, _patrolParams#2, _patrolParams#3, _patrolParams#4, _patrolParams#5] call A3A_fnc_patrolWater;
+};
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Calls A3A_fnc_patrolGetEnemies for threat detection</div>
+            <div class="bullet-item">• Calls A3A_fnc_patrolHandleFormation for group formation management</div>
+            <div class="bullet-item">• Calls A3A_fnc_patrolAttack for combat behavior</div>
+            <div class="bullet-item">• Calls A3A_fnc_patrolDefend for defensive operations</div>
+            <div class="bullet-item">• Calls A3A_fnc_patrolArea for patrol activities</div>
+            <div class="bullet-item">• Calls A3A_fnc_patrolWater for aquatic patrols</div>
+            <div class="bullet-item">• Modifies PATCOM_Previous_Orders, PATCOM_Current_Orders, and PATCOM_Group_State variables</div>
+            <div class="bullet-item">• Central coordinator for all PATCOM behavioral states</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolCreateWaypoint.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Creates and manages AI waypoints with intelligent reuse and positioning</div>
+            <div class="bullet-item">• Handles waypoint lifecycle including creation, updating, and validation</div>
+            <div class="bullet-item">• Prevents waypoint conflicts and ensures proper AI navigation</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract waypoint parameters
+params ["_group", "_position", "_waypointType", "_waypointName", ["_radius", -1], ["_distance", 50]];
+
+// Validate position data
+if ((count _position) < 3) exitWith {};
+
+// Get current waypoint reference
+private _waypointCount = count waypoints _group - 1;
+private _waypoint = [_group, _waypointCount];
+
+// Check for existing waypoint reuse
+if (count waypoints _group > 1 && waypointName _waypoint isEqualTo _waypointName) then {
+    if (_radius == -1) then {
+        _waypointPos = AGLtoASL waypointPosition _waypoint;
+        _position = AGLtoASL _position;
+    } else {
+        _waypointPos = waypointPosition _waypoint;
+    };
+
+    // Update existing waypoint if too close
+    if (_position distance _waypointPos > _distance) then {
+        _waypoint setWaypointPosition [_position, _radius];
+    };
+} else {
+    // Create new waypoint
+    _waypoint = _group addWaypoint [AGLtoASL _position, _radius];
+    _waypoint setWaypointName _waypointName;
+};
+
+// Ensure current waypoint is set
+if ((_waypoint#1) != currentWaypoint _group) then {
+    _group setCurrentWaypoint _waypoint;
+};
+
+// Validate waypoint type
+if (waypointType _waypoint != _waypointType) then {
+    _waypoint setWaypointType _waypointType;
+};
+
+// Set waypoint timeout
+private _waypointTime = serverTime + 300;
+_group setVariable ["PATCOM_WaypointTime", _waypointTime];
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Provides waypoint creation for all patrol behaviors</div>
+            <div class="bullet-item">• Modifies PATCOM_WaypointTime group variable for timeout tracking</div>
+            <div class="bullet-item">• Supports waypoint reuse to prevent AI navigation conflicts</div>
+            <div class="bullet-item">• Integrates with all PATCOM movement and combat systems</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolDefend.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Establishes defensive patrol patterns around specified positions</div>
+            <div class="bullet-item">• Maintains AI presence in designated defense areas</div>
+            <div class="bullet-item">• Coordinates defensive positioning with static weapon utilization</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract defense parameters
+params ["_group", ["_minimumRadius", 20], ["_maximumRadius", 100], ["_fromCenter", false], ["_centerPos", []]];
+
+// Get group leader
+private _leader = leader _group;
+
+// Set defensive behavior
+[_group, "SAFE", "LIMITED", "COLUMN", "WHITE", "AUTO"] call A3A_fnc_patrolSetCombatModes;
+_group setVariable ["PATCOM_Group_State", "CALM"];
+
+// Debug display
+if (PATCOM_DEBUG) then {
+    [leader _group, "DEFEND", 10, "White"] call A3A_fnc_debugText3D;
+};
+
+// Retrieve patrol parameters
+private _patrolParams = _group getVariable "PATCOM_Patrol_Params";
+private _waypointName = "PATCOM_PATROL_DEFEND";
+
+// Create defense waypoints
+if ((waypointType [_group, currentWaypoint _group] != "MOVE") || ((waypointName [_group, currentWaypoint _group]) != _waypointName)) then {
+    if (PATCOM_AI_STATICS) then {
+        [_group] call A3A_fnc_patrolArmStatics;
+    };
+
+    private _nextWaypointPos = [_centerPos, _minimumRadius, _maximumRadius, 2, 0, -1, 0] call A3A_fnc_getSafePos;
+    [_group, _nextWaypointPos, "MOVE", _waypointName, -1, _patrolParams # 1] call A3A_fnc_patrolCreateWaypoint;
+};
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Calls A3A_fnc_patrolSetCombatModes for defensive behavior setup</div>
+            <div class="bullet-item">• Calls A3A_fnc_debugText3D for defense state visualization</div>
+            <div class="bullet-item">• Calls A3A_fnc_patrolArmStatics for defensive weapon positioning</div>
+            <div class="bullet-item">• Calls A3A_fnc_getSafePos for defense waypoint positioning</div>
+            <div class="bullet-item">• Calls A3A_fnc_patrolCreateWaypoint for waypoint management</div>
+            <div class="bullet-item">• Modifies PATCOM_Group_State to "CALM"</div>
+            <div class="bullet-item">• Supports static defense and area denial operations</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolEnterableBuildings.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Scans areas for buildings that AI can enter and occupy</div>
+            <div class="bullet-item">• Filters buildings based on enterability and proximity</div>
+            <div class="bullet-item">• Provides building lists for garrison and search operations</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract search parameters
+params ["_position", "_radius"];
+
+// Initialize results array
+private _enterable = [];
+
+// Filter buildings by enterability
+{
+    if ([_x] call A3A_fnc_patrolBuildingEnterable) then {
+        _enterable pushback _x;
+    };
+} forEach (nearestObjects [_position, ["House","Building"], _radius]);
+
+// Return validated building list
+_enterable;
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Calls A3A_fnc_patrolBuildingEnterable for individual building validation</div>
+            <div class="bullet-item">• Provides building lists to A3A_fnc_patrolGroupGarrison for unit placement</div>
+            <div class="bullet-item">• Supports building-based defensive and patrol operations</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolGetEnemies.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Detects and catalogs known enemy units and groups within visual range</div>
+            <div class="bullet-item">• Applies side-based filtering for appropriate threat identification</div>
+            <div class="bullet-item">• Supports different game modes with varying faction relationships</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract group parameter
+params ["_group"];
+
+// Determine group side
+private _side = side _group;
+
+// Configure enemy sides based on game mode
+_enemySides = if (gameMode isEqualTo 2) then {
+    switch (_side) do {
+        case (teamPlayer): { [Occupants, Invaders, sideEnemy] };
+        case (Occupants);
+        case (Invaders): { [teamPlayer, sideEnemy] };
+    };
+} else {
+    switch (_side) do {
+        case (teamPlayer): { [Occupants, Invaders, sideEnemy] };
+        case (Occupants): { [teamPlayer, Invaders, sideEnemy] };
+        case (Invaders): { [teamPlayer, Occupants, sideEnemy] };
+    };
+};
+
+// Get known targets
+_knownEnemies append (_group targets [true, PATCOM_VISUAL_RANGE, _enemySides, PATCOM_TARGET_TIME]);
+
+// Add additional known enemies from area scan
+{
+    if ((side _x) in _enemySides) then {
+        if ((_group knowsAbout _x) > 2) then {
+            _knownEnemies pushBackUnique (group _x);
+        };
+    };
+} forEach (allUnits inAreaArray [getPosATL (leader _group), PATCOM_VISUAL_RANGE, PATCOM_VISUAL_RANGE]);
+
+// Return enemy group list
+_knownEnemies
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Provides enemy data to A3A_fnc_patrolCommander for threat assessment</div>
+            <div class="bullet-item">• Enables dynamic switching to attack behavior when enemies detected</div>
+            <div class="bullet-item">• Supports PATCOM_AI_STATICS integration for combat readiness</div>
+            <div class="bullet-item">• Feeds into all combat and patrol decision-making systems</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolGroupGarrison.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Automatically places AI units in garrison positions within buildings</div>
+            <div class="bullet-item">• Distributes units across available building positions for defensive coverage</div>
+            <div class="bullet-item">• Creates additional patrol groups when buildings have insufficient positions</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract garrison parameters
+params ["_group", "_position", "_radius"];
+
+// Validate group units
+if (count _units == 0) exitwith {};
+
+// Lock waypoints during garrisoning
+_group lockWP true;
+
+// Find garrison-capable buildings
+_buildings = nearestObjects [_position, keys PATCOM_Garrison_Positions, _radius];
+if (count _buildings == 0) then {
+    _buildings = [_position, _radius] call A3A_fnc_patrolEnterableBuildings;
+};
+
+// Filter undamaged buildings
+_buildings = _buildings select { damage _x < 1 && !isObjectHidden _x };
+_buildings = _buildings call BIS_fnc_arrayShuffle;
+
+// Process buildings for garrison positions
+{
+    if (count _units == 0) exitWith {};
+    private _building = _x;
+    private _class = typeOf _building;
+    private _buildingPositions = [];
+
+    if (_class in PATCOM_Garrison_Positions) then {
+        {
+            private _buildingPos = _building buildingPos _x;
+            if !(_buildingPos isEqualTo [0,0,0]) then {
+                _buildingPositions pushBack _buildingPos;
+            };
+        } forEach (PATCOM_Garrison_Positions get _class);
+    } else {
+        _buildingPositions = _building buildingPos -1;
+    };
+
+    // Place units in positions
+    {
+        if (count _units == 0) exitWith {};
+        private _unit = _units select 0;
+        private _position = _x;
+        _unit setposATL _position;
+        _unit setdir ((_unit getRelDir _building)-180);
+        _unit disableAI "PATH";
+        _unit setUnitPos "UP";
+        dostop _unit;
+        _units deleteAt 0;
+    } foreach _buildingPositions;
+} forEach _buildings;
+
+// Create additional patrol group for remaining units
+if (count _units > 0) then {
+    private _groupSplit = createGroup (side _group);
+    _newGroups pushBack _groupSplit;
+    _units joinSilent _groupSplit;
+    [_groupSplit, "Patrol_Defend", 0, 100, -1, true, _position, false] call A3A_fnc_patrolLoop;
+};
+
+// Return new groups
+_newGroups
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Calls A3A_fnc_patrolEnterableBuildings for building validation</div>
+            <div class="bullet-item">• Calls A3A_fnc_patrolLoop for additional patrol group creation</div>
+            <div class="bullet-item">• Disables AI pathfinding for garrisoned units</div>
+            <div class="bullet-item">• Returns new patrol groups for further processing</div>
+            <div class="bullet-item">• Supports building-based defensive positioning</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolGroupVariables.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Initializes PATCOM control variables on AI groups</div>
+            <div class="bullet-item">• Sets up patrol parameters and behavior configurations</div>
+            <div class="bullet-item">• Prevents duplicate initialization and ensures proper state management</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract group parameter
+params ["_group"];
+
+// Validate group has units
+if (count units _group <= 0) exitWith {
+    if (PATCOM_DEBUG) then {
+        ServerDebug_1("PATCOM | Group: %1 is Empty", _group);
+    };
+};
+
+// Check for existing PATCOM control
+if (_group getVariable "PATCOM_Controlled") exitWith {
+    if (PATCOM_DEBUG) then {
+        ServerDebug_1("PATCOM | Group: %1 is already controlled", _group);
+    };
+};
+
+// Log initialization
+If (PATCOM_DEBUG) then {
+    ServerDebug_2("PATCOM | Setting up Variables on group: %1 - side: %2", _group, side (leader _group));
+};
+
+// Configure civilian groups
+if ((side leader _group) == civilian) then {
+    if ((count (_group getVariable ["PATCOM_Patrol_Params", []])) == 0) then {
+        _group setVariable ["PATCOM_Patrol_Params", ["Civilian", 10, 50 + (random 50), -1, true, getPosATL (leader _group), true]];
+    };
+    _group setVariable ["PATCOM_Patrol_Home", getPosATL (leader _group)];
+    { _x forceWalk true; _x disableAI "AUTOCOMBAT"; } forEach units _group;
+    _group setVariable ["PATCOM_ForceWalk", true];
+    _group setVariable ["PATCOM_Controlled", true];
+};
+
+// Configure military groups
+else {
+    _group setVariable ["PATCOM_Previous_Orders", ""];
+    if ((count (_group getVariable ["PATCOM_Patrol_Params", []])) == 0) then {
+        _group setVariable ["PATCOM_Patrol_Params", ["Patrol_Area", 50, 100, -1, true, getPosATL (leader _group), false]];
+    };
+    _group setVariable ["PATCOM_Patrol_Home", getPosATL (leader _group)];
+    _group setVariable ["PATCOM_Group_State", "CALM"];
+    _group setVariable ["PATCOM_COMBAT_CHECK", serverTime];
+    _group setVariable ["PATCOM_Controlled", true];
+
+    if (PATCOM_DEBUG) then {
+        { private _PathEH = _x addEventHandler ["PathCalculated", { _this spawn A3A_fnc_debug3DPath; }]; } foreach (units _group);
+    };
+};
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Calls A3A_fnc_debug3DPath for path visualization in debug mode</div>
+            <div class="bullet-item">• Sets up all PATCOM control variables and patrol parameters</div>
+            <div class="bullet-item">• Configures civilian walking behavior and AI restrictions</div>
+            <div class="bullet-item">• Establishes initial group state and home positions</div>
+            <div class="bullet-item">• Prevents duplicate PATCOM initialization</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolHandleFormation.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Dynamically adjusts AI group formations based on terrain and location features</div>
+            <div class="bullet-item">• Applies context-appropriate formations for urban, rural, and special areas</div>
+            <div class="bullet-item">• Maintains formation settings with timeout-based refresh logic</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract leader parameter
+params ["_unit"];
+
+// Set formation check distance
+private _distanceToCheck = 300;
+
+// Get group reference
+private _group = group _unit;
+
+// Check formation refresh timer
+private _formationSet = _group getVariable ["PATCOM_Form_Set", [false, 0]];
+if ((_formationSet # 1) < serverTime) then {
+    _group setVariable ["PATCOM_Form_Set", [false, 0]];
+};
+if (_formationSet # 0) exitWith {};
+
+// Handle vehicle convoy formations
+if (!isNull objectParent _unit && {behaviour _unit == "SAFE"}) exitWith {
+    _group setFormation "FILE";
+    _group setVariable ["PATCOM_Form_Set", [true, serverTime + 300]];
+};
+
+// Apply urban formations
+private _nearestCity = nearestLocations [getPosASL _unit, ["nameCity", "NameVillage"], _distanceToCheck];
+if (count _nearestCity > 0) exitWith {
+    if (!isNull objectParent _unit) then {
+        _group setFormation "COLUMN";
+    } else {
+        _group setFormation "STAG COLUMN";
+    };
+    _group setVariable ["PATCOM_Form_Set", [true, serverTime + 300]];
+};
+
+// Apply hill formations
+private _nearestHill = nearestLocations [getPosASL _unit, ["Hill"], _distanceToCheck];
+if (count _nearestHill > 0) exitWith {
+    _group setFormation "LINE";
+    _group setVariable ["PATCOM_Form_Set", [true, serverTime + 300]];
+};
+
+// Apply airport/seaport formations
+private _nearestLocal = nearestLocations [getPosASL _unit, ["NameLocal"], _distanceToCheck];
+if (count _nearestLocal > 0) exitWith {
+    _group setFormation "COLUMN";
+    _group setVariable ["PATCOM_Form_Set", [true, serverTime + 300]];
+};
+
+// Set default formation
+_group setFormation "WEDGE";
+_group setVariable ["PATCOM_Form_Set", [true, serverTime + 300]];
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Modifies group formation based on environmental context</div>
+            <div class="bullet-item">• Sets PATCOM_Form_Set variable with timeout tracking</div>
+            <div class="bullet-item">• Supports different formations for vehicles vs infantry</div>
+            <div class="bullet-item">• Provides location-aware tactical formations</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolInit.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Initializes the PATCOM system with required data structures and configurations</div>
+            <div class="bullet-item">• Sets up building blacklists and garrison position mappings</div>
+            <div class="bullet-item">• Prepares the patrol command system for operation</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Create building blacklist hashmap
+PATCOM_Building_Blacklist = createHashMap;
+{ PATCOM_Building_Blacklist set [_x, "REMOVED"]; } forEach A3A_buildingBlacklist;
+
+// Initialize garrison positions hashmap
+PATCOM_Garrison_Positions = createHashMapFromArray [
+    ["Land_Cargo_HQ_V1_F", [6,7,8]],
+    ["Land_Cargo_HQ_V2_F", [6,7,8]],
+    // ... extensive building mappings ...
+    ["Land_Ind_Mlyn_01", [9,5,7,6,4,3]]
+];
+
+// Mark initialization complete
+PATCOM_INIT_COMPLETE = true;
+Info("PATCOM | Init Complete");
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Provides building blacklist for A3A_fnc_patrolBuildingEnterable</div>
+            <div class="bullet-item">• Supplies garrison mappings for A3A_fnc_patrolGroupGarrison</div>
+            <div class="bullet-item">• Enables all PATCOM functionality through proper initialization</div>
+            <div class="bullet-item">• Sets PATCOM_INIT_COMPLETE global flag</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolLoop.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Main patrol execution loop managing AI group behaviors</div>
+            <div class="bullet-item">• Continuously processes groups through appropriate command functions</div>
+            <div class="bullet-item">• Handles both civilian and military patrol patterns with adaptive timing</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract patrol configuration
+params ["_group", ["_patrolType", "Patrol_Area"], ["_minDist", 0], ["_maxDist", 100], ["_dist", -1], ["_fromCenter", true], ["_centerPos", []], ["_searchBuildings", false]];
+
+// Spawn patrol execution
+[_group, _patrolType, _minDist, _maxDist, _dist, _fromCenter, _centerPos, _searchBuildings] spawn {
+    params ["_group","_patrolType", "_minDist", "_maxDist", "_dist", "_fromCenter", "_centerPos", "_searchBuildings"];
+
+    // Validate group existence
+    if ((isNull _group) || (({alive _x} count units _group) < 1)) exitWith {};
+
+    // Set default center position
+    if (count _centerPos < 3) then {
+        _centerPos = (getPosATL (leader _group));
+    };
+
+    // Configure military patrol parameters
+    if !((side leader _group) == civilian) then {
+        _group setVariable ["PATCOM_Patrol_Params", [_patrolType, _minDist, _maxDist, _dist, _fromCenter, _centerPos, _searchBuildings]];
+    };
+
+    // Initialize group variables
+    [_group] call A3A_fnc_patrolGroupVariables;
+
+    // Run continuous patrol loop
+    while {true} do {
+        if ((isNull _group) || (({alive _x} count units _group) < 1)) exitWith {};
+
+        if ((side leader _group) == civilian) then {
+            [_group] call A3A_fnc_patrolCivilianCommander;
+        } else {
+            [_group] call A3A_fnc_patrolCommander;
+        };
+
+        sleep (round (((count allunits) / 2) * 1.2));
+    };
+};
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Calls A3A_fnc_patrolGroupVariables for initialization</div>
+            <div class="bullet-item">• Calls A3A_fnc_patrolCivilianCommander for civilian groups</div>
+            <div class="bullet-item">• Calls A3A_fnc_patrolCommander for military groups</div>
+            <div class="bullet-item">• Sets PATCOM_Patrol_Params group variable</div>
+            <div class="bullet-item">• Provides continuous AI behavior management with adaptive timing</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolSearchBuilding.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Directs AI groups to systematically search nearby buildings for enemies</div>
+            <div class="bullet-item">• Implements building clearing tactics with waypoint management</div>
+            <div class="bullet-item">• Provides tactical building investigation capabilities</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract group parameter
+params ["_group"];
+
+// Find nearest building to search
+private _building = nearestBuilding (getPosATL (leader _group));
+if ((leader _group) distance _building > 250) exitwith {};
+
+// Spawn search execution
+[_group, _building] spawn {
+    params ["_group", "_building"];
+
+    // Log search activity
+    ServerDebug_2("PATCOM | Group: %1 | Searching Building: %2", _group, _building);
+
+    // Lock waypoints for search
+    private _leader = leader _group;
+    _group lockWP true;
+
+    // Create search waypoint
+    [_group, getPosATL _building, "MOVE", "PATCOM_HOUSE_SEARCH", -1, 50] call A3A_fnc_patrolCreateWaypoint;
+
+    // Prepare search behavior
+    _group setBehaviour "AWARE";
+    _group setFormDir ([_leader, _building] call BIS_fnc_dirTo);
+
+    // Clear building positions
+    private _positions = _building buildingPos -1;
+    while {_positions isNotEqualTo []} do {
+        private _units = units _group;
+        if (_units isEqualTo []) exitWith {};
+
+        // Send all available units to next available position
+        {
+            if (_positions isEqualTo []) exitWith {};
+            if (unitReady _x) then {
+                private _pos = _positions deleteAt 0;
+                _x doMove _pos;
+                sleep 2;
+            };
+        } forEach _units;
+
+        sleep 5;
+    };
+
+    // Complete search and resume patrol
+    _group lockWP false;
+    _group setBehaviour "SAFE";
+    private _nextWaypoint = [getPosATL (leader _group), 50, 100, 0, 0, -1, 0, getPosATL (leader _group)] call A3A_fnc_getSafePos;
+    [_group, _nextWaypoint, "MOVE", "PATCOM_PATROL_AREA", -1, 50] call A3A_fnc_patrolCreateWaypoint;
+};
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Calls A3A_fnc_patrolCreateWaypoint for search and patrol waypoints</div>
+            <div class="bullet-item">• Calls A3A_fnc_getSafePos for exit positioning</div>
+            <div class="bullet-item">• Temporarily locks group waypoints during search</div>
+            <div class="bullet-item">• Supports building clearing and enemy detection operations</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolSetCombatModes.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Applies comprehensive combat behavior settings to AI groups</div>
+            <div class="bullet-item">• Manages behavior, speed, formation, and combat mode configurations</div>
+            <div class="bullet-item">• Prevents redundant setting changes through state tracking</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract combat parameters
+params ["_group", ["_behaviour", "SAFE"], ["_speedMode", "NORMAL"], ["_formation", "COLUMN"], ["_combatMode", "GREEN"], ["_stance", "AUTO"]];
+
+// Check for setting changes
+if ((behaviour leader _group != _behaviour) || (speedMode _group != _speedMode) || (formation _group != _formation) || (combatMode _group != _combatMode)) then {
+    _group setVariable ["PATCOM_Combat_Modes_Set", false];
+};
+
+// Skip redundant updates
+if (_group getVariable "PATCOM_Combat_Modes_Set") exitWith {};
+
+// Apply group settings
+_group setBehaviour _behaviour;
+_group setSpeedMode _speedMode;
+_group setFormation _formation;
+_group setCombatMode _combatMode;
+
+// Set individual unit stances
+if (_stance != "AUTO") then {
+    { _x setUnitPos _stance; } forEach units _group;
+};
+
+// Mark settings as applied
+_group setVariable ["PATCOM_Combat_Modes_Set", true];
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Modifies PATCOM_Combat_Modes_Set group variable</div>
+            <div class="bullet-item">• Provides centralized combat behavior management</div>
+            <div class="bullet-item">• Supports all PATCOM behavioral states and transitions</div>
+            <div class="bullet-item">• Used by all patrol command functions for consistent AI behavior</div>
+        </div>
+    </div>
+
+    <div class="function-header">
+        <div class="function-name">Function Name: fn_patrolWater.sqf</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">What it does:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Manages aquatic patrol patterns for naval or amphibious AI groups</div>
+            <div class="bullet-item">• Generates waypoints specifically for water-based movement</div>
+            <div class="bullet-item">• Maintains patrol discipline with distance and timing constraints</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">How it does that:</div>
+        <code class="code-block">
+// Extract water patrol parameters
+params ["_group", ["_minimumRadius", 50], ["_maximumRadius", 100], ["_maxPatrolDistance", -1], ["_fromCenter", false], ["_centerPos", []]];
+
+// Set calm patrol behavior
+[_group, "SAFE", "LIMITED", "COLUMN", "WHITE", "AUTO"] call A3A_fnc_patrolSetCombatModes;
+_group setVariable ["PATCOM_Group_State", "CALM"];
+
+// Debug display
+if (PATCOM_DEBUG) then {
+    [leader _group, "PATROL WATER", 10, "White"] call A3A_fnc_debugText3D;
+};
+
+// Retrieve patrol parameters
+private _groupHomePosition = _group getVariable "PATCOM_Patrol_Home";
+private _patrolParams = _group getVariable "PATCOM_Patrol_Params";
+
+// Check waypoint timeout
+if (_group getVariable "PATCOM_WaypointTime" < serverTime) exitWith {
+    [_group, _groupHomePosition, "MOVE", "PATCOM_PATROL_WATER", -1, _patrolParams # 1] call A3A_fnc_patrolCreateWaypoint;
+};
+
+// Create water waypoints
+if (currentWaypoint _group == count waypoints _group || waypointType [_group, currentWaypoint _group] != "MOVE") then {
+    if (_maxPatrolDistance != -1) then {
+        if ((leader _group) distance _groupHomePosition > _maxPatrolDistance) exitWith {
+            [_group, _groupHomePosition, "MOVE", "PATCOM_PATROL_WATER", -1, _patrolParams # 1] call A3A_fnc_patrolCreateWaypoint;
+        };
+    };
+
+    if (_fromCenter) then {
+        private _nextWaypointPos = [_centerPos, _minimumRadius, _maximumRadius, 2, 2, -1, 0] call A3A_fnc_getSafePos;
+        [_group, _nextWaypointPos, "MOVE", "PATCOM_PATROL_WATER", -1, _patrolParams # 1] call A3A_fnc_patrolCreateWaypoint;
+    } else {
+        private _nextWaypointPos = [getPosATL (leader _group), _minimumRadius, _maximumRadius, 2, 2, -1, 0] call A3A_fnc_getSafePos;
+        [_group, _nextWaypointPos, "MOVE", "PATCOM_PATROL_WATER", -1, _patrolParams # 1] call A3A_fnc_patrolCreateWaypoint;
+    };
+};
+        </code>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Where it leads:</div>
+        <div class="bullet-list">
+            <div class="bullet-item">• Calls A3A_fnc_patrolSetCombatModes for water patrol behavior</div>
+            <div class="bullet-item">• Calls A3A_fnc_debugText3D for patrol state visualization</div>
+            <div class="bullet-item">• Calls A3A_fnc_getSafePos with water mode (2) for aquatic positioning</div>
+            <div class="bullet-item">• Calls A3A_fnc_patrolCreateWaypoint for water waypoint management</div>
+            <div class="bullet-item">• Modifies PATCOM_Group_State to "CALM"</div>
+            <div class="bullet-item">• Supports naval and amphibious AI operations</div>
+        </div>
+    </div>
+
+        <!-- Statistics -->
+        <section id="stats" class="section">
+            <h2 id="stats">📊 System Statistics</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>43</h3>
+                    <p>Total Functions</p>
+                </div>
+                <div class="stat-card">
+                    <h3>4</h3>
+                    <p>Artillery Functions</p>
+                </div>
+                <div class="stat-card">
+                    <h3>17</h3>
+                    <p>Civilian Functions</p>
+                </div>
+                <div class="stat-card">
+                    <h3>22</h3>
+                    <p>PatCom Core Functions</p>
+                </div>
+            </div>
+
+            <h3>📈 Function Distribution</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Functions</th>
+                        <th>Description</th>
+                        <th>Coverage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">Artillery</span></td>
+                        <td>4</td>
+                        <td>Fire mission coordination, safety checks, reload management</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Civilian</span></td>
+                        <td>17</td>
+                        <td>Ambient population, behavior, interaction, audio</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">PatCom Core</span></td>
+                        <td>22</td>
+                        <td>AI patrol logic, formation, static weapons, pathfinding</td>
+                        <td>100%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Integration -->
+        <section id="integration" class="section">
+            <h2 id="integration">🔗 System Integration</h2>
+
+            <h3>🎮 Game Mode Compatibility</h3>
+            <ul>
+                <li><strong>Rebels vs Occupants</strong>: Standard faction-based gameplay</li>
+                <li><strong>Invaders Mode</strong>: Three-way conflict with adjusted enemy detection</li>
+                <li><strong>War Tier System</strong>: Dynamic civilian counts based on war intensity</li>
+            </ul>
+
+            <h3>🔧 Mod Integration</h3>
+            <ul>
+                <li><strong>Faction System</strong>: Native support for custom faction configurations</li>
+                <li><strong>Logistics System</strong>: Full integration with Antistasi cargo system</li>
+                <li><strong>Events System</strong>: Triggers and responds to mission events</li>
+                <li><strong>Postmortem System</strong>: Civilian death handling and reputation effects</li>
+            </ul>
+
+            <h3>⚙️ Configuration Dependencies</h3>
+            <div class="code-block">
+// Key configuration variables used by PatCom
+PATCOM_DEBUG = false;           // Debug visualization toggle
+PATCOM_AI_STATICS = true;       // AI static weapon usage
+PATCOM_VISUAL_RANGE = 800;      // Enemy detection range
+PATCOM_TARGET_TIME = 30;        // Target tracking duration
+PATCOM_AI_STATIC_ARM = 300;     // Static weapon usage timeout
+PATCOM_Building_Blacklist = []; // Excluded building types
+</div>
+        </section>
+
+        <!-- Back to Top Button -->
+        <button id="backToTop" title="Back to Top">↑</button>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <h3>🎯 PatCom Documentation v2.0</h3>
+            <p>Ultra-detailed function documentation with complete code analysis</p>
+            <p>Generated for Antistasi mission framework</p>
+            <p>© 2024 - Comprehensive AI behavior system documentation</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme Management
+        const themeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('patcom-theme');
+        if (savedTheme === 'dark') {
+            body.setAttribute('data-theme', 'dark');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                body.removeAttribute('data-theme');
+                localStorage.setItem('patcom-theme', 'light');
+                themeToggle.textContent = '🌙';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('patcom-theme', 'dark');
+                themeToggle.textContent = '☀️';
+            }
+        });
+
+        // Search and Filter Functionality
+        const searchInput = document.getElementById('functionSearch');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const searchStats = document.getElementById('searchStats');
+        const functionBlocks = document.querySelectorAll('.function-header');
+
+        function updateSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const category = categoryFilter.value;
+            let visibleCount = 0;
+
+            functionBlocks.forEach(block => {
+                const section = block.closest('.section') || block.parentElement;
+                const functionName = block.querySelector('.function-name').textContent.toLowerCase();
+                const content = section.textContent.toLowerCase();
+
+                // Check category filter
+                let categoryMatch = true;
+                if (category !== 'all') {
+                    // Resolve a section id safely (avoid optional chaining for broader compatibility)
+                    const closestWithId = section.closest('[id]') ? section.closest('[id]') : null;
+                    const sectionId = section.id ? section.id : (closestWithId ? closestWithId.id : '');
+                    if (category === 'artillery' && (!sectionId || !sectionId.includes('artillery'))) categoryMatch = false;
+                    if (category === 'civilian' && (!sectionId || !sectionId.includes('civilian'))) categoryMatch = false;
+                    if (category === 'patcom-core' && (!sectionId || !sectionId.includes('patcom'))) categoryMatch = false;
+                }
+
+                // Check search term
+                const searchMatch = !searchTerm || functionName.includes(searchTerm) || content.includes(searchTerm);
+
+                if (categoryMatch && searchMatch) {
+                    section.style.display = '';
+                    visibleCount++;
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+
+            searchStats.textContent = `Showing ${visibleCount} of 44 functions`;
+        }
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Table of Contents Links
+        document.querySelectorAll('.toc-item a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        searchInput.addEventListener('input', updateSearch);
+        categoryFilter.addEventListener('change', updateSearch);
+
+        // Initialize search stats
+        updateSearch();
+
+        // Transform "How it does that:" code blocks to garage-style inline-code bullets for readability
+        (function transformHowItDoes() {
+            function escapeHtml(str) {
+                return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            }
+
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const title = section.querySelector('.section-title');
+                if (!title) return;
+                if (title.textContent.trim() !== 'How it does that:') return;
+
+                const codeBlock = section.querySelector('code.code-block');
+                if (!codeBlock) return;
+
+                const raw = codeBlock.textContent || '';
+                const lines = raw.split(/\r?\n/).map(l => l.replace(/\r/g, '').trim());
+                let html = '<strong>How it does that:</strong><br>';
+
+                lines.forEach(line => {
+                    if (!line) return;
+                    if (line.startsWith('//')) {
+                        const comment = escapeHtml(line.replace(/^\/\/\s?/, ''));
+                        html += '• <strong>' + comment + '</strong><br>';
+                    } else {
+                        const code = escapeHtml(line);
+                        html += '<code class="code-inline">' + code + '</code><br>';
+                    }
+                });
+
+                // Replace original code block content with transformed markup
+                const wrapper = document.createElement('div');
+                wrapper.className = 'code-block';
+                const inner = document.createElement('code');
+                inner.innerHTML = html;
+                wrapper.appendChild(inner);
+
+                codeBlock.parentElement.replaceChild(wrapper, codeBlock);
+            });
+        })();
+
+        // Ensure code blocks have a Prism language class, then initialize Prism.js
+        document.querySelectorAll('code.code-block').forEach(c => c.classList.add('language-sqf'));
+        // Prism.js initialization for syntax highlighting (no-op if Prism not loaded)
+        if (typeof Prism !== 'undefined' && typeof Prism.highlightAll === 'function') {
+            Prism.highlightAll();
+        }
+    </script>
+</body>
+</html>

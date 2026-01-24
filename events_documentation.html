@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A3A Event System Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --page-bg: #f5f5f5; /* Light page background */
+            --text-light: #333;
+            --text-dark: #555; /* Darker secondary text for better readability */
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #5dade2;
+            --secondary-color: #85929e;
+            --success-color: #58d68d;
+            --warning-color: #f7dc6f;
+            --danger-color: #ec7063;
+            --light-bg: #34495e;
+            --page-bg: #0a0d11; /* Very dark page background */
+            --text-light: #ffffff; /* Lighter text */
+            --text-dark: #e0e6ed; /* Lighter secondary text */
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background-color: var(--page-bg);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+
+        /* Navigation Bar */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            background: var(--secondary-color);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .nav-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: nowrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #darkModeToggle {
+            background: none;
+            border: 1px solid white;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #darkModeToggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Search and Filter */
+        .search-container {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: var(--box-shadow);
+        }
+
+        [data-theme="dark"] .search-container {
+            background: var(--light-bg);
+        }
+
+        .search-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #functionSearch {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        #categoryFilter {
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background: white;
+        }
+
+        .search-stats {
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        [data-theme="dark"] .search-stats {
+            color: var(--text-dark);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        .header .version-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--box-shadow);
+        }
+
+        [data-theme="dark"] .toc {
+            background: var(--light-bg);
+        }
+
+        .toc h2 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .toc-item {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .toc-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .toc-item h3 {
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        .toc-item p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        [data-theme="dark"] .toc-item p {
+            color: var(--text-dark);
+        }
+
+        [data-theme="dark"] .toc h2 {
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .toc-item h3 {
+            color: var(--text-light);
+        }
+
+        .toc-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .toc-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            scroll-margin-top: 100px;
+        }
+
+        [data-theme="dark"] .section {
+            background: var(--light-bg);
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .section h2 {
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .section h3 {
+            color: var(--text-light);
+        }
+
+        .section h2 {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 {
+            color: var(--secondary-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        /* Function Categories */
+        .core-function { border-left-color: var(--primary-color); }
+        .public-function { border-left-color: var(--danger-color); }
+        .config-function { border-left-color: #9b59b6; }
+
+        /* Function Blocks */
+        .function-block {
+            background: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .function-block {
+            background: #34495e;
+            border-left-color: var(--primary-color);
+        }
+
+        .function-block:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transform: translateY(-1px);
+        }
+
+        .function-name {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        [data-theme="dark"] .function-name {
+            color: var(--text-light);
+        }
+
+        .function-name::before {
+            content: "📄";
+            font-size: 1em;
+        }
+
+        .purpose {
+            color: var(--success-color);
+            font-style: italic;
+            margin: 10px 0;
+            background: rgba(39, 174, 96, 0.1);
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--success-color);
+        }
+
+        .code-block {
+            background: var(--dark-bg);
+            color: var(--text-dark);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: "💻";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            opacity: 0.5;
+        }
+
+        .code-inline {
+            background: #e8f4f8;
+            color: #2c3e50;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            font-family: 'Fira Code', monospace;
+            border: 1px solid #bee5eb;
+        }
+
+        [data-theme="dark"] .code-inline {
+            background: #34495e;
+            color: #5dade2;
+            border-color: #5dade2;
+        }
+
+        .dependencies {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        [data-theme="dark"] .dependencies {
+            background: #2c3e50;
+            border-color: #f39c12;
+            color: var(--text-light);
+        }
+
+        .dependencies strong {
+            color: #d68910;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 6px;
+            box-shadow: var(--box-shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            font-size: 14px;
+        }
+
+        [data-theme="dark"] table {
+            background: var(--light-bg);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        [data-theme="dark"] th, td {
+            border-bottom-color: #555;
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background: var(--success-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #backToTop:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        /* Statistics Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        .stat-card h3 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--secondary-color);
+            color: white;
+            margin-top: 40px;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .nav-bar .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+
+            .header h1 {
+                font-size: 2.2em;
+            }
+
+            .header p {
+                font-size: 1.1em;
+            }
+
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .function-block {
+                padding: 15px;
+            }
+
+            .code-block {
+                font-size: 0.8em;
+                padding: 15px;
+            }
+
+            .table-container {
+                font-size: 12px;
+            }
+
+            .search-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #functionSearch, #categoryFilter {
+                width: 100%;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav-bar, .search-container, #backToTop, #darkModeToggle {
+                display: none !important;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+            }
+
+            .section {
+                page-break-inside: avoid;
+                box-shadow: none !important;
+                border: 1px solid #ccc;
+            }
+
+            .code-block {
+                background: #f5f5f5 !important;
+                color: black !important;
+                border: 1px solid #ccc;
+            }
+
+            .function-block {
+                border: 1px solid #ccc;
+                background: white !important;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+
+        [data-theme="dark"] ::-webkit-scrollbar-track {
+            background: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="container">
+            <div class="nav-links">
+                <a href="#overview">📋 Overview</a>
+                <a href="#configuration">⚙️ Configuration</a>
+                <a href="#core-functions">🔧 Core Functions</a>
+                <a href="#registry">📜 Event Registry</a>
+                <a href="#stats">📊 Statistics</a>
+            </div>
+            <div class="nav-controls">
+                <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>📡 Event System Documentation</h1>
+            <p>Comprehensive Event Handling System for A3A</p>
+            <div class="version-badge">Version 1.0 - Core Logic</div>
+        </header>
+
+        <!-- Search and Filter -->
+        <div class="search-container">
+            <div class="search-controls">
+                <input type="text" id="functionSearch" placeholder="🔍 Search functions...">
+                <select id="categoryFilter">
+                    <option value="all">📂 All Categories</option>
+                    <option value="core">🔧 Core Functions</option>
+                    <option value="config">⚙️ Configuration</option>
+                    <option value="registry">📜 Event Registry</option>
+                </select>
+            </div>
+            <div class="search-stats" id="searchStats">
+                Showing all 4 functions and configurations
+            </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <section class="toc">
+            <h2>📖 Table of Contents</h2>
+            <div class="toc-grid">
+                <div class="toc-item">
+                    <h3>📋 System Overview</h3>
+                    <p>Architecture, features, and capabilities</p>
+                    <a href="#overview">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>⚙️ Configuration</h3>
+                    <p>CfgFunctions, CfgPatches, and Defines</p>
+                    <a href="#configuration">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🔧 Core Functions</h3>
+                    <p>4 fundamental event operations</p>
+                    <a href="#core-functions">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>📜 Event Registry</h3>
+                    <p>11+ defined event types and parameters</p>
+                    <a href="#registry">Jump to Section →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Overview -->
+        <section id="overview" class="section">
+            <h2 id="overview">📋 System Overview</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>4</h3>
+                    <p>Core Functions</p>
+                </div>
+                <div class="stat-card">
+                    <h3>11+</h3>
+                    <p>Defined Events</p>
+                </div>
+                <div class="stat-card">
+                    <h3>HashMap</h3>
+                    <p>Storage Structure</p>
+                </div>
+                <div class="stat-card">
+                    <h3>100%</h3>
+                    <p>Unscheduled</p>
+                </div>
+            </div>
+
+            <p>The A3A Event System is a lightweight, extensible event handling framework for the A3A mod. It uses a central HashMap registry to manage event listeners, allowing decoupled communication between different systems. It supports adding/removing listeners by unique ID and triggering events with arbitrary arguments.</p>
+
+            <h3>🎯 Key Features</h3>
+            <ul>
+                <li><strong>Dynamic Registry:</strong> HashMap-based storage for O(1) listener lookup.</li>
+                <li><strong>Unique IDs:</strong> Prevents duplicate listeners by enforcing unique identifiers.</li>
+                <li><strong>Type Safety:</strong> Callbacks can be Code blocks or String function names.</li>
+                <li><strong>Argument Validation:</strong> Optional compile-time validation against config definitions.</li>
+                <li><strong>Flexible Callbacks:</strong> Supports both direct code execution and string-based function calls (resolving mission/ui namespace).</li>
+            </ul>
+        </section>
+
+        <!-- Configuration -->
+        <section id="configuration" class="section">
+            <h2 id="configuration">⚙️ System Configuration</h2>
+            
+            <div class="function-block config-function">
+                <div class="function-name">1. script_component.hpp (Defines)</div>
+                <div class="purpose">
+                    <strong>What it defines:</strong><br>
+                    • <strong>Component name and macro includes</strong><br>
+                    <code class="code-inline">#define COMPONENT events</code><br>
+                    • <strong>Sets up the relative path to the core mod includes</strong><br>
+                    <code class="code-inline">#include "\x\A3A\addons\core\Includes\script_mod.hpp"</code>
+                </div>
+                <div class="code-block"><code><strong>How it works:</strong><br>
+• <strong>Defines the component name</strong><br>
+<code class="code-inline">#define COMPONENT events</code><br>
+• <strong>Includes the main mod header file</strong><br>
+<code class="code-inline">#include "\x\A3A\addons\core\Includes\script_mod.hpp"</code><br>
+• <strong>This header typically defines ADDON, VERSION_CONFIG, and other necessary macros used in CfgPatches.</code></code></div>
+            </div>
+
+            <div class="function-block config-function">
+                <div class="function-name">2. config.cpp (CfgPatches)</div>
+                <div class="purpose">
+                    <strong>What it defines:</strong><br>
+                    • <strong>Addon metadata and dependencies</strong><br>
+                    <code class="code-inline">class ADDON { name = COMPONENT_NAME; requiredVersion = REQUIRED_VERSION; ... };</code><br>
+                    • <strong>Loads the Events config class under A3A</strong><br>
+                    <code class="code-inline">class A3A { #include "Events.hpp" ... };</code>
+                </div>
+                <div class="code-block"><code><strong>Structure:</strong><br>
+• <strong>CfgPatches Class:</strong> Defines the addon 'events' with metadata.<br>
+• <strong>CfgFunctions Class:</strong> Defines function paths for 'functions'.<br>
+• <strong>A3A Class:</strong> Includes 'Events.hpp' containing the registry definitions.</code></div>
+            </div>
+
+            <div class="function-block config-function">
+                <div class="function-name">3. CfgFunctions</div>
+                <div class="purpose">
+                    <strong>What it defines:</strong><br>
+                    • <strong>Maps function names to file paths</strong><br>
+                    <code class="code-inline">class functions { file = QPATHTOFOLDER(functions); class addEventListener {}; ... };</code><br>
+                    • <strong>Registers 5 functions: addEventListener, removeAllEventListeners, removeEventListener, triggerEvent, validateEventArguments</code>
+                </div>
+                <div class="code-block"><code><strong>Functions List:</strong><br>
+• <strong>addEventListener</strong> -> functions\fn_addEventListener.sqf<br>
+• <strong>removeAllEventListeners</strong> -> functions\fn_removeAllEventListeners.sqf<br>
+• <strong>removeEventListener</strong> -> functions\fn_removeEventListener.sqf<br>
+• <strong>triggerEvent</strong> -> functions\fn_triggerEvent.sqf<br>
+• <strong>validateEventArguments</strong> -> functions\fn_validateEventArguments.sqf</code></div>
+            </div>
+        </section>
+
+        <!-- Core Functions Section -->
+        <section id="core-functions" class="section">
+            <h2 id="core-functions">🔧 Core Functions (4 functions)</h2>
+
+            <div class="function-block core-function">
+                <div class="function-name">1. fn_addEventListener.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Adds a listener to an event, allowing you to trigger functions when that event occurs</strong><br>
+                    <code class="code-inline">["AIVehInit", "A3A_Events_example", {systemChat "Example event listener triggered!"}] call A3A_Events_fnc_addEventListener;</code><br>
+                    • <strong>Accepts String or Code callbacks</strong><br>
+                    <code class="code-inline">// Creates a new entry in GVAR(EventRegistry) hashmap</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Validates input parameters</strong><br>
+<code class="code-inline">params [["_event", "", [""]], ["_id", "", [""]], ["_callback", {}, ["", {}]]];</code><br>
+• <strong>Initializes global Event Registry if missing</strong><br>
+<code class="code-inline">if (isNil QGVAR(EventRegistry)) then { GVAR(EventRegistry) = createHashMap; };</code><br>
+• <strong>Ensures a hashmap exists for the specific event</strong><br>
+<code class="code-inline">if !(_event in GVAR(EventRegistry)) then { GVAR(EventRegistry) set [_event, createHashMap]; };</code><br>
+• <strong>Logs a warning if overwriting an existing listener ID</strong><br>
+<code class="code-inline">Info_4("Event listener overwritten | Event: %1 ID: %2 | Old -> Callback: %3 | New -> CallBack: %4", ...);</code><br>
+• <strong>Stores the callback in the registry</strong><br>
+<code class="code-inline">(GVAR(EventRegistry) get _event) set [_id, _callback];</code><br>
+• <strong>Returns array for removal</strong><br>
+<code class="code-inline">[_event, _id];</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>GVAR(EventRegistry)</strong> - Global HashMap storing events.<br>
+• <strong>Info_4</strong> - Logging macro.</div>
+            </div>
+
+            <div class="function-block core-function">
+                <div class="function-name">2. fn_removeAllEventListeners.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Removes all event listeners subscribed to a particular event</strong><br>
+                    <code class="code-inline">["AIVehInit"] call A3A_Events_fnc_removeAllEventListeners;</code><br>
+                    • <strong>Effectively wipes the callback list for that event</strong><br>
+                    <code class="code-inline">// Sets the event map to an empty array</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Validates event parameter</strong><br>
+<code class="code-inline">params [["_event", "", [""]]];</code><br>
+• <strong>Checks if Event Registry exists</strong><br>
+<code class="code-inline">if (isNil QGVAR(EventRegistry)) exitWith { Warning_1(...) };</code><br>
+• <strong>Clears all listeners for the event by setting it to empty array</strong><br>
+<code class="code-inline">if (_event in GVAR(EventRegistry)) then { GVAR(EventRegistry) set [_event, []]; };</code><br>
+• <strong>Warns if trying to remove from non-existent event</strong><br>
+<code class="code-inline">Warning_1("No listeners for event %1 exists", _event)</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>GVAR(EventRegistry)</strong> - Global HashMap storage.</div>
+            </div>
+
+            <div class="function-block core-function">
+                <div class="function-name">3. fn_removeEventListener.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Removes a specific event listener</strong><br>
+                    <code class="code-inline">["AIVehInit", "A3A_Events_example"] call A3A_Events_fnc_removeEventListener;</code><br>
+                    • <strong>Targeted removal using the unique ID provided during addition</strong><br>
+                    <code class="code-inline">// Deletes specific entry from event map</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Validates event and ID parameters</strong><br>
+<code class="code-inline">params [["_event", "", [""]], ["_id", "", [""]]];</code><br>
+• <strong>Checks registry existence</strong><br>
+<code class="code-inline">if (isNil QGVAR(EventRegistry)) exitWith { ... };</code><br>
+• <strong>Checks if event exists and listener ID is present</strong><br>
+<code class="code-inline">if (_event in GVAR(EventRegistry) && { !isNil { (GVAR(EventRegistry) get _event) get _id } }) then { ... };</code><br>
+• <strong>Deletes the specific listener</strong><br>
+<code class="code-inline">(GVAR(EventRegistry) get _event) deleteAt _id;</code><br>
+• <strong>Warns if target not found</strong><br>
+<code class="code-inline">Warning_2("No listener for event %1 with ID %2 exists", _event, _id)</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>GVAR(EventRegistry)</strong> - Global HashMap storage.</div>
+            </div>
+
+            <div class="function-block core-function">
+                <div class="function-name">4. fn_triggerEvent.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Triggers an event</strong><br>
+                    <code class="code-inline">["AIVehInit", [_veh, _side]] call A3A_Events_fnc_triggerEvent;</code><br>
+                    • <strong>Executes all callbacks subscribed to the event with provided arguments</strong><br>
+                    <code class="code-inline">// Iterates listeners and passes arguments</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Extracts event and arguments</strong><br>
+<code class="code-inline">params [["_event", "", [""]], ["_arguments", [], [[]]]];</code><br>
+• <strong>Initializes registry if missing</strong><br>
+<code class="code-inline">if (isNil QGVAR(EventRegistry)) exitWith { GVAR(EventRegistry) = createHashMap; };</code><br>
+• <strong>Validates event class exists in Config</strong><br>
+<code class="code-inline">if (!isClass (configFile/"A3A"/"Events"/_event)) exitWith { Warning_1(...) };</code><br>
+• <strong>Optional argument validation (Compile time)</strong><br>
+<code class="code-inline">#ifdef VALIDATE_EVENT_ARGUMENTS if !(_this call FUNC(validateEventArguments)) exitWith {}; #endif</code><br>
+• <strong>Iterates through all listeners for the event</strong><br>
+<code class="code-inline">{ ... } forEach (GVAR(EventRegistry) getOrDefault [_event, createHashMap]);</code><br>
+• <strong>Handles Code vs String callbacks</strong><br>
+<code class="code-inline">if (_y isEqualType {}) then {_arguments call _y} else { private _func = missionNamespace getVariable [_y, uiNamespace getVariable _y]; ... };</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>GVAR(EventRegistry)</strong> - Global HashMap storage.<br>
+• <strong>FUNC(validateEventArguments)</strong> - Optional validation logic.<br>
+• <strong>missionNamespace / uiNamespace</strong> - For resolving string function names.</div>
+            </div>
+        </section>
+
+        <!-- Event Registry Section -->
+        <section id="registry" class="section">
+            <h2 id="registry">📜 Event Registry Reference</h2>
+            <p>Defined in <code>Events.hpp</code>. These classes define the expected arguments and behavior for specific events.</p>
+
+            <div class="function-block config-function">
+                <div class="function-name">AIVehInit</div>
+                <div class="purpose">
+                    Triggered when an AI vehicle is initialized.
+                </div>
+                <div class="code-block"><code><strong>Arguments:</strong><br>
+• <strong>_0 (OBJECT):</strong> Vehicle being initialized<br>
+• <strong>_1 (SIDE):</strong> Side the vehicle belongs to<br><br>
+<strong>Flags:</strong><br>
+• <strong>isLocal = 1</strong> (Triggered on local machine)</code></div>
+            </div>
+
+            <div class="function-block config-function">
+                <div class="function-name">HQPlaced</div>
+                <div class="purpose">
+                    Triggered when the Headquarters is placed.
+                </div>
+                <div class="code-block"><code><strong>Arguments:</strong><br>
+• <strong>_0 (ARRAY):</strong> Position of new HQ<br><br>
+<strong>Flags:</strong><br>
+• <strong>isLocal = 1</strong></code></div>
+            </div>
+
+            <div class="function-block config-function">
+                <div class="function-name">RebelControlCreated</div>
+                <div class="purpose">
+                    Triggered when a rebel control element (marker) is created.
+                </div>
+                <div class="code-block"><code><strong>Arguments:</strong><br>
+• <strong>_0 (STRING):</strong> Marker<br>
+• <strong>_1 (STRING):</strong> Control Type<br><br>
+<strong>Flags:</strong><br>
+• <strong>isLocal = 1</strong></code></div>
+            </div>
+
+            <div class="function-block config-function">
+                <div class="function-name">markerChange</div>
+                <div class="purpose">
+                    Triggered when a marker changes ownership (winner side).
+                </div>
+                <div class="code-block"><code><strong>Arguments:</strong><br>
+• <strong>_0 (STRING):</strong> Marker<br>
+• <strong>_1 (SIDE):</strong> Side of winner<br><br>
+<strong>Flags:</strong><br>
+• <strong>isLocal = 1</strong></code></div>
+            </div>
+
+            <div class="function-block config-function">
+                <div class="function-name">vehicleBoxRestore</div>
+                <div class="purpose">
+                    Triggered to restore a vehicle box (ammocrate/supply).
+                </div>
+                <div class="code-block"><code><strong>Arguments:</strong><br>
+• <strong>_0 (ARRAY):</strong> Position of effect center<br><br>
+<strong>Flags:</strong><br>
+• <strong>isLocal = 1</strong></code></div>
+            </div>
+
+            <div class="function-block config-function">
+                <div class="function-name">civInit</div>
+                <div class="purpose">
+                    Triggered when a civilian unit is initialized.
+                </div>
+                <div class="code-block"><code><strong>Arguments:</strong><br>
+• <strong>_0 (OBJECT):</strong> Unit being initialized<br><br>
+<strong>Flags:</strong><br>
+• <strong>isLocal = 1</strong></code></div>
+            </div>
+
+            <div class="function-block config-function">
+                <div class="function-name">civVehInit</div>
+                <div class="purpose">
+                    Triggered when a civilian vehicle is initialized.
+                </div>
+                <div class="code-block"><code><strong>Arguments:</strong><br>
+• <strong>_0 (OBJECT):</strong> civ vehicle being initialized<br><br>
+<strong>Flags:</strong><br>
+• <strong>isLocal = 1</strong></code></div>
+            </div>
+
+            <div class="function-block config-function">
+                <div class="function-name">locationSpawned</div>
+                <div class="purpose">
+                    Triggered when a game location (city/outpost) spawns or changes state.
+                </div>
+                <div class="code-block"><code><strong>Arguments:</strong><br>
+• <strong>_0 (STRING):</strong> Marker<br>
+• <strong>_1 (STRING):</strong> Location type<br>
+• <strong>_2 (BOOL):</strong> Is spawning<br><br>
+<strong>Flags:</strong><br>
+• <strong>isLocal = 1</strong></code></div>
+            </div>
+
+            <div class="function-block config-function">
+                <div class="function-name">AIInit</div>
+                <div class="purpose">
+                    Triggered when an AI unit is initialized.
+                </div>
+                <div class="code-block"><code><strong>Arguments:</strong><br>
+• <strong>_0 (OBJECT):</strong> Unit being initialized<br>
+• <strong>_1 (SIDE):</strong> Side of the unit<br>
+• <strong>_2 (STRING):</strong> Marker the unit belongs to (Optional)<br>
+• <strong>_3 (BOOL):</strong> If the unit is a spawner<br><br>
+<strong>Flags:</strong><br>
+• <strong>isLocal = 1</strong></code></div>
+            </div>
+
+            <div class="function-block config-function">
+                <div class="function-name">Undercover</div>
+                <div class="purpose">
+                    Triggered related to undercover status changes.
+                </div>
+                <div class="code-block"><code><strong>Arguments:</strong><br>
+• <strong>_0 (STRING):</strong> Reason for undercover break (empty on init) (Optional)<br><br>
+<strong>Flags:</strong><br>
+• <strong>isLocal = 1</strong></code></div>
+            </div>
+        </section>
+
+        <!-- System Statistics -->
+        <section id="stats" class="section">
+            <h2 id="stats">📊 System Statistics</h2>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Total Functions</strong></td>
+                            <td><span class="highlight">4</span></td>
+                            <td>Core event handling operations</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Defined Events</strong></td>
+                            <td><span class="highlight">11+</span></td>
+                            <td>Events registered in Events.hpp</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Storage Type</strong></td>
+                            <td>HashMap</td>
+                            <td>Event Registry structure</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Execution Env</strong></td>
+                            <td>Unscheduled</td>
+                            <td>Safe for UI and background tasks</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Callback Types</strong></td>
+                            <td>Code, String</td>
+                            <td>Supports inline code or function names</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Documentation Info -->
+        <section class="section">
+            <h2>📖 Documentation Information</h2>
+
+            <div class="function-block">
+                <h3>✨ Features</h3>
+                <ul>
+                    <li><strong>🧭 Sticky Navigation</strong> - Quick access to sections</li>
+                    <li><strong>🔍 Real-time Search</strong> - Find functions instantly</li>
+                    <li><strong>🌙 Dark Mode Toggle</strong> - Easy on the eyes</li>
+                    <li><strong>📱 Responsive Design</strong> - Works everywhere</li>
+                    <li><strong>📋 Table of Contents</strong> - Clear overview</li>
+                </ul>
+
+                <h3>👥 Authors & Credits</h3>
+                <ul>
+                    <li><strong>Author:</strong> Håkon</li>
+                    <li><strong>Project:</strong> A3A (Antistasi) Events Addon</li>
+                    <li><strong>License:</strong> MIT License</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Back to Top">⬆️</button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h3>📡 Event System Documentation</h3>
+            <p><strong>Author:</strong> Håkon</p>
+            <p><strong>System:</strong> A3A Event Handling Framework</p>
+            <p>Lightweight, HashMap-based event management for Arma 3.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.dataset.theme = body.dataset.theme === 'dark' ? '' : 'dark';
+            darkModeToggle.textContent = body.dataset.theme === 'dark' ? '☀️' : '🌙';
+            localStorage.setItem('theme', body.dataset.theme);
+        });
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            body.dataset.theme = 'dark';
+            darkModeToggle.textContent = '☀️';
+        }
+
+        // Search Functionality
+        const searchInput = document.getElementById('functionSearch');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const searchStats = document.getElementById('searchStats');
+        const functionBlocks = document.querySelectorAll('.function-block');
+
+        function updateSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const categoryFilterValue = categoryFilter.value;
+            let visibleCount = 0;
+
+            functionBlocks.forEach(block => {
+                const text = block.textContent.toLowerCase();
+                const categoryClass = Array.from(block.classList).find(c => ['core-function', 'config-function', 'public-function'].includes(c)) || '';
+                
+                // Mapping filters to classes
+                let categoryMatch = false;
+                if (categoryFilterValue === 'all') {
+                    categoryMatch = true;
+                } else if (categoryFilterValue === 'core' && categoryClass === 'core-function') {
+                    categoryMatch = true;
+                } else if (categoryFilterValue === 'config' && categoryClass === 'config-function') {
+                    categoryMatch = true;
+                } else if (categoryFilterValue === 'registry') {
+                    // For the registry section, we handle visibility differently or treat config blocks as registry if in that section?
+                    // Actually, let's assume the user wants to filter the blocks themselves.
+                    // The registry items are marked config-function.
+                    categoryMatch = true; // Simplifying for registry visibility
+                }
+
+                // Specific check for registry section if filter is registry
+                if (categoryFilterValue === 'registry') {
+                    const registrySection = document.getElementById('registry');
+                    if (registrySection && registrySection.contains(block)) {
+                        categoryMatch = true;
+                    } else {
+                        categoryMatch = false;
+                    }
+                }
+
+                const searchMatch = searchTerm === '' || text.includes(searchTerm);
+
+                if (categoryMatch && searchMatch) {
+                    block.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    block.style.display = 'none';
+                }
+            });
+
+            searchStats.textContent = searchTerm || categoryFilterValue !== 'all'
+                ? `Showing ${visibleCount} of 4 functions`
+                : 'Showing all 4 functions and configurations';
+        }
+
+        searchInput.addEventListener('input', updateSearch);
+        categoryFilter.addEventListener('change', updateSearch);
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Table of Contents Links
+        document.querySelectorAll('.toc-item a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize search stats
+        updateSearch();
+    </script>
+</body>
+</html>

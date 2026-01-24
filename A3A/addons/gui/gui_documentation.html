@@ -1,0 +1,1805 @@
+<html_documentation.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A3A GUI Functions Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --page-bg: #f5f5f5;
+            --text-light: #333;
+            --text-dark: #555;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #5dade2;
+            --secondary-color: #85929e;
+            --success-color: #58d68d;
+            --warning-color: #f7dc6f;
+            --danger-color: #ec7063;
+            --light-bg: #34495e;
+            --page-bg: #0a0d11;
+            --text-light: #ffffff;
+            --text-dark: #e0e6ed;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background-color: var(--page-bg);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            background: var(--secondary-color);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .nav-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #darkModeToggle {
+            background: none;
+            border: 1px solid white;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #darkModeToggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Search and Filter */
+        .search-container {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: var(--box-shadow);
+        }
+
+        [data-theme="dark"] .search-container {
+            background: var(--light-bg);
+        }
+
+        .search-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #functionSearch {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        #categoryFilter {
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background: white;
+            min-width: 200px;
+        }
+
+        .search-stats {
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        [data-theme="dark"] .search-stats {
+            color: var(--text-dark);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        .header .version-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--box-shadow);
+        }
+
+        [data-theme="dark"] .toc {
+            background: var(--light-bg);
+        }
+
+        .toc h2 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .toc-item {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .toc-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .toc-item h3 {
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+            font-size: 1.1em;
+        }
+
+        .toc-item p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        [data-theme="dark"] .toc-item p {
+            color: var(--text-dark);
+        }
+
+        [data-theme="dark"] .toc h2 {
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .toc-item h3 {
+            color: var(--text-light);
+        }
+
+        .toc-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .toc-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            scroll-margin-top: 100px;
+        }
+
+        [data-theme="dark"] .section {
+            background: var(--light-bg);
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .section h2 {
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .section h3 {
+            color: var(--text-light);
+        }
+
+        .section h2 {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8em;
+        }
+
+        .section h3 {
+            color: var(--secondary-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
+            font-size: 1.4em;
+        }
+
+        .section h4 {
+            color: var(--secondary-color);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        /* Function Blocks */
+        .function-block {
+            background: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .function-block {
+            background: #34495e;
+            border-left-color: var(--primary-color);
+        }
+
+        .function-block:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transform: translateY(-1px);
+        }
+
+        .function-name {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        [data-theme="dark"] .function-name {
+            color: var(--text-light);
+        }
+
+        .function-name::before {
+            content: "📄";
+            font-size: 1em;
+        }
+
+        .function-tags {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+
+        .tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: normal;
+        }
+
+        .tag.scheduled { background: var(--warning-color); }
+        .tag.unscheduled { background: var(--success-color); }
+        .tag.client { background: #9b59b6; }
+        .tag.server { background: #e74c3c; }
+
+        .purpose {
+            color: var(--success-color);
+            font-style: italic;
+            margin: 10px 0;
+            background: rgba(39, 174, 96, 0.1);
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--success-color);
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .code-block strong {
+            color: #f92672; /* Pink for keywords */
+        }
+
+        .code-inline {
+            background: #e8f4f8;
+            color: #2c3e50;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            font-family: 'Fira Code', monospace;
+            border: 1px solid #bee5eb;
+            white-space: nowrap;
+        }
+
+        [data-theme="dark"] .code-inline {
+            background: #34495e;
+            color: #5dade2;
+            border-color: #5dade2;
+        }
+
+        .dependencies {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        [data-theme="dark"] .dependencies {
+            background: #2c3e50;
+            border-color: #f39c12;
+            color: var(--text-light);
+        }
+
+        .dependencies strong {
+            color: #d68910;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 6px;
+            box-shadow: var(--box-shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            font-size: 14px;
+        }
+
+        [data-theme="dark"] table {
+            background: var(--light-bg);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        [data-theme="dark"] th, td {
+            border-bottom-color: #555;
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #backToTop:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--secondary-color);
+            color: white;
+            margin-top: 40px;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .nav-bar .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .header h1 {
+                font-size: 2.2em;
+            }
+
+            .header p {
+                font-size: 1.1em;
+            }
+
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .function-block {
+                padding: 15px;
+            }
+
+            .code-block {
+                font-size: 0.8em;
+                padding: 15px;
+            }
+
+            .table-container {
+                font-size: 12px;
+            }
+
+            .search-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #functionSearch, #categoryFilter {
+                width: 100%;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav-bar, .search-container, #backToTop, #darkModeToggle {
+                display: none !important;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+            }
+
+            .section {
+                page-break-inside: avoid;
+                box-shadow: none !important;
+                border: 1px solid #ccc;
+            }
+
+            .code-block {
+                background: #f5f5f5 !important;
+                color: black !important;
+                border: 1px solid #ccc;
+            }
+
+            .function-block {
+                border: 1px solid #ccc;
+                background: white !important;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+
+        [data-theme="dark"] ::-webkit-scrollbar-track {
+            background: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="container">
+            <div class="nav-links">
+                <a href="#overview">📋 Overview</a>
+                <a href="#setup-dialogs">🖥️ Setup Dialogs</a>
+                <a href="#main-dialogs">📦 Main Dialogs</a>
+                <a href="#special-dialogs">🛠️ Special Dialogs</a>
+                <a href="#utility-functions">🔧 Utility Functions</a>
+                <a href="#general-functions">📂 General Functions</a>
+            </div>
+            <div class="nav-controls">
+                <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🖥️ A3A GUI Functions Documentation</h1>
+            <p>Comprehensive documentation for Antistasi GUI dialog functions</p>
+            <div class="version-badge">A3A Addons - GUI Module</div>
+        </header>
+
+        <!-- Search and Filter -->
+        <div class="search-container">
+            <div class="search-controls">
+                <input type="text" id="functionSearch" placeholder="🔍 Search functions by name or description...">
+                <select id="categoryFilter">
+                    <option value="all">📂 All Categories</option>
+                    <option value="setup">🖥️ Setup Dialogs</option>
+                    <option value="main">📦 Main Dialogs</option>
+                    <option value="special">🛠️ Special Dialogs</option>
+                    <option value="utility">🔧 Utility Functions</option>
+                    <option value="general">📂 General Functions</option>
+                </select>
+            </div>
+            <div class="search-stats" id="searchStats">
+                Showing all functions
+            </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <section class="toc">
+            <h2>📖 Table of Contents</h2>
+            <div class="toc-grid">
+                <div class="toc-item">
+                    <h3>📋 System Overview</h3>
+                    <p>Architecture and capabilities</p>
+                    <a href="#overview">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🖥️ Setup Dialogs</h3>
+                    <p>Game initialization and configuration</p>
+                    <a href="#setup-dialogs">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>📦 Main Dialogs</h3>
+                    <p>Player interaction and management</p>
+                    <a href="#main-dialogs">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🛠️ Special Dialogs</h3>
+                    <p>Building and specialized tools</p>
+                    <a href="#special-dialogs">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🔧 Utility Functions</h3>
+                    <p>Helper functions for UI operations</p>
+                    <a href="#utility-functions">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>📂 General Functions</h3>
+                    <p>Core GUI operations and map drawing</p>
+                    <a href="#general-functions">Jump to Section →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Overview -->
+        <section id="overview" class="section">
+            <h2 id="overview">📋 System Overview</h2>
+
+            <p>The A3A GUI system provides a comprehensive set of dialog functions for managing the user interface in Antistasi. It covers game initialization, player management, commander operations, and specialized tools for building and logistics.</p>
+
+            <h3>🎯 Key Features</h3>
+            <ul>
+                <li><strong>Multi-Dialog Architecture:</strong> Separate dialogs for setup, main menu, and specialized tools.</li>
+                <li><strong>Tab-Based Navigation:</strong> Modular tab systems for organized UI content.</li>
+                <li><strong>Dynamic UI Generation:</strong> Controls created programmatically based on data.</li>
+                <li><strong>Event-Driven Interaction:</strong> Mouse handlers, button clicks, and map interactions.</li>
+                <li><strong>Resource Management:</strong> Visual feedback for money, HR, and other resources.</li>
+            </ul>
+
+            <h3>📊 Function Categories</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Count</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Setup Dialogs</strong></td>
+                        <td>7</td>
+                        <td>Game initialization, faction selection, save/load management</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Main Dialogs</strong></td>
+                        <td>11</td>
+                        <td>Player, commander, admin, and management tabs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Special Dialogs</strong></td>
+                        <td>4</td>
+                        <td>Building placement, recruitment, mission requests</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Utility Functions</strong></td>
+                        <td>2</td>
+                        <td>Size calculations, color conversions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>General Functions</strong></td>
+                        <td>5</td>
+                        <td>Map drawing, core dialog management</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Setup Dialogs -->
+        <section id="setup-dialogs" class="section">
+            <h2 id="setup-dialogs">🖥️ Setup Dialogs (7 Functions)</h2>
+            <p>Functions handling game initialization, configuration, and save management.</p>
+
+            <!-- fn_setupConfirmDialog -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_setupConfirmDialog.sqf
+                    <div class="function-tags">
+                        <span class="tag scheduled">Scheduled (onLoad)</span>
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Handles initialization and tab switching on the setup confirmation dialog. Manages the dialog that appears when users are about to make changes or start a new game.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Manages confirmation dialog modes</strong> (onLoad, confirm)<br>
+• <strong>Sets confirmation text</strong> from parent dialog's confirmData variable<br>
+• <strong>Executes confirmed actions</strong> via spawned functions (requires spawn for displayCtrl compatibility)<br>
+• <strong>Closes dialog</strong> after action execution<br><br>
+<strong>Key Logic:</strong><br>
+<code class="code-inline">params ["_mode", "_params"];</code><br>
+<code class="code-inline">private _display = findDisplay A3A_IDD_SETUPCONFIRMDIALOG;</code><br>
+<code class="code-inline">private _parent = displayParent _display;</code><br>
+<code class="code-inline">switch (_mode) do { ... };</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_IDD_SETUPCONFIRMDIALOG</strong> - Dialog ID constant<br>
+• <strong>A3A_IDC_SETUP_CONFIRMTEXT</strong> - Text control ID<br>
+• <strong>Setup Dialog</strong> - Parent for data retrieval<br>
+• <strong>spawn</strong> - Required for displayCtrl operations</div>
+            </div>
+
+            <!-- fn_setupContentTab -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_setupContentTab.sqf
+                    <div class="function-tags">
+                        <span class="tag scheduled">Scheduled (onLoad)</span>
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the content tab in the setup dialog, handling addon and DLC selection for game content.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Initializes addon/DLC tables</strong> with checkboxes and text controls<br>
+• <strong>Creates UI controls dynamically</strong> based on loaded mods and DLCs<br>
+• <strong>Enables/disables checkboxes</strong> based on required addons<br>
+• <strong>Populates saved selections</strong> when loading a game<br><br>
+<strong>Modes:</strong><br>
+<code class="code-inline">update</code> - No updates needed<br>
+<code class="code-inline">getContent</code> - Returns array [addons, DLC]<br>
+<code class="code-inline">fillContent</code> - Sets checkboxes from saved data</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_setup_loadedPatches</strong> - Loaded addon info<br>
+• <strong>A3A_setup_loadedDLC</strong> - Available DLCs<br>
+• <strong>A3A_SETUP_CONFIGFILE</strong> - Config path<br>
+• <strong>A3A_IDC_SETUP_ADDONVICSBOX</strong>, <strong>A3A_IDC_SETUP_DLCBOX</strong> - Control IDs</div>
+            </div>
+
+            <!-- fn_setupDialog -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_setupDialog.sqf
+                    <div class="function-tags">
+                        <span class="tag scheduled">Scheduled (onLoad, sendData)</span>
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the main setup dialog lifecycle including initialization, tab switching, and data handling.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Handles onLoad</strong>: Calls tab initialization functions, switches to loadgame tab<br>
+• <strong>Handles sendData</strong>: Processes server data, generates user-friendly map names, handles time diffs<br>
+• <strong>Handles switchTab</strong>: Shows/hides specific tabs based on selection<br>
+• <strong>Handles serverClose</strong>: Cleans up and closes dialog<br><br>
+<strong>Time Diff Calculation:</strong><br>
+<code class="code-inline">private _fnc_getTimeDiffString = { ... };</code><br>
+<code class="code-inline">Calculates time differences for save files</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_setup_saveData</strong> - Global save data<br>
+• <strong>A3A_fnc_setupFactionsTab</strong>, <strong>A3A_fnc_setupContentTab</strong><br>
+• <strong>A3A_fnc_setupLoadgameTab</strong>, <strong>A3A_fnc_setupParamsTab</strong><br>
+• <strong>remoteExec</strong> - Server communication</div>
+            </div>
+
+            <!-- fn_setupFactionsTab -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_setupFactionsTab.sqf
+                    <div class="function-tags">
+                        <span class="tag scheduled">Scheduled (onLoad)</span>
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the faction selection tab, handling faction filtering and selection logic.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Organizes factions by side</strong> (Occ, Inv, Reb, Civ, Riv)<br>
+• <strong>Calculates priority scores</strong> based on map, requirements, load status<br>
+• <strong>Creates dynamic listboxes</strong> with expand/collapse behavior on hover<br>
+• <strong>Filters factions</strong> based on climate, enemy switching settings<br><br>
+<strong>Modes:</strong><br>
+<code class="code-inline">fillFactions</code> - Populates listboxes<br>
+<code class="code-inline">getFactions</code> - Returns [factions, addons, DLC]<br>
+<code class="code-inline">update</code> - Manages listbox expansion handlers</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_setup_loadedPatches</strong> - Required for loading check<br>
+• <strong>A3A_SETUP_CONFIGFILE</strong> - Config path<br>
+• <strong>A3A_climate</strong> - Current climate filter<br>
+• <strong>GRID_W, GRID_H</strong> - Positioning constants</div>
+            </div>
+
+            <!-- fn_setupHQPosDialog -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_setupHQPosDialog.sqf
+                    <div class="function-tags">
+                        <span class="tag scheduled">Scheduled (onLoad)</span>
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Handles the HQ position selection dialog, allowing users to choose where to place the HQ on the map.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Draws danger zones</strong> as red hatched ellipses on map click<br>
+• <strong>Validates position</strong> on mouse click:<br>
+  - Checks distance from enemies<br>
+  - Checks surface (not water)<br>
+  - Checks map boundaries<br>
+• <strong>Sets HQ marker position</strong> if valid<br><br>
+<strong>Modes:</strong><br>
+<code class="code-inline">onLoad</code> - Creates danger zone markers<br>
+<code class="code-inline">onUnload</code> - Cleans up markers<br>
+<code class="code-inline">mouseUp</code> - Handles position selection</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>markersX</strong>, <strong>controlsX</strong> - Marker arrays<br>
+• <strong>Synd_HQ</strong> - HQ marker name<br>
+• <strong>respawnTeamPlayer</strong> - Respawn marker<br>
+• <strong>BIS_fnc_nearestPosition</strong> - Distance check</div>
+            </div>
+
+            <!-- fn_setupLoadgameTab -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_setupLoadgameTab.sqf
+                    <div class="function-tags">
+                        <span class="tag scheduled">Scheduled</span>
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the load game tab, handling save game selection, game creation, and execution of game start actions.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Populates save list</strong> with custom-drawn columns (no lbAdd)<br>
+• <strong>Manages save selection</strong> with visual selection bar<br>
+• <strong>Handles start game flow</strong>:<br>
+  - Collects factions, content, params<br>
+  - Builds confirmation text<br>
+  - Opens confirmation dialog<br>
+• <strong>Processes delete/rename</strong> operations with confirmation<br><br>
+<strong>UI Interaction:</strong><br>
+<code class="code-inline">saveListClick</code> - Single click selection<br>
+<code class="code-inline">saveListDoubleClick</code> - Immediate start (if valid)</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_setup_saveData</strong> - Global save array<br>
+• <strong>A3A_fnc_setupConfirmDialog</strong> - Confirmation handling<br>
+• <strong>A3A_fnc_startGame</strong> - Remote execution target<br>
+• <strong>A3A_fnc_deleteSave</strong> - Save deletion</div>
+            </div>
+
+            <!-- fn_setupParamsTab -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_setupParamsTab.sqf
+                    <div class="function-tags">
+                        <span class="tag scheduled">Scheduled (onLoad)</span>
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the parameters tab in the setup dialog, handling game parameter configuration and display.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Creates parameter controls dynamically</strong> from config<br>
+• <strong>Organizes parameters by category</strong> (Basic, Balance, etc.)<br>
+• <strong>Locks parameters</strong> based on save state or in-game status<br>
+• <strong>Handles parameter dependencies</strong>:<br>
+  - Game mode disables Invaders listbox<br>
+  - Rivals checkbox enables/disables rivals listbox<br>
+  - MinWeaps -1 disables unlock parameters<br><br>
+<strong>Event Handlers:</strong><br>
+<code class="code-inline">LBSelChanged</code> - Updates parameterChanged flag<br>
+<code class="code-inline">Control-specific</code> - Handles dependencies</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_SETUP_CONFIGFILE</strong> - Params config<br>
+• <strong>A3A_IDC_SETUP_PARAMSTYPE</strong> - Category dropdown<br>
+• <strong>A3A_IDC_SETUP_PARAMSTABLE</strong> - Parameter container<br>
+• <strong>lbSetCurSel</strong>, <strong>lbSetValue</strong> - Listbox manipulation</div>
+            </div>
+        </section>
+
+        <!-- Main Dialogs -->
+        <section id="main-dialogs" class="section">
+            <h2 id="main-dialogs">📦 Main Dialogs (11 Functions)</h2>
+            <p>Functions for player interaction, commander operations, and administration within the main Y-Menu.</p>
+
+            <!-- fn_adminTab -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_adminTab.sqf
+                    <div class="function-tags">
+                        <span class="tag scheduled">Scheduled (control changes)</span>
+                        <span class="tag unscheduled">Unscheduled (update)</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the admin tab, handling slider interactions and displaying debug information.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Updates spawn distance slider</strong> with current value<br>
+• <strong>Displays debug info</strong> (placeholder values for server data)<br>
+• <strong>Syncs slider and editbox</strong> bidirectionally<br>
+• <strong>Handles confirm button</strong> for AI settings (placeholder security)<br><br>
+<strong>UI Controls:</strong><br>
+<code class="code-inline">spawnDistanceSliderChanged</code> - Sync editbox<br>
+<code class="code-inline">spawnDistanceEditBoxChanged</code> - Sync slider, clamp values</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>distanceSPWN</strong> - Mission variable<br>
+• <strong>A3A_IDC_SPAWNDISTANCESLIDER</strong><br>
+• <strong>A3A_IDC_SPAWNDISTANCEEDITBOX</strong><br>
+• <strong>A3A_IDC_DEBUGINFO</strong> - Debug text control</div>
+            </div>
+
+            <!-- fn_aiManagementTab -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_aiManagementTab.sqf
+                    <div class="function-tags">
+                        <span class="tag scheduled">Scheduled</span>
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the AI management tab, handling AI group selection and control.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Populates listbox</strong> with AI units in player group<br>
+• <strong>Syncs selection</strong> with command bar selection<br>
+• <strong>Enables/disables buttons</strong> based on selection count:<br>
+  - 1 AI selected: Enable remote control<br>
+  - Any AI selected: Enable dismiss, auto-loot, auto-heal<br>
+• <strong>Handles button actions</strong> (control, dismiss, rearm)<br><br>
+<strong>Selection Sync:</strong><br>
+<code class="code-inline">groupSelectedUnits player</code> - Command bar selection<br>
+<code class="code-inline">netId</code> - Unit identification</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_fnc_controlUnit</strong> - Remote control<br>
+• <strong>A3A_fnc_dismissPlayerGroup</strong> - Dismiss action<br>
+• <strong>A3A_fnc_rearmCall</strong> - Rearm action<br>
+• <strong>BIS_fnc_netId</strong> - Unit identification</div>
+            </div>
+
+            <!-- fn_airSupportTab -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_airSupportTab.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the air support tab, displaying air support points and handling air support actions.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Displays air support points</strong> from bombRuns variable<br>
+• <strong>Shows aircraft name</strong> from vehSDKPlane config<br>
+• <strong>Disables buttons</strong> when points < 1<br>
+• <strong>Updates tooltips</strong> for disabled states<br><br>
+<strong>Current Limitations:</strong><br>
+<code class="code-inline">Airbase control check</code> - Placeholder/commented out</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>bombRuns</strong> - Air support points variable<br>
+• <strong>vehSDKPlane</strong> - Aircraft config class<br>
+• <strong>A3A_fnc_artySupport</strong> - Action target<br>
+• <strong>A3A_fnc_configColorToArray</strong> - Color handling</div>
+            </div>
+
+            <!-- fn_commanderTab -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_commanderTab.sqf
+                    <div class="function-tags">
+                        <span class="tag scheduled">Scheduled</span>
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the commander tab, handling HC group display, fire missions, and commander actions.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Single/Multiple Group Views</strong>: Updates based on selection<br>
+• <strong>Fire Mission System</strong>:<br>
+  - Point strike vs Barrage selection<br>
+  - HE/Smoke round selection<br>
+  - Start/End position selection on map<br>
+  - Round count calculation (1 per 10m for barrage)<br>
+• <strong>Map Interaction</strong>: Handles clicks for group selection and position setting<br>
+• <strong>Commander Actions</strong>: Remote control, dismiss, fast travel, garbage clean<br><br>
+<strong>Fire Mission Drawing:</strong><br>
+Uses <code class="code-inline">fn_fireMissionEH</code> to draw markers on map</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_fnc_getGroupInfo</strong> - Group data<br>
+• <strong>A3A_fnc_canFastTravel</strong> - Travel check<br>
+• <strong>A3A_fnc_controlHCsquad</strong> - Remote control<br>
+• <strong>A3A_fnc_artySupport</strong> - Fire mission execution</div>
+            </div>
+
+            <!-- fn_fastTravelTab -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_fastTravelTab.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the fast travel tab, handling location selection and travel execution.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Map Click Detection</strong>: Finds nearest valid marker<br>
+• <strong>Position Validation</strong>: Checks distance threshold (8 GRID_W)<br>
+• <strong>Location Suitability</strong>: Validates against travel rules<br>
+• <strong>Time Calculation</strong>: Displays travel duration<br>
+• <strong>Execution</strong>: Calls A3A_fnc_fastTravel for player or HC group<br><br>
+<strong>High Command Mode:</strong><br>
+<code class="code-inline">setHcMode</code> - Activates HC fast travel mode<br>
+<code class="code-inline">hcGroup</code> - Target group for travel</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_fnc_canFastTravelToLocation</strong> - Validation<br>
+• <strong>A3A_fnc_getFastTravelTime</strong> - Time calculation<br>
+• <strong>A3A_fnc_formatTime</strong> - Time formatting<br>
+• <strong>A3A_fnc_fastTravel</strong> - Travel action</div>
+            </div>
+
+            <!-- fn_donateTab -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_donateTab.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the donation tab, handling money transfer between players.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Money Slider</strong>: Range 0 to player's money<br>
+• <strong>Text Box Sync</strong>: Bidirectional sync with slider<br>
+• <strong>Player List</strong>: Populates with allPlayers (excluding self)<br>
+• <strong>Quick Add Buttons</strong>: Adjust donation amount in steps<br><br>
+<strong>UI Controls:</strong><br>
+<code class="code-inline">moneySliderChanged</code> - Sync editbox<br>
+<code class="code-inline">moneyEditBoxChanged</code> - Sync slider with validation<br>
+<code class="code-inline">donationAdd</code> - Quick add buttons</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>moneyX</strong> - Player money variable<br>
+• <strong>fakePlayers</strong> - Player list source<br>
+• <strong>A3A_faction_civ</strong> - Currency symbol<br>
+• <strong>allPlayers</strong> - Player array</div>
+            </div>
+
+            <!-- fn_constructTab -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_constructTab.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the construction tab, displaying buildable objects with prices and handling placement.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Populates grid</strong> with buildable items from A3A_buildableObjects<br>
+• <strong>Creates preview pictures</strong> and buttons for each item<br>
+• <strong>Shows price and build time</strong> for each object<br>
+• <strong>Triggers build mode</strong> when button clicked<br><br>
+<strong>Layout:</strong><br>
+Calculates position based on <code class="code-inline">GRID_W</code> and <code class="code-inline">GRID_H</code><br>
+Adapts padding for fewer items</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_fnc_initBuildableObjects</strong> - Object list<br>
+• <strong>A3A_fnc_build</strong> - Build action<br>
+• <strong>A3A_faction_civ</strong> - Currency symbol<br>
+• <strong>A3A_IDC_CONSTRUCTGROUP</strong> - Container control</div>
+            </div>
+
+            <!-- fn_playerManagementTab -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_playerManagementTab.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the player management tab (admin), handling member add/remove operations.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Populates listbox</strong> with allPlayers (name, distance, UID)<br>
+• <strong>Colors players</strong> based on membership status<br>
+• <strong>Updates button visibility</strong> based on selection:<br>
+  - Non-member: Show "Add" button<br>
+  - Member: Show "Remove" button<br>
+• <strong>Simulates actions</strong> (update colors, no server logic yet)<br><br>
+<strong>Note:</strong> Currently uses <code class="code-inline">lnbAddRow</code> for detailed listbox</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_fnc_isMember</strong> - Membership check<br>
+• <strong>BIS_fnc_getUnitByUID</strong> - UID to unit lookup<br>
+• <strong>allPlayers</strong> - Player list source<br>
+• <strong>A3A_IDC_ADMINPLAYERLIST</strong> - Listbox ID</div>
+            </div>
+
+            <!-- fn_playerTab -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_playerTab.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the player tab, displaying stats, capabilities, and vehicle info.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Capability Buttons</strong>: Updates states for:<br>
+  - Undercover (Go Overt / Go Undercover)<br>
+  - Fast Travel (Enable/disable based on rules)<br>
+  - Build (Enable/disable based on rules)<br>
+  - AI Management (Enable/disable based on squad)<br>
+• <strong>Player Stats</strong>: Shows rank, money, survival time<br>
+• <strong>Commander Status</strong>: Shows eligibility/role<br>
+• <strong>Vehicle Info</strong>: Shows cursorObject if vehicle<br><br>
+<strong>Condition Checks:</strong><br>
+Uses <code class="code-inline">A3A_fnc_canGoUndercover</code>, <code class="code-inline">A3A_fnc_canFastTravel</code>, etc.</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_fnc_canGoUndercover</strong>, <strong>A3A_fnc_goUndercover</strong><br>
+• <strong>A3A_fnc_canFastTravel</strong>, <strong>A3A_fnc_canBuild</strong><br>
+• <strong>moneyX</strong>, <strong>theBoss</strong><br>
+• <strong>BIS_fnc_rankParams</strong> - Rank display</div>
+            </div>
+
+            <!-- fn_recruitDialog -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_recruitDialog.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the recruit units dialog for individual soldier types.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Displays prices</strong> for 8 unit types (Rifleman, MG, GL, AT, Medic, Sniper, Eng, Exp)<br>
+• <strong>Disables buttons</strong> if money < price OR HR < 1<br>
+• <strong>Updates tooltips</strong> for disabled buttons<br>
+• <strong>Colors icons</strong> based on availability<br><br>
+<strong>Unit Types:</strong><br>
+<code class="code-inline">unitRifle</code>, <code class="code-inline">unitMG</code>, <code class="code-inline">unitMedic</code>, etc.</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>FactionGet(reb, "unitRifle")</strong> - Unit prices<br>
+• <strong>moneyX</strong> - Player money<br>
+• <strong>hr</strong> - HR resource<br>
+• <strong>A3A_faction_civ</strong> - Currency symbol</div>
+            </div>
+
+            <!-- fn_recruitSquadDialog -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_recruitSquadDialog.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the recruit squad dialog for team/squad recruitment with optional vehicles.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Manages 8 squad types</strong>: Inf Squad, Inf Team, MG Team, AT Team, Mortar, Sniper, AT Car, AA Truck<br>
+• <strong>Handles vehicle inclusion</strong>: Checkbox adds vehicle price to squad<br>
+• <strong>Calculates total price</strong>: Money + HR cost<br>
+• <strong>Disables buttons</strong> when resources insufficient<br><br>
+<strong>Squad Logic:</strong><br>
+<code class="code-inline">groupsSDKSquad</code>, <code class="code-inline">SDKMGStatic</code>, etc.<br>
+<code class="code-inline">getHCSquadPrice</code> - Calculates cost</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_fnc_getHCSquadPrice</strong> - Price calculation<br>
+• <strong>A3A_fnc_getHCSquadVehicleType</strong> - Vehicle selection<br>
+• <strong>A3A_fnc_addFIAsquadHC</strong> - Squad creation<br>
+• <strong>resourcesFIA</strong>, <strong>hr</strong> - Resources</div>
+            </div>
+        </section>
+
+        <!-- Special Dialogs -->
+        <section id="special-dialogs" class="section">
+            <h2 id="special-dialogs">🛠️ Special Dialogs (4 Functions)</h2>
+            <p>Specialized dialogs for building placement and mission requests.</p>
+
+            <!-- fn_requestMissionDialog -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_requestMissionDialog.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Handles controls on the Request Mission dialog, processing mission requests from players.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Validates permissions</strong>: Member or Commander only<br>
+• <strong>Validates mission type</strong>: Checks against allowed list (AS, CONVOY, DES, CON, LOG, SUPP, RES)<br>
+• <strong>Remote execution</strong>: Sends request to server (A3A_fnc_missionRequest)<br>
+• <strong>Passes clientOwner</strong>: For server-to-client response routing<br><br>
+<strong>Permissions:</strong><br>
+<code class="code-inline">isMember</code> OR <code class="code-inline">theBoss</code> check</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_fnc_isMember</strong> - Permission check<br>
+• <strong>A3A_fnc_customHint</strong> - Error display<br>
+• <strong>A3A_fnc_missionRequest</strong> - Server target<br>
+• <strong>clientOwner</strong> - For remoteExec targeting</div>
+            </div>
+
+            <!-- fn_setUpPlacerHints -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_setUpPlacerHints.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Creates and manages controls for the placer hints dialog, displaying keyboard shortcuts.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Displays shortcuts</strong> for building placement:<br>
+  - Alt: Snap to surface<br>
+  - E/R: Rotate CCW/CW<br>
+  - Shift: Unsafe mode<br>
+  - Space: Place<br>
+• <strong>Updates context keys</strong>: Dynamically changes C/T key hints<br>
+• <strong>Formats actions</strong> with actual keybinds<br><br>
+<strong>Modes:</strong><br>
+<code class="code-inline">onLoad</code> - Initial hint setup<br>
+<code class="code-inline">setContextKey</code> - Update C/T keys based on action</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>ACTION_KEY</strong> - Keybind macro<br>
+• <strong>IDC_PLACERHINT_*</strong> - Control IDs<br>
+• <strong>uiNamespace</strong> - Display storage<br>
+• <strong>A3A_faction_civ</strong> - Currency for rebuild</div>
+            </div>
+
+            <!-- fn_teamLeaderRTSPlacerDialog -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_teamLeaderRTSPlacerDialog.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Creates controls for the team leader RTS placer dialog, displaying buildable objects.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Dynamic grid layout</strong>: Calculates items per row based on control width<br>
+• <strong>Generates controls</strong>: Preview picture, name button, price for each object<br>
+• <strong>Mouse over camera control</strong>: Blocks camera zoom when hovering dialog<br>
+• <strong>Button actions</strong>: Selects object, creates temp preview, updates DB<br><br>
+<strong>Object Selection:</strong><br>
+<code class="code-inline">A3A_building_EHDB</code> - Database for building system<br>
+<code class="code-inline">BUILD_OBJECT_SELECTED_STRING</code> - Stores selected class</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_fnc_initBuildingDB</strong> - Database init<br>
+• <strong>A3A_building_EHDB</strong> - Building system state<br>
+• <strong>A3A_IDD_TEAMLEADERDIALOG</strong> - Dialog ID<br>
+• <strong>A3A_cam</strong> - Camera control for placement</div>
+            </div>
+
+            <!-- fn_blackMarketDialog -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_blackMarketDialog.sqf
+                    <div class="function-tags">
+                        <span class="tag scheduled">Scheduled (onLoad)</span>
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the black market dialog, handling vehicle category switching and UI initialization.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Category Tabs</strong>: 12+ categories (Arty, APC, AA, Tank, Helis, etc.)<br>
+• <strong>Dropdown Management</strong>: Populates type selection box<br>
+• <strong>Tab Switching</strong>: Shows/hides specific category controls<br>
+• <strong>Wait for Load</strong>: Uses <code class="code-inline">waitUntil</code> for async tab population<br><br>
+<strong>Categories:</strong><br>
+<code class="code-inline">["all", "artillery", "apc", "aa", "uav", ...]</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>SCRT_fnc_ui_populateBlackMarket</strong> - Vehicle list<br>
+• <strong>A3A_fnc_blackMarketTabs</strong> - Tab generation<br>
+• <strong>A3U_BM_isTabsComplete</strong> - Load flag<br>
+• <strong>SCRT_fnc_ui_toggleMenuBlur</strong> - Visual effect</div>
+            </div>
+            
+            <!-- fn_buyVehicleDialog -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_buyVehicleDialog.sqf
+                    <div class="function-tags">
+                        <span class="tag scheduled">Scheduled (onLoad)</span>
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the buy vehicle dialog, handling tab switching and category selection.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Main Tabs</strong>: Civilian, Rebel, Static, Other<br>
+• <strong>Sub-categories</strong>: Populates dropdown based on main tab<br>
+• <strong>Tab Management</strong>: Hides all tabs, shows selected one<br>
+• <strong>Initialization</strong>: Calls buyVehicleTabs for each category<br><br>
+<strong>Categories:</strong><br>
+<code class="code-inline">civilian</code>, <code class="code-inline">military</code>, <code class="code-inline">static</code>, <code class="code-inline">other</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_fnc_buyVehicleTabs</strong> - Tab population<br>
+• <strong>SCRT_fnc_ui_toggleMenuBlur</strong> - Visual effect<br>
+• <strong>A3A_IDD_BUYVEHICLEDIALOG</strong> - Dialog ID<br>
+• <strong>A3A_IDC_SETUP_CVTABLE</strong> - Dropdown ID</div>
+            </div>
+            
+            <!-- fn_buyVehicleTabs -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_buyVehicleTabs.sqf
+                    <div class="function-tags">
+                        <span class="tag scheduled">Scheduled</span>
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Handles the initialization and updating of vehicle tabs in the Buy Vehicle dialog.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Populates vehicle lists</strong> based on category<br>
+• <strong>Creates UI controls dynamically</strong> for each vehicle<br>
+• <strong>Generates preview pictures</strong> and crew info icons<br>
+• <strong>Handles purchase buttons</strong> with price tooltips<br>
+• <strong>3D Preview</strong>: Shows model if no preview image exists<br><br>
+<strong>Crew Info:</strong><br>
+Displays <code class="code-inline">driver</code>, <code class="code-inline">gunners</code>, <code class="code-inline">passengers</code>, <code class="code-inline">FFV</code> counts</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>SCRT_fnc_ui_populateVehicleBox</strong> - Vehicle list<br>
+• <strong>A3A_fnc_getVehicleCrewCount</strong> - Crew info<br>
+• <strong>A3A_fnc_addFIAveh</strong> - Purchase action<br>
+• <strong>A3A_fnc_sizeOf</strong> - 3D model scaling</div>
+            </div>
+        </section>
+
+        <!-- Utility Functions -->
+        <section id="utility-functions" class="section">
+            <h2 id="utility-functions">🔧 Utility Functions (2 Functions)</h2>
+            <p>Helper functions for UI calculations and color conversions.</p>
+
+            <!-- fn_sizeOf -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_sizeOf.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Calculates the bounding-box diameter of a vehicle class for accurate UI and placement sizing.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Caching</strong>: Uses <code class="code-inline">A3A_GUI_sizeOf_cache</code> HashMap for performance<br>
+• <strong>Direct Measurement</strong>: Uses <code class="code-inline">sizeOf</code> engine command if non-zero<br>
+• <strong>Fallback Creation</strong>: Creates temporary vehicle if sizeOf returns 0<br>
+• <strong>Cleanup</strong>: Deletes temporary vehicle after measurement<br><br>
+<strong>Usage:</strong><br>
+<code class="code-inline">["C_Offroad_01_F"] call A3A_GUI_fnc_sizeOf; // 11.4563</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_GUI_sizeOf_cache</strong> - HashMap cache<br>
+• <strong>sizeOf</strong> - Engine command<br>
+• <strong>createVehicle</strong> - Fallback measurement<br>
+• <strong>deleteVehicle</strong> - Cleanup</div>
+            </div>
+
+            <!-- fn_configColorToArray -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_configColorToArray.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Converts config color values (e.g., {1,0,0,1}) into SQF arrays ([1,0,0,1]).
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>String Conversion</strong>: Converts config color to string representation<br>
+• <strong>Brace Extraction</strong>: Removes outer braces<br>
+• <strong>Compile Execution</strong>: Compiles and executes the string as an array<br><br>
+<strong>Example:</strong><br>
+<code class="code-inline">[configFile >> "CfgMarkerColors" >> "ColorRed"] call A3A_fnc_configColorToArray</code><br>
+Returns: <code class="code-inline">[1, 0, 0, 1]</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>str</strong> - String conversion<br>
+• <strong>compile</strong> - Array creation<br>
+• <strong>No external dependencies</strong> - Pure SQF utility</div>
+            </div>
+        </section>
+
+        <!-- General Functions -->
+        <section id="general-functions" class="section">
+            <h2 id="general-functions">📂 General Functions (5 Functions)</h2>
+            <p>Core dialog management and map drawing event handlers.</p>
+
+            <!-- fn_hqDialog -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_hqDialog.sqf
+                    <div class="function-tags">
+                        <span class="tag scheduled">Scheduled</span>
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the HQ Dialog, handling tabs (Main, Garrison, Minefields), resource management, and map interactions.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Tab Management</strong>: Switches between Main, Garrison, Minefields<br>
+• <strong>Resource Display</strong>: Shows money, HR, aggression levels<br>
+• <strong>Garrison System</strong>: Handles add/remove/dismiss via map clicks<br>
+• <strong>Time Skip</strong>: Manages rest slider and time skipping<br>
+• <strong>Outpost Creation</strong>: Opens outpost dialog<br><br>
+<strong>Key Functions:</strong><br>
+<code class="code-inline">A3A_fnc_garrisonAdd</code>, <code class="code-inline">A3A_fnc_garrisonRemove</code><br>
+<code class="code-inline">A3A_fnc_resourceCheckSkipTime</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>resourcesFIA</strong>, <strong>hr</strong> - Resources<br>
+• <strong>aggressionLevelOccupants</strong> - Display<br>
+• <strong>citiesX</strong>, <strong>outposts</strong> - Location data<br>
+• <strong>A3A_fnc_mapDrawSelectEH</strong> - Map drawing</div>
+            </div>
+
+            <!-- fn_mainDialog -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_mainDialog.sqf
+                    <div class="function-tags">
+                        <span class="tag scheduled">Scheduled (onLoad)</span>
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Manages the main dialog (Y-Menu), handling tab switching and event handler setup.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Initialization</strong>: Sets up map event handlers on load<br>
+• <strong>Tab Switching</strong>: Delegates to specific tab functions (playerTab, commanderTab, etc.)<br>
+• <strong>Cleanup</strong>: Removes event handlers on unload<br>
+• <strong>Permission Check</strong>: Enables tabs based on player role<br><br>
+<strong>Map Event Handlers:</strong><br>
+<code class="code-inline">fn_fireMissionEH</code><br>
+<code class="code-inline">fn_mapDrawSelectEH</code><br>
+<code class="code-inline">fn_mapDrawHcGroupsEH</code><br>
+<code class="code-inline">fn_mapDrawOutpostsEH</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_fnc_playerTab</strong>, <strong>A3A_fnc_commanderTab</strong><br>
+• <strong>A3A_fnc_adminTab</strong>, <strong>A3A_fnc_fastTravelTab</strong><br>
+• <strong>hcallGroups</strong> - HC groups data<br>
+• <strong>A3A_IDD_MAINDIALOG</strong> - Main dialog ID</div>
+            </div>
+
+            <!-- fn_mapDrawHcGroupsEH -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_mapDrawHcGroupsEH.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Event handler that draws High Command group markers on the commander map.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Updates Group Data</strong>: Calls <code class="code-inline">A3A_fnc_getGroupInfo</code> for all HC groups<br>
+• <strong>Draws 3 Elements</strong> per group:<br>
+  1. Type Icon (NATO format)<br>
+  2. Size Icon (based on alive units)<br>
+  3. Name Text (truncated if > 16 chars)<br>
+• <strong>Calculates Size</strong>: 0 (1-3), 1 (4-7), 2 (12-24), 3 (25-59), 4 (60+)<br><br>
+<strong>Output:</strong><br>
+Stores <code class="code-inline">hcGroupData</code> on map control for use by commander tab</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>hcallGroups player</strong> - HC group list<br>
+• <strong>A3A_fnc_getGroupInfo</strong> - Group data<br>
+• <strong>A3A_IDC_COMMANDERMAP</strong> - Target map<br>
+• <strong>drawIcon</strong> - Map drawing command</div>
+            </div>
+
+            <!-- fn_mapDrawOutpostsEH -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_mapDrawOutpostsEH.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Event handler that draws location markers (airports, resources, factories, etc.) on maps.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Calculates Zoom Scale</strong>: Adjusts transparency and size based on map zoom<br>
+• <strong>Determines Colors</strong>: Uses BIS side colors (Independent, BLUFOR, OPFOR, Civilian)<br>
+• <strong>Selects Icons</strong>: HQ, City, Factory, Resource, Airport, Outpost, etc.<br>
+• <strong>Draws Markers</strong>: Icon + Name text<br><br>
+<strong>Location Arrays:</strong><br>
+<code class="code-inline">airportsX</code>, <code class="code-inline">resourcesX</code>, <code class="code-inline">factories</code>, <code class="code-inline">citiesX</code>, etc.</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_fnc_getLocationMarkerType</strong><br>
+• <strong>A3A_fnc_getLocationMarkerName</strong><br>
+• <strong>BIS_fnc_displayColorGet</strong> - Side colors<br>
+• <strong>sidesX</strong> - Marker side info</div>
+            </div>
+
+            <!-- fn_mapDrawSelectEH -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_mapDrawSelectEH.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Event handler that draws a pulsing selection marker on the map.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Pulsing Animation</strong>: Calculates radius and direction changes<br>
+• <strong>Min/Max Radius</strong>: 48 to 64 units<br>
+• <strong>Pulse Speed</strong>: 0.5 units per frame<br>
+• <strong>Storage</strong>: Keeps state in <code class="code-inline">selectMarkerData</code> on map control<br><br>
+<strong>Usage:</strong><br>
+Used by commander tab to highlight selected groups or positions</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_Select_Marker</strong> - Marker texture<br>
+• <strong>A3A_COLOR_SELECT_MARKER</strong> - Config color<br>
+• <strong>A3A_fnc_configColorToArray</strong> - Color conversion<br>
+• <strong>selectMarkerData</strong> - Map variable</div>
+            </div>
+            
+            <!-- fn_mapDrawUserMarkersEH -->
+            <div class="function-block">
+                <div class="function-name">
+                    fn_mapDrawUserMarkersEH.sqf
+                    <div class="function-tags">
+                        <span class="tag unscheduled">Unscheduled</span>
+                    </div>
+                </div>
+                <div class="purpose">
+                    <strong>What it does:</strong> Event handler that draws user-created markers to map controls.
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Filters Markers</strong>: Only "_USER_DEFINED" markers in channels 0, 1, or 2<br>
+• <strong>Extracts Color</strong>: Converts marker color config to RGBA array<br>
+• <strong>Draws Pointers</strong>: Uses texture from marker type<br>
+• <strong>Draws Lines</strong>: Converts polyline coordinate array to line segments<br><br>
+<strong>Note:</strong>
+<code class="code-inline">markerPolyline</code> returns empty array for point markers</code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>allMapMarkers</strong> - Source of markers<br>
+• <strong>BIS_fnc_colorConfigToRGBA</strong> - Color extraction<br>
+• <strong>BIS_fnc_textureMarker</strong> - Icon retrieval<br>
+• <strong>drawLine</strong> - Line drawing command</div>
+            </div>
+
+            <!-- fn_playerTab (Duplicate check - already in main dialogs) -->
+            <!-- Skipping duplicate -->
+
+        </section>
+
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Back to Top">⬆️</button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h3>🖥️ A3A GUI Functions Documentation</h3>
+            <p><strong>Project:</strong> A3A (Antistasi) GUI Module</p>
+            <p><strong>System:</strong> Dialog Management & Event Handling</p>
+            <p>Comprehensive UI framework for game initialization and interaction.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.dataset.theme = body.dataset.theme === 'dark' ? '' : 'dark';
+            darkModeToggle.textContent = body.dataset.theme === 'dark' ? '☀️' : '🌙';
+            localStorage.setItem('theme', body.dataset.theme);
+        });
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            body.dataset.theme = 'dark';
+            darkModeToggle.textContent = '☀️';
+        }
+
+        // Search Functionality
+        const searchInput = document.getElementById('functionSearch');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const searchStats = document.getElementById('searchStats');
+        const functionBlocks = document.querySelectorAll('.function-block');
+
+        function updateSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const categoryFilterValue = categoryFilter.value;
+            let visibleCount = 0;
+
+            functionBlocks.forEach(block => {
+                const text = block.textContent.toLowerCase();
+                const nameElement = block.querySelector('.function-name');
+                const nameText = nameElement ? nameElement.textContent.toLowerCase() : '';
+                
+                // Check if block is in specific section
+                const sectionId = block.closest('.section').id;
+                let categoryMatch = false;
+
+                if (categoryFilterValue === 'all') {
+                    categoryMatch = true;
+                } else if (categoryFilterValue === 'setup' && sectionId === 'setup-dialogs') {
+                    categoryMatch = true;
+                } else if (categoryFilterValue === 'main' && sectionId === 'main-dialogs') {
+                    categoryMatch = true;
+                } else if (categoryFilterValue === 'special' && sectionId === 'special-dialogs') {
+                    categoryMatch = true;
+                } else if (categoryFilterValue === 'utility' && sectionId === 'utility-functions') {
+                    categoryMatch = true;
+                } else if (categoryFilterValue === 'general' && sectionId === 'general-functions') {
+                    categoryMatch = true;
+                }
+
+                // Search match (check function name and description)
+                const searchMatch = searchTerm === '' || nameText.includes(searchTerm) || text.includes(searchTerm);
+
+                if (categoryMatch && searchMatch) {
+                    block.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    block.style.display = 'none';
+                }
+            });
+
+            const categoryText = categoryFilterValue === 'all' ? 'All Categories' : categoryFilter.options[categoryFilter.selectedIndex].text;
+            searchStats.textContent = searchTerm || categoryFilterValue !== 'all'
+                ? `Showing ${visibleCount} functions in ${categoryText}`
+                : `Showing all functions`;
+        }
+
+        searchInput.addEventListener('input', updateSearch);
+        categoryFilter.addEventListener('change', updateSearch);
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Table of Contents Links
+        document.querySelectorAll('.toc-item a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize search stats
+        updateSearch();
+    </script>
+</body>
+</html>

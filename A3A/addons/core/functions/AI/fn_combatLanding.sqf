@@ -10,10 +10,11 @@ Parameters:
     <POSATL> Destination position for troops to attack after landing
     <POSATL> Position for heli to return to after offloading
     <POSATL> Landing position for heli
+    <STRING> (Optional) Landing style: "normal", "sideApproach", "stunt" (default: "normal")
 */
 #include "..\..\script_component.hpp"
 FIX_LINE_NUMBERS()
-params ["_helicopter", "_crewGroup", "_cargoGroup", "_posDestination", "_originPos", "_landPos"];
+params ["_helicopter", "_crewGroup", "_cargoGroup", "_posDestination", "_originPos", "_landPos", ["_landingStyle", "normal"]];
 
 private _vehType = typeOf _helicopter;
 
@@ -83,6 +84,28 @@ private _landingTime = _distance/_initialVelocity * 1.35;
 
 private _maxAngle = ((_initialVelocity * _initialVelocity/3600) * 35) min 35;
 
+// Advanced maneuver logic based on landing style
+private _maneuverCompleted = false;
+switch (_landingStyle) do {
+    case "sideApproach": {
+        [_helicopter, _landPad, _startPos, _midHeight, _initialVelocity, _landingTime, _maxAngle] call A3A_fnc_combatLanding_sideApproach;
+        _maneuverCompleted = true;
+    };
+    case "stunt": {
+        [_helicopter, _landPad, _startPos, _midHeight, _initialVelocity, _landingTime, _maxAngle] call A3A_fnc_combatLanding_stunt;
+        _maneuverCompleted = true;
+    };
+    default {
+        // Continue with normal landing curve
+        _maneuverCompleted = false;
+    };
+};
+
+if (_maneuverCompleted) exitWith {
+    // Skip the normal curve calculation and continue with landing sequence
+    sleep 0.1;
+};
+
 //Starting land approach with bezier curve
 private _startToMidVector = _midPos vectorDiff _startPos;
 private _midToEndVector = _endPos vectorDiff _midPos;
@@ -100,32 +123,49 @@ private _heightDiff = 0;
 
 /* _helicopter action ["LandGear", _helicopter]; */
 
+// Pre-calculate constants for performance
+private _pi = 3.14159265359;
+private _radToDeg = 180 / _pi;
+private _degToRad = _pi / 180;
+private _intervalStep = 0.015; // Increased sleep time for better performance
 private _driver = driver _helicopter;
+
+// Pre-calculate sine values for the curve (optimization)
+private _sinLookup = [];
+for "_i" from 0 to 180 step 1 do {
+    _sinLookup pushBack (sin _i);
+};
+
 while {_interval < 0.9999} do
 {
     //Update data
     _vectorDir = vectorDir _helicopter;
     _vectorUp = vectorUp _helicopter;
 
-    //Calculating the current angle and what the helicopter should turn too
-    _angleTarget = sin (_interval * 180) * _maxAngle;
-    _angleIs = (asin (_vectorDir select 2));
-    _angleDiff = _angleTarget - _angleIs;
-    if(_angleDiff > _angleStep) then {_angleDiff = _angleStep;};
-    if(_angleDiff < -_angleStep) then {_angleDiff = -_angleStep;};
+    // Optimized angle calculation using lookup table
+    private _sinIndex = round (_interval * 180);
+    if (_sinIndex >= count _sinLookup) then {_sinIndex = (count _sinLookup) - 1;};
+    _angleTarget = (_sinLookup select _sinIndex) * _maxAngle;
 
-    //Calculating the height and back value needed
+    _angleIs = asin (_vectorDir select 2);
+    _angleDiff = _angleTarget - _angleIs;
+
+    // Clamp angle difference more efficiently
+    _angleDiff = _angleDiff max -_angleStep min _angleStep;
+
+    // Calculating the height and back value needed
     _backFactor = -tan (_angleDiff);
     _vectorUp = _vectorUp vectorAdd (_vectorDir vectorMultiply _backFactor);
 
-    _heightDiff = (sin (_angleIs + _angleDiff)) - (_vectorDir select 2);
+    _heightDiff = sin(_angleIs + _angleDiff) - (_vectorDir select 2);
     _vectorDir = _vectorDir vectorAdd [0, 0, _heightDiff];
 
+    // Calculate positions more efficiently
     private _lineStart = _startPos vectorAdd (_startToMidVector vectorMultiply _interval);
     private _lineEnd = _midPos vectorAdd (_midToEndVector vectorMultiply _interval);
 
     _helicopter action ["LandGear", _helicopter]; ///forces vehicle to use landing gear
-    
+
     _helicopter setVelocityTransformation
     [
         _lineStart,
@@ -140,10 +180,17 @@ while {_interval < 0.9999} do
     ];
 
     _time = time;
-    sleep 0.001;
-    _interval = _interval + (((time - _time)/_landingTime) * (1 - (_interval / 2)));
+    sleep _intervalStep; // More reasonable sleep interval
+
+    // Simplified interval calculation
+    private _deltaTime = time - _time;
+    private _progressFactor = _deltaTime / _landingTime;
+    _interval = _interval + (_progressFactor * (1 - (_interval * 0.5)));
+
+    // Optimized velocity calculation
     _velocityVector = _lineEnd vectorDiff _lineStart;
-    _velocityVector = (vectorNormalized _velocityVector) vectorMultiply (_initialSpeed * (1 - _interval));
+    private _speedMultiplier = _initialSpeed * (1 - _interval);
+    _velocityVector = (vectorNormalized _velocityVector) vectorMultiply _speedMultiplier;
 
     if(!canMove _helicopter || !alive _driver) exitWith {};
     _dam = damage _helicopter;

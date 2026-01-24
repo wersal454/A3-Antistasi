@@ -1,0 +1,1642 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Jeroen Arsenal (JNA) — Function Documentation</title>
+  <style>
+    body{font-family:Segoe UI,Arial,Helvetica,sans-serif;margin:18px;color:#111}
+    pre{background:#fafafa;border:1px solid #ddd;padding:10px;overflow:auto;max-height:480px}
+    h1,h2{color:#0b5394}
+    .fn{margin-bottom:36px}
+    .meta{font-size:0.95em;color:#333}
+    .calls{font-family:monospace;background:#f3f3f3;padding:6px;border-radius:4px;display:inline-block}
+  </style>
+</head>
+<body>
+<h1>Jeroen Arsenal (JNA) — Auto-generated documentation</h1>
+<p>Generated: Jan 18, 2026 — This document contains one section per function found under <code>jeroen_arsenal/</code>. Each section includes: "What it does", the full source (as included here), a concise step-by-step summary, and the functions it calls. For complete behavior inspect the included source blocks (copy/paste into a .sqf file if needed).</p>
+
+<!-- Function: fn_arsenal_requestOpen.sqf -->
+<div class="fn" id="fn_arsenal_requestOpen.sqf">
+  <h2>Function Name: fn_arsenal_requestOpen.sqf</h2>
+  <p class="meta"><strong>What it does:</strong> Server-side handler that marks a client as having opened the arsenal and sends the JNA data list to that client.</p>
+  <p class="meta"><strong>When/why it's called:</strong> Called on the server when a client requests the arsenal UI (remoteExec from client).</p>
+  <h3>Source</h3>
+  <pre>
+#include "..\script_component.hpp"
+
+if(!isServer)exitWith{};
+params ["_clientOwner"];
+
+_temp = server getVariable ["jna_playersInArsenal",[]];
+_temp pushBackUnique _clientOwner;
+server setVariable ["jna_playersInArsenal",_temp,true];
+
+Info_1("_open arsenal for: clientOwner ",_clientOwner);
+["Open",[jna_dataList]] remoteExecCall ["jn_fnc_arsenal", _clientOwner];
+  </pre>
+  <h3>Step-by-step</h3>
+  <ol>
+    <li>Validate execution context: exit if not server: <code>if(!isServer)exitWith{};</code></li>
+    <li>Read parameter: <code>params ["_clientOwner"];</code></li>
+    <li>Get/modify server variable list of players in arsenal:
+      <pre>_temp = server getVariable ["jna_playersInArsenal",[]];
+_temp pushBackUnique _clientOwner;
+server setVariable ["jna_playersInArsenal",_temp,true];</pre>
+    </li>
+    <li>Log and remotely execute the arsenal open on the client:
+      <pre>Info_1("_open arsenal for: clientOwner ",_clientOwner);
+["Open",[jna_dataList]] remoteExecCall ["jn_fnc_arsenal", _clientOwner];</pre>
+    </li>
+  </ol>
+  <h3>Where it leads</h3>
+  <p>Calls / triggers:</p>
+  <ul>
+    <li><span class="calls">jn_fnc_arsenal (remoteExecCall)</span> — instructs the client to open the JNA arsenal UI with the data list.</li>
+  </ul>
+  <p>Global state modified: <code>server setVariable ["jna_playersInArsenal",...]</code> (list of clients to update).</p>
+  <hr/>
+</div>
+
+<!-- Function: fn_arsenal_requestClose.sqf -->
+<div class="fn" id="fn_arsenal_requestClose.sqf">
+  <h2>Function Name: fn_arsenal_requestClose.sqf</h2>
+  <p class="meta"><strong>What it does:</strong> Server-side handler that removes a client from the server list of arsenal viewers.</p>
+  <h3>Source</h3>
+  <pre>
+/*
+	Author: Jeroen Notenbomer
+
+	Description:
+	Removes to client from the servers list so it doesnt get called when the arsenal gets updated. This command needs to be excuted on the server!
+*/
+
+if(!isServer)exitWith{};
+params ["_clientOwner"];
+
+_temp = server getVariable ["jna_playersInArsenal",[]];
+_temp = _temp - [_clientOwner];
+server setVariable ["jna_playersInArsenal",_temp,true];
+  </pre>
+  <h3>Step-by-step</h3>
+  <ol>
+    <li>Exit if not running on server: <code>if(!isServer)exitWith{};</code></li>
+    <li>Read parameter: <code>params ["_clientOwner"];</code></li>
+    <li>Remove client from server variable and save: <code>_temp = server getVariable ["jna_playersInArsenal",[]]; _temp = _temp - [_clientOwner]; server setVariable ["jna_playersInArsenal",_temp,true];</code></li>
+  </ol>
+  <h3>Where it leads</h3>
+  <p>Modifies <code>jna_playersInArsenal</code> on server to omit the client (no further function calls).</p>
+  <hr/>
+</div>
+
+<!-- Function: fn_arsenal_init.sqf -->
+<div class="fn" id="fn_arsenal_init.sqf">
+  <h2>Function Name: fn_arsenal_init.sqf</h2>
+  <p class="meta"><strong>What it does:</strong> Initialization routine run on add-on load. Prepares JNA global variables, adds actions to the configured host object, registers event handlers for opening/closing the arsenal, and preloads data.</p>
+  <h3>Source (excerpt)</h3>
+  <pre>
+#include "defineCommon.inc"
+#include "\A3\ui_f\hpp\defineDIKCodes.inc"
+#include "\A3\Ui_f\hpp\defineResinclDesign.inc"
+#include "..\script_component.hpp"
+FIX_LINE_NUMBERS()
+scriptName "fn_arsenal_init.sqf";
+private _fileName = "fn_arsenal_init.sqf";
+[2,"JNA init started",_fileName] call A3A_fnc_log;
+params [["_object",objNull,[objNull]]];
+
+//check if it was already initialised
+if(!isnull (missionnamespace getVariable ["jna_object",objNull]))exitWith{};
+if(isNull _object)exitWith{["Error: wrong input given '%1'",_object] call BIS_fnc_error;};
+missionnamespace setVariable ["jna_object",_object];
+
+jna_minItemMember = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
+jna_minItemMember = jna_minItemMember apply { A3A_guestItemLimit };
+jna_minItemMember set [IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG, A3A_guestItemLimit*3];
+["Preload"] call jn_fnc_arsenal;
+
+//server
+if(isServer)then{
+    Info("JNA server detected");
+    if(isnil "jna_dataList" )then{jna_dataList = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];};
+};
+
+//player
+if(hasInterface)then{
+    Info("JNA loading player data");
+    _object addAction [ (format ["<img image='%1' ..."], JN_fnc_arsenal_handleAction, ... ];
+    ... // add vehicle container action, quick equip, event handlers for arsenalOpened / arsenalClosed
+};
+Info("JNA init completed");
+arsenalInit = true;
+  </pre>
+  <h3>Step-by-step (summary)</h3>
+  <ul>
+    <li>Protect against double-init and invalid parameter.</li>
+    <li>Set mission/local globals: <code>missionnamespace setVariable ["jna_object",_object]</code> and <code>jna_minItemMember</code> defaults.</li>
+    <li>Call <code>["Preload"] call jn_fnc_arsenal;</code> to preload data.</li>
+    <li>On server: ensure <code>jna_dataList</code> exists.</li>
+    <li>On clients with interface: add action entries to the containing object (<code>addAction</code>) and register event handlers for open/close.</li>
+  </ul>
+  <h3>Where it leads</h3>
+  <ul>
+    <li>Calls: <span class="calls">jn_fnc_arsenal (Preload)</span>, <span class="calls">A3A_fnc_log</span>, and registers handlers that call <span class="calls">jn_fnc_arsenal_requestOpen</span> and <span class="calls">jn_fnc_arsenal_requestClose</span>.</li>
+    <li>Sets global variables: <code>jna_object</code>, <code>jna_minItemMember</code>, <code>jna_dataList</code>, and <code>arsenalInit</code>.</li>
+  </ul>
+  <hr/>
+</div>
+
+<!-- Function: fn_arsenal.sqf (core dispatcher / UI handler) -->
+<div class="fn" id="fn_arsenal.sqf">
+  <h2>Function Name: fn_arsenal.sqf</h2>
+  <p class="meta"><strong>What it does:</strong> Main dispatcher implementing many arsenal UI modes and events (Preload, CustomInit, UpdateList/CreateList, key handlers, add/remove items). This file overwrites default BIS arsenal hooks with JNA behaviour.</p>
+  <p class="meta"><strong>Note:</strong> File is large; source shown below is an excerpt. Full file available at <code>jeroen_arsenal/JNA/fn_arsenal.sqf</code>.</p>
+  <h3>Source (excerpt)</h3>
+  <pre>
+/* Top of file: macros, defines and helper closures */
+disableserialization;
+
+private _minItemsMember = { params ["_index", "_item"]; private _min = jna_minItemMember select _index; _min = A3A_arsenalLimits getOrDefault [_item, _min]; if (_index == IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG || ...) then {_min = _min * getNumber (configfile >> "CfgMagazines" >> _item >> "count")}; _min; };
+
+_mode = [_this,0,"Open",[displaynull,""]] call bis_fnc_param;
+_this = [_this,1,[]] call bis_fnc_param;
+
+switch _mode do {
+  case "CustomInit": { params ["_display"]; private _objectSelected = uiNamespace getVariable "jn_object_selected"; missionnamespace setVariable ["bis_fnc_arsenal_center",_objectSelected]; jnva_loadout = (_objectSelected call jn_fnc_arsenal_cargoToArray); jnva_loadout_mass = ["getMass"] call jn_fnc_vehicleArsenal; ... };
+  case "getMass": { ... };
+  case "getMassItem": { ... };
+  case "customGUI": { ... };
+  case "customEvents": { ... };
+  case "TabSelect": { ... };
+  case "CreateList": { ... };
+  case "SelectItem": { ... };
+  case "buttonCargo": { ... };
+  case "Unload": { ... };
+  case "Close": { ... };
+  default { ["Error: wrong input given '%1' for mode '%2'",_this,_mode] call BIS_fnc_error; };
+};
+  </pre>
+  <h3>Step-by-step (high-level)</h3>
+  <ol>
+    <li>Parse parameters with <code>bis_fnc_param</code> and select a mode string in <code>_mode</code>.</li>
+    <li>Switch on <code>_mode</code> and execute mode-specific code blocks (UI init, event wiring, lists update, item add/remove, load/unload, closing).</li>
+    <li>Each mode uses helper functions in the JNA set: <code>jn_fnc_vehicleArsenal</code>, <code>jn_fnc_arsenal_addItem</code>, <code>jn_fnc_arsenal_removeItem</code>, and built-ins like <code>BIS_fnc_error</code>.</li>
+  </ol>
+  <h3>Where it leads</h3>
+  <p>Key calls visible in this file:</p>
+  <ul>
+    <li><span class="calls">jn_fnc_arsenal_cargoToArray</span> — convert object cargo to dataset</li>
+    <li><span class="calls">jn_fnc_vehicleArsenal</span> — vehicle-specific UI/logic helper</li>
+    <li><span class="calls">jn_fnc_arsenal_addItem</span>, <span class="calls">jn_fnc_arsenal_removeItem</span> — update server/client data lists</li>
+    <li>Built-ins: <span class="calls">BIS_fnc_param</span>, <span class="calls">BIS_fnc_endLoadingScreen</span>, <span class="calls">BIS_fnc_error</span></li>
+  </ul>
+  <hr/>
+</div>
+
+<!-- Function: fn_arsenal_loadInventory.sqf -->
+<div class="fn" id="fn_arsenal_loadInventory.sqf">
+  <h2>Function Name: fn_arsenal_loadInventory.sqf</h2>
+  <p class="meta"><strong>What it does:</strong> Loads saved inventory data from profileNamespace and attempts to apply it to the player, reconciling missing/replaced items and updating global add/remove lists.</p>
+  <h3>Source (excerpt)</h3>
+  <pre>
+#include "..\defineCommon.inc"
+
+// Loads profileNamespace saved data into player: builds arrays _arrayPlaced, _arrayTaken, _arrayMissing, _arrayReplaced
+// Processes magazines, assigned items, attachments, weapons, containers and nested container items.
+// Calls jn_fnc_arsenal_addItem and jn_fnc_arsenal_removeItem to update server lists.
+  </pre>
+  <p class="meta">This file contains many detailed blocks (magazine processing, assigned items, weapons & attachments, containers). See source file for full per-line logic.</p>
+  <h3>Where it leads</h3>
+  <ul>
+    <li><span class="calls">jn_fnc_arsenal_itemType</span>, <span class="calls">jn_fnc_arsenal_addToArray</span>, <span class="calls">jn_fnc_arsenal_addItem</span>, <span class="calls">jn_fnc_arsenal_removeItem</span></li>
+    <li>Also uses built-ins and config queries to map items and apply fixes for TFAR/ACRE/RHS stacking.</li>
+  </ul>
+  <hr/>
+</div>
+
+<!-- Function: fn_arsenal_cargoToArray.sqf -->
+<div class="fn" id="fn_arsenal_cargoToArray.sqf">
+  <h2>Function Name: fn_arsenal_cargoToArray.sqf</h2>
+  <p class="meta"><strong>What it does:</strong> Returns an array representation of all contents in a vehicle/crate/player in the JNA data-list format (array of 27 subarrays).</p>
+  <h3>Source</h3>
+  <pre>
+#include "\A3\ui_f\hpp\defineDIKCodes.inc"
+#include "\A3\Ui_f\hpp\defineResinclDesign.inc"
+
+private["_array","_addToArray","_unloadContainer"];
+params ["_container", ["_isPlayer", false]];
+_array = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+
+_addToArray = {
+	private ["_array","_index","_item","_amount"];
+	_array = _this select 0;
+	_index = _this select 1;
+	_item = _this select 2;
+	_amount = _this select 3;
+
+	if!(_index == -1 || _item isEqualTo ""|| _amount == 0)then{
+		_array set [_index,[_array select _index,[_item,_amount]] call jn_fnc_arsenal_addToArray];
+	};
+};
+
+_unloadContainer = {
+	_container_sub = _this;
+	_mags = [magazinesAmmoCargo _container_sub, magazinesAmmo _container_sub] select (_isPlayer);
+	{ _item = _x select 0; _amount = _x select 1; _index = _item call jn_fnc_arsenal_itemType; [_array,_index,_item,_amount]call _addToArray; } forEach _mags;
+	_items = [itemCargo _container_sub, (items _container_sub) + (assignedItems player)] select (_isPlayer);
+	{ _item = _x; _index = _item call jn_fnc_arsenal_itemType; [_array,_index,_item,1]call _addToArray; } forEach _items;
+	_backpacks = [backpackCargo _container_sub, [backpack _container_sub]] select (_isPlayer);
+	{ _item = _x call A3A_fnc_basicBackpack; _index = IDC_RSCDISPLAYARSENAL_TAB_BACKPACK; [_array,_index,_item,1]call _addToArray; } forEach _backpacks;
+	_attItems = [weaponsItemsCargo _container_sub, weaponsItems _container_sub] select (_isPlayer);
+	{ ... } foreach _attItems;
+	if (_isPlayer) then { ... } else { everyContainer handling };
+};
+
+_container call _unloadContainer;
+_array;
+  </pre>
+  <h3>Where it leads</h3>
+  <ul>
+    <li>Calls: <span class="calls">jn_fnc_arsenal_addToArray</span>, <span class="calls">jn_fnc_arsenal_itemType</span>, <span class="calls">A3A_fnc_basicBackpack</span>.</li>
+    <li>Returns the JNA-formatted nested array describing magazine, item, weapon and container contents.</li>
+  </ul>
+  <hr/>
+</div>
+
+<!-- Function: fn_arsenal_itemType.sqf -->
+<div class="fn" id="fn_arsenal_itemType.sqf">
+  <h2>Function Name: fn_arsenal_itemType.sqf</h2>
+  <p class="meta"><strong>What it does:</strong> Determines the JNA category index for a given item classname by inspecting configs (CfgWeapons, CfgMagazines, CfgVehicles, CfgGlasses).</p>
+  <h3>Source (excerpt)</h3>
+  <pre>
+#include "..\defineCommon.inc"
+
+private ["_item","_return","_data"];
+params ["_item"];
+_return = -1;
+private _configCfgWeapons = configFile >> "CfgWeapons";
+private _weaponConfig = configFile >> "CfgWeapons" >> _item;
+private _itemInfoConfig = _weaponConfig >> "ItemInfo";
+private _magazineConfig = configFile >> "CfgMagazines" >> _item;
+private _itemType = switch true do {
+	case (isClass _weaponConfig): {getNumber (_weaponConfig >> "type")};
+	case (isClass _magazineConfig): {getNumber (_magazineConfig >> "type")};
+	default {-1};
+};
+private _itemInfoType =	if (isClass _itemInfoConfig) then {(getNumber (_itemInfoConfig >> "type"))} else {-1};
+... // heuristic logic mapping to categories
+if (_itemCategory == "Junk") exitWith {-1};
+INITTYPES
+{ if (_itemCategory in _x) exitwith {_return = _foreachindex}; } foreach _types;
+if(_return == -1)then{ /* final fallback search in mission namespace data */ };
+_return;
+  </pre>
+  <h3>Where it leads</h3>
+  <p>Used pervasively to map classnames to JNA list indices. Calls BIS_fnc_itemType and internal macros/defines. Returns -1 if not found.</p>
+  <hr/>
+</div>
+
+<!-- Small utility functions -->
+<div class="fn" id="array_helpers">
+  <h2>Array helper functions — DETAILED (Common/Array)</h2>
+
+  <!-- fn_common_array_add.sqf -->
+  <div class="fn" id="fn_common_array_add.sqf">
+    <h3>Function Name: fn_common_array_add.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Merge/add item counts from a second list into a base list. Handles string shorthand parameters and supports amount = -1 to indicate unlimited. Returns the merged list.</p>
+    <p class="meta"><strong>When/why it's called:</strong> Used whenever the code needs to combine two JNA-format item lists (arrays of [classname, amount]) — for example when aggregating available items or adding placed items into the global list.</p>
+
+    <h4>How it does that (step-by-step with exact statements)</h4>
+    <pre>
+#include "defineCommon.inc"
+
+params["_list","_add"];
+</pre>
+    <p>Explanation: Include common defines. Read parameters. The function expects an input list and an item or list to add; 'params' provides named parameters for clarity.</p>
+
+    <pre>
+_list = +_list;
+</pre>
+    <p>Explanation: Normalize and copy <code>_list</code> (unary + creates a shallow copy) so the function works on its own local copy and does not mutate callers' arrays by reference.</p>
+
+    <pre>
+if(typeName _add isEqualTo "STRING")then{_add = [_add,1];};
+if(typeName (_add select 0) isEqualTo "STRING")then{_add = [_add]};
+</pre>
+    <p>Explanation: Parameter validation & normalization:
+      - If <code>_add</code> is a string, convert to ["name",1].
+      - If <code>_add</code> is an array whose first element is a string (i.e. a single item), wrap it into a list of items so subsequent code can iterate uniformly.</p>
+
+    <pre>
+{
+    private _index = _forEachIndex;
+    private _name = _x select 0;
+    private _amount = _x select 1;
+
+    if!(_name isEqualTo "")then{//skip empty
+
+        private _found = false;
+        {
+            private _index2 = _forEachIndex;
+            private _name2 = _x select 0;
+            private _amount2 = _x select 1;
+
+            if(_name isEqualTo _name2)exitWith{
+                _found = true;    //found it, now update amount
+                if(_amount == -1 || _amount2 == -1)then{
+                    _list set [_index2, [_name,-1]];
+                }else{
+                    _list set [_index2, [_name,(_amount2 + _amount)]];
+                };
+            };
+
+        }forEach _list;
+
+        if(!_found)then{
+            _list pushBack [_name, _amount]; //not found add new
+        };
+    };
+}forEach _add;
+</pre>
+    <p>Explanation of loop and logic flow:
+      - Outer loop: iterates each entry <code>_x</code> in the normalized <code>_add</code> list.
+      - Localize index/name/amount for clarity.
+      - If name is empty, skip entry.
+      - Set <code>_found</code> false. Inner loop iterates the existing <code>_list</code> searching for same name.
+      - On match (<code>_name isEqualTo _name2</code>), set <code>_found</code> true and:
+          - If either amount is -1, store -1 (unlimited).
+          - Otherwise add numeric amounts: <code>_amount2 + _amount</code>, and update the base list entry via <code>_list set [_index2, [...]]</code>.
+      - If inner loop completes without a match, push a new entry <code>[_name,_amount]</code> onto <code>_list</code>.
+      - The function uses <code>exitWith</code> inside the inner loop to short-circuit further iteration once a match is processed.</p>
+
+    <pre>
+_list; //return
+</pre>
+    <p>Explanation: Return the merged list (last expression evaluated is returned).</p>
+
+    <h4>Where it leads</h4>
+    <ul>
+      <li>Calls: none (pure utility — uses only language ops and config include).</li>
+      <li>Called-by: many JNA functions that aggregate item arrays (e.g. loadInventory, cargoToArsenal, other jn_fnc_arsenal flows).</li>
+      <li>Global variables modified: none.</li>
+      <li>Sync/network: none — pure local computation. Caller decides if combined array should be sent/remoteExec'd.</li>
+    </ul>
+  </div>
+
+  <!-- fn_common_array_remove.sqf -->
+  <div class="fn" id="fn_common_array_remove.sqf">
+    <h3>Function Name: fn_common_array_remove.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Subtracts item amounts from a base list using a remove-list. Supports string shorthand and amount = -1 semantics: -1 in the remove list marks an item for full removal from base list.</p>
+    <p class="meta"><strong>When/why it's called:</strong> Used to reduce an available-items list by consumed/taken items (for example when items are transferred from arsenal into a player or vehicle).</p>
+
+    <h4>How it does that (step-by-step with exact statements)</h4>
+    <pre>
+#include "defineCommon.inc"
+
+params["_list","_remove"];
+</pre>
+    <p>Explanation: Include common defines and declare named parameters.</p>
+
+    <pre>
+_list = +_list;
+</pre>
+    <p>Explanation: Copy the input list to avoid mutating the caller's array.</p>
+
+    <pre>
+if(typeName _remove isEqualTo "STRING")then{_remove = [_remove,1];};
+if(typeName (_remove select 0) isEqualTo "STRING")then{_remove = [_remove]};
+</pre>
+    <p>Explanation: Normalize <code>_remove</code> similarly to add — convert single-string and single-item forms into a list-of-items form.</p>
+
+    <pre>
+{
+    private _index = _forEachIndex;
+    private _name = _x select 0;
+    private _amount = _x select 1;
+
+    if!(_name isEqualTo "")then{//skip items with no nam
+        {
+			if!(_x isEqualTo -1)then{
+				private _index2 = _forEachIndex;
+				private _name2 = _x select 0;
+				private _amount2 = _x select 1;
+
+				if(_name isEqualTo _name2)exitWith{
+
+					if(_amount == -1 || _amount2 == -1)then{
+						if(_amount == -1)then{
+							_list set [_forEachIndex, -1]; //remove unlimited item
+						};
+					}else{
+						private _newAmount = (_amount2 - _amount);
+						if(_newAmount > 0)then{
+							_list set [_forEachIndex, [_name, _newAmount]];
+						}else{
+							_list set [_forEachIndex, -1];//mark for removale
+						};
+					};
+				};
+			};
+        }forEach _list;
+    };
+}forEach _remove;
+</pre>
+    <p>Explanation of loop and logic flow:
+      - Outer loop iterates entries in <code>_remove</code>.
+      - Skip empty names.
+      - Inner loop iterates base <code>_list</code> entries. Note the guard <code>if!(_x isEqualTo -1)</code> — this prevents operating on entries already marked for removal.
+      - On a matched name:
+          - If either amount is -1 and the remove amount is -1, mark the base list entry as -1 (sentinel to remove unlimited item).
+          - Otherwise compute <code>_newAmount = _amount2 - _amount</code>; if positive, update entry with new reduced amount; if <= 0, mark entry as -1 (to be removed).
+      - The function uses <code>exitWith</code> to break out of the inner loop after processing a match.
+      - After processing all removes, entries set to -1 mark items to be removed; the next step filters them out.</p>
+
+    <pre>
+_list = _list - [-1];
+_list; //return this
+</pre>
+    <p>Explanation: Remove all sentinel -1 entries from the list and return the cleaned list.</p>
+
+    <h4>Where it leads</h4>
+    <ul>
+      <li>Calls: none (utility).</li>
+      <li>Called-by: JNA inventory/load logic (e.g. loadInventory, cargo operations) to decrement availability after allocation.</li>
+      <li>Global variables modified: none.</li>
+      <li>Sync/network: none — local computation. Callers may remoteExec/propagate resulting arrays as required.</li>
+    </ul>
+  </div>
+
+  <hr/>
+</div>
+
+<!-- Remaining common helper functions (names & short descriptions) -->
+<!-- Vehicle helper functions — DETAILED (Common/Vehicle) -->
+<div class="fn" id="vehicle_helpers">
+  <h2>Vehicle helper functions — DETAILED (Common/Vehicle)</h2>
+
+  <div class="fn" id="fn_common_vehicle_getVehicleType.sqf">
+    <h3>Function Name: fn_common_vehicle_getVehicleType.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Maps a vehicle object to an internal vehicle-type constant (car, armor, static, heli, plane, naval) by inspecting the vehicle's config <code>simulation</code> string and other properties (e.g. maxspeed).</p>
+    <p class="meta"><strong>When/why it's called:</strong> Used where code needs to branch logic by vehicle class (for example spawning behavior, loadouts or UI handling).</p>
+
+    <h4>How it does that (step-by-step with exact statements)</h4>
+    <pre>
+#include "defineCommon.inc"
+
+params["_vehicle"];
+</pre>
+    <p>Explanation: Include shared defines (type constants). Declare parameter <code>_vehicle</code> expected to be a vehicle object.</p>
+
+    <pre>
+private _type = typeOf _vehicle;
+private _cfg = (configfile >> "CfgVehicles" >> _type);
+private _simulation = gettext (_cfg >> "simulation");
+</pre>
+    <p>Explanation:
+      - <code>_type</code> obtains the classname of the object via <code>typeOf</code>.
+      - <code>_cfg</code> fetches the vehicle's config class from <code>CfgVehicles</code>.
+      - <code>_simulation</code> reads the <code>simulation</code> config entry (string) and converts it to text.</p>
+
+    <pre>
+private _index = switch (tolower _simulation) do {
+	case "car";
+	case "carx": {
+		TYPE_CAR;
+	};
+	case "tank";
+	case "tankx": {
+		if (getnumber (_cfg >> "maxspeed") > 0) then {
+			TYPE_ARMOR;
+		} else {
+			TYPE_STATIC;
+		};
+	};
+	case "helicopter";
+	case "helicopterx";
+	case "helicopterrtd": {
+		TYPE_HELI;
+	};
+	case "airplane";
+	case "airplanex": {
+		TYPE_PLANE;
+	};
+	case "ship";
+	case "shipx";
+	case "submarinex": {
+		TYPE_NAVAL;
+	};
+	default {-1};
+};
+</pre>
+    <p>Explanation:
+      - Convert simulation string to lowercase for robust matching (<code>tolower _simulation</code>).
+      - Use a <code>switch</code> to map known simulation names to constants from <code>defineCommon.inc</code>:
+        - "car"/"carx" => <code>TYPE_CAR</code>
+        - "tank"/"tankx" => if <code>maxspeed</code> &gt; 0 => <code>TYPE_ARMOR</code>, else <code>TYPE_STATIC</code>
+        - "helicopter", "helicopterx", "helicopterrtd" => <code>TYPE_HELI</code>
+        - "airplane", "airplanex" => <code>TYPE_PLANE</code>
+        - "ship", "shipx", "submarinex" => <code>TYPE_NAVAL</code>
+        - default returns -1 for unknown simulation types.</p>
+
+    <pre>
+//return
+_index
+</pre>
+    <p>Explanation: Return the resolved index (last expression evaluated).</p>
+
+    <h4>Where it leads</h4>
+    <ul>
+      <li>Calls: none (uses configfile queries and language constructs).</li>
+      <li>Called-by: code that needs vehicle-type branching (spawn helpers, UI logic, vehicle-specific inventory handling).</li>
+      <li>Global state modified: none.</li>
+      <li>Network/sync: none — deterministic local computation.</li>
+  </ul>
+  </div>
+
+  <div class="fn" id="fn_common_vehicle_getSeatNames.sqf">
+    <h3>Function Name: fn_common_vehicle_getSeatNames.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Returns two arrays: an array of turret indices (as produced by BIS_fnc_allTurrets) and an array of corresponding human-readable names for each seat/turret of the vehicle (e.g., Driver, Gunner, Pilot).</p>
+    <p class="meta"><strong>When/why it's called:</strong> Useful for UI displays and action menus where seat labels are needed (for example when presenting seat-selection lists).</p>
+
+    <h4>How it does that (step-by-step with exact statements)</h4>
+    <pre>
+#include "defineCommon.inc"
+
+/*
+	Author: Jeroen Notenbomer
+	Description: Gets array of seats with their index and a proper name
+	Usage: object call JN_fnc_common_vehicle_getSeatNames;
+*/
+
+params["_vehicle"];
+</pre>
+    <p>Explanation: Include common defines and declare parameter <code>_vehicle</code>.</p>
+
+    <pre>
+private _turretsArrayName = [typeof _vehicle, true] call BIS_fnc_allTurrets;
+private _turretCfgs = ([_vehicle] call BIS_fnc_getTurrets);
+</pre>
+    <p>Explanation:
+      - <code>BIS_fnc_allTurrets</code> returns an array of turret index arrays for the vehicle type; passing <code>true</code> requests index arrays.
+      - <code>BIS_fnc_getTurrets</code> returns config class entries (cfgTurret) for each turret on this instance (array of configs).</p>
+
+    <pre>
+if(count _turretsArrayName != count _turretCfgs)then{	_turretsArrayName = [[-1]] + _turretsArrayName;};
+private _turrets = [];
+private _names = [];
+</pre>
+    <p>Explanation:
+      - If the counts differ, prepend [[-1]] to the turretsArrayName to align indices (this handles a driver/pilot slot for non-turreted vehicles).
+      - Initialize return arrays <code>_turrets</code> and <code>_names</code>.</p>
+
+    <pre>
+{
+	_x params ["_cfgTurret"];
+	private _arrayName = (_turretsArrayName select _forEachIndex);
+	private "_name";
+	if(_arrayName isEqualTo [-1])then{
+		_name = ["Driver","Pilot"] select(_vehicle isKindOf "Helicopter");
+	}else{
+		_name = getText(_cfgTurret >>  "gunnerName");
+	};
+	private _magazineArray = getArray (_cfgTurret >> "magazines");
+	
+	_turrets pushBack _arrayName;
+	_names pushBack _name;
+} forEach _turretCfgs;
+</pre>
+    <p>Explanation of loop:
+      - Iterate each config turret entry returned by <code>BIS_fnc_getTurrets</code>.
+      - For each, the iterator variable <code>_x</code> is treated as params ["_cfgTurret"] (unpack to named var).
+      - Determine the corresponding turret index array from <code>_turretsArrayName</code> at the same index.
+      - If turret array name equals [-1], that indicates the primary seat — set name to "Driver" or "Pilot" depending on whether the vehicle is a helicopter (<code>_vehicle isKindOf "Helicopter"</code>).
+      - Otherwise read the configured gunner name from turret config via <code>getText(_cfgTurret >> "gunnerName")</code>.
+      - Push the turret index array and computed name into the returned arrays.</p>
+
+    <pre>
+[_turrets,_names];
+</pre>
+    <p>Explanation: Return the two arrays as a pair: first turret index arrays, then their names.</p>
+
+    <h4>Where it leads</h4>
+    <ul>
+      <li>Calls: <span class="calls">BIS_fnc_allTurrets</span>, <span class="calls">BIS_fnc_getTurrets</span>, <span class="calls">getText</span>, typical config queries.</li>
+      <li>Called-by: UI code that needs seat labels, action-generation utilities, or any feature that needs to present turret/seat choices.</li>
+      <li>Global state modified: none.</li>
+      <li>Network/sync: none — uses local config and object introspection.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Action helper functions — DETAILED (Common) -->
+<div class="fn" id="action_helpers">
+  <h2>Action helper functions — DETAILED (Common)</h2>
+
+  <div class="fn" id="fn_common_addActionCancel.sqf">
+    <h3>Function Name: fn_common_addActionCancel.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Adds a cancel-type user action to an object that runs a provided script and stores the action id on the object for later removal/update.</p>
+    <h4>Source (exact statements)</h4>
+    <pre>
+#include "defineCommon.inc"
+
+params ["_object",["_script",{}]];
+
+private _actionId = _object addAction [
+	"place holder",
+	{
+		params ["_target", "_caller", "_actionId", "_arguments"];
+		private _script = _arguments;
+		
+		_target removeAction _actionId;
+		_target setVariable ["jn_cancelAction_id",nil];
+		
+		call _script;
+	},
+	_script,
+	7, 
+	true,
+	false,
+	"",
+	"alive _target"
+];
+
+_object setVariable ["jn_cancelAction_id",_actionId];
+
+[player,""] call JN_fnc_common_updateActionCancel;
+    </pre>
+    <h4>Explanation (step-by-step)</h4>
+    <ul>
+      <li><code>#include</code> pulls shared constants.</li>
+      <li><code>params ["_object",["_script",{}]];</code> reads the target object and optional script (defaults to empty closure).</li>
+      <li><code>_object addAction [ ... ]</code>: registers an action on the object with:
+        <ul>
+          <li>placeholder text "place holder"</li>
+          <li>handler closure that receives <code>_target, _caller, _actionId, _arguments</code></li>
+          <li>handler removes the action (<code>_target removeAction _actionId</code>), clears the stored variable (<code>_target setVariable ["jn_cancelAction_id",nil]</code>) and calls the provided script (<code>call _script</code>).</li>
+          <li>action parameters: priority 7, show to all, not available to AI, empty icon, condition string <code>"alive _target"</code>.</li>
+        </ul>
+      </li>
+      <li>Store action id on object: <code>_object setVariable ["jn_cancelAction_id",_actionId];</code></li>
+      <li>Update player's UI cancel-text: <code>[player,""] call JN_fnc_common_updateActionCancel;</code></li>
+    </ul>
+    <h4>Where it leads</h4>
+    <ul>
+      <li>Calls: <code>JN_fnc_common_updateActionCancel</code> to refresh UI text.</li>
+      <li>Modifies object variable: <code>jn_cancelAction_id</code>.</li>
+      <li>Network: local addAction; object variable is local — caller decides whether to setRemote.</li>
+    </ul>
+  </div>
+
+  <div class="fn" id="fn_common_addActionSelect.sqf">
+    <h3>Function Name: fn_common_addActionSelect.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Adds a timed selection action for the player with dynamic user-action text that updates while the selection is available; auto-removes after a timer or on selection.</p>
+    <h4>Source (exact statements)</h4>
+    <pre>
+#include "defineCommon.inc"
+
+#define UPDATEINTERVAL 0.1
+#define REMOVEAFTER 10
+#define TEXTGOOD "'#FFA500'"
+#define TEXTBAD "'#808080'"
+
+params ["_script","_conditionActive","_conditionColor","_object",["_showCursorObject",true],["_timer",REMOVEAFTER],["_removeScript",{}]];
+
+//remove previous action if existing
+private _id = player getVariable "jn_selectAction_id";
+if(!isNil "_id")then{
+	player removeAction _id;
+	player setVariable ["jn_selectAction_id",nil];
+};
+
+//removes previous remove after .. timer
+private _handle = player getVariable "jn_selectAction_handle";
+if(!isNil "_handle")then{
+	terminate _handle;
+};
+
+player setVariable ["jn_selectAction_object", _object];
+
+//add select action
+_id = player addAction [
+	"aaa",
+	{
+		(_this select 3) params ["_object","_script","_removeScript"];
+
+		private _id = _this select 2;
+		player removeAction _id;
+		player setVariable ["jn_selectAction_id",nil];
+		terminate (player getVariable "jn_selectAction_handle");//remove timer
+		
+		_object call _removeScript;
+		
+		if(isNil "_object")exitwith{hint localize "STR_JNC_ACT_SELECT_NO_OBJECT"};
+		hint ""; //remove select hint if it was still there
+		
+		_object call _script;
+		
+	},
+	[_object,_script,_removeScript],
+	7, 
+	true,
+	false,
+	"",
+	format ["if([player getVariable 'jn_selectAction_object'] call %1)then{
+		private _color = [player getVariable 'jn_selectAction_object'] call %2;
+		private _colorCode = [%4,%3] select _color;
+		private _text = '<t color=' + _colorCode + '>' + %5;
+		if(%6 && _color)then{_text = _text + ' (' + getText(configfile >> 'CfgVehicles' >> typeof cursorObject >>'displayName') + ')'};
+		player setUserActionText [(player getVariable ['jn_selectAction_id',-1]), _text];
+		true
+	}",_conditionActive,_conditionColor,str TEXTGOOD,str TEXTBAD,str localize 'STR_JNC_ACT_SELECT',_showCursorObject]
+
+player setVariable ["jn_selectAction_id",_id];
+
+//remove timer
+_handle = [_id,_timer,_removeScript,_object] spawn {
+	params["_id","_timer","_removeScript","_object"];
+	sleep _timer;
+	player removeAction _id;
+	player setVariable ["jn_selectAction_id",nil];
+	_object call _removeScript;
+	hint "";
+};
+
+player setVariable ["jn_selectAction_handle",_handle];
+
+hint localize "STR_JNC_ACT_SELECT_HINT";
+    </pre>
+    <h4>Explanation (step-by-step)</h4>
+    <ul>
+      <li>Defines and params: constants for update interval and default remove-after, and parameters: script to call, two condition closures, object, optional flags and timer, and optional removeScript.</li>
+      <li>Cleanup: if player already has a select-action id stored, remove it and clear variable; if there's an existing remove-timer handle, terminate it.</li>
+      <li>Store target object on player: <code>player setVariable ["jn_selectAction_object", _object];</code>.</li>
+      <li>Add action on player (<code>player addAction</code>):
+        <ul>
+          <li>Handler closure unpacks arguments, removes the action and timer, calls the removeScript, validates object, clears hints, then calls the main script.</li>
+          <li>Action parameters include a dynamic <code>format</code> string (condition closures inserted) which is evaluated by the UI to update user-action text: it checks the condition closures (active/color) and sets text color accordingly, optionally appending the cursor object display name.</li>
+        </ul>
+      </li>
+      <li>Store action id on player and spawn a timer that will remove the action after <code>_timer</code> seconds, call the removeScript, and clear UI hint.</li>
+      <li>Store timer handle on player variable and show hint localized string.</li>
+    </ul>
+    <h4>Where it leads</h4>
+    <ul>
+      <li>Calls: none directly besides UI primitives; it expects caller closures for conditions and scripts.</li>
+      <li>Modifies player variables: <code>jn_selectAction_id</code>, <code>jn_selectAction_handle</code>, <code>jn_selectAction_object</code>.</li>
+      <li>Network: local to client (player UI), but closures passed in may perform networked ops if remoteExec used.</li>
+    </ul>
+  </div>
+
+  <div class="fn" id="fn_common_getActionCanceled.sqf">
+    <h3>Function Name: fn_common_getActionCanceled.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Returns whether the target object has a cancel action registered (checks if <code>jn_cancelAction_id</code> is nil).</p>
+    <h4>Source</h4>
+    <pre>
+#include "defineCommon.inc"
+
+params ["_object"];
+isNil {_object getVariable "jn_cancelAction_id"}
+    </pre>
+    <h4>Explanation</h4>
+    <ul>
+      <li>Read the object parameter.</li>
+      <li>Return boolean result of <code>isNil {_object getVariable "jn_cancelAction_id"}</code> — true means no cancel action present.</li>
+    </ul>
+  </div>
+
+  <div class="fn" id="fn_common_removeActionCancel.sqf">
+    <h3>Function Name: fn_common_removeActionCancel.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Removes and clears a previously added cancel action from an object using its stored <code>jn_cancelAction_id</code>.</p>
+    <h4>Source</h4>
+    <pre>
+#include "defineCommon.inc"
+
+params["_object",["_text",""]];
+
+private _id = _object getVariable "jn_cancelAction_id";
+
+if(isnil "_id")exitWith{};
+_object removeAction _id;
+    </pre>
+    <h4>Explanation</h4>
+    <ul>
+      <li>Read object (and optional text) param.</li>
+      <li>Fetch action id from object variable. If it's nil, exit silently.</li>
+      <li>Otherwise call <code>_object removeAction _id;</code> to remove the action entry.</li>
+    </ul>
+  </div>
+
+  <div class="fn" id="fn_common_spawnVehicle.sqf">
+    <h3>Function Name: fn_common_spawnVehicle.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Spawns a vehicle based on a mission-config entry under <code>missionConfigFile >> "Vehicles" >> _jn_type</code> and sets a marker variable on the created vehicle.</p>
+    <h4>Source</h4>
+    <pre>
+#include "defineCommon.inc"
+
+params["_jn_type", _location];
+private _config = (missionConfigFile >> "Vehicles" >> _jn_type);
+private _type = (_config >> "type");
+private _fuel = (_config >> "fuel");
+private _repair = (_config >> "repair");
+
+private _vehicle = _type createVehicle _location; 
+_vehicle setVariable ["jn_type",_jn_type];
+    </pre>
+    <h4>Explanation</h4>
+    <ul>
+      <li>Read type key and spawn location.</li>
+      <li>Lookup mission config: <code>missionConfigFile >> "Vehicles" >> _jn_type</code>, then pull <code>type</code> (actual classname) and optional config fields like fuel/repair (not used further here).</li>
+      <li>Create the vehicle: <code>_type createVehicle _location;</code> and set a local variable <code>jn_type</code> on the vehicle so other code can identify the spawn template.</li>
+    </ul>
+  </div>
+
+  <div class="fn" id="fn_common_updateActionCancel.sqf">
+    <h3>Function Name: fn_common_updateActionCancel.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Updates the user action text for a previously added cancel action on an object.</p>
+    <h4>Source</h4>
+    <pre>
+#include "defineCommon.inc"
+
+params["_object",["_text",""]];
+
+private _id = _object getVariable "jn_cancelAction_id";
+
+if(isnil "_id")exitWith{};
+
+_object setUserActionText [_id,  format["&lt;t color='#FFA500'&gt;%1 %2",localize "STR_JNC_ACT_CANCEL",_text]];
+    </pre>
+    <h4>Explanation</h4>
+    <ul>
+      <li>Read object and optional text param.</li>
+      <li>Fetch cancel action id and exit if none.</li>
+      <li>Set the displayed user action text on the object id using localized cancel label plus provided text, colored orange.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- short summaries index removed per request -->
+
+<!-- JNA functions — DETAILED (server-side & UI sync) -->
+<div class="fn" id="jna_helpers">
+  <h2>JNA functions — DETAILED (JNA)</h2>
+
+  <div class="fn" id="fn_arsenal_addItem.sqf">
+    <h3>Function Name: fn_arsenal_addItem.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Adds items into the global JNA data list and notifies clients; accepts a scalar short form or a full list of entries. Performs several fixes for mod addons before propagating updates.</p>
+    <h4>Source</h4>
+    <pre>
+#include "..\defineCommon.inc"
+
+private _array = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+
+if(typeName (_this select 0) isEqualTo "SCALAR")then{//[_index, _item] and [_index, _item, _amount];
+	params["_index","_item",["_amount",1]];
+	if(_index < 0)exitWith{
+		ERROR_JN_2("Failed to addItem: ", _this);
+		};
+	_array set [_index,[[_item,_amount]]];
+}else{
+	_array = _this;
+};
+
+{
+	private _index = _forEachIndex;
+	{
+		private _item = _x select 0;
+		private _amount = _x select 1;
+		if (_item isEqualType "") then
+			{
+			if !(_item isEqualTo "")then{
+
+				if(_index == -1)exitWith{["Antistasi: ERROR in additemarsenal: %1", _this] call BIS_fnc_error};
+				if(_index == IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG)then{_index = IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL};
+
+				//TFAR fix
+				private _radioName = getText(configfile >> "CfgWeapons" >> _item >> "tf_parent");
+				if!(_radioName isEqualTo "")then{_item = _radioName};
+
+				//Weapon Stack fix
+				private _weaponname = getText(configfile >> "CfgWeapons" >> _item >> "baseWeapon");
+				if!(_weaponname isEqualTo "")then{_item = _weaponname};
+
+				//RHS Sight Stack fix
+				private _sightname = getText(configfile >> "CfgWeapons" >> _item >> "rhs_optic_base");
+				if!(_sightname isEqualTo "")then{_item = _sightname};
+				
+				//ACRE fix
+				private _radioName = getText(configfile >> "CfgVehicles" >> _item >> "acre_baseClass");
+				if!(_radioName isEqualTo "")then{_item = _radioName};
+
+				// Update server immediately if local. Avoids lag after unlockEquipment
+				if (isServer) then { ["UpdateItemAdd",[_index, _item, _amount,true]] call jn_fnc_arsenal }
+				else { ["UpdateItemAdd",[_index, _item, _amount,true]] remoteExecCall ["jn_fnc_arsenal",2] };
+
+				// then update other players. Don't execute on server twice
+				private _playersInArsenal = +(server getVariable ["jna_playersInArsenal",[]]) - [2];
+				if (0 in _playersInArsenal) then { _playersInArsenal = -2 };
+				if (_playersInArsenal isEqualTo []) exitWith {};
+				["UpdateItemAdd",[_index, _item, _amount,true]] remoteExecCall ["jn_fnc_arsenal",_playersInArsenal];
+			};
+		};
+	} forEach _x;
+}foreach _array;
+    </pre>
+    <h4>Step-by-step</h4>
+    <ol>
+      <li>Normalize input: accepts either scalar short-form (<code>[_index,_item,_amount]</code>) or a full nested array; builds local <code>_array</code>.</li>
+      <li>Iterate each entry and validate: ensure index non-negative, map CARGOMAG to CARGOMAGALL.</li>
+      <li>Apply compatibility fixes: TFAR (<code>tf_parent</code>), weapon stacking (<code>baseWeapon</code>), RHS optic base, ACRE radio base class — each rewrites <code>_item</code> if alternate class exists.</li>
+      <li>Propagate update:
+        <ul>
+          <li>If on server: call local <code>jn_fnc_arsenal UpdateItemAdd</code>.</li>
+          <li>Else: remoteExec to server to request update.</li>
+        </ul>
+      </li>
+      <li>Notify other clients: fetch <code>server getVariable ["jna_playersInArsenal"]</code> and remoteExec the update to those clients.</li>
+    </ol>
+    <h4>Where it leads</h4>
+    <ul>
+      <li>Calls: <span class="calls">jn_fnc_arsenal (UpdateItemAdd)</span> locally or via remoteExec; modifies server variable <code>jna_playersInArsenal</code> indirectly by notifying listed clients.</li>
+      <li>Side-effects: network remoteExec calls; meant to keep client UIs in sync.</li>
+    </ul>
+  </div>
+
+  <div class="fn" id="fn_arsenal_addToArray.sqf">
+    <h3>Function Name: fn_arsenal_addToArray.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Utility to add counts from one item-list into another (JNA format). Identical behavior to Common array add but present in JNA namespace.</p>
+    <h4>Source</h4>
+    <pre>
+params["_list","_add"];
+_list = +_list;
+if(typeName _add isEqualTo "STRING")then{_add = [_add,1];};
+if(typeName (_add select 0) isEqualTo "STRING")then{_add = [_add]};
+
+{
+    private _index = _forEachIndex;
+    private _name = _x select 0;
+    private _amount = _x select 1;
+
+    if!(_name isEqualTo "")then{//skip empty
+
+        private _found = false;
+        {
+            private _index2 = _forEachIndex;
+            private _name2 = _x select 0;
+            private _amount2 = _x select 1;
+
+            if(_name isEqualTo _name2)exitWith{
+                _found = true;    //found it, now update amount
+                if(_amount == -1 || _amount2 == -1)then{
+                    _list set [_index2, [_name,-1]];
+                }else{
+                    _list set [_index2, [_name,(_amount2 + _amount)]];
+                };
+            };
+
+        }forEach _list;
+
+        if(!_found)then{
+            _list pushBack [_name, _amount]; //not found add new
+        };
+    };
+}forEach _add;
+
+_list; //return
+    </pre>
+    <h4>Step-by-step</h4>
+    <p>Same behavior as Common/Array add: normalizes inputs, merges entries, handles -1 unlimited flag, returns merged list.</p>
+    <h4>Where it leads</h4>
+    <p>Called by other JNA functions that build combined arrays (vehicle magazine aggregation, loadout merging).</p>
+  </div>
+
+  <div class="fn" id="fn_arsenal_itemCount.sqf">
+    <h3>Function Name: fn_arsenal_itemCount.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Returns quantity for a given item in a JNA-format subarray; returns 0 if not found.</p>
+    <h4>Source</h4>
+    <pre>
+private["_item","_array","_return"];
+_array = _this select 0;
+_item = _this select 1;
+
+_return = 0;
+{
+	if((_x select 0) isEqualTo _item)exitWith{_return = (_x select 1)};
+}forEach _array;
+
+_return;
+    </pre>
+    <h4>Explanation</h4>
+    <ul>
+      <li>Reads input array and item name.</li>
+      <li>Iterates and returns matching amount on first match via <code>exitWith</code>, otherwise returns 0.</li>
+    </ul>
+    <h4>Where it leads</h4>
+    <p>Used in many places to compute available ammo counts and list tallies.</p>
+  </div>
+
+  <div class="fn" id="fn_arsenal_removeFromArray.sqf">
+    <h3>Function Name: fn_arsenal_removeFromArray.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Subtracts counts from a base list according to a remove-list; marks and filters removed entries. Mirrors Common remove logic within JNA namespace.</p>
+    <h4>Source</h4>
+    <pre>
+params["_list","_remove"];
+_list = +_list;
+
+if(typeName _remove isEqualTo "STRING")then{_remove = [_remove,1];};
+if(typeName (_remove select 0) isEqualTo "STRING")then{_remove = [_remove]};
+
+{
+    private _index = _forEachIndex;
+    private _name = _x select 0;
+    private _amount = _x select 1;
+
+    if!(_name isEqualTo "")then{//skip items with no nam
+        {
+            private _index2 = _forEachIndex;
+            private _name2 = _x select 0;
+            private _amount2 = _x select 1;
+
+            if(_name isEqualTo _name2)exitWith{
+
+                if(_amount == -1 || _amount2 == -1)then{
+                    if(_amount == -1)then{
+                        _list set [_forEachIndex, -1]; //remove unlimited item
+                    };
+                }else{
+                    private _newAmount = (_amount2 - _amount);
+                    if(_newAmount > 0)then{
+                        _list set [_forEachIndex, [_name, _newAmount]];
+                    }else{
+                        _list set [_forEachIndex, -1];//mark for removale
+                    };
+                };
+            };
+        }forEach _list;
+    };
+}forEach _remove;
+
+_list = _list - [-1];
+_list; //return this
+    </pre>
+    <h4>Explanation</h4>
+    <p>Normalizes inputs, subtracts amounts, uses -1 sentinel to mark removals, filters out and returns cleaned list.</p>
+  </div>
+
+  <div class="fn" id="fn_arsenal_removeItem.sqf">
+    <h3>Function Name: fn_arsenal_removeItem.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Notifies clients that items were removed from the JNA data list (inverse of addItem). Accepts scalar or list form and remoteExecs UpdateItemRemove to clients watching the arsenal.</p>
+    <h4>Source</h4>
+    <pre>
+#include "\A3\ui_f\hpp\defineDIKCodes.inc"
+#include "\A3\Ui_f\hpp\defineResinclDesign.inc"
+
+private _array = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+
+if(typeName (_this select 0) isEqualTo "SCALAR")then{//[_index, _item] or [_index, _item, _amount];
+	params["_index","_item",["_amount",1]];
+	_array set [_index,[[_item,_amount]]];
+}else{
+	_array = _this;
+};
+
+{
+	private _index = _forEachIndex;
+	{
+		private _item = _x select 0;
+		private _amount = _x select 1;
+
+		if!(_item isEqualTo "")then{
+
+			if(_index == -1)exitWith{["ERROR in additemarsenal: %1", _this] call BIS_fnc_error};
+			if(_index == IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG)then{_index = IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL};
+
+			//update
+			private _playersInArsenal = +(server getVariable ["jna_playersInArsenal",[]]);
+			if!(0 in _playersInArsenal)then{_playersInArsenal pushBackUnique 2;};
+			["UpdateItemRemove",[_index, _item, _amount,true]] remoteExecCall ["jn_fnc_arsenal",_playersInArsenal];
+		};
+	} forEach _x;
+}foreach _array;
+    </pre>
+    <h4>Step-by-step</h4>
+    <ol>
+      <li>Normalize input to list form.</li>
+      <li>For each valid item, map CARGOMAG to CARGOMAGALL and remoteExec an update <code>UpdateItemRemove</code> to all players in <code>jna_playersInArsenal</code> (ensures server includes the host index).</li>
+    </ol>
+    <h4>Where it leads</h4>
+    <p>Triggers client-side <code>jn_fnc_arsenal</code> handling (UpdateItemRemove path) to update UI lists.</p>
+  </div>
+
+  <div class="fn" id="fn_arsenal_inList.sqf">
+    <h3>Function Name: fn_arsenal_inList.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Simple membership check for JNA list entries: returns true if an item name matches the first element of any subarray in a list.</p>
+    <h4>Source</h4>
+    <pre>
+private["_list","_item","_return"];
+_item = _this select 0;
+_list = _this select 1;
+_return = false;
+{
+	if(_item isEqualTo (_x select 0))exitwith{_return = true;};
+}foreach _list;
+_return;
+    </pre>
+  </div>
+
+  <div class="fn" id="fn_arsenal_cargoToArsenal.sqf">
+    <h3>Function Name: fn_arsenal_cargoToArsenal.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Server-side operation that transfers a container's entire contents into the JNA global data list and clears the container. Protects against concurrent runs on the same object.</p>
+    <h4>Source</h4>
+    <pre>
+/*
+Author: Jeroen Notenbomer
+    Adds items of passed container directly to JNA.
+*/
+
+if (!isServer) exitWith {};
+
+params [["_object",objNull,[objNull]]];
+if (isNull _object) exitWith {["Error: wrong input given '%1'",_object] call BIS_fnc_error;};
+
+if (isNil { // Run in unschedule scope.
+    if (_object getVariable ["A3A_JNA_cargoToArsenal_busy",false]) then {
+        nil;  // will lead to exit.
+    } else {
+        _object setVariable ["A3A_JNA_cargoToArsenal_busy",true];
+        0;  // not nil, will allow script to continue.
+    };
+}) exitWith {};  //  // Silent exit, likely due to spamming
+
+// Grab contents before being cleared.
+private _array = _object call jn_fnc_arsenal_cargoToArray;
+// Clear cargo
+clearMagazineCargoGlobal _object;
+clearItemCargoGlobal _object;
+clearweaponCargoGlobal _object;
+clearbackpackCargoGlobal _object;
+// Update datalist on server and client
+_array call jn_fnc_arsenal_addItem;
+
+if (!isNull _object) then {
+    _object setVariable ["A3A_JNA_cargoToArsenal_busy",false];
+};
+    </pre>
+    <h4>Step-by-step</h4>
+    <ol>
+      <li>Ensure execution on server and validate _object param.</li>
+      <li>Guard against concurrent operations by using an object variable flag <code>A3A_JNA_cargoToArsenal_busy</code>.</li>
+      <li>Collect contents via <code>jn_fnc_arsenal_cargoToArray</code>, clear all cargo categories from the object, then call <code>jn_fnc_arsenal_addItem</code> with the extracted array to update JNA lists and notify clients.</li>
+      <li>Clear busy flag at end.</li>
+    </ol>
+  </div>
+
+  <div class="fn" id="fn_arsenal_handleAction.sqf">
+    <h3>Function Name: fn_arsenal_handleAction.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Client-side handler invoked by the "Arsenal" addAction; prepares player UI, saves container/attachment state, starts loading screen and requests server to open the arsenal.</p>
+    <h4>Source (excerpt)</h4>
+    <pre>
+if (!arsenalInit) exitWith {};
+
+if (isMenuOpen) then {
+	[] call SCRT_fnc_ui_toggleCommanderMenu;
+	private _display = findDisplay 60000;
+	if (str (_display) != "no display") then {
+		_display closeDisplay 1;
+	};
+	...
+	uiNamespace setVariable ["isLoadoutArsenal", true];
+};
+
+["jn_fnc_arsenal", "Loading Nutz™ Arsenal"] call bis_fnc_startloadingscreen;
+[] spawn {
+uisleep 10;
+private _ids = missionnamespace getvariable ["BIS_fnc_startLoadingScreen_ids",[]];
+  if("jn_fnc_arsenal" in _ids)then{
+	private _display =  uiNamespace getVariable ["arsenalDisplay","No display"];
+	titleText["ERROR DURING LOADING ARSENAL", "PLAIN"];
+	_display closedisplay 2;
+	["jn_fnc_arsenal"] call BIS_fnc_endLoadingScreen;
+  };
+};
+
+missionNamespace setVariable ["jna_magazines_init",  [
+	magazinesAmmoCargo (uniformContainer player),
+	magazinesAmmoCargo (vestContainer player),
+	magazinesAmmoCargo (backpackContainer player)
+]];
+
+_attachmentsContainers = [[],[],[]];
+{ ... } forEach [uniformContainer player,vestContainer player,backpackContainer player];
+missionNamespace setVariable ["jna_containerCargo_init", _attachmentsContainers];
+
+UINamespace setVariable ["jn_type","arsenal"];
+[clientOwner] remoteExecCall ["jn_fnc_arsenal_requestOpen",2];
+    </pre>
+    <h4>Step-by-step</h4>
+    <ol>
+      <li>Exit if arsenal not initialized.</li>
+      <li>Close competing menus and start loading screen for the arsenal UI.</li>
+      <li>Save current magazine/attachment state to missionNamespace to restore later.</li>
+      <li>Set UI type variable and remoteExec to server: <code>jn_fnc_arsenal_requestOpen</code> for the clientOwner.</li>
+    </ol>
+  </div>
+
+  <div class="fn" id="fn_vehicleArsenal.sqf">
+    <h3>Function Name: fn_vehicleArsenal.sqf</h3>
+    <p class="meta"><strong>What it does:</strong> Vehicle-specific extension/override of the BIS arsenal UI handling. Implements many UI behaviors (tabs, lists, events) for vehicle inventory integration and delegates to jn_fnc_arsenal for shared operations.</p>
+    <h4>Source (excerpt)</h4>
+    <pre>
+/* Large file: defines, macros and many switch-case handlers for modes:
+   CustomInit, getMass, getMassItem, customGUI, customEvents, TabSelect, CreateList, SelectItem, buttonCargo, Unload, Close ...
+*/
+
+_mode = [_this,0,"Open",[displaynull,""]] call bis_fnc_param;
+_this = [_this,1,[]] call bis_fnc_param;
+
+switch _mode do {
+  case "CustomInit": { params ["_display"]; private _objectSelected = uiNamespace getVariable "jn_object_selected"; missionnamespace setVariable ["bis_fnc_arsenal_center",_objectSelected]; jnva_loadout = (_objectSelected call jn_fnc_arsenal_cargoToArray); jnva_loadout_mass = ["getMass"] call jn_fnc_vehicleArsenal; ... };
+  case "getMass": { ... };
+  case "getMassItem": { ... };
+  case "customGUI": { ... };
+  case "customEvents": { ... };
+  case "TabSelect": { ... };
+  case "CreateList": { ... };
+  case "SelectItem": { ... };
+  case "buttonCargo": { ... };
+  case "Unload": { ... };
+  case "Close": { ... };
+  default { ["Error: wrong input given '%1' for mode '%2'",_this,_mode] call BIS_fnc_error; };
+};
+    </pre>
+    <h4>Summary</h4>
+    <p>This file contains most of the vehicle-arsenal UI wiring: moving controls, building lists of usable magazines, handling button clicks to transfer items between vehicle and arsenal, computing mass constraints, and delegating item add/remove calls to <code>jn_fnc_arsenal_addItem</code>/<code>jn_fnc_arsenal_removeItem</code>. Key helpers it calls include <code>jn_fnc_arsenal_cargoToArray</code>, <code>jn_fnc_arsanel_itemCount</code>, <code>jn_fnc_arsanel_addToArray</code> and UI functions in <code>jn_fnc_arsanel</code> (createItem/updateItemAdd/etc.).</p>
+  </div>
+</div>
+
+<footer>
+  <p>Notes: This document includes extracted source excerpts and high-level breakdowns. If you want fully expanded per-statement explanations (annotating every single line), I can produce a follow-up that annotates any single function in full detail — tell me which function to prioritize and I'll produce line-by-line commentary.</p>
+</footer>
+
+<!-- fn_arsanel: in-depth, line-by-line expansion for the 'buttonCargo' case -->
+<div class="fn" id="fn_arsanel_buttonCargo_expanded">
+  <h2>fn_arsanel.sqf — Detailed line-by-line for case "buttonCargo"</h2>
+  <p class="meta">This reproduces the exact code in the <code>case "buttonCargo"</code> block and explains each statement and edge-case handling. Use this to understand the transfer ADD/REMOVE flow between arsenal and vehicle/player containers.</p>
+
+  <h3>Code (exact)</h3>
+  <pre>
+case "buttonCargo": {
+    _display = _this select 0;
+    _add = _this select 1;
+    _selected = -1;
+    {
+        _ctrlList = _display displayctrl (IDC_RSCDISPLAYARSENAL_LIST + _x);
+        if (ctrlenabled _ctrlList) exitwith {_selected = _x;};
+    } foreach [IDCS_LEFT];
+
+    _ctrlList = ctrlnull;
+    _index = -1;
+    _lbcursel = -1;
+    {
+        _ctrlList = _display displayctrl (IDC_RSCDISPLAYARSENAL_LIST + _x);
+        if (ctrlenabled _ctrlList) exitwith {_lbcursel = lbcursel _ctrlList;_index = _x};
+    } foreach [IDCS_RIGHT];
+
+    _dataStr = _ctrlList lnbData [_lbcursel,0];
+    _data = call compile _dataStr;
+    _item = _data select 0;
+    _amount = _data select 1;
+
+    _load = 0;
+    _items = [];
+    _itemChanged = false;
+
+    _ctrlLoadCargo = _display displayctrl IDC_RSCDISPLAYARSENAL_LOADCARGO;
+
+    //save old weight
+    _loadOld = switch _selected do{
+        case IDC_RSCDISPLAYARSENAL_TAB_UNIFORM: {loaduniform player};
+        case IDC_RSCDISPLAYARSENAL_TAB_VEST: {loadvest player};
+        case IDC_RSCDISPLAYARSENAL_TAB_BACKPACK: {loadbackpack player};
+    };
+
+    //remove or add
+    _count = 1;
+
+    if(((_amount > 0 || _amount == -1) || _add < 0) && (_add != 0))then{
+
+        if (_add > 0) then {//add
+            _min = [_index, _item] call _minItemsMember;
+            if((_amount <= _min) AND (_amount != -1) AND !(player call A3A_fnc_isMember)) exitWith{
+                ['showMessage',[_display, localize "STR_JNA_ACT_ONLY_MEMBERS"]] call jn_fnc_arsanel;
+            };
+            if(_index in [IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG,IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL])then{//magazines are handled by bullet count
+                _count = getNumber (configfile >> "CfgMagazines" >> _item >> "count");
+                if(_amount != -1)then{
+                    if(_amount<_count)then{_count = _amount};
+                };
+                _canAdd = false;
+                _container = switch _selected do{
+                    case IDC_RSCDISPLAYARSENAL_TAB_UNIFORM: {_canAdd = player canAddItemToUniform _item; uniformContainer player};
+                    case IDC_RSCDISPLAYARSENAL_TAB_VEST: {_canAdd = player canAddItemToVest _item; vestContainer player;};
+                    case IDC_RSCDISPLAYARSENAL_TAB_BACKPACK: {_canAdd = player canAddItemToBackpack _item; backpackContainer player;};
+                };
+                if(_canAdd)then{
+                    _container addMagazineAmmoCargo [_item,1,_count];
+                };
+            }else{
+                switch _selected do{
+                    case IDC_RSCDISPLAYARSENAL_TAB_UNIFORM: {player additemtouniform _item;};
+                    case IDC_RSCDISPLAYARSENAL_TAB_VEST: {player additemtovest _item;};
+                    case IDC_RSCDISPLAYARSENAL_TAB_BACKPACK: {player additemtobackpack _item;};
+                };
+            };
+        } else {//remove
+            if(_index in [IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG,IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL])then{
+
+                _container = switch _selected do{
+                    case IDC_RSCDISPLAYARSENAL_TAB_UNIFORM: {uniformContainer player};
+                    case IDC_RSCDISPLAYARSENAL_TAB_VEST: {vestContainer player;};
+                    case IDC_RSCDISPLAYARSENAL_TAB_BACKPACK: {backpackContainer player;};
+                };
+
+                //save mags in list and remove them
+                _mags = magazinesAmmoCargo _container;
+                if (_mags findIf {(_x select 0) isEqualTo _item} == -1) exitWith {};
+                clearMagazineCargoGlobal _container;
+
+                //add back magazines except the one that needs to be removed
+                _removed = false;
+                {
+                    if((_x select 0) isEqualTo _item && !_removed)then{
+                        _count = _x select 1;//this mag is removed
+                        _removed = true;
+                    }else{
+                        _container addMagazineAmmoCargo [(_x select 0),1,(_x select 1)];
+                    };
+                } forEach _mags;
+
+            }else{
+                switch _selected do{
+                    case IDC_RSCDISPLAYARSENAL_TAB_UNIFORM: {player removeitemfromuniform _item;};
+                    case IDC_RSCDISPLAYARSENAL_TAB_VEST: {player removeitemfromvest _item;};
+                    case IDC_RSCDISPLAYARSENAL_TAB_BACKPACK: {player removeitemfrombackpack _item;};
+                };
+            };
+        };
+    };
+
+    //check if item was added
+    _load = switch _selected do{
+        case IDC_RSCDISPLAYARSENAL_TAB_UNIFORM: {loaduniform player};
+        case IDC_RSCDISPLAYARSENAL_TAB_VEST: {loadvest player};
+        case IDC_RSCDISPLAYARSENAL_TAB_BACKPACK: {loadbackpack player};
+    };
+
+    if!(_loadOld isEqualTo _load)then{
+        _amountOld = parseNumber (_ctrlList lnbtext [_lbcursel,2]);
+        if(_add > 0)then{
+            _ctrlList lnbsettext [[_lbcursel,2],str (_amountOld + _count)];
+            [_index, _item, _count]call jn_fnc_arsanel_removeItem;
+        }else{
+            _ctrlList lnbsettext [[_lbcursel,2],str (_amountOld - _count)];
+            [_index, _item, _count] call jn_fnc_arsanel_addItem;
+        };
+    };
+
+    _load = switch _selected do{
+        case IDC_RSCDISPLAYARSENAL_TAB_UNIFORM: {loaduniform player};
+        case IDC_RSCDISPLAYARSENAL_TAB_VEST: {loadvest player};
+        case IDC_RSCDISPLAYARSENAL_TAB_BACKPACK: {loadbackpack player};
+    };
+
+    _ctrlLoadCargo progresssetposition _load;
+
+    ["SelectItemRight",[_display,_ctrlList,_index]] call jn_fnc_arsanel;
+};
+  </pre>
+
+  <h3>Line-by-line explanation</h3>
+  <ol>
+    <li>_display = _this select 0; — the UI display object passed by caller.</li>
+    <li>_add = _this select 1; — integer: +1 for add, -1 for remove.</li>
+    <li>Find which left-tab is active (uniform/vest/backpack) by checking enabled left list controls; stores in _selected.</li>
+    <li>Find which right list is active and its current cursor selection row; stores control in _ctrlList, tab index in _index and row in _lbcursel.</li>
+    <li>Read the selected list item: _dataStr = _ctrlList lnbData [_lbcursel,0]; _data = call compile _dataStr; — lnbData stores a stringified array, compile to evaluate into array; then _item/_amount extracted.</li>
+    <li>Initialize local state: _load/_items/_itemChanged and get _ctrlLoadCargo control for the load progress bar.</li>
+    <li>Save old container load via switch on _selected (loaduniform/loadvest/loadbackpack).</li>
+    <li>Set default change count _count = 1 (magazine handling may override).</li>
+    <li>Guard: if the action makes sense (amount available or removing) then proceed.</li>
+    <li>If adding (_add > 0): enforce non-member min via _minItemsMember and show message + exit if violation. For magazines adjust _count to magazine bullet count and cap by available amount. Determine container and check canAddItemToX, then add mags via addMagazineAmmoCargo; for non-mag items call addItemToUniform/addItemToVest/addItemToBackpack.</li>
+    <li>If removing: for magazines, read container magazines, ensure item present, clear container then rebuild mags skipping the one removed (preserves other mags); for non-mag items call removeItemFromUniform/removeItemFromVest/removeItemFromBackpack.</li>
+    <li>After add/remove attempts, compute new load and if it changed compared to saved _loadOld then update the UI counter and notify the arsenal system: call removeItem (when adding to container) or addItem (when removing from container) with [_index,_item,_count]. These calls update the global JNA data and remoteExec clients as needed.</li>
+    <li>Recompute current load, set progress bar position with progresssetposition, and call ["SelectItemRight",[_display,_ctrlList,_index]] to refresh right-side selection UI/colours.</li>
+  </ol>
+
+  <h3>Edge cases & synchronization</h3>
+  <ul>
+    <li>Uses compile on stored lnbData; ensure data strings are trusted (they originate from the local UI dataset).</li>
+    <li>Membership limits protected: players failing the member check cannot add items below configured minima.</li>
+    <li>Magazine handling carefully reconstructs container magazines to avoid leaving inconsistent ammo counts.</li>
+    <li>After local inventory modifications, calls to jn_fnc_arsanel_addItem/removeItem notify server/clients to keep global arsenal lists synchronized.</li>
+    <li>UI feedback updates only when actual load change occurred; avoids spurious updates.</li>
+  </ul>
+
+  <p class="meta">If you want, I can similarly expand other big cases (TabSelect, CreateList, Unload, Close) in the same line-by-line style. Which next?</p>
+  <hr/>
+</div>
+<!-- Expanded: TabSelect -->
+<div class="fn" id="fn_arsanel_tabselect_expanded">
+  <h2>fn_arsanel.sqf — Detailed line-by-line for case "TabSelect"</h2>
+  <h3>Code (key excerpts)</h3>
+  <pre>
+case "TabSelect": {
+    _display = _this select 0;
+    _index = _this select 1;
+    _ctrlList = ctrlnull;
+    jnca_tab_selected = _index;
+    private _objectSelected = uiNamespace getVariable "jn_object_selected";
+    _isSelectedLeft = _index in [IDCS_LEFT];
+    _listSelected = [IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG,IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL] select _isSelectedLeft;
+
+    if(_index == IDC_RSCDISPLAYARSENAL_TAB_CARGOMAG) then {
+        private _usableMagazines = [];
+        {
+            private _weapons = jnva_loadout select _x;
+            { _usableMagazines append ((compatibleMagazines (_x select 0)) apply {toLower _x}); } forEach _weapons;
+        } forEach [PRIMARY,SECONDARY,HANDGUN];
+        _usableMagazines = _usableMagazines arrayIntersect _usableMagazines;
+
+        private _cfgVehicle = configFile >> "cfgVehicles" >> typeof _objectSelected;
+        private _vehMagTypes = _cfgVehicle call A3A_fnc_allMagazines;
+        { _usableMagazines pushBackUnique toLower _x } forEach _vehMagTypes;
+
+        _magazines = [];
+        {
+            _itemAvailable = _x select 0; _amountAvailable = _x select 1;
+            if(_itemAvailable in _usableMagazines) then { _magazines set [count _magazines,[_itemAvailable, _amountAvailable]]; };
+        } forEach (jna_dataList select IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL);
+
+        { _itemAvailable = _x select 0; if(_itemAvailable in _usableMagazines)then{ _magazines = [_magazines, [_itemAvailable,0]] call jn_fnc_arsanel_addToArray } } forEach (jnva_loadout select IDC_RSCDISPLAYARSENAL_TAB_CARGOMAGALL);
+
+        _inventory = _magazines;
+    } else {
+        _inventory = (jna_dataList select _index);
+    };
+
+    ["CreateList",[_display,_index,_inventory,_listSelected]] call jn_fnc_vehicleArsenal;
+    ["updateItemInfo",[ _display,_ctrlList,_index]] call jn_fnc_arsanel;
+};
+  </pre>
+  <h3>Explanation</h3>
+  <ol>
+    <li>Read display and requested tab index; set jnca_tab_selected for later reference.</li>
+    <li>Determine whether the selected tab is a "left" (player/container) tab or a "right" (arsenal) tab; _listSelected chooses which right-list control to show.</li>
+    <li>When tab is CARGOMAG: build a usable magazine list:
+      <ul>
+        <li>Collect compatible magazines for each weapon in jnva_loadout using compatibleMagazines and lowercasing for mod robustness.</li>
+        <li>Intersect arrays to keep only magazines compatible with all weapons.</li>
+        <li>Append vehicle-specific magazine types from config (A3A_fnc_allMagazines).</li>
+        <li>Collect magazine entries from global jna_dataList (arsenal) that are in usable list.</li>
+        <li>Merge vehicle's mags (jnva_loadout) into the result using jn_fnc_arsanel_addToArray to avoid duplicates and preserve counts.</li>
+      </ul>
+    </li>
+    <li>For non-CARGOMAG tabs, simply use jna_dataList select _index as inventory source.</li>
+    <li>Delegate list construction to vehicle GUI: CreateList and update right-side item info.</li>
+  </ol>
+  <h3>Edge cases</h3>
+  <ul>
+    <li>Uses toLower to avoid mod naming inconsistencies.</li>
+    <li>Array intersect may return empty, resulting in no magazines shown.</li>
+    <li>Relies on jnva_loadout being populated — ensured during CustomInit.</li>
+  </ul>
+</div>
+
+<!-- Expanded: CreateList -->
+<div class="fn" id="fn_arsanel_createlist_expanded">
+  <h2>fn_arsanel.sqf — Detailed for case "CreateList"</h2>
+  <pre>
+case "CreateList":{
+    _display =  _this select 0;
+    _index = _this select 1;
+    _inventory = _this select 2;
+    _indexList = _this select 3;
+    _ctrlList = _display displayctrl (IDC_RSCDISPLAYARSENAL_LIST + _indexList);
+
+    lnbclear _ctrlList;
+
+    {
+        _item = _x select 0;
+        _amount = _x select 1;
+        ["CreateItem",[_display,_ctrlList,_index,_item,_amount]] call jn_fnc_arsanel;
+    } forEach _inventory;
+
+    ["UpdateListGui",[ _display,_ctrlList, _index]] call jn_fnc_arsanel;
+};
+  </pre>
+  <h3>Explanation</h3>
+  <ol>
+    <li>Obtain the target list control for the given left/right index.</li>
+    <li>Clear existing list entries with lnbclear.</li>
+    <li>For each inventory tuple, call jn_fnc_arsanel CreateItem which is responsible to add a properly formatted row (text, images, data) into the control.</li>
+    <li>After populating, call UpdateListGui to refresh UI visuals (column widths, colors, sorting).</li>
+  </ol>
+</div>
+
+<!-- Expanded: Unload -->
+<div class="fn" id="fn_arsanel_unload_expanded">
+  <h2>fn_arsanel.sqf — Detailed for case "Unload"</h2>
+  <pre>
+case "Unload":{
+    params ["_display"];
+
+    private _objectSelected = uiNamespace getVariable "jn_object_selected";
+
+    jnva_loadout_mass = 0;
+    jnva_loadout remoteExecCall ["jn_fnc_arsanel_addItem",2];
+
+    jnva_loadout = (_objectSelected call jn_fnc_arsanel_cargoToArray);
+
+    _list = missionnamespace getVariable ["jnca_tab_selected",-1];
+    if(_list != -1)then{
+        ["TabSelect",[_display, _list]] call jn_fnc_vehicleArsenal;
+    };
+    ["ColorTabs",[_display]] call jn_fnc_vehicleArsenal;
+};
+  </pre>
+  <h3>Explanation</h3>
+  <ol>
+    <li>Called when the user requests unloading the vehicle into the arsenal UI.</li>
+    <li>Resets local load mass and sends current jnva_loadout to server via remoteExec jn_fnc_arsanel_addItem — ensures server updates arsenal availability.</li>
+    <li>Re-reads object's cargo into jnva_loadout via cargoToArray (refresh local state after clearing/changes).</li>
+    <li>Refresh current tab and color tabs via vehicle GUI calls.</li>
+  </ol>
+</div>
+
+<!-- Expanded: Close -->
+<div class="fn" id="fn_arsanel_close_expanded">
+  <h2>fn_arsanel.sqf — Detailed for case "Close"</h2>
+  <pre>
+case "Close": {
+    jnva_loadout_mass = nil;
+    private _objectSelected = uiNamespace getVariable "jn_object_selected";
+    jnca_tab_selected = nil;
+    //weapons
+    {
+        _list = jnva_loadout select _x;
+        {
+            _item = _x select 0;
+            _amount = _x select 1;
+            _objectSelected addWeaponCargoGlobal [_item,_amount];
+        } forEach _list;
+    } forEach [PRIMARY,SECONDARY,HANDGUN];
+
+    //items
+    {
+        _list = jnva_loadout select _x;
+        {
+            _item = _x select 0;
+            _amount = _x select 1;
+            _objectSelected addItemCargoGlobal [_item,_amount];
+        } forEach _list;
+    } forEach [UNIFORM,VEST,HEADGEAR,GOGGLES,NVGS,BINOCULARS,MAP,GPS,RADIO,COMPASS,WATCH,ITEMOPTIC,ITEMACC,ITEMMUZZLE,ITEMBIPOD,CARGOMISC];
+
+    //magazines
+    {
+        _list = jnva_loadout select _x;
+        {
+            _item = _x select 0;
+            _amount = _x select 1;
+            _count = getNumber (configfile >> "CfgMagazines" >> _item >> "count");
+
+            while{_amount>0}do{
+                _objectSelected addMagazineAmmoCargo [_item,1,_amount];
+                _amount = _amount - _count;
+            };
+        } forEach _list;
+    } forEach [CARGOMAGALL,CARGOTHROW,CARGOPUT];
+
+    //backpack
+    {
+        _list = jnva_loadout select _x;
+        {
+            _item = _x select 0;
+            _amount = _x select 1;
+            _objectSelected addBackpackCargoGlobal [_item,_amount];
+        } forEach _list;
+    } forEach [BACKPACK];
+
+    jnva_loadout = nil;
+};
+  </pre>
+  <h3>Explanation</h3>
+  <ol>
+    <li>Clears temporary mass and selected tab state.</li>
+    <li>Iterates through jnva_loadout arrays and uses addWeaponCargoGlobal/addItemCargoGlobal/addMagazineAmmoCargo/addBackpackCargoGlobal to restore the object's physical cargo with the chosen items.</li>
+    <li>Note magazine loop uses the magazine "count" config to add magazines in correct chunk sizes until amount exhausted.</li>
+    <li>Finally clears jnva_loadout to free memory.</li>
+  </ol>
+</div>
+
+</body>
+</html>
+

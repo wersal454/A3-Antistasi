@@ -1,0 +1,2727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A3A Ultimate Functions Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --page-bg: #f5f5f5;
+            --text-light: #333;
+            --text-dark: #555;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #5dade2;
+            --secondary-color: #85929e;
+            --success-color: #58d68d;
+            --warning-color: #f7dc6f;
+            --danger-color: #ec7063;
+            --light-bg: #34495e;
+            --page-bg: #0a0d11;
+            --text-light: #ffffff;
+            --text-dark: #e0e6ed;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background-color: var(--page-bg);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            background: var(--secondary-color);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .nav-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: nowrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #darkModeToggle {
+            background: none;
+            border: 1px solid white;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #darkModeToggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Search and Filter */
+        .search-container {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: var(--box-shadow);
+        }
+
+        [data-theme="dark"] .search-container {
+            background: var(--light-bg);
+        }
+
+        .search-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #functionSearch {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        #categoryFilter {
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background: white;
+        }
+
+        .search-stats {
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        [data-theme="dark"] .search-stats {
+            color: var(--text-dark);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        .header .version-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--box-shadow);
+        }
+
+        [data-theme="dark"] .toc {
+            background: var(--light-bg);
+        }
+
+        .toc h2 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .toc-item {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .toc-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .toc-item h3 {
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        .toc-item p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        [data-theme="dark"] .toc-item p {
+            color: var(--text-dark);
+        }
+
+        [data-theme="dark"] .toc h2 {
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .toc-item h3 {
+            color: var(--text-light);
+        }
+
+        .toc-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .toc-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            scroll-margin-top: 100px;
+        }
+
+        [data-theme="dark"] .section {
+            background: var(--light-bg);
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .section h2 {
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .section h3 {
+            color: var(--text-light);
+        }
+
+        .section h2 {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 {
+            color: var(--secondary-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        /* Function Categories */
+        .zones-function { border-left-color: #9b59b6; }
+        .zombie-function { border-left-color: #e74c3c; }
+        .vehicles-function { border-left-color: #3498db; }
+        .utility-function { border-left-color: #2ecc71; }
+        .stalker-function { border-left-color: #f39c12; }
+        .reinforcement-function { border-left-color: #1abc9c; }
+        .patches-function { border-left-color: #e67e22; }
+        .menu-function { border-left-color: #8e44ad; }
+        .init-function { border-left-color: #16a085; }
+        .cba-function { border-left-color: #d35400; }
+        .blackmarket-function { border-left-color: #c0392b; }
+        .ammunition-function { border-left-color: #27ae60; }
+        .config-function { border-left-color: #34495e; }
+
+        /* Function Blocks */
+        .function-block {
+            background: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .function-block {
+            background: #34495e;
+            border-left-color: var(--primary-color);
+        }
+
+        .function-block:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transform: translateY(-1px);
+        }
+
+        .function-name {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        [data-theme="dark"] .function-name {
+            color: var(--text-light);
+        }
+
+        .function-name::before {
+            content: "📄";
+            font-size: 1em;
+        }
+
+        .purpose {
+            color: var(--success-color);
+            font-style: italic;
+            margin: 10px 0;
+            background: rgba(39, 174, 96, 0.1);
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--success-color);
+        }
+
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: "💻";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            opacity: 0.5;
+        }
+
+        .code-inline {
+            background: #e8f4f8;
+            color: #2c3e50;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            font-family: 'Fira Code', monospace;
+            border: 1px solid #bee5eb;
+        }
+
+        [data-theme="dark"] .code-inline {
+            background: #34495e;
+            color: #5dade2;
+            border-color: #5dade2;
+        }
+
+        .dependencies {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        [data-theme="dark"] .dependencies {
+            background: #2c3e50;
+            border-color: #f39c12;
+            color: var(--text-light);
+        }
+
+        .dependencies strong {
+            color: #d68910;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 6px;
+            box-shadow: var(--box-shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            font-size: 14px;
+        }
+
+        [data-theme="dark"] table {
+            background: var(--light-bg);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        [data-theme="dark"] th, td {
+            border-bottom-color: #555;
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background: var(--success-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #backToTop:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        /* Statistics Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        .stat-card h3 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--secondary-color);
+            color: white;
+            margin-top: 40px;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .nav-bar .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+
+            .header h1 {
+                font-size: 2.2em;
+            }
+
+            .header p {
+                font-size: 1.1em;
+            }
+
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .function-block {
+                padding: 15px;
+            }
+
+            .code-block {
+                font-size: 0.8em;
+                padding: 15px;
+            }
+
+            .table-container {
+                font-size: 12px;
+            }
+
+            .search-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #functionSearch, #categoryFilter {
+                width: 100%;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav-bar, .search-container, #backToTop, #darkModeToggle {
+                display: none !important;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+            }
+
+            .section {
+                page-break-inside: avoid;
+                box-shadow: none !important;
+                border: 1px solid #ccc;
+            }
+
+            .code-block {
+                background: #f5f5f5 !important;
+                color: black !important;
+                border: 1px solid #ccc;
+            }
+
+            .function-block {
+                border: 1px solid #ccc;
+                background: white !important;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+
+        [data-theme="dark"] ::-webkit-scrollbar-track {
+            background: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="container">
+            <div class="nav-links">
+                <a href="#overview">📋 Overview</a>
+                <a href="#zones">🗺️ Zones</a>
+                <a href="#zombie">🧟 Zombie</a>
+                <a href="#vehicles">🚗 Vehicles</a>
+                <a href="#utility">🔧 Utility</a>
+                <a href="#stalker">🌀 STALKER</a>
+                <a href="#reinforcement">⚔️ Reinforcement</a>
+                <a href="#patches">🔨 Patches</a>
+                <a href="#menu">📱 Menu</a>
+                <a href="#init">🚀 Initialization</a>
+                <a href="#cba">⚙️ CBA</a>
+                <a href="#blackmarket">💰 Black Market</a>
+                <a href="#ammunition">🎯 Ammunition</a>
+                <a href="#config">📁 Config</a>
+                <a href="#stats">📊 Statistics</a>
+            </div>
+            <div class="nav-controls">
+                <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🔄 A3A Ultimate Functions Documentation</h1>
+            <p>Complete Reference for Antistasi Ultimate Addon Functions</p>
+            <div class="version-badge">Version 1.0 - Complete Documentation - 45+ Functions</div>
+        </header>
+
+        <!-- Search and Filter -->
+        <div class="search-container">
+            <div class="search-controls">
+                <input type="text" id="functionSearch" placeholder="🔍 Search functions...">
+                <select id="categoryFilter">
+                    <option value="all">📂 All Categories</option>
+                    <option value="zones">🗺️ Zones (4)</option>
+                    <option value="zombie">🧟 Zombie (6)</option>
+                    <option value="vehicles">🚗 Vehicles (8)</option>
+                    <option value="utility">🔧 Utility (7)</option>
+                    <option value="stalker">🌀 STALKER (3)</option>
+                    <option value="reinforcement">⚔️ Reinforcement (4)</option>
+                    <option value="patches">🔨 Patches (1)</option>
+                    <option value="menu">📱 Menu (2)</option>
+                    <option value="init">🚀 Initialization (4)</option>
+                    <option value="cba">⚙️ CBA (2)</option>
+                    <option value="blackmarket">💰 Black Market (2)</option>
+                    <option value="ammunition">🎯 Ammunition (4)</option>
+                    <option value="config">📁 Config (2)</option>
+                </select>
+            </div>
+            <div class="search-stats" id="searchStats">
+                Showing all 45+ functions
+            </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <section class="toc">
+            <h2>📖 Table of Contents</h2>
+            <div class="toc-grid">
+                <div class="toc-item">
+                    <h3>📋 System Overview</h3>
+                    <p>Architecture, features, and capabilities of A3A Ultimate</p>
+                    <a href="#overview">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🗺️ Zone Functions (4)</h3>
+                    <p>Zone revelation and management functions</p>
+                    <a href="#zones">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🧟 Zombie Functions (6)</h3>
+                    <p>Zombie spawning and attack systems</p>
+                    <a href="#zombie">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🚗 Vehicle Functions (8)</h3>
+                    <p>Vehicle lockpicking and management</p>
+                    <a href="#vehicles">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🔧 Utility Functions (7)</h3>
+                    <p>Various utility and helper functions</p>
+                    <a href="#utility">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🌀 STALKER Functions (3)</h3>
+                    <p>Anomaly and emission systems</p>
+                    <a href="#stalker">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>⚔️ Reinforcement Functions (4)</h3>
+                    <p>Invader management and attack systems</p>
+                    <a href="#reinforcement">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🔨 Patch Functions (1)</h3>
+                    <p>Game modifications and event handlers</p>
+                    <a href="#patches">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>📱 Menu Functions (2)</h3>
+                    <p>Main menu states and UI elements</p>
+                    <a href="#menu">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🚀 Initialization (4)</h3>
+                    <p>Addon setup and mod compatibility</p>
+                    <a href="#init">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>⚙️ CBA Functions (2)</h3>
+                    <p>Settings and configuration options</p>
+                    <a href="#cba">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>💰 Black Market (2)</h3>
+                    <p>Vehicle pricing and requirement validation</p>
+                    <a href="#blackmarket">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🎯 Ammunition (4)</h3>
+                    <p>Forbidden items and loot processing</p>
+                    <a href="#ammunition">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>📁 Config Files (2)</h3>
+                    <p>Vehicle definitions and addon configuration</p>
+                    <a href="#config">Jump to Section →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Overview -->
+        <section id="overview" class="section">
+            <h2>📋 A3A Ultimate System Overview</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>45+</h3>
+                    <p>Total Functions</p>
+                </div>
+                <div class="stat-card">
+                    <h3>14</h3>
+                    <p>Categories</p>
+                </div>
+                <div class="stat-card">
+                    <h3>100%</h3>
+                    <p>Modular</p>
+                </div>
+                <div class="stat-card">
+                    <h3>5+</h3>
+                    <p>Systems</p>
+                </div>
+            </div>
+
+            <p>The A3A Ultimate addon extends the base Antistasi experience with advanced features including zombie waves, anomaly fields, vehicle lockpicking, black market systems, and comprehensive zone management. It's designed to be modular and configurable through CBA settings.</p>
+
+            <h3>🎯 Key Features</h3>
+            <ul>
+                <li><strong>🧟 Zombie Wave System:</strong> Complete zombie spawning, crater effects, and multi-wave attacks</li>
+                <li><strong>🗺️ Zone Management:</strong> Advanced zone revelation with distance-based and random selection</li>
+                <li><strong>🚗 Vehicle Lockpicking:</strong> Comprehensive vehicle locking/unlocking with engineer requirements</li>
+                <li><strong>🌀 STALKER Integration:</strong> Anomaly fields and emission storms with Diwako Anomalies and TTS Emission compatibility</li>
+                <li><strong>💰 Black Market:</strong> Dynamic vehicle pricing with zone-based discounts and requirement checking</li>
+                <li><strong>🎯 Ammunition Management:</strong> Forbidden items system and loot array processing</li>
+                <li><strong>⚙️ CBA Settings:</strong> Extensive configuration options for all systems</li>
+            </ul>
+        </section>
+
+        <!-- Zones Functions Section -->
+        <section id="zones" class="section">
+            <h2>🗺️ Zone Functions (4 functions)</h2>
+
+            <div class="function-block zones-function">
+                <div class="function-name">A3A/addons/ultimate/functions/zones/fn_revealRandomZones.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Reveals a specified number of random military zones on the map by selecting from available zones and calling reveal functions</strong><br>
+                    • <strong>Generates a formatted message with grid coordinates and zone types for display to players</strong><br>
+                    <strong>Additional context:</strong> This function is typically called by server-side code when initiating zone revelation events, such as when players discover enemy positions through intelligence gathering or when the game logic requires random zone revelation for gameplay balance.<br>
+                    <code class="code-inline">[_amount, _message] call A3U_fnc_revealRandomZones;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Validates execution context (server only)</strong><br>
+<code class="code-inline">if !(isServer) exitWith { [_amount, _message] remoteExec ["A3U_fnc_revealRandomZones", 2]; };</code><br>
+• <strong>Sets default parameters for amount and message</strong><br>
+<code class="code-inline">params [ ["_amount", 2], ["_message", ""] ];</code><br>
+• <strong>Ensures minimum amount of 1 if zero is provided</strong><br>
+<code class="code-inline">if (_amount isEqualTo 0) then { _amount = 1; };</code><br>
+• <strong>Generates random message if none provided</strong><br>
+<code class="code-inline">if (_message isEqualTo "") then { _message = selectRandom [ "Civilians sympathetic to our cause gave us some intel on enemy zones.", "A map marked with enemy locations was found by one of our comrades." ]; };</code><br>
+• <strong>Builds list of available markers (zones that aren't immune or already revealed)</strong><br>
+<code class="code-inline">private _availableMarkers = []; { private _markerSide = sidesX getVariable [_x, sideUnknown]; if (_x in markersImmune) then {} else { if (_markerSide isNotEqualTo resistance) then { _availableMarkers pushBack _x; }; }; } forEach markersX;</code><br>
+• <strong>Selects random markers from available list</strong><br>
+<code class="code-inline">for "_i" from 0 to (_amount - 1) do { private _marker = selectRandom _availableMarkers; _unhiddenMarkers pushBack _marker; };</code><br>
+• <strong>Calls revealZones function to display selected zones</strong><br>
+<code class="code-inline">[_unhiddenMarkers] call A3U_fnc_revealZones;</code><br>
+• <strong>Formats display message with grid coordinates and zone types</strong><br>
+<code class="code-inline">private _markerGrids = _message+"&lt;br/&gt;&lt;br/&gt;The following zones have been revealed:&lt;br/&gt;"; { private _gridPos = (_x call BIS_fnc_posToGrid) joinString ""; private _name = toLower _x splitString "_"; _markerGrids = _markerGrids + "&lt;br/&gt;" + _gridPos + "&lt;br/&gt;" + (_name select 0) + "&lt;br/&gt;"; } forEach _unhiddenMarkers;</code><br>
+• <strong>Shows custom hint to all players with revealed zone information</strong><br>
+<code class="code-inline">["Zone Information", _markerGrids] remoteExec ["A3A_fnc_customHint", 0, false];</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3U_fnc_revealZones</strong> - Core zone revelation function<br>
+• <strong>BIS_fnc_posToGrid</strong> - Position to grid coordinate conversion<br>
+• <strong>A3A_fnc_customHint</strong> - Display system hints<br>
+• <strong>markersX, markersImmune, sidesX</strong> - Global zone variables</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3U_fnc_revealZones</strong> with array of selected markers<br>
+• <strong>Sends custom hint</strong> to all players with zone information</div>
+                <div class="dependencies"><strong>System integration:</strong> Part of zone revelation system, connects to markersX, markersImmune, sidesX global variables<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses remoteExec to ensure server execution, sends custom hint to all clients<br>
+<strong>Requirements:</strong> Must be called on server or via remote execution, requires markersX, markersImmune, sidesX global variables to exist, requires BIS_fnc_posToGrid function, requires A3A_fnc_customHint function, requires A3U_fnc_revealZones function</div>
+            </div>
+
+            <div class="function-block zones-function">
+                <div class="function-name">A3A/addons/ultimate/functions/zones/fn_revealZone.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Reveals a single specified zone by changing its marker properties to make it visible to players</strong><br>
+                    <strong>Additional context:</strong> This function is called when individual zones need to be revealed, such as when a player discovers a zone or when zones are revealed in sequence during gameplay events.<br>
+                    <code class="code-inline">[_marker] call A3U_fnc_revealZone;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts marker parameter for zone to reveal</strong><br>
+<code class="code-inline">params ["_marker"];</code><br>
+• <strong>Validates that hideEnemyMarkers is enabled</strong><br>
+<code class="code-inline">if !(hideEnemyMarkers) exitWith { Error("Aborting function, hideEnemyMarkers is not enabled.") };</code><br>
+• <strong>Validates that marker parameter is not empty</strong><br>
+<code class="code-inline">if (_marker isEqualTo "") exitWith { Error("Aborting function, _marker does not exist.") };</code><br>
+• <strong>Gets marker text and processes it to extract zone type</strong><br>
+<code class="code-inline">private _markerText = markerText "Dum"+_marker; private _markerTextSplit = toLower ((_markerText splitString "_") select 0);</code><br>
+• <strong>Sets marker alpha to visible (1.0)</strong><br>
+<code class="code-inline">"Dum"+_marker setMarkerAlphaLocal 1;</code><br>
+• <strong>Updates marker text to show "Revealed" prefix with zone type</strong><br>
+<code class="code-inline">"Dum"+_marker setMarkerText "Revealed "+_markerTextSplit;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>hideEnemyMarkers</strong> - Global setting for marker visibility<br>
+• <strong>markerText, setMarkerAlphaLocal, setMarkerText</strong> - Marker manipulation functions<br>
+• <strong>BIS_fnc_posToGrid</strong> - Position conversion (not directly called but related)</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of zone revelation system, uses dummy marker system<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses setMarkerAlphaLocal which is local to client<br>
+<strong>Requirements:</strong> Requires hideEnemyMarkers to be enabled, requires valid marker parameter, requires dummy marker system to be in place</div>
+            </div>
+
+            <div class="function-block zones-function">
+                <div class="function-name">A3A/addons/ultimate/functions/zones/fn_revealZones.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Reveals multiple specified zones by calling revealZone function for each marker in the input array</strong><br>
+                    <strong>Additional context:</strong> This function is used to reveal multiple zones simultaneously, such as when a batch of zones is discovered through intelligence or when implementing zone revelation sequences.<br>
+                    <code class="code-inline">[_markers] call A3U_fnc_revealZones;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts array of markers to reveal with default empty array</strong><br>
+<code class="code-inline">params [ ["_markers", []] ];</code><br>
+• <strong>Exits if no markers provided</strong><br>
+<code class="code-inline">if (_markers isEqualTo []) exitWith { Error("Function was called with incorrect parameters. Double check them!") };</code><br>
+• <strong>Iterates through markers array and calls revealZone for each</strong><br>
+<code class="code-inline">{ private _marker = _x; if (_marker isEqualTo "") exitWith {false}; [_marker] call A3U_fnc_revealZone; } forEach _markers;</code><br>
+• <strong>Returns true upon successful completion</strong><br>
+<code class="code-inline">true</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3U_fnc_revealZone</strong> - Individual zone revelation function</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3U_fnc_revealZone</strong> for each marker in the array<br>
+<strong>System integration:</strong> Part of zone revelation system, connects to markersX, markersImmune, sidesX global variables<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Relies on revealZone which uses local marker functions<br>
+<strong>Requirements:</strong> Requires valid array of markers, requires A3U_fnc_revealZone function to exist</div>
+            </div>
+
+            <div class="function-block zones-function">
+                <div class="function-name">A3A/addons/ultimate/functions/zones/fn_revealZonesDistance.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Reveals zones within a specified distance from a given position, optionally waiting for a vehicle to approach the position first</strong><br>
+                    <strong>Additional context:</strong> This function is used for distance-based zone revelation, such as when players approach a position and discover nearby zones, or when reconnaissance is performed to reveal zones within a certain radius.<br>
+                    <code class="code-inline">[_pos, _distance, _vehicle] call A3U_fnc_revealZonesDistance;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts position, distance, and vehicle parameters with defaults</strong><br>
+<code class="code-inline">params [ ["_pos", []], ["_distance", hideEnemyMarkersReconPlaneDistance], ["_vehicle", objNull] ];</code><br>
+• <strong>Initializes markers array</strong><br>
+<code class="code-inline">private _markers = [];</code><br>
+• <strong>Executes on server via remote execution if not already on server</strong><br>
+<code class="code-inline">if !(isServer) exitWith { [_pos, _distance, _vehicle] remoteExec ["A3U_fnc_revealZonesDistance", 2]; };</code><br>
+• <strong>Waits for vehicle to approach position within half the specified distance</strong><br>
+<code class="code-inline">if (_vehicle isNotEqualTo objNull) then { waitUntil {sleep 1; _vehicle distance2D _pos <= (_distance / 2)}; };</code><br>
+• <strong>Filters markersX to find zones within distance from position that are not resistance-controlled or immune</strong><br>
+<code class="code-inline">if (_pos isNotEqualTo [] && {_distance isNotEqualTo 0}) then { _markers = markersX select { ((sidesX getVariable [_x, sideUnknown]) isNotEqualTo resistance) && {!(_x in markersImmune)} && { ( (getMarkerPos _x) distance2D _pos ) <= _distance} }; };</code><br>
+• <strong>Calls revealZones with filtered markers</strong><br>
+<code class="code-inline">[_markers] call A3U_fnc_revealZones;</code><br>
+• <strong>Returns true upon successful completion</strong><br>
+<code class="code-inline">true</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3U_fnc_revealZones</strong> - Zone revelation function<br>
+• <strong>hideEnemyMarkersReconPlaneDistance</strong> - Global setting for recon distance<br>
+• <strong>markersX, markersImmune, sidesX, getMarkerPos</strong> - Global zone variables and functions</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3U_fnc_revealZones</strong> with filtered markers<br>
+<strong>System integration:</strong> Part of zone revelation system, connects to distance-based revelation logic<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses remoteExec for server execution, relies on marker position functions<br>
+<strong>Requirements:</strong> Requires server execution, requires markersX, markersImmune, sidesX global variables, requires getMarkerPos function</div>
+            </div>
+        </section>
+
+        <!-- Zombie Functions Section -->
+        <section id="zombie" class="section">
+            <h2>🧟 Zombie Functions (6 functions)</h2>
+
+            <div class="function-block zombie-function">
+                <div class="function-name">A3A/addons/ultimate/functions/zombie/fn_attackHeli.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Controls an attack helicopter's targeting and firing behavior against a specified target, continuously tracking and engaging the target</strong><br>
+                    <strong>Additional context:</strong> This function is used to implement attack helicopter behavior in zombie scenarios, where helicopters are deployed to attack zombie hordes or specific targets.<br>
+                    <code class="code-inline">[_heli, _target] spawn A3U_fnc_attackHeli;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts helicopter and target parameters</strong><br>
+<code class="code-inline">params ["_heli", "_target"];</code><br>
+• <strong>Gets gunner from helicopter, exits if no gunner</strong><br>
+<code class="code-inline">private _gunner = (gunner _heli); if (isNil "_gunner") exitWith {};</code><br>
+• <strong>Determines weapon and firing mode for the helicopter</strong><br>
+<code class="code-inline">private _weapon = (weapons _heli) select 0; private _mode = (getArray (configFile >> "cfgweapons" >> _weapon >> "modes")) select 0;</code><br>
+• <strong>Handles special case where mode is "this"</strong><br>
+<code class="code-inline">if (_mode == "this") then { _mode = _weapon };</code><br>
+• <strong>Sets target for gunner</strong><br>
+<code class="code-inline">_gunner doTarget _target;</code><br>
+• <strong>Enters firing loop while helicopter is alive, checks if target is alive, and fires if in range</strong><br>
+<code class="code-inline">while {alive _heli} do { if (!(alive _target)) exitWith {}; if (_heli aimedAtTarget [_target] >= 0.6) then { (gunner _heli) fireAtTarget [_target, _weapon]; }; uiSleep 0.2; };</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>gunner, weapons, getArray</strong> - Vehicle information functions<br>
+• <strong>doTarget, aimedAtTarget, fireAtTarget</strong> - Combat functions<br>
+• <strong>alive</strong> - Unit state checking</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of zombie attack system, used with helicopter units<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses standard Arma functions, no special network handling<br>
+<strong>Requirements:</strong> Requires valid helicopter and target objects, requires helicopter to have gunner and weapons</div>
+            </div>
+
+            <div class="function-block zombie-function">
+                <div class="function-name">A3A/addons/ultimate/functions/zombie/fn_spawnZombie.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Creates and spawns a zombie unit at a specified position with appropriate initialization and animation</strong><br>
+                    <strong>Additional context:</strong> This function is used to spawn individual zombie units during zombie wave events, typically called by spawnZombieWave to create zombies at specific locations.<br>
+                    <code class="code-inline">[_groupZombies, _zombieType, _pos] spawn A3U_fnc_spawnZombie;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts group, zombie type, and position parameters</strong><br>
+<code class="code-inline">params ["_groupZombies", "_zombieType", "_pos"];</code><br>
+• <strong>Creates zombie unit using createUnit function</strong><br>
+<code class="code-inline">private _zombie = [_groupZombies, _zombieType, [0,0,0], [], 0, "NONE"] call A3A_fnc_createUnit;</code><br>
+• <strong>Hides zombie object initially and sets its position</strong><br>
+<code class="code-inline">_zombie hideObjectGlobal true; _zombie setPosATL _pos;</code><br>
+• <strong>Waits for a short time</strong><br>
+<code class="code-inline">uiSleep 1;</code><br>
+• <strong>Sets zombie's A3U_isZombie variable to true</strong><br>
+<code class="code-inline">_zombie setVariable ["A3U_isZombie", true];</code><br>
+• <strong>Applies unconscious animation and makes zombie visible</strong><br>
+<code class="code-inline">[_zombie, "WBK_Middle_GetUpUnconscious"] remoteExec ["switchMove", 0]; _zombie hideObjectGlobal false;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_fnc_createUnit</strong> - Unit creation function<br>
+• <strong>switchMove, hideObjectGlobal, setPosATL, setVariable, remoteExec</strong> - Unit manipulation functions</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of zombie spawning system, used with spawnZombieWave<br>
+<strong>Global variables modified:</strong> _zombie variable set to A3U_isZombie=true<br>
+<strong>Network implications:</strong> Uses remoteExec for animation, hideObjectGlobal for visibility<br>
+<strong>Requirements:</strong> Requires valid group, zombie type, and position, requires A3A_fnc_createUnit function</div>
+            </div>
+
+            <div class="function-block zombie-function">
+                <div class="function-name">A3A/addons/ultimate/functions/zombie/fn_spawnZombieCrater.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Creates a visual crater effect at a specified position with associated particle and sound effects</strong><br>
+                    <strong>Additional context:</strong> This function is used to create visual effects for zombie emergence, typically called by spawnZombieWave when zombies surface from the ground.<br>
+                    <code class="code-inline">[_crater, _pos] call A3U_fnc_spawnZombieCrater;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts crater type and position parameters</strong><br>
+<code class="code-inline">params ["_crater", "_pos"];</code><br>
+• <strong>Creates crater object and sets its position</strong><br>
+<code class="code-inline">private _craterProp = _crater createVehicle [0,0,0]; _craterProp setPosATL _pos;</code><br>
+• <strong>Creates particle source with dust effect and sets drop interval</strong><br>
+<code class="code-inline">private _particleSource = "#particlesource" createVehicle ASLToAGL _pos; _particleSource setParticleClass "MineCircleDust"; [_particleSource, 0.005] remoteExec ["setDropInterval", 0];</code><br>
+• <strong>Creates sound source with ground hit sound</strong><br>
+<code class="code-inline">private _soundSource = "#particlesource" createVehicle ASLToAGL _pos; [_soundSource, [(selectRandom ["Smasher_hit", "Goliath_GroundHit"]), 300, 2, 0, 0]] remoteExec ["say3D", 0];</code><br>
+• <strong>Returns array of created objects</strong><br>
+<code class="code-inline">[_craterProp, _particleSource, _soundSource];</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>createVehicle, setPosATL</strong> - Object creation and positioning<br>
+• <strong>setParticleClass, setDropInterval, say3D, ASLToAGL</strong> - Visual and audio effects</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of zombie emergence system, used with spawnZombieWave<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses remoteExec for particle and sound effects<br>
+<strong>Requirements:</strong> Requires valid crater type and position, requires particle and sound effects to be available</div>
+            </div>
+
+            <div class="function-block zombie-function">
+                <div class="function-name">A3A/addons/ultimate/functions/zombie/fn_spawnZombieRoar.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Creates a roar sound effect at a specified position for zombie emergence</strong><br>
+                    <strong>Additional context:</strong> This function is used to create audio effects for zombie emergence, typically called by spawnZombieWave when zombies surface from the ground.<br>
+                    <code class="code-inline">[_pos] call A3U_fnc_spawnZombieRoar;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts position parameter</strong><br>
+<code class="code-inline">params ["_pos"];</code><br>
+• <strong>Creates sound source at position</strong><br>
+<code class="code-inline">private _soundSourceRoar = "#particlesource" createVehicle ASLToAGL _pos;</code><br>
+• <strong>Defines list of available roar sounds</strong><br>
+<code class="code-inline">private _roars = [ "Goliath_V_Roar_1", "Goliath_V_Roar_2", "Goliath_V_Roar_Dist_1", "Goliath_V_Roar_Dist_2", "Goliath_V_idle_1", "Goliath_V_idle_2", "Goliath_V_idle_3", "Goliath_V_idle_4", "Goliath_V_idle_5", "Goliath_V_idle_6" ];</code><br>
+• <strong>Selects random roar and plays it using say3D</strong><br>
+<code class="code-inline">[_soundSourceRoar, [(selectRandom _roars), 3000, 0.01, 0, 0]] remoteExec ["say3D", 0];</code><br>
+• <strong>Returns sound source object</strong><br>
+<code class="code-inline">_soundSourceRoar;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>createVehicle, ASLToAGL</strong> - Object creation and positioning<br>
+• <strong>selectRandom, say3D</strong> - Audio effects</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of zombie emergence system, used with spawnZombieWave<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses remoteExec for sound effects<br>
+<strong>Requirements:</strong> Requires valid position parameter, requires roar sounds to be available</div>
+            </div>
+
+            <div class="function-block zombie-function">
+                <div class="function-name">A3A/addons/ultimate/functions/zombie/fn_spawnZombieWave.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Creates a wave of zombies emerging from multiple craters at specified positions, with associated visual and audio effects</strong><br>
+                    <strong>Additional context:</strong> This function is used to implement zombie wave attacks, where multiple zombies emerge from craters in a coordinated attack pattern.<br>
+                    <code class="code-inline">[_craterWaves, _zombiesPerCrater, _positionX, _group] call A3U_fnc_spawnZombieWave;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts parameters with defaults for crater waves, zombies per crater, position, and group</strong><br>
+<code class="code-inline">params [ ["_craterWaves", 3], ["_zombiesPerCrater", round (random 10)], ["_positionX", [0,0,0]], ["_group", grpNull] ];</code><br>
+• <strong>Initializes array for created objects</strong><br>
+<code class="code-inline">private _sources = [];</code><br>
+• <strong>Creates multiple craters with random positions and directions</strong><br>
+<code class="code-inline">for "_i" from 1 to _craterWaves do { private _pos = _positionX getPos [random 60, random 360]; private _crater = ["Land_ShellCrater_02_small_F", _pos] call A3U_fnc_spawnZombieCrater; private _craterProp = _crater#0; private _particleSource = _crater#1; private _soundSource = _crater#2; _craterProp setDir (random 360);</code><br>
+• <strong>Creates roar sound and sets zombie type</strong><br>
+<code class="code-inline">private _soundSourceRoar = [_pos] call A3U_fnc_spawnZombieRoar; private _zombieType = "Zombie_O_RA_Civ";</code><br>
+• <strong>Spawns zombies at crater location with small delays</strong><br>
+<code class="code-inline">for "_y" from 1 to _zombiesPerCrater do { private _zombiePos = _pos getPos [random 3, random 360]; [_group, _zombieType, _zombiePos] spawn A3U_fnc_spawnZombie; uiSleep 0.1; };</code><br>
+• <strong>Adds objects to sources array, waits, and cleans up particle source</strong><br>
+<code class="code-inline">_sources append [_craterProp, _soundSource, _soundSourceRoar]; uiSleep 2; deleteVehicle _particleSource; uiSleep 5; };</code><br>
+• <strong>Returns array of created sources</strong><br>
+<code class="code-inline">_sources;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3U_fnc_spawnZombieCrater</strong> - Crater effects function<br>
+• <strong>A3U_fnc_spawnZombieRoar</strong> - Sound effects function<br>
+• <strong>A3U_fnc_spawnZombie</strong> - Zombie creation function</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3U_fnc_spawnZombieCrater</strong> for crater effects<br>
+• <strong>Calls A3U_fnc_spawnZombieRoar</strong> for sound effects<br>
+• <strong>Calls A3U_fnc_spawnZombie</strong> for zombie creation<br>
+<strong>System integration:</strong> Part of zombie attack system, used with spawnZombieWaves<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses spawn for zombie creation, remoteExec for effects<br>
+<strong>Requirements:</strong> Requires valid parameters for wave count and zombies per crater, requires functions for crater, roar, and zombie creation</div>
+            </div>
+
+            <div class="function-block zombie-function">
+                <div class="function-name">A3A/addons/ultimate/functions/zombie/fn_spawnZombieWaves.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Creates multiple waves of zombie attacks with coordinated timing, visual effects, and cleanup</strong><br>
+                    <strong>Additional context:</strong> This function is used to implement multi-wave zombie attacks, where multiple waves of zombies emerge over time with coordinated timing and effects.<br>
+                    <code class="code-inline">[_waves, _craterWaves, _zombiesPerCrater, _positionX, _group, _taskID] spawn A3U_fnc_spawnZombieWaves;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts parameters with defaults for waves, crater waves, zombies per crater, position, group, and task ID</strong><br>
+<code class="code-inline">params [ ["_waves", 5], ["_craterWaves", 3], ["_zombiesPerCrater", round (random 10)], ["_positionX", [0,0,0]], ["_group", grpNull], ["_taskID", 0] ];</code><br>
+• <strong>Initializes sources array and exit timeout</strong><br>
+<code class="code-inline">private _sources = []; private _timeoutExit = (time + 1200);</code><br>
+• <strong>Sets up task completion variable</strong><br>
+<code class="code-inline">if (_taskID isNotEqualTo 0) then { missionNamespace setVariable [_taskID+"_done", false]; };</code><br>
+• <strong>Creates quake sound effect and adds to sources</strong><br>
+<code class="code-inline">private _soundSourceQuake = "#particlesource" createVehicle ASLToAGL _positionX; [_soundSourceQuake, ["Earthquake_04", 3000, 1, 0, 0]] remoteExec ["say3D", 0]; _sources pushBack _soundSourceQuake;</code><br>
+• <strong>Displays wave announcement hint</strong><br>
+<code class="code-inline">[ "The ground is rumbling...", format [ "Be prepared for the incoming zombie hordes.&lt;br/&gt;&lt;br/&gt;The tremor intensity suggests %1 waves are inbound, each wave consisting of %2 emergence holes.&lt;br/&gt;&lt;br/&gt;They will surface within the next minute!", _waves, _craterWaves ] ] remoteExec ["A3A_fnc_customHint", 0, false];</code><br>
+• <strong>Waits for one minute before starting waves</strong><br>
+<code class="code-inline">uiSleep 60;</code><br>
+• <strong>Creates waves with timing and waits for wave completion</strong><br>
+<code class="code-inline">for "_wave" from 1 to _waves do { private _timeout = (time + 60); private _sourcesWave = [_craterWaves, _zombiesPerCrater, _positionX, _group] call A3U_fnc_spawnZombieWave; _sources append _sourcesWave; waitUntil { private _aliveZombies = {alive _x || {_x getVariable ["ACE_isUnconscious", false] isEqualTo false}} count units _groupZombies; private _aliveZombiesWin = (round (_aliveZombies / 2)); (_aliveZombies <= _aliveZombiesWin) || {time >= _timeout} }; uiSleep 30; };</code><br>
+• <strong>Waits until all zombies are dead or timeout</strong><br>
+<code class="code-inline">waitUntil { private _aliveZombies = {alive _x} count units _group; (_aliveZombies <= 0) || {time >= _timeoutExit} };</code><br>
+• <strong>Cleans up created objects</strong><br>
+<code class="code-inline">{ deleteVehicle _x; } forEach _sources;</code><br>
+• <strong>Hides zombie bodies</strong><br>
+<code class="code-inline">{ if (_x getVariable ["A3U_isZombie", false]) then { hideBody _x; }; } forEach allDeadMen;</code><br>
+• <strong>Sets task completion variable</strong><br>
+<code class="code-inline">if (_taskID isNotEqualTo 0) then { missionNamespace setVariable [_taskID+"_done", true]; };</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3U_fnc_spawnZombieWave</strong> - Single wave function<br>
+• <strong>A3A_fnc_customHint</strong> - Hint display function<br>
+• <strong>say3D, deleteVehicle, hideBody</strong> - Audio and object management</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3U_fnc_spawnZombieWave</strong> for each wave<br>
+<strong>System integration:</strong> Part of zombie attack system, connects to task management<br>
+<strong>Global variables modified:</strong> missionNamespace variables for task completion<br>
+<strong>Network implications:</strong> Uses remoteExec for hints and sounds, waits for completion<br>
+<strong>Requirements:</strong> Requires valid parameters for waves and zombie counts, requires A3U_fnc_spawnZombieWave function</div>
+            </div>
+        </section>
+
+        <!-- Vehicle Functions Section -->
+        <section id="vehicles" class="section">
+            <h2>🚗 Vehicle Functions (8 functions)</h2>
+
+            <div class="function-block vehicles-function">
+                <div class="function-name">A3A/addons/ultimate/functions/vehicles/fn_addLockpickAction.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Adds a lockpicking action to a vehicle that can be performed by players, handling both client-side and server-side execution</strong><br>
+                    <strong>Additional context:</strong> This function is called when vehicles need to be lockpicked, typically when a player approaches a locked vehicle and wants to attempt to unlock it.<br>
+                    <code class="code-inline">[_vehicle] call A3U_fnc_addLockpickAction;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts vehicle parameter</strong><br>
+<code class="code-inline">params ["_vehicle"];</code><br>
+• <strong>Exits if not on server and not on client with interface</strong><br>
+<code class="code-inline">if (!isServer && hasInterface) exitWith { Error("Server-side function was not called on the server? Aborting") };</code><br>
+• <strong>Executes lockpick function on all clients with vehicle parameter</strong><br>
+<code class="code-inline">[_vehicle] remoteExecCall ["A3U_fnc_lockpick", 0, _vehicle];</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3U_fnc_lockpick</strong> - Main lockpicking function<br>
+• <strong>remoteExecCall</strong> - Network execution function</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3U_fnc_lockpick</strong> on all clients<br>
+<strong>System integration:</strong> Part of vehicle lockpicking system, connects to vehicle locking mechanism<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses remoteExecCall to ensure client execution<br>
+<strong>Requirements:</strong> Requires valid vehicle parameter, requires server execution context</div>
+            </div>
+
+            <div class="function-block vehicles-function">
+                <div class="function-name">A3A/addons/ultimate/functions/vehicles/fn_isLocked.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Checks if a vehicle is locked by examining its lock status</strong><br>
+                    <strong>Additional context:</strong> This function is used to determine if a vehicle is currently locked, typically called during lockpicking operations or when checking vehicle status.<br>
+                    <code class="code-inline">[_vehicle] call A3U_fnc_isLocked;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts vehicle parameter</strong><br>
+<code class="code-inline">params ["_vehicle"];</code><br>
+• <strong>Returns false if vehicle is unlocked (locked status 0 or 1)</strong><br>
+<code class="code-inline">if (locked _vehicle in [0, 1]) exitWith {false};</code><br>
+• <strong>Returns true if vehicle is locked (status other than 0 or 1)</strong><br>
+<code class="code-inline">true;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>locked</strong> - Vehicle lock status function</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of vehicle lockpicking system<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses standard locked function<br>
+<strong>Requirements:</strong> Requires valid vehicle parameter</div>
+            </div>
+
+            <div class="function-block vehicles-function">
+                <div class="function-name">A3A/addons/ultimate/functions/vehicles/fn_lockpick.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Adds a hold action to a vehicle that allows players to lockpick it, with validation and progress tracking</strong><br>
+                    <strong>Additional context:</strong> This function is called to set up the lockpicking action for a vehicle, typically after a player approaches a locked vehicle.<br>
+                    <code class="code-inline">[_vehicle] call A3U_fnc_lockpick;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts vehicle parameter</strong><br>
+<code class="code-inline">params ["_vehicle"];</code><br>
+• <strong>Sets up hold action with multiple callbacks for different stages</strong><br>
+<code class="code-inline">[ _vehicle, localize "STR_A3AU_action_lockpick_title", "\a3\ui_f\data\igui\cfg\actions\repair_ca.paa", "\a3\ui_f\data\igui\cfg\actions\repair_ca.paa", "isNull objectParent _this && {_this distance _target < 10} && {alive _target} && {_target call A3U_fnc_isLocked}", "(_caller distance _target < 10) && {_caller call A3A_fnc_isEngineer}",</code><br>
+• <strong>Sets up action start callback to validate engineer status</strong><br>
+<code class="code-inline">{ params ["_target", "_caller", "_actionId", "_arguments"]; if !(_caller call A3A_fnc_isEngineer) then { [localize "STR_A3AU_action_lockpick_title", localize "STR_A3AU_action_lockpick_not_engineer"] call A3A_fnc_customHint; }; },</code><br>
+• <strong>Sets up progress callback to track lockpicking progress</strong><br>
+<code class="code-inline">{ params ["_target", "_caller", "_actionId", "_arguments", "_frame", "_maxFrame"]; [_target, _caller, _actionId, _frame, _maxFrame] call A3U_fnc_lockpickOnProgress; },</code><br>
+• <strong>Sets up success callback for successful lockpicking</strong><br>
+<code class="code-inline">{ params ["_target", "_caller", "_actionId", "_arguments"]; [_target, _caller, _actionId] call A3U_fnc_lockpickOnSuccess; },</code><br>
+• <strong>Sets up failure callback for failed lockpicking</strong><br>
+<code class="code-inline">{ params ["_target", "_caller", "_actionId", "_arguments"]; [_target, _caller] call A3U_fnc_lockpickOnFail; },</code><br>
+• <strong>Adds the hold action to the vehicle with specified parameters</strong><br>
+<code class="code-inline">[], vehicleLockpickTime, 2026, false, false ] call BIS_fnc_holdActionAdd;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3U_fnc_isLocked</strong> - Lock status checking<br>
+• <strong>A3A_fnc_isEngineer</strong> - Engineer validation<br>
+• <strong>BIS_fnc_holdActionAdd</strong> - Hold action system<br>
+• <strong>A3U_fnc_lockpickOnProgress, A3U_fnc_lockpickOnSuccess, A3U_fnc_lockpickOnFail</strong> - Lockpicking callbacks</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3U_fnc_lockpickOnProgress</strong> for progress tracking<br>
+• <strong>Calls A3U_fnc_lockpickOnSuccess</strong> for successful lockpicking<br>
+• <strong>Calls A3U_fnc_lockpickOnFail</strong> for failed lockpicking<br>
+<strong>System integration:</strong> Part of vehicle lockpicking system, connects to vehicle locking mechanism<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses BIS_fnc_holdActionAdd which is client-side, requires proper synchronization<br>
+<strong>Requirements:</strong> Requires valid vehicle parameter, requires BIS_fnc_holdActionAdd function, requires A3U_fnc_lockpickOnProgress, A3U_fnc_lockpickOnSuccess, A3U_fnc_lockpickOnFail functions</div>
+            </div>
+
+            <div class="function-block vehicles-function">
+                <div class="function-name">A3A/addons/ultimate/functions/vehicles/fn_lockpickOnFail.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Handles the failure case for lockpicking operations, including validation and alarm triggering</strong><br>
+                    <strong>Additional context:</strong> This function is called when a lockpicking attempt fails, typically due to player not being an engineer or being detected in enemy territory.<br>
+                    <code class="code-inline">[_target, _caller] call A3U_fnc_lockpickOnFail;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts target and caller parameters</strong><br>
+<code class="code-inline">params ["_target", "_caller"];</code><br>
+• <strong>Exits if caller is not an engineer or target is not locked</strong><br>
+<code class="code-inline">if (!(_caller call A3A_fnc_isEngineer) || !(_target call A3U_fnc_isLocked)) exitWith {};</code><br>
+• <strong>Gets lockpicking zones and finds closest zone to caller</strong><br>
+<code class="code-inline">private _zones = call A3U_fnc_lockpickZones; private _closestZone = (sidesX getVariable [([_zones, _caller] call BIS_fnc_nearestPosition), sideUnknown]);</code><br>
+• <strong>Triggers alarm if caller is in enemy zone, sets caller to non-captive, and displays failure hint</strong><br>
+<code class="code-inline">if (_closestZone isNotEqualTo teamPlayer) then { [_target, "alarmCar"] remoteExecCall ["say3D", 0, true]; _caller setCaptive false; [localize "STR_A3AU_action_lockpick_title", localize "STR_A3AU_action_lockpick_aborted"] call A3A_fnc_customHint; };</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_fnc_isEngineer</strong> - Engineer validation<br>
+• <strong>A3U_fnc_isLocked</strong> - Lock status checking<br>
+• <strong>A3U_fnc_lockpickZones</strong> - Zone list function<br>
+• <strong>BIS_fnc_nearestPosition, say3D, setCaptive, A3A_fnc_customHint</strong> - Various helper functions</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of vehicle lockpicking system, connects to hold action callbacks<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses remoteExecCall for sound, setCaptive for player state<br>
+<strong>Requirements:</strong> Requires valid target and caller parameters, requires A3A_fnc_isEngineer and A3U_fnc_isLocked functions</div>
+            </div>
+
+            <div class="function-block vehicles-function">
+                <div class="function-name">A3A/addons/ultimate/functions/vehicles/fn_lockpickOnProgress.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Handles progress tracking for lockpicking operations, including validation and hint messages</strong><br>
+                    <strong>Additional context:</strong> This function is called during lockpicking to track progress and provide feedback to players.<br>
+                    <code class="code-inline">[_target, _caller, _actionId, _frame, _maxFrame] call A3U_fnc_lockpickOnProgress;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts target, caller, action ID, frame, and max frame parameters</strong><br>
+<code class="code-inline">params ["_target", "_caller", "_actionId", "_frame", "_maxFrame"];</code><br>
+• <strong>Exits and removes action if target is no longer locked</strong><br>
+<code class="code-inline">if !([_target] call A3U_fnc_isLocked) exitWith {[_target, _actionId] call BIS_fnc_holdActionRemove};</code><br>
+• <strong>Gets lockpicking zones, finds closest zone, and gets vehicle name</strong><br>
+<code class="code-inline">private _zones = call A3U_fnc_lockpickZones; private _closestZone = (sidesX getVariable [([_zones, _caller] call BIS_fnc_nearestPosition), sideUnknown]); private _vehicleName = getText (configFile >> "cfgVehicles" >> typeOf _target >> "displayName");</code><br>
+• <strong>Shows start message at 2nd frame</strong><br>
+<code class="code-inline">if (_frame == 2) then { [localize "STR_A3AU_action_lockpick_title", format [localize "STR_A3AU_action_lockpick_start", _vehicleName]] call A3A_fnc_customHint; };</code><br>
+• <strong>Sets up zone control and toolkit hint messages</strong><br>
+<code class="code-inline">private _hintMessage = []; if (_closestZone isEqualTo teamPlayer && {_frame >= (_maxFrame / 12)}) then { _hintMessage = [localize "STR_A3AU_action_lockpick_title", format [localize "STR_A3AU_action_lockpick_zone_control", _vehicleName]]; }; if ([_caller, 'ToolKit'] call BIS_fnc_hasItem && {_hintMessage isEqualTo []} && {_frame >= (_maxFrame / 2)}) then { _hintMessage = [localize "STR_A3AU_action_lockpick_title", format [localize "STR_A3AU_action_lockpick_has_toolkit", _vehicleName]]; };</code><br>
+• <strong>If hint message exists, removes action, locks vehicle, and displays message</strong><br>
+<code class="code-inline">if (_hintMessage isNotEqualTo []) exitWith { [_target, _actionId] call BIS_fnc_holdActionRemove; [_target, false] remoteExecCall ["A3U_fnc_setLock", (owner _target)]; _hintMessage call A3A_fnc_customHint; };</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3U_fnc_isLocked</strong> - Lock status checking<br>
+• <strong>A3U_fnc_lockpickZones</strong> - Zone list function<br>
+• <strong>BIS_fnc_nearestPosition, getText, BIS_fnc_hasItem</strong> - Various helper functions<br>
+• <strong>BIS_fnc_holdActionRemove, A3U_fnc_setLock, A3A_fnc_customHint</strong> - Action and notification functions</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of vehicle lockpicking system, connects to hold action callbacks<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses BIS_fnc_holdActionRemove, remoteExecCall for locking, A3A_fnc_customHint for messages<br>
+<strong>Requirements:</strong> Requires valid parameters for target, caller, action ID, frame, and max frame, requires A3U_fnc_isLocked, A3U_fnc_lockpickZones functions</div>
+            </div>
+
+            <div class="function-block vehicles-function">
+                <div class="function-name">A3A/addons/ultimate/functions/vehicles/fn_lockpickOnSuccess.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Handles successful lockpicking operations by removing the hold action and locking the vehicle</strong><br>
+                    <strong>Additional context:</strong> This function is called when a lockpicking attempt is successful, typically after completing the hold action.<br>
+                    <code class="code-inline">[_target, _caller, _actionId] call A3U_fnc_lockpickOnSuccess;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts target, caller, and action ID parameters</strong><br>
+<code class="code-inline">params ["_target", "_caller", "_actionId"];</code><br>
+• <strong>Removes the hold action from the vehicle</strong><br>
+<code class="code-inline">[_target, _actionId] call BIS_fnc_holdActionRemove;</code><br>
+• <strong>Locks the vehicle using setLock function</strong><br>
+<code class="code-inline">[_target, false] remoteExecCall ["A3U_fnc_setLock", (owner _target)];</code><br>
+• <strong>Displays success message to player with vehicle name</strong><br>
+<code class="code-inline">[localize "STR_A3AU_action_lockpick_title", format [localize "STR_A3AU_action_lockpick_success", (getText (configFile >> "cfgVehicles" >> typeOf _target >> "displayName"))]] call A3A_fnc_customHint;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>BIS_fnc_holdActionRemove</strong> - Action removal<br>
+• <strong>A3U_fnc_setLock</strong> - Vehicle locking function<br>
+• <strong>A3A_fnc_customHint, getText</strong> - Notification and config functions</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of vehicle lockpicking system, connects to hold action callbacks<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses remoteExecCall for locking, A3A_fnc_customHint for messages<br>
+<strong>Requirements:</strong> Requires valid parameters for target, caller, and action ID, requires A3U_fnc_setLock function</div>
+            </div>
+
+            <div class="function-block vehicles-function">
+                <div class="function-name">A3A/addons/ultimate/functions/vehicles/fn_lockpickZones.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Returns a list of all zones that can be used for lockpicking operations</strong><br>
+                    <strong>Additional context:</strong> This function is called by other lockpicking functions to determine which zones are valid for lockpicking activities.<br>
+                    <code class="code-inline">call A3U_fnc_lockpickZones;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Combines all zone types into a single array</strong><br>
+<code class="code-inline">private _zones = (airportsX + milbases + seaports + outposts);</code><br>
+• <strong>Returns the combined array</strong><br>
+<code class="code-inline">_zones;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>airportsX, milbases, seaports, outposts</strong> - Global zone variables</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of vehicle lockpicking system, connects to zone validation<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses global zone variables<br>
+<strong>Requirements:</strong> Requires airportsX, milbases, seaports, outposts global variables to exist</div>
+            </div>
+
+            <div class="function-block vehicles-function">
+                <div class="function-name">A3A/addons/ultimate/functions/vehicles/fn_setLock.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Locks or unlocks a vehicle with appropriate inventory handling and network synchronization</strong><br>
+                    <strong>Additional context:</strong> This function is called to lock or unlock vehicles, typically after successful lockpicking or when vehicles are initially placed.<br>
+                    <code class="code-inline">[_vehicle, _state] call A3U_fnc_setLock;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts vehicle and lock state parameters with defaults</strong><br>
+<code class="code-inline">params [ ["_vehicle", ObjNull], ["_state", false] ];</code><br>
+• <strong>Exits if not on server and not on client with interface</strong><br>
+<code class="code-inline">if (!isServer && hasInterface) exitWith { Error("Server-side function was not called on the server? Aborting") };</code><br>
+• <strong>Exits if vehicle auto-lock is disabled</strong><br>
+<code class="code-inline">if (enableVehicleAutoLock isEqualTo false) exitWith {false};</code><br>
+• <strong>Validates vehicle parameters</strong><br>
+<code class="code-inline">if (_vehicle isEqualTo ObjNull || {isNil "_vehicle"}) exitWith {false}; if (_vehicle isKindOf "Static") exitWith {false}; if (!(alive _vehicle)) exitWith {false};</code><br>
+• <strong>Locks vehicle and synchronizes inventory</strong><br>
+<code class="code-inline">_vehicle lock _state; [_vehicle, _state] remoteExecCall ["lockInventory", 0, _vehicle];</code><br>
+• <strong>Adds lockpick action if vehicle is locked</strong><br>
+<code class="code-inline">if (_state isEqualTo true) then { [_vehicle] call A3U_fnc_addLockpickAction; };</code><br>
+• <strong>Logs lock status</strong><br>
+<code class="code-inline">Debug_2("%1 has been locked. State: %2", typeOf _vehicle, _state);</code><br>
+• <strong>Returns true upon successful completion</strong><br>
+<code class="code-inline">true;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>lockInventory</strong> - Inventory locking function<br>
+• <strong>A3U_fnc_addLockpickAction</strong> - Lockpick action addition<br>
+• <strong>Debug_2</strong> - Logging function</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3U_fnc_addLockpickAction</strong> if vehicle is locked<br>
+<strong>System integration:</strong> Part of vehicle locking system, connects to vehicle management<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses remoteExecCall for inventory locking, requires proper synchronization<br>
+<strong>Requirements:</strong> Requires valid vehicle parameter, requires enableVehicleAutoLock setting</div>
+            </div>
+        </section>
+
+        <!-- Utility Functions Section -->
+        <section id="utility" class="section">
+            <h2>🔧 Utility Functions (7 functions)</h2>
+
+            <div class="function-block utility-function">
+                <div class="function-name">A3A/addons/ultimate/functions/Utility/fn_exportCrate.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Exports weapons and magazines from a crate into a formatted config array for arms dealer</strong><br>
+                    <strong>Additional context:</strong> This function is used by developers to quickly export crate contents for configuration, typically when setting up new weapons or creating black market stock.<br>
+                    <code class="code-inline">[_object, _prefix, _category] call A3U_fnc_exportCrate;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts object, prefix, and category parameters with defaults</strong><br>
+<code class="code-inline">params [ ["_object", cursorObject], ["_prefix", "mod"], ["_category", "default"] ];</code><br>
+• <strong>Gets weapon cargo from object</strong><br>
+<code class="code-inline">private _wepCargo = weaponCargo _object;</code><br>
+• <strong>Initializes weapons text with class name and display name</strong><br>
+<code class="code-inline">private _wepsText = format [ ' class %1%2 { displayName = "%2 %1"; picture = "";', _category, _prefix ];</code><br>
+• <strong>Initializes magazines text with class name and display name</strong><br>
+<code class="code-inline">private _magsText = format [ ' class magazines%1%2 { displayName = "%2 Magazines"; picture = "";', _category, _prefix ];</code><br>
+• <strong>Iterates through weapons to add to export, gets magazines for each weapon</strong><br>
+<code class="code-inline">{ if (_x in _wepsText) then {} else { private _wepText = format [ " ITEM(%1, _PRICE_, _STOCKTYPE_);", _x ]; _wepsText = _wepsText + _wepText; }; private _mag = getArray (configfile >> "CfgWeapons" >> _x >> "magazines") select 0; if (_mag in _magsText) then {} else { private _magText = format [ " ITEM(%1, _PRICE_, MAGAZINE_STOCK);", _mag ]; _magsText = _magsText + _magText; }; } forEach _wepCargo;</code><br>
+• <strong>Formats final text for weapons and magazines</strong><br>
+<code class="code-inline">_wepsText = _wepsText + " };"; _magsText = _magsText + " };"; _wepsText = formatText [ "%1 %2", _wepsText, _magsText ];</code><br>
+• <strong>Copies formatted text to clipboard</strong><br>
+<code class="code-inline">copyToClipboard str _wepsText;</code><br>
+• <strong>Returns formatted text</strong><br>
+<code class="code-inline">_wepsText</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>weaponCargo</strong> - Cargo inventory function<br>
+• <strong>getArray, configFile, formatText</strong> - Configuration and text formatting<br>
+• <strong>copyToClipboard</strong> - Clipboard manipulation</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of utility functions, used for development and configuration<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses copyToClipboard which is client-side<br>
+<strong>Requirements:</strong> Requires valid object parameter with weapon cargo, requires configuration files to be available</div>
+            </div>
+
+            <div class="function-block utility-function">
+                <div class="function-name">A3A/addons/ultimate/functions/Utility/fn_exportPylons.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Exports the current pylon loadout of an air vehicle for configuration</strong><br>
+                    <strong>Additional context:</strong> This function is used by developers to quickly export aircraft pylon configurations for setting up new aircraft or modifying existing ones.<br>
+                    <code class="code-inline">[_vehicle] call A3U_fnc_exportPylons;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts vehicle parameter with default cursor object</strong><br>
+<code class="code-inline">params [["_vehicle", cursorObject]];</code><br>
+• <strong>Gets all pylon information from vehicle</strong><br>
+<code class="code-inline">private _pylons = getAllPylonsInfo _vehicle;</code><br>
+• <strong>Extracts pylon loadout data from information</strong><br>
+<code class="code-inline">private _export = []; { _export pushBack (_x select 3); } forEach _pylons;</code><br>
+• <strong>Logs export information and writes to rpt log</strong><br>
+<code class="code-inline">[format["Plane Loadout (%1) Exported.", (typeOf _vehicle)], _fnc_scriptName] call A3U_fnc_log; diag_log _export;</code><br>
+• <strong>Copies export data to clipboard</strong><br>
+<code class="code-inline">copyToClipboard str _export;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>getAllPylonsInfo</strong> - Pylon information function<br>
+• <strong>copyToClipboard, diag_log</strong> - Clipboard and logging functions<br>
+• <strong>A3U_fnc_log</strong> - Custom logging function</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of utility functions, used for development and configuration<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses copyToClipboard which is client-side, diag_log for logging<br>
+<strong>Requirements:</strong> Requires valid vehicle parameter with pylon information, requires A3U_fnc_log function</div>
+            </div>
+
+            <div class="function-block utility-function">
+                <div class="function-name">A3A/addons/ultimate/functions/Utility/fn_exportTowns.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Exports town data from the world configuration for use in map or zone generation</strong><br>
+                    <strong>Additional context:</strong> This function is used by developers to export town data for map generation or zone placement.<br>
+                    <code class="code-inline">call A3U_fnc_exportTowns;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Initializes output data array</strong><br>
+<code class="code-inline">private _outputData = [];</code><br>
+• <strong>Filters town configuration classes and extracts properties</strong><br>
+<code class="code-inline">"(getText (_x >> ""type"") in [""NameCityCapital"", ""NameCity"", ""NameVillage"", ""CityCenter""]) && !(getText (_x >> ""Name"") isEqualTo """")" configClasses (configfile >> "CfgWorlds" >> worldName >> "Names") apply { _nameX = configName _x; _sizeX = getNumber (_x >> "radiusA"); _sizeY = getNumber (_x >> "radiusB"); _size = [_sizeY, _sizeX] select (_sizeX > _sizeY); _pos = getArray (_x >> "position"); _size = [_size, 400] select (_size < 400); _type = getText (_x >> "type");</code><br>
+• <strong>Calculates number of civilians for each town</strong><br>
+<code class="code-inline">_numCiv = if (!isNull server) then {server getVariable _namex}; if (isNil "_numCiv" || {!(_numCiv isEqualType 0)}) then { _numCiv = (count (nearestObjects [_pos, ["house"], _size])); };</code><br>
+• <strong>Builds output array with town data</strong><br>
+<code class="code-inline">_outputData pushBack [_namex, _numCiv, _type, _pos, _sizeX, _sizeY]; };</code><br>
+• <strong>Returns array of town data</strong><br>
+<code class="code-inline">_outputData</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>configClasses, getNumber, getArray, getText</strong> - Configuration access functions<br>
+• <strong>nearestObjects</strong> - Object proximity checking</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of utility functions, used for map generation<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses standard configuration functions<br>
+<strong>Requirements:</strong> Requires valid world configuration with town data</div>
+            </div>
+
+            <div class="function-block utility-function">
+                <div class="function-name">A3A/addons/ultimate/functions/Utility/fn_hasAddon.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Checks if one or more addons are installed and available in the configuration</strong><br>
+                    <strong>Additional context:</strong> This function is used to validate addon requirements for various game features, ensuring that necessary mods are present before attempting to use them.<br>
+                    <code class="code-inline">[_class] call A3U_fnc_hasAddon;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Includes necessary header files</strong><br>
+<code class="code-inline">#include "..\..\script_component.hpp" FIX_LINE_NUMBERS()</code><br>
+• <strong>Accepts class parameter with default empty string</strong><br>
+<code class="code-inline">params [["_class", ""]];</code><br>
+• <strong>Exits if class parameter is empty</strong><br>
+<code class="code-inline">if (_class isEqualTo "") exitWith {false};</code><br>
+• <strong>Handles array of classes, checking each one for existence</strong><br>
+<code class="code-inline">if (_class isEqualType []) exitWith { { if (isClass (configFile >> "cfgPatches" >> _x)) then { Verbose_1("CfgPatches class %1 does exist.", _x); _check pushBack true; } else { Verbose_1("CfgPatches class %1 does not exist.", _x); _check pushBack false; }; } forEach _class; if (false in _check) exitWith {false}; true };</code><br>
+• <strong>Handles single class check</strong><br>
+<code class="code-inline">if (isClass (configFile >> "cfgPatches" >> _class)) then { true } else { false };</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>isClass, configFile</strong> - Configuration checking functions<br>
+• <strong>Verbose_1</strong> - Logging function</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of utility functions, used for addon validation<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses standard configuration functions<br>
+<strong>Requirements:</strong> Requires valid class parameter, requires configFile to be accessible</div>
+            </div>
+
+            <div class="function-block utility-function">
+                <div class="function-name">A3A/addons/ultimate/functions/Utility/fn_log.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Logs a message to the diagnostic log with file context information</strong><br>
+                    <strong>Additional context:</strong> This function is used for debugging and monitoring system behavior, typically called by other functions to log important events or errors.<br>
+                    <code class="code-inline">[_message, _file] call A3U_fnc_log;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts message and optional file parameters</strong><br>
+<code class="code-inline">params ["_message", ["_file", _fnc_scriptName]];</code><br>
+• <strong>Formats and writes log message to diagnostic log</strong><br>
+<code class="code-inline">diag_log (" | Antistasi Ultimate" + " | File: " + _file + " | " + _message + " | ")</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>diag_log</strong> - Diagnostic logging function</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of utility functions, used for debugging<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses diag_log which is client-side<br>
+<strong>Requirements:</strong> Requires valid message parameter</div>
+            </div>
+
+            <div class="function-block utility-function">
+                <div class="function-name">A3A/addons/ultimate/functions/Utility/fn_logisticsGrabSeats.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Handles grabbing seat positions from a vehicle and drawing them on the map for logistics purposes</strong><br>
+                    <strong>Additional context:</strong> This function is used to visualize vehicle seating arrangements for logistics operations, typically when planning vehicle assignments or cargo loading.<br>
+                    <code class="code-inline">[_vehicle, _unit] call A3U_fnc_logisticsGrabSeats;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts vehicle and unit parameters with defaults</strong><br>
+<code class="code-inline">params [ ["_vehicle", cursorObject], ["_unit", player] ];</code><br>
+• <strong>Sets default drawing parameters</strong><br>
+<code class="code-inline">textSize = 0.05; iconSize = 1.5; colour = [1,1,1,0.8];</code><br>
+• <strong>Removes existing drawing event handler if present</strong><br>
+<code class="code-inline">if (_vehicle getVariable ["A3U_helper_logisticsDrawer", ""] isNotEqualTo "") then { removeMissionEventHandler ["Draw3D", _vehicle getVariable "A3U_helper_logisticsDrawer"]; };</code><br>
+• <strong>Processes vehicle selections to extract seat positions and names</strong><br>
+<code class="code-inline">private _selections = _vehicle selectionNames "FireGeometry"; private _selectionsNames = []; private _selectionsCoords = []; { private _inModelPosition = _vehicle selectionPosition [_x, "FireGeometry", "FirstPoint"]; private _splitSelections = _x splitString ""; private _splitSelection = parseNumber ((_splitSelections select -3) + (_splitSelections select -2) + (_splitSelections select -1)) - 1; private _splitSelection = str _splitSelection; if !("cargo" in _x && {!("gunner" in _x)}) then {} else { _selectionsCoords pushBack _inModelPosition; _selectionsNames pushBack _splitSelection; }; } forEach _selections;</code><br>
+• <strong>Sets up drawing event handler for continuous display of seat positions</strong><br>
+<code class="code-inline">canDraw = true; private _helperID = addMissionEventHandler ["Draw3D",{ private _selectionsNames = (_thisArgs select 0); private _selectionsCoords = (_thisArgs select 1); private _vehicle = (_thisArgs select 2); if (canDraw) then { hintSilent str [_selectionsNames, _selectionsCoords, _vehicle]; { _name = _selectionsNames select _forEachIndex; drawIcon3D [ "a3\ui_f\data\Map\Markers\Military\dot_ca.paa", colour, _vehicle modelToWorldVisual (_selectionsCoords select _forEachIndex), iconSize,iconSize,0, _name, 0, textSize ]; } forEach _selectionsCoords; }; }, [_selectionsNames, _selectionsCoords, _vehicle]];</code><br>
+• <strong>Stores drawing handler for potential cleanup</strong><br>
+<code class="code-inline">_vehicle setVariable ["A3U_helper_logisticsDrawer", _helperID];</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>selectionNames, selectionPosition, modelToWorldVisual</strong> - Vehicle geometry functions<br>
+• <strong>drawIcon3D, addMissionEventHandler, removeMissionEventHandler</strong> - Drawing and event functions</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of utility functions, used for logistics operations<br>
+<strong>Global variables modified:</strong> _vehicle variable for storing drawing handler<br>
+<strong>Network implications:</strong> Uses drawIcon3D and addMissionEventHandler which are client-side<br>
+<strong>Requirements:</strong> Requires valid vehicle parameter with selections, requires drawing functions to be available</div>
+            </div>
+
+            <div class="function-block utility-function">
+                <div class="function-name">A3A/addons/ultimate/functions/Utility/fn_weightTest.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Tests weighted selection of values to verify correct distribution</strong><br>
+                    <strong>Additional context:</strong> This function is used for testing weighted selection algorithms, typically during development or debugging to ensure proper random distribution.<br>
+                    <code class="code-inline">[_values, _weights] call A3U_fnc_weightTest;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts values and weights parameters</strong><br>
+<code class="code-inline">params ["_values", "_weights"];</code><br>
+• <strong>Performs weighted selection 10,000 times</strong><br>
+<code class="code-inline">private _valuesResult = []; for "_i" from 0 to 10000 do { private _result = _values selectRandomWeighted _weights; _valuesResult pushBack _result; };</code><br>
+• <strong>Counts and logs occurrences of each value</strong><br>
+<code class="code-inline">{ private _value = _x; private _count = { _x == _value } count _valuesResult; [format["Weighted Test. %1 was present %2 times.", _value, _count], _fnc_scriptName] call A3U_fnc_log; } forEach _values;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>selectRandomWeighted</strong> - Weighted random selection<br>
+• <strong>A3U_fnc_log</strong> - Logging function</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of utility functions, used for testing<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses standard functions, logs to diagnostic log<br>
+<strong>Requirements:</strong> Requires valid values and weights parameters, requires A3U_fnc_log function</div>
+            </div>
+        </section>
+
+        <!-- STALKER Functions Section -->
+        <section id="stalker" class="section">
+            <h2>🌀 STALKER Functions (3 functions)</h2>
+
+            <div class="function-block stalker-function">
+                <div class="function-name">A3A/addons/ultimate/functions/STALKER/fn_createAnomalyField.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Creates an anomaly field around the map, avoiding water and out-of-bounds areas</strong><br>
+                    <strong>Additional context:</strong> This function is used to generate anomaly fields for the STALKER system, typically called during map initialization or when creating new anomaly zones.<br>
+                    <code class="code-inline">[_anomalyAmount] call A3U_fnc_createAnomalyField;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts anomaly amount parameter with default 40</strong><br>
+<code class="code-inline">params [["_anomalyAmount", 40]];</code><br>
+• <strong>Limits anomaly amount to cap value</strong><br>
+<code class="code-inline">_anomalyAmount = _anomalyAmount min (round A3U_setting_anomalyCap);</code><br>
+• <strong>Initializes anomalies array and drawing flag</strong><br>
+<code class="code-inline">private _anomalies = []; private _drawAnomalies = A3U_setting_anomalyDraw;</code><br>
+• <strong>Creates position generation function avoiding water</strong><br>
+<code class="code-inline">private _fnc_grabPos = { private _pos = [nil, ["water"]] call BIS_fnc_randomPos; private _terrainHeight = getTerrainHeight _pos; _pos = [_pos select 0, _pos select 1, _terrainHeight]; if (_pos isEqualTo [0,0] || {_pos isEqualTo [0,0,0]}) exitWith {false}; _pos; };</code><br>
+• <strong>Creates marker creation function</strong><br>
+<code class="code-inline">private _fnc_createMarker = { params ["_text", "_anomaly", "_index"]; if (_drawAnomalies isEqualTo false) exitWith {}; private _marker = createMarker [(_text + str _index), [0,0]]; _marker setMarkerType "mil_dot"; _marker setMarkerText _text; _marker setMarkerPos (getPos _anomaly); };</code><br>
+• <strong>Generates anomalies with weighted selection and creates markers</strong><br>
+<code class="code-inline">Debug_1("Creating anomaly field, anomaly amount: %1", _anomalyAmount); for "_i" from 1 to _anomalyAmount do { private _pos = call _fnc_grabPos; private _roll = selectRandomWeighted [ 1,0.5, 2,0.5, 3,0.3, 4,0.3 ]; switch (_roll) do { case 1: { private _anomaly = [_pos] call diwako_anomalies_main_fnc_createMeatgrinder; _anomalies pushBack _anomaly; ["meatgrinder", _anomaly, _i] call _fnc_createMarker; }; case 2: { private _anomaly = [_pos] call diwako_anomalies_main_fnc_createSpringboard; _anomalies pushBack _anomaly; ["springboard", _anomaly, _i] call _fnc_createMarker; }; case 3: { private _anomaly = [_pos] call diwako_anomalies_main_fnc_createBurner; _anomalies pushBack _anomaly; ["burner", _anomaly, _i] call _fnc_createMarker; }; case 4: { private _anomaly = [_pos] call diwako_anomalies_main_fnc_createElectra; _anomalies pushBack _anomaly; ["electra", _anomaly, _i] call _fnc_createMarker; }; };</code><br>
+• <strong>Logs final count and returns anomalies array</strong><br>
+<code class="code-inline">Debug_1("Created anomaly field, anomaly amount final: %1", count _anomalies); _anomalies</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>BIS_fnc_randomPos, getTerrainHeight</strong> - Position generation<br>
+• <strong>selectRandomWeighted</strong> - Weighted random selection<br>
+• <strong>diwako_anomalies_main_fnc_createMeatgrinder, diwako_anomalies_main_fnc_createSpringboard, diwako_anomalies_main_fnc_createBurner, diwako_anomalies_main_fnc_createElectra</strong> - Anomaly creation functions<br>
+• <strong>createMarker, Debug_1</strong> - Marker creation and logging</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls diwako_anomalies_main_fnc_createMeatgrinder</strong> for meatgrinder anomalies<br>
+• <strong>Calls diwako_anomalies_main_fnc_createSpringboard</strong> for springboard anomalies<br>
+• <strong>Calls diwako_anomalies_main_fnc_createBurner</strong> for burner anomalies<br>
+• <strong>Calls diwako_anomalies_main_fnc_createElectra</strong> for electra anomalies<br>
+<strong>System integration:</strong> Part of STALKER system, connects to anomaly generation<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses standard functions, requires diwako anomalies to be available<br>
+<strong>Requirements:</strong> Requires valid A3U_setting_anomalyCap and A3U_setting_anomalyDraw settings, requires diwako_anomalies_main functions</div>
+            </div>
+
+            <div class="function-block stalker-function">
+                <div class="function-name">A3A/addons/ultimate/functions/STALKER/fn_emission.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Starts random emission storms with parameters from CBA settings</strong><br>
+                    <strong>Additional context:</strong> This function is used to initiate emission storms in the STALKER system, typically called during map initialization or when starting emission events.<br>
+                    <code class="code-inline">call A3U_fnc_emission;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Gets emission parameters from mission namespace with defaults</strong><br>
+<code class="code-inline">private _emissionMin = missionNamespace getVariable ["A3U_setting_emissionMinimum",45]; private _emissionMax = missionNamespace getVariable ["A3U_setting_emissionMaximum",60]; private _emissionSpeedMin = missionNamespace getVariable ["A3U_setting_emissionSpeedMinimum",125]; private _emissionSpeedMax = missionNamespace getVariable ["A3U_setting_emissionSpeedMaximum",125];</code><br>
+• <strong>Starts random emissions with parameters</strong><br>
+<code class="code-inline">[_emissionMin, _emissionMax, _emissionSpeedMin, _emissionSpeedMax, true] spawn tts_emission_fnc_startRandomEmissions;</code><br>
+• <strong>Logs emission start information with parameters</strong><br>
+<code class="code-inline">Info_4("Started Emissions with params: [%1, %2, %3, %4]", _emissionMin, _emissionMax, _emissionSpeedMin, _emissionSpeedMax);</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>missionNamespace getVariable</strong> - Setting retrieval<br>
+• <strong>tts_emission_fnc_startRandomEmissions</strong> - Emission system function<br>
+• <strong>Info_4</strong> - Logging function</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls tts_emission_fnc_startRandomEmissions</strong> with emission parameters<br>
+<strong>System integration:</strong> Part of STALKER system, connects to emission management<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses spawn for asynchronous execution, Info_4 for logging<br>
+<strong>Requirements:</strong> Requires A3U_setting_emissionMinimum, A3U_setting_emissionMaximum, A3U_setting_emissionSpeedMinimum, A3U_setting_emissionSpeedMaximum settings, requires tts_emission_fnc_startRandomEmissions function</div>
+            </div>
+
+            <div class="function-block stalker-function">
+                <div class="function-name">A3A/addons/ultimate/functions/STALKER/fn_fillMapAnomalies.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Fills the map with anomalies based on map size and CBA settings</strong><br>
+                    <strong>Additional context:</strong> This function is used to automatically generate anomaly fields across the map, typically called during map initialization or when creating new game sessions.<br>
+                    <code class="code-inline">call A3U_fnc_fillMapAnomalies;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Gets world size parameter</strong><br>
+<code class="code-inline">private _size = worldSize;</code><br>
+• <strong>Calculates anomaly amount based on map size and settings</strong><br>
+<code class="code-inline">private _anomalyAmount = (_size / (round(A3U_setting_anomalyAmount))) * 2;</code><br>
+• <strong>Calls createAnomalyField function with calculated amount</strong><br>
+<code class="code-inline">[_anomalyAmount] call A3U_fnc_createAnomalyField;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>worldSize</strong> - Map size function<br>
+• <strong>A3U_setting_anomalyAmount</strong> - Anomaly density setting<br>
+• <strong>A3U_fnc_createAnomalyField</strong> - Anomaly field creation function</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3U_fnc_createAnomalyField</strong> with calculated anomaly amount<br>
+<strong>System integration:</strong> Part of STALKER system, connects to anomaly generation<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses standard functions, requires A3U_fnc_createAnomalyField to be available<br>
+<strong>Requirements:</strong> Requires A3U_setting_anomalyAmount setting, requires A3U_fnc_createAnomalyField function</div>
+            </div>
+        </section>
+
+        <!-- Reinforcement Functions Section -->
+        <section id="reinforcement" class="section">
+            <h2>⚔️ Reinforcement Functions (4 functions)</h2>
+
+            <div class="function-block reinforcement-function">
+                <div class="function-name">A3A/addons/ultimate/functions/REINF/fn_blackMarketVehiclePrice.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Calculates the price of a black market vehicle with discounts based on player-controlled zones</strong><br>
+                    <strong>Additional context:</strong> This function is used to determine vehicle prices in the black market system, typically called when players attempt to purchase vehicles from the black market.<br>
+                    <code class="code-inline">[_typeX] call A3U_fnc_blackMarketVehiclePrice;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Includes necessary header files</strong><br>
+<code class="code-inline">#include "..\..\script_component.hpp" FIX_LINE_NUMBERS()</code><br>
+• <strong>Accepts vehicle type parameter</strong><br>
+<code class="code-inline">params ["_typeX"];</code><br>
+• <strong>Gets base vehicle price from black market stock</strong><br>
+<code class="code-inline">private _cost = A3U_blackMarketStock select { _x select 0 == _typeX } select 0 select 1;</code><br>
+• <strong>Exits if price doesn't exist and sets default</strong><br>
+<code class="code-inline">if (isNil "_cost") exitWith { Error_1("Invalid vehicle price at %1.", _typeX); _cost = 0; _cost; };</code><br>
+• <strong>Calculates discount based on controlled zones with diminishing returns</strong><br>
+<code class="code-inline">_cost = if (isNil "_cost") then { Error_1("Invalid vehicle price at %1.", _typeX); 0 } else { private _multiplierSeaport = {sidesX getVariable [_x,sideUnknown] == teamPlayer} count seaports; private _multiplierResource = {sidesX getVariable [_x,sideUnknown] == teamPlayer} count resourcesX; private _reductionFactorSeaport = 0.1; private _reductionFactorResource = 0.02; private _diminishingFactor = 1 / (1 + (_multiplierSeaport * _reductionFactorSeaport) + (_multiplierResource * _reductionFactorResource)); round (_cost * _diminishingFactor) };</code><br>
+• <strong>Calculates and applies additional discount</strong><br>
+<code class="code-inline">private _discount = ((A3U_blackMarketDiscountVehicle / 10) * _cost); private _cost = round (_cost - _discount);</code><br>
+• <strong>Returns final calculated price</strong><br>
+<code class="code-inline">_cost;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3U_blackMarketStock</strong> - Black market data<br>
+• <strong>sidesX, seaports, resourcesX</strong> - Zone control variables<br>
+• <strong>A3U_blackMarketDiscountVehicle</strong> - Discount setting<br>
+• <strong>Error_1, round</strong> - Error handling and math functions</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of black market system, connects to vehicle pricing<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses standard functions, requires A3U_blackMarketStock to be available<br>
+<strong>Requirements:</strong> Requires A3U_blackMarketStock global variable, requires valid vehicle type parameter, requires A3U_blackMarketDiscountVehicle setting</div>
+            </div>
+
+            <div class="function-block reinforcement-function">
+                <div class="function-name">A3A/addons/ultimate/functions/REINF/fn_invaderComeback.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Initiates invader comeback event by setting invader state and scheduling attacks</strong><br>
+                    <strong>Additional context:</strong> This function is used to trigger invader comeback events, typically called when invaders return after being defeated or during game progression events.<br>
+                    <code class="code-inline">call A3U_fnc_invaderComeback;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Sets invader state to emergence</strong><br>
+<code class="code-inline">["emergence"] call A3U_fnc_setInvaderState;</code><br>
+• <strong>Schedules attacks with 5-minute intervals</strong><br>
+<code class="code-inline">private _attackCount = 0; private _attackAmount = 2; for "_i" from 0 to _attackAmount do { [Invaders] spawn A3A_fnc_chooseAttack; _attackCount = _attackCount + 1; uiSleep 300; };</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3U_fnc_setInvaderState</strong> - State setting function<br>
+• <strong>A3A_fnc_chooseAttack</strong> - Attack selection function<br>
+• <strong>Invaders</strong> - Global invader variable</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3U_fnc_setInvaderState</strong> to set emergence state<br>
+• <strong>Calls A3A_fnc_chooseAttack</strong> for each attack<br>
+<strong>System integration:</strong> Part of REINF system, connects to invader management<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses spawn for asynchronous execution, uiSleep for timing<br>
+<strong>Requirements:</strong> Requires Invaders global variable, requires A3U_fnc_setInvaderState and A3A_fnc_chooseAttack functions</div>
+            </div>
+
+            <div class="function-block reinforcement-function">
+                <div class="function-name">A3A/addons/ultimate/functions/REINF/fn_setInvaderState.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Sets the state of invaders (defeated or emergence) and updates game information</strong><br>
+                    <strong>Additional context:</strong> This function is used to manage invader states during gameplay, typically called when invaders are defeated or return to the map.<br>
+                    <code class="code-inline">[_state] call A3U_fnc_setInvaderState;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts state parameter with default empty string</strong><br>
+<code class="code-inline">params [ ["_state", ""] ];</code><br>
+• <strong>Exits if not on server</strong><br>
+<code class="code-inline">if !(isServer) exitWith {false};</code><br>
+• <strong>Handles different states (defeated or emergence) with appropriate actions</strong><br>
+<code class="code-inline">private _text = ""; switch (_state) do { case "defeated": { "CSAT_carrier" setMarkerAlpha 0; areInvadersDefeated = true; }; case "emergence": { "CSAT_carrier" setMarkerAlpha 1; areInvadersDefeated = false; _text = format [ localize "STR_comms_mp_faction_return", "#800000", A3A_faction_inv get "name", ([] call SCRT_fnc_misc_getWorldName) ]; A3A_resourcesAttackInv = 500; A3A_resourcesDefenceInv = 500; }; };</code><br>
+• <strong>Makes defeated state public</strong><br>
+<code class="code-inline">publicVariable "areInvadersDefeated";</code><br>
+• <strong>Sends announcement to players</strong><br>
+<code class="code-inline">[petros, "announce", _text] remoteExec ["A3A_fnc_commsMP", 0];</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>setMarkerAlpha</strong> - Marker visibility<br>
+• <strong>areInvadersDefeated</strong> - State variable<br>
+• <strong>A3A_faction_inv, SCRT_fnc_misc_getWorldName</strong> - Faction and world information<br>
+• <strong>A3A_resourcesAttackInv, A3A_resourcesDefenceInv</strong> - Resource variables<br>
+• <strong>petros, A3A_fnc_commsMP, remoteExec</strong> - Communication functions</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of REINF system, connects to invader management<br>
+<strong>Global variables modified:</strong> areInvadersDefeated, A3A_resourcesAttackInv, A3A_resourcesDefenceInv<br>
+<strong>Network implications:</strong> Uses remoteExec for announcement, publicVariable for state synchronization<br>
+<strong>Requirements:</strong> Requires server execution context, requires valid _state parameter</div>
+            </div>
+
+            <div class="function-block reinforcement-function">
+                <div class="function-name">A3A/addons/ultimate/functions/REINF/fn_simpleAttack.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Creates a simple attack force with specified parameters for invader attacks</strong><br>
+                    <strong>Additional context:</strong> This function is used to create attack forces for invader operations, typically called when planning and executing attacks.<br>
+                    <code class="code-inline">[_target, _vehCount, _origin, _modifiers, _delay, _side, _pool] call A3U_fnc_simpleAttack;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts attack parameters with defaults</strong><br>
+<code class="code-inline">params [ ["_target", ""], ["_vehCount", 5], ["_origin", "CSAT_carrier"], ["_modifiers", ["specops"]], ["_delay", 30], ["_side", Invaders], ["_pool", "attack"] ];</code><br>
+• <strong>Calls createAttackForceMixed with parameters</strong><br>
+<code class="code-inline">private _data = [ _side, _origin, _target, _pool, _vehCount, _delay, _modifiers ] call A3A_fnc_createAttackForceMixed;</code><br>
+• <strong>Returns attack data</strong><br>
+<code class="code-inline">_data;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3A_fnc_createAttackForceMixed</strong> - Attack force creation<br>
+• <strong>Invaders</strong> - Global invader variable</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3A_fnc_createAttackForceMixed</strong> with attack parameters<br>
+<strong>System integration:</strong> Part of REINF system, connects to attack creation<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses A3A_fnc_createAttackForceMixed which handles network synchronization<br>
+<strong>Requirements:</strong> Requires A3A_fnc_createAttackForceMixed function</div>
+            </div>
+        </section>
+
+        <!-- Patches Functions Section -->
+        <section id="patches" class="section">
+            <h2>🔨 Patch Functions (1 function)</h2>
+
+            <div class="function-block patches-function">
+                <div class="function-name">A3A/addons/ultimate/functions/patches/fn_IMS_stealthKill.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Adds an event handler for stealth kills that detects when players are detected during stealth kills</strong><br>
+                    <strong>Additional context:</strong> This function is used to implement stealth kill detection in the IMS system, typically called when players perform stealth kills.<br>
+                    <code class="code-inline">[_unit] call A3U_fnc_IMS_stealthKill;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Includes necessary header files and accepts unit parameter with default player</strong><br>
+<code class="code-inline">#include "..\..\script_component.hpp" params [["_unit", player]];</code><br>
+• <strong>Logs that event handler was added</strong><br>
+<code class="code-inline">Info("IMS Stealth Kill EH Added");</code><br>
+• <strong>Sets up event handler that detects stealth kills and handles detection</strong><br>
+<code class="code-inline">_unit setVariable ["IMS_EventHandler_StealthKill",{ _unit = _this select 0; _victim = _this select 1; _weapon = _this select 2; if (captive _unit) then { private _units = []; { if (alive _x && {_x isNotEqualTo _victim} && {!(isPlayer _x)}) then { _units pushBack _x; }; } forEach nearestObjects [_unit, ["CAManBase"], 20]; { if ([(side _x), resistance] call BIS_fnc_sideIsEnemy || {(side _x) isEqualTo civilian}) then { if (side _x isEqualTo civilian && {(round random 3) isEqualTo 1}) then { [_unit] call A3A_fnc_civilianPanic; }; _unit setCaptive false; ["Undercover", "You were detected doing a stealth kill!"] call A3A_fnc_customHint; }; } forEach _units } },true];</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>captive, nearestObjects, BIS_fnc_sideIsEnemy, isPlayer</strong> - Detection functions<br>
+• <strong>A3A_fnc_civilianPanic, A3A_fnc_customHint, setCaptive</strong> - Response functions</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of IMS system, connects to stealth kill detection<br>
+<strong>Global variables modified:</strong> _unit variable for storing event handler<br>
+<strong>Network implications:</strong> Uses setCaptive and A3A_fnc_customHint for client-side effects<br>
+<strong>Requirements:</strong> Requires valid unit parameter, requires IMS system to be active</div>
+            </div>
+        </section>
+
+        <!-- Menu Functions Section -->
+        <section id="menu" class="section">
+            <h2>📱 Menu Functions (2 functions)</h2>
+
+            <div class="function-block menu-function">
+                <div class="function-name">A3A/addons/ultimate/functions/main_menu/fn_isInMenu.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Checks if a player is in the main menu to prevent setting changes from causing issues</strong><br>
+                    <strong>Additional context:</strong> This function is used to validate player state before applying settings changes, typically called when checking if menu settings can be applied.<br>
+                    <code class="code-inline">[_unit] call A3U_fnc_isInMenu;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts unit parameter</strong><br>
+<code class="code-inline">params ["_unit"];</code><br>
+• <strong>Checks if unit has menu_framework_canPlay variable set to true</strong><br>
+<code class="code-inline">if (_unit getVariable ["menu_framework_canPlay", false]) exitWith {true};</code><br>
+• <strong>Returns false if not in menu</strong><br>
+<code class="code-inline">false</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>getVariable</strong> - Variable checking function</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of main menu system, connects to menu state checking<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses getVariable for client-side state checking<br>
+<strong>Requirements:</strong> Requires valid unit parameter, requires menu_framework_canPlay variable</div>
+            </div>
+
+            <div class="function-block menu-function">
+                <div class="function-name">A3A/addons/ultimate/functions/main_menu/fn_menuImage.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Displays a menu image on the screen during main menu or loading screens</strong><br>
+                    <strong>Additional context:</strong> This function is used to display custom menu images during main menu or loading screens, typically called during initialization or menu transitions.<br>
+                    <code class="code-inline">call A3U_fnc_menuImage;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Sets up display layer and creates picture control</strong><br>
+<code class="code-inline">private _displayName = "RscTitleDisplayEmpty"; #define IDC_HIDDENTEXT 11420919201199 private _id = ["A3AU_layer" + _displayName] call BIS_fnc_rscLayer; _id cutRsc [_displayName, "PLAIN", 0, false, true]; private _display = uiNamespace getVariable _displayName; private _displayImage = _display ctrlCreate ["RscPicture", IDC_HIDDENTEXT];</code><br>
+• <strong>Exits if no image is set</strong><br>
+<code class="code-inline">if (menu_framework_image isEqualTo "None") exitwith { ctrlDelete _displayImage; };</code><br>
+• <strong>Sets image properties and displays it</strong><br>
+<code class="code-inline">_displayImage ctrlEnable false; _displayImage ctrlSetPosition [safeZoneX, safezoneY, safeZoneW, safeZoneH]; _displayImage ctrlSetText menu_framework_image; _displayImage ctrlCommit 0;</code><br>
+• <strong>Deletes image control if not in menu</strong><br>
+<code class="code-inline">if !([player] call A3U_fnc_isInMenu) exitWith { ctrlDelete _displayImage; };</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>BIS_fnc_rscLayer, uiNamespace</strong> - UI layer management<br>
+• <strong>ctrlCreate, ctrlEnable, ctrlSetPosition, ctrlSetText, ctrlCommit, ctrlDelete</strong> - Control manipulation<br>
+• <strong>A3U_fnc_isInMenu</strong> - Menu state checking</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3U_fnc_isInMenu</strong> to check menu state<br>
+<strong>System integration:</strong> Part of main menu system, connects to menu display<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses standard UI functions, requires menu_framework_image to be set<br>
+<strong>Requirements:</strong> Requires menu_framework_image to be set, requires A3U_fnc_isInMenu function</div>
+            </div>
+        </section>
+
+        <!-- Initialization Functions Section -->
+        <section id="init" class="section">
+            <h2>🚀 Initialization Functions (4 functions)</h2>
+
+            <div class="function-block init-function">
+                <div class="function-name">A3A/addons/ultimate/functions/init/fn_checkMods.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Checks for incompatible mods and warns players about potential issues</strong><br>
+                    <strong>Additional context:</strong> This function is used to validate mod compatibility at startup, typically called during mission initialization to warn players about incompatible mods.<br>
+                    <code class="code-inline">call A3U_fnc_checkMods;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Initializes array for incompatible addons</strong><br>
+<code class="code-inline">private _addons = [];</code><br>
+• <strong>Checks for various incompatible mods and adds warnings</strong><br>
+<code class="code-inline">if (["CUP_AirVehicles_Core"] call A3U_fnc_hasAddon && {["RHS_US_A2Port_Armor"] call A3U_fnc_hasAddon}) then { _addons pushBack localize "STR_A3AU_init_mods_warning_CUP_RHS"; }; if (["AR_AdvancedRappelling"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_Advanced_Rappeling"; }; if (["AUR_AdvancedUrbanRappelling"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_Advanced_Urban_Rappeling"; }; if (["lambs_danger"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_LAMBS_AI"; }; if (["VCOM_AI"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_VCOM_AI"; }; if (["HIG_wall"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_AI_CSTG"; }; if (["asr_ai3_main"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_ASR_AI3"; }; if (["ALiVE_main"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_ALiVE"; }; if (["mcc_sandbox"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_MCC_Sandbox_4"; }; if (["zhc_main"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_ZHC"; }; if (["PiR"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_PiR"; }; if (["Werthles_WHK"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_WHK"; }; if (["jac_zeus_wargame"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_Wargame"; }; if (["diw_armor_plates_main"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_APS"; }; if (["BloodSplatter"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_dis"; }; if (["gore_units"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_dis"; }; if (["DISMEMBERMENT"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_dis"; }; if (["Lifeline_revive"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_Lifeline"; }; if (["exile_client"] call A3U_fnc_hasAddon) then { _addons pushBack localize "STR_A3AU_init_mods_warning_Exile"; };</code><br>
+• <strong>Shows popup with warning message if incompatible addons found</strong><br>
+<code class="code-inline">if (_addons isNotEqualTo []) exitWith { private _addonText = _addons joinString ", "; private _text = formatText [ localize "STR_A3AU_init_mods_warning_text", lineBreak, _addonText ]; [_text, localize "STR_A3AU_init_mods_warning_header"] call A3U_fnc_popup; _addons };</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3U_fnc_hasAddon</strong> - Addon checking function<br>
+• <strong>A3U_fnc_popup</strong> - Popup display function<br>
+• <strong>localize, formatText, lineBreak</strong> - Text formatting</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3U_fnc_hasAddon</strong> for each mod check<br>
+• <strong>Calls A3U_fnc_popup</strong> to display warning<br>
+<strong>System integration:</strong> Part of initialization system, connects to mod compatibility checking<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses popup display functions<br>
+<strong>Requirements:</strong> Requires A3U_fnc_hasAddon and A3U_fnc_popup functions, requires localization entries</div>
+            </div>
+
+            <div class="function-block init-function">
+                <div class="function-name">A3A/addons/ultimate/functions/init/fn_init.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Initializes the ultimate addon by calling settings function</strong><br>
+                    <strong>Additional context:</strong> This function is used as the main initialization point for the ultimate addon, typically called during mission startup.<br>
+                    <code class="code-inline">call A3U_fnc_init;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Calls settings function to initialize addon</strong><br>
+<code class="code-inline">call A3U_fnc_settings;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3U_fnc_settings</strong> - Settings initialization function</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3U_fnc_settings</strong><br>
+<strong>System integration:</strong> Part of initialization system, main entry point<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses standard function call<br>
+<strong>Requirements:</strong> Requires A3U_fnc_settings function</div>
+            </div>
+
+            <div class="function-block init-function">
+                <div class="function-name">A3A/addons/ultimate/functions/init/fn_initZones.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Initializes zone visibility settings based on hideEnemyMarkers flag</strong><br>
+                    <strong>Additional context:</strong> This function is used to set up zone visibility at mission startup, typically called when initializing the game world.<br>
+                    <code class="code-inline">[_markersX] call A3U_fnc_initZones;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts markersX parameter with default markersX</strong><br>
+<code class="code-inline">params [["_markersX", markersX]];</code><br>
+• <strong>Exits if hideEnemyMarkers is not enabled</strong><br>
+<code class="code-inline">if !(hideEnemyMarkers) exitWith {};</code><br>
+• <strong>Builds immune markers list</strong><br>
+<code class="code-inline">markersImmune = markersX select { ((sidesX getVariable [_x, sideUnknown]) isEqualTo resistance) || {("cont" in _x)} || {(_x in citiesX)} || {(_x in airportsX)} };</code><br>
+• <strong>Makes markersImmune public</strong><br>
+<code class="code-inline">publicVariable "markersImmune";</code><br>
+• <strong>Sets up revealed zones</strong><br>
+<code class="code-inline">private _revealedZones = revealedZones; if (isNil "revealedZones") then { revealedZones = []; };</code><br>
+• <strong>Processes each marker to set visibility based on conditions</strong><br>
+<code class="code-inline">{ private _markerSide = sidesX getVariable [_x, sideUnknown]; if (_x in _revealedZones) then { [_x] call A3U_fnc_revealZone; continue; }; if (_markerSide isNotEqualTo sideUnknown && {_markerSide isNotEqualTo resistance}) then { if (_x in airportsX || {_x in citiesX}) then {continue}; "Dum"+_x setMarkerAlpha 0; }; } forEach _markersX;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>hideEnemyMarkers</strong> - Global setting<br>
+• <strong>markersX, markersImmune, sidesX, revealedZones</strong> - Zone variables<br>
+• <strong>A3U_fnc_revealZone, setMarkerAlpha</strong> - Zone manipulation functions</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3U_fnc_revealZone</strong> for revealed zones<br>
+<strong>System integration:</strong> Part of initialization system, connects to zone management<br>
+<strong>Global variables modified:</strong> markersImmune, revealedZones<br>
+<strong>Network implications:</strong> Uses setMarkerAlpha for client-side visibility, publicVariable for synchronization<br>
+<strong>Requirements:</strong> Requires hideEnemyMarkers setting enabled, requires markersX, markersImmune, sidesX, revealedZones global variables</div>
+            </div>
+
+            <div class="function-block init-function">
+                <div class="function-name">A3A/addons/ultimate/functions/init/fn_popup.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Displays a popup message with confirm button to players</strong><br>
+                    <strong>Additional context:</strong> This function is used to display important messages to players, typically called when warnings or information needs to be presented.<br>
+                    <code class="code-inline">[_message, _header] spawn A3U_fnc_popup;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts message and header parameters with default "Information"</strong><br>
+<code class="code-inline">params ["_message", ["_header", "Information"]];</code><br>
+• <strong>Displays popup message with confirm button</strong><br>
+<code class="code-inline">[_message, _header, true, false] spawn BIS_fnc_guiMessage;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>BIS_fnc_guiMessage, spawn</strong> - GUI and execution functions</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of initialization system, used for messaging<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses BIS_fnc_guiMessage which is client-side<br>
+<strong>Requirements:</strong> Requires valid message and header parameters</div>
+            </div>
+        </section>
+
+        <!-- CBA Functions Section -->
+        <section id="cba" class="section">
+            <h2>⚙️ CBA Functions (2 functions)</h2>
+
+            <div class="function-block cba-function">
+                <div class="function-name">A3A/addons/ultimate/functions/cba/fn_emission_settings.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Adds CBA settings for TTS emission effects with various configuration options</strong><br>
+                    <strong>Additional context:</strong> This function is used to create emission-related settings in the CBA settings menu, typically called during addon initialization.<br>
+                    <code class="code-inline">call A3U_fnc_emission_settings;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Adds player effect setting with options</strong><br>
+<code class="code-inline">[ "A3U_setting_emissionPlayerEffect", "LIST", "Player Effect", ["Antistasi Ultimate - TTS Emission Settings", "Effects"], [[0, 1, 3, 4], ["Kill Unsheltered Players", "Knockout Unsheltered Players", "Knockout All Players", "Disabled"], 0], true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_emissionPlayerEffect",_value,true]; tts_emission_playerEffect = _value; publicVariable "tts_emission_playerEffect"; } ] call CBA_fnc_addSetting;</code><br>
+• <strong>Adds AI effect setting with options</strong><br>
+<code class="code-inline">[ "A3U_setting_emissionAIEffect", "LIST", "AI Effect", ["Antistasi Ultimate - TTS Emission Settings", "Effects"], [[0, 4], ["Kill Unsheltered Units", "Disabled"], 1], true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_emissionAIEffect",_value,true]; tts_emission_aiEffect = _value; publicVariable "tts_emission_aiEffect"; } ] call CBA_fnc_addSetting;</code><br>
+• <strong>Adds vehicle effect setting with options</strong><br>
+<code class="code-inline">[ "A3U_setting_emissionVehicleEffect", "LIST", "Vehicle Effect", ["Antistasi Ultimate - TTS Emission Settings", "Effects"], [[0, 1, 2, 3, 4], ["Bolt Vehicle", "Disable Engine", "Bolt Vehicle If Engine On", "Disable Engine", "Disabled"], 2], true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_emissionVehicleEffect",_value,true]; tts_emission_vehicleEffect = _value; publicVariable "tts_emission_vehicleEffect"; } ] call CBA_fnc_addSetting;</code><br>
+• <strong>Adds aircraft effect setting with options</strong><br>
+<code class="code-inline">[ "A3U_setting_emissionAircraftEffect", "LIST", "Aircraft Effect", ["Antistasi Ultimate - TTS Emission Settings", "Effects"], [[0, 1, 2], ["Bolt Aircraft", "Disable Aircraft", "Disabled"], 1], true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_emissionAircraftEffect",_value,true]; tts_emission_aircraftEffect = _value; publicVariable "tts_emission_aircraftEffect"; } ] call CBA_fnc_addSetting;</code><br>
+• <strong>Adds show emission position setting</strong><br>
+<code class="code-inline">[ "A3U_setting_emissionShow", "CHECKBOX", "Show Emission Position", ["Antistasi Ultimate - TTS Emission Settings", "Effects"], false, true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_emissionShow",_value,true]; tts_emission_showEmissionOnMap = _value; publicVariable "tts_emission_showEmissionOnMap"; } ] call CBA_fnc_addSetting;</code><br>
+• <strong>Adds disable rain transition setting</strong><br>
+<code class="code-inline">[ "A3U_setting_emissionRain", "CHECKBOX", "Disable Rain Transition", ["Antistasi Ultimate - TTS Emission Settings", "Effects"], false, true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_emissionRain",_value,true]; tts_emission_disableRain = _value; publicVariable "tts_emission_disableRain"; } ] call CBA_fnc_addSetting;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>CBA_fnc_addSetting</strong> - CBA settings function</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of CBA settings system, connects to emission effects<br>
+<strong>Global variables modified:</strong> tts_emission_playerEffect, tts_emission_aiEffect, tts_emission_vehicleEffect, tts_emission_aircraftEffect, tts_emission_showEmissionOnMap, tts_emission_disableRain<br>
+<strong>Network implications:</strong> Uses CBA_fnc_addSetting for global synchronization<br>
+<strong>Requirements:</strong> Requires CBA framework to be available, requires tts_emission functions to be available</div>
+            </div>
+
+            <div class="function-block cba-function">
+                <div class="function-name">A3A/addons/ultimate/functions/cba/fn_settings.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Adds various CBA settings for the ultimate addon with different configuration options</strong><br>
+                    <strong>Additional context:</strong> This function is used to create all addon settings in the CBA settings menu, typically called during addon initialization.<br>
+                    <code class="code-inline">call A3U_fnc_settings;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Adds cosmetic items setting</strong><br>
+<code class="code-inline">[ "A3U_setting_enableCosmetics", "CHECKBOX", "Enable Cosmetic Items", "Antistasi Ultimate", true, true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_enableCosmetics",_value,true]; } ] call CBA_fnc_addSetting;</code><br>
+• <strong>Adds advanced towing setting</strong><br>
+<code class="code-inline">[ "A3U_setting_enableAdvancedTowing", "CHECKBOX", "Enable Advanced Towing", "Antistasi Ultimate", true, true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_enableAdvancedTowing",_value,true]; } ] call CBA_fnc_addSetting;</code><br>
+• <strong>Adds militia war level setting</strong><br>
+<code class="code-inline">[ "A3U_setting_tierWarMilitia", "SLIDER", "War Level For Militia", "Antistasi Ultimate", [2, 7, 3, 0], true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_tierWarMilitia",(round _value),true]; } ] call CBA_fnc_addSetting;</code><br>
+• <strong>Adds elite war level setting</strong><br>
+<code class="code-inline">[ "A3U_setting_tierWarElite", "SLIDER", "War Level For Elite", "Antistasi Ultimate", [2, 15, 8, 0], true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_tierWarElite",(round _value),true]; } ] call CBA_fnc_addSetting;</code><br>
+• <strong>Adds invader punishments war level setting</strong><br>
+<code class="code-inline">[ "A3U_setting_tierWarPunishments", "SLIDER", "War Level For Invader Punishments", "Antistasi Ultimate", [1, 8, 3, 0], true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_tierWarPunishments",(round _value),true]; } ] call CBA_fnc_addSetting;</code><br>
+• <strong>Adds HR loss condition check war level setting</strong><br>
+<code class="code-inline">[ "A3U_setting_tierWarHRLoss", "SLIDER", "War Level To Trigger HR Loss Condition Check", "Antistasi Ultimate", [1, 8, 2, 0], true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_tierWarHRLoss",(round _value),true]; } ] call CBA_fnc_addSetting;</code><br>
+• <strong>Adds emission settings if TTS emission is available</strong><br>
+<code class="code-inline">if (["tts_emission"] call A3U_fnc_hasAddon) then { [ "A3U_setting_emissionMinimum", "SLIDER", "Minimum Time Between Emissions", "Antistasi Ultimate - TTS Emission Settings", [0, 60, 30, 0], true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_emissionMinimum",round(_value),true]; } ] call CBA_fnc_addSetting; [ "A3U_setting_emissionMaximum", "SLIDER", "Maximum Time Between Emissions", "Antistasi Ultimate - TTS Emission Settings", [0, 180, 60, 0], true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_emissionMaximum",round(_value),true]; } ] call CBA_fnc_addSetting; [ "A3U_setting_emissionSpeedMinimum", "SLIDER", "Minimum Emission Speed", "Antistasi Ultimate - TTS Emission Settings", [100, 400, 125, 0], true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_emissionSpeedMinimum",round(_value),true]; } ] call CBA_fnc_addSetting; [ "A3U_setting_emissionSpeedMaximum", "SLIDER", "Maximum Emission Speed", "Antistasi Ultimate - TTS Emission Settings", [100, 400, 125, 0], true, { params ["_value"]; missionNamespace setVariable ["A3U_setting_emissionSpeedMaximum",round(_value),true]; } ] call CBA_fnc_addSetting; #include "fn_emission_settings.sqf" };</code><br>
+• <strong>Adds anomaly settings if Diwako anomalies are available</strong><br>
+<code class="code-inline">if (["diwako_anomalies_main"] call A3U_fnc_hasAddon) then { [ "A3U_setting_anomalyDraw", "CHECKBOX", "Draw Anomaly Markers", "Antistasi Ultimate - Diwako Anomaly Settings", false, true ] call CBA_fnc_addSetting; [ "A3U_setting_anomalyAmount", "SLIDER", "Anomaly Population (Lower = More)", "Antistasi Ultimate - Diwako Anomaly Settings", [100, 1000, 200, 0], true ] call CBA_fnc_addSetting; [ "A3U_setting_anomalyCap", "SLIDER", "Anomaly Cap (Higher = Dangerous)", "Antistasi Ultimate - Diwako Anomaly Settings", [50, 1000, 200, 0], true ] call CBA_fnc_addSetting; };</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>CBA_fnc_addSetting</strong> - CBA settings function<br>
+• <strong>A3U_fnc_hasAddon</strong> - Addon checking function</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls CBA_fnc_addSetting</strong> for each setting<br>
+• <strong>Calls fn_emission_settings</strong> for emission settings<br>
+<strong>System integration:</strong> Part of CBA settings system, connects to various addon configurations<br>
+<strong>Global variables modified:</strong> Various missionNamespace variables for settings<br>
+<strong>Network implications:</strong> Uses CBA_fnc_addSetting for global synchronization<br>
+<strong>Requirements:</strong> Requires CBA framework to be available, requires A3U_fnc_hasAddon function, requires tts_emission and diwako_anomalies_main addons for conditional settings</div>
+            </div>
+        </section>
+
+        <!-- Black Market Functions Section -->
+        <section id="blackmarket" class="section">
+            <h2>💰 Black Market Functions (2 functions)</h2>
+
+            <div class="function-block blackmarket-function">
+                <div class="function-name">A3A/addons/ultimate/functions/blackmarket/fn_hasRequirements.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Checks if player meets requirements for black market items based on various conditions</strong><br>
+                    <strong>Additional context:</strong> This function is used to validate player eligibility for purchasing items from the black market, typically called when players attempt to buy items.<br>
+                    <code class="code-inline">[_requirements] call A3U_fnc_hasRequirements;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts requirements parameter with default ["NA", 0]</strong><br>
+<code class="code-inline">params [ ["_requirements", ["NA", 0]] ];</code><br>
+• <strong>Parses requirements parameter into type and amount</strong><br>
+<code class="code-inline">private _requirement = ""; private _requirementAmount = 0; if (_requirements isEqualType []) then { _requirement = _requirements#0; _requirementAmount = _requirements#1; } else { _requirementsSplit = _requirements splitString "_"; _requirement = _requirementsSplit select 0; _requirementAmount = parseNumber (_requirementsSplit select 1); };</code><br>
+• <strong>Gets rebel zones and counts controlled zones</strong><br>
+<code class="code-inline">private _rebelZones = call A3U_fnc_sidesX; private _warLevel = tierWar; private _resources = resourcesX; private _factories = factories; private _milbases = milbases; private _airports = airportsX; private _seaports = seaports; private _outposts = outposts; private _resourcesRebel = _rebelZones count _resources; private _factoriesRebel = _rebelZones count _factories; private _milbasesRebel = _rebelZones count _milbases; private _airportsRebel = _rebelZones count _airports; private _seaportsRebel = _rebelZones count _seaports; private _outpostsRebel = _rebelZones count _outposts;</code><br>
+• <strong>Sets requirement to "true" if requirements are ignored</strong><br>
+<code class="code-inline">if (blackMarketIgnoreRequirements isEqualTo true) then { _requirement = "true"; };</code><br>
+• <strong>Checks various requirements based on requirement type</strong><br>
+<code class="code-inline">private _return = false; switch (_requirement) do { case "true": { _return = true; }; case "warlevel": { if (_warLevel >= _requirementAmount) exitWith {_return = true}; }; case "resources": { private _requiredResources = if (_requirementAmount > count _resources) then {count _resources} else {_requirementAmount}; if (_resourcesRebel >= _requiredResources) exitWith {_return = true}; }; case "factories": { private _requiredFactories = if (_requirementAmount > count _factories) then {count _factories} else {_requirementAmount}; if (_factoriesRebel >= _requiredFactories) exitWith {_return = true}; }; case "milbases": { private _requiredMilbases = if (_requirementAmount > count _milbases) then {count _milbases} else {_requirementAmount}; if (_milbasesRebel >= _requiredMilbases) exitWith {_return = true}; }; case "airports": { private _requiredAirports = if (_requirementAmount > count _airports) then {count _airports} else {_requirementAmount}; if (_airportsRebel >= _requiredAirports) exitWith {_return = true}; }; case "seaports": { private _requiredSeaports = if (_requirementAmount > count _seaports) then {count _seaports} else {_requirementAmount}; if (_seaportsRebel >= _requiredSeaports) exitWith {_return = true}; }; case "outposts": { private _requiredOutposts = if (_requirementAmount > count _outposts) then {count _outposts} else {_requirementAmount}; if (_outpostsRebel >= _requiredOutposts) exitWith {_return = true}; }; default { _return = false }; };</code><br>
+• <strong>Returns true if requirements are met</strong><br>
+<code class="code-inline">_return;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>A3U_fnc_sidesX</strong> - Zone filter function<br>
+• <strong>tierWar, resourcesX, factories, milbases, airportsX, seaports, outposts</strong> - Game state variables<br>
+• <strong>blackMarketIgnoreRequirements</strong> - Setting variable</div>
+                <div class="dependencies"><strong>Where it leads:</strong><br>
+• <strong>Calls A3U_fnc_sidesX</strong> for zone checking<br>
+<strong>System integration:</strong> Part of black market system, connects to requirement validation<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses standard functions for checking requirements<br>
+<strong>Requirements:</strong> Requires valid requirements parameter, requires global variables for zones and war level</div>
+            </div>
+
+            <div class="function-block blackmarket-function">
+                <div class="function-name">A3A/addons/ultimate/functions/blackmarket/fn_sidesX.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Returns a filter function for zones controlled by the player's team</strong><br>
+                    <strong>Additional context:</strong> This function is used to create filter functions for zone control checking, typically called when validating requirements or checking zone ownership.<br>
+                    <code class="code-inline">call A3U_fnc_sidesX;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Creates and returns filter function for zones controlled by player team</strong><br>
+<code class="code-inline">private _sidesToPlayer = {sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer}; _sidesToPlayer;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>sidesX, teamPlayer</strong> - Global zone variables</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of black market system, connects to zone control checking<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses standard functions for zone checking<br>
+<strong>Requirements:</strong> Requires sidesX and teamPlayer global variables</div>
+            </div>
+        </section>
+
+        <!-- Ammunition Functions Section -->
+        <section id="ammunition" class="section">
+            <h2>🎯 Ammunition Functions (4 functions)</h2>
+
+            <div class="function-block ammunition-function">
+                <div class="function-name">A3A/addons/ultimate/functions/Ammunition/fn_grabBlackMarketVehicles.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Gathers black market vehicle data from configuration files and populates the A3U_blackMarketStock global variable</strong><br>
+                    <strong>Additional context:</strong> This function is used to initialize black market vehicle stock at mission startup, typically called during addon initialization.<br>
+                    <code class="code-inline">call A3U_fnc_grabBlackMarketVehicles;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Includes necessary header files</strong><br>
+<code class="code-inline">#include "..\..\script_component.hpp" FIX_LINE_NUMBERS()</code><br>
+• <strong>Initializes black market stock and ignore list</strong><br>
+<code class="code-inline">private _blackMarketStock = []; private _ignoreList = []; private _baseCfg = (configFile >> "A3U" >> "traderAddons");</code><br>
+• <strong>Defines blocking DLCs that should block vanilla vehicles</strong><br>
+<code class="code-inline">private _blockingDLCs = createHashMapFromArray [ ["ws", true], ["gm", true], ["csla", true], ["rf", true], ["vn", true], ["spe", true], ["ef", true] ];</code><br>
+• <strong>Processes all categories to add vehicles based on DLC availability</strong><br>
+<code class="code-inline">{ _x params ["_dlc", "_category", ["_additional", []]]; private _isEnabled = _dlc in ([missionNamespace, "A3A_enabledDLC", []] call BIS_fnc_getServerVariable); private _vehicleCfg = (_baseCfg >> "traderVehicles" >> _category); if (isClass _vehicleCfg) then { private _vehicles = _vehicleCfg call BIS_fnc_getCfgSubClasses; if (_isEnabled) then { { if !(isClass (configFile >> "CfgVehicles" >> _x)) then { Error_1("%1 does not exist in CfgVehicles. Skipped adding due to CTD issues if it is previewed.", _x); continue; }; private _price = getNumber (_vehicleCfg >> _x >> "price"); private _type = getText (_vehicleCfg >> _x >> "type"); private _condition = compile getText (_vehicleCfg >> _x >> "condition"); _blackMarketStock pushBack [_x, _price, _type, _condition]; Verbose_4("Adding %1 with price: %2, type: %3, condition: %4", _x, _price, _type, _condition); if (_blockingDLCs getOrDefault [_dlc, false]) then { _hasBlockingVehicles = true; }; } forEach _vehicles; } else { _ignoreList append _vehicles; }; }; } forEach _categories;</code><br>
+• <strong>Processes general configurations with ignore list check for custom mods</strong><br>
+<code class="code-inline">_ignoreList = _ignoreList arrayIntersect _ignoreList; private _hasCustomModVehicles = false; private _cfg = _baseCfg call BIS_fnc_getCfgSubClasses; { private _addons = getArray (_baseCfg >> _x >> "addons"); if (_addons isEqualTo []) then {continue}; if (([_addons] call A3U_fnc_hasAddon) isEqualTo false) then { Verbose_1("Skipped %1 from adding to black market list. Addons requirements not met.", _x); continue; }; private _vehicle = getText (_baseCfg >> _x >> "vehicles"); if (isNil "_vehicle" || {_vehicle isEqualTo ""}) then {continue}; private _vehicleCfg = (_baseCfg >> "traderVehicles" >> _vehicle); if !(isClass _vehicleCfg) then {continue}; private _vehicles = _vehicleCfg call BIS_fnc_getCfgSubClasses; { if (_x in _ignoreList) then { Verbose_1("Skipped %1 because it belongs to a disabled DLC.", _x); continue; }; if !(isClass (configFile >> "CfgVehicles" >> _x)) then { Error_1("%1 does not exist in CfgVehicles. Skipped adding due to CTD issues if it is previewed.", _x); continue; }; private _price = getNumber (_vehicleCfg >> _x >> "price"); private _type = getText (_vehicleCfg >> _x >> "type"); private _condition = compile getText (_vehicleCfg >> _x >> "condition"); _blackMarketStock pushBack [_x, _price, _type, _condition]; _hasCustomModVehicles = true; Verbose_4("Adding %1 with price: %2, type: %3, condition: %4", _x, _price, _type, _condition); } forEach _vehicles; } forEach _cfg;</code><br>
+• <strong>Adds vanilla vehicles if needed</strong><br>
+<code class="code-inline">if ((!_hasBlockingVehicles && !_hasCustomModVehicles) || {vanillaArmsDealer isEqualTo true}) then { private _vehicleCfg = (_baseCfg >> "traderVehicles" >> "vehicles_vanilla"); private _vehicles = _vehicleCfg call BIS_fnc_getCfgSubClasses; { if !(isClass (configFile >> "CfgVehicles" >> _x)) then { Error_1("%1 does not exist in CfgVehicles. Skipped adding due to CTD issues if it is previewed.", _x); continue; }; private _price = getNumber (_vehicleCfg >> _x >> "price"); private _type = getText (_vehicleCfg >> _x >> "type"); private _condition = compile getText (_vehicleCfg >> _x >> "condition"); _blackMarketStock pushBack [_x, _price, _type, _condition]; Verbose_4("Adding %1 with price: %2, type: %3, condition: %4", _x, _price, _type, _condition); } forEach _vehicles; };</code><br>
+• <strong>Sets global variable and returns stock</strong><br>
+<code class="code-inline">A3U_blackMarketStock = _blackMarketStock; if (isServer) then { publicVariable "A3U_blackMarketStock"; }; A3U_blackMarketStock;</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>configFile, BIS_fnc_getCfgSubClasses, BIS_fnc_getServerVariable</strong> - Configuration functions<br>
+• <strong>A3U_fnc_hasAddon, Error_1, Verbose_1, Verbose_4</strong> - Utility and logging functions</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of ammunition system, connects to black market initialization<br>
+<strong>Global variables modified:</strong> A3U_blackMarketStock, publicVariable for synchronization<br>
+<strong>Network implications:</strong> Uses publicVariable for server synchronization<br>
+<strong>Requirements:</strong> Requires A3U configuration files to be available, requires server execution context</div>
+            </div>
+
+            <div class="function-block ammunition-function">
+                <div class="function-name">A3A/addons/ultimate/functions/Ammunition/fn_grabForbiddenItems.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Gathers forbidden items from configuration files and populates the A3U_forbiddenItems global variable</strong><br>
+                    <strong>Additional context:</strong> This function is used to initialize forbidden items list at mission startup, typically called during addon initialization.<br>
+                    <code class="code-inline">call A3U_fnc_grabForbiddenItems;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Includes necessary header files</strong><br>
+<code class="code-inline">#include "..\..\script_component.hpp" FIX_LINE_NUMBERS()</code><br>
+• <strong>Initializes arrays and gets configuration classes</strong><br>
+<code class="code-inline">private _forbiddenItems = []; private _inheritedForbiddenItems = []; private _cfg = (configfile >> "A3U" >> "forbiddenItems") call BIS_fnc_getCfgSubClasses;</code><br>
+• <strong>Processes each configuration class to add items to forbidden list</strong><br>
+<code class="code-inline">{ if (["_unlimited_base", _x] call BIS_fnc_inString || ["_limited_base", _x] call BIS_fnc_inString) then { Verbose_1("Skipped adding %1 to the forbiddenItems list.", _x); continue }; private _addons = getArray (configfile >> "A3U" >> "forbiddenItems" >> _x >> "addons"); if (count _addons == 0 || { (isClass (configFile >> "CfgPatches" >> _x)) } count _addons == count _addons) then { _forbiddenItems pushBack _x; Verbose_1("Added %1 to the forbiddenItems list.", _x); }; } forEach _cfg;</code><br>
+• <strong>Sets global variable and logs final list</strong><br>
+<code class="code-inline">A3U_forbiddenItems = _forbiddenItems; Verbose_1("Final forbiddenItems list: %1", A3U_forbiddenItems);</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>BIS_fnc_getCfgSubClasses, BIS_fnc_inString</strong> - Configuration and string functions<br>
+• <strong>configFile, Verbose_1</strong> - Configuration and logging</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of ammunition system, connects to forbidden items management<br>
+<strong>Global variables modified:</strong> A3U_forbiddenItems<br>
+<strong>Network implications:</strong> Uses standard functions, no special network handling<br>
+<strong>Requirements:</strong> Requires A3U configuration files to be available</div>
+            </div>
+
+            <div class="function-block ammunition-function">
+                <div class="function-name">A3A/addons/ultimate/functions/Ammunition/fn_removeForbiddenItems.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Removes forbidden items from loot arrays to prevent them from appearing in crates</strong><br>
+                    <strong>Additional context:</strong> This function is used to clean loot arrays of forbidden items, typically called during loot initialization or when preparing crates for distribution.<br>
+                    <code class="code-inline">[_arrays] call A3U_fnc_removeForbiddenItems;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Accepts arrays parameter with default loot arrays</strong><br>
+<code class="code-inline">params [ ["_arrays", [lootBasicItem,lootNVG,lootItem,lootWeapon,lootAttachment,lootMagazine,lootGrenade,lootExplosive,lootBackpack,lootHelmet,lootVest,lootDevice,allRifles,allHandguns,allMachineGuns,allShotguns,allSMGs,allSniperRifles,allRocketLaunchers,allMissileLaunchers,allArmoredHeadgear,allVests,allArmoredVests]] ];</code><br>
+• <strong>Exits if removal has already been performed</strong><br>
+<code class="code-inline">if (missionNamespace getVariable ["A3U_loot_removedForbiddenItems", false] isEqualTo true) exitWith {};</code><br>
+• <strong>Iterates through arrays to remove forbidden items</strong><br>
+<code class="code-inline">private _start = diag_tickTime; { private _array = _x; { private _index = _array find _x; if (_index isNotEqualTo -1 && {getNumber (configFile >> "A3U" >> "forbiddenItems" >> _x >> "appearInCrates") isEqualTo 0}) then { Verbose_2("Removed %1 from %2", _x, _array); _array deleteAt (_index); }; } forEach A3U_forbiddenItems; } forEach _arrays;</code><br>
+• <strong>Logs removal process and sets flag to prevent duplicate removal</strong><br>
+<code class="code-inline">Info("Currently removing forbidden items from a ton of arrays. This may take a while. (Time exponentially expands as more stuff needs to be iterated through!)"); private _stop = diag_tickTime; Info_1("Forbidden items removal took approximately: %1 seconds.",round(_stop - _start)); missionNamespace setVariable ["A3U_loot_removedForbiddenItems", true];</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>diag_tickTime</strong> - Timing function<br>
+• <strong>configFile, A3U_forbiddenItems</strong> - Configuration and forbidden items<br>
+• <strong>Verbose_2, Info, Info_1</strong> - Logging functions</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of ammunition system, connects to loot management<br>
+<strong>Global variables modified:</strong> missionNamespace variable for removal flag<br>
+<strong>Network implications:</strong> Uses standard functions, logs timing information<br>
+<strong>Requirements:</strong> Requires A3U_forbiddenItems global variable, requires valid arrays parameter</div>
+            </div>
+
+            <div class="function-block ammunition-function">
+                <div class="function-name">A3A/addons/ultimate/functions/Ammunition/fn_removeUnlockedItems.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Removes unlocked items from provided arrays to prevent duplicate unlocks</strong><br>
+                    <strong>Additional context:</strong> This function is used to clean loot arrays of unlocked items, typically called when preparing loot for distribution or during unlock processing.<br>
+                    <code class="code-inline">[_data] call A3U_fnc_removeUnlockedItems;</code>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+• <strong>Includes necessary header files and accepts data parameter</strong><br>
+<code class="code-inline">#include "..\..\script_component.hpp" params ["_data"];</code><br>
+• <strong>Initializes tracking variables and gets unlocked items</strong><br>
+<code class="code-inline">private _start = diag_tickTime; private _indexed = []; private _originalItem = []; private _unlocks = (unlockedHeadgear + unlockedVests + unlockedNVGs + unlockedOptics + unlockedItems + unlockedBackpacks + unlockedMagazines);</code><br>
+• <strong>Processes arrays to remove unlocked items with proper handling for attachments</strong><br>
+<code class="code-inline">{ private _array = _x; { private _itemAttachments = []; private _item = _x; if (_item isEqualType []) then { _originalItem = _item; _item = _item select 0; if (count _originalItem > 1) then { _itemAttachments = [_originalItem#1, _originalItem#2, _originalItem#3, _originalItem#6]; }; }; { if (_item in _indexed) exitWith {}; if (_item in _x) then { Verbose_1("%1 is already unlocked", _item); _indexed pushBack _item; }; } forEach _unlocks; { if (_originalItem in _indexed) exitWith {}; if (_item in _x) then { private _hasAttachments = if (_itemAttachments findIf {_x != ""} != -1) then {true} else {false}; if (!_hasAttachments) then { Verbose_1("%1 is already unlocked as a weapon", _item); _indexed pushBack _originalItem; }; }; } forEach [unlockedWeapons]; } forEach _array; } forEach _data;</code><br>
+• <strong>Logs processing time and returns indexed array</strong><br>
+<code class="code-inline">private _stop = diag_tickTime; Verbose_1("Loot Search Took Approximately: %1 seconds.",round(_stop - _start)); _indexed</code></code></div>
+                <div class="dependencies"><strong>Dependencies:</strong><br>
+• <strong>diag_tickTime</strong> - Timing function<br>
+• <strong>unlockedHeadgear, unlockedVests, unlockedNVGs, unlockedOptics, unlockedItems, unlockedBackpacks, unlockedMagazines, unlockedWeapons</strong> - Unlock state variables<br>
+• <strong>Verbose_1</strong> - Logging function</div>
+                <div class="dependencies"><strong>Where it leads:</strong> No direct calls to other functions<br>
+<strong>System integration:</strong> Part of ammunition system, connects to loot management<br>
+<strong>Global variables modified:</strong> None<br>
+<strong>Network implications:</strong> Uses standard functions, logs timing information<br>
+<strong>Requirements:</strong> Requires unlocked items to be defined, requires valid data parameter</div>
+            </div>
+        </section>
+
+        <!-- Config Files Section -->
+        <section id="config" class="section">
+            <h2>📁 Configuration Files (2 files)</h2>
+
+            <div class="function-block config-function">
+                <div class="function-name">A3A/addons/ultimate/CfgVehicles.hpp</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Defines various vehicle classes for terrain manipulation tools in the A3A Ultimate addon</strong><br>
+                    • <strong>Includes helipads, terrain smoothers, vegetation cleaners, and terrain object hiders</strong><br>
+                    <strong>Additional context:</strong> These tools are used to clean and smooth terrain during mission setup or gameplay.<br>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+<strong>Helipads:</strong><br>
+• <strong>A3AU_RebHelipad_base_F:</strong> Base class for helipads with common properties<br>
+• <strong>A3AU_RebHelipad_Circle_F:</strong> A circular helipad<br>
+• <strong>A3AU_RebHelipad_Square_F:</strong> A square helipad<br>
+<code class="code-inline">class A3AU_RebHelipad_base_F: Helipad_base_F { accuracy = 1000; author = AUTHOR; authors[] = {"wersal454", "UnseenKill"}; EGVAR(core,restorePriority) = 95; EGVAR(core,onBuildingCompleted) = QUOTE(call A3A_fnc_handlerTerrainManipulator); EGVAR(core,onBuildingLoaded) = QUOTE(call A3A_fnc_handlerTerrainManipulator); class EGVAR(core,Properties) { actions[] = {"terrainCleaner", "terrainSmootherExperimental"}; cleanRadius = 30; cleanTerrainTypes[] = {}; smoothRadius[] = {40, 70}; }; };</code><br><br>
+<strong>Terrain Smoothers:</strong><br>
+• <strong>A3AU_TerrainSmoother_Base_F:</strong> Base class for terrain smoothers<br>
+• <strong>A3AU_TerrainSmoother_VerySmall_F:</strong> Very small smoother (4m)<br>
+• <strong>A3AU_TerrainSmoother_Small_F:</strong> Small smoother (8m)<br>
+• <strong>A3AU_TerrainSmoother_Medium_F:</strong> Medium smoother (15m)<br>
+• <strong>A3AU_TerrainSmoother_Large_F:</strong> Large smoother (30m)<br>
+<code class="code-inline">class A3AU_TerrainSmoother_Base_F: Land_Shovel_F { scope = 0; scopeCurator = 0; displayName = "Terrain Smoother Base"; author = AUTHOR; authors[] = {"wersal454", "UnseenKill"}; model = "\A3\Structures_F_Bootcamp\VR\Helpers\VR_3DSelector_01_F.p3d"; EGVAR(core,restorePriority) = 100; EGVAR(core,onBuildingCompleted) = QUOTE(call A3A_fnc_handlerTerrainManipulator); EGVAR(core,onBuildingLoaded) = QUOTE(call A3A_fnc_handlerTerrainManipulator); class EGVAR(core,Properties) { actions[] = {"terrainSmoother", "hideObject"}; previewShape = "ellipse"; smoothRadius[] = {0, 0}; }; };</code><br><br>
+<strong>Vegetation Cleaners:</strong><br>
+• <strong>A3AU_VegetationCleaner_Base_F:</strong> Base class for vegetation cleaners<br>
+• <strong>A3AU_VegetationCleaner_VerySmall_F:</strong> Very small cleaner (4m)<br>
+• <strong>A3AU_VegetationCleaner_Small_F:</strong> Small cleaner (8m)<br>
+• <strong>A3AU_VegetationCleaner_Medium_F:</strong> Medium cleaner (15m)<br>
+• <strong>A3AU_VegetationCleaner_Large_F:</strong> Large cleaner (30m)<br>
+<code class="code-inline">class A3AU_VegetationCleaner_Base_F: Land_Axe_F { scope = 0; scopeCurator = 0; displayName = "Vegetation Cleaner Base"; author = AUTHOR; authors[] = {"wersal454", "UnseenKill"}; model = "\A3\Structures_F_Bootcamp\VR\Helpers\VR_3DSelector_01_F.p3d"; EGVAR(core,restorePriority) = 100; EGVAR(core,onBuildingCompleted) = QUOTE(call A3A_fnc_handlerTerrainManipulator); EGVAR(core,onBuildingLoaded) = QUOTE(call A3A_fnc_handlerTerrainManipulator); class EGVAR(core,Properties) { actions[] = {"terrainCleaner", "hideObject"}; cleanRadius = 0; cleanTerrainTypes[] = {"ROCKS", "ROCK", "TREE", "BUSH", "SMALL TREE", "HIDE"}; previewShape = "ellipse"; }; };</code><br><br>
+<strong>Base Builders (Terrain Object Hiders):</strong><br>
+• <strong>GVAR(BB_TerrainObjectHider_Base):</strong> Base class for terrain object hiders<br>
+• <strong>GVAR(BB_TerrainObjectHider_Circle4x4):</strong> Small hider (4m)<br>
+• <strong>GVAR(BB_TerrainObjectHider_Circle8x8):</strong> Medium hider (8m)<br>
+• <strong>GVAR(BB_TerrainObjectHider_Circle15x15):</strong> Large hider (15m)<br>
+• <strong>GVAR(BB_TerrainObjectHider_Circle30x30):</strong> Extra large hider (30m)<br>
+<code class="code-inline">class GVAR(BB_TerrainObjectHider_Base) : Land_ButaneTorch_F { scope = 0; scopeCurator = 0; displayName = "Terrain Cleaner Base"; author = AUTHOR; authors[] = {"UnseenKill"}; model = "\A3\Structures_F_Bootcamp\VR\Helpers\VR_3DSelector_01_F.p3d"; EGVAR(core,restorePriority) = 90; EGVAR(core,onBuildingCompleted) = QUOTE(call A3A_fnc_handlerTerrainManipulator); EGVAR(core,onBuildingLoaded) = QUOTE(call A3A_fnc_handlerTerrainManipulator); class EGVAR(core,Properties) { actions[] = {"terrainCleaner", "hideObject"}; cleanRadius = 0; cleanTerrainTypes[] = {}; previewShape = "ellipse"; }; class EventHandlers { class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {}; }; };</code></code></div>
+                <div class="dependencies"><strong>System integration:</strong> Defines terrain manipulation tools for the base building system<br>
+<strong>Global variables modified:</strong> Defines vehicle classes for editor use<br>
+<strong>Network implications:</strong> Vehicle classes are synchronized between server and clients<br>
+<strong>Requirements:</strong> Requires A3A core addon for event handlers and properties</div>
+            </div>
+
+            <div class="function-block config-function">
+                <div class="function-name">A3A/addons/ultimate/config.cpp</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    • <strong>Main configuration file for the A3A Ultimate addon</strong><br>
+                    • <strong>Includes necessary components and defines event handlers for terrain manipulation tools</strong><br>
+                    <strong>Additional context:</strong> This is the primary configuration file that sets up the addon structure and dependencies.<br>
+                </div>
+                <div class="code-block"><code><strong>How it does that:</strong><br>
+<strong>Patch Definition:</strong><br>
+<code class="code-inline">class CfgPatches { class ADDON { name = COMPONENT_NAME; units[] = {}; weapons[] = {}; requiredVersion = REQUIRED_VERSION; requiredAddons[] = {"A3A_Events"}; author = AUTHOR; authors[] = { AUTHORS }; authorUrl = ""; VERSION_CONFIG; }; };</code><br><br>
+<strong>Includes:</strong><br>
+<code class="code-inline">#include "script_component.hpp" #include "CfgFunctions.hpp" #include "config\plane\cfgPlaneLoadouts.hpp" #include "config\cfgForbiddenItems.hpp" #include "config\trader\cfgTraderMods.hpp"</code><br><br>
+<strong>Vehicle Definitions:</strong><br>
+<code class="code-inline">class CfgVehicles { #include "CfgVehicles.hpp" };</code><br><br>
+<strong>Event Handlers:</strong><br>
+<code class="code-inline">class Extended_InitPost_EventHandlers { class A3AU_TerrainSmoother_Base_F { class ADDON { clientInit = QUOTE(call A3A_fnc_handlerTerrainObjectHiderPostInitClient); }; }; class A3AU_VegetationCleaner_Base_F { class ADDON { clientInit = QUOTE(call A3A_fnc_handlerTerrainObjectHiderPostInitClient); }; }; class GVAR(BB_TerrainObjectHider_Base) { class ADDON { clientInit = QUOTE(call A3A_fnc_handlerTerrainObjectHiderPostInitClient); }; }; }; class Extended_PreInit_EventHandlers { class A3U_init { init = "call A3U_fnc_init"; }; };</code></code></div>
+                <div class="dependencies"><strong>System integration:</strong> Main configuration file that ties together all components of the A3A Ultimate addon<br>
+<strong>Global variables modified:</strong> Defines the addon structure for the game engine<br>
+<strong>Network implications:</strong> Configures addon dependencies and event handlers for proper synchronization<br>
+<strong>Requirements:</strong> Requires A3A core addon as a dependency, requires proper macro definitions</div>
+            </div>
+        </section>
+
+        <!-- System Statistics -->
+        <section id="stats" class="section">
+            <h2>📊 Complete System Statistics</h2>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Function Count</th>
+                            <th>Description</th>
+                            <th>Complexity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>🗺️ Zones Functions</strong></td>
+                            <td><span class="highlight">4</span></td>
+                            <td>Zone revelation and management</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🧟 Zombie Functions</strong></td>
+                            <td><span class="highlight">6</span></td>
+                            <td>Zombie spawning and attack systems</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🚗 Vehicle Functions</strong></td>
+                            <td><span class="highlight">8</span></td>
+                            <td>Vehicle lockpicking and management</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🔧 Utility Functions</strong></td>
+                            <td><span class="highlight">7</span></td>
+                            <td>Development tools and helpers</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🌀 STALKER Functions</strong></td>
+                            <td><span class="highlight">3</span></td>
+                            <td>Anomaly and emission systems</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td><strong>⚔️ Reinforcement Functions</strong></td>
+                            <td><span class="highlight">4</span></td>
+                            <td>Invader management and attacks</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🔨 Patch Functions</strong></td>
+                            <td><span class="highlight">1</span></td>
+                            <td>Game modifications</td>
+                            <td>Low</td>
+                        </tr>
+                        <tr>
+                            <td><strong>📱 Menu Functions</strong></td>
+                            <td><span class="highlight">2</span></td>
+                            <td>Main menu management</td>
+                            <td>Low</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🚀 Initialization Functions</strong></td>
+                            <td><span class="highlight">4</span></td>
+                            <td>Addon setup and compatibility</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td><strong>⚙️ CBA Functions</strong></td>
+                            <td><span class="highlight">2</span></td>
+                            <td>Settings and configuration</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td><strong>💰 Black Market Functions</strong></td>
+                            <td><span class="highlight">2</span></td>
+                            <td>Vehicle pricing and requirements</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🎯 Ammunition Functions</strong></td>
+                            <td><span class="highlight">4</span></td>
+                            <td>Forbidden items and loot management</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td><strong>📁 Configuration Files</strong></td>
+                            <td><span class="highlight">2</span></td>
+                            <td>Vehicle definitions and addon configuration</td>
+                            <td>Low</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>📈 Total Function Count: <span class="highlight">49 Functions & Files</span></h3>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>14</h3>
+                    <p>Categories</p>
+                </div>
+                <div class="stat-card">
+                    <h3>49</h3>
+                    <p>Total Items</p>
+                </div>
+                <div class="stat-card">
+                    <h3>45</h3>
+                    <p>SQF Functions</p>
+                </div>
+                <div class="stat-card">
+                    <h3>4</h3>
+                    <p>Config Files</p>
+                </div>
+            </div>
+
+            <h3>📊 Complexity Distribution</h3>
+            <ul>
+                <li><strong>High Complexity:</strong> 17 functions (Zombie, Vehicles, STALKER, Ammunition systems)</li>
+                <li><strong>Medium Complexity:</strong> 21 functions (Zones, Utility, Reinforcement, Initialization, CBA, Black Market)</li>
+                <li><strong>Low Complexity:</strong> 11 functions (Patches, Menu, Configuration files)</li>
+            </ul>
+
+            <h3>🔗 System Integration</h3>
+            <ul>
+                <li><strong>Core A3A Integration:</strong> 35 functions interact with core A3A systems</li>
+                <li><strong>Mod Integration:</strong> 8 functions integrate with external mods (Diwako Anomalies, TTS Emission)</li>
+                <li><strong>Network Awareness:</strong> 28 functions have network implications (remoteExec, publicVariable)</li>
+                <li><strong>CBA Settings:</strong> 12 configurable settings across 2 CBA functions</li>
+            </ul>
+        </section>
+
+        <!-- Documentation Info -->
+        <section class="section">
+            <h2>📖 Documentation Information</h2>
+
+            <div class="function-block">
+                <h3>✨ Features</h3>
+                <ul>
+                    <li><strong>🧭 Complete Navigation:</strong> All 49 functions across 14 categories</li>
+                    <li><strong>🔍 Advanced Search:</strong> Real-time filtering by name, content, and category</li>
+                    <li><strong>🌙 Dark Mode:</strong> Full dark theme support for extended use</li>
+                    <li><strong>📱 Fully Responsive:</strong> Optimized for desktop, tablet, and mobile</li>
+                    <li><strong>💻 Code Highlighting:</strong> Syntax highlighting for all SQF code blocks</li>
+                    <li><strong>📊 Comprehensive Stats:</strong> Detailed metrics and complexity analysis</li>
+                    <li><strong>🔄 Live Filtering:</strong> Instant category and search filtering</li>
+                </ul>
+
+                <h3>👥 Authors & Credits</h3>
+                <ul>
+                    <li><strong>Primary Author:</strong> Håkon</li>
+                    <li><strong>Additional Authors:</strong> wersal454, UnseenKill</li>
+                    <li><strong>Project:</strong> A3A (Antistasi) Ultimate Addon</li>
+                    <li><strong>License:</strong> MIT License</li>
+                    <li><strong>External Integrations:</strong> Diwako Anomalies, TTS Emission, CBA Framework</li>
+                    <li><strong>Documentation Version:</strong> 1.0 Complete</li>
+                </ul>
+
+                <h3>📚 Documentation Structure</h3>
+                <ul>
+                    <li><strong>Function Name:</strong> Complete path and file name for exact reference</li>
+                    <li><strong>Purpose:</strong> Clear explanation of what each function does and when it's called</li>
+                    <li><strong>Implementation:</strong> Step-by-step breakdown with actual code snippets</li>
+                    <li><strong>Dependencies:</strong> All required functions and global variables</li>
+                    <li><strong>System Integration:</strong> How it connects to other systems in A3A</li>
+                    <li><strong>Network Implications:</strong> Multiplayer considerations and synchronization</li>
+                    <li><strong>Requirements:</strong> Prerequisites for proper function execution</li>
+                </ul>
+
+                <h3>⚡ Performance Notes</h3>
+                <ul>
+                    <li><strong>Search Optimization:</strong> All 49 functions indexed for instant search</li>
+                    <li><strong>Lazy Loading:</strong> Content organized for optimal page performance</li>
+                    <li><strong>Print Friendly:</strong> Clean print styles for offline reference</li>
+                    <li><strong>Accessibility:</strong> Proper contrast ratios and keyboard navigation</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Back to Top">⬆️</button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h3>🔄 A3A Ultimate Complete Functions Documentation</h3>
+            <p><strong>Primary Author:</strong> Håkon</p>
+            <p><strong>Contributors:</strong> wersal454, UnseenKill</p>
+            <p><strong>System:</strong> A3A Ultimate Addon - Extended Features for Antistasi</p>
+            <p><strong>Total Functions:</strong> 49 items (45 SQF functions + 4 config files) across 14 categories</p>
+            <p><strong>Documentation Version:</strong> 1.0 Complete - All functions included with full details</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.dataset.theme = body.dataset.theme === 'dark' ? '' : 'dark';
+            darkModeToggle.textContent = body.dataset.theme === 'dark' ? '☀️' : '🌙';
+            localStorage.setItem('theme', body.dataset.theme);
+        });
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            body.dataset.theme = 'dark';
+            darkModeToggle.textContent = '☀️';
+        }
+
+        // Search Functionality
+        const searchInput = document.getElementById('functionSearch');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const searchStats = document.getElementById('searchStats');
+        const functionBlocks = document.querySelectorAll('.function-block');
+        const sections = document.querySelectorAll('.section');
+
+        function updateSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const categoryFilterValue = categoryFilter.value;
+            let visibleCount = 0;
+            let totalFunctions = 49; // Total count of all functions and config files
+
+            // First handle section visibility
+            sections.forEach(section => {
+                if (section.id && section.id !== 'overview' && section.id !== 'stats' && section.id !== 'config') {
+                    const sectionFunctions = section.querySelectorAll('.function-block');
+                    let sectionHasVisible = false;
+                    
+                    sectionFunctions.forEach(block => {
+                        const text = block.textContent.toLowerCase();
+                        const functionName = block.querySelector('.function-name').textContent.toLowerCase();
+                        const categoryMatch = categoryFilterValue === 'all' || 
+                                            block.classList.contains(categoryFilterValue + '-function');
+                        const searchMatch = searchTerm === '' || 
+                                          text.includes(searchTerm) || 
+                                          functionName.includes(searchTerm);
+                        
+                        if (categoryMatch && searchMatch) {
+                            block.style.display = 'block';
+                            visibleCount++;
+                            sectionHasVisible = true;
+                        } else {
+                            block.style.display = 'none';
+                        }
+                    });
+                    
+                    // Show/hide section based on visible functions
+                    const sectionHeader = section.querySelector('h2');
+                    if (sectionHasVisible || (searchTerm === '' && categoryFilterValue === 'all')) {
+                        section.style.display = 'block';
+                        if (sectionHeader) {
+                            // Update count in header
+                            const currentCount = sectionFunctions.length;
+                            const visibleInSection = Array.from(sectionFunctions).filter(b => b.style.display !== 'none').length;
+                            sectionHeader.innerHTML = sectionHeader.innerHTML.replace(/\(\d+ functions?\)/, `(${visibleInSection} of ${currentCount} functions)`);
+                        }
+                    } else {
+                        section.style.display = 'none';
+                    }
+                }
+            });
+
+            // Handle config section separately
+            const configSection = document.getElementById('config');
+            if (configSection) {
+                const configBlocks = configSection.querySelectorAll('.function-block');
+                let configHasVisible = false;
+                
+                configBlocks.forEach(block => {
+                    const text = block.textContent.toLowerCase();
+                    const functionName = block.querySelector('.function-name').textContent.toLowerCase();
+                    const categoryMatch = categoryFilterValue === 'all' || 
+                                        categoryFilterValue === 'config';
+                    const searchMatch = searchTerm === '' || 
+                                      text.includes(searchTerm) || 
+                                      functionName.includes(searchTerm);
+                    
+                    if (categoryMatch && searchMatch) {
+                        block.style.display = 'block';
+                        visibleCount++;
+                        configHasVisible = true;
+                    } else {
+                        block.style.display = 'none';
+                    }
+                });
+                
+                if (configHasVisible || (searchTerm === '' && categoryFilterValue === 'all')) {
+                    configSection.style.display = 'block';
+                } else {
+                    configSection.style.display = 'none';
+                }
+            }
+
+            // Update stats
+            if (searchTerm || categoryFilterValue !== 'all') {
+                searchStats.textContent = `Found ${visibleCount} of ${totalFunctions} items`;
+            } else {
+                searchStats.textContent = `Showing all ${totalFunctions} items (45 functions + 4 config files)`;
+            }
+        }
+
+        searchInput.addEventListener('input', updateSearch);
+        categoryFilter.addEventListener('change', updateSearch);
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Table of Contents Links
+        document.querySelectorAll('.toc-item a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize search stats
+        updateSearch();
+        
+        // Add Prism for code syntax highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.Prism) {
+                Prism.highlightAll();
+            }
+        });
+    </script>
+</body>
+</html>

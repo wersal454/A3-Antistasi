@@ -1,0 +1,2436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A3A Logistics Addon Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --dev-color: #9b59b6;
+            --config-color: #e67e22;
+            --private-color: #2980b9;
+            --light-bg: #f8f9fa;
+            --page-bg: #f5f5f5;
+            --text-light: #333;
+            --text-dark: #555;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #5dade2;
+            --secondary-color: #85929e;
+            --success-color: #58d68d;
+            --warning-color: #f7dc6f;
+            --danger-color: #ec7063;
+            --dev-color: #af7ac5;
+            --config-color: #f0b27a;
+            --private-color: #3498db;
+            --light-bg: #34495e;
+            --page-bg: #0a0d11;
+            --text-light: #ffffff;
+            --text-dark: #e0e6ed;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background-color: var(--page-bg);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            background: var(--secondary-color);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .nav-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: nowrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #darkModeToggle {
+            background: none;
+            border: 1px solid white;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #darkModeToggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Search and Filter */
+        .search-container {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: var(--box-shadow);
+        }
+
+        [data-theme="dark"] .search-container {
+            background: var(--light-bg);
+        }
+
+        .search-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #functionSearch {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        #categoryFilter {
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background: white;
+        }
+
+        .search-stats {
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        [data-theme="dark"] .search-stats {
+            color: var(--text-dark);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        .header .version-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--box-shadow);
+        }
+
+        [data-theme="dark"] .toc {
+            background: var(--light-bg);
+        }
+
+        .toc h2 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+        
+        [data-theme="dark"] .toc h2 {
+            color: var(--text-light);
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .toc-item {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .toc-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .toc-item h3 {
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        [data-theme="dark"] .toc-item h3 {
+            color: var(--text-light);
+        }
+
+        .toc-item p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        [data-theme="dark"] .toc-item p {
+            color: var(--text-dark);
+        }
+
+        .toc-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .toc-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            scroll-margin-top: 100px;
+        }
+
+        [data-theme="dark"] .section {
+            background: var(--light-bg);
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .section h2 {
+            color: var(--text-light);
+        }
+
+        [data-theme="dark"] .section h3 {
+            color: var(--text-light);
+        }
+
+        .section h2 {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 {
+            color: var(--secondary-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        /* Function Blocks */
+        .function-block {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        [data-theme="dark"] .function-block {
+            background: #34495e;
+        }
+
+        .function-block:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transform: translateY(-1px);
+        }
+
+        .public-function { border-left-color: var(--danger-color); }
+        .dev-function { border-left-color: var(--dev-color); }
+        .config-function { border-left-color: var(--config-color); }
+        .private-function { border-left-color: var(--private-color); }
+
+        .function-name {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        [data-theme="dark"] .function-name {
+            color: var(--text-light);
+        }
+
+        .function-name::before {
+            font-family: "Font Awesome 6 Free";
+            content: "\f1c9"; /* fa-file-code */
+            font-weight: 900;
+        }
+        
+        .config-function .function-name::before {
+            content: "\f1c3"; /* fa-file-zipper */
+        }
+        
+        .dev-function .function-name::before {
+            content: "\f5fc"; /* fa-terminal */
+        }
+        
+        .private-function .function-name::before {
+            content: "\f023"; /* fa-lock */
+        }
+
+        .purpose {
+            color: var(--success-color);
+            font-style: italic;
+            margin: 10px 0;
+            background: rgba(39, 174, 96, 0.1);
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--success-color);
+        }
+
+        .code-block {
+            background: var(--secondary-color);
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: "SQF";
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 0.7em;
+            opacity: 0.5;
+            font-family: sans-serif;
+        }
+
+        .code-inline {
+            background: #e8f4f8;
+            color: #2c3e50;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            font-family: 'Fira Code', monospace;
+            border: 1px solid #bee5eb;
+        }
+
+        [data-theme="dark"] .code-inline {
+            background: #34495e;
+            color: #5dade2;
+            border-color: #5dade2;
+        }
+
+        .dependencies {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid var(--warning-color);
+        }
+
+        [data-theme="dark"] .dependencies {
+            background: #2c3e50;
+            border-color: #f39c12;
+            color: var(--text-light);
+        }
+
+        .dependencies strong {
+            color: #d68910;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #backToTop:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--secondary-color);
+            color: white;
+            margin-top: 40px;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .nav-bar .container { flex-direction: column; gap: 15px; }
+            .nav-links { justify-content: center; }
+            .header h1 { font-size: 2.2em; }
+            .toc-grid { grid-template-columns: 1fr; }
+            .function-block { padding: 15px; }
+            .code-block { font-size: 0.8em; padding: 15px; }
+            .search-controls { flex-direction: column; align-items: stretch; }
+            #functionSearch, #categoryFilter { width: 100%; }
+        }
+        
+        /* Syntax Highlighting Overrides for Dark Theme in Code Blocks */
+        [data-theme="dark"] pre[class*="language-"] {
+            background: #1e1e1e;
+            text-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="container">
+            <div class="nav-links">
+                <a href="#overview">📋 Overview</a>
+                <a href="#public-functions">🌐 Public API</a>
+                <a href="#private-functions">🔒 Private Functions</a>
+                <a href="#dev-functions">🛠️ Dev Tools</a>
+                <a href="#configuration">⚙️ Config Files</a>
+            </div>
+            <div class="nav-controls">
+                <button id="darkModeToggle" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🚚 A3A Logistics Addon</h1>
+            <p>Comprehensive Cargo Loading & Node Management Documentation</p>
+            <div class="version-badge">Version: Documentation Snapshot</div>
+        </header>
+
+        <!-- Search and Filter -->
+        <div class="search-container">
+            <div class="search-controls">
+                <input type="text" id="functionSearch" placeholder="🔍 Search functions (e.g., 'load', 'cargo', 'node')...">
+                <select id="categoryFilter">
+                    <option value="all">📂 All Categories</option>
+                    <option value="public">🌐 Public Functions</option>
+                    <option value="private">🔒 Private Functions</option>
+                    <option value="dev">🛠️ Dev Functions</option>
+                    <option value="config">⚙️ Configuration</option>
+                </select>
+            </div>
+            <div class="search-stats" id="searchStats">
+                Showing all functions and configurations
+            </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <section class="toc" id="overview">
+            <h2>📖 Table of Contents</h2>
+            <div class="toc-grid">
+                <div class="toc-item">
+                    <h3>🌐 Public API</h3>
+                    <p>Core gameplay functions for loading cargo and checking capacity.</p>
+                    <a href="#public-functions">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🔒 Private Functions</h3>
+                    <p>Internal logistics system functions for loading, unloading, and management.</p>
+                    <a href="#private-functions">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>🛠️ Dev Tools</h3>
+                    <p>Utilities for converting legacy data and generating node offsets.</p>
+                    <a href="#dev-functions">Jump to Section →</a>
+                </div>
+                <div class="toc-item">
+                    <h3>⚙️ Configuration</h3>
+                    <p>Structure definitions for CfgFunctions and CfgLogistics.</p>
+                    <a href="#configuration">Jump to Section →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Public Functions -->
+        <section id="public-functions" class="section">
+            <h2 id="public-functions">🌐 Public Functions</h2>
+
+            <div class="function-block public-function">
+                <div class="function-name">fn_addLoadAction.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    Adds logistics load/unload actions to objects, enabling players to interact with cargo items for loading into vehicles. It validates the cargo object and prepares to add appropriate actions based on the object's capabilities.
+                </div>
+                
+                <h3>How it does that:</h3>
+                <p>The function performs several validation steps before adding load actions:</p>
+                <div class="code-block"><pre><code class="language-sqf">#include "..\script_component.hpp"
+FIX_LINE_NUMBERS()
+params [["_object", objNull, [objNull]], ["_action", "load"],["_breakUC",false]];</code></pre></div>
+                <p>Purpose: Includes necessary header files and sets up function parameters with default values. The params statement defines three parameters: <code class="code-inline">_object</code> (default: objNull), <code class="code-inline">_action</code> (default: "load"), and <code class="code-inline">_breakUC</code> (default: false).</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if (isNull _object) exitWith {
+    Error("No object passed, aborting");
+    nil
+};</code></pre></div>
+                <p>Purpose: Validates that a valid object was passed. Checks if _object is null, logs an error, and returns nil to prevent further processing.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if (!alive _object) exitWith {
+    Error("Destroyed object passed, aborting");
+    nil
+};</code></pre></div>
+                <p>Purpose: Ensures the object is still alive. Checks if _object is alive using the alive function. If destroyed, logs an error and returns nil.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if (([_object] call A3A_Logistics_fnc_getCargoNodeType) isEqualTo -1) exitWith {nil};</code></pre></div>
+                <p>Purpose: Validates that the object has a valid cargo node type. Calls A3A_Logistics_fnc_getCargoNodeType; if the returned value equals -1 (invalid), it exits with nil.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _jipKey = "A3A_Logistics_" + _action + ((str _object splitString ":") joinString "");</code></pre></div>
+                <p>Purpose: Creates a unique JIP (Just In Place) key for remote execution. Combines a prefix with the action type and object string representation.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">[_object, _action, _jipKey,_breakUC] remoteExec ["A3A_Logistics_fnc_addAction", 0, _jipKey];</code></pre></div>
+                <p>Purpose: Executes the actual action addition on all clients. Calls remoteExec to execute A3A_Logistics_fnc_addAction on all clients (0).</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_getCargoNodeType</code> - Determines cargo node type<br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_addAction</code> - Actually adds the load/unload action<br>
+                    Global Variables: None directly modified, but triggers remote execution.
+                </div>
+            </div>
+
+            <div class="function-block public-function">
+                <div class="function-name">fn_getCargo.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    Retrieves the cargo array from a vehicle's Cargo variable, processes it to filter out non-vehicle items, and returns the resulting cargo array.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">private _vehicle = _this;</code></pre></div>
+                <p>Purpose: Assigns the input parameter (vehicle) to a local variable _vehicle.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _cargo = _vehicle getVariable ["Cargo", []];</code></pre></div>
+                <p>Purpose: Retrieves the vehicle's "Cargo" variable using getVariable, defaulting to an empty array [] if it doesn't exist.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if !(_cargo isEqualTo []) then {
+    _cargo = (flatten _cargo) select {_x isEqualType _vehicle};	
+};</code></pre></div>
+                <p>Purpose: Processes the cargo array if it's not empty. Flattens the nested cargo array and selects items that are of the same type as _vehicle.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">_cargo</code></pre></div>
+                <p>Purpose: Returns the processed cargo array.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Depends on: The vehicle having a "Cargo" variable.<br>
+                    Used by: Other logistics functions that need to access vehicle cargo.
+                </div>
+            </div>
+
+            <div class="function-block public-function">
+                <div class="function-name">fn_getVehCapacity.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    Returns the cargo loading capacity of a vehicle by counting the number of nodes defined in the vehicle's configuration.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">params [["_vehicle", objNull, [objNull, ""]]];</code></pre></div>
+                <p>Purpose: Sets up function parameters. Accepts either a vehicle object or a vehicle class name string.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _config = [_vehicle] call A3A_Logistics_fnc_getNodeConfig;</code></pre></div>
+                <p>Purpose: Gets the node configuration for the vehicle by calling A3A_Logistics_fnc_getNodeConfig.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if (isNull _config) exitWith { 0 };</code></pre></div>
+                <p>Purpose: Handles invalid configurations. If null, exits with 0 capacity.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">count (configProperties [(_config/"Nodes"), "true", true]);</code></pre></div>
+                <p>Purpose: Counts the number of nodes available. Accesses the "Nodes" sub-class and uses configProperties to count them recursively.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_getNodeConfig</code> - Gets the node configuration for the vehicle.
+                </div>
+            </div>
+
+            <div class="function-block public-function">
+                <div class="function-name">fn_isLoadable.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    Checks whether a given object class can be loaded as logistics cargo by validating its presence in the cargo configuration system.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">params [["_class","", ["", objNull]]];</code></pre></div>
+                <p>Purpose: Sets up parameters. Accepts either a class name (string) or object.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">!isNull ([_class] call A3A_Logistics_fnc_getCargoConfig);</code></pre></div>
+                <p>Purpose: Determines if the class is loadable. Calls getCargoConfig and checks if the returned configuration is not null.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_getCargoConfig</code> - Gets the cargo configuration for a class.
+                </div>
+            </div>
+        </section>
+
+        <!-- Private Functions -->
+        <section id="private-functions" class="section">
+            <h2 id="private-functions">🔒 Private Functions</h2>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_addAction.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_addAction.sqf function adds load or unload actions to objects in the game. It dynamically creates interactive actions that allow players to load cargo onto vehicles or unload cargo from vehicles. The function handles both loading and unloading actions, with appropriate validation and visual feedback.
+                </div>
+
+                <h3>How it does that:</h3>
+                <p>The function first validates input parameters and checks if the action already exists. It then creates appropriate action text based on the object type and action type (load/unload). For loading actions, it creates a hold action that triggers the A3A_Logistics_fnc_tryLoad function. For unloading actions, it creates a hold action that triggers the A3A_Logistics_fnc_unload function. The function also sets up user action text for visual feedback and handles JIP (Just-In-Play) key management.</p>
+
+                <h3>Code Walkthrough:</h3>
+                <div class="code-block"><pre><code class="language-sqf">#include "..\script_component.hpp"</code></pre></div>
+                <p>Purpose: Includes the script component header file which likely contains macros and definitions for the logistics addon.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">params [["_object", objNull, [objNull]], "_action", ["_jipKey", "", [""]], ["_breakUC",false]];
+if (isNull _object) exitWith {
+    remoteExec ["", _jipKey]; //clear custom JIP
+};</code></pre></div>
+                <p>Purpose: Sets up function parameters with default values and validates that the object is not null. If the object is null, it clears the JIP key and exits.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _actionNames = (actionIDs _object) apply {(_object actionParams _x)#0};
+private _vehicleName = nil;
+
+if ((typeOf _object) isEqualTo FactionGet(reb, "lootCrate")) then {
+    _vehicleName = localize "STR_antistasi_actions_loot_crate";
+} else {
+    _vehicleName = getText (configFile >> "CfgVehicles" >> typeOf _object >> "displayName");
+};</code></pre></div>
+                <p>Purpose: Gets existing action names on the object to prevent duplicates, and determines the display name for the vehicle. For loot crates, it uses a specific localized string; otherwise, it gets the display name from the configuration.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _loadText = format [(format["<img image='\a3\data_f_destroyer\data\ui\igui\cfg\holdactions\holdaction_loadvehicle_ca.paa' size='1.6' shadow=2 /> <t>%1</t>", (localize "STR_antistasi_actions_load_cargo")]), _vehicleName];</code></pre></div>
+                <p>Purpose: Creates the localized text for the load action, including an icon and vehicle name.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">switch (_action) do {
+    case "load":{
+        if (_loadText in _actionNames) exitWith {};
+
+        private _loadActionID = _object addAction
+        [
+            _loadText,
+            {
+                params ["_target","_caller","_actionID","_breakUC"];
+                [_target] remoteExecCall ["A3A_Logistics_fnc_tryLoad",2];
+                if (_breakUC) then {_caller setCaptive false};
+            },
+            _breakUC,
+            -5,
+            true,
+            true,
+            "",
+            "(
+                ((attachedTo _target) isEqualTo objNull)
+                and ((vehicle _this) isEqualTo _this)
+                and (alive _target)
+            )",
+            5
+        ];
+
+        _object setUserActionText [
+            _loadActionID,
+            _loadText,
+            "<t size='2'><img image='\A3\ui_f\data\IGUI\Cfg\Actions\arrow_up_gs.paa'/></t>"
+        ];
+        _object setVariable ["loadActionID", _loadActionID, false];
+    };
+    case "unload": {
+        private _text = format["<img image='\a3\data_f_destroyer\data\ui\igui\cfg\holdactions\holdaction_unloadvehicle_ca.paa' size='1.6' shadow=2 /> <t>%1</t>", (localize "STR_antistasi_actions_unload_cargo")];
+        if (_text in _actionNames) exitWith {};
+
+        private _unloadActionID = _object addAction
+        [
+            _text,
+            {
+                params ["_target"];
+                [_target] remoteExec ["A3A_Logistics_fnc_unload",2];
+            },
+            nil,
+            -5,
+            true,
+            true,
+            "",
+            "(
+                !((_target getVariable ['Cargo', []]) isEqualTo [])
+                and !(_target getVariable ['LoadingCargo', false])
+                and ((vehicle _this) isEqualTo _this)
+            )",
+            5
+        ];
+
+        _object setUserActionText [
+            _unloadActionID,
+            _text,
+            "<t size='2'><img image='\A3\ui_f\data\IGUI\Cfg\Actions\arrow_down_gs.paa'/></t>"
+        ];
+        _object setVariable ["unloadActionID", _unloadActionID, false];
+    };
+};</code></pre></div>
+                <p>Purpose: Creates either load or unload actions with specific conditions and executes the appropriate logistics function when triggered.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: <code class="code-inline">fn_addLoadAction.sqf</code> and other logistics system functions<br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_tryLoad</code> (for load actions) and <code class="code-inline">A3A_Logistics_fnc_unload</code> (for unload actions)<br>
+                    Global variables modified: <code class="code-inline">loadActionID</code> - stores the ID of the load action for the object, <code class="code-inline">unloadActionID</code> - stores the ID of the unload action for the object<br>
+                    Network implications: Uses <code class="code-inline">remoteExecCall</code> to execute functions on the server
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_addOrRemoveObjectMass.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_addOrRemoveObjectMass.sqf function modifies the mass properties of objects in the game world, specifically handling the addition or removal of cargo mass to/from vehicles. It provides visual feedback to players about mass changes and updates the vehicle's physical properties accordingly.
+                </div>
+
+                <h3>How it does that:</h3>
+                <p>The function first validates that both the cargo object and vehicle are valid and alive. It then retrieves configuration data for both the vehicle and cargo, and determines if the cargo is a weapon. It calculates the mass changes and displays a detailed hint to the player showing the vehicle's mass properties before and after the change.</p>
+
+                <h3>Code Walkthrough:</h3>
+                <div class="code-block"><pre><code class="language-sqf">#include "..\script_component.hpp"</code></pre></div>
+                <p>Purpose: Includes the script component header file which likely contains macros and definitions for the logistics addon.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">params [ ["_vehicle", objNull, [objNull] ], ["_object", objNull, [objNull] ] ];
+if !(alive _vehicle) exitWith {-1}; //vehicle destroyed
+if !(alive _object) exitWith {-2}; //cargo destroyed</code></pre></div>
+                <p>Purpose: Sets up function parameters and validates that both vehicle and object are alive.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _vehConfig = [_vehicle] call A3A_Logistics_fnc_getNodeConfig;
+if (isNull _vehConfig) exitWith {-7};</code></pre></div>
+                <p>Purpose: Gets the vehicle's node configuration and exits with error code -7 if null.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _cargoConfig = [_object] call A3A_Logistics_fnc_getCargoConfig;
+if (isNull _cargoConfig) exitWith {-3};
+private _objNodeType = [_object] call A3A_Logistics_fnc_getCargoNodeType;
+if (_objNodeType isEqualTo -1) exitWith {-3}; //invalid cargo</code></pre></div>
+                <p>Purpose: Gets cargo configuration and validates node type, exiting with error code -3 if invalid.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _weapon = 1 == getNumber (_cargoConfig/"isWeapon");
+private _allowed = if (!_weapon) then {true} else {
+    if (0 == getNumber (_vehConfig/"canLoadWeapon")) exitWith {false};
+
+    private _vehModel = getText (configFile/"CfgVehicles"/typeOf _vehicle/"model");
+    private _blackList = getArray (_cargoConfig/"blackList");
+    !(
+        _vehModel in _blackList
+        || typeOf _vehicle in _blackList
+    )
+};
+if !(_allowed) exitWith {-5}; //weapon not allowed on vehicle</code></pre></div>
+                <p>Purpose: Determines if the cargo is a weapon and whether it's allowed on the vehicle, exiting with error code -5 if not allowed.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _nodes = _vehicle getVariable [QGVAR(Nodes),nil];
+if (isNil "_nodes") then {
+    _nodes = [_vehicle] call A3A_Logistics_fnc_getVehicleNodes;
+    _vehicle setVariable [QGVAR(Nodes), _nodes];
+};</code></pre></div>
+                <p>Purpose: Gets vehicle nodes or initializes them if not already set.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _defaultMass = getNumber (_vehConfig/"defaultMass");
+private _cargoMass = getNumber (_cargoConfig/"mass");
+private _newMass = _defaultMass + _cargoMass;</code></pre></div>
+                <p>Purpose: Retrieves mass values from configurations and calculates the new mass.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _text = format [
+    "
+    <img image='%1' size='2' align='left'/>
+    <t color='#a02e69' size='1.2' shadow='1' shadowColor='#000000' align='center'>%2</t><br/>
+    <t color='#00aafd' size='1.2' shadow='1' shadowColor='#000000' align='left'>%6: </t>
+    <t color='#00ff59' size='1.2' shadow='1' shadowColor='#000000' align='left'>%3</t><br/>
+    <t color='#00aafd' size='1.2' shadow='1' shadowColor='#000000' align='left'>%7: </t>
+    <t color='#00ff59' size='1.2' shadow='1' shadowColor='#000000' align='left'>%4</t><br/>
+    <t color='#00aafd' size='1.2' shadow='1' shadowColor='#000000' align='left'>%8: </t>
+    <t color='#00ff59' size='1.2' shadow='1' shadowColor='#000000' align='left'>%5</t><br/>
+    ",
+    getText(configFile >> "cfgVehicles" >> typeOf _vehicle >> "picture"),
+    getText(configFile >> "cfgVehicles" >> typeOf _vehicle >> "displayName"),
+    _defaultMass,
+    _cargoMass,
+    _newMass,
+    localize "STR_A3A_Logistics_addOrRemoveObjectMass_additive_1",
+    localize "STR_A3A_Logistics_addOrRemoveObjectMass_additive_2",
+    localize "STR_A3A_Logistics_addOrRemoveObjectMass_additive_3"
+];</code></pre></div>
+                <p>Purpose: Creates formatted text with vehicle picture and mass information for display.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">_text = _text + _msg;</code></pre></div>
+                <p>Purpose: Appends additional message to the formatted text.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">[localize "STR_A3A_Logistics_header", parseText _text] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner];
+[localize "STR_A3A_Logistics_header", parseText _text] remoteExec ["A3A_fnc_customHint", crew _vehicle];</code></pre></div>
+                <p>Purpose: Displays the formatted mass information to the player and vehicle crew using custom hint system.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: <code class="code-inline">fn_load.sqf</code> and <code class="code-inline">fn_unload.sqf</code> when cargo mass needs to be updated<br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_getNodeConfig</code>, <code class="code-inline">A3A_Logistics_fnc_getCargoConfig</code>, <code class="code-inline">A3A_Logistics_fnc_getCargoNodeType</code>, <code class="code-inline">A3A_Logistics_fnc_getVehicleNodes</code><br>
+                    Error codes: -1: Vehicle destroyed, -2: Cargo destroyed, -3: Invalid cargo, -5: Weapon not allowed, -7: Invalid vehicle config<br>
+                    Network implications: Uses <code class="code-inline">remoteExec</code> to display hints to players and crew
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_addWeaponAction.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_addWeaponAction.sqf function adds interactive actions to vehicles for players to get into mounted static weapons. It also sets up event handlers for weapon destruction and player movement when exiting the weapon.
+                </div>
+
+                <h3>How it does that:</h3>
+                <p>The function first validates that both cargo (weapon) and vehicle are valid. It creates a "get in" action that allows players to move into the gunner position of the static weapon. It sets up event handlers to remove the action when the weapon is destroyed and to move players to appropriate positions when exiting the weapon. It also breaks undercover status for players getting into the weapon.</p>
+
+                <h3>Code Walkthrough:</h3>
+                <div class="code-block"><pre><code class="language-sqf">#include "..\script_component.hpp"</code></pre></div>
+                <p>Purpose: Includes the script component header file which likely contains macros and definitions for the logistics addon.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">params [["_cargo", objNull, [objNull]], ["_vehicle", objNull, [objNull]], ["_jipKey", "", [""]]];
+if (isNull _cargo || isNull _vehicle) exitWith {
+    remoteExec ["", _jipKey]; //clear custom JIP
+};</code></pre></div>
+                <p>Purpose: Sets up function parameters and validates that both cargo and vehicle are not null.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _name = getText (configFile >> "CfgVehicles" >> typeOf _cargo >> "displayName");
+private _text = format [(localize "STR_antistasi_actions_get_in_gunner"), _name];</code></pre></div>
+                <p>Purpose: Gets the weapon's display name and creates localized text for the action.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _actionID = _vehicle addAction [
+    _text,
+    {
+        params ["_vehicle", "_caller", "_id", "_static"];
+        if !(attachedTo _static isEqualTo _vehicle) exitWith {[_vehicle, _id] remoteExecCall ["removeAction", 0]};// incase of code break in unloading static
+        if (!alive gunner _static) then {
+            _caller moveInGunner _static;
+        } else {[localize "STR_A3A_Logistics_header", localize "STR_A3A_Logistics_addWeaponAction_staticoccupied"] call A3A_fnc_customHint};
+    },
+    _cargo,
+    5.5,
+    true,
+    true,
+    "",
+    "(
+        ((attachedTo _this) isEqualTo objNull)
+        and (_this isEqualTo (vehicle _this))
+        and ((gunner _target) isEqualTo objNull)
+    )",
+    5
+];</code></pre></div>
+                <p>Purpose: Creates the "get in" action with conditions and executes the action logic when triggered.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">_vehicle setUserActionText [
+    _actionID,
+    _text,
+    "<t size='2'><img image='\A3\ui_f\data\IGUI\Cfg\Actions\getingunner_ca.paa'/></t>"
+];
+_cargo setVariable ["getInAction", _actionID];</code></pre></div>
+                <p>Purpose: Sets user-friendly text for the action and stores the action ID in the cargo variable.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _KilledEH = _cargo addEventHandler ["Killed", {
+    params ["_cargo"];
+    private _vehicle = attachedTo _cargo;
+    [_vehicle, _cargo] remoteExecCall ["A3A_Logistics_fnc_removeWeaponAction",0]
+}];
+_cargo setVariable ["KilledEH", _KilledEH];
+_cargo enableWeaponDisassembly false;</code></pre></div>
+                <p>Purpose: Sets up event handler for when the weapon is destroyed, removes the action, and disables weapon disassembly.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _GetOutEH = _cargo addEventHandler ["GetOut", {
+    params ["_cargo", "", "_unit"];
+    private _vehicle = attachedTo _cargo;
+    if (isNull _vehicle) exitWith { _cargo removeEventHandler ["GetOut", _thisEventHandler] };
+
+    private _bb = 3 boundingBoxReal _vehicle;
+    private _mPos = [(_bb#0#0) - 0.3, (_vehicle worldToModel getPos _cargo)#1, _bb#0#2];
+    private _newPos = _vehicle modelToWorld _mPos;
+    _unit setPos _newPos;
+}];
+_cargo setVariable ["GetOutEH", _GetOutEH];</code></pre></div>
+                <p>Purpose: Sets up event handler for when player gets out of the weapon, positions them appropriately.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _undercoverBreak = _vehicle addEventHandler ["GetIn", {
+    _this spawn {sleep 0.1; (_this#2) setCaptive false};
+}];
+_vehicle setVariable ["undercoverBreak", _undercoverBreak];</code></pre></div>
+                <p>Purpose: Sets up event handler to break undercover status for players getting into the vehicle.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">[_cargo] call A3A_Logistics_fnc_initMountedWeapon;</code></pre></div>
+                <p>Purpose: Initializes the mounted weapon with additional features.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: <code class="code-inline">fn_load.sqf</code> when loading weapons<br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_removeWeaponAction</code> - for removing actions when weapon is destroyed<br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_initMountedWeapon</code> - for initializing weapon features<br>
+                    Global variables modified: <code class="code-inline">getInAction</code> - stores the ID of the get-in action, <code class="code-inline">KilledEH</code> - stores killed event handler<br>
+                    Network implications: Uses <code class="code-inline">remoteExecCall</code> to execute functions on the server for action removal and initialization
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_canLoad.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_canLoad.sqf function verifies whether cargo can be loaded onto a vehicle. It performs comprehensive validation checks to ensure the loading operation is safe and appropriate, returning either an error code or a successful result with necessary loading parameters.
+                </div>
+
+                <h3>How it does that:</h3>
+                <p>The function performs a series of validation checks:</p>
+                <ol>
+                    <li>Checks if both vehicle and cargo are alive and valid</li>
+                    <li>Validates vehicle configuration for cargo loading capability</li>
+                    <li>Determines if the cargo is loadable and not a static weapon with a gunner</li>
+                    <li>Validates weapon compatibility with the vehicle</li>
+                    <li>Checks if units are conscious or otherwise unable to be loaded</li>
+                    <li>Identifies available nodes on the vehicle for cargo placement</li>
+                    <li>Ensures no crew members are blocking the loading seats</li>
+                </ol>
+
+                <h3>Code Walkthrough:</h3>
+                <div class="code-block"><pre><code class="language-sqf">#include "..\script_component.hpp"
+params [ ["_vehicle", objNull, [objNull] ], ["_object", objNull, [objNull] ] ];
+if !(alive _vehicle) exitWith {-1}; //vehicle destroyed
+if !(alive _object) exitWith {-2}; //cargo destroyed</code></pre></div>
+                <p>Purpose: Sets up function parameters and validates that both vehicle and object are alive.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//check if vehicle can load cargo
+private _vehConfig = [_vehicle] call A3A_Logistics_fnc_getNodeConfig;
+if (isNull _vehConfig) exitWith {-7};</code></pre></div>
+                <p>Purpose: Gets the vehicle's node configuration and exits with error code -7 if null.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//get cargo node size
+private _cargoConfig = [_object] call A3A_Logistics_fnc_getCargoConfig;
+if (isNull _cargoConfig) exitWith {-3};
+private _objNodeType = [_object] call A3A_Logistics_fnc_getCargoNodeType;
+if (_objNodeType isEqualTo -1) exitWith {-3}; //invalid cargo</code></pre></div>
+                <p>Purpose: Gets cargo configuration and validates node type, exiting with error code -3 if invalid.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if !(
+    ((gunner _object) isEqualTo _object)
+    or ((gunner _object) isEqualTo objNull)
+) exitWith {-4}; //gunner in static</code></pre></div>
+                <p>Purpose: Checks if the cargo is a static weapon with a gunner, which prevents loading.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//is weapon? and weapon allowed
+private _weapon = 1 == getNumber (_cargoConfig/"isWeapon");
+private _allowed = if (!_weapon) then {true} else {
+    if (0 == getNumber (_vehConfig/"canLoadWeapon")) exitWith {false};
+
+    private _vehModel = getText (configFile/"CfgVehicles"/typeOf _vehicle/"model");
+    private _blackList = getArray (_cargoConfig/"blackList");
+    !(
+        _vehModel in _blackList
+        || typeOf _vehicle in _blackList
+    )
+};
+if !(_allowed) exitWith {-5}; //weapon not allowed on vehicle</code></pre></div>
+                <p>Purpose: Determines if the cargo is a weapon and whether it's allowed on the vehicle, exiting with error code -5 if not allowed.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if ((_object isKindOf "CAManBase") and (
+    ( [_object] call A3A_fnc_canFight )
+    or !( isNull (_object getVariable ["helped",objNull]) )
+    or !( isNull attachedTo _object )
+)) exitWith {-6}; //conscious man</code></pre></div>
+                <p>Purpose: Checks if the cargo is a conscious unit that cannot be loaded, exiting with error code -6.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//get vehicle nodes
+private _nodes = _vehicle getVariable [QGVAR(Nodes),nil];
+
+//if nodes not initilized
+if (isNil "_nodes") then {
+    _nodes = [_vehicle] call A3A_Logistics_fnc_getVehicleNodes;
+    _vehicle setVariable [QGVAR(Nodes), _nodes];
+};</code></pre></div>
+                <p>Purpose: Gets vehicle nodes or initializes them if not already set.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//Vehicle not able to carry cargo
+if (_nodes isEqualTo []) exitWith {-7};
+
+//enough free nodes to load cargo
+private "_node";
+{
+    private _currentNodes = [];
+    for "_i" from 0 to _objNodeType - 1 do {
+        private _currentNode = _forEachIndex + _i;
+        if (isNil {_nodes#_currentNode}) exitWith {};//zero divisor block
+        if (((_nodes#_currentNode)#0) isEqualTo 1) then {_currentNodes pushBack _nodes#_currentNode};
+    };
+    if ((count _currentNodes) isEqualTo _objNodeType) exitWith {_node = _currentNodes};
+} forEach _nodes;
+if (isNil "_node") exitWith {-8};</code></pre></div>
+                <p>Purpose: Finds available nodes on the vehicle for cargo placement, exiting with error code -8 if insufficient space.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//block loading if crew in node seats
+private _fullCrew = fullCrew _vehicle;
+private _seats = [];
+if ((_node#0) isEqualType []) then {
+    {_seats append (_x#2)} forEach _node;
+} else {
+    _seats append (_node#2);
+};
+if !(_fullCrew findIf {_x#2 in _seats} isEqualTo -1) exitWith {-9};</code></pre></div>
+                <p>Purpose: Checks if crew members are blocking the loading seats, exiting with error code -9 if they are.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">[_object, _vehicle, _node, _weapon]</code></pre></div>
+                <p>Purpose: Returns the successful result with cargo, vehicle, node, and weapon information.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: <code class="code-inline">fn_tryLoad.sqf</code> to validate loading operations<br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_getNodeConfig</code>, <code class="code-inline">A3A_Logistics_fnc_getCargoConfig</code>, <code class="code-inline">A3A_Logistics_fnc_getCargoNodeType</code>, <code class="code-inline">A3A_Logistics_fnc_getVehicleNodes</code>, <code class="code-inline">A3A_fnc_canFight</code><br>
+                    Error codes: -1: Vehicle not alive, -2: Cargo not alive, -3: Cargo not loadable, -4: Gunner in static weapon, -5: Weapon not allowed, -6: Unit no longer loadable, -7: Vehicle unable to load cargo, -8: Not enough space, -9: Units blocking loading<br>
+                    Returns: Error code or array <code class="code-inline">[_object, _vehicle, _node, _weapon]</code> on success
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_getCargoConfig.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_getCargoConfig.sqf function retrieves the cargo configuration for a given vehicle class or object. It searches through multiple configuration levels to find the appropriate cargo definition, prioritizing mission-specific configurations over default ones.
+                </div>
+
+                <h3>How it does that:</h3>
+                <p>The function first validates the input parameter and converts object parameters to class names. It then searches through several configuration levels in order of priority:</p>
+                <ol>
+                    <li>Mission configuration by class name</li>
+                    <li>Vehicle-specific configuration</li>
+                    <li>Default configuration class</li>
+                    <li>Mission configuration by model name</li>
+                    <li>Default configuration by model name</li>
+                </ol>
+
+                <h3>Code Walkthrough:</h3>
+                <div class="code-block"><pre><code class="language-sqf">#include "..\script_component.hpp"
+params [["_class","",["",objNull]]];
+if (_class isEqualType objNull) then {_class = typeOf _class};</code></pre></div>
+                <p>Purpose: Includes the script component header and sets up function parameters with validation.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">#define cgVehicle (configFile/"CfgVehicles"/_class)
+#define VehicleNodes (configFile/"CfgVehicles"/_class/QGVAR(Cargo))
+#define CfgNodes (configFile/"A3A"/QGVAR(Cargo))
+#define MissionNodes (missionConfigFile/"A3A"/QGVAR(Cargo))</code></pre></div>
+                <p>Purpose: Defines macros for easier configuration access paths.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if !(isClass cgVehicle) exitWith { configNull };</code></pre></div>
+                <p>Purpose: Validates that the vehicle class exists in the configuration, returning configNull if not.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if (isClass (MissionNodes/_class)) exitWith { (MissionNodes/_class) };
+if (isClass VehicleNodes) exitWith { VehicleNodes };
+if (isClass (CfgNodes/_class)) exitWith { (CfgNodes/_class) };</code></pre></div>
+                <p>Purpose: Searches for configuration in order of priority: mission config by class, vehicle config, default config by class.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _model = modelOfClass(_class);
+if (isClass (MissionNodes/_model)) exitWith { (MissionNodes/_model) };
+if (isClass (CfgNodes/_model)) exitWith { (CfgNodes/_model) };
+configNull;</code></pre></div>
+                <p>Purpose: Searches for configuration by model name and returns configNull if none found.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: Many logistics functions that need cargo configuration data<br>
+                    Calls: <code class="code-inline">modelOfClass</code> - for getting model class from vehicle class<br>
+                    Depends on: Configuration files for vehicles and cargo, Mission configuration system<br>
+                    Returns: <code class="code-inline">configNull</code> if no configuration found, otherwise the configuration class
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_getCargoNodeType.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_getCargoNodeType.sqf function determines the node size/type of a cargo object. It retrieves the cargo configuration and extracts the size property, which indicates how many nodes the cargo occupies.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">params [["_object", objNull, [objNull, ""]]];</code></pre></div>
+                <p>Purpose: Sets up function parameters with validation for the cargo object.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _config = [_object] call A3A_Logistics_fnc_getCargoConfig;
+if (isNull _config) exitWith {-1};</code></pre></div>
+                <p>Purpose: Gets the cargo configuration and exits with -1 if null.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">getNumber (_config/"size");</code></pre></div>
+                <p>Purpose: Retrieves and returns the "size" property from the cargo configuration.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: Functions that need to know how much space cargo occupies<br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_getCargoConfig</code> - for retrieving cargo configuration<br>
+                    Returns: -1 if invalid, otherwise the size/number of nodes the cargo occupies
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_getCargoOffsetAndDir.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_getCargoOffsetAndDir.sqf function retrieves the offset and rotation values for attaching cargo to a vehicle. It provides the necessary positioning data for proper cargo placement.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">params [["_object", objNull, [objNull, ""]]];</code></pre></div>
+                <p>Purpose: Sets up function parameters with validation for the cargo object.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _config = [_object] call A3A_Logistics_fnc_getCargoConfig;
+if (isNull _config) exitWith { [[0,0,0], [0,0,0]] };</code></pre></div>
+                <p>Purpose: Gets the cargo configuration and exits with default values if null.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if (_object isKindOf "CAManBase") exitWith { [[0,0,0], [0,0,0]] };//exception for the medical system</code></pre></div>
+                <p>Purpose: Special handling for human units, returning default values for medical system exceptions.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">[getArray (_config/"offset"), getArray (_config/"rotation")];</code></pre></div>
+                <p>Purpose: Returns the offset and rotation arrays from the cargo configuration.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: <code class="code-inline">fn_load.sqf</code> and <code class="code-inline">fn_unload.sqf</code> for positioning data<br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_getCargoConfig</code> - for retrieving cargo configuration<br>
+                    Returns: Array containing offset and rotation vectors
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_getNodeConfig.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_getNodeConfig.sqf function retrieves the node configuration for a given vehicle class or object. It searches through multiple configuration levels to find the appropriate node definition, prioritizing mission-specific configurations over default ones.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">#include "..\script_component.hpp"
+params [["_class","",["",objNull]]];
+if (_class isEqualType objNull) then {_class = typeOf _class};</code></pre></div>
+                <p>Purpose: Includes the script component header and sets up function parameters with validation.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">#define cfgVehicle (configFile/"CfgVehicles"/_class)
+#define VehicleNodes (configFile/"CfgVehicles"/_class/QGVAR(Nodes))
+#define CfgNodes (configFile/"A3A"/QGVAR(Nodes))
+#define MissionNodes (missionConfigFile/"A3A"/QGVAR(Nodes))</code></pre></div>
+                <p>Purpose: Defines macros for easier configuration access paths.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if !(isClass cfgVehicle) exitWith { configNull };</code></pre></div>
+                <p>Purpose: Validates that the vehicle class exists in the configuration, returning configNull if not.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if (isClass (MissionNodes/_class)) exitWith { (MissionNodes/_class) };
+if (isClass VehicleNodes) exitWith { VehicleNodes };
+if (isClass (CfgNodes/_class)) exitWith { (CfgNodes/_class) };</code></pre></div>
+                <p>Purpose: Searches for configuration in order of priority: mission config by class, vehicle config, default config by class.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _model = modelOfClass(_class);
+if (isClass (MissionNodes/_model)) exitWith { (MissionNodes/_model) };
+if (isClass (CfgNodes/_model)) exitWith { (CfgNodes/_model) };
+configNull;</code></pre></div>
+                <p>Purpose: Searches for configuration by model name and returns configNull if none found.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: Functions that need vehicle node configuration data<br>
+                    Calls: <code class="code-inline">modelOfClass</code> - for getting model class from vehicle class<br>
+                    Returns: <code class="code-inline">configNull</code> if no configuration found, otherwise the configuration class
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_getVehicleNodes.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_getVehicleNodes.sqf function retrieves the node array for a given vehicle. It gets the vehicle's node configuration and processes it to return an array of node data that can be used for cargo loading operations.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">params [["_vehicle", objNull, [objNull, ""]]];
+private _config = [_vehicle] call A3A_Logistics_fnc_getNodeConfig;
+if (isNull _config) exitWith { [] };</code></pre></div>
+                <p>Purpose: Sets up function parameters and gets the vehicle's node configuration, returning empty array if null.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _nodes = configProperties [(_config/"Nodes"), "true", true];
+_nodes apply { [1, getArray (_x/"offset"), getArray (_x/"seats")] };</code></pre></div>
+                <p>Purpose: Gets all node properties and transforms them into a standardized array format with [1, offset, seats].</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: Functions that need vehicle node data for loading operations<br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_getNodeConfig</code> - for retrieving node configuration<br>
+                    Returns: Array of node data in format <code class="code-inline">[[1, offset, seats], ...]</code>
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_initMountedWeapon.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_initMountedWeapon.sqf function adds functional features to mounted weapons, including recoil effects and proper cleanup when the weapon is no longer attached. It enhances the realism of static weapons by simulating weapon recoil.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">params ["_weapon"];</code></pre></div>
+                <p>Purpose: Sets up function parameter for the mounted weapon object.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//weapon recoil
+private _cargoConfig = [_weapon] call A3A_Logistics_fnc_getCargoConfig;
+private _fireForce = if (isNull _cargoConfig) then { 0 } else { getNumber (_cargoConfig/"recoil") };
+_weapon setVariable ["fireForce", _fireForce, true];</code></pre></div>
+                <p>Purpose: Gets the weapon's recoil configuration and stores it in a variable.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//credits to audiocustoms on youtube (Cup dev) for the concept and CalebSerafin for optimisation.
+private _idRecoil = _weapon addEventHandler ["Fired", compile ('
+    params ["_weapon"];
+    private _vehicle = attachedTo _weapon;
+    private _weaponDir = _weapon weaponDirection currentWeapon _weapon;
+    private _appliedForce = (_weaponDir vectorMultiply -' + (str _fireForce) +');
+    _vehicle addForce [_appliedForce, ' + (str (_weapon getVariable ["AttachmentOffset", [0,0,0]])) + '];
+')];</code></pre></div>
+                <p>Purpose: Sets up the fired event handler that applies recoil force to the vehicle when the weapon fires.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">[_weapon, _idRecoil] spawn {
+    params ["_weapon", "_idRecoil"];
+    waitUntil {sleep 1; (attachedTo _weapon) isEqualTo objNull};
+    _weapon removeEventHandler ["Fired", _idRecoil];
+};</code></pre></div>
+                <p>Purpose: Sets up a cleanup process that removes the event handler when the weapon is no longer attached.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">nil</code></pre></div>
+                <p>Purpose: Returns nil as the function's result.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: <code class="code-inline">fn_addWeaponAction.sqf</code> when setting up mounted weapons<br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_getCargoConfig</code> - for retrieving weapon configuration<br>
+                    Global variables modified: <code class="code-inline">fireForce</code> - stores the recoil force value for the weapon<br>
+                    Network implications: Uses spawn and waitUntil for asynchronous cleanup
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_load.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_load.sqf function handles the loading of cargo objects into vehicles. It manages the entire loading process including node allocation, positioning, attachment, and updating vehicle state information.
+                </div>
+
+                <h3>How it does that:</h3>
+                <p>The function performs several key operations:</p>
+                <ol>
+                    <li>Validates that the vehicle isn't already loading cargo</li>
+                    <li>Sets up JIP (Just-In-Play) keys for synchronization</li>
+                    <li>Updates the vehicle's node list to mark used nodes as occupied</li>
+                    <li>Calculates proper positioning and attachment points</li>
+                    <li>Handles seat locking for crew members</li>
+                    <li>Manages the physical attachment of cargo to the vehicle</li>
+                    <li>Implements smooth loading animation</li>
+                    <li>Updates vehicle cargo lists and performs cleanup</li>
+                </ol>
+
+                <h3>Code Walkthrough:</h3>
+                <div class="code-block"><pre><code class="language-sqf">#include "..\script_component.hpp"
+params ["_cargo", "_vehicle", "_node", "_weapon", ["_instant", false, [true]]];</code></pre></div>
+                <p>Purpose: Includes script component and sets up function parameters with default values.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if (_vehicle getVariable ["LoadingCargo", false]) exitWith {
+    [localize "STR_A3A_Logistics_header", localize "STR_A3A_Logistics_load_alreadyloading"] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner]; 
+    nil
+};
+_vehicle setVariable ["LoadingCargo",true,true];</code></pre></div>
+                <p>Purpose: Checks if vehicle is already loading cargo and exits with error if so. Sets loading state to true.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//object string for jip
+private _objStringCargo = str _cargo splitString ":" joinString "";
+private _objStringVehicle = str _vehicle splitString ":" joinString "";</code></pre></div>
+                <p>Purpose: Creates unique JIP keys by converting object strings to avoid duplicates.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//update list of nodes on vehicle
+_updateList = {
+    params ["_vehicle", "_node"];
+    private _list = _vehicle getVariable [QGVAR(Nodes),[]];
+    private _index = _list find _node;
+    _node set [0,0];
+    _list set [_index, _node];
+    _vehicle setVariable [QGVAR(Nodes), _list, true];
+};</code></pre></div>
+                <p>Purpose: Defines a local function to update the vehicle's node list, marking nodes as occupied.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//find node point and seats
+private _nodeOffset = [0,0,0];
+private _seats = [];
+
+if ((_node#0) isEqualType []) then {
+    //offset
+    private _lastNode = (count _node) -1;
+    private _offsetOne = (_node#0#1);
+    private _offsetTwo = (_node#_lastNode#1);
+    private _diff = _offsetOne vectorDiff _offsetTwo;
+    _nodeOffset = _offsetTwo vectorAdd [0,(_diff#1)/2,0];
+
+    //seats
+    {
+        _seats append (_x#2);
+    } forEach _node;
+
+    //update cargo list
+    for "_i" from 0 to _lastNode do {
+        [_vehicle, _node#_i] call _updateList;
+    };
+} else { //single node
+    //offset
+    _nodeOffset = (_node#1);
+    //seats
+    _seats append (_node#2);
+    //update list
+    [_vehicle , _node] call _updateList;
+};</code></pre></div>
+                <p>Purpose: Processes node data to calculate offset and seat information, updating the node list accordingly.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _isLootcrate = (typeOf _cargo) isEqualTo (A3A_faction_reb get "lootCrate");
+if (_isLootcrate) then {
+    _cargo allowDamage false;
+};</code></pre></div>
+                <p>Purpose: Handles special case for loot crates by disabling damage during loading.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//attach data
+private _offsetAndDir = [_cargo] call A3A_Logistics_fnc_getCargoOffsetAndDir;
+private _location = _offsetAndDir#0;
+private _location = _location vectorAdd _nodeOffset;
+
+private _bbVehicle = boundingBoxReal _vehicle select 0 select 1;
+private _bbCargo = boundingBoxReal _cargo select 0 select 1;
+private _yStart = _bbVehicle + _bbCargo - 0.1;
+private _yEnd = _location#1;
+_cargo setVariable ["AttachmentOffset", _location];</code></pre></div>
+                <p>Purpose: Calculates attachment location and sets up positioning data for cargo.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//block seats
+[_cargo, true] remoteExec ["A3A_Logistics_fnc_toggleLock", 0, "A3A_Logistics_toggleLock" + _objStringCargo];
+[_vehicle, true, _seats] remoteExecCall ["A3A_Logistics_fnc_toggleLock", 0, "A3A_Logistics_toggleLock" + _objStringVehicle];
+_cargo engineOn false;</code></pre></div>
+                <p>Purpose: Locks seats and disables engine for the cargo object.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//break undercover
+if (_weapon && !_instant) then {
+    {_x setCaptive false;}forEach crew _vehicle;
+    player setCaptive false;
+};</code></pre></div>
+                <p>Purpose: Breaks undercover status for crew if loading a weapon.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//initial attachement, hide uglyness
+_vectorUp = if (_cargo isKindOf "CAManBase") then {[0,0,0]} else {[0,0,1]};
+_location set [1, _yStart];
+_cargo hideObjectGlobal true;
+_cargo attachto [_vehicle,_location];
+[_cargo, [(_offsetAndDir#1),[0,0,1]]] remoteExecCall ["setVectorDirAndUp", owner _cargo]; //need to be done where cargo is local, command broadcast updated vector dir and up
+_cargo hideObjectGlobal false;</code></pre></div>
+                <p>Purpose: Performs initial attachment with hiding to avoid visual glitches.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">_vehicle animateDoor ["Door_rear", 1];
+//slideing attachment
+if (_instant) then {
+    _location set [1, _yEnd+0.1];
+    _cargo attachto [_vehicle,_location];
+} else {
+    private _prevTime = time;
+    while {(_location#1) < _yEnd} do {
+        uiSleep 0.01;
+        _location = _location vectorAdd [0,time-_prevTime,0];
+        _cargo attachto [_vehicle,_location];
+        _prevTime = time;
+    };
+};</code></pre></div>
+                <p>Purpose: Implements smooth loading animation or instant loading based on parameter.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//update loaded list (for unload ease)
+private _previousLoaded = _vehicle getVariable ["Cargo", []];
+private _loadedCargo = [[_cargo,_node]] + _previousLoaded;
+_vehicle setVariable ["Cargo", _loadedCargo, true];</code></pre></div>
+                <p>Purpose: Updates the vehicle's cargo list with the newly loaded cargo.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//misc
+[_cargo] call A3A_Logistics_fnc_toggleAceActions;
+[_vehicle, _cargo, nil, _instant] call A3A_Logistics_fnc_addOrRemoveObjectMass;</code></pre></div>
+                <p>Purpose: Toggles ACE actions and updates vehicle mass.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if (_isLootcrate) then {
+    _nil = [_cargo] spawn {
+        params["_cargo"];
+        if (!isNil "_cargo" && {alive _cargo}) then {
+            private _timeOut = time + 10;
+            waitUntil {_timeOut < time};
+            _cargo allowDamage true;
+        };
+        terminate _thisScript;
+    };
+};</code></pre></div>
+                <p>Purpose: Re-enables damage for loot crates after a timeout.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if (_weapon) then {
+        private _jipKey = "A3A_Logistics_weaponAction_" + _objStringCargo;
+    [_cargo, _vehicle, _jipKey] remoteExec ["A3A_Logistics_fnc_addWeaponAction", 0, _jipKey];
+};
+_vehicle animateDoor ["Door_rear", 0];
+_vehicle setVariable ["LoadingCargo",nil,true];</code></pre></div>
+                <p>Purpose: Adds weapon actions if needed and cleans up loading state.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _jipKey = "A3A_Logistics_unload_" + _objStringVehicle;
+[_vehicle, "unload", _jipKey] remoteExec ["A3A_Logistics_fnc_addAction", 0 ,_jipKey];
+nil</code></pre></div>
+                <p>Purpose: Adds unload action to vehicle and returns nil.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: <code class="code-inline">fn_tryLoad.sqf</code> after validation passes<br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_getCargoOffsetAndDir</code>, <code class="code-inline">A3A_Logistics_fnc_toggleLock</code>, <code class="code-inline">A3A_Logistics_fnc_addOrRemoveObjectMass</code>, <code class="code-inline">A3A_Logistics_fnc_toggleAceActions</code>, <code class="code-inline">A3A_Logistics_fnc_addWeaponAction</code>, <code class="code-inline">A3A_Logistics_fnc_getVehicleNodes</code><br>
+                    Global variables modified: <code class="code-inline">LoadingCargo</code> - vehicle loading state, <code class="code-inline">Cargo</code> - vehicle cargo list, <code class="code-inline">Nodes</code> - vehicle node list<br>
+                    Network implications: Uses <code class="code-inline">remoteExec</code> and <code class="code-inline">remoteExecCall</code> for synchronization
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_packObject.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_packObject.sqf function handles the packing of objects into different objects for transportation. It creates a package container and transfers the original object's properties to the new container.
+                </div>
+
+                <h3>How it does that:</h3>
+                <p>The function:</p>
+                <ol>
+                    <li>Validates that the object is not attached to anything</li>
+                    <li>Determines the appropriate package class for the object</li>
+                    <li>Creates a new package vehicle at the object's position</li>
+                    <li>Transfers the original object type to the package</li>
+                    <li>Disables damage on the package</li>
+                    <li>Deletes the original object</li>
+                </ol>
+
+                <h3>Code Walkthrough:</h3>
+                <div class="code-block"><pre><code class="language-sqf">#include "..\script_component.hpp"
+params  [
+    ["_object", objNull, [objNull]]
+];</code></pre></div>
+                <p>Purpose: Includes script component and sets up function parameter with validation.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if(!(isNull attachedTo _object)) exitWith {};</code></pre></div>
+                <p>Purpose: Exits if the object is already attached to something.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//search the object will be the package
+private _packageClassName = getText (configFile >> "A3A" >> "A3A_Logistics_Packable" >> typeOf _object >> "packObject"); 
+if (_packageClassName isEqualTo "") then {_packageClassName = "CargoNet_01_box_F"};</code></pre></div>
+                <p>Purpose: Gets the package class name from configuration or defaults to CargoNet_01_box_F.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//create package
+private _package = objNull;
+isNil {
+    _package = createVehicle [_packageClassName, getPosATL _object, [], 0, "CAN_COLLIDE"];
+    _package setVariable ["A3A_packedObject", typeOf _object, true]; 
+    _package allowDamage false;
+    deleteVehicle _object;
+};</code></pre></div>
+                <p>Purpose: Creates the package vehicle, sets its properties, and deletes the original object.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">[_package] call A3A_fnc_initObject;</code></pre></div>
+                <p>Purpose: Initializes the package object with standard initialization.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: Functions that need to pack objects for transportation<br>
+                    Calls: <code class="code-inline">A3A_fnc_initObject</code> - for package initialization<br>
+                    Global variables modified: <code class="code-inline">A3A_packedObject</code> - stores original object type in package<br>
+                    Network implications: Uses <code class="code-inline">createVehicle</code> and <code class="code-inline">deleteVehicle</code> which are network-aware
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_refreshVehicleLoad.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_refreshVehicleLoad.sqf function cleans up the cargo and node lists on vehicles that have become corrupted with null objects. It resets the lists when they are truly empty to prevent loading issues.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">#include "..\script_component.hpp"
+params ["_vehicle"];</code></pre></div>
+                <p>Purpose: Includes script component and sets up function parameter.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _cargo = _vehicle getVariable ["Cargo",[]];
+if (_cargo findIf {!((_x#0) isEqualTo objNull)} isEqualTo -1) then { //if all remaining cargo on list is objNull, reset list
+    private _nodes = [_vehicle] call A3A_Logistics_fnc_getVehicleNodes;
+    _vehicle setVariable [QGVAR(Nodes),_nodes];
+    _vehicle setVariable ["Cargo", []];
+};</code></pre></div>
+                <p>Purpose: Checks if cargo list contains only null objects and resets both cargo and node lists if so.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: <code class="code-inline">fn_unload.sqf</code> to clean up corrupted vehicle load data<br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_getVehicleNodes</code> - for refreshing node list<br>
+                    Global variables modified: <code class="code-inline">Cargo</code> - vehicle cargo list, <code class="code-inline">Nodes</code> - vehicle node list
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_removeAction.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_removeAction.sqf function removes load or unload actions from vehicles. It handles the cleanup of action IDs stored on vehicle objects.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">params ["_vehicle", "_action"];</code></pre></div>
+                <p>Purpose: Sets up function parameters for vehicle and action type.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">switch (_action) do {
+    case "load":{
+        private _loadActionID = _vehicle getVariable ["loadActionID", nil];
+        if(!isnil "_loadActionID")then{
+            _vehicle removeAction _loadActionID;
+            _vehicle setVariable ["loadActionID", nil];
+        };
+    };
+    case "unload": {
+        private _unloadActionID = _vehicle getVariable ["unloadActionID", nil];
+        if(!isnil "_unloadActionID")then{
+            _vehicle removeAction _unloadActionID;
+            _vehicle setVariable ["unloadActionID", nil];
+        };
+    };
+};</code></pre></div>
+                <p>Purpose: Removes the appropriate action based on action type and clears the stored ID.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: Functions that need to remove actions from vehicles<br>
+                    Calls: <code class="code-inline">removeAction</code> - for removing actions from vehicles<br>
+                    Global variables modified: <code class="code-inline">loadActionID</code> - vehicle load action ID, <code class="code-inline">unloadActionID</code> - vehicle unload action ID
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_removeWeaponAction.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_removeWeaponAction.sqf function removes mounted weapon actions and related event handlers from vehicles. It cleans up all weapon-related functionality when a weapon is removed from a vehicle.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">params [["_vehicle", objnull, [objNull]], ["_cargo", objnull, [objNull]], ["_jipKey", "", [""]]];</code></pre></div>
+                <p>Purpose: Sets up function parameters with validation for vehicle, cargo, and JIP key.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//Remove action
+private _id = _cargo getVariable ["getInAction", -1];
+_cargo setVariable ["getInAction", nil];
+remoteExecCall ["", _jipKey]; //clear JIP addAction
+_vehicle removeAction _id;</code></pre></div>
+                <p>Purpose: Removes the get-in action and clears JIP key.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//remove weapon killed EH
+private _killedEH = _cargo getVariable ["KilledEH", -1];
+_cargo removeEventHandler ["Killed", _killedEH];
+_cargo setVariable ["KilledEH", nil];</code></pre></div>
+                <p>Purpose: Removes the weapon destroyed event handler.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//remove GetOut EH
+private _GetOutEH = _cargo getVariable ["GetOutEH", -1];
+_cargo removeEventHandler ["GetOut", _GetOutEH];
+_cargo setVariable ["GetOutEH", nil];</code></pre></div>
+                <p>Purpose: Removes the player exit event handler.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//remove Undercover break if last weapon
+private _attachedObjects = attachedObjects _vehicle;
+private _weaponCount = _attachedObjects findIf {
+    !isNull ( [_x] call A3A_Logistics_fnc_getCargoConfig )
+};
+if (_weaponCount isEqualTo -1) then {
+    private _undercoverBreak = _vehicle getVariable ["undercoverBreak", -1];
+    _vehicle removeEventHandler ["GetIn", _undercoverBreak];
+    _vehicle setVariable ["undercoverBreak", nil];
+};</code></pre></div>
+                <p>Purpose: Removes undercover breaking event handler if no weapons remain on vehicle.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: <code class="code-inline">fn_unload.sqf</code> when unloading weapons<br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_getCargoConfig</code> - for weapon configuration check, <code class="code-inline">removeAction</code> - for removing actions, <code class="code-inline">removeEventHandler</code> - for removing event handlers<br>
+                    Global variables modified: <code class="code-inline">getInAction</code>, <code class="code-inline">KilledEH</code>, <code class="code-inline">GetOutEH</code>, <code class="code-inline">undercoverBreak</code><br>
+                    Network implications: Uses <code class="code-inline">remoteExecCall</code> for JIP cleanup and direct event handler removal
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_toggleAceActions.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_toggleAceActions.sqf function toggles ACE actions (drag, carry, and load) on or off for cargo objects. It saves the original state of ACE actions before disabling them and can restore them when needed.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">params ["_object"];
+if (isNil "_object") exitWith {};</code></pre></div>
+                <p>Purpose: Sets up function parameter and exits if object is nil.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _actions = _object getVariable ["LogisticsAceToggle", nil];
+private _removeAction = false;
+if (isNil "_actions") then {_removeAction = true};</code></pre></div>
+                <p>Purpose: Gets stored ACE actions or sets flag to save current state.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if (_removeAction) then {
+    //check if actions are on the object
+    private _canDrag = _object getVariable ["ace_dragging_canDrag",false];
+    private _canCarry = _object getVariable ["ace_dragging_canCarry",false];
+    private _canLoad = getNumber (configFile >> "CfgVehicles" >> typeOf _object >> "ace_cargo_canLoad") isEqualTo 1;
+
+    //save old actions
+    _object setVariable ["LogisticsAceToggle", [_canDrag, _canCarry, _canLoad], true];
+
+    //disable ACE dragging
+    _object setVariable ["ace_dragging_canDrag",false, true];
+    _object setVariable ["ace_dragging_canCarry",false, true];
+    _object setvariable ["ace_cargo_canLoad",false, true];
+} else {
+    _actions params ["_canDrag","_canCarry","_canLoad"];
+
+    //set actions to the state it was before load
+    _object setVariable ["ace_dragging_canDrag",_canDrag, true];
+    _object setVariable ["ace_dragging_canCarry",_canCarry, true];
+    _object setvariable ["ace_cargo_canLoad",_canLoad, true];
+
+    _object setVariable ["LogisticsAceToggle", nil, true];
+};</code></pre></div>
+                <p>Purpose: Either saves current ACE states and disables them, or restores original states.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: <code class="code-inline">fn_load.sqf</code> and <code class="code-inline">fn_unload.sqf</code> to temporarily disable ACE actions<br>
+                    Global variables modified: <code class="code-inline">LogisticsAceToggle</code> - stores original ACE action states, <code class="code-inline">ace_dragging_canDrag</code>, <code class="code-inline">ace_dragging_canCarry</code>, <code class="code-inline">ace_cargo_canLoad</code>
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_toggleLock.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_toggleLock.sqf function manages locking and unlocking of vehicle seats. It handles both specific seat locking/unlocking and full vehicle locking for cargo operations.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">params ["_vehicle", "_lock", "_seats"];
+//toggle lock of the propper seats
+_vehicle lockCargo false;</code></pre></div>
+                <p>Purpose: Sets up function parameters and unlocks cargo initially.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if !(isNil "_seats") then {//for vehicle loading cargo
+    private _crew = crew _vehicle;
+    private _crewCargoIndex = _crew apply {_vehicle getCargoIndex _x};
+
+    private _seatsToLock = _vehicle getVariable ["Logistics_occupiedSeats", []];
+    if (_lock) then {
+        _seatsToLock append _seats
+    } else {
+        _seatsToLock = _seatsToLock - _seats;
+    };
+    _vehicle setVariable ["Logistics_occupiedSeats", _seatsToLock, true];
+    {
+        if (_x in _crewCargoIndex) then {
+            moveOut (_crew # (_crewCargoIndex find _x)); //incase someone got into the seat before it is locked in the loading process
+        };
+        _vehicle lockCargo [_x, true];
+    } forEach _seatsToLock;
+} else {//for cargo, lock it fully and kick out any crew
+    /* if (_vehicle isKindOf "StaticWeapon") exitWith {}; // dont lock statics, cant get out otherwise
+    _vehicle lock _lock;
+    if (_lock) then { */
+        //move out crew
+        {moveOut _x}forEach crew _vehicle;
+
+        if (!isNil "SA_Put_Away_Tow_Ropes") then {
+            //detach tow ropes attached to cargo
+            {
+                _veh = ropeAttachedTo _x;
+                if (!isNull _veh) then {[_veh,player] call SA_Put_Away_Tow_Ropes};
+            } forEach attachedObjects _vehicle;
+            //detach tow ropes from cargo
+            [_vehicle,player] call SA_Put_Away_Tow_Ropes;
+        };
+    /* }; */
+};</code></pre></div>
+                <p>Purpose: Handles specific seat locking/unlocking or full vehicle locking with crew movement.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: <code class="code-inline">fn_load.sqf</code> and <code class="code-inline">fn_unload.sqf</code> to lock/unlock vehicle seats<br>
+                    Calls: <code class="code-inline">crew</code>, <code class="code-inline">moveOut</code>, <code class="code-inline">lockCargo</code>, <code class="code-inline">getVariable</code>, <code class="code-inline">setVariable</code><br>
+                    Global variables modified: <code class="code-inline">Logistics_occupiedSeats</code> - stores list of occupied seats
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_tryLoad.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_tryLoad.sqf function attempts to load cargo into the nearest vehicle. It finds nearby vehicles, validates the load operation, and provides appropriate feedback to the player.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">#include "..\script_component.hpp"
+FIX_LINE_NUMBERS()
+if (!isServer) exitWith {};
+params ["_cargo"];</code></pre></div>
+                <p>Purpose: Includes script component, validates server execution, and sets up parameter.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _vehicles = (nearestObjects [_cargo,["Car","Ship","Tank","Helicopter"], 10]) - [_cargo];
+private _vehicle = _vehicles#0;
+if (isNil "_vehicle") exitWith {
+    [localize "STR_A3A_Logistics_header", localize "STR_A3A_Logistics_tryLoad_novehclose"] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner]
+};</code></pre></div>
+                <p>Purpose: Finds nearby vehicles and exits with error if none found.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _return = [_vehicle, _cargo] call A3A_Logistics_fnc_canLoad;
+if (_return isEqualType 0) exitWith {
+    //error handling with feedback
+    private _cargoName = getText (configFile >> "CfgVehicles" >> typeOf _cargo >> "displayName");
+    private _vehicleName = getText (configFile >> "CfgVehicles" >> typeOf _vehicle >> "displayName");
+    if (_cargo isKindOf "CAManBase") then {_cargoName = name _cargo};
+
+    switch _return do {
+        case -1: { [localize "STR_A3A_Logistics_header", localize "STR_A3A_Logistics_tryLoad_nodestroyedveh"] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner] };
+        case -2: { [localize "STR_A3A_Logistics_header", localize "STR_A3A_Logistics_tryLoad_nodestroyedcargo"] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner] };
+        case -3: { [localize "STR_A3A_Logistics_header", format [localize "STR_A3A_Logistics_tryLoad_itemcantbeloaded", _cargoName]] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner] };
+        case -4: { [localize "STR_A3A_Logistics_header", localize "STR_A3A_Logistics_tryLoad_nomountedstatic"] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner] };
+        case -5: { [localize "STR_A3A_Logistics_header", format [localize "STR_A3A_Logistics_tryLoad_incompat", _cargoName, _vehicleName]] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner] };
+        case -6: { [localize "STR_A3A_Logistics_header", format [localize "STR_A3A_Logistics_tryLoad_alreadyhelped",_cargoName]] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner] };
+        case -7: { [localize "STR_A3A_Logistics_header", format [localize "STR_A3A_Logistics_unableToLoad", _vehicleName]] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner] };
+        case -8: { [localize "STR_A3A_Logistics_header", format [localize "STR_A3A_Logistics_tryLoad_not_enough_space", _vehicleName, _cargoName]] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner] };
+        case -9: { [localize "STR_A3A_Logistics_header", format [localize "STR_A3A_Logistics_tryLoad_blocking_plane_cargo", _vehicleName]] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner] };
+        default { Error_1("Unknown error code: %1", _return) };
+    };
+};</code></pre></div>
+                <p>Purpose: Validates the load operation and provides detailed feedback for different error cases.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">_return spawn A3A_Logistics_fnc_load;
+nil</code></pre></div>
+                <p>Purpose: Spawns the load operation if successful and returns nil.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: Player load actions initiated via <code class="code-inline">fn_addAction.sqf</code><br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_canLoad</code> - for validation, <code class="code-inline">A3A_Logistics_fnc_load</code> - for actual loading, <code class="code-inline">A3A_fnc_customHint</code> - for player feedback<br>
+                    Network implications: Uses <code class="code-inline">remoteExec</code> for feedback and spawn for loading
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_unload.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_unload.sqf function unloads cargo from vehicles. It handles the physical detachment of cargo, updates vehicle state information, and manages cleanup operations.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">#include "..\script_component.hpp"
+FIX_LINE_NUMBERS()
+params ["_vehicle", ["_instant", false, [true]]];
+private _fileName = "fn_logistics_unload";</code></pre></div>
+                <p>Purpose: Includes script component, sets up parameters, and defines filename for error tracking.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _loaded = _vehicle getVariable ["Cargo", []];
+private _lastLoaded = false;
+if ((count _loaded) isEqualTo 1) then {_lastLoaded = true};
+(_loaded#0) params ["_cargo", "_node"];</code></pre></div>
+                <p>Purpose: Retrieves loaded cargo information and checks if this is the last item.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if !(
+    ((gunner _cargo) isEqualTo _cargo)
+    or ((gunner _cargo) isEqualTo objNull)
+) exitWith {
+    [localize "STR_A3A_Logistics_header", localize "STR_A3A_Logistics_unload_nostatic"] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner]
+};</code></pre></div>
+                <p>Purpose: Validates that cargo is not a static weapon with a gunner.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if (_vehicle getVariable ["LoadingCargo", false]) exitWith {
+    [localize "STR_A3A_Logistics_header", localize "STR_A3A_Logistics_unload_already"] remoteExec ["A3A_fnc_customHint", remoteExecutedOwner]
+};
+_vehicle setVariable ["LoadingCargo",true,true];</code></pre></div>
+                <p>Purpose: Checks if vehicle is already loading and exits with error if so.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//object string for jip
+private _objStringCargo = str _cargo splitString ":" joinString "";
+private _objStringVehicle = str _vehicle splitString ":" joinString "";</code></pre></div>
+                <p>Purpose: Creates unique JIP keys for synchronization.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//update list of nodes on vehicle
+_updateList = {
+    params ["_vehicle", "_node"];
+    private _list = _vehicle getVariable [QGVAR(Nodes),[]];
+    private _index = _list find _node;
+    if (_index < 0) exitWith { Error_3("Bad _updateList call | Vehicle: %1 | Vehicle Nodes: %2 | Node: %3", _vehicle, _list, _node) };
+    _node set [0,1];
+    _list set [_index, _node];
+    _vehicle setVariable [QGVAR(Nodes), _list];
+};</code></pre></div>
+                <p>Purpose: Defines local function to update vehicle node list, marking nodes as free.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//find node point and seats
+private _nodeOffset = [0,0,0];
+private _seats = [];
+
+if ((_node#0) isEqualType []) then {
+    //type 2 cargo
+    //offset
+    private _lastNode = (count _node) -1;
+    private _offsetOne = (_node#0#1);
+    private _offsetTwo = (_node#_lastNode#1);
+    private _diff = _offsetOne vectorDiff _offsetTwo;
+    _nodeOffset = _offsetTwo vectorAdd [0,(_diff#1)/2,0];
+
+    //seats
+    {
+        _seats append (_x#2);
+    } forEach _node;
+
+    //update cargo list
+    for "_i" from 0 to _lastNode do {
+        [_vehicle, _node#_i] call _updateList;
+    };
+} else {
+    //type 1 cargo
+    //offset
+    _nodeOffset = (_node#1);
+    //seats
+    _seats append (_node#2);
+    //update list
+    [_vehicle , _node] call _updateList;
+};</code></pre></div>
+                <p>Purpose: Processes node data to calculate offset and seat information, updating node list.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _isLootcrate = (typeOf _cargo) isEqualTo (A3A_faction_reb get "lootCrate");
+if (_isLootcrate) then {
+    _cargo allowDamage false;
+};
+_vehicle animateDoor ["Door_rear", 1];</code></pre></div>
+                <p>Purpose: Handles special case for loot crates and opens vehicle door.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//detach cargo
+private _keepUnloading = false;
+if !(_cargo isEqualTo objNull) then {//cargo not deleted
+    //check if its a weapon
+    private _cargoConfig = [_cargo] call A3A_Logistics_fnc_getCargoConfig;
+    private _weapon = 1 == getnumber (_cargoConfig/"isWeapon");
+
+    if (_weapon) then {
+        [_vehicle, _cargo, "A3A_Logistics_weaponAction_" + _objStringCargo] remoteExecCall ["A3A_Logistics_fnc_removeWeaponAction",0];
+        player setCaptive false; //break undercover for unloading weapon
+    };
+    _cargo setVariable ["AttachmentOffset", nil, true];
+
+    private _location = ([_cargo] call A3A_Logistics_fnc_getCargoOffsetAndDir)#0;
+    private _location = _location vectorAdd _nodeOffset;
+    private _bbv = boundingBoxReal _vehicle select 0 select 1;
+    private _bbc = boundingBoxReal _cargo select 0 select 1;
+    private _yEnd = _bbv + _bbc - 0.1;
+
+    if (_instant) then {
+        _location set [1, _yEnd-0.1];
+        _cargo attachto [_vehicle,_location];
+    } else {
+        private _prevTime = time;
+        while {(_location#1) > _yEnd} do {
+            uiSleep 0.01;
+            if (isNull _cargo || isNull _vehicle) exitWith {};//vehicle or cargo deleted
+            _location = _location vectorAdd [0,_prevTime-time,0];
+            _cargo attachto [_vehicle,_location];
+            _prevTime = time;
+        };
+    };
+    if (isNull _cargo || isNull _vehicle) exitWith {};//vehicle or cargo deleted
+    detach _cargo;
+
+    [_cargo] call A3A_Logistics_fnc_toggleAceActions;
+    [_vehicle, _cargo, true, _instant] call A3A_Logistics_fnc_addOrRemoveObjectMass;
+    _cargo lockDriver false;
+} else {_keepUnloading = true};</code></pre></div>
+                <p>Purpose: Handles the physical detachment and animation of cargo from vehicle.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//unlock seats
+[_cargo, false] remoteExec ["A3A_Logistics_fnc_toggleLock", 0, "A3A_Logistics_toggleLock" + _objStringCargo];
+[_vehicle, false, _seats] remoteExec ["A3A_Logistics_fnc_toggleLock", 0, "A3A_Logistics_toggleLock" + _objStringVehicle];</code></pre></div>
+                <p>Purpose: Unlocks seats that were previously locked for cargo.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if (_isLootcrate) then {
+    _nil = [_cargo] spawn {
+        params["_cargo"];
+        if (!isNil "_cargo" && {alive _cargo}) then {
+            private _timeOut = time + 10;
+            waitUntil {_timeOut < time};
+            _cargo allowDamage true;
+        };
+        terminate _thisScript;
+    };
+};</code></pre></div>
+                <p>Purpose: Re-enables damage for loot crates after a timeout.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//update list
+_loaded deleteAt 0;
+_vehicle setVariable ["Cargo", _loaded, true];
+[_vehicle] call A3A_Logistics_fnc_refreshVehicleLoad; //refresh list in case theres more on the list but no actuall cargo loaded
+
+_vehicle setVariable ["LoadingCargo",nil,true];
+_vehicle animateDoor ["Door_rear", 0];
+if (_keepUnloading and !_lastLoaded) then {[_vehicle] spawn A3A_Logistics_fnc_unload};//if you tried to unload a null obj unload next on list
+nil</code></pre></div>
+                <p>Purpose: Updates vehicle state, performs cleanup, and handles cascading unloading.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: Player unload actions initiated via <code class="code-inline">fn_addAction.sqf</code><br>
+                    Calls: <code class="code-inline">A3A_Logistics_fnc_getCargoConfig</code>, <code class="code-inline">A3A_Logistics_fnc_removeWeaponAction</code>, <code class="code-inline">A3A_Logistics_fnc_getCargoOffsetAndDir</code>, <code class="code-inline">A3A_Logistics_fnc_toggleLock</code>, <code class="code-inline">A3A_Logistics_fnc_toggleAceActions</code>, <code class="code-inline">A3A_Logistics_fnc_addOrRemoveObjectMass</code>, <code class="code-inline">A3A_Logistics_fnc_refreshVehicleLoad</code>, <code class="code-inline">A3A_Logistics_fnc_unload</code><br>
+                    Global variables modified: <code class="code-inline">LoadingCargo</code>, <code class="code-inline">Cargo</code>, <code class="code-inline">Nodes</code>, <code class="code-inline">AttachmentOffset</code><br>
+                    Network implications: Uses <code class="code-inline">remoteExec</code> and <code class="code-inline">remoteExecCall</code> for synchronization
+                </div>
+            </div>
+
+            <div class="function-block private-function">
+                <div class="function-name">fn_unpackObject.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    The fn_unpackObject.sqf function handles unpacking objects that were previously packed for transportation. It converts the package back to the original object type and places it properly in the world.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">#include "..\script_component.hpp"
+params  [
+    ["_object", objNull, [objNull]]
+];</code></pre></div>
+                <p>Purpose: Includes script component and sets up function parameter with validation.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">// don't unpack if attached.
+if !(isNull attachedTo _object) exitWith {};</code></pre></div>
+                <p>Purpose: Exits if the object is already attached to something.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//get data 
+private _itemClassName = _object getVariable "A3A_packedObject";
+if (isNil "_itemClassName") exitwith { Error_1("No packed object for item type %1", typeof _object) };</code></pre></div>
+                <p>Purpose: Gets the original object class name from package or exits with error.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _fnc_placed = {
+    params ["_item", "_oldItem"];
+    if (isNull _item) exitWith { _oldItem hideObject false };          // placement cancelled
+ 
+    deleteVehicle _oldItem;
+    _item call A3A_fnc_initObject;
+};</code></pre></div>
+                <p>Purpose: Defines a local function for handling the placement process.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">_object hideObject true;
+[_itemClassName, _fnc_placed, {[false]}, [_object]] call HR_GRG_fnc_confirmPlacement;</code></pre></div>
+                <p>Purpose: Hides the package and calls the placement system to convert it back to the original object.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Called by: Functions that need to unpack objects from packages<br>
+                    Calls: <code class="code-inline">HR_GRG_fnc_confirmPlacement</code> - for the actual placement system, <code class="code-inline">deleteVehicle</code> - for removing the package, <code class="code-inline">A3A_fnc_initObject</code> - for initializing the unpacked object<br>
+                    Global variables modified: <code class="code-inline">A3A_packedObject</code> - stores original object type in package<br>
+                    Network implications: Uses <code class="code-inline">deleteVehicle</code> and <code class="code-inline">hideObject</code> which are network-aware
+                </div>
+            </div>
+        </section>
+
+        <!-- Dev Functions -->
+        <section id="dev-functions" class="section">
+            <h2 id="dev-functions">🛠️ Development Functions</h2>
+
+            <div class="function-block dev-function">
+                <div class="function-name">fn_convertCargoToNew.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    Generates new cargo class definitions from the old attachmentOffset list format. It transforms legacy cargo configuration data into the new structured format.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">//generate cargo class from old attachmentOffset list
+private _entries = [];</code></pre></div>
+                <p>Purpose: Initializes an empty array to store generated class definitions.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">{
+    private _model = (_x#0);
+    private _offset = str (_x#1);
+    private _rotation = str (_x#2);
+    private _weaponsIndex = A3A_Logistics_weapons findIf {(_x#0) isEqualTo _model};
+    private _blackListText = if (_weaponsIndex isEqualTo -1) then {""} else {
+        private _str = str (A3A_Logistics_weapons#_weaponsIndex#1);
+        _str select [1, count _str -2]; //remove brackets
+    };
+    // ... formatting logic ...
+} forEach A3A_Logistics_attachmentOffset;</code></pre></div>
+                <p>Purpose: Processes each entry from the legacy attachmentOffset array. Extracts model, offset, rotation, and looks up weapon blacklists. Formats a new class definition string and pushes it to _entries.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">text (_entries joinString endl);</code></pre></div>
+                <p>Purpose: Returns the complete formatted text output joined by line breaks.</p>
+                
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Depends on: <code class="code-inline">A3A_Logistics_attachmentOffset</code> (legacy data) and <code class="code-inline">A3A_Logistics_weapons</code>.
+                </div>
+            </div>
+
+            <div class="function-block dev-function">
+                <div class="function-name">fn_convertNodesToNew.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    Generates new node class definitions from the old hardpoints list format. It transforms legacy vehicle hardpoint data into the new structured node format.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">//generate node classes from old hardpoints list
+private _entries = [];</code></pre></div>
+                <p>Purpose: Initializes an empty array to store generated class definitions.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">{
+    private _nodes = [];
+    {
+        private _offsetArray = str (_x#1);
+        private _seatArray = str (_x#2);
+
+        _nodes pushBack text (format [
+            "        class %1%4        {%4            offset[] = {%2};%4            seats[] = {%3};%4        };",
+            "Node"+ str (_forEachIndex + 1),
+            _offsetArray select [1, count _offsetArray - 2],
+            _seatArray select [1, count _seatArray - 2],
+            endl
+        ]);
+    } forEach (_x#1); // Note: Logic implies iterating hardpoints within vehicle entry
+    // ...
+} forEach A3A_Logistics_vehicleHardpoints;</code></pre></div>
+                <p>Purpose: Processes individual hardpoints for each vehicle entry. Generates formatted node class definitions with offset and seats.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Depends on: <code class="code-inline">A3A_Logistics_vehicleHardpoints</code> and <code class="code-inline">A3A_Logistics_coveredVehicles</code>.
+                </div>
+            </div>
+
+            <div class="function-block dev-function">
+                <div class="function-name">fn_generateCargoOffset.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    Generates cargo offset configurations for vehicles by calculating optimal attachment points and generating the necessary configuration data. It includes visual rendering for debugging.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">params [
+    ["_vehicle",objNull, [objNull]]
+  , ["_cargo",objNull, [objNull]]
+  , ["_params", [], [[]]]
+  , ["_modelBased", true, [true]]
+];</code></pre></div>
+                <p>Purpose: Sets up function parameters including vehicle, cargo object, configuration parameters, and naming convention.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">if (isNull _vehicle || isNull _cargo) exitWith {"invalid params: null object(s)"};
+//get vehicle nodes
+private _nodes = ([_vehicle] call FUNC(getVehicleNodes)) apply {_x#1};
+if (_nodes isEqualTo []) exitWith {"Vehicle lacks nodes..."};</code></pre></div>
+                <p>Purpose: Validates input and retrieves vehicle node data using the FUNC macro (A3A_Logistics_fnc_getVehicleNodes).</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//attach cargo at position with rotation specified
+private _attachmentPoint = GVAR(hardpoint) vectorAdd _offset;
+_cargo attachTo [_vehicle, _attachmentPoint];
+if (clientOwner isEqualTo (owner _cargo)) then {
+    _cargo setVectorDirAndUp [_rotation,[0,0,1]];
+} else {
+    [_cargo, [_rotation,[0,0,1]]] remoteExecCall ["setVectorDirAndUp", owner _cargo];
+};</code></pre></div>
+                <p>Purpose: Attaches cargo to the vehicle with calculated offset and rotation. Handles both local and remote ownership.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Calls: <code class="code-inline">FUNC(getVehicleNodes)</code> and <code class="code-inline">FUNC(getNodeConfig)</code>.<br>
+                    Global Variables: Modifies GVAR(hardpoint), GVAR(renderLinePairs_vehicle), etc. for debugging.
+                </div>
+            </div>
+
+             <div class="function-block dev-function">
+                <div class="function-name">fn_generateHardPoints.sqf</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    Generates node arrays for vehicle cargo planes based on visual start and end positions. Creates evenly spaced nodes and provides visual guides.
+                </div>
+
+                <h3>How it does that:</h3>
+                <div class="code-block"><pre><code class="language-sqf">params [["_vehicle", objNull, [objNull]], ["_planeStart", [], [[]], 3], ["_planeSpan", 0, [0]], ["_defineWithModel", true, [true]]];</code></pre></div>
+                <p>Purpose: Sets up function parameters for vehicle, start position, length, and naming style.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">//calculate nodes
+private _planeEnd = +_planeStart;
+_planeEnd set [1, (_planeEnd#1) - _planeSpan];
+private _diameter = 0.8;
+private _radius = _diameter/2;</code></pre></div>
+                <p>Purpose: Calculates the end position of the cargo plane and setup dimensions for node generation.</p>
+
+                <div class="code-block"><pre><code class="language-sqf">private _return = format ["class %1 : TRIPLES(ADDON,Nodes,Base)%3{%3    %2%3};%3",
+    if (_defineWithModel) then { modelOfClass(typeOf _vehicle) } else { typeOf _vehicle },
+    _nodesString,
+    endl
+];</code></pre></div>
+                <p>Purpose: Creates the final formatted class definition string.</p>
+
+                <div class="dependencies">
+                    <strong>Where it leads:</strong><br>
+                    Global Variables: Modifies A3A_Logistics_nodeArray, A3A_Logistics_vehicle for rendering visuals.
+                </div>
+            </div>
+        </section>
+
+        <!-- Configuration Files -->
+        <section id="configuration" class="section">
+            <h2 id="configuration">⚙️ Configuration Files</h2>
+
+            <div class="function-block config-function">
+                <div class="function-name">CfgFunctions.hpp</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    Defines the structure and organization of all functions in the A3A Logistics addon, categorizing them into public, private, and development functions with their respective file locations.
+                </div>
+
+                <h3>Structure:</h3>
+                <div class="code-block"><pre><code class="language-sqf">class CfgFunctions {
+    class ADDON {
+        class Dev {
+            file = QPATHTOFOLDER(Dev);
+            class convertCargoToNew {};
+            class convertNodesToNew {};
+            class generateCargoOffset {};
+            class generateHardPoints {};
+        };
+        
+        class Public {
+            file = QPATHTOFOLDER(Public);
+            class addLoadAction {};
+            class getVehCapacity {};
+            class getCargo {};
+            class isLoadable {};
+        };
+
+        class Private {
+            file = QPATHTOFOLDER(Private);
+            class addAction {};
+            class addOrRemoveObjectMass {};
+            class addWeaponAction {};
+            class canLoad {};
+            class getCargoConfig {};
+            class getCargoNodeType {};
+            class getCargoOffsetAndDir {};
+            class getNodeConfig {};
+            class getVehicleNodes {};
+            class initMountedWeapon {};
+            class load {};
+            class packObject {};
+            class refreshVehicleLoad {};
+            class removeAction {};
+            class removeWeaponAction {};
+            class toggleAceActions {};
+            class toggleLock {};
+            class tryLoad {};
+            class unload {};
+            class unpackObject {};
+        };
+    };
+};</code></pre></div>
+                <p>Purpose: Organizes functions into logical categories. Public functions for external use, Private for internal logic, and Dev for developer tools.</p>
+            </div>
+
+            <div class="function-block config-function">
+                <div class="function-name">CfgLogistics.hpp</div>
+                <div class="purpose">
+                    <strong>What it does:</strong><br>
+                    Defines the complete logistics configuration system, including vehicle node definitions, cargo configurations, and packable items.
+                </div>
+
+                <h3>Structure:</h3>
+                <div class="code-block"><pre><code class="language-sqf">class DOUBLES(ADDON,Nodes)
+{
+    class TRIPLES(ADDON,Nodes,Base)
+    {
+        class Nodes {};
+        canLoadWeapon = 1; //if the vehicle can load weapons
+    };
+    // Includes for various factions/mods (3CB, CUP, RHS, etc.)
+    #include "Nodes\Vanilla.hpp"
+    // ...
+};
+
+class DOUBLES(ADDON,Cargo) {
+    class TRIPLES(ADDON,Cargo,Base) {
+        class Cargo {};
+    };
+    // Includes for cargo definitions
+    #include "Cargo\Vanilla.hpp"
+    // ...
+};</code></pre></div>
+                <p>Purpose: Creates the main Nodes and Cargo configuration classes using macros (DOUBLES, TRIPLES). Includes sub-files for specific factions and content packs.</p>
+            </div>
+        </section>
+
+        <!-- Documentation Info -->
+        <section class="section">
+            <h2>📖 Documentation Information</h2>
+
+            <div class="function-block">
+                <h3>✨ Features</h3>
+                <ul>
+                    <li><strong>🧭 Sticky Navigation</strong> - Quick access to Public, Private, Dev, and Config sections</li>
+                    <li><strong>🔍 Real-time Search</strong> - Filter functions instantly</li>
+                    <li><strong>🌙 Dark Mode</strong> - Easy on the eyes for late-night coding</li>
+                    <li><strong>📋 Organized Layout</strong> - Clear separation of API and internal functions</li>
+                </ul>
+
+                <h3>📦 System Scope</h3>
+                <ul>
+                    <li><strong>Public Functions:</strong> 4 functions for gameplay integration.</li>
+                    <li><strong>Private Functions:</strong> 20 internal functions for core logistics operations.</li>
+                    <li><strong>Dev Functions:</strong> 4 utilities for generating configuration data.</li>
+                    <li><strong>Config Classes:</strong> Extensive support for Vanilla, RHS, CUP, and more.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h3>🚚 A3A Logistics Addon</h3>
+            <p><strong>System:</strong> Cargo Loading & Node Management</p>
+            <p>Comprehensive logistics framework for Arma 3.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sqf.min.js"></script>
+
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.dataset.theme = body.dataset.theme === 'dark' ? '' : 'dark';
+            const icon = darkModeToggle.querySelector('i');
+            if (body.dataset.theme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+            localStorage.setItem('theme', body.dataset.theme);
+        });
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            body.dataset.theme = 'dark';
+            const icon = darkModeToggle.querySelector('i');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+
+        // Search Functionality
+        const searchInput = document.getElementById('functionSearch');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const searchStats = document.getElementById('searchStats');
+        const functionBlocks = document.querySelectorAll('.function-block');
+        const tocItems = document.querySelectorAll('.toc-item'); // Also filter TOC
+
+        function updateSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const categoryFilterValue = categoryFilter.value;
+            let visibleCount = 0;
+
+            functionBlocks.forEach(block => {
+                const text = block.textContent.toLowerCase();
+                // Determine category based on class
+                let isPublic = block.classList.contains('public-function');
+                let isPrivate = block.classList.contains('private-function');
+                let isDev = block.classList.contains('dev-function');
+                let isConfig = block.classList.contains('config-function');
+
+                let categoryMatch = false;
+                if (categoryFilterValue === 'all') {
+                    categoryMatch = true;
+                } else if (categoryFilterValue === 'public' && isPublic) {
+                    categoryMatch = true;
+                } else if (categoryFilterValue === 'private' && isPrivate) {
+                    categoryMatch = true;
+                } else if (categoryFilterValue === 'dev' && isDev) {
+                    categoryMatch = true;
+                } else if (categoryFilterValue === 'config' && isConfig) {
+                    categoryMatch = true;
+                }
+
+                const searchMatch = searchTerm === '' || text.includes(searchTerm);
+
+                if (categoryMatch && searchMatch) {
+                    block.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    block.style.display = 'none';
+                }
+            });
+
+            // Hide TOC sections if entirely filtered out (Optional enhancement, keeping simple here)
+            
+            searchStats.textContent = searchTerm || categoryFilterValue !== 'all'
+                ? `Showing ${visibleCount} relevant items`
+                : 'Showing all functions and configurations';
+        }
+
+        searchInput.addEventListener('input', updateSearch);
+        categoryFilter.addEventListener('change', updateSearch);
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

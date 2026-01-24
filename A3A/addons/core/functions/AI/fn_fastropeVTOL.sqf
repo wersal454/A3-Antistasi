@@ -60,8 +60,18 @@ private _angleTarget = 0;
 private _angleIs = 0;
 private _angleDiff = 0;
 private _heightDiff = 0;
+// Pre-calculate constants for performance
+private _pi = 3.14159265359;
+private _radToDeg = 180 / _pi;
+private _degToRad = _pi / 180;
+private _intervalStep = 0.015; // Increased sleep time for better performance
 private _driver = driver _veh;
 
+// Pre-calculate sine values for the curve (optimization)
+private _sinLookup = [];
+for "_i" from 0 to 180 step 1 do {
+    _sinLookup pushBack (sin _i);
+};
 
 while {_interval < 0.7777} do
 {
@@ -69,23 +79,27 @@ while {_interval < 0.7777} do
     _vectorDir = vectorDir _veh;
     _vectorUp = vectorUp _veh;
 
-    //Calculating the current angle and what the helicopter should turn too
-    _angleTarget = sin (_interval * 180) * _maxAngle;
-    _angleIs = (asin (_vectorDir select 2));
-    _angleDiff = _angleTarget - _angleIs;
-    if(_angleDiff > _angleStep) then {_angleDiff = _angleStep;};
-    if(_angleDiff < -_angleStep) then {_angleDiff = -_angleStep;};
+    // Optimized angle calculation using lookup table
+    private _sinIndex = round (_interval * 180);
+    if (_sinIndex >= count _sinLookup) then {_sinIndex = (count _sinLookup) - 1;};
+    _angleTarget = (_sinLookup select _sinIndex) * _maxAngle;
 
-    //Calculating the height and back value needed
+    _angleIs = asin (_vectorDir select 2);
+    _angleDiff = _angleTarget - _angleIs;
+
+    // Clamp angle difference more efficiently
+    _angleDiff = _angleDiff max -_angleStep min _angleStep;
+
+    // Calculating the height and back value needed
     _backFactor = -tan (_angleDiff);
     _vectorUp = _vectorUp vectorAdd (_vectorDir vectorMultiply _backFactor);
 
-    _heightDiff = (sin (_angleIs + _angleDiff)) - (_vectorDir select 2);
+    _heightDiff = sin(_angleIs + _angleDiff) - (_vectorDir select 2);
     _vectorDir = _vectorDir vectorAdd [0, 0, _heightDiff];
 
     private _lineStart = _startPos vectorAdd (_startToMidVector vectorMultiply _interval);
    	private _lineEnd = _midPos vectorAdd (_midToEndVector vectorMultiply _interval);
-    
+
     _veh setVelocityTransformation
     [
         _lineStart,
@@ -100,10 +114,17 @@ while {_interval < 0.7777} do
     ];
 
     _time = time;
-    sleep 0.001;
-    _interval = _interval + (((time - _time)/_landingTime) * (1 - (_interval / 2)));
+    sleep _intervalStep; // More reasonable sleep interval
+
+    // Simplified interval calculation
+    private _deltaTime = time - _time;
+    private _progressFactor = _deltaTime / _landingTime;
+    _interval = _interval + (_progressFactor * (1 - (_interval * 0.5)));
+
+    // Optimized velocity calculation
     _velocityVector = _lineEnd vectorDiff _lineStart;
-    _velocityVector = (vectorNormalized _velocityVector) vectorMultiply (_initialSpeed * (1 - _interval));
+    private _speedMultiplier = _initialSpeed * (1 - _interval);
+    _velocityVector = (vectorNormalized _velocityVector) vectorMultiply _speedMultiplier;
 
     if(!canMove _veh || !alive _driver) exitWith {};
 };
