@@ -104,7 +104,7 @@ class a3a_ION_Offroad_armor_aa : I_Tura_Offroad_armor_AA_lxWS
     textureList[] = {"Black", 1};
     hiddenSelectionsTextures[] = {"\lxws\vehicles_f_lxws\data\Offroad_01\offroad_01_ext_black_co.paa","\lxws\vehicles_f_lxws\data\Offroad_01\offroad_01_ext_black_co.paa","\lxws\vehicles_f_lxws\Offroad_01\data\offroad_01_adds_black_co.paa","\lxws\vehicles_f_lxws\Offroad_01\data\offroad_01_armor_black_co.paa","lxws\vehicles_f_lxws\zu23\data\zu23_base_black_co.paa","lxws\vehicles_f_lxws\zu23\data\zu23_black_co.paa","lxws\vehicles_f_lxws\zu23\data\zu23_addon_1_black_co.paa","lxws\vehicles_f_lxws\zu23\data\zu23_addon_2_black_co.paa","lxws\vehicles_f_lxws\Offroad_01\data\adds\offroad_01_metal_frame_black_CO.paa"};
 };
-class a3a_ION_zu23 : B_Tura_ZU23_lxWS
+class a3a_ION_zu23 : O_Tura_ZU23_lxWS
 {
     crew = "B_ION_Soldier_lxWS";
     faction = "BLU_ION_lxWS";
