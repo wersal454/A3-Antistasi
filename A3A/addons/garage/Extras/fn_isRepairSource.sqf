@@ -32,9 +32,4 @@ if (_vehicle isEqualType objNull) then {
     if (getNumber (_vehCfg/"transportRepair") > 0) exitWith {true};                       // vanilla
     if (getNumber (_vehCfg/"ace_repair_canRepair") > 0) exitWith {true};
     false;
-    private _vehCfg = configFile/"CfgVehicles"/_vehicle;
-    if (!isClass _vehCfg) exitWith {false}; //invalid class string passed
-    if (getNumber (_vehCfg/"transportRepair") > 0) exitWith {true};                       // vanilla
-    if (getNumber (_vehCfg/"ace_repair_canRepair") > 0) exitWith {true};
-    false;
 };
