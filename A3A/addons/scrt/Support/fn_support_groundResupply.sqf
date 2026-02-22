@@ -43,7 +43,7 @@ waitUntil {
 	(_units findIf {[_x] call A3A_fnc_canFight} == -1 || 
 	{{alive _x && {_x distance _position < 35}} count units _groupX > 0})
 };
-
+//
 if !(_units findIf {[_x] call A3A_fnc_canFight && {_x distance _position < 35}} != -1) exitWith {};
 
 if (isPlayer leader _groupX) then {
