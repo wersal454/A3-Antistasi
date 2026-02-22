@@ -26,7 +26,7 @@ private _hasRHS = count (["@RHSAFRF", "@RHSUSAF", "@RHSGREF"] arrayIntersect (ge
 //       Vehicles       //
 //////////////////////////
 
-private _vehiclesBasic = ["acm_gm_aaf2015_fiaIns_blu_v_k125_car"];
+private _vehiclesBasic = ["acm_gm_aaf2015_fiaIns_blu_v_k125_car"]; //
 private _vehiclesLightUnarmed = ["acm_gm_aaf2028_tfia_wheeled_offroad_01", "acm_gm_aaf2028_tfia_wheeled_uaz469_car_cargo_01"];
 private _vehiclesLightArmed = ["acm_gm_aaf2028_tfia_wheeled_offroad_armed_01", "acm_gm_aaf2028_tfia_wheeled_u1300l_container_01", "acm_gm_aaf2028_tfia_wheeled_uaz469_car_dshkm_01"];
 private _vehiclesTruck = ["acm_gm_aaf2028_tfia_wheeled_van_transport_01", "acm_gm_aaf2028_tfia_wheeled_ural375d_cargo_01"];
