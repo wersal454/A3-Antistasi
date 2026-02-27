@@ -53,7 +53,7 @@ class CfgEditorSubcategories
 	{
 		displayName = "Static Holders";
 	};
-};
+};///
 
 class CfgVehicles
 {
