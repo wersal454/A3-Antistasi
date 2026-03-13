@@ -26,7 +26,7 @@ _truckX setDir _spawnDir;
 
 [_truckX, teamPlayer] call A3A_fnc_AIVEHinit;
 [_unit] spawn A3A_fnc_FIAinit;
-
+//
 _groupX addVehicle _truckX;
 [_unit] orderGetIn true;
 //_unit setBehaviour "SAFE";
