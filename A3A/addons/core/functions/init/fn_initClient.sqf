@@ -17,7 +17,7 @@ private _enableInitMessages = profileNamespace getVariable ["A3U_setting_enableI
 private _enableIntroAnimation = profileNamespace getVariable ["A3U_setting_enableIntroAnimation", true];
 
 player forceAddUniform "U_C_WorkerCoveralls";
-
+//
 musicON = false;
 recruitCooldown = 0;			//Prevents units being recruited too soon after being dismissed.
 incomeRep = false;
