@@ -79,7 +79,19 @@ while {true} do {
 
 		_resAddCity = (_numCiv * (_supportReb / 100)) / 3;
 		if (!finite _resAddCity) then { _resAddCity = 0; };
-		_hrAddCity = _numCiv * (_supportReb / 10000);
+
+		if (_numCiv > 0) then {
+			private _baseDivider = 10000;
+			private _refPopulation = 2000;
+			private _minDivider = 5000;
+			private _maxDivider = 10000;
+			
+			private _divider = _baseDivider * sqrt(_numCiv / _refPopulation);
+			_divider = (_divider max _minDivider) min _maxDivider;
+			_hrAddCity = _numCiv * _supportReb / _divider;
+		} else {
+			_hrAddCity = 0;
+		};
 
 		if (sidesX getVariable [_city,sideUnknown] == Occupants) then
 		{
@@ -139,7 +151,7 @@ while {true} do {
 
 	_hrAdd = round _hrAdd;
 	_resAdd = round _resAdd;
-	if (!finite _resAdd) then { _resAdd = 25000; }; //either number is too large or something is broken
+	if (!finite _resAdd) then { _resAdd = 25000; };
 	if (!finite _hrAdd) then { _hrAdd = 30; };
 	server setVariable ["hr", _hrAdd + (server getVariable ["hr", 0]), true];
 	server setVariable ["resourcesFIA", _resAdd + (server getVariable ["resourcesFIA", 0]), true];
@@ -163,7 +175,7 @@ while {true} do {
 	publicVariable "supportPoints";
 
 	// Regular income of finite starting weapons
-	private _equipMul = A3A_balancePlayerScale / 30;		// difficulty scaled. Hmm.
+	private _equipMul = A3A_balancePlayerScale / 30;
 	{
 		if (_x isEqualType "") then { continue };
 		_x params ["_class", "_initCount"];
@@ -183,13 +195,6 @@ while {true} do {
 	[] call A3A_fnc_FIAradio;
     [] call A3A_fnc_cleanConvoyMarker;
 
-    // Random-walk the defence multipliers for markers to add some persistent variation
-    // Maybe add some logic to this later
-/*    {
-        private _r = _x#4 - 0.1 + random 0.2;
-        _x set [4, 0.5 max _r min 1.0];
-    } forEach A3A_supportMarkerTypes;
-*/
 	[] spawn A3A_fnc_promotePlayer;
 	[] call A3A_fnc_assignBossIfNone;
 
@@ -199,13 +204,11 @@ while {true} do {
 	// Decrease HQ knowledge values, old ones faster than current
 	if (A3A_curHQInfoOcc < 1) then { A3A_curHQInfoOcc = 0 max (A3A_curHQInfoOcc - 0.01) };
 	if (A3A_curHQInfoInv < 1) then { A3A_curHQInfoInv = 0 max (A3A_curHQInfoInv - 0.01) };
- 	A3A_oldHQInfoOcc = A3A_oldHQInfoOcc select { _x set [2, _x#2 - 0.1]; _x#2 > 0 };			// arrays of [xpos, ypos, knowledge]
+ 	A3A_oldHQInfoOcc = A3A_oldHQInfoOcc select { _x set [2, _x#2 - 0.1]; _x#2 > 0 };
 	A3A_oldHQInfoInv = A3A_oldHQInfoInv select { _x set [2, _x#2 - 0.1]; _x#2 > 0 };
 
 	private _missionChance = 5 * A3A_activePlayerCount;
 	if ((!bigAttackInProgress) and (random 100 < _missionChance)) then {[] spawn A3A_fnc_missionRequest};
-	//Removed from scheduler for now, as it errors on Headless Clients.
-	//[[],"A3A_fnc_reinforcementsAI"] call A3A_fnc_scheduler;
 	[] spawn A3A_fnc_reinforcementsAI;
 	{
 		_veh = _x;
@@ -216,7 +219,6 @@ while {true} do {
 	} forEach vehicles;
 	sleep 3;
     _numWreckedAntennas = count antennasDead;
-	//Probability of spawning a mission in.
     _shouldSpawnRepairThisTick = round(random 100) < 15;
     if (_numWreckedAntennas > 0 && {_shouldSpawnRepairThisTick && {!("REP" in A3A_activeTasks)}}) then {
 		_potentials = [];
@@ -304,11 +306,11 @@ while {true} do {
 
 		if (_vehicleTypesUnlockedNotify isEqualTo []) exitWith {false};
 
-		private _unlockedMessages = "The following vehicles have been unlocked at the Arms Dealer.<br/>"; // To-Do: Localize
+		private _unlockedMessages = "The following vehicles have been unlocked at the Arms Dealer.<br/>";
 
 		{
 			private _vehicleType = _x;
-			_unlockedMessages = _unlockedMessages + "<br/>" + _vehicleType; // <br/> vehicleType <br/>
+			_unlockedMessages = _unlockedMessages + "<br/>" + _vehicleType;
 		} forEach _vehicleTypesUnlocked;
 
 		[localize "STR_marker_arms_dealer", _unlockedMessages] remoteExec ["A3A_fnc_customHint", 0, false];
