@@ -67,9 +67,7 @@ private ["_garrison"];
 ["version", QUOTE(VERSION_FULL)] call A3A_fnc_setStatVariable;
 ["saveTime", systemTimeUTC] call A3A_fnc_setStatVariable;
 ["gameMode", gameMode] call A3A_fnc_setStatVariable;					// backwards compatibility
-["difficultyX", skillMult] call A3A_fnc_setStatVariable;				// backwards compatibiiity
 ["bombRuns", bombRuns] call A3A_fnc_setStatVariable;
-["smallCAmrk", smallCAmrk] call A3A_fnc_setStatVariable;
 ["membersX", membersX] call A3A_fnc_setStatVariable;
 private _antennasDeadPositions = [];
 { _antennasDeadPositions pushBack getPos _x; } forEach antennasDead;
@@ -83,7 +81,6 @@ private _antennasDeadPositions = [];
 ["destroyedSites", destroyedSites] call A3A_fnc_setStatVariable;
 ["distanceSPWN", distanceSPWN] call A3A_fnc_setStatVariable;		// backwards compatibility
 ["chopForest", chopForest] call A3A_fnc_setStatVariable;
-["nextTick", nextTick - time] call A3A_fnc_setStatVariable;
 ["weather",[fogParams,overcast,gusts,humidity,lightnings,rain,rainParams,rainbow,waves,wind,windDir,windStr]] call A3A_fnc_setStatVariable; //rrobably should be rain
 private _destroyedPositions = destroyedBuildings apply { getPosATL _x };
 ["destroyedBuildings",_destroyedPositions] call A3A_fnc_setStatVariable;
@@ -195,9 +192,12 @@ _arrayEst = [];
 // Collect all vehicles to save
 vehicles select {
 	!(_x in staticsToSave) && // Skip anything already being saved by staticsToSave
-	{ !(typeOf _x in A3A_utilityItemHM) || { "save" in ((A3A_utilityItemHM get typeOf _x) select 4) } } &&
-	{ fullCrew[_x, "", true] isNotEqualTo [] } && // no crew seats, not in utilityItems, not saved
-	{ crew _x findIf { (alive _x) && (!isPlayer _x) } == -1 } // no AI-crewed vehicles, those are refunded
+	{
+		!(typeOf _x in A3A_utilityItemHM) &&
+		{ fullCrew[_x, "", true] isNotEqualTo [] } && // no crew seats, not in utilityItems, not saved
+		{ crew _x findIf { (alive _x) && (!isPlayer _x) } == -1 } // no AI-crewed vehicles, those are refunded
+	} ||
+	{ "save" in ((A3A_utilityItemHM get typeOf _x) select 4) } 
 } apply {
     _arrayEst pushBackUnique _x;
 };
@@ -269,7 +269,7 @@ _prestigeBLUFOR = [];
 
 {
 	_city = _x;
-	_dataX = server getVariable _city;
+	_dataX = A3A_townData get _city;
 	_prestigeOPFOR = _prestigeOPFOR + [_dataX select 2];
 	_prestigeBLUFOR = _prestigeBLUFOR + [_dataX select 3];
 } forEach citiesX;
@@ -494,6 +494,9 @@ _fuelAmountleftArray = [];
 
 //Saving the state of the testing timer
 ["testingTimerIsActive", testingTimerIsActive] call A3A_fnc_setStatVariable;
+
+// Save Petros location
+["petrosPosition", (getPosATL petros)] call A3A_fnc_setStatVariable;
 
 if (_saveToNewNamespace) then { saveMissionProfileNamespace } else { saveProfileNamespace };
 
